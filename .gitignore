@@ -1,0 +1,6 @@
+.env
+.env.local
+.DS_Store
+.omc/
+.ipynb_checkpoints/
+__pycache__/
