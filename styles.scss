@@ -1,0 +1,168 @@
+/*-- scss:defaults --*/
+
+// ESE brand (ese.ac.uk): red, gold, near-black text, square corners
+$ese-red:       #AF1F25;
+$ese-red-dark:  #8f171c;
+$ese-gold:      #CDBA80;
+$ese-gold-dark: #a8955a;
+$ese-ink:       #363636;
+$ese-muted:     #7a7f85;
+$ese-rule:      #e6e2d8;
+
+$primary:       $ese-red;
+$link-color:    $ese-red;
+$body-color:    $ese-ink;
+$font-family-sans-serif: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+$font-size-root: 17px;
+$code-font-size: .86em;
+$headings-font-weight: 700;
+$headings-font-family: $font-family-sans-serif;
+$navbar-bg: #ffffff;
+$navbar-fg: $ese-ink;
+$navbar-hl: $ese-red;
+$toc-color: $ese-muted;
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+$btn-border-radius: 0;
+$callout-color-note: $ese-gold;
+$callout-color-important: $ese-red;
+$callout-color-tip: $ese-gold-dark;
+$callout-color-warning: $ese-red;
+$code-color: $ese-red-dark;
+
+/*-- scss:rules --*/
+
+body { letter-spacing: 0; }
+h1, h2, h3 { letter-spacing: -.01em; }
+h1.title { font-weight: 700; color: $ese-ink; }
+a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: $ese-red-dark; }
+
+/* ---------- navbar: white, red hairline, gold hover ---------- */
+.navbar {
+  border-bottom: 3px solid $ese-red;
+  box-shadow: none;
+}
+.navbar-brand { font-weight: 700; color: $ese-ink !important; }
+.navbar .nav-link { font-weight: 600; text-transform: uppercase; font-size: .78rem; letter-spacing: .08em; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: $ese-red !important; }
+.navbar-logo { height: 36px; width: auto; max-height: none; margin-right: .9rem; }
+.nav-year {
+  font-weight: 400;
+  color: $ese-muted;
+  font-size: .85em;
+  letter-spacing: .04em;
+}
+
+/* ---------- hero ---------- */
+.hero {
+  border-bottom: 1px solid $ese-rule;
+  padding-bottom: 1.4rem;
+  margin-bottom: 2rem;
+  color: $ese-muted;
+}
+.hero strong { color: $ese-ink; }
+.kicker {
+  display: block;
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: $ese-gold-dark;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+
+/* ---------- logistics strip ---------- */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: .9rem;
+  margin: 1.6rem 0 2.4rem;
+}
+.facts > div {
+  border: 1px solid $ese-rule;
+  border-top: 3px solid $ese-red;
+  padding: .75rem .9rem;
+  background: #fcfbf8;
+}
+.facts .k {
+  display: block;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: $ese-gold-dark;
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+.facts .v { font-weight: 600; }
+
+/* ---------- schedule table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .94rem;
+  margin-bottom: 2rem;
+}
+thead th {
+  text-align: left;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: $ese-muted;
+  font-weight: 700;
+  border-bottom: 2px solid $ese-red !important;
+  padding: .5rem .6rem;
+  white-space: nowrap;
+}
+tbody td {
+  padding: .7rem .6rem;
+  border-bottom: 1px solid $ese-rule;
+  vertical-align: top;
+}
+tbody tr:hover { background: #faf8f3; }
+.schedule tbody td:first-child {
+  color: $ese-gold-dark;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  width: 2.6rem;
+}
+.schedule tbody td:nth-child(2) { white-space: nowrap; font-weight: 600; }
+.schedule tbody td:nth-child(4), .schedule tbody td:nth-child(5) { white-space: nowrap; }
+.schedule td:last-child { color: #b9b4a8; }
+.schedule td a { color: $ese-red; }
+.schedule tr.break td { background: #faf8f3; color: $ese-muted; font-style: italic; }
+.schedule tr.break td:first-child { color: $ese-muted; }
+
+/* ---------- block heading with sub-line ---------- */
+h2.module {
+  margin-top: 2.6rem;
+  font-size: 1.15rem;
+  border-left: 4px solid $ese-gold;
+  padding-left: .7rem;
+}
+h2.module small {
+  display: block;
+  font-size: .82rem;
+  font-weight: 400;
+  color: $ese-muted;
+  margin-top: .15rem;
+}
+
+/* ---------- callouts: square, ESE tones ---------- */
+.callout { border-radius: 0; border-left-width: 4px; }
+
+/* ---------- people ---------- */
+.people { display: flex; flex-wrap: wrap; gap: 2rem; margin: 1.2rem 0 2rem; }
+.person { width: 150px; text-align: center; font-size: .9rem; }
+.person img { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; margin-bottom: .6rem; }
+.person .role { color: $ese-muted; font-size: .8rem; }
+
+/* ---------- footer ---------- */
+.nav-footer { border-top: 1px solid $ese-rule; font-size: .82rem; color: $ese-muted; }
+.nav-footer em { color: $ese-gold-dark; }
+
+/* rendered notebooks: quieter code cells */
+div.sourceCode { border: 1px solid $ese-rule; border-radius: 0; }
+pre.sourceCode { background: #faf9f6; }

@@ -1,0 +1,240 @@
+---
+title: "Syllabus"
+subtitle: "Artificial Intelligence for Business and FinTech — course design v2, 7 September 2026"
+toc-depth: 3
+---
+
+::: {.callout-note appearance="simple"}
+This is the web version of the course design document. The original is available as [Word document](syllabus/ESE_AI_FinTech_Course_Design_v2.docx). Readings may be updated before and during the course; the student is informed in writing.
+:::
+
+| **Course status** | Non-credit ESE Short Course; ESE Certificate on successful completion |
+|----|----|
+| **Term / dates** | Term 1, AY 2026–27. Teaching 21 September – 30 November 2026 (10 sessions). Reading Week 26 Oct – 1 Nov (no class). Final presentation in Revision Week, 7–13 December 2026. |
+| **Contact hours** | 30 hours — one 3-hour session per week, Mondays 09:00–12:00, in person (ESE Florence) |
+| **Module leader** | Niccolò Salvini |
+| **Format** | One-to-one tutorial and lab. Every session combines a short conceptual block with hands-on building in Python (Google Colab) using AI coding assistants. |
+| **Language** | English |
+| **Tools** | Google Colab (student Google account), GitHub, an LLM API key (Google AI Studio free tier by default; OpenAI/Anthropic optional), a ChatGPT/Claude/Gemini chat subscription of the student's choice. Public data: yfinance, CoinGecko, DefiLlama, FRED, Etherscan/Dune free tiers. |
+
+## Course description
+
+This applied short course teaches how artificial intelligence is actually built into business and fintech workflows in 2026: not by describing tools, but by using them. Working one-to-one with the tutor, the student writes Python in Google Colab with an AI coding assistant, learns to read and verify what the assistant produces, and progressively builds a portfolio of working artefacts: a reproducible data-analysis pipeline on market and on-chain data, a supervised model with an honest evaluation, an LLM application with retrieval and tool use, a backtest that avoids the classic mistakes, and a DeFi protocol analysis. The final capstone assembles these into an AI-enabled product prototype with an implementation roadmap.
+
+Finance and digital assets — equities, cryptocurrencies, DeFi — are the running thread from week 2, so that every technique is practised on data the student cares about. Product and project management, the student's professional background, is used as the lens for framing, evaluating and presenting what has been built, rather than as a separate topic. Ethics, regulation (EU AI Act, MiCA), model risk and human oversight are taught in context, at the point in the course where each becomes concrete.
+
+The course deliberately pushes beyond a "managerial overview": the student leaves able to prototype, test and critically evaluate AI systems, and therefore to manage AI projects and products with technical credibility.
+
+## Prerequisites
+
+No prior programming experience is required, but the student must be willing to write and run code from the first session. A degree-level background in economics or business, familiarity with spreadsheets and KPIs, and English at C1 are assumed. The student needs a laptop, a Google account (for Colab) and a GitHub account. Nothing needs to be installed locally.
+
+## Aims
+
+- Give a working (not mathematical) understanding of how modern AI systems — machine learning models and large language models — behave, fail and are evaluated.
+
+- Make the student productive in Python with AI coding assistants, able to reproduce, verify and extend analyses rather than trust outputs blindly.
+
+- Teach the full loop of a data-driven decision: question, data, model, honest evaluation, decision rule, KPI.
+
+- Build LLM applications end-to-end: API calls, structured output, retrieval-augmented generation, tool-using agents, and evaluation suites.
+
+- Apply these skills to financial markets, digital assets and DeFi with disciplined evaluation (leakage, overfitting, costs, regime change, protocol risk).
+
+- Embed responsible-AI practice — privacy, security, bias, explainability, EU AI Act and MiCA, model governance and human oversight — into every artefact.
+
+- Produce and defend an AI-enabled product prototype with a credible implementation roadmap.
+
+## Learning outcomes
+
+On successful completion the student will be able to:
+
+1.  Explain how LLMs and supervised models work at an operational level and distinguish suitable from unsuitable business applications.
+
+2.  Use Python in Colab with an AI assistant to acquire, clean, join and visualise business, market and on-chain data reproducibly.
+
+3.  Train and evaluate a supervised model against a baseline using appropriate (time-aware) validation and metrics, and translate predictions into decisions and KPIs.
+
+4.  Build an LLM application with structured output, retrieval over documents and tool use, and measure its quality with an evaluation set.
+
+5.  Design and run a backtest that explicitly controls for look-ahead bias, overfitting, transaction costs and regime change, and critique trading-model claims.
+
+6.  Analyse a digital-asset or DeFi use case through business-model, data and risk lenses using real protocol data.
+
+7.  Assess ethical, privacy, security, regulatory and governance implications of an AI system and design proportionate controls and human oversight.
+
+8.  Frame, build, test and present an AI-enabled product prototype and defend its implementation roadmap.
+
+## Teaching method and weekly rhythm
+
+Every Monday session follows the same shape: 20 minutes reviewing the previous homework together (the student walks the tutor through the notebook), roughly 50 minutes of concepts, about 90 minutes of lab work in Colab with the tutor at the student's side, and 20 minutes to brief the next homework. The tutor demonstrates, then the student does the same thing on different data. The AI assistant is used openly and constantly; the skill being taught is how to direct it, read its output and catch its errors.
+
+Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 so it can open the following session. Each piece of homework is a folder in the student's course repository; the artefacts accumulate into the capstone rather than being discarded. Homework is formative (reviewed and discussed, not marked) but completion of all weekly work is a condition for certification.
+
+## Session plan
+
+### Session 1 — Mon 21 Sep — How LLMs work, and how we will work
+
+| **0:00–0:20** | Orientation: course contract, tools, repository, weekly rhythm, assessment. |
+|----|----|
+| **0:20–1:10** | LLMs at a working level: tokens, context window, sampling, why models hallucinate, embeddings, tool use, agents. What changed between 2023 and 2026 and what it means for business use. |
+| **1:10–2:40** | Lab: Colab and GitHub set-up; first notebook — download daily prices for BTC, an equity and an index (yfinance/CoinGecko), compute returns, plot. The core loop: ask the assistant → run → read the error → ask again → verify against a known fact. |
+| **2:40–3:00** | Prompting that matters at work: system vs user instructions, examples, asking for structure, forcing sources. Homework brief. |
+
+**Homework:** HW1 — Notebook with three assets (one equity, one cryptocurrency, one index): daily returns, summary statistics, one chart that answers a question. Plus a 200-word note describing one thing the assistant got wrong and how you caught it.
+
+### Session 2 — Mon 28 Sep — Data analysis with AI as pair programmer
+
+| **0:00–0:20** | HW1 review. |
+|----|----|
+| **0:20–1:10** | pandas by doing: tidy data, joins, resampling, missing values, look-ups. Descriptive vs predictive questions. Charts that answer a question. Data provenance, seeds and pinned versions (reproducibility); what must never be pasted into an AI tool (privacy). |
+| **1:10–2:40** | Lab: join market data with an external series (FRED rates, Google Trends, on-chain active addresses). Sanity checks: units, date alignment, known events visible in the chart. Let the assistant write the code, then break it and fix it. |
+| **2:40–3:00** | Homework brief. |
+
+**Homework:** HW2 — Exploratory analysis memo: one question ("does X co-move with Y?", "what happened to Z around event E?"), a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.
+
+### Session 3 — Mon 5 Oct — Machine learning through one problem; from prediction to decision
+
+| **0:00–0:20** | HW2 review. |
+|----|----|
+| **0:20–1:10** | Supervised learning: features, target, train/test, why time series need time-aware splits, overfitting, baselines, metrics (accuracy vs precision/recall, MAE), base rates and calibration. |
+| **1:10–2:40** | Lab: predict next-week direction or volatility regime with logistic regression and gradient boosting; compare with a naive baseline; introduce leakage on purpose (random split, future features) and watch the score lie. Walk-forward validation. |
+| **2:40–3:00** | From prediction to decision: expected value, thresholds, KPI design, when a human must decide. Homework brief. |
+
+**Homework:** HW3 — Model vs baseline with honest, time-aware evaluation, and a section titled "What would have to be true for this to be useful" (decision rule, KPI, cost of errors).
+
+### Session 4 — Mon 12 Oct — LLM applications I — API, structured output, retrieval (RAG)
+
+| **0:00–0:20** | HW3 review. |
+|----|----|
+| **0:20–1:00** | Calling an LLM from Python: messages, temperature, JSON/structured output, cost and latency. Embeddings and similarity. The RAG pipeline: chunk → embed → retrieve → generate with citations; where it fails. |
+| **1:00–2:30** | Lab: build a RAG system over a small finance corpus — risk sections of three 10-K filings, the Bitcoin and Uniswap whitepapers, a MiCA summary. Ask questions, inspect retrieved chunks, catch wrong answers. |
+| **2:30–3:00** | EU AI Act in 30 minutes: risk tiers, general-purpose model obligations, transparency duties; what applies to a fintech assistant. Homework brief. |
+
+**Homework:** HW4 — Extend the RAG system with a corpus of your choice; write 10 test questions with expected answers; record hits and misses and explain the misses.
+
+### Session 5 — Mon 19 Oct — LLM applications II — agents, tool use, evaluation; the product lens
+
+| **0:00–0:20** | HW4 review. |
+|----|----|
+| **0:20–1:00** | Agents = LLM + tools + loop. Function calling. When an agent beats a fixed pipeline and when it does not. Failure modes, cost control, prompt injection. Evaluation: golden sets, LLM-as-judge, regression tests. |
+| **1:00–2:20** | Lab: give the model tools (get_price, get_news, run_analysis) and build a "research analyst" agent that answers "summarise the last 30 days of asset X with numbers"; write an evaluation set and score it. |
+| **2:20–3:00** | The product lens (the student's expertise applied): AI product brief — users, value, data, guardrails, metrics, unit economics of inference. Minor Applied Case Brief specification. |
+
+**Homework:** Reading Week assignment — Minor Applied Case Brief (40%): 1,500 words plus an 8-minute presentation treating the system built in weeks 4–5 as a product: problem, users, evidence from evaluations, risks, controls, success metrics. Due Sunday 1 November.
+
+### Reading Week — 26 Oct – 1 Nov — no class
+
+|  | Independent work on the Minor Applied Case Brief. One optional 45-minute online office hour. |
+|----|----|
+
+### Session 6 — Mon 2 Nov — Minor presentation; fintech landscape; capstone scoping
+
+| **0:00–0:45** | Minor Applied Case presentation, questions, written feedback. |
+|----|----|
+| **0:45–2:00** | Where AI actually earns money in fintech: payments, credit scoring, fraud and AML, KYC, robo-advice, customer operations. Build/buy/partner. What regulators expect: model risk management, explainability in credit decisions, financial inclusion. |
+| **2:00–3:00** | Capstone scoping workshop: three candidate topics, pick one, define deliverables and a weekly plan. |
+
+**Homework:** HW6 — Capstone proposal (one page): question, data sources, method, deliverable, risks, week-by-week plan.
+
+### Session 7 — Mon 9 Nov — AI in markets and trading — backtesting done honestly
+
+| **0:00–0:20** | HW6 review and proposal sign-off. |
+|----|----|
+| **0:20–1:10** | Market data and features; signals; backtesting logic. The pitfalls: look-ahead bias, survivorship, overfitting and multiple testing, transaction costs and slippage, regime change. Why most published crypto ML results are wrong. LLM-derived sentiment signals and how to test them. |
+| **1:10–2:40** | Lab: vectorised momentum backtest with costs; add leakage deliberately and watch the Sharpe ratio jump; walk-forward validation; add an LLM-derived news feature and test it honestly. |
+| **2:40–3:00** | Model risk in 20 minutes: model inventory, validation, monitoring, kill-switches. Homework brief. |
+
+**Homework:** HW7 — Backtest of one strategy with costs and walk-forward validation, a completed pitfall checklist, and one LLM-derived feature tested against the baseline. No live trading; educational simulation only.
+
+### Session 8 — Mon 16 Nov — Digital assets, on-chain data and DeFi
+
+| **0:00–0:20** | HW7 review. |
+|----|----|
+| **0:20–1:10** | Blockchain fundamentals at business level; wallets, exchanges, stablecoins; smart contracts; automated market makers (x·y = k), impermanent loss, lending protocols, staking. Protocol risks: smart contract, oracle, governance, depeg, liquidity. |
+| **1:10–2:30** | Lab: pull protocol data (DefiLlama TVL and fees, CoinGecko, Etherscan/Dune); simulate an AMM pool and liquidity-provider returns; analyse one protocol's token economics; use the LLM to summarise its governance forum and check the summary against the source. |
+| **2:30–3:00** | MiCA and ESMA in 30 minutes: what is regulated, who needs a licence, what it means for a product. Homework brief. |
+
+**Homework:** HW8 — Protocol analysis through business-model, data and risk lenses, with at least one quantitative element (LP simulation, TVL/fee analysis or token-flow analysis).
+
+### Session 9 — Mon 23 Nov — Responsible AI applied to the capstone; red-team
+
+| **0:00–0:20** | HW8 review. |
+|----|----|
+| **0:20–1:10** | Bias and fairness, explainability (SHAP on the week-3 model), privacy, security of LLM applications (prompt injection, data exfiltration), dependence on third-party models, designing human oversight. The AI risk and controls canvas. |
+| **1:10–2:40** | Lab: red-team the student's capstone pipeline — adversarial inputs, corrupted data, leakage audit, prompt injection; fill the risk and controls canvas; formative feedback on the prototype. |
+| **2:40–3:00** | Homework brief. |
+
+**Homework:** HW9 — Near-final capstone prototype with a completed risk and controls canvas and a log of what the red-team found and how it was fixed.
+
+### Session 10 — Mon 30 Nov — Implementation, operating model and capstone studio
+
+| **0:00–0:20** | HW9 review. |
+|----|----|
+| **0:20–1:10** | From prototype to production: build/buy/partner, data and technology readiness, roles and governance, cost of inference at scale, change adoption, measuring value, pilot-to-production roadmap. |
+| **1:10–2:40** | Studio: finalise the prototype and roadmap; rehearse the final presentation. |
+| **2:40–3:00** | Course wrap-up and reflection. |
+
+**Homework:** Final AI Strategy and Prototype Portfolio (60%) due Sunday 6 December. Final oral presentation in Revision Week (proposed Monday 7 December, 09:00; 8 December is a holiday).
+
+## Assessment
+
+| **Assessment** | **Weight** | **Specification** | **Timing** |
+|----|----|----|----|
+| **Minor Applied Case Brief** | 40% | Individual 1,500-word brief plus 8-minute presentation. The LLM application built in weeks 4–5 is treated as a product: problem, users, evidence from evaluation, risks, controls, success metrics. The working notebook is submitted with the brief. | Brief due Sun 1 Nov (Reading Week). Presentation Mon 2 Nov. |
+| **Final AI Strategy and Prototype Portfolio** | 60% | Individual capstone: decision memo (2,000 words), a working prototype or reproducible workflow in the course repository, evidence of testing and evaluation, risk and controls canvas, implementation roadmap. Topic in fintech, market analytics, digital assets/DeFi or another approved business context. | Portfolio due Sun 6 Dec. Oral presentation in Revision Week (7–13 Dec). |
+
+### Marking criteria
+
+- **15%** Problem framing and business relevance
+
+- **25%** Quality and critical use of data, evidence and AI methods
+
+- **20%** Technical artefact: does it work, is it reproducible, is it honestly evaluated
+
+- **20%** Risk, ethics, governance and human oversight
+
+- **20%** Clarity, professional communication and reflection
+
+Weekly homework is formative and reviewed at the start of each session; completing all weekly work is a condition for the ESE certificate. No written examination is proposed for the Final Exams period (14–18 December).
+
+## Responsible use of AI and financial context
+
+AI tools are not only permitted but expected. Every submission discloses which tools were used, for what, and how outputs were verified; the analysis and judgement must remain the student's own. No confidential, personal or commercially sensitive data may be entered into AI services. All activities involving securities, cryptocurrencies or DeFi are educational simulations and analytical exercises; nothing in the course constitutes investment advice and the student is never required to trade or commit funds.
+
+## Materials and channels
+
+| **Channel** | **Purpose** |
+|----|----|
+| **GitHub** | Single source of truth. The course repository ([NiccoloSalvini/ese-ai](https://github.com/NiccoloSalvini/ese-ai), mirrored on this site) holds one folder per week with the session notebook, the concept cards and the homework. The student's private repository `ese-ai-fintech` holds `week-NN/hw/` and `capstone/`. Homework is pushed by Sunday 23:59. |
+| **Google Colab** | Runtime for all code. API keys stored in Colab Secrets, never in notebooks. Free tier is sufficient for the whole course. |
+| **Moodle** | Official mirror once available: syllabus, one section per week linking here, submission points and written feedback for the two formal assessments, grades. |
+| **Telegram (or WhatsApp)** | Quick questions between sessions, office-hour scheduling, links. Not for deliverables. |
+| **LLM access** | Google AI Studio API key (free tier) for all API work in Colab, with OpenAI-compatible code so it ports to other providers. The student's own chat subscription (ChatGPT, Claude or Gemini) for day-to-day assistance. Optional: a small OpenAI/Anthropic API budget for comparison in weeks 4–5. |
+| **Data** | yfinance, CoinGecko, FRED, DefiLlama, Etherscan and Dune (free tiers); SEC EDGAR for filings; protocol whitepapers and governance forums. |
+
+Weekly cycle: Monday lesson; notes and homework published on GitHub and Moodle by Tuesday; homework due Sunday 23:59; reviewed together at the start of the following Monday.
+
+## Core and recommended resources
+
+- Mollick, E. (2024). Co-Intelligence: Living and Working with AI. Portfolio. (Weeks 1–2.)
+
+- Lopez de Prado, M. (2018). Advances in Financial Machine Learning. Wiley — chapters on labelling, cross-validation and backtesting. (Weeks 3 and 7.)
+
+- Harvey, C. R., Liu, Y. and Zhu, H. (2016). "…and the Cross-Section of Expected Returns." Review of Financial Studies. (Week 7.)
+
+- Narayanan, A. and Clark, J. (2017). "Bitcoin's Academic Pedigree." Communications of the ACM. (Week 8.)
+
+- Adams, H. et al. (2021). Uniswap v3 Core (whitepaper); Nakamoto, S. (2008). Bitcoin whitepaper. (Weeks 4 and 8.)
+
+- European Commission — EU AI Act resources; ESMA — MiCA and crypto-asset resources; NIST AI Risk Management Framework and Generative AI Profile. (Weeks 4, 8, 9.)
+
+- BIS — publications on AI in finance and DeFi. (Weeks 6 and 8.)
+
+- Provider documentation: Google AI Studio / Gemini API, OpenAI API, Anthropic API; scikit-learn and pandas user guides. (Throughout.)
+
+Readings may be updated before and during the course to reflect developments in tools and regulation; the student will be informed in writing.
+
+## Academic policies
+
+ESE attendance, academic integrity, late-submission, mitigating-circumstances and other academic policies apply. Reasonable changes may be made to content, tools, readings or activities; the student will be informed of material changes in writing.

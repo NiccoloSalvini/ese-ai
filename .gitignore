@@ -4,3 +4,6 @@
 .omc/
 .ipynb_checkpoints/
 __pycache__/
+/_site/
+/.quarto/
+/_publish.yml.bak

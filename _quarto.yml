@@ -1,0 +1,58 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - syllabus.qmd
+    - setup.qmd
+    - "week-*/homework.md"
+    - "week-*/session.ipynb"
+    - "week-*/cards.md"
+  resources:
+    - "syllabus/*.docx"
+    - "week-*/data/**"
+
+execute:
+  enabled: false
+
+website:
+  title: "AI for Business & FinTech"
+  description: "Artificial Intelligence for Business and FinTech — ESE Short Course, European School of Economics, Florence. Term 1, A.Y. 2026–2027."
+  site-url: https://niccolosalvini.github.io/ese-ai/
+  repo-url: https://github.com/NiccoloSalvini/ese-ai
+  favicon: images/favicon.ico
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    logo: images/ese-logo.svg
+    logo-alt: "European School of Economics"
+    logo-href: https://www.ese.ac.uk/locations/ese-florence
+    title: "AI for Business & FinTech <span class='nav-year'>26/27</span>"
+    background: "#ffffff"
+    left:
+      - href: index.qmd
+        text: Schedule
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: setup.qmd
+        text: Setup
+    right:
+      - icon: github
+        href: https://github.com/NiccoloSalvini/ese-ai
+        aria-label: GitHub repository
+  page-footer:
+    left: "ESE Florence · Borgo Santi Apostoli 19, 50123 Firenze · Term 1, A.Y. 2026–2027"
+    right: "Niccolò Salvini · *Visibilia ex Invisibilibus*"
+
+format:
+  html:
+    theme: [cosmo, styles.scss]
+    include-in-header: _fonts.html
+    toc: true
+    toc-depth: 2
+    anchor-sections: true
+    link-external-newwindow: true
+    code-copy: true
+    grid:
+      body-width: 1000px

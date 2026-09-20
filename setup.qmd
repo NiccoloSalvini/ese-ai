@@ -1,0 +1,59 @@
+---
+title: "Setup"
+subtitle: "Everything runs in the browser. Do this before session 1."
+---
+
+Nothing is installed on your laptop. You need three accounts and one key. Bring the laptop to session 1 with the first three items done; we finish the rest together in the first twenty minutes.
+
+## 1. Google account and Colab
+
+[Google Colab](https://colab.research.google.com/) is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.
+
+- Open [this notebook](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb) and press `Runtime ▸ Run all`. If the first cells run, Colab works.
+- `Runtime ▸ Restart and run all` is the self-check you will use before every submission: a notebook that runs top to bottom from a clean runtime, with no errors.
+
+## 2. GitHub account and your course repository
+
+[GitHub](https://github.com/) holds your homework and, by the end, your capstone. It is the single source of truth for assessment.
+
+1. Create a GitHub account if you do not have one.
+2. Create a **private** repository named `ese-ai-fintech`.
+3. Add the tutor (`NiccoloSalvini`) as a collaborator: `Settings ▸ Collaborators ▸ Add people`.
+4. Folder convention, one per week: `week-01/hw/`, `week-02/hw/`, …, `capstone/`.
+
+Commit often. The history is part of the work: I read it.
+
+## 3. Saving a Colab notebook to GitHub
+
+Each session notebook opens from this site with the *Colab ↗* link. Save your own copy once, then keep working on it:
+
+1. In Colab, `File ▸ Save a copy in GitHub`.
+2. Repository: `ese-ai-fintech`. File path: `week-01/session.ipynb` (change the week as you go).
+3. The first time, Colab asks you to authorise GitHub and to tick *Include private repos* under `File ▸ Open notebook ▸ GitHub`.
+
+## 4. An LLM API key — from week 4
+
+From session 4 the notebooks call a language model from Python. The default is the **Google AI Studio** free tier, with OpenAI-compatible code so it ports to other providers.
+
+1. Create a key at [aistudio.google.com](https://aistudio.google.com/apikey).
+2. In Colab, open the key icon in the left sidebar (*Secrets*), add a secret named `GEMINI_API_KEY`, paste the key, and enable notebook access.
+3. Never paste a key into a notebook cell. Keys live in Colab Secrets only; the notebooks read them from there.
+
+An OpenAI or Anthropic key is optional, for comparison in weeks 4–5.
+
+## 5. A chat assistant
+
+Pick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.
+
+Two rules apply from the first day:
+
+- **No confidential, personal or commercially sensitive data** goes into an AI service.
+- Every submission includes an **AI-use disclosure**: which tools, for what, and how the outputs were verified.
+
+## Data sources you will use
+
+All free tiers, no sign-up unless stated: [yfinance](https://github.com/ranaroussi/yfinance), [CoinGecko](https://www.coingecko.com/en/api), [FRED](https://fred.stlouisfed.org/docs/api/fred/), [DefiLlama](https://defillama.com/docs/api), [Etherscan](https://etherscan.io/apis) and [Dune](https://dune.com/) (account), [SEC EDGAR](https://www.sec.gov/edgar) for filings. Notebooks fall back to a saved snapshot when a live source is down.
+
+## Something is not working?
+
+Write on the course channel with a screenshot of the error and the cell that produced it. Reading the error message before asking is already half of the course.

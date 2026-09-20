@@ -1,0 +1,22 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: "Source Sans Pro", Helvetica, Arial, sans-serif;
+$font-family-monospace: "JetBrains Mono", Menlo, Consolas, monospace;
+$presentation-heading-color: #AF1F25;
+$presentation-heading-font-weight: 700;
+$body-color: #363636;
+$link-color: #AF1F25;
+$presentation-font-size-root: 34px;
+$code-block-font-size: .6em;
+
+/*-- scss:rules --*/
+// Quarto interpolates $font-family-sans-serif into --r-main-font without quotes;
+// "Source Sans 3" is invalid unquoted (starts with a digit), so set the CSS vars here.
+:root {
+  --r-main-font: "Source Sans 3", "Source Sans Pro", Helvetica, Arial, sans-serif;
+  --r-heading-font: "Source Sans 3", "Source Sans Pro", Helvetica, Arial, sans-serif;
+}
+.reveal .slide-logo { max-height: 3rem !important; }
+.reveal table thead th { border-bottom: 2px solid #AF1F25; }
+.reveal .slides section { text-align: left; }
+.reveal h1 { font-size: 1.6em; border-bottom: 3px solid #CDBA80; padding-bottom: .2em; }
+.reveal strong { color: #AF1F25; }

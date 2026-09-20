@@ -2,6 +2,17 @@
 marp: true
 theme: default
 paginate: false
+title: "Week 2 — cards"
+format:
+  revealjs:
+    theme: [default, ../slides.scss]
+    slide-level: 0
+    slide-number: false
+    controls: true
+    hash: true
+    logo: ../images/ese-logo.svg
+    footer: "AI for Business & FinTech · ESE Florence · Week 2"
+    include-in-header: ../_fonts.html
 ---
 
 <!-- card 1 -->

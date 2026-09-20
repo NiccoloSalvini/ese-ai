@@ -1,5 +1,7 @@
 # ese-ai
 
+Course site: **<https://niccolosalvini.github.io/ese-ai/>** (Quarto, rendered locally and published to the `gh-pages` branch with `make deploy`; see `CLAUDE.md`).
+
 ## Moodle MCP
 
 Server MCP `moodle` definito in `.mcp.json` (pacchetto [moodle-mcp](https://github.com/loyaniu/moodle-mcp), via `uvx`).
@@ -7,7 +9,7 @@ Server MCP `moodle` definito in `.mcp.json` (pacchetto [moodle-mcp](https://gith
 Setup quando avrai l'account Moodle:
 
 1. Vai su `https://<moodle-host>/user/managetoken.php`, copia il token della riga **Moodle mobile web service**.
-2. `cp .env.example .env` e compila `MOODLE_URL` e `MOODLE_TOKEN`.
+2. `cp .env.template .env` e compila `MOODLE_URL` e `MOODLE_TOKEN`.
 3. Esporta le variabili nella shell prima di lanciare Claude Code (es. `set -a; source .env; set +a`), oppure sostituisci direttamente i valori in `.mcp.json` (non committarlo in quel caso).
 4. `claude mcp list` deve mostrare `moodle ... Connected`.
 
