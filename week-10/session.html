@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 10 — Implementation and operating model; capstone studio – AI for Business &amp; FinTech</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
+    <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NiccoloSalvini/ese-ai"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#block-b-from-prototype-to-production-as-decisions-with-numbers" id="toc-block-b-from-prototype-to-production-as-decisions-with-numbers" class="nav-link active" data-scroll-target="#block-b-from-prototype-to-production-as-decisions-with-numbers">Block B — From prototype to production, as decisions with numbers</a></li>
+  <li><a href="#block-c-readiness-roles-roadmap" id="toc-block-c-readiness-roles-roadmap" class="nav-link" data-scroll-target="#block-c-readiness-roles-roadmap">Block C — Readiness, roles, roadmap</a></li>
+  <li><a href="#block-d-studio-final-checks-on-your-repo" id="toc-block-d-studio-final-checks-on-your-repo" class="nav-link" data-scroll-target="#block-d-studio-final-checks-on-your-repo">Block D — Studio: final checks on your repo</a></li>
+  <li><a href="#take-home-write-three-lines" id="toc-take-home-write-three-lines" class="nav-link" data-scroll-target="#take-home-write-three-lines">Take-home (write three lines)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 10 — Implementation and operating model; capstone studio</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>ESE · AI for Business and FinTech · Monday 30 November 2026</strong></p>
+<p>Lighter notebook than usual: it is a set of calculators and templates you will reuse in your portfolio, plus one <strong>final checks</strong> cell that inspects your repo before you submit. Everything runs offline — no API key, no network. Replace every <code># &lt;-- your number</code> with the figures from your capstone; the defaults are illustrative.</p>
+<p>Cells marked <strong>🔍 CHECK</strong> contain something you must verify before moving on.</p>
+<div id="b46d1981" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nothing new to install this week; pandas/numpy/matplotlib ship with Colab.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (Kept so the notebook has the same shape as the others: Runtime ▸ Run all must work from a clean runtime.)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.width"</span>, <span class="dv">140</span>)<span class="op">;</span> pd.set_option(<span class="st">"display.float_format"</span>, <span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:,.4f}</span><span class="ss">"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"pandas"</span>, pd.__version__, <span class="st">"| numpy"</span>, np.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="block-b-from-prototype-to-production-as-decisions-with-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-from-prototype-to-production-as-decisions-with-numbers">Block B — From prototype to production, as decisions with numbers</h2>
+<section id="b1.-build-buy-partner-the-week-6-table-now-for-your-capstone" class="level3">
+<h3 class="anchored" data-anchor-id="b1.-build-buy-partner-the-week-6-table-now-for-your-capstone">B1. Build / buy / partner — the week-6 table, now for your capstone</h3>
+<p>Same scoring table as in week 6 (criteria × weight × option score), but the row labels are now the components of <em>your</em> pipeline. Score 1–5 per cell. The weights are yours to defend; the arithmetic is not.</p>
+<div id="2d2a8958" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>criteria <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"weight"</span>: [<span class="fl">0.25</span>, <span class="fl">0.20</span>, <span class="fl">0.20</span>, <span class="fl">0.15</span>, <span class="fl">0.10</span>, <span class="fl">0.10</span>],</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>[<span class="st">"time to a working pilot"</span>, <span class="st">"control over data and prompts"</span>, <span class="st">"cost at target volume"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">"vendor / lock-in risk"</span>, <span class="st">"auditability (model risk, AI Act)"</span>, <span class="st">"skills you actually have"</span>])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> pd.DataFrame({                         <span class="co"># 1 = bad, 5 = good      # &lt;-- your numbers</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"build (own code + API model)"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>],</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"buy (SaaS product)"</span>:           [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>],</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"partner (vendor builds on your data)"</span>: [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>criteria.index)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>weighted <span class="op">=</span> scores.mul(criteria[<span class="st">"weight"</span>], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.concat([criteria, scores], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>table.loc[<span class="st">"WEIGHTED TOTAL"</span>] <span class="op">=</span> [criteria[<span class="st">"weight"</span>].<span class="bu">sum</span>()] <span class="op">+</span> <span class="bu">list</span>(weighted.<span class="bu">sum</span>())</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Change one weight by 0.10 (take it from another row so they still sum to 1). Does the ranking flip? If a decision flips on a 0.10 weight change, the table is not deciding — <em>you</em> are, and the memo should say so and give the real reason.</p>
+</section>
+<section id="b2.-cost-of-inference-at-scale-the-calculator" class="level3">
+<h3 class="anchored" data-anchor-id="b2.-cost-of-inference-at-scale-the-calculator">B2. Cost of inference at scale — the calculator</h3>
+<p>Price is per <strong>million tokens</strong>, and input and output are priced differently. The numbers below are illustrative tiers (check the provider’s page on the day you write the memo; they change every few months). Cached input is what providers charge when the same long prefix (system prompt + retrieved documents) is reused — typically a large discount.</p>
+<div id="513661a0" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># USD per 1M tokens — ILLUSTRATIVE tiers, not a quote. Replace with the provider page the day you decide.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>PRICES <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"input"</span>:        [<span class="fl">0.10</span>, <span class="fl">1.00</span>, <span class="fl">5.00</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cached_input"</span>: [<span class="fl">0.025</span>, <span class="fl">0.25</span>, <span class="fl">1.25</span>],   <span class="co"># ~75% discount on the cached part of the prompt</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"output"</span>:       [<span class="fl">0.40</span>, <span class="fl">4.00</span>, <span class="fl">15.00</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>[<span class="st">"small"</span>, <span class="st">"mid"</span>, <span class="st">"frontier"</span>])</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>PRICES</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-the-assistants-cost-estimate" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-assistants-cost-estimate">🔍 CHECK — the assistant’s cost estimate</h3>
+<p>You asked the assistant: <em>“estimate the monthly cost of my RAG assistant: ~8,000-token prompt (system + 6 retrieved chunks + question), ~300-token answer, 20,000 queries a month on the frontier model.”</em> It produced the cell below. It runs, it prints a plausible number. <strong>It is wrong by roughly an order of magnitude.</strong> Write your bet for the true monthly cost first, then find the error. Ten minutes; one hint after five.</p>
+<div id="0ae460b8" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>tokens_out   <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>queries_month <span class="op">=</span> <span class="dv">20_000</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tier <span class="op">=</span> <span class="st">"frontier"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>cost_per_query  <span class="op">=</span> tokens_out <span class="op">/</span> <span class="fl">1e6</span> <span class="op">*</span> PRICES.loc[tier, <span class="st">"output"</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>cost_per_month  <span class="op">=</span> cost_per_query <span class="op">*</span> queries_month</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"cost per query: $</span><span class="sc">{</span>cost_per_query<span class="sc">:.4f}</span><span class="ss">   |   monthly: $</span><span class="sc">{</span>cost_per_month<span class="sc">:,.0f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution (open after you have tried)
+</summary>
+<p>The estimate prices <strong>only the output tokens</strong>. In a RAG system the prompt is mostly <em>input</em>: system instructions plus retrieved chunks plus the question — here 8,000 tokens against 300 of answer. Input is cheaper per token, but there is 27× more of it. The correct figure is</p>
+<p><code>cost = tokens_in × price_in + tokens_out × price_out</code> (all per 1M)</p>
+<p>= 8,000/1e6 × 5.00 + 300/1e6 × 15.00 = 0.0400 + 0.0045 = <strong>$0.0445 per query</strong>, i.e.&nbsp;<strong>$890/month</strong>, against the assistant’s $90. Off by ~10×, and always in the same direction: the assistant’s mental model of “a query” is a chat turn, where input and output are similar in size. Yours is a document pipeline, where input dominates.</p>
+Rule for the memo: <strong>any cost figure must show tokens_in and tokens_out separately, with the two prices next to them.</strong> If you cannot see both, the number is not verified.
+</details>
+<div id="5e9b4557" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: the calculator you will reuse. Input and output priced separately; caching applied to the cached share of input.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cost_per_query(tokens_in, tokens_out, tier, cache_hit_rate<span class="op">=</span><span class="fl">0.0</span>, cached_share_of_input<span class="op">=</span><span class="fl">0.0</span>, prices<span class="op">=</span>PRICES):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""USD per query.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">    cache_hit_rate       : share of queries whose cached prefix is actually served from cache (0..1)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">    cached_share_of_input: share of the input tokens that belong to the reusable prefix (system prompt + fixed context)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> prices.loc[tier]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    cached_tokens   <span class="op">=</span> tokens_in <span class="op">*</span> cached_share_of_input <span class="op">*</span> cache_hit_rate</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    uncached_tokens <span class="op">=</span> tokens_in <span class="op">-</span> cached_tokens</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (uncached_tokens <span class="op">*</span> p[<span class="st">"input"</span>] <span class="op">+</span> cached_tokens <span class="op">*</span> p[<span class="st">"cached_input"</span>] <span class="op">+</span> tokens_out <span class="op">*</span> p[<span class="st">"output"</span>]) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>tokens_in, tokens_out, queries_month <span class="op">=</span> <span class="dv">8_000</span>, <span class="dv">300</span>, <span class="dv">20_000</span>        <span class="co"># &lt;-- your numbers (count them with tiktoken on your real prompt)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tier <span class="kw">in</span> PRICES.index:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    cq <span class="op">=</span> cost_per_query(tokens_in, tokens_out, tier)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>tier<span class="sc">:9s}</span><span class="ss">: $</span><span class="sc">{</span>cq<span class="sc">:.4f}</span><span class="ss"> per query  |  $</span><span class="sc">{</span>cq<span class="op">*</span>queries_month<span class="sc">:,.0f}</span><span class="ss"> per month  "</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"(input share of cost: </span><span class="sc">{</span>tokens_in<span class="op">/</span><span class="fl">1e6</span><span class="op">*</span>PRICES<span class="sc">.</span>loc[tier,<span class="st">'input'</span>]<span class="op">/</span>cq<span class="sc">:.0%}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b3.-sensitivity-volume-model-tier-with-and-without-caching" class="level3">
+<h3 class="anchored" data-anchor-id="b3.-sensitivity-volume-model-tier-with-and-without-caching">B3. Sensitivity: volume × model tier, with and without caching</h3>
+<p>A sensitivity table is the honest form of a cost estimate: it shows the reader where the number breaks. Two tables — no caching, then with a realistic cache (say 60% of the prompt is a fixed prefix, served from cache 80% of the time).</p>
+<div id="65be14c1" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>volumes <span class="op">=</span> [<span class="dv">1_000</span>, <span class="dv">5_000</span>, <span class="dv">20_000</span>, <span class="dv">100_000</span>, <span class="dv">500_000</span>]         <span class="co"># queries per month</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> monthly_table(<span class="op">**</span>kw):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.DataFrame({tier: [cost_per_query(tokens_in, tokens_out, tier, <span class="op">**</span>kw) <span class="op">*</span> v <span class="cf">for</span> v <span class="kw">in</span> volumes]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                         <span class="cf">for</span> tier <span class="kw">in</span> PRICES.index}, index<span class="op">=</span>pd.Index(volumes, name<span class="op">=</span><span class="st">"queries/month"</span>)).<span class="bu">round</span>(<span class="dv">0</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Monthly cost (USD), no caching"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>display(monthly_table())</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Monthly cost (USD), 60</span><span class="sc">% o</span><span class="st">f prompt is a cacheable prefix, hit rate 80%"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>display(monthly_table(cache_hit_rate<span class="op">=</span><span class="fl">0.8</span>, cached_share_of_input<span class="op">=</span><span class="fl">0.6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b4.-routing-and-the-break-even-value-per-query" class="level3">
+<h3 class="anchored" data-anchor-id="b4.-routing-and-the-break-even-value-per-query">B4. Routing and the break-even value per query</h3>
+<p>Two decisions hide in every cost line. <strong>Routing</strong>: send the easy queries to the small model and only the hard ones to the frontier one — the cost is a weighted average, the quality is whatever your evals from week 5 say it is. <strong>Break-even</strong>: a query is worth running only if the value it creates exceeds its cost; below the break-even value per query, the system loses money on every call however good it is.</p>
+<p>Before running: <strong>write your bet</strong> — at what monthly volume does the frontier model, with no routing, exceed a $2,000/month budget?</p>
+<div id="3dd35c14" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>BUDGET_PER_MONTH <span class="op">=</span> <span class="fl">2_000.0</span>                                  <span class="co"># &lt;-- your number</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>VALUE_PER_QUERY  <span class="op">=</span> <span class="fl">0.05</span>                                     <span class="co"># &lt;-- your number: what one answered query is worth (time saved × hourly cost, or revenue)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> np.logspace(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">200</span>)                              <span class="co"># 1k .. 1M queries/month</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># left: monthly cost vs volume by tier + a routed mix</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>routed <span class="op">=</span> <span class="kw">lambda</span> v: v <span class="op">*</span> (<span class="fl">0.8</span> <span class="op">*</span> cost_per_query(tokens_in, tokens_out, <span class="st">"small"</span>) <span class="op">+</span> <span class="fl">0.2</span> <span class="op">*</span> cost_per_query(tokens_in, tokens_out, <span class="st">"frontier"</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tier <span class="kw">in</span> PRICES.index:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(grid, [cost_per_query(tokens_in, tokens_out, tier) <span class="op">*</span> v <span class="cf">for</span> v <span class="kw">in</span> grid], label<span class="op">=</span>tier)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(grid, [routed(v) <span class="cf">for</span> v <span class="kw">in</span> grid], <span class="st">"--"</span>, label<span class="op">=</span><span class="st">"routed 80</span><span class="sc">% s</span><span class="st">mall / 20</span><span class="sc">% f</span><span class="st">rontier"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(BUDGET_PER_MONTH, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span> ax[<span class="dv">0</span>].text(<span class="dv">1_100</span>, BUDGET_PER_MONTH <span class="op">*</span> <span class="fl">1.15</span>, <span class="st">"budget"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xscale(<span class="st">"log"</span>)<span class="op">;</span> ax[<span class="dv">0</span>].set_yscale(<span class="st">"log"</span>)<span class="op">;</span> ax[<span class="dv">0</span>].set_xlabel(<span class="st">"queries / month"</span>)<span class="op">;</span> ax[<span class="dv">0</span>].set_ylabel(<span class="st">"USD / month"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Monthly cost by tier"</span>)<span class="op">;</span> ax[<span class="dv">0</span>].legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># right: value minus cost per query by tier (break-even = where the bar crosses zero)</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>margin <span class="op">=</span> pd.Series({t: VALUE_PER_QUERY <span class="op">-</span> cost_per_query(tokens_in, tokens_out, t) <span class="cf">for</span> t <span class="kw">in</span> PRICES.index})</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>margin.plot.bar(ax<span class="op">=</span>ax[<span class="dv">1</span>], color<span class="op">=</span>[<span class="st">"#4c9a2a"</span> <span class="cf">if</span> m <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"#c0392b"</span> <span class="cf">for</span> m <span class="kw">in</span> margin])</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span> ax[<span class="dv">1</span>].set_title(<span class="ss">f"Value per query (</span><span class="sc">{</span>VALUE_PER_QUERY<span class="sc">:.2f}</span><span class="ss">) minus cost, by tier"</span>)<span class="op">;</span> ax[<span class="dv">1</span>].set_ylabel(<span class="st">"USD / query"</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tier <span class="kw">in</span> PRICES.index:</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    be_volume <span class="op">=</span> BUDGET_PER_MONTH <span class="op">/</span> cost_per_query(tokens_in, tokens_out, tier)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>tier<span class="sc">:9s}</span><span class="ss">: budget exhausted at </span><span class="sc">{</span>be_volume<span class="sc">:&gt;10,.0f}</span><span class="ss"> queries/month | break-even value per query = $</span><span class="sc">{</span>cost_per_query(tokens_in, tokens_out, tier)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"routed   : budget exhausted at </span><span class="sc">{</span>BUDGET_PER_MONTH <span class="op">/</span> (routed(<span class="dv">1</span>))<span class="sc">:&gt;10,.0f}</span><span class="ss"> queries/month"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Compare the frontier break-even volume with your bet. Then ask the question the chart cannot answer: <em>is the frontier model actually better on your golden set from week 5?</em> If the routed mix scores within your tolerance on the evals, the cost line is the decision. If you have no evals, you cannot route — you can only guess.</p>
+</section>
+<section id="b5.-latency-budget" class="level3">
+<h3 class="anchored" data-anchor-id="b5.-latency-budget">B5. Latency budget</h3>
+<p>Users notice latency before they notice quality. Sum the stages; compare with the target for your use case (a chat assistant tolerates ~5 s; a check inside a payment flow tolerates ~300 ms). Generation time is <code>tokens_out / tokens_per_second</code>, and it is usually the biggest line.</p>
+<div id="acd29494" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>latency <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ms"</span>: [<span class="dv">40</span>, <span class="dv">120</span>, <span class="dv">350</span>, <span class="dv">700</span>, <span class="dv">300</span> <span class="op">/</span> <span class="dv">60</span> <span class="op">*</span> <span class="dv">1000</span>, <span class="dv">30</span>],       <span class="co"># &lt;-- your numbers; generation = tokens_out / tokens_per_s * 1000</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>[<span class="st">"network + auth"</span>, <span class="st">"embed the query"</span>, <span class="st">"vector search (top-6)"</span>, <span class="st">"time to first token (frontier)"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">"generate 300 tokens at 60 tok/s"</span>, <span class="st">"post-processing / guardrail"</span>])</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>latency[<span class="st">"cumulative_ms"</span>] <span class="op">=</span> latency[<span class="st">"ms"</span>].cumsum()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>TARGET_MS <span class="op">=</span> <span class="dv">5_000</span>                                           <span class="co"># &lt;-- your number</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>display(latency.<span class="bu">round</span>(<span class="dv">0</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> latency[<span class="st">"ms"</span>].<span class="bu">sum</span>()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"total ≈ </span><span class="sc">{</span>total<span class="sc">:,.0f}</span><span class="ss"> ms vs target </span><span class="sc">{</span>TARGET_MS<span class="sc">:,}</span><span class="ss"> ms → </span><span class="sc">{</span><span class="st">'OK'</span> <span class="cf">if</span> total <span class="op">&lt;=</span> TARGET_MS <span class="cf">else</span> <span class="st">'OVER BUDGET'</span><span class="sc">}</span><span class="ss">; "</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"generation is </span><span class="sc">{</span>latency<span class="sc">.</span>loc[<span class="st">'generate 300 tokens at 60 tok/s'</span>,<span class="st">'ms'</span>]<span class="op">/</span>total<span class="sc">:.0%}</span><span class="ss"> of the total"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Halve <code>tokens_out</code> (shorter answers, or a structured answer instead of prose). What happens to latency <em>and</em> to cost per query at the same time? This is the one lever that improves both — write it in the roadmap.</p>
+</section>
+</section>
+<section id="block-c-readiness-roles-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-readiness-roles-roadmap">Block C — Readiness, roles, roadmap</h2>
+<section id="c1.-data-and-technology-readiness-checklist-as-a-scored-dataframe" class="level3">
+<h3 class="anchored" data-anchor-id="c1.-data-and-technology-readiness-checklist-as-a-scored-dataframe">C1. Data and technology readiness checklist — as a scored dataframe</h3>
+<p>Score each item 0 (absent), 1 (partial), 2 (in place) for <em>your</em> capstone. The weighted score is not a grade; it is a map of where the pilot will break first. Anything scored 0 with weight ≥ 2 goes into the roadmap as a gate.</p>
+<div id="671a92a5" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>readiness <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># area, item, weight (1-3), score (0-2)                                            # &lt;-- your scores</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"data"</span>,       <span class="st">"source of truth identified and access agreed"</span>,                     <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"data"</span>,       <span class="st">"dated snapshot in repo; refresh procedure written"</span>,                <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"data"</span>,       <span class="st">"known quality issues listed (missing, units, calendars)"</span>,          <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"data"</span>,       <span class="st">"personal / confidential data classified; nothing leaves the perimeter"</span>, <span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"technology"</span>, <span class="st">"notebook restart-and-run-all passes from a clean runtime"</span>,         <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"technology"</span>, <span class="st">"LLM calls go through one wrapper; provider can be swapped"</span>,       <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"technology"</span>, <span class="st">"golden set + regression eval exists and runs"</span>,                    <span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"technology"</span>, <span class="st">"logging of prompts, outputs, cost per call"</span>,                      <span class="dv">2</span>, <span class="dv">0</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"technology"</span>, <span class="st">"fallback when the API fails (cache, mock, human)"</span>,                <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"people"</span>,     <span class="st">"an owner who can read the code and the evals"</span>,                    <span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"people"</span>,     <span class="st">"a validator independent of the builder"</span>,                          <span class="dv">2</span>, <span class="dv">0</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"governance"</span>, <span class="st">"kill-switch: who can turn it off, and how fast"</span>,                  <span class="dv">3</span>, <span class="dv">0</span>),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"governance"</span>, <span class="st">"model-risk / AI Act classification written (week 4, 7, 9)"</span>,       <span class="dv">2</span>, <span class="dv">1</span>),</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>], columns<span class="op">=</span>[<span class="st">"area"</span>, <span class="st">"item"</span>, <span class="st">"weight"</span>, <span class="st">"score"</span>])</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>readiness[<span class="st">"weighted"</span>] <span class="op">=</span> readiness[<span class="st">"weight"</span>] <span class="op">*</span> readiness[<span class="st">"score"</span>]</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>readiness[<span class="st">"max"</span>] <span class="op">=</span> readiness[<span class="st">"weight"</span>] <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>by_area <span class="op">=</span> readiness.groupby(<span class="st">"area"</span>)[[<span class="st">"weighted"</span>, <span class="st">"max"</span>]].<span class="bu">sum</span>()</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>by_area[<span class="st">"readiness_%"</span>] <span class="op">=</span> (by_area[<span class="st">"weighted"</span>] <span class="op">/</span> by_area[<span class="st">"max"</span>] <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">0</span>)</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>display(by_area)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"overall readiness: </span><span class="sc">{</span>readiness[<span class="st">'weighted'</span>]<span class="sc">.</span><span class="bu">sum</span>() <span class="op">/</span> readiness[<span class="st">'max'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.0%}</span><span class="ss">"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">GATES (weight ≥ 2 and score 0):"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>display(readiness.query(<span class="st">"weight &gt;= 2 and score == 0"</span>)[[<span class="st">"area"</span>, <span class="st">"item"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="c2.-roles-and-governance-who-owns-the-model-who-validates-who-can-switch-it-off" class="level3">
+<h3 class="anchored" data-anchor-id="c2.-roles-and-governance-who-owns-the-model-who-validates-who-can-switch-it-off">C2. Roles and governance — who owns the model, who validates, who can switch it off</h3>
+<p>One table. Names, not departments. If two cells have the same name in the <em>owner</em> and <em>validator</em> rows, you do not have validation.</p>
+<div id="1c15d0c0" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>roles <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"role"</span>:        [<span class="st">"model owner"</span>, <span class="st">"independent validator"</span>, <span class="st">"data owner"</span>, <span class="st">"kill-switch holder"</span>, <span class="st">"user representative"</span>, <span class="st">"compliance / model risk"</span>],</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"who (name)"</span>:  [<span class="st">"you"</span>, <span class="st">"?"</span>, <span class="st">"?"</span>, <span class="st">"?"</span>, <span class="st">"?"</span>, <span class="st">"?"</span>],                                    <span class="co"># &lt;-- your names</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"decides"</span>:     [<span class="st">"prompt, model, threshold changes"</span>, <span class="st">"sign-off before each gate"</span>, <span class="st">"access, refresh, retention"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"stop the system; rollback"</span>, <span class="st">"acceptance criteria, KPI"</span>, <span class="st">"classification, documentation, review cadence"</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"evidence"</span>:    [<span class="st">"changelog in repo"</span>, <span class="st">"eval report per release"</span>, <span class="st">"data sheet + snapshot dates"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"runbook: stop in &lt; 1 hour, tested"</span>, <span class="st">"signed-off golden set"</span>, <span class="st">"canvas (week 9) kept current"</span>],</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>roles</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="c3.-pilot-production-roadmap-the-template-rendered-as-a-table" class="level3">
+<h3 class="anchored" data-anchor-id="c3.-pilot-production-roadmap-the-template-rendered-as-a-table">C3. Pilot → production roadmap — the template, rendered as a table</h3>
+<p>Three gates, 30/60/90 days. A gate is a <em>criterion that can fail</em>, with a KPI that shows whether it passed and a rollback that says what happens if it did not. “Continue to phase 2” is not a gate.</p>
+<div id="f885c04e" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>roadmap <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"phase"</span>:         [<span class="st">"0–30 days · pilot (shadow)"</span>,          <span class="st">"30–60 days · limited production"</span>,                 <span class="st">"60–90 days · production"</span>],</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"scope"</span>:         [<span class="st">"internal users, outputs not acted on"</span>, <span class="st">"one team, human approves every output"</span>,            <span class="st">"all target users, human samples 5%"</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gate criteria"</span>: [<span class="st">"eval ≥ baseline on golden set; cost/query ≤ budget; no P1 red-team finding open"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"user acceptance ≥ 70%; latency p95 ≤ target; drift monitor running"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"30 days without a kill-switch event; validator sign-off; documentation complete"</span>],</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"KPI"</span>:           [<span class="st">"accuracy vs golden set; $/query"</span>,      <span class="st">"</span><span class="sc">% o</span><span class="st">utputs accepted unchanged; p95 latency"</span>,         <span class="st">"cost per outcome vs baseline process; incidents/month"</span>],</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rollback"</span>:      [<span class="st">"stop the pilot; nothing to undo"</span>,      <span class="st">"return to shadow mode; owner + validator review"</span>,   <span class="st">"kill-switch; previous process resumes within 1 h"</span>],</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"owner"</span>:         [<span class="st">"you"</span>, <span class="st">"you + validator"</span>, <span class="st">"kill-switch holder"</span>],                                            <span class="co"># &lt;-- your names</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}).set_index(<span class="st">"phase"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_colwidth"</span>, <span class="dv">80</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>roadmap.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> For each gate criterion, point to the cell in your capstone notebook that would produce the number. If there is no cell, the gate is a wish — either add the cell to the roadmap as a deliverable or remove the criterion.</p>
+</section>
+</section>
+<section id="block-d-studio-final-checks-on-your-repo" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-studio-final-checks-on-your-repo">Block D — Studio: final checks on your repo</h2>
+<p>This cell inspects a repo folder and reports the mechanical part of the review checklist in <code>notes.md</code>. In Colab, mount Drive or clone your repo first, then set <code>REPO_ROOT</code> to the <code>capstone/</code> folder. If the path does not exist it falls back to the current directory so the cell always runs. It does not judge content — that is the review pass with the tutor.</p>
+<div id="b346df0b" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, re, json</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>REPO_ROOT <span class="op">=</span> Path(<span class="st">"capstone"</span>)                                  <span class="co"># &lt;-- your path, e.g. Path("/content/ese-ai-fintech/capstone")</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> REPO_ROOT.exists():</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"[warn] </span><span class="sc">{</span>REPO_ROOT<span class="sc">}</span><span class="ss"> not found — inspecting the current directory instead (</span><span class="sc">{</span>Path<span class="sc">.</span>cwd()<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    REPO_ROOT <span class="op">=</span> Path(<span class="st">"."</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> REPO_ROOT.rglob(<span class="st">"*"</span>) <span class="cf">if</span> p.is_file() <span class="kw">and</span> <span class="st">".git"</span> <span class="kw">not</span> <span class="kw">in</span> p.parts <span class="kw">and</span> <span class="st">".ipynb_checkpoints"</span> <span class="kw">not</span> <span class="kw">in</span> p.parts]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(files)<span class="sc">}</span><span class="ss"> files under </span><span class="sc">{</span>REPO_ROOT<span class="sc">.</span>resolve()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> <span class="bu">sorted</span>(files)[:<span class="dv">60</span>]:</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>p<span class="sc">.</span>relative_to(REPO_ROOT)<span class="sc">}</span><span class="ss">  (</span><span class="sc">{</span>p<span class="sc">.</span>stat()<span class="sc">.</span>st_size<span class="op">/</span><span class="dv">1024</span><span class="sc">:,.0f}</span><span class="ss"> KB)"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nb_stats(path):</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""(code cells, cells with error outputs, has 'Take-home' cell) for one notebook."""</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    nb <span class="op">=</span> json.loads(Path(path).read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>))</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    cells <span class="op">=</span> nb.get(<span class="st">"cells"</span>, [])</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    n_code <span class="op">=</span> <span class="bu">sum</span>(c[<span class="st">"cell_type"</span>] <span class="op">==</span> <span class="st">"code"</span> <span class="cf">for</span> c <span class="kw">in</span> cells)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    n_err <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">any</span>(o.get(<span class="st">"output_type"</span>) <span class="op">==</span> <span class="st">"error"</span> <span class="cf">for</span> o <span class="kw">in</span> c.get(<span class="st">"outputs"</span>, [])) <span class="cf">for</span> c <span class="kw">in</span> cells <span class="cf">if</span> c[<span class="st">"cell_type"</span>] <span class="op">==</span> <span class="st">"code"</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    take_home <span class="op">=</span> <span class="bu">any</span>(<span class="st">"take-home"</span> <span class="kw">in</span> <span class="st">""</span>.join(c.get(<span class="st">"source"</span>, <span class="st">""</span>)).lower() <span class="cf">for</span> c <span class="kw">in</span> cells)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> n_code, n_err, take_home</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>notebooks <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> files <span class="cf">if</span> p.suffix <span class="op">==</span> <span class="st">".ipynb"</span>]</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>snapshots <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> files <span class="cf">if</span> p.suffix <span class="op">==</span> <span class="st">".csv"</span> <span class="kw">and</span> <span class="st">"data"</span> <span class="kw">in</span> p.parts]</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>dated     <span class="op">=</span> [p <span class="cf">for</span> p <span class="kw">in</span> snapshots <span class="cf">if</span> re.search(<span class="vs">r"20\d</span><span class="sc">{2}</span><span class="vs">[-_]?\d</span><span class="sc">{2}</span><span class="vs">[-_]?\d</span><span class="sc">{2}</span><span class="vs">"</span>, p.name)]</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>mds       <span class="op">=</span> {p.name.lower() <span class="cf">for</span> p <span class="kw">in</span> files <span class="cf">if</span> p.suffix <span class="op">==</span> <span class="st">".md"</span>}</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>checks <span class="op">=</span> pd.DataFrame([</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"at least one notebook"</span>,                   <span class="bu">len</span>(notebooks) <span class="op">&gt;=</span> <span class="dv">1</span>,                 <span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(notebooks)<span class="sc">}</span><span class="ss"> notebook(s)"</span>),</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"no error outputs saved in notebooks"</span>,     <span class="bu">all</span>(nb_stats(p)[<span class="dv">1</span>] <span class="op">==</span> <span class="dv">0</span> <span class="cf">for</span> p <span class="kw">in</span> notebooks) <span class="cf">if</span> notebooks <span class="cf">else</span> <span class="va">False</span>,</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>                                                <span class="st">"; "</span>.join(<span class="ss">f"</span><span class="sc">{</span>p<span class="sc">.</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>nb_stats(p)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> code cells, </span><span class="sc">{</span>nb_stats(p)[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> errors"</span> <span class="cf">for</span> p <span class="kw">in</span> notebooks) <span class="kw">or</span> <span class="st">"—"</span>),</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"data snapshot present in data/"</span>,          <span class="bu">len</span>(snapshots) <span class="op">&gt;=</span> <span class="dv">1</span>,                 <span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(snapshots)<span class="sc">}</span><span class="ss"> csv in data/"</span>),</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"snapshot file name carries a date"</span>,       <span class="bu">len</span>(dated) <span class="op">&gt;=</span> <span class="dv">1</span>,                     <span class="st">", "</span>.join(p.name <span class="cf">for</span> p <span class="kw">in</span> dated[:<span class="dv">3</span>]) <span class="kw">or</span> <span class="st">"none dated"</span>),</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"memo.md present"</span>,                         <span class="st">"memo.md"</span> <span class="kw">in</span> mds,                    <span class="st">""</span>),</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"canvas.md present"</span>,                       <span class="st">"canvas.md"</span> <span class="kw">in</span> mds,                  <span class="st">""</span>),</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"roadmap.md present"</span>,                      <span class="st">"roadmap.md"</span> <span class="kw">in</span> mds,                 <span class="st">""</span>),</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"README.md present"</span>,                       <span class="st">"readme.md"</span> <span class="kw">in</span> mds,                  <span class="st">""</span>),</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"take-home cell in a notebook"</span>,            <span class="bu">any</span>(nb_stats(p)[<span class="dv">2</span>] <span class="cf">for</span> p <span class="kw">in</span> notebooks), <span class="st">""</span>),</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>], columns<span class="op">=</span>[<span class="st">"check"</span>, <span class="st">"pass"</span>, <span class="st">"detail"</span>])</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>checks[<span class="st">"pass"</span>] <span class="op">=</span> checks[<span class="st">"pass"</span>].<span class="bu">map</span>({<span class="va">True</span>: <span class="st">"PASS"</span>, <span class="va">False</span>: <span class="st">"FAIL"</span>})</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_colwidth"</span>, <span class="dv">90</span>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>display(checks)</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span>(checks[<span class="st">'pass'</span>]<span class="op">==</span><span class="st">'PASS'</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(checks)<span class="sc">}</span><span class="ss"> mechanical checks pass. "</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>      <span class="st">"'PASS' here means the file exists — the review checklist in notes.md decides whether it is good."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Every FAIL is a line in your to-do for this week. Two of them are not mechanical and this cell cannot see them: <em>restart-and-run-all from a clean runtime</em> (do it now, on the projector) and <em>time-ordered evaluation with the baseline stated next to it</em> (open the cell and read it aloud).</p>
+</section>
+<section id="take-home-write-three-lines" class="level2">
+<h2 class="anchored" data-anchor-id="take-home-write-three-lines">Take-home (write three lines)</h2>
+<p>Three lines, in your own words, at the bottom of this notebook — this week for the <strong>whole course</strong>, not only this session. Then commit (<code>File ▸ Save a copy in GitHub</code>, path <code>week-10/session.ipynb</code>).</p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<p><strong>Homework brief</strong> → see <code>week-10/homework.md</code> — the portfolio (60%), due Sunday 6 December 23:59.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ESE Florence · Borgo Santi Apostoli 19, 50123 Firenze · Term 1, A.Y. 2026–2027</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Niccolò Salvini · <em>Visibilia ex Invisibilibus</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

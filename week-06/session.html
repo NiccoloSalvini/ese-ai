@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 6 — Where AI earns money in fintech; capstone scoping – AI for Business &amp; FinTech</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
+    <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NiccoloSalvini/ese-ai"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#block-b-fraud-detection-why-accuracy-is-useless-here" id="toc-block-b-fraud-detection-why-accuracy-is-useless-here" class="nav-link active" data-scroll-target="#block-b-fraud-detection-why-accuracy-is-useless-here">Block B — Fraud detection: why accuracy is useless here</a></li>
+  <li><a href="#block-b-credit-scoring-the-decision-must-be-explainable-and-the-fairness-check" id="toc-block-b-credit-scoring-the-decision-must-be-explainable-and-the-fairness-check" class="nav-link" data-scroll-target="#block-b-credit-scoring-the-decision-must-be-explainable-and-the-fairness-check">Block B — Credit scoring: the decision must be explainable, and the fairness check</a></li>
+  <li><a href="#block-b-build-buy-or-partner-a-scoring-table-you-will-reuse-in-week-10" id="toc-block-b-build-buy-or-partner-a-scoring-table-you-will-reuse-in-week-10" class="nav-link" data-scroll-target="#block-b-build-buy-or-partner-a-scoring-table-you-will-reuse-in-week-10">Block B — Build, buy, or partner: a scoring table you will reuse in week 10</a></li>
+  <li><a href="#block-c-capstone-scoping-workshop" id="toc-block-c-capstone-scoping-workshop" class="nav-link" data-scroll-target="#block-c-capstone-scoping-workshop">Block C — Capstone scoping workshop</a></li>
+  <li><a href="#take-home-write-three-lines" id="toc-take-home-write-three-lines" class="nav-link" data-scroll-target="#take-home-write-three-lines">Take-home (write three lines)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 6 — Where AI earns money in fintech; capstone scoping</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>ESE · AI for Business and FinTech · 2 November 2026</strong></p>
+<p>Three parts. First hour: your minor case presentation (nothing to run). Then a lab through three fintech decisions where models make or lose money — fraud, credit, build/buy/partner — each with a small dataset you generate here. Last part: scope your capstone and prove its data exists.</p>
+<p><strong>Why the datasets are synthetic today.</strong> There is no public, labelled fraud or loan dataset with realistic structure (0.5% fraud, real customer behaviour, demographic proxies) that fits in a session and that we could lawfully use. So we generate them with a fixed seed: the <em>structure</em> is realistic, the <em>numbers</em> are not evidence about any real bank. Every conclusion today is about the method, not the world. Your capstone must use real data — that is what the last block is for.</p>
+<div id="7d1a1e7e" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance google<span class="op">-</span>genai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="199eb4dc" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="41283cb0" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: one LLM wrapper, guarded. Works with Gemini if GEMINI_API_KEY is in Colab Secrets; otherwise a deterministic MOCK. ---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, json</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> userdata.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> os.environ.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mock(prompt, json_schema):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Deterministic stand-in so the notebook runs end-to-end without a key. Outputs are labelled [MOCK]."""</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> json_schema <span class="kw">and</span> <span class="st">"candidates"</span> <span class="kw">in</span> json.dumps(json_schema):</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">"candidates"</span>: [</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"question"</span>: <span class="st">"Does a volatility-regime signal on BTC, hedged with a cost model, beat buy-and-hold on risk-adjusted terms 2020-2026?"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>             <span class="st">"data"</span>: <span class="st">"BTC-USD daily (yfinance), FRED DGS10, blockchain.com active addresses"</span>, <span class="st">"method"</span>: <span class="st">"week-3 classifier + week-7 walk-forward backtest with costs"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>             <span class="st">"deliverable"</span>: <span class="st">"notebook pipeline + memo with cost-weighted KPI"</span>, <span class="st">"risk"</span>: <span class="st">"signal too weak after costs; result is a well-evidenced negative"</span>},</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"question"</span>: <span class="st">"Which DeFi lending protocol offered the best risk-adjusted stablecoin yield 2023-2026, net of exploits and depegs?"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>             <span class="st">"data"</span>: <span class="st">"DefiLlama yields and TVL API, CoinGecko prices, DeFi exploit list"</span>, <span class="st">"method"</span>: <span class="st">"week-8 protocol analysis + week-3 evaluation discipline"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>             <span class="st">"deliverable"</span>: <span class="st">"ranked table with drawdown-adjusted yield + memo"</span>, <span class="st">"risk"</span>: <span class="st">"API history incomplete; yields survivorship-biased (dead pools vanish)"</span>},</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"question"</span>: <span class="st">"Can an LLM-extracted 'risk tone' score from 10-K risk sections add anything to a volatility forecast for 10 US stocks?"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>             <span class="st">"data"</span>: <span class="st">"SEC EDGAR 10-K filings, yfinance prices"</span>, <span class="st">"method"</span>: <span class="st">"week-4 RAG/extraction + week-7 honest test of an LLM feature"</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>             <span class="st">"deliverable"</span>: <span class="st">"feature pipeline, walk-forward test, memo"</span>, <span class="st">"risk"</span>: <span class="st">"filings yearly: few observations; LLM cost at scale"</span>},</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        ]}</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"adverse action"</span> <span class="kw">in</span> prompt.lower() <span class="kw">or</span> <span class="st">"reason"</span> <span class="kw">in</span> prompt.lower():</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="st">"[MOCK] Your application was declined mainly because your monthly debt payments are high relative to income, "</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                <span class="st">"and your credit history is short. Reducing outstanding debt or building a longer repayment record would improve the outcome. "</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                <span class="st">"You have the right to ask for a human review of this decision."</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"[MOCK] no API key — deterministic placeholder answer."</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> llm(prompt, system<span class="op">=</span><span class="va">None</span>, json_schema<span class="op">=</span><span class="va">None</span>, temperature<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Single entry point for every LLM call in the course. Returns text, or a dict when json_schema is given."""</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> API_KEY:</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _mock(prompt, json_schema)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.genai <span class="im">import</span> types</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>API_KEY)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    cfg <span class="op">=</span> <span class="bu">dict</span>(temperature<span class="op">=</span>temperature)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> system: cfg[<span class="st">"system_instruction"</span>] <span class="op">=</span> system</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> json_schema: cfg.update(response_mime_type<span class="op">=</span><span class="st">"application/json"</span>, response_schema<span class="op">=</span>json_schema)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> client.models.generate_content(model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>, contents<span class="op">=</span>prompt, config<span class="op">=</span>types.GenerateContentConfig(<span class="op">**</span>cfg))</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(r.text) <span class="cf">if</span> json_schema <span class="cf">else</span> r.text</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LLM mode:"</span>, <span class="st">"Gemini (live)"</span> <span class="cf">if</span> API_KEY <span class="cf">else</span> <span class="st">"MOCK (no key found — outputs are placeholders)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="block-b-fraud-detection-why-accuracy-is-useless-here" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-fraud-detection-why-accuracy-is-useless-here">Block B — Fraud detection: why accuracy is useless here</h2>
+<p>A card issuer sees ~100,000 transactions a day. About 0.5% are fraudulent. A model scores each transaction; above a threshold, the transaction is blocked and the customer gets a text message. Two errors, two very different costs: a <strong>missed fraud</strong> costs the amount (the issuer refunds the customer); a <strong>blocked good customer</strong> costs a call-centre contact, a failed purchase, and some probability the customer moves their card to a competitor.</p>
+<p>We generate the transactions with a seed. Fraud looks different from normal traffic in ways that real fraud does: larger amounts, night hours, foreign merchants, new devices, bursts of activity.</p>
+<div id="2d144631" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">6</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>N, FRAUD_RATE <span class="op">=</span> <span class="dv">40_000</span>, <span class="fl">0.005</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>is_fraud <span class="op">=</span> rng.random(N) <span class="op">&lt;</span> FRAUD_RATE</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>tx <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"amount"</span>:        np.exp(rng.normal(np.where(is_fraud, <span class="fl">5.3</span>, <span class="fl">3.8</span>), np.where(is_fraud, <span class="fl">1.0</span>, <span class="fl">0.9</span>))).<span class="bu">round</span>(<span class="dv">2</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"hour"</span>:          np.where(is_fraud, rng.choice(<span class="dv">24</span>, N, p<span class="op">=</span>np.r_[np.full(<span class="dv">6</span>, <span class="fl">0.10</span>), np.full(<span class="dv">18</span>, <span class="fl">0.4</span><span class="op">/</span><span class="dv">18</span>)]), rng.choice(<span class="dv">24</span>, N, p<span class="op">=</span>np.r_[np.full(<span class="dv">6</span>, <span class="fl">0.02</span>), np.full(<span class="dv">18</span>, <span class="fl">0.88</span><span class="op">/</span><span class="dv">18</span>)])),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"foreign"</span>:       (rng.random(N) <span class="op">&lt;</span> np.where(is_fraud, <span class="fl">0.55</span>, <span class="fl">0.08</span>)).astype(<span class="bu">int</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"new_device"</span>:    (rng.random(N) <span class="op">&lt;</span> np.where(is_fraud, <span class="fl">0.60</span>, <span class="fl">0.10</span>)).astype(<span class="bu">int</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tx_last_24h"</span>:   rng.poisson(np.where(is_fraud, <span class="dv">6</span>, <span class="dv">2</span>)),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"merchant_risk"</span>: rng.beta(np.where(is_fraud, <span class="dv">4</span>, <span class="dv">2</span>), np.where(is_fraud, <span class="dv">2</span>, <span class="dv">6</span>)).<span class="bu">round</span>(<span class="dv">3</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"is_fraud"</span>:      is_fraud.astype(<span class="bu">int</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tx.shape, <span class="st">"| fraud rate: </span><span class="sc">%.4f</span><span class="st">  (</span><span class="sc">%d</span><span class="st"> fraud cases)"</span> <span class="op">%</span> (tx.is_fraud.mean(), tx.is_fraud.<span class="bu">sum</span>()))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>tx.groupby(<span class="st">"is_fraud"</span>).mean().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Bet 1 (write it down first):</strong> a rule that <em>never flags anything</em> — what accuracy does it score on this data? A number, before running.</p>
+<div id="03bf4676" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>never_flag <span class="op">=</span> np.zeros(<span class="bu">len</span>(tx), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"accuracy of 'never flag': </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> (never_flag <span class="op">==</span> tx.is_fraud).mean())</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"frauds caught by 'never flag':"</span>, ((never_flag <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (tx.is_fraud <span class="op">==</span> <span class="dv">1</span>)).<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="check-the-assistants-fraud-model" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-assistants-fraud-model">🔍 CHECK — the assistant’s fraud model</h3>
+<p>Asked to “train a fraud model and evaluate it”, the assistant produced the cell below. It runs. It reports an excellent number. <strong>There are two problems in it</strong> — find both before opening the solution. Ten minutes; the second hint comes only after you have found one.</p>
+<p><strong>Bet 2 (before running):</strong> the assistant holds out 400 random transactions for testing. How many fraud cases will be in that test set?</p>
+<div id="f28f46e2" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> [<span class="st">"amount"</span>, <span class="st">"hour"</span>, <span class="st">"foreign"</span>, <span class="st">"new_device"</span>, <span class="st">"tx_last_24h"</span>, <span class="st">"merchant_risk"</span>]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> tx[features], tx[<span class="st">"is_fraud"</span>]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="dv">400</span>, random_state<span class="op">=</span><span class="dv">7</span>)   <span class="co"># hold out a small test set for a quick check</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>).fit(X_train, y_train)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> accuracy_score(y_test, clf.predict(X_test))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test accuracy: </span><span class="sc">{</span>acc<span class="sc">:.3%}</span><span class="ss"> — excellent, the model is ready for production."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution (open after you have tried)
+</summary>
+<ol type="1">
+<li><strong>Accuracy on a 0.5%-fraud dataset is meaningless.</strong> “Never flag” scores 99.5% (Bet 1). The assistant’s 99.5–99.8% is the majority baseline wearing a suit. The number that matters is how many frauds the model catches (recall) at how many good customers blocked (false positives), at a threshold chosen on costs — exactly the week-3 logic, with a much worse imbalance.</li>
+<li><strong>The split stratifies by nothing and the test set is tiny.</strong> 400 random rows at 0.5% contain about 2 fraud cases (Bet 2; run <code>y_test.sum()</code>). Any recall you compute is 0/2, 1/2 or 2/2. No model can be evaluated on two positives. Fix: <code>stratify=y</code> and a test set large enough to hold at least ~50 positives — here 30% gives ~60.</li>
+</ol>
+Both errors are silent: no warning, a green checkmark, a confident sentence. This is the most common shape of an assistant error in classification: the code is right, the <em>evaluation design</em> is wrong.
+</details>
+<div id="663f1df5" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"fraud cases in the assistant's test set:"</span>, <span class="bu">int</span>(y_test.<span class="bu">sum</span>()), <span class="st">"of"</span>, <span class="bu">len</span>(y_test))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"majority baseline on that test set: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> (<span class="dv">1</span> <span class="op">-</span> y_test.mean()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e92d013d" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: stratified split, enough positives, and the metrics that price the errors</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_score, recall_score, roc_auc_score, confusion_matrix</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.30</span>, random_state<span class="op">=</span><span class="dv">7</span>, stratify<span class="op">=</span>y)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">2000</span>).fit(X_train, y_train)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> clf.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"test rows:"</span>, <span class="bu">len</span>(y_test), <span class="st">"| fraud cases in test:"</span>, <span class="bu">int</span>(y_test.<span class="bu">sum</span>()))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC: </span><span class="sc">%.3f</span><span class="st">  (ranking quality — the model does separate fraud from normal)"</span> <span class="op">%</span> roc_auc_score(y_test, p))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, p <span class="op">&gt;</span> <span class="fl">0.5</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(cm, index<span class="op">=</span>[<span class="st">"actual normal"</span>, <span class="st">"actual fraud"</span>], columns<span class="op">=</span>[<span class="st">"predicted normal"</span>, <span class="st">"predicted fraud"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At the default threshold of 0.5 the model flags almost nothing — with 0.5% positives, few transactions ever reach a 50% probability. The threshold must come from costs, not from 0.5. Below: the trade-off between fraud caught and good customers blocked, scaled to <strong>100,000 transactions per day</strong>.</p>
+<p><strong>Bet 3 (before running):</strong> if we accept a 1% false-positive rate, how many <em>good customers per day</em> get blocked at 100k transactions/day?</p>
+<div id="ab3e24de" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>DAILY_TX, COST_FP, COST_FN <span class="op">=</span> <span class="dv">100_000</span>, <span class="fl">15.0</span>, <span class="va">None</span>   <span class="co"># COST_FP: one blocked good customer (contact + churn risk, EUR). COST_FN: the fraud amount itself.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>amt_test <span class="op">=</span> tx.loc[X_test.index, <span class="st">"amount"</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> thr <span class="kw">in</span> [<span class="fl">0.5</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.05</span>, <span class="fl">0.03</span>, <span class="fl">0.02</span>, <span class="fl">0.01</span>, <span class="fl">0.005</span>]:</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    flag <span class="op">=</span> p <span class="op">&gt;</span> thr</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    fp <span class="op">=</span> (flag <span class="op">&amp;</span> (y_test <span class="op">==</span> <span class="dv">0</span>))<span class="op">;</span> fn <span class="op">=</span> (<span class="op">~</span>flag <span class="op">&amp;</span> (y_test <span class="op">==</span> <span class="dv">1</span>))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    fpr <span class="op">=</span> fp.<span class="bu">sum</span>() <span class="op">/</span> (y_test <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>()</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    rec <span class="op">=</span> recall_score(y_test, flag)<span class="op">;</span> prec <span class="op">=</span> precision_score(y_test, flag, zero_division<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># scale to one day of traffic</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    good_blocked_per_day <span class="op">=</span> DAILY_TX <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> FRAUD_RATE) <span class="op">*</span> fpr</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    fraud_missed_eur_per_day <span class="op">=</span> DAILY_TX <span class="op">*</span> FRAUD_RATE <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> rec) <span class="op">*</span> amt_test[y_test <span class="op">==</span> <span class="dv">1</span>].mean()</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    cost_per_day <span class="op">=</span> good_blocked_per_day <span class="op">*</span> COST_FP <span class="op">+</span> fraud_missed_eur_per_day</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    rows.append([thr, rec, prec, fpr, good_blocked_per_day, fraud_missed_eur_per_day, cost_per_day])</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>thr_tab <span class="op">=</span> pd.DataFrame(rows, columns<span class="op">=</span>[<span class="st">"threshold"</span>, <span class="st">"recall"</span>, <span class="st">"precision"</span>, <span class="st">"FPR"</span>, <span class="st">"good customers blocked/day"</span>, <span class="st">"fraud missed EUR/day"</span>, <span class="st">"total cost EUR/day"</span>]).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"cost of 'never flag' per day: EUR %.0f"</span> <span class="op">%</span> (DAILY_TX <span class="op">*</span> FRAUD_RATE <span class="op">*</span> amt_test[y_test <span class="op">==</span> <span class="dv">1</span>].mean()))</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>thr_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="11c574d7" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The row closest to FPR = 1%: this is the answer to Bet 3</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> thr_tab.iloc[(thr_tab[<span class="st">"FPR"</span>] <span class="op">-</span> <span class="fl">0.01</span>).<span class="bu">abs</span>().argmin()]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"at threshold </span><span class="sc">%.3f</span><span class="st">: FPR </span><span class="sc">%.3f</span><span class="st"> -&gt; %.0f good customers blocked per day, recall </span><span class="sc">%.2f</span><span class="st">"</span> <span class="op">%</span> (row.threshold, row.FPR, row[<span class="st">"good customers blocked/day"</span>], row.recall))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"arithmetic check: 100,000 × 0.995 × 0.01 ="</span>, <span class="dv">100_000</span> <span class="op">*</span> <span class="fl">0.995</span> <span class="op">*</span> <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read the table as a manager, not as a data scientist: the threshold that minimises cost per day depends on <code>COST_FP</code>. At €15 per blocked customer the optimum sits at a low threshold; if churn is expensive (a premium card) and <code>COST_FP</code> is €60, the optimum moves. <strong>Change <code>COST_FP</code> and re-run.</strong> The model did not change; the business decision did. This table — not accuracy, not even AUC — is what goes to the fraud committee.</p>
+</section>
+</section>
+<section id="block-b-credit-scoring-the-decision-must-be-explainable-and-the-fairness-check" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-credit-scoring-the-decision-must-be-explainable-and-the-fairness-check">Block B — Credit scoring: the decision must be explainable, and the fairness check</h2>
+<p>A lender scores applicants for a personal loan. Unlike fraud, here (a) the applicant has a <strong>right to know why</strong> they were rejected, and (b) a regulator will ask whether the model treats groups differently. We use logistic regression on purpose: its coefficients <em>are</em> the explanation. Gradient boosting will need SHAP for the same job — week 9.</p>
+<p>Synthetic again: two regions A and B. Region B applicants have on average lower income and shorter credit history. The <strong>region itself does not affect repayment</strong> in the generator — only the financial features do. Keep that in mind for Bet 5.</p>
+<div id="89df5fd6" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">66</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">6_000</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], n, p<span class="op">=</span>[<span class="fl">0.7</span>, <span class="fl">0.3</span>])<span class="op">;</span> B <span class="op">=</span> region <span class="op">==</span> <span class="st">"B"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>loans <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"region"</span>:         region,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"income"</span>:         np.exp(rng.normal(np.where(B, <span class="fl">10.2</span>, <span class="fl">10.6</span>), <span class="fl">0.45</span>)).<span class="bu">round</span>(<span class="dv">0</span>),      <span class="co"># EUR / year</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dti"</span>:            np.clip(rng.normal(<span class="fl">0.32</span>, <span class="fl">0.12</span>, n), <span class="fl">0.02</span>, <span class="fl">0.90</span>).<span class="bu">round</span>(<span class="dv">3</span>),        <span class="co"># debt payments / income</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"history_years"</span>:  np.clip(rng.normal(np.where(B, <span class="dv">5</span>, <span class="dv">9</span>), <span class="dv">4</span>), <span class="dv">0</span>, <span class="dv">30</span>).<span class="bu">round</span>(<span class="dv">1</span>),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"late_payments"</span>:  rng.poisson(np.where(B, <span class="fl">0.9</span>, <span class="fl">0.6</span>)),</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"employment_yrs"</span>: np.clip(rng.normal(np.where(B, <span class="dv">4</span>, <span class="dv">7</span>), <span class="dv">3</span>), <span class="dv">0</span>, <span class="dv">35</span>).<span class="bu">round</span>(<span class="dv">1</span>),</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>logit <span class="op">=</span> (<span class="op">-</span><span class="fl">2.2</span> <span class="op">+</span> <span class="fl">3.5</span> <span class="op">*</span> loans.dti <span class="op">-</span> <span class="fl">0.08</span> <span class="op">*</span> loans.history_years <span class="op">+</span> <span class="fl">0.6</span> <span class="op">*</span> loans.late_payments</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>         <span class="op">-</span> <span class="fl">0.5</span> <span class="op">*</span> (np.log(loans.income) <span class="op">-</span> <span class="fl">10.5</span>) <span class="op">-</span> <span class="fl">0.04</span> <span class="op">*</span> loans.employment_yrs)          <span class="co"># region is NOT here</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>loans[<span class="st">"default"</span>] <span class="op">=</span> (rng.random(n) <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>logit))).astype(<span class="bu">int</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loans.shape, <span class="st">"| default rate: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> loans.default.mean())</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>loans.groupby(<span class="st">"region"</span>)[[<span class="st">"income"</span>, <span class="st">"dti"</span>, <span class="st">"history_years"</span>, <span class="st">"late_payments"</span>, <span class="st">"employment_yrs"</span>, <span class="st">"default"</span>]].mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ae67a6e1" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>credit_features <span class="op">=</span> [<span class="st">"income"</span>, <span class="st">"dti"</span>, <span class="st">"history_years"</span>, <span class="st">"late_payments"</span>, <span class="st">"employment_yrs"</span>]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>Xc, yc <span class="op">=</span> loans[credit_features], loans[<span class="st">"default"</span>]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>Xc_tr, Xc_te, yc_tr, yc_te <span class="op">=</span> train_test_split(Xc, yc, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">0</span>, stratify<span class="op">=</span>yc)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>scorer <span class="op">=</span> make_pipeline(StandardScaler(), LogisticRegression(max_iter<span class="op">=</span><span class="dv">2000</span>)).fit(Xc_tr, yc_tr)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>p_default <span class="op">=</span> pd.Series(scorer.predict_proba(Xc_te)[:, <span class="dv">1</span>], index<span class="op">=</span>Xc_te.index)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC on test: </span><span class="sc">%.3f</span><span class="st"> | base default rate: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> (roc_auc_score(yc_te, p_default), yc_te.mean()))</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>coefs <span class="op">=</span> pd.Series(scorer[<span class="op">-</span><span class="dv">1</span>].coef_[<span class="dv">0</span>], index<span class="op">=</span>credit_features).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">coefficients on standardised features (positive = raises probability of default):"</span>)<span class="op">;</span> <span class="bu">print</span>(coefs.sort_values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Policy:</strong> approve if predicted default probability &lt; 20%. The threshold is a business choice (loss rate the lender tolerates given the interest margin) — same logic as the fraud table, and you can move it.</p>
+<p><strong>Explaining one rejection.</strong> For a logistic model, the log-odds of default is a <em>sum</em> of <code>coefficient × standardised feature</code>. The largest positive terms are the reasons. This is the “adverse action” reason list the applicant is entitled to.</p>
+<div id="ea41dca0" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>THR_APPROVE <span class="op">=</span> <span class="fl">0.20</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>approved <span class="op">=</span> p_default <span class="op">&lt;</span> THR_APPROVE</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval rate on test set: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> approved.mean())</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pick one rejected applicant and decompose the decision</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>rejected_idx <span class="op">=</span> p_default[<span class="op">~</span>approved].sort_values().index[<span class="bu">len</span>(p_default[<span class="op">~</span>approved]) <span class="op">//</span> <span class="dv">2</span>]   <span class="co"># a median rejection, not an extreme one</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> pd.Series(scorer[<span class="dv">0</span>].transform(Xc_te.loc[[rejected_idx]])[<span class="dv">0</span>], index<span class="op">=</span>credit_features)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>contrib <span class="op">=</span> (z <span class="op">*</span> coefs).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>explain <span class="op">=</span> pd.DataFrame({<span class="st">"applicant value"</span>: Xc_te.loc[rejected_idx], <span class="st">"z-score"</span>: z.<span class="bu">round</span>(<span class="dv">2</span>), <span class="st">"coef"</span>: coefs, <span class="st">"contribution to log-odds"</span>: contrib}).sort_values(<span class="st">"contribution to log-odds"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"applicant"</span>, rejected_idx, <span class="st">"| region"</span>, loans.loc[rejected_idx, <span class="st">"region"</span>], <span class="st">"| p(default) = </span><span class="sc">%.3f</span><span class="st">  -&gt; REJECTED"</span> <span class="op">%</span> p_default[rejected_idx])</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>explain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="ae110dab" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From contributions to a sentence the applicant can act on. (Gemini if a key is set; MOCK otherwise.)</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> explain[explain[<span class="st">"contribution to log-odds"</span>] <span class="op">&gt;</span> <span class="dv">0</span>].head(<span class="dv">2</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>reasons <span class="op">=</span> <span class="st">"; "</span>.join(<span class="ss">f"</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>explain<span class="sc">.</span>loc[f, <span class="st">'applicant value'</span>]<span class="sc">}</span><span class="ss"> (pushes toward rejection by </span><span class="sc">{</span>explain<span class="sc">.</span>loc[f, <span class="st">'contribution to log-odds'</span>]<span class="sc">:+.2f}</span><span class="ss"> log-odds)"</span> <span class="cf">for</span> f <span class="kw">in</span> top.index)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>notice <span class="op">=</span> llm(</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Write a 3-sentence adverse action notice for a declined personal loan. Plain English, no jargon, no apology, no legal threats. "</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Principal reasons, in order: </span><span class="sc">{</span>reasons<span class="sc">}</span><span class="ss">. End by stating the right to request a human review."</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    system<span class="op">=</span><span class="st">"You write customer communications for a regulated EU lender."</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(notice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Is the sentence <em>true to the model</em>? Compare it with the contribution table: does it name the two largest positive contributions, and nothing the model did not use? An explanation that is more persuasive than the model is a compliance problem, not a feature.</p>
+<p><strong>Bet 4 (before running):</strong> the model does not see <code>region</code>. Will the approval rate differ between A and B? Same, or a gap — and if a gap, how many percentage points?</p>
+<div id="893f846c" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fair <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"approval rate"</span>: approved.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).mean(),</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"actual default rate (all applicants)"</span>: yc_te.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).mean(),</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"default rate among approved"</span>: yc_te[approved].groupby(loans.loc[Xc_te.index[approved], <span class="st">"region"</span>]).mean(),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"n"</span>: Xc_te.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).size(),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>gap <span class="op">=</span> fair.loc[<span class="st">"A"</span>, <span class="st">"approval rate"</span>] <span class="op">-</span> fair.loc[<span class="st">"B"</span>, <span class="st">"approval rate"</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval-rate gap A − B: </span><span class="sc">%.1f</span><span class="st"> percentage points"</span> <span class="op">%</span> (<span class="dv">100</span> <span class="op">*</span> gap))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>fair</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Bet 5 (before running):</strong> an assistant suggests “remove any proxy for region from the features to make it fair”. Here region is <em>already absent</em>. Suppose instead we drop the two features most correlated with region (<code>income</code>, <code>history_years</code>). Does the gap close? Bigger, smaller, same?</p>
+<div id="9f0f0d59" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>corr_with_B <span class="op">=</span> loans[credit_features].corrwith(pd.Series(B.astype(<span class="bu">int</span>), index<span class="op">=</span>loans.index)).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"correlation of each feature with region B:"</span>)<span class="op">;</span> <span class="bu">print</span>(corr_with_B.sort_values())</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>reduced <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> credit_features <span class="cf">if</span> f <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"income"</span>, <span class="st">"history_years"</span>)]</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>scorer2 <span class="op">=</span> make_pipeline(StandardScaler(), LogisticRegression(max_iter<span class="op">=</span><span class="dv">2000</span>)).fit(Xc_tr[reduced], yc_tr)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> pd.Series(scorer2.predict_proba(Xc_te[reduced])[:, <span class="dv">1</span>], index<span class="op">=</span>Xc_te.index)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>appr2 <span class="op">=</span> p2 <span class="op">&lt;</span> THR_APPROVE</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>rate2 <span class="op">=</span> appr2.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).mean()</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">reduced model — AUC </span><span class="sc">%.3f</span><span class="st"> (was </span><span class="sc">%.3f</span><span class="st">)"</span> <span class="op">%</span> (roc_auc_score(yc_te, p2), roc_auc_score(yc_te, p_default)))</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval rate A </span><span class="sc">%.3f</span><span class="st">, B </span><span class="sc">%.3f</span><span class="st"> -&gt; gap </span><span class="sc">%.1f</span><span class="st"> pp (was </span><span class="sc">%.1f</span><span class="st"> pp)"</span> <span class="op">%</span> (rate2[<span class="st">"A"</span>], rate2[<span class="st">"B"</span>], <span class="dv">100</span> <span class="op">*</span> (rate2[<span class="st">"A"</span>] <span class="op">-</span> rate2[<span class="st">"B"</span>]), <span class="dv">100</span> <span class="op">*</span> gap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Three things to read from the two tables: 1. <strong>A gap appears without the group variable.</strong> Features carry the group. Removing the variable is not a fairness control; it is cosmetics. 2. <strong>Dropping correlated features shrinks the gap and the AUC together.</strong> Fairness by feature removal is paid for in accuracy, and the remaining features (<code>late_payments</code>, <code>dti</code>) also correlate with the group. There is no feature set that makes the gap vanish here — because the <em>base default rates differ</em> (second column). 3. <strong>“Default rate among approved” is close across groups.</strong> The model is roughly <em>calibrated by group</em>: a B applicant approved at p&lt;20% defaults about as often as an A applicant. That is one legitimate definition of fairness. Equal approval rates is another. They contradict each other whenever base rates differ — this is a theorem, not an opinion. The lender has to choose, write the choice down, and be ready to defend it to a regulator. That written choice is what week 9’s risk and controls canvas asks for.</p>
+</section>
+<section id="block-b-build-buy-or-partner-a-scoring-table-you-will-reuse-in-week-10" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-build-buy-or-partner-a-scoring-table-you-will-reuse-in-week-10">Block B — Build, buy, or partner: a scoring table you will reuse in week 10</h2>
+<p>The fraud model above would take a bank team six months to build well and would still lack the cross-bank signals a vendor sees (a device seen in fraud at another issuer). Credit scoring is closer to core: the bank owns the data, is accountable to the regulator for every rejection, and cannot outsource the explanation. The decision is not technical; it is a weighted table — and the weights are the argument. Edit them.</p>
+<div id="89c1a1d8" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>criteria <span class="op">=</span> {                     <span class="co"># weight 1–5: how much this matters for THIS decision</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"time to value (months, lower better)"</span>: <span class="dv">3</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"control over model &amp; data"</span>:            <span class="dv">4</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"explainability to regulator"</span>:          <span class="dv">5</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cost year 1 (EUR k, lower better)"</span>:    <span class="dv">2</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cost year 3 cumulative (lower better)"</span>:<span class="dv">3</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"cross-institution signal"</span>:             <span class="dv">3</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"vendor lock-in risk (lower better)"</span>:   <span class="dv">2</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># raw scores 1–5 for each option (5 = best on that criterion). Scores are illustrative; the exercise is arguing them.</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"build in-house"</span>:       [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>],</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"buy vendor score"</span>:     [<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">1</span>],</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"partner (co-develop)"</span>: [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>],</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span><span class="bu">list</span>(criteria))</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> pd.Series(criteria)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> options.mul(w, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> w.<span class="bu">sum</span>()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"weighted score (out of 5):"</span>)<span class="op">;</span> <span class="bu">print</span>(scores.<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">sensitivity: if 'explainability to regulator' weight goes to 1 →"</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>w2 <span class="op">=</span> w.copy()<span class="op">;</span> w2[<span class="st">"explainability to regulator"</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((options.mul(w2, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> w2.<span class="bu">sum</span>()).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Re-score the <em>fraud</em> decision instead of the credit one: which weights change, and does the winner flip? Write the one criterion that decided it. That sentence is the executive summary of a build/buy memo; everything else is appendix.</p>
+</section>
+<section id="block-c-capstone-scoping-workshop" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-capstone-scoping-workshop">Block C — Capstone scoping workshop</h2>
+<p>Four weeks of building remain (7–10), one weekend each. The capstone is 60% of the mark and is assessed on: technical execution and reproducibility; validity of method (no leakage, honest backtest/eval); financial-domain reasoning; product framing and roadmap; communication.</p>
+<p>Every candidate topic is written in the same template so they can be compared. The LLM proposes three from your interests; you edit them until they are yours — a generated candidate is a starting point, never a proposal.</p>
+<div id="fafeb412" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>CANDIDATE_SCHEMA <span class="op">=</span> {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"properties"</span>: {<span class="st">"candidates"</span>: {<span class="st">"type"</span>: <span class="st">"array"</span>, <span class="st">"minItems"</span>: <span class="dv">3</span>, <span class="st">"maxItems"</span>: <span class="dv">3</span>, <span class="st">"items"</span>: {</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"properties"</span>: {k: {<span class="st">"type"</span>: <span class="st">"string"</span>} <span class="cf">for</span> k <span class="kw">in</span> [<span class="st">"question"</span>, <span class="st">"data"</span>, <span class="st">"method"</span>, <span class="st">"deliverable"</span>, <span class="st">"risk"</span>]},</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"required"</span>: [<span class="st">"question"</span>, <span class="st">"data"</span>, <span class="st">"method"</span>, <span class="st">"deliverable"</span>, <span class="st">"risk"</span>]}}},</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"required"</span>: [<span class="st">"candidates"</span>],</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>interests <span class="op">=</span> <span class="st">"stock trading, crypto and DeFi, AI for product and investment decisions; experience in startup scouting and BI/KPI work"</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>toolkit <span class="op">=</span> <span class="st">"pandas, logistic regression and gradient boosting with time-ordered validation, threshold on costs, RAG and structured extraction with an LLM, agents with tools and evals, walk-forward backtest with costs (week 7), AMM/lending simulation with DefiLlama/CoinGecko data (week 8), SHAP and a risk canvas (week 9)"</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> llm(</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Propose exactly three capstone topics for a 4-week, one-person project. Interests: </span><span class="sc">{</span>interests<span class="sc">}</span><span class="ss">. Toolkit available: </span><span class="sc">{</span>toolkit<span class="sc">}</span><span class="ss">. "</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Each topic must be a *decision question* answerable with free public data (yfinance, FRED, SEC EDGAR, DefiLlama, CoinGecko, blockchain.com). "</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Fields: question (one sentence, specific asset/period), data (named sources), method (from the toolkit), deliverable, risk (the most likely way it fails)."</span>,</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    json_schema<span class="op">=</span>CANDIDATE_SCHEMA)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>cands <span class="op">=</span> pd.DataFrame(out[<span class="st">"candidates"</span>])</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_colwidth"</span>, <span class="dv">120</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>cands.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Edit the three candidates in the cell below</strong> — replace anything you would not defend. Then fill the weekly plan: what exists at the end of each weekend. If a week says “explore”, the plan is not ready.</p>
+<div id="197dc986" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your three candidates, in the template. Overwrite the generated text.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>template_keys <span class="op">=</span> [<span class="st">"question"</span>, <span class="st">"data"</span>, <span class="st">"method"</span>, <span class="st">"deliverable"</span>, <span class="st">"risk"</span>, <span class="st">"wk7"</span>, <span class="st">"wk8"</span>, <span class="st">"wk9"</span>, <span class="st">"wk10"</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>my_candidates <span class="op">=</span> {</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C1"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(template_keys, <span class="bu">list</span>(cands.iloc[<span class="dv">0</span>]) <span class="op">+</span> [<span class="st">"feature + backtest skeleton"</span>, <span class="st">"add second data source"</span>, <span class="st">"risk canvas + SHAP"</span>, <span class="st">"memo + rehearsal"</span>])),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C2"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(template_keys, <span class="bu">list</span>(cands.iloc[<span class="dv">1</span>]) <span class="op">+</span> [<span class="st">"data pull works, snapshot saved"</span>, <span class="st">"quantitative element"</span>, <span class="st">"canvas + red-team"</span>, <span class="st">"memo + rehearsal"</span>])),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C3"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(template_keys, <span class="bu">list</span>(cands.iloc[<span class="dv">2</span>]) <span class="op">+</span> [<span class="st">"extraction pipeline on 3 filings"</span>, <span class="st">"scale to 10, evaluate"</span>, <span class="st">"canvas + SHAP"</span>, <span class="st">"memo + rehearsal"</span>])),</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(my_candidates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e2dfaf79" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feasibility scoring — 1 (bad) to 5 (good). Be honest; the weights are the tutor's.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>feas_weights <span class="op">=</span> {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data obtainable this week (proved by data_check)"</span>: <span class="dv">5</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"method covered by week 9"</span>:                         <span class="dv">4</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fits 4 weekends"</span>:                                  <span class="dv">4</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"answer is useful even if negative"</span>:                <span class="dv">3</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"connects to your next job"</span>:                        <span class="dv">2</span>,</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>feas <span class="op">=</span> pd.DataFrame({<span class="st">"C1"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>], <span class="st">"C2"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], <span class="st">"C3"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]}, index<span class="op">=</span><span class="bu">list</span>(feas_weights))</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>fw <span class="op">=</span> pd.Series(feas_weights)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"feasibility (out of 5):"</span>)<span class="op">;</span> <span class="bu">print</span>((feas.mul(fw, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> fw.<span class="bu">sum</span>()).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="the-data-check-the-only-part-of-the-proposal-that-can-fail-before-it-starts" class="level3">
+<h3 class="anchored" data-anchor-id="the-data-check-the-only-part-of-the-proposal-that-can-fail-before-it-starts">The data check — the only part of the proposal that can fail before it starts</h3>
+<p>A proposal whose data cannot be loaded by Sunday is not a proposal. The homework asks for <code>data_check.ipynb</code>; this is the pattern. Loads the series, prints shape and date range, saves a dated snapshot. Adapt the loader to whichever source your candidate needs (FRED, DefiLlama, SEC EDGAR — same three tiers).</p>
+<div id="30d95dca" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt, os</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>], start<span class="op">=</span><span class="st">"2020-01-01"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"shape:"</span>, px.shape, <span class="st">"| range:"</span>, px.index.<span class="bu">min</span>().date(), <span class="st">"→"</span>, px.index.<span class="bu">max</span>().date())</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"missing values:"</span>, <span class="bu">int</span>(px.isna().<span class="bu">sum</span>().<span class="bu">sum</span>()), <span class="st">"| last value:"</span>, <span class="bu">float</span>(px.iloc[<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>]))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">"data"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>snap <span class="op">=</span> <span class="ss">f"data/capstone_check_</span><span class="sc">{</span>dt<span class="sc">.</span>date<span class="sc">.</span>today()<span class="sc">.</span>isoformat()<span class="sc">}</span><span class="ss">.csv"</span><span class="op">;</span> px.to_csv(snap)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"snapshot saved:"</span>, snap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> If the first line printed <code>[SYNTHETIC]</code>, the check has <em>failed</em>: a random walk proves nothing about your data. The homework check passes only with <code>[live]</code> or <code>[snapshot]</code> from a real download.</p>
+</section>
+</section>
+<section id="take-home-write-three-lines" class="level2">
+<h2 class="anchored" data-anchor-id="take-home-write-three-lines">Take-home (write three lines)</h2>
+<p>Three sentences in your own words, then <code>File ▸ Save a copy in GitHub</code> → <code>week-06/session.ipynb</code>.</p>
+<ol type="1">
+<li>_</li>
+<li>_</li>
+<li>_</li>
+</ol>
+<p><strong>Homework brief</strong> → <code>week-06/homework.md</code> (capstone proposal + data check, due Sunday 8 November).</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ESE Florence · Borgo Santi Apostoli 19, 50123 Firenze · Term 1, A.Y. 2026–2027</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Niccolò Salvini · <em>Visibilia ex Invisibilibus</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

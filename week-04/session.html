@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 4 — LLM applications I: API, structured output, embeddings, RAG – AI for Business &amp; FinTech</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
+    <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NiccoloSalvini/ese-ai"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#block-a-calling-a-model-from-python" id="toc-block-a-calling-a-model-from-python" class="nav-link active" data-scroll-target="#block-a-calling-a-model-from-python">Block A — Calling a model from Python</a></li>
+  <li><a href="#block-b-lab-a-rag-pipeline-step-by-step" id="toc-block-b-lab-a-rag-pipeline-step-by-step" class="nav-link" data-scroll-target="#block-b-lab-a-rag-pipeline-step-by-step">Block B — Lab: a RAG pipeline, step by step</a></li>
+  <li><a href="#block-c-eu-ai-act-discussion-reading-in-notes.md" id="toc-block-c-eu-ai-act-discussion-reading-in-notes.md" class="nav-link" data-scroll-target="#block-c-eu-ai-act-discussion-reading-in-notes.md">Block C — EU AI Act (discussion; reading in <code>notes.md</code>)</a></li>
+  <li><a href="#take-home-write-three-lines" id="toc-take-home-write-three-lines" class="nav-link" data-scroll-target="#take-home-write-three-lines">Take-home (write three lines)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 4 — LLM applications I: API, structured output, embeddings, RAG</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>ESE · AI for Business and FinTech · 12 October 2026</strong></p>
+<p>Today you call a language model from Python and build the simplest system that makes a model answer <em>from your documents instead of from its memory</em>: retrieval-augmented generation (RAG). Every call is logged with its cost and latency, because from today the model is a component with a price, not a chat window.</p>
+<p><strong>Mock mode.</strong> If <code>GEMINI_API_KEY</code> is not in Colab Secrets, every model call returns a deterministic canned answer and embeddings fall back to TF-IDF. The pipeline runs end-to-end, and the banner below says so loudly. Retrieval numbers are real in both modes; <em>generated</em> answers are only meaningful with a key.</p>
+<div id="16bac43f" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install google<span class="op">-</span>genai tiktoken pydantic</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional, only if you have NO key and want neural embeddings instead of TF-IDF (2-3 min, downloads a model):</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip -q install sentence-transformers</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="82e9a7bb" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="block-a-calling-a-model-from-python" class="level2">
+<h2 class="anchored" data-anchor-id="block-a-calling-a-model-from-python">Block A — Calling a model from Python</h2>
+<p>Everything goes through one function, <code>llm()</code>, so the rest of the notebook (and your homework, and your capstone) never depends on a provider. Its arguments are the four things that matter in any API: the <strong>prompt</strong>, the <strong>system</strong> instruction (who the model is and what it may not do), the <strong>temperature</strong> (0 for extraction, higher for variety) and an optional <strong>JSON schema</strong> that forces the answer into a fixed shape you can check in code.</p>
+<p>Every call appends a row to <code>CALL_LOG</code>: tokens in, tokens out, latency, cost.</p>
+<div id="e32a03b7" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, re, json, time, hashlib</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> userdata.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> os.environ.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>MOCK <span class="op">=</span> <span class="kw">not</span> API_KEY</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">"gemini-2.5-flash"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>PRICE_PER_1M <span class="op">=</span> {<span class="st">"input"</span>: <span class="fl">0.30</span>, <span class="st">"output"</span>: <span class="fl">2.50</span>}   <span class="co"># USD, illustrative for a small model in 2025-26 — check the provider's price page</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> MOCK:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">78</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"  MOCK MODE: no GEMINI_API_KEY found in Colab Secrets."</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"  llm() returns deterministic canned text; embeddings use TF-IDF."</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"  The pipeline runs end-to-end, but GENERATED ANSWERS ARE NOT FROM A MODEL."</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">78</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.genai <span class="im">import</span> types</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>API_KEY)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"API key found — live calls to </span><span class="sc">{</span>MODEL<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> tiktoken</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    _enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> n_tokens(s): <span class="cf">return</span> <span class="bu">len</span>(_enc.encode(s))</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> n_tokens(s): <span class="cf">return</span> <span class="bu">max</span>(<span class="dv">1</span>, <span class="bu">len</span>(s) <span class="op">//</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bf7a019a" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CALL_LOG <span class="op">=</span> []   <span class="co"># one dict per call</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mock_llm(prompt, system, json_schema):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Deterministic stand-in. If the prompt carries a CONTEXT block, echo the first sentence of the first passage,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    so the RAG pipeline visibly depends on what was retrieved. Otherwise, admit it is answering from 'memory'."""</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># prefer figures written with a currency sign, then any number (a dumb rule — a real model reads the sentence)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        nums <span class="op">=</span> [<span class="bu">float</span>(x.replace(<span class="st">","</span>, <span class="st">""</span>)) <span class="cf">for</span> x <span class="kw">in</span> re.findall(<span class="vs">r"\$\s?(\d[\d,]*\.?\d*)"</span>, prompt)] <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>               [<span class="bu">float</span>(x.replace(<span class="st">","</span>, <span class="st">""</span>)) <span class="cf">for</span> x <span class="kw">in</span> re.findall(<span class="vs">r"\d[\d,]*\.?\d*"</span>, prompt)]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> {}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> name, field <span class="kw">in</span> json_schema.model_fields.items():</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            t <span class="op">=</span> field.annotation</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            out[name] <span class="op">=</span> (nums[<span class="dv">0</span>] <span class="cf">if</span> nums <span class="cf">else</span> <span class="fl">0.0</span>) <span class="cf">if</span> t <span class="kw">in</span> (<span class="bu">float</span>, <span class="bu">int</span>) <span class="cf">else</span> (<span class="st">"MOCK-"</span> <span class="op">+</span> name <span class="cf">if</span> t <span class="kw">is</span> <span class="bu">str</span> <span class="cf">else</span> <span class="va">None</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> out</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> re.search(<span class="vs">r"CONTEXT:\n(.*?)\n\nQUESTION:"</span>, prompt, re.S)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    ctx <span class="op">=</span> m.group(<span class="dv">1</span>).strip() <span class="cf">if</span> m <span class="cf">else</span> <span class="st">""</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ctx:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        first_passage <span class="op">=</span> re.sub(<span class="vs">r"^\[\d+\][^\n]*?\n"</span>, <span class="st">""</span>, ctx.split(<span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)[<span class="dv">0</span>]).strip()</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        sentence <span class="op">=</span> re.split(<span class="vs">r"(?&lt;=[.!?])\s+"</span>, first_passage)[<span class="dv">0</span>]</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"[MOCK answer, from passage [1]]: </span><span class="sc">{</span>sentence<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"[MOCK answer] No CONTEXT block was supplied, so a real model would answer from memory — plausible, unverifiable."</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> llm(prompt, system<span class="op">=</span><span class="va">None</span>, json_schema<span class="op">=</span><span class="va">None</span>, temperature<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""One call to the model. Returns text, or a dict if json_schema (a pydantic class) is given.</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">    Logs tokens, latency and cost in CALL_LOG. Ports to any provider: change only the body of the else-branch."""</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    t0 <span class="op">=</span> time.time()</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> MOCK:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> _mock_llm(prompt, system, json_schema)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        tin, tout <span class="op">=</span> n_tokens((system <span class="kw">or</span> <span class="st">""</span>) <span class="op">+</span> prompt), n_tokens(json.dumps(out) <span class="cf">if</span> <span class="bu">isinstance</span>(out, <span class="bu">dict</span>) <span class="cf">else</span> out)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        cfg <span class="op">=</span> <span class="bu">dict</span>(temperature<span class="op">=</span>temperature, system_instruction<span class="op">=</span>system)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>            cfg.update(response_mime_type<span class="op">=</span><span class="st">"application/json"</span>, response_schema<span class="op">=</span>json_schema)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> client.models.generate_content(model<span class="op">=</span>MODEL, contents<span class="op">=</span>prompt, config<span class="op">=</span>types.GenerateContentConfig(<span class="op">**</span>cfg))</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> json_schema.model_validate_json(r.text).model_dump() <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> r.text.strip()</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        tin, tout <span class="op">=</span> r.usage_metadata.prompt_token_count, r.usage_metadata.candidates_token_count <span class="kw">or</span> <span class="dv">0</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    cost <span class="op">=</span> tin <span class="op">/</span> <span class="fl">1e6</span> <span class="op">*</span> PRICE_PER_1M[<span class="st">"input"</span>] <span class="op">+</span> tout <span class="op">/</span> <span class="fl">1e6</span> <span class="op">*</span> PRICE_PER_1M[<span class="st">"output"</span>]</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    CALL_LOG.append(<span class="bu">dict</span>(t<span class="op">=</span>time.strftime(<span class="st">"%H:%M:%S"</span>), tokens_in<span class="op">=</span>tin, tokens_out<span class="op">=</span>tout,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>                         latency_s<span class="op">=</span><span class="bu">round</span>(time.time() <span class="op">-</span> t0, <span class="dv">2</span>), cost_usd<span class="op">=</span><span class="bu">round</span>(cost, <span class="dv">6</span>), prompt<span class="op">=</span>prompt, mock<span class="op">=</span>MOCK))</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(llm(<span class="st">"In one sentence, what is a 10-K filing?"</span>, system<span class="op">=</span><span class="st">"You are a concise financial analyst."</span>))</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(CALL_LOG).drop(columns<span class="op">=</span><span class="st">"prompt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="a1.-temperature-bet-first" class="level3">
+<h3 class="anchored" data-anchor-id="a1.-temperature-bet-first">A1. Temperature — bet first</h3>
+<p><strong>Bet (write it down):</strong> at temperature 0, are two calls with the same prompt identical, character for character? And at temperature 1?</p>
+<div id="8e553c1c" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">"Name three risk factors typically listed by a crypto exchange in its 10-K. One line."</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> llm(q, temperature<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span> a2 <span class="op">=</span> llm(q, temperature<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="op">=</span> llm(q, temperature<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span> b2 <span class="op">=</span> llm(q, temperature<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"T=0 identical:"</span>, a1 <span class="op">==</span> a2)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"  "</span>, a1[:<span class="dv">150</span>])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"T=1 identical:"</span>, b1 <span class="op">==</span> b2)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"  "</span>, b1[:<span class="dv">150</span>])<span class="op">;</span> <span class="bu">print</span>(<span class="st">"  "</span>, b2[:<span class="dv">150</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> MOCK: <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">(mock mode: the canned answer is always identical — the real API is *almost* deterministic at T=0, not guaranteed)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="a2.-structured-output-the-model-as-a-parser" class="level3">
+<h3 class="anchored" data-anchor-id="a2.-structured-output-the-model-as-a-parser">A2. Structured output — the model as a parser</h3>
+<p>Free text is for humans. When the model’s output goes into <em>code</em> (a table, a filter, a decision), ask for a fixed shape and validate it. <code>pydantic</code> describes the shape; the API is told to return JSON that matches it; the wrapper validates and returns a dict. If the shape is wrong, you get an exception, not a silent bad row.</p>
+<div id="34f10627" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DebtFact(BaseModel):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    company: <span class="bu">str</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    metric: <span class="bu">str</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    value_usd_millions: <span class="bu">float</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    as_of: <span class="bu">str</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> (<span class="st">"As of December 31, 2025, Nordwind Digital Assets had $1,250 million aggregate principal amount "</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"of convertible senior notes outstanding."</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>fact <span class="op">=</span> llm(<span class="ss">f"Extract the debt figure from this sentence.</span><span class="ch">\n\n</span><span class="sc">{</span>sentence<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>           system<span class="op">=</span><span class="st">"Return only the fields requested. Use the company's name as written."</span>, json_schema<span class="op">=</span>DebtFact)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fact)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">isinstance</span>(fact[<span class="st">"value_usd_millions"</span>], <span class="bu">float</span>) <span class="kw">and</span> fact[<span class="st">"value_usd_millions"</span>] <span class="op">==</span> <span class="fl">1250.0</span>, <span class="st">"wrong number or type"</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"OK — a number you can put in a DataFrame, not a sentence you must read"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Ask for the same extraction with the value in <em>dollars</em> instead of millions (change the field name). Does the model convert, or does it copy 1,250? Either way: the schema guarantees the <em>type</em>, not the <em>truth</em> — you still verify the number against the source, exactly as in week 1.</p>
+</section>
+</section>
+<section id="block-b-lab-a-rag-pipeline-step-by-step" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-lab-a-rag-pipeline-step-by-step">Block B — Lab: a RAG pipeline, step by step</h2>
+<p>The problem: a model knows nothing about <em>your</em> documents — a 10-K filed last month, an internal policy, a whitepaper. Putting a whole 10-K in every call is possible (1M-token windows exist) but slow, expensive and noisy. RAG does the obvious thing: <strong>chunk</strong> the documents, <strong>embed</strong> each chunk, at question time <strong>retrieve</strong> the few chunks closest to the question, and <strong>generate</strong> the answer from those chunks only, with citations.</p>
+<section id="b1.-corpus-three-tiers" class="level3">
+<h3 class="anchored" data-anchor-id="b1.-corpus-three-tiers">B1. Corpus — three tiers</h3>
+<ol type="1">
+<li>live: Item 1A “Risk Factors” from recent 10-K filings on SEC EDGAR (needs network; EDGAR requires a User-Agent);</li>
+<li>snapshot: <code>data/edgar_*.txt</code> saved by a previous run;</li>
+<li><strong>SYNTHETIC</strong> excerpts written for this course in 10-K style (companies that do not exist) plus the Bitcoin whitepaper abstract (public).</li>
+</ol>
+<p>The synthetic set is <em>always</em> loaded, because the planted bugs below depend on exact text; live filings are added on top when available.</p>
+<div id="f2362208" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SYNTHETIC_CORPUS <span class="op">=</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Nordwind Digital Assets, Inc. — 10-K FY2025, Item 1A (SYNTHETIC)'</span>:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'SYNTHETIC EXCERPT written for teaching in the style of a 10-K risk-factor section. Nordwind Digital Assets, Inc. does not exist. The risks described below are not the only ones we face; additional risks that we are not aware of, or that we currently consider immaterial, could also harm our business, financial condition and results of operations. Investors should read this section together with our financial statements and related notes. Our business is highly dependent on the prices of crypto assets and on the volume of transactions on our platform. During the year ended December 31, 2025, approximately 61</span><span class="sc">% o</span><span class="st">f our net revenue was derived from transaction fees, and Bitcoin and Ethereum together accounted for approximately 47</span><span class="sc">% o</span><span class="st">f the trading volume on our platform. A decline in prices or in trading activity, as occurred in 2022, would reduce our revenue and could adversely affect our results of operations. We have a substantial amount of indebtedness. As of December 31, 2025, we had $1,250 million aggregate principal amount of convertible senior notes outstanding, of which $400 million matures in 2028 and $850 million matures in 2030. Our ability to service this debt depends on our future performance, which is subject to market conditions that we do not control. Our platform has experienced, and may in the future experience, service interruptions. On March 14, 2025, our trading platform was unavailable for approximately 11 hours, during which customers could not place orders or withdraw assets; the incident affected approximately 2.3 million customer accounts and we recorded $18 million of customer credits and remediation costs in the first quarter of 2025. Any future interruption could damage our reputation, expose us to litigation and regulatory action, and cause customers to move their assets to competitors. We hold crypto assets on behalf of customers in custody. As of December 31, 2025, we safeguarded approximately $94 billion of customer crypto assets. A loss of private keys, whether through cyberattack, employee error or fraud, could result in losses that are not insured and that we may be unable to reimburse. We are subject to an evolving and uncertain regulatory landscape. In the European Union, the Markets in Crypto-Assets Regulation (MiCA) applies to crypto-asset service providers, and we obtained a MiCA authorisation in Ireland in July 2025. In the United States, we are registered as a money services business and hold state money transmitter licences in 44 states. Failure to obtain or maintain licences, or the adoption of new requirements, could restrict our ability to operate in key markets. We rely on third-party banking partners for fiat deposits and withdrawals. During 2025, two banking partners accounted for approximately 78</span><span class="sc">% o</span><span class="st">f our fiat transaction volume. The loss of either partner would materially disrupt our operations until a replacement is onboarded, which historically has taken three to six months. We use machine learning models, including large language models, in customer support and in transaction monitoring. These systems may produce inaccurate or misleading outputs, and their use is increasingly regulated, including under the EU Artificial Intelligence Act, which may require additional documentation, human oversight and transparency measures.'</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Lumen Payments Corp. — 10-K FY2025, Item 1A (SYNTHETIC)'</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"SYNTHETIC EXCERPT written for teaching in the style of a 10-K risk-factor section. Lumen Payments Corp. does not exist. We generate most of our revenue from fees on payment transactions. In 2025 we processed $412 billion of total payment volume across 31 countries, and our take rate was approximately 1.9%. A significant portion of our revenue depends on interchange fees set by card networks; regulatory caps on interchange, such as those in force in the European Union under the Interchange Fee Regulation, have reduced and may further reduce our margins. We are exposed to losses from chargebacks and merchant fraud. In 2025 transaction and credit losses were $611 million, or 0.15</span><span class="sc">% o</span><span class="st">f total payment volume, compared with 0.12</span><span class="sc">% i</span><span class="st">n 2024. An increase in fraud, including fraud enabled by generative AI tools that produce convincing synthetic identities, could increase these losses. Our business is subject to extensive regulation. We hold an electronic money institution licence from the Central Bank of Ireland, which allows us to operate across the European Economic Area under passporting rules, and we are registered as a money transmitter in the United States. The revised Payment Services Directive (PSD2), its proposed successor PSD3 and the Payment Services Regulation impose strong customer authentication and open-banking obligations whose implementation costs are significant. We use automated systems, including machine learning models, to approve or decline transactions and to onboard merchants. Errors in these models could result in declining legitimate transactions, which harms merchants, or approving fraudulent ones, which increases our losses. Because some of these models assess the creditworthiness of small businesses for our working-capital product, they may be classified as high-risk AI systems under the EU Artificial Intelligence Act, which would require conformity assessment, risk management and human oversight. We depend on a small number of large merchants. Our ten largest merchants represented approximately 22</span><span class="sc">% o</span><span class="st">f total payment volume in 2025, and our contracts with them generally may be terminated on 90 days' notice. Our systems process personal data of more than 190 million consumers, and a data breach could result in fines under the General Data Protection Regulation of up to 4</span><span class="sc">% o</span><span class="st">f worldwide annual turnover, in addition to litigation and loss of trust. We hold customer funds in safeguarding accounts at partner banks; at December 31, 2025 these balances were approximately $7.4 billion. A failure of a partner bank could delay customer access to funds even where the funds are legally protected."</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Arno Valley Bancorp — 10-K FY2025, Item 1A (SYNTHETIC)'</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'SYNTHETIC EXCERPT written for teaching in the style of a 10-K risk-factor section. Arno Valley Bancorp does not exist. Our deposit base is concentrated. At December 31, 2025, uninsured deposits represented approximately 38</span><span class="sc">% o</span><span class="st">f total deposits of $19.6 billion, and our 25 largest depositors accounted for 11</span><span class="sc">% o</span><span class="st">f total deposits. Events in the banking sector in 2023 demonstrated that deposit outflows can occur within hours when confidence is lost, accelerated by social media and by the ease of moving funds through mobile applications. We have significant exposure to commercial real estate. Commercial real estate loans totalled $3.1 billion, or 42</span><span class="sc">% o</span><span class="st">f total loans, at December 31, 2025, including $860 million of office loans. Higher vacancy rates and higher refinancing costs could increase defaults and require additional provisions for credit losses. Changes in interest rates affect our net interest income and the value of our securities portfolio. At December 31, 2025 our available-for-sale securities had unrealised losses of $310 million, and a 100 basis point increase in rates would reduce the fair value of the portfolio by a further estimated $190 million. We use models, including machine learning models, in credit underwriting, in the allowance for credit losses and in anti-money-laundering monitoring. Model error, poor data quality or changes in borrower behaviour could cause these models to perform worse than expected. Our credit-scoring models for consumer loans evaluate the creditworthiness of natural persons and are therefore expected to be treated as high-risk AI systems under the EU Artificial Intelligence Act in our European operations, and are subject to fair-lending laws in the United States. We are subject to extensive supervision, including capital requirements. Our common equity tier 1 ratio was 10.8% at December 31, 2025, against a regulatory minimum of 7.0</span><span class="sc">% i</span><span class="st">ncluding the capital conservation buffer. A deterioration in asset quality could reduce our ratio and restrict dividends and growth. We depend on third-party technology providers for our core banking system and for our digital channels; the failure of a provider, or a cyberattack against one, could interrupt our services. In 2025 we spent $84 million on information security, an increase of 19</span><span class="sc">% o</span><span class="st">ver 2024. We face competition from larger banks and from non-bank financial technology companies that are not subject to the same regulatory requirements, which may offer products at lower prices or with faster onboarding.'</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Bitcoin whitepaper — Abstract (Nakamoto, 2008; public)'</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending. We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of CPU power. As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they'll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone."</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="da54e34c" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests, os, html <span class="im">as</span> _html</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>EDGAR_TARGETS <span class="op">=</span> {<span class="st">"Coinbase Global"</span>: <span class="st">"0001679788"</span>, <span class="st">"PayPal Holdings"</span>: <span class="st">"0001633917"</span>, <span class="st">"Block, Inc."</span>: <span class="st">"0001512673"</span>}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>HEADERS <span class="op">=</span> {<span class="st">"User-Agent"</span>: <span class="st">"ESE course notebook student@example.com"</span>}   <span class="co"># EDGAR blocks requests without a contact</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fetch_risk_factors(cik, name, cache_dir<span class="op">=</span><span class="st">"data"</span>, max_chars<span class="op">=</span><span class="dv">60_000</span>):</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Item 1A of the latest 10-K for one company: live EDGAR -&gt; snapshot -&gt; None."""</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> snap <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/edgar_</span><span class="sc">{</span>cik<span class="sc">}</span><span class="ss">_1A.txt"</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        sub <span class="op">=</span> requests.get(<span class="ss">f"https://data.sec.gov/submissions/CIK</span><span class="sc">{</span>cik<span class="sc">}</span><span class="ss">.json"</span>, headers<span class="op">=</span>HEADERS, timeout<span class="op">=</span><span class="dv">20</span>).json()</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        f <span class="op">=</span> sub[<span class="st">"filings"</span>][<span class="st">"recent"</span>]<span class="op">;</span> i <span class="op">=</span> f[<span class="st">"form"</span>].index(<span class="st">"10-K"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        acc <span class="op">=</span> f[<span class="st">"accessionNumber"</span>][i].replace(<span class="st">"-"</span>, <span class="st">""</span>)<span class="op">;</span> doc <span class="op">=</span> f[<span class="st">"primaryDocument"</span>][i]</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> <span class="ss">f"https://www.sec.gov/Archives/edgar/data/</span><span class="sc">{</span><span class="bu">int</span>(cik)<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>acc<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>doc<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> requests.get(url, headers<span class="op">=</span>HEADERS, timeout<span class="op">=</span><span class="dv">60</span>).text</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> _html.unescape(re.sub(<span class="vs">r"&lt;[^&gt;]+&gt;"</span>, <span class="st">" "</span>, raw))<span class="op">;</span> text <span class="op">=</span> re.sub(<span class="vs">r"\s+"</span>, <span class="st">" "</span>, text)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        starts <span class="op">=</span> [m.start() <span class="cf">for</span> m <span class="kw">in</span> re.finditer(<span class="vs">r"Item\s*1A\.?\s*Risk Factors"</span>, text, re.I)]</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> starts[<span class="dv">1</span>] <span class="cf">if</span> <span class="bu">len</span>(starts) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> starts[<span class="dv">0</span>]            <span class="co"># first hit is the table of contents</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> re.search(<span class="vs">r"Item\s*1B\.?\s*Unresolved"</span>, text[start:], re.I)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        sect <span class="op">=</span> text[start: start <span class="op">+</span> (end.start() <span class="cf">if</span> end <span class="cf">else</span> max_chars)][:max_chars]</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(sect) <span class="op">&lt;</span> <span class="dv">5000</span>: <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"section too short — parsing failed"</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">open</span>(snap, <span class="st">"w"</span>).write(sect)<span class="op">;</span> <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(sect)<span class="sc">:,}</span><span class="ss"> chars from </span><span class="sc">{</span>f[<span class="st">'filingDate'</span>][i]<span class="sc">}</span><span class="ss"> 10-K; snapshot saved"</span>)<span class="op">;</span> <span class="cf">return</span> sect</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] EDGAR failed for </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        sect <span class="op">=</span> <span class="bu">open</span>(snap).read()<span class="op">;</span> <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(sect)<span class="sc">:,}</span><span class="ss"> chars"</span>)<span class="op">;</span> <span class="cf">return</span> sect</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>DOCS <span class="op">=</span> <span class="bu">dict</span>(SYNTHETIC_CORPUS)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, cik <span class="kw">in</span> EDGAR_TARGETS.items():</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> fetch_risk_factors(cik, name)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s: DOCS[<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> — 10-K Item 1A (EDGAR)"</span>] <span class="op">=</span> s</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(DOCS) <span class="op">==</span> <span class="bu">len</span>(SYNTHETIC_CORPUS):</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no live filings and no snapshot: corpus is the bundled synthetic set only."</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"chars"</span>: {k: <span class="bu">len</span>(v) <span class="cf">for</span> k, v <span class="kw">in</span> DOCS.items()}, <span class="st">"tokens"</span>: {k: n_tokens(v) <span class="cf">for</span> k, v <span class="kw">in</span> DOCS.items()}})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b2.-chunking-bet-first" class="level3">
+<h3 class="anchored" data-anchor-id="b2.-chunking-bet-first">B2. Chunking — bet first</h3>
+<p><strong>Bet:</strong> a 60-page 10-K (assume 3,000 characters per page). At 500 tokens per chunk, how many chunks? Write the number before running.</p>
+<div id="f9bee35b" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>chars <span class="op">=</span> <span class="bu">sum</span>(<span class="bu">len</span>(v) <span class="cf">for</span> v <span class="kw">in</span> DOCS.values())<span class="op">;</span> toks <span class="op">=</span> <span class="bu">sum</span>(n_tokens(v) <span class="cf">for</span> v <span class="kw">in</span> DOCS.values())</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cpt <span class="op">=</span> chars <span class="op">/</span> toks</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pages, chars_per_page, chunk_tokens <span class="op">=</span> <span class="dv">60</span>, <span class="dv">3000</span>, <span class="dv">500</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"corpus: </span><span class="sc">{</span>chars<span class="sc">:,}</span><span class="ss"> chars, </span><span class="sc">{</span>toks<span class="sc">:,}</span><span class="ss"> tokens -&gt; </span><span class="sc">{</span>cpt<span class="sc">:.2f}</span><span class="ss"> chars per token"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"60-page 10-K ≈ </span><span class="sc">{</span>pages<span class="op">*</span>chars_per_page<span class="sc">:,}</span><span class="ss"> chars ≈ </span><span class="sc">{</span>pages<span class="op">*</span>chars_per_page<span class="op">/</span>cpt<span class="sc">:,.0f}</span><span class="ss"> tokens ≈ </span><span class="sc">{</span>pages<span class="op">*</span>chars_per_page<span class="op">/</span>cpt<span class="op">/</span>chunk_tokens<span class="sc">:.0f}</span><span class="ss"> chunks of </span><span class="sc">{</span>chunk_tokens<span class="sc">}</span><span class="ss"> tokens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-the-assistants-chunker" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-assistants-chunker">🔍 CHECK — the assistant’s chunker</h3>
+<p>Asked for “a function that splits documents into chunks of 500 tokens”, the assistant wrote the cell below. It runs. <strong>It contains two mistakes.</strong> Find them (10 minutes; hint after 5). Then look at what happened to the sentence about Nordwind’s convertible notes.</p>
+<div id="7f927d61" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>CHUNK_TOKENS <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chunk_bad(docs):</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    chunks <span class="op">=</span> []</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc_name, text <span class="kw">in</span> docs.items():</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(text), CHUNK_TOKENS):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            chunks.append({<span class="st">"doc"</span>: doc_name, <span class="st">"text"</span>: text[i:i <span class="op">+</span> CHUNK_TOKENS]})</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> chunks</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> chunk_bad(DOCS)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(chunks), <span class="st">"chunks | mean tokens per chunk:"</span>, <span class="bu">round</span>(np.mean([n_tokens(c[<span class="st">"text"</span>]) <span class="cf">for</span> c <span class="kw">in</span> chunks])))</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>hits <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> chunks <span class="cf">if</span> <span class="st">"1,2"</span> <span class="kw">in</span> c[<span class="st">"text"</span>] <span class="kw">and</span> <span class="st">"Nordwind"</span> <span class="kw">in</span> c[<span class="st">"doc"</span>]]</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> hits: <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">..."</span>, <span class="bu">repr</span>(c[<span class="st">"text"</span>][<span class="op">-</span><span class="dv">80</span>:]))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>nxt <span class="op">=</span> chunks[chunks.index(hits[<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> <span class="dv">1</span>]<span class="op">;</span> <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">next chunk starts:"</span>, <span class="bu">repr</span>(nxt[<span class="st">"text"</span>][:<span class="dv">60</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution (open after you have tried)
+</summary>
+<ol type="1">
+<li><strong>Units.</strong> <code>CHUNK_TOKENS = 500</code> is applied to <em>characters</em>: <code>text[i:i+500]</code>. One token is ~4 characters of English, so the chunks are about 120 tokens, a quarter of the size asked for. Same family as percent-vs-decimal in week 2: a number with the wrong unit, silently.</li>
+<li><strong>Boundaries.</strong> The split ignores sentences, and there is no overlap. The chunk boundary fell inside a number: one chunk ends with <code>$1,2</code> and the next begins with <code>50 million</code>. Neither chunk contains “$1,250 million”. No embedding, however good, can retrieve a fact that no longer exists in any chunk. The same cut separates “11 hours” from “2.3 million customer accounts”: a question that needs both now needs two chunks.</li>
+</ol>
+The correction is not clever: split on sentence ends, fill up to a token budget, and repeat the last sentence at the start of the next chunk (overlap).
+</details>
+<div id="882676b7" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: sentence-aware chunks with a token budget and one-sentence overlap</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chunk_docs(docs, max_tokens<span class="op">=</span><span class="dv">150</span>, overlap_sentences<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    chunks <span class="op">=</span> []</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> doc_name, text <span class="kw">in</span> docs.items():</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        sents <span class="op">=</span> re.split(<span class="vs">r"(?&lt;=[.!?])\s+"</span>, text.strip())<span class="op">;</span> buf <span class="op">=</span> []<span class="op">;</span> k <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> s <span class="kw">in</span> sents:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> buf <span class="kw">and</span> n_tokens(<span class="st">" "</span>.join(buf <span class="op">+</span> [s])) <span class="op">&gt;</span> max_tokens:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                chunks.append({<span class="st">"doc"</span>: doc_name, <span class="st">"id"</span>: <span class="ss">f"</span><span class="sc">{</span>doc_name[:<span class="dv">12</span>]<span class="sc">}</span><span class="ss">#</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">"</span>, <span class="st">"text"</span>: <span class="st">" "</span>.join(buf)})<span class="op">;</span> k <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                buf <span class="op">=</span> buf[<span class="op">-</span>overlap_sentences:]</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            buf.append(s)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> buf: chunks.append({<span class="st">"doc"</span>: doc_name, <span class="st">"id"</span>: <span class="ss">f"</span><span class="sc">{</span>doc_name[:<span class="dv">12</span>]<span class="sc">}</span><span class="ss">#</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">"</span>, <span class="st">"text"</span>: <span class="st">" "</span>.join(buf)})</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> chunks</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> chunk_docs(DOCS, max_tokens<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(chunks), <span class="st">"chunks | tokens per chunk: mean"</span>, <span class="bu">round</span>(np.mean([n_tokens(c[<span class="st">"text"</span>]) <span class="cf">for</span> c <span class="kw">in</span> chunks])), <span class="st">"max"</span>, <span class="bu">max</span>(n_tokens(c[<span class="st">"text"</span>]) <span class="cf">for</span> c <span class="kw">in</span> chunks))</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"chunks containing the full figure:"</span>, <span class="bu">sum</span>(<span class="st">"$1,250 million"</span> <span class="kw">in</span> c[<span class="st">"text"</span>] <span class="cf">for</span> c <span class="kw">in</span> chunks))</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"chunks containing both '11 hours' and '2.3 million':"</span>, <span class="bu">sum</span>(<span class="st">"11 hours"</span> <span class="kw">in</span> c[<span class="st">"text"</span>] <span class="kw">and</span> <span class="st">"2.3 million"</span> <span class="kw">in</span> c[<span class="st">"text"</span>] <span class="cf">for</span> c <span class="kw">in</span> chunks))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b3.-embeddings-three-tiers-one-interface" class="level3">
+<h3 class="anchored" data-anchor-id="b3.-embeddings-three-tiers-one-interface">B3. Embeddings — three tiers, one interface</h3>
+<p>An embedding maps text to a vector; cosine similarity between vectors is the search key. Three tiers, same interface: Gemini <code>text-embedding-004</code> (key) → <code>sentence-transformers</code> (downloaded model, no key) → TF-IDF (week 1’s bag of words, labelled as the fallback it is). All vectors are L2-normalised so cosine similarity is a dot product.</p>
+<div id="1e61aa9c" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Embedder:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, corpus_texts):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.kind <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> MOCK:</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>._gem([<span class="st">"test"</span>], <span class="st">"RETRIEVAL_DOCUMENT"</span>)<span class="op">;</span> <span class="va">self</span>.kind <span class="op">=</span> <span class="st">"gemini/text-embedding-004"</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e: <span class="bu">print</span>(<span class="st">"[warn] Gemini embeddings failed:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.kind <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">try</span>:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                <span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.st <span class="op">=</span> SentenceTransformer(<span class="st">"all-MiniLM-L6-v2"</span>)<span class="op">;</span> <span class="va">self</span>.kind <span class="op">=</span> <span class="st">"sentence-transformers/all-MiniLM-L6-v2"</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e: <span class="bu">print</span>(<span class="st">"[warn] sentence-transformers unavailable:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.kind <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>            <span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.tfidf <span class="op">=</span> TfidfVectorizer(ngram_range<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>), sublinear_tf<span class="op">=</span><span class="va">True</span>).fit(corpus_texts)<span class="op">;</span> <span class="va">self</span>.kind <span class="op">=</span> <span class="st">"TF-IDF (FALLBACK — word overlap, not meaning)"</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"embedder:"</span>, <span class="va">self</span>.kind)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _gem(<span class="va">self</span>, texts, task):</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> []</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(texts), <span class="dv">100</span>):</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            r <span class="op">=</span> client.models.embed_content(model<span class="op">=</span><span class="st">"text-embedding-004"</span>, contents<span class="op">=</span>texts[i:i<span class="op">+</span><span class="dv">100</span>], config<span class="op">=</span>types.EmbedContentConfig(task_type<span class="op">=</span>task))</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>            out <span class="op">+=</span> [e.values <span class="cf">for</span> e <span class="kw">in</span> r.embeddings]</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.array(out, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> encode(<span class="va">self</span>, texts, kind<span class="op">=</span><span class="st">"document"</span>):</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.kind.startswith(<span class="st">"gemini"</span>):   v <span class="op">=</span> <span class="va">self</span>._gem(texts, <span class="st">"RETRIEVAL_QUERY"</span> <span class="cf">if</span> kind <span class="op">==</span> <span class="st">"query"</span> <span class="cf">else</span> <span class="st">"RETRIEVAL_DOCUMENT"</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.kind.startswith(<span class="st">"sentence"</span>): v <span class="op">=</span> np.asarray(<span class="va">self</span>.st.encode(texts))</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:                                 v <span class="op">=</span> <span class="va">self</span>.tfidf.transform(texts).toarray()</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> v <span class="op">/</span> np.maximum(np.linalg.norm(v, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>), <span class="fl">1e-12</span>)   <span class="co"># same normalisation for corpus and query</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>emb <span class="op">=</span> Embedder([c[<span class="st">"text"</span>] <span class="cf">for</span> c <span class="kw">in</span> chunks])</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>CHUNK_VECS <span class="op">=</span> emb.encode([c[<span class="st">"text"</span>] <span class="cf">for</span> c <span class="kw">in</span> chunks])</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(CHUNK_VECS.shape, <span class="st">"= (chunks, dimensions)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="09d5e61c" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> retrieve(question, k<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    qv <span class="op">=</span> emb.encode([question], kind<span class="op">=</span><span class="st">"query"</span>)[<span class="dv">0</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    sims <span class="op">=</span> CHUNK_VECS <span class="op">@</span> qv</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> np.argsort(<span class="op">-</span>sims)[:k]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [<span class="bu">dict</span>(chunks[i], score<span class="op">=</span><span class="bu">float</span>(sims[i])) <span class="cf">for</span> i <span class="kw">in</span> top]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> retrieve(<span class="st">"How much convertible debt does Nordwind have?"</span>, k<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>h[<span class="st">'score'</span>]<span class="sc">:.3f}</span><span class="ss">  </span><span class="sc">{</span>h[<span class="st">'id'</span>]<span class="sc">:18s}</span><span class="ss"> </span><span class="sc">{</span>h[<span class="st">'text'</span>][:<span class="dv">110</span>]<span class="sc">}</span><span class="ss">..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Rephrase the question without the words “convertible” and “debt” (e.g.&nbsp;“What does Nordwind owe bondholders?”). With TF-IDF the top score collapses — word overlap, not meaning; with a neural embedding it should survive. This is the week-1 gap, now with a business consequence: <em>your customers do not use your vocabulary</em>.</p>
+</section>
+<section id="b4.-generation-with-citations-bet-first" class="level3">
+<h3 class="anchored" data-anchor-id="b4.-generation-with-citations-bet-first">B4. Generation with citations — bet first</h3>
+<p><strong>Bet:</strong> ask the outage question (duration <em>and</em> number of accounts) with <code>k=1</code> on the <strong>bad</strong> chunks, where the two facts sit in different chunks. Will the answer be (a) complete, (b) partial and honest, (c) partial and confidently wrong?</p>
+<div id="0ad1ed39" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SYSTEM <span class="op">=</span> (<span class="st">"You answer questions about company filings using ONLY the context passages. "</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Cite passages as [1], [2]. If the context does not contain the answer, say 'Not in the provided context.'"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_prompt(question, hits):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    context <span class="op">=</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>.join(<span class="ss">f"[</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">] (</span><span class="sc">{</span>h[<span class="st">'doc'</span>][:<span class="dv">40</span>]<span class="sc">}</span><span class="ss">)</span><span class="ch">\n</span><span class="sc">{</span>h[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i, h <span class="kw">in</span> <span class="bu">enumerate</span>(hits))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"CONTEXT:</span><span class="ch">\n</span><span class="sc">{</span>context<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">QUESTION: </span><span class="sc">{</span>question<span class="sc">}</span><span class="ch">\n</span><span class="ss">ANSWER:"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer(question, k<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    hits <span class="op">=</span> retrieve(question, k)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> llm(build_prompt(question, hits), system<span class="op">=</span>SYSTEM), hits</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) the bet: bad chunks, k=1</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>bad_chunks <span class="op">=</span> chunk_bad(DOCS)<span class="op">;</span> bad_vecs <span class="op">=</span> emb.encode([c[<span class="st">"text"</span>] <span class="cf">for</span> c <span class="kw">in</span> bad_chunks])</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">"How long was Nordwind's March 2025 outage and how many customer accounts were affected?"</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>qv <span class="op">=</span> emb.encode([q], kind<span class="op">=</span><span class="st">"query"</span>)[<span class="dv">0</span>]<span class="op">;</span> top <span class="op">=</span> bad_chunks[<span class="bu">int</span>(np.argmax(bad_vecs <span class="op">@</span> qv))]</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"retrieved (bad chunker, k=1):"</span>, <span class="bu">repr</span>(top[<span class="st">"text"</span>][<span class="op">-</span><span class="dv">120</span>:]))</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">answer:"</span>, llm(build_prompt(q, [top]), system<span class="op">=</span>SYSTEM))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9faca0d4" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) the same question on the corrected chunks, k=3</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ans, hits <span class="op">=</span> answer(q, k<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ans)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">sources:"</span>, [h[<span class="st">"id"</span>] <span class="cf">for</span> h <span class="kw">in</span> hits])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-the-assistants-refactored-answer-function" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-assistants-refactored-answer-function">🔍 CHECK — the assistant’s “refactored” answer function</h3>
+<p>He asked the assistant to “make <code>answer()</code> self-contained and add a <code>context</code> parameter for extra notes”. The result runs, and in live mode the answers read well. <strong>Two mistakes.</strong> Prove whether the model actually saw the retrieved passages — <code>CALL_LOG</code> keeps every prompt.</p>
+<div id="0c7dd959" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_v2(question, k<span class="op">=</span><span class="dv">3</span>, context<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    qv <span class="op">=</span> emb.encode([question], kind<span class="op">=</span><span class="st">"query"</span>)[<span class="dv">0</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    sims <span class="op">=</span> CHUNK_VECS <span class="op">@</span> qv</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    hits <span class="op">=</span> [chunks[i] <span class="cf">for</span> i <span class="kw">in</span> np.argsort(sims)[:k]]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    ctx <span class="op">=</span> <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>.join(<span class="ss">f"[</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">] </span><span class="sc">{</span>h[<span class="st">'text'</span>]<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i, h <span class="kw">in</span> <span class="bu">enumerate</span>(hits))</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> <span class="ss">f"CONTEXT:</span><span class="ch">\n</span><span class="sc">{</span>context<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">QUESTION: </span><span class="sc">{</span>question<span class="sc">}</span><span class="ch">\n</span><span class="ss">ANSWER:"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> llm(prompt, system<span class="op">=</span>SYSTEM), hits</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>ans, hits <span class="op">=</span> answer_v2(<span class="st">"What share of Nordwind's net revenue comes from transaction fees?"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ans)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">retrieved ids:"</span>, [h[<span class="st">"id"</span>] <span class="cf">for</span> h <span class="kw">in</span> hits])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution (open after you have tried)
+</summary>
+<ol type="1">
+<li><strong>Shadowing.</strong> The passages are assembled into <code>ctx</code>, but the prompt is formatted with <code>context</code> — the new <em>parameter</em>, which defaults to <code>""</code>. The model receives an empty CONTEXT block. In mock mode the canned answer says so; a real model either refuses (if the system prompt is strict) or <strong>answers from memory</strong> — fluent, uncited, unverifiable. Check: <code>"transaction fees" in CALL_LOG[-1]["prompt"]</code> is <code>False</code>.</li>
+<li><strong>Sort direction.</strong> <code>np.argsort(sims)[:k]</code> takes the <em>least</em> similar chunks. Correct is <code>np.argsort(-sims)[:k]</code> (or <code>[::-1]</code>). Look at <code>retrieved ids</code>: they are from the wrong documents. This bug is invisible when the context is also dropped — bugs hide each other; that is why you log the prompt.</li>
+</ol>
+Rule: <strong>log every prompt</strong> and, in tests, assert that the retrieved text is inside it.
+</details>
+<div id="37c4bb6b" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected — and a test that would have caught both bugs</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> answer_v3(question, k<span class="op">=</span><span class="dv">3</span>, extra_notes<span class="op">=</span><span class="st">""</span>):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    hits <span class="op">=</span> retrieve(question, k)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> build_prompt(question, hits) <span class="op">+</span> (<span class="ss">f"</span><span class="ch">\n</span><span class="ss">NOTES: </span><span class="sc">{</span>extra_notes<span class="sc">}</span><span class="ss">"</span> <span class="cf">if</span> extra_notes <span class="cf">else</span> <span class="st">""</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> llm(prompt, system<span class="op">=</span>SYSTEM)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">all</span>(h[<span class="st">"text"</span>][:<span class="dv">60</span>] <span class="kw">in</span> CALL_LOG[<span class="op">-</span><span class="dv">1</span>][<span class="st">"prompt"</span>] <span class="cf">for</span> h <span class="kw">in</span> hits), <span class="st">"retrieved text is not in the prompt"</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out, hits</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ans, hits <span class="op">=</span> answer_v3(<span class="st">"What share of Nordwind's net revenue comes from transaction fees?"</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ans)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">sources:"</span>, [h[<span class="st">"id"</span>] <span class="cf">for</span> h <span class="kw">in</span> hits])</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">context really in the prompt:"</span>, <span class="st">"transaction fees"</span> <span class="kw">in</span> CALL_LOG[<span class="op">-</span><span class="dv">1</span>][<span class="st">"prompt"</span>])</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># extra_notes is the door for live data: a price next to a filing figure (load_prices = the course helper)</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>], start<span class="op">=</span><span class="st">"2025-06-01"</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>note <span class="op">=</span> <span class="ss">f"BTC-USD close on </span><span class="sc">{</span>px<span class="sc">.</span>index[<span class="op">-</span><span class="dv">1</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>px[<span class="st">'BTC-USD'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> USD"</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>ans, hits <span class="op">=</span> answer_v3(<span class="st">"Which of Nordwind's revenues would a fall in Bitcoin's price hit first?"</span>, extra_notes<span class="op">=</span>note)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">with a live note -&gt;"</span>, ans)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"note in prompt:"</span>, note <span class="kw">in</span> CALL_LOG[<span class="op">-</span><span class="dv">1</span>][<span class="st">"prompt"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="b5.-a-small-test-set-retrieval-failure-vs-generation-failure-bet-first" class="level3">
+<h3 class="anchored" data-anchor-id="b5.-a-small-test-set-retrieval-failure-vs-generation-failure-bet-first">B5. A small test set: retrieval failure vs generation failure — bet first</h3>
+<p>Ten questions with expected answers is what your homework asks for. Here are six. Two columns: did the expected string appear in the <strong>retrieved chunks</strong> (retrieval hit) and in the <strong>answer</strong> (answer hit)? A miss in the first column is a chunking/embedding problem; a miss only in the second is a generation problem — different fixes.</p>
+<p><strong>Bet:</strong> how many of the six will be retrieval hits at k=3 with this embedder? (In mock mode read only the retrieval column — the “answer” is canned.)</p>
+<div id="8c93c4d8" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>TESTS <span class="op">=</span> [</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"How much convertible debt did Nordwind have outstanding at the end of 2025?"</span>, [<span class="st">"1,250"</span>]),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"How long was Nordwind's March 2025 outage and how many accounts were affected?"</span>, [<span class="st">"11 hours"</span>, <span class="st">"2.3 million"</span>]),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"What share of Nordwind's revenue came from transaction fees?"</span>, [<span class="st">"61%"</span>]),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"What total payment volume did Lumen process in 2025?"</span>, [<span class="st">"412 billion"</span>]),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"What percentage of Arno Valley's deposits were uninsured?"</span>, [<span class="st">"38%"</span>]),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"How does the Bitcoin network prevent double-spending?"</span>, [<span class="st">"proof-of-work"</span>]),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> q, expected <span class="kw">in</span> TESTS:</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    ans, hits <span class="op">=</span> answer_v3(q, k<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    ctx <span class="op">=</span> <span class="st">" "</span>.join(h[<span class="st">"text"</span>] <span class="cf">for</span> h <span class="kw">in</span> hits)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    rows.append(<span class="bu">dict</span>(question<span class="op">=</span>q[:<span class="dv">60</span>], retrieval_hit<span class="op">=</span><span class="bu">all</span>(e <span class="kw">in</span> ctx <span class="cf">for</span> e <span class="kw">in</span> expected), answer_hit<span class="op">=</span><span class="bu">all</span>(e <span class="kw">in</span> <span class="bu">str</span>(ans) <span class="cf">for</span> e <span class="kw">in</span> expected),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                     top_score<span class="op">=</span><span class="bu">round</span>(hits[<span class="dv">0</span>][<span class="st">"score"</span>], <span class="dv">3</span>), answer<span class="op">=</span><span class="bu">str</span>(ans)[:<span class="dv">90</span>]))</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> pd.DataFrame(rows)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"retrieval hits:"</span>, res.retrieval_hit.<span class="bu">sum</span>(), <span class="st">"/"</span>, <span class="bu">len</span>(res), <span class="st">"| answer hits:"</span>, res.answer_hit.<span class="bu">sum</span>(), <span class="st">"/"</span>, <span class="bu">len</span>(res), <span class="st">"(mock: ignore)"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> For each miss, write one word: <em>retrieval</em> or <em>generation</em>. Then re-run B5 with <code>k=1</code> and with <code>max_tokens=60</code> chunks (re-run B2’s corrected cell and B3). Which knob moved which column? That table — questions × (retrieval hit, answer hit) — is the evaluation your homework must contain.</p>
+</section>
+<section id="b6.-what-it-costs-bet-first" class="level3">
+<h3 class="anchored" data-anchor-id="b6.-what-it-costs-bet-first">B6. What it costs — bet first</h3>
+<p><strong>Bet:</strong> the fintech assistant answers 1,000 customer questions a day with k=3 chunks. Cost per day, in dollars? Write a number.</p>
+<div id="0434ff63" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> pd.DataFrame(CALL_LOG).drop(columns<span class="op">=</span><span class="st">"prompt"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>rag <span class="op">=</span> log[log.tokens_in <span class="op">&gt;</span> <span class="dv">300</span>]                                  <span class="co"># calls that carried a context block</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>per_call <span class="op">=</span> rag[[<span class="st">"tokens_in"</span>, <span class="st">"tokens_out"</span>, <span class="st">"latency_s"</span>, <span class="st">"cost_usd"</span>]].mean()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(per_call.<span class="bu">round</span>(<span class="dv">4</span>).to_string())</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">1,000 questions/day ≈ $</span><span class="sc">{</span>per_call<span class="sc">.</span>cost_usd<span class="op">*</span><span class="dv">1000</span><span class="sc">:.2f}</span><span class="ss">/day ≈ $</span><span class="sc">{</span>per_call<span class="sc">.</span>cost_usd<span class="op">*</span><span class="dv">1000</span><span class="op">*</span><span class="dv">365</span><span class="sc">:,.0f}</span><span class="ss">/year at these prices"</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"…and a 10x larger 'frontier' model ≈ $</span><span class="sc">{</span>per_call<span class="sc">.</span>cost_usd<span class="op">*</span><span class="dv">1000</span><span class="op">*</span><span class="dv">365</span><span class="op">*</span><span class="dv">10</span><span class="sc">:,.0f}</span><span class="ss">/year. Latency per answer ≈ </span><span class="sc">{</span>per_call<span class="sc">.</span>latency_s<span class="sc">:.1f}</span><span class="ss">s"</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>log.tail(<span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="block-c-eu-ai-act-discussion-reading-in-notes.md" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-eu-ai-act-discussion-reading-in-notes.md">Block C — EU AI Act (discussion; reading in <code>notes.md</code>)</h2>
+<p>No code. Read the one-page text in <code>week-04/notes.md</code> and take the three prompts to the whiteboard. One factual anchor from the corpus: three of the four documents above mention the AI Act — Lumen and Arno Valley expect their <strong>creditworthiness</strong> models to be high-risk; Nordwind expects <strong>transparency and oversight</strong> duties for its LLM support bot. Same law, different tiers, decided by <em>use</em>, not by technology.</p>
+<div id="148ddf3c" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> retrieve(<span class="st">"Which AI systems does the EU AI Act treat as high-risk in this company?"</span>, k<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>h[<span class="st">'score'</span>]<span class="sc">:.3f}</span><span class="ss">  </span><span class="sc">{</span>h[<span class="st">'id'</span>]<span class="sc">:18s}</span><span class="ss"> </span><span class="sc">{</span>h[<span class="st">'text'</span>][:<span class="dv">140</span>]<span class="sc">}</span><span class="ss">..."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="take-home-write-three-lines" class="level2">
+<h2 class="anchored" data-anchor-id="take-home-write-three-lines">Take-home (write three lines)</h2>
+<p>Before committing, write in the cell below the three things you would tell a colleague who wants to “add an AI assistant” to a product this quarter. Then <code>File ▸ Save a copy in GitHub</code> → <code>week-04/session.ipynb</code>.</p>
+<p><strong>Homework brief</strong> → see <code>week-04/homework.md</code>.</p>
+<p><em>1.</em></p>
+<p><em>2.</em></p>
+<p><em>3.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ESE Florence · Borgo Santi Apostoli 19, 50123 Firenze · Term 1, A.Y. 2026–2027</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Niccolò Salvini · <em>Visibilia ex Invisibilibus</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

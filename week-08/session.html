@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Week 8 — Digital assets, on-chain data and DeFi – AI for Business &amp; FinTech</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
+    <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../setup.html"> 
+<span class="menu-text">Setup</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/NiccoloSalvini/ese-ai"> <i class="bi bi-github" role="img" aria-label="GitHub repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#block-b-lab-1-a-constant-product-pool-from-one-equation" id="toc-block-b-lab-1-a-constant-product-pool-from-one-equation" class="nav-link active" data-scroll-target="#block-b-lab-1-a-constant-product-pool-from-one-equation">Block B — Lab 1: a constant-product pool from one equation</a></li>
+  <li><a href="#block-c-lab-2-protocol-data-through-public-apis" id="toc-block-c-lab-2-protocol-data-through-public-apis" class="nav-link" data-scroll-target="#block-c-lab-2-protocol-data-through-public-apis">Block C — Lab 2: protocol data through public APIs</a></li>
+  <li><a href="#block-d-protocol-risk-canvas" id="toc-block-d-protocol-risk-canvas" class="nav-link" data-scroll-target="#block-d-protocol-risk-canvas">Block D — Protocol risk canvas</a></li>
+  <li><a href="#block-e-mica-in-practice-regulation-slot" id="toc-block-e-mica-in-practice-regulation-slot" class="nav-link" data-scroll-target="#block-e-mica-in-practice-regulation-slot">Block E — MiCA in practice (regulation slot)</a></li>
+  <li><a href="#take-home-write-three-lines" id="toc-take-home-write-three-lines" class="nav-link" data-scroll-target="#take-home-write-three-lines">Take-home (write three lines)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Week 8 — Digital assets, on-chain data and DeFi</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>ESE · AI for Business and FinTech · 16 November 2026</strong></p>
+<p>Today the working object is a <em>protocol</em>: a program that holds money and follows rules anyone can read. We simulate the most important one (a constant-product market maker) from its one equation, then read real protocol data through public APIs, then look at a protocol through a risk canvas and through MiCA.</p>
+<p>Every number on the whiteboard today gets recomputed here. Cells marked <strong>🔍 CHECK</strong> contain assistant-style code with a planted error: find it before opening the solution.</p>
+<div id="cd5035e4" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance google<span class="op">-</span>genai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="86f99187" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c7fe03f4" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: one LLM wrapper, guarded. If no key -&gt; deterministic MOCK so the notebook runs end-to-end. ---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, json, re</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> userdata.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> os.environ.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>MOCK_MODE <span class="op">=</span> <span class="kw">not</span> <span class="bu">bool</span>(API_KEY)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> MOCK_MODE:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No GEMINI_API_KEY found -&gt; llm() runs in MOCK mode (fixed, deterministic answers; labelled as such)."</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mock(prompt, json_schema):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Fixed answers so every cell below runs offline. The mock summary deliberately contains one wrong number</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">    (80% instead of 79.5%) so that the source-check cell has something to catch."""</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> prompt.lower()</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> <span class="st">"mica"</span> <span class="kw">in</span> p:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {<span class="st">"classifications"</span>: [</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"asset"</span>: <span class="st">"USDC"</span>, <span class="st">"mica_category"</span>: <span class="st">"EMT"</span>, <span class="st">"reason"</span>: <span class="st">"references one fiat currency 1:1; issuer must be a credit institution or EMI"</span>},</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"asset"</span>: <span class="st">"stETH"</span>, <span class="st">"mica_category"</span>: <span class="st">"other crypto-asset"</span>, <span class="st">"reason"</span>: <span class="st">"not a stablecoin; represents staked ETH plus rewards; issued by a protocol"</span>},</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"asset"</span>: <span class="st">"UNI"</span>, <span class="st">"mica_category"</span>: <span class="st">"other crypto-asset"</span>, <span class="st">"reason"</span>: <span class="st">"governance token, no claim on assets, no reference to fiat"</span>}]}</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"governance"</span> <span class="kw">in</span> p <span class="kw">or</span> <span class="st">"proposal"</span> <span class="kw">in</span> p:</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="st">"[MOCK] The proposal raises the wstETH loan-to-value on Aave v3 Ethereum from 78.5% to 80% and the "</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                <span class="st">"liquidation threshold from 81% to 82%, keeps the liquidation bonus at 6%, and raises the supply cap "</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>                <span class="st">"to 1.2M wstETH. Risk provider Chaos Labs supports it; the vote closes on 20 November 2026."</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"[MOCK] no canned answer for this prompt."</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> llm(prompt, system<span class="op">=</span><span class="va">None</span>, json_schema<span class="op">=</span><span class="va">None</span>, temperature<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Single entry point for LLM calls. Returns text, or a dict when json_schema is given.</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">    Ports to any provider: only this function changes."""</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> MOCK_MODE:</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _mock(prompt, json_schema)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.genai <span class="im">import</span> types</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>API_KEY)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    cfg <span class="op">=</span> <span class="bu">dict</span>(temperature<span class="op">=</span>temperature, system_instruction<span class="op">=</span>system)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>        cfg.update(response_mime_type<span class="op">=</span><span class="st">"application/json"</span>, response_schema<span class="op">=</span>json_schema)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> client.models.generate_content(model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>, contents<span class="op">=</span>prompt,</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>                                       config<span class="op">=</span>types.GenerateContentConfig(<span class="op">**</span>cfg))</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(r.text) <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> r.text.strip()</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"llm() ready —"</span>, <span class="st">"MOCK"</span> <span class="cf">if</span> MOCK_MODE <span class="cf">else</span> <span class="st">"live Gemini"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="block-b-lab-1-a-constant-product-pool-from-one-equation" class="level2">
+<h2 class="anchored" data-anchor-id="block-b-lab-1-a-constant-product-pool-from-one-equation">Block B — Lab 1: a constant-product pool from one equation</h2>
+<p>A pool holds two reserves, <code>x</code> (say ETH) and <code>y</code> (say USDC). The rule is that a swap must leave the product <strong>x · y = k</strong> unchanged (before fees). Everything else — price, slippage, LP returns — follows from that one line.</p>
+<p>Spot price of x in units of y: <strong>p = y / x</strong>. A trader who puts in <code>dx</code> gets out <code>dy = y − k / (x + dx)</code>. The fee (0.3% on Uniswap v2-style pools) is taken on the way in and stays in the pool, which is how LPs earn.</p>
+<div id="3e2b55c6" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Pool:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Constant-product AMM (x*y = k) with a fee on input, Uniswap-v2 style."""</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x, y, fee<span class="op">=</span><span class="fl">0.003</span>):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x, <span class="va">self</span>.y, <span class="va">self</span>.fee <span class="op">=</span> <span class="bu">float</span>(x), <span class="bu">float</span>(y), fee</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> price(<span class="va">self</span>):            <span class="co"># y per 1 x  (e.g. USDC per ETH)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.y <span class="op">/</span> <span class="va">self</span>.x</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> k(<span class="va">self</span>):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.x <span class="op">*</span> <span class="va">self</span>.y</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> quote_x_for_y(<span class="va">self</span>, dx):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""How much y you get for dx of x, without changing the pool."""</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        dx_net <span class="op">=</span> dx <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> <span class="va">self</span>.fee)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.y <span class="op">-</span> <span class="va">self</span>.k <span class="op">/</span> (<span class="va">self</span>.x <span class="op">+</span> dx_net)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> swap_x_for_y(<span class="va">self</span>, dx):</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        dy <span class="op">=</span> <span class="va">self</span>.quote_x_for_y(dx)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x <span class="op">+=</span> dx<span class="op">;</span> <span class="va">self</span>.y <span class="op">-=</span> dy          <span class="co"># the full dx enters the pool: k grows by the fee</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dy</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> Pool(x<span class="op">=</span><span class="dv">1_000</span>, y<span class="op">=</span><span class="dv">3_000_000</span>)           <span class="co"># 1,000 ETH and 3,000,000 USDC -&gt; spot 3,000 USDC/ETH</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"spot price:"</span>, pool.price, <span class="st">"| k:"</span>, <span class="ss">f"</span><span class="sc">{</span>pool<span class="sc">.</span>k<span class="sc">:.3e}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK (bet 1).</strong> You sell <strong>100 ETH</strong> (10% of the pool’s ETH reserve). Before running: what price per ETH do you actually receive versus the spot 3,000, and where is the pool price <em>after</em> the trade? Write both numbers down.</p>
+<div id="bd114d6d" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> pool.quote_x_for_y(dx)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>exec_price <span class="op">=</span> dy <span class="op">/</span> dx</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_after <span class="op">=</span> (pool.y <span class="op">-</span> dy) <span class="op">/</span> (pool.x <span class="op">+</span> dx)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"received </span><span class="sc">{</span>dy<span class="sc">:,.0f}</span><span class="ss"> USDC for </span><span class="sc">{</span>dx<span class="sc">}</span><span class="ss"> ETH -&gt; execution price </span><span class="sc">{</span>exec_price<span class="sc">:,.1f}</span><span class="ss">  (</span><span class="sc">{</span>exec_price<span class="op">/</span>pool<span class="sc">.</span>price<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss"> vs spot)"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"pool price after the trade: </span><span class="sc">{</span>p_after<span class="sc">:,.1f}</span><span class="ss">  (</span><span class="sc">{</span>p_after<span class="op">/</span>pool<span class="sc">.</span>price<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss"> vs spot)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Two different numbers, both called “price impact” in conversation. Execution price ≈ p·x/(x+dx) → about −9% for a 10% trade; pool price after ≈ p·x²/(x+dx)² → about −17%. Neither is a fee: the pool simply <em>has</em> fewer USDC per ETH left. The curve is the market maker.</p>
+<div id="38b82cad" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> np.array([<span class="fl">0.001</span>, <span class="fl">0.005</span>, <span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.20</span>, <span class="fl">0.50</span>])</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> sizes:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> s <span class="op">*</span> pool.x<span class="op">;</span> dy <span class="op">=</span> pool.quote_x_for_y(dx)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    rows.append([s, dy<span class="op">/</span>dx, dy<span class="op">/</span>dx<span class="op">/</span>pool.price <span class="op">-</span> <span class="dv">1</span>, (pool.y<span class="op">-</span>dy)<span class="op">/</span>(pool.x<span class="op">+</span>dx)<span class="op">/</span>pool.price <span class="op">-</span> <span class="dv">1</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>impact <span class="op">=</span> pd.DataFrame(rows, columns<span class="op">=</span>[<span class="st">"trade / reserve"</span>, <span class="st">"execution price"</span>, <span class="st">"exec vs spot"</span>, <span class="st">"pool price after vs spot"</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>display(impact.<span class="bu">round</span>(<span class="dv">4</span>))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>impact.set_index(<span class="st">"trade / reserve"</span>)[[<span class="st">"exec vs spot"</span>, <span class="st">"pool price after vs spot"</span>]].plot(</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), logx<span class="op">=</span><span class="va">True</span>, marker<span class="op">=</span><span class="st">"o"</span>, title<span class="op">=</span><span class="st">"Price impact vs trade size (share of the x reserve)"</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.ylabel(<span class="st">"vs spot"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="check-the-assistants-swap-function" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-assistants-swap-function">🔍 CHECK — the assistant’s swap function</h3>
+<p>Asked to “write a function that swaps ETH for USDC in a constant-product pool with a 0.3% fee”, the assistant produced the cell below. It runs and prints numbers. <strong>It contains two errors.</strong> Compare its answers with the <code>Pool</code> class above for the same 100 ETH trade before opening the solution.</p>
+<div id="4caa9f97" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> swap_assistant(x, y, dx, fee<span class="op">=</span><span class="fl">0.3</span>):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    price <span class="op">=</span> y <span class="op">/</span> x</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    dy <span class="op">=</span> dx <span class="op">*</span> price <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> fee)        <span class="co"># output at the current price, minus the fee</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dy, (y <span class="op">-</span> dy) <span class="op">/</span> (x <span class="op">+</span> dx)     <span class="co"># amount out, new pool price</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dx <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">500</span>]:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    dy, p_new <span class="op">=</span> swap_assistant(<span class="dv">1_000</span>, <span class="dv">3_000_000</span>, dx)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"sell </span><span class="sc">{</span>dx<span class="sc">:&gt;3}</span><span class="ss"> ETH -&gt; </span><span class="sc">{</span>dy<span class="sc">:,.0f}</span><span class="ss"> USDC | execution </span><span class="sc">{</span>dy<span class="op">/</span>dx<span class="sc">:,.1f}</span><span class="ss"> | pool price after </span><span class="sc">{</span>p_new<span class="sc">:,.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution (open after you have tried)
+</summary>
+<ol type="1">
+<li><strong><code>dy = dx * price</code></strong> is a linear quote: it ignores the curve. Selling 500 ETH gets you 500 × 3,000 = 1.5M USDC minus fee, whatever the reserve — so the execution price never moves, slippage is zero, and the pool would go <em>negative</em> on a large enough trade. The correct output is <code>y - k/(x + dx_net)</code>: the pool keeps <code>x·y = k</code>, so every unit you sell is priced a little lower than the last. The “pool price after” it prints only looks reasonable because it is computed from wrong <code>dy</code>.</li>
+<li><strong><code>fee=0.3</code></strong> is 30%, not 0.3%. Percent vs decimal — the same silent error as the week-2 FRED yields. With a 30% fee the 1-ETH trade returns 2,100 USDC instead of ~2,991.</li>
+</ol>
+Rule: whenever a function returns money, test it on a trade of size 0 (must return 0) and on a trade the size of the whole reserve (must not drain the pool).
+</details>
+<div id="200b4d2e" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected version — same signature, curve respected, fee as a decimal</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> swap(x, y, dx, fee<span class="op">=</span><span class="fl">0.003</span>):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> x <span class="op">*</span> y</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    dx_net <span class="op">=</span> dx <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> fee)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    dy <span class="op">=</span> y <span class="op">-</span> k <span class="op">/</span> (x <span class="op">+</span> dx_net)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dy, (y <span class="op">-</span> dy) <span class="op">/</span> (x <span class="op">+</span> dx)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dx <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">100_000</span>]:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    dy, p_new <span class="op">=</span> swap(<span class="dv">1_000</span>, <span class="dv">3_000_000</span>, dx)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"sell </span><span class="sc">{</span>dx<span class="sc">:&gt;7,}</span><span class="ss"> ETH -&gt; </span><span class="sc">{</span>dy<span class="sc">:&gt;12,.0f}</span><span class="ss"> USDC | pool price after </span><span class="sc">{</span>p_new<span class="sc">:,.1f}</span><span class="ss"> | pool never below 0 USDC: </span><span class="sc">{</span><span class="dv">3_000_000</span> <span class="op">-</span> dy <span class="op">&gt;</span> <span class="dv">0</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lp-value-vs-holding" class="level3">
+<h3 class="anchored" data-anchor-id="lp-value-vs-holding">LP value vs holding</h3>
+<p>An LP deposits both assets and owns a share of the pool. When the price moves, arbitrageurs trade against the pool until its price matches the market — and that rebalancing sells the LP’s winner and buys the loser. So the LP’s position is worth <strong>less than simply holding the two coins</strong>, by an amount that depends only on the price ratio <code>r = p_now / p_deposit</code>:</p>
+<p><span class="math display">\[\frac{\text{LP value}}{\text{hold value}} = \frac{2\sqrt{r}}{1 + r}\]</span></p>
+<p>That gap is called <em>impermanent loss</em> (a bad name: it is a real loss unless the price returns). Fees are what the LP is paid to bear it.</p>
+<p><strong>🔍 CHECK (bet 2).</strong> ETH doubles (<code>r = 2</code>). Before running: by what percentage is the LP position worth less than just holding? Write the number.</p>
+<div id="b6b9c43f" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lp_vs_hold(r):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Value of a constant-product LP position divided by the value of holding the deposited coins, for price ratio r."""</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> np.sqrt(r) <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> r)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Same thing computed the long way, from the pool, so the formula is not taken on faith</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>x0, y0 <span class="op">=</span> <span class="dv">1_000</span>, <span class="dv">3_000_000</span><span class="op">;</span> p0 <span class="op">=</span> y0 <span class="op">/</span> x0<span class="op">;</span> k <span class="op">=</span> x0 <span class="op">*</span> y0</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">2.0</span><span class="op">;</span> p1 <span class="op">=</span> p0 <span class="op">*</span> r</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>x1, y1 <span class="op">=</span> np.sqrt(k <span class="op">/</span> p1), np.sqrt(k <span class="op">*</span> p1)          <span class="co"># reserves after arbitrage brings the pool price to p1</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>lp_value <span class="op">=</span> y1 <span class="op">+</span> x1 <span class="op">*</span> p1                            <span class="co"># in USDC</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>hold_value <span class="op">=</span> y0 <span class="op">+</span> x0 <span class="op">*</span> p1</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"price 2x: LP value </span><span class="sc">{</span>lp_value<span class="sc">:,.0f}</span><span class="ss"> | hold value </span><span class="sc">{</span>hold_value<span class="sc">:,.0f}</span><span class="ss"> | LP/hold </span><span class="sc">{</span>lp_value<span class="op">/</span>hold_value<span class="sc">:.4f}</span><span class="ss"> | formula </span><span class="sc">{</span>lp_vs_hold(r)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"impermanent loss at 2x: </span><span class="sc">{</span>lp_vs_hold(r)<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-the-assistants-impermanent-loss-curve" class="level3">
+<h3 class="anchored" data-anchor-id="check-the-assistants-impermanent-loss-curve">🔍 CHECK — the assistant’s impermanent-loss curve</h3>
+<p>Asked to “plot impermanent loss as a function of the price ratio”, the assistant wrote the cell below. It plots a smooth curve. Compare the value at <code>r = 2</code> with the number you just computed.</p>
+<div id="f7ebb9b9" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ratios <span class="op">=</span> np.linspace(<span class="fl">0.2</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x0, y0 <span class="op">=</span> <span class="dv">1_000</span>, <span class="dv">3_000_000</span><span class="op">;</span> k <span class="op">=</span> x0 <span class="op">*</span> y0<span class="op">;</span> p0 <span class="op">=</span> y0 <span class="op">/</span> x0</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>initial_value <span class="op">=</span> y0 <span class="op">+</span> x0 <span class="op">*</span> p0</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>il_assistant <span class="op">=</span> []</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> ratios:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p0 <span class="op">*</span> r</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    lp_value <span class="op">=</span> np.sqrt(k <span class="op">/</span> p) <span class="op">*</span> p <span class="op">+</span> np.sqrt(k <span class="op">*</span> p)     <span class="co"># value of the rebalanced reserves at the new price</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    il_assistant.append(lp_value <span class="op">/</span> initial_value <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>il_assistant <span class="op">=</span> pd.Series(il_assistant, index<span class="op">=</span>ratios)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"assistant's 'impermanent loss' at r=2:"</span>, <span class="ss">f"</span><span class="sc">{</span>il_assistant<span class="sc">.</span>loc[<span class="fl">2.0</span>] <span class="cf">if</span> <span class="fl">2.0</span> <span class="kw">in</span> il_assistant<span class="sc">.</span>index <span class="cf">else</span> np<span class="sc">.</span>interp(<span class="fl">2.0</span>, ratios, il_assistant.values)<span class="sc">:+.2%}</span><span class="ss">"</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>il_assistant.plot(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"Impermanent loss vs price ratio (assistant version)"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<details>
+<summary>
+Solution (open after you have tried)
+</summary>
+<p>The benchmark is wrong. The assistant divides by the <strong>initial</strong> value of the deposit, so at <code>r = 2</code> it reports <strong>+41%</strong> — the LP made money, and the chart shows a “loss” that is positive whenever price goes up. Impermanent loss is defined <strong>against holding the same coins</strong>: at <code>r = 2</code> holding is worth 1.5× the initial value, the LP position 1.414×, and the loss is 1.414/1.5 − 1 = <strong>−5.7%</strong>. Same LP value, different denominator, opposite conclusion.</p>
+This is the general form of the bug: a return is always <em>relative to something</em>; the assistant picks the denominator that is easiest to code. Ask “compared to what?” for every percentage a model or a person gives you.
+</details>
+<div id="edc75d84" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: benchmark = holding the deposited coins at the new price</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>il <span class="op">=</span> pd.Series([lp_vs_hold(r) <span class="op">-</span> <span class="dv">1</span> <span class="cf">for</span> r <span class="kw">in</span> ratios], index<span class="op">=</span>ratios)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.DataFrame({<span class="st">"price ratio r"</span>: [<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.0</span>, <span class="fl">1.25</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]})</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>table[<span class="st">"LP / hold"</span>] <span class="op">=</span> lp_vs_hold(table[<span class="st">"price ratio r"</span>]).<span class="bu">round</span>(<span class="dv">4</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>table[<span class="st">"impermanent loss"</span>] <span class="op">=</span> (table[<span class="st">"LP / hold"</span>] <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:+.2%}</span><span class="st">"</span>.<span class="bu">format</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>display(table)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>il.plot(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"Impermanent loss vs price ratio (vs holding)"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.ylabel(<span class="st">"LP/hold − 1"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fee-income-vs-impermanent-loss" class="level3">
+<h3 class="anchored" data-anchor-id="fee-income-vs-impermanent-loss">Fee income vs impermanent loss</h3>
+<p>Fees are the other side of the ledger. If the pool turns over a fraction <code>v</code> of its reserves every day at fee <code>f</code>, the LP earns roughly <code>f · v · 365</code> per year on the pool’s value. Whether providing liquidity beats holding is then a race between that yield and the impermanent loss the price path produces.</p>
+<p><strong>🔍 CHECK (bet 3, sign only).</strong> Daily volume equal to 20% of pool value, 0.3% fee, held for one year, and ETH ends the year at 2×. Before running: does the LP finish ahead of or behind holding? Write <strong>+</strong> or <strong>−</strong>.</p>
+<div id="5bfa5986" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fee, days <span class="op">=</span> <span class="fl">0.003</span>, <span class="dv">365</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>vol_over_tvl <span class="op">=</span> np.array([<span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.20</span>, <span class="fl">0.50</span>, <span class="fl">1.00</span>])     <span class="co"># daily volume as a share of pool value</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fee_yield <span class="op">=</span> fee <span class="op">*</span> vol_over_tvl <span class="op">*</span> days                              <span class="co"># annual fee income as share of pool value</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fees <span class="op">=</span> pd.DataFrame({<span class="st">"daily volume / TVL"</span>: vol_over_tvl, <span class="st">"annual fee yield"</span>: fee_yield})</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">1.25</span>, <span class="dv">2</span>, <span class="dv">3</span>]:</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    fees[<span class="ss">f"net vs hold @ </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">x"</span>] <span class="op">=</span> fee_yield <span class="op">+</span> (lp_vs_hold(r) <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>display(fees.set_index(<span class="st">"daily volume / TVL"</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> col: col.<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:+.1%}</span><span class="st">"</span>.<span class="bu">format</span>)))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"break-even daily volume/TVL to cover IL at 2x:"</span>, <span class="ss">f"</span><span class="sc">{</span><span class="op">-</span>(lp_vs_hold(<span class="dv">2</span>)<span class="op">-</span><span class="dv">1</span>) <span class="op">/</span> (fee <span class="op">*</span> days)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lp-on-a-real-price-path" class="level3">
+<h3 class="anchored" data-anchor-id="lp-on-a-real-price-path">LP on a real price path</h3>
+<p>The curve above assumes a single jump. On a real path the LP position is marked every day: <code>Pool</code> reserves follow the price, fees accrue with assumed volume. We use ETH-USD from the course loader (live → snapshot → synthetic). <em>If the loader printed <code>[SYNTHETIC]</code>, the path below is a random walk and the numbers are only a pipeline test.</em></p>
+<div id="fbe34339" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"ETH-USD"</span>], start<span class="op">=</span><span class="st">"2022-01-01"</span>).ffill().dropna()</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>eth <span class="op">=</span> px[<span class="st">"ETH-USD"</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p0 <span class="op">=</span> eth.iloc[<span class="dv">0</span>]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span> y0 <span class="op">=</span> x0 <span class="op">*</span> p0                     <span class="co"># deposit 1 ETH and the same value in USDC</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> x0 <span class="op">*</span> y0</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>r_path <span class="op">=</span> eth <span class="op">/</span> p0</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>lp <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>eth.index)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>lp[<span class="st">"hold"</span>] <span class="op">=</span> y0 <span class="op">+</span> x0 <span class="op">*</span> eth                             <span class="co"># value in USDC of holding the deposit</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>lp[<span class="st">"lp_no_fees"</span>] <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.sqrt(k <span class="op">*</span> eth)                <span class="co"># value of the rebalanced reserves at each price</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>lp[<span class="st">"il"</span>] <span class="op">=</span> lp[<span class="st">"lp_no_fees"</span>] <span class="op">/</span> lp[<span class="st">"hold"</span>] <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>vol_over_tvl <span class="op">=</span> <span class="fl">0.20</span>                                    <span class="co"># assumption — replace with pool data in the homework</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>lp[<span class="st">"fees_cum"</span>] <span class="op">=</span> (fee <span class="op">*</span> vol_over_tvl <span class="op">*</span> lp[<span class="st">"lp_no_fees"</span>]).cumsum()</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>lp[<span class="st">"lp_with_fees"</span>] <span class="op">=</span> lp[<span class="st">"lp_no_fees"</span>] <span class="op">+</span> lp[<span class="st">"fees_cum"</span>]</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"deposit </span><span class="sc">{</span>p0<span class="sc">:,.0f}</span><span class="ss"> USDC/ETH -&gt; today </span><span class="sc">{</span>eth<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> (r = </span><span class="sc">{</span>r_path<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"hold </span><span class="sc">{</span>lp[<span class="st">'hold'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> | LP no fees </span><span class="sc">{</span>lp[<span class="st">'lp_no_fees'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> (IL </span><span class="sc">{</span>lp[<span class="st">'il'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:+.1%}</span><span class="ss">) | LP with fees </span><span class="sc">{</span>lp[<span class="st">'lp_with_fees'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>lp[[<span class="st">"hold"</span>, <span class="st">"lp_no_fees"</span>, <span class="st">"lp_with_fees"</span>]].plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">"1 ETH + USDC: hold vs LP (constant product), fees at assumed 20%/day volume/TVL"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"USDC"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> The fee line depends entirely on the <code>vol_over_tvl</code> assumption. Change it to 0.05 and to 0.50 and see when the LP crosses hold. The honest version of this chart needs the pool’s <em>actual</em> volume, which is what the DefiLlama block gives you next.</p>
+</section>
+</section>
+<section id="block-c-lab-2-protocol-data-through-public-apis" class="level2">
+<h2 class="anchored" data-anchor-id="block-c-lab-2-protocol-data-through-public-apis">Block C — Lab 2: protocol data through public APIs</h2>
+<p>DefiLlama aggregates on-chain data per protocol: <strong>TVL</strong> (value locked), <strong>fees</strong> (what users pay) and <strong>revenue</strong> (the part the protocol or its token keeps; the rest goes to LPs, stakers or validators). CoinGecko gives token price and market cap. Both are free and need no key. Both go through the same three-tier loader: live → dated snapshot in <code>data/</code> → a small <strong>SYNTHETIC</strong> table labelled as such.</p>
+<div id="0313c327" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests, glob, datetime <span class="im">as</span> dt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>SLUGS <span class="op">=</span> {<span class="st">"uniswap"</span>: <span class="st">"uniswap"</span>, <span class="st">"aave"</span>: <span class="st">"aave"</span>, <span class="st">"lido"</span>: <span class="st">"lido-dao"</span>}      <span class="co"># DefiLlama slug -&gt; CoinGecko id</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _get(url, timeout<span class="op">=</span><span class="dv">15</span>):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> requests.get(url, timeout<span class="op">=</span>timeout, headers<span class="op">=</span>{<span class="st">"User-Agent"</span>: <span class="st">"ese-course"</span>})<span class="op">;</span> r.raise_for_status()<span class="op">;</span> <span class="cf">return</span> r.json()</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_protocol_metrics(slugs<span class="op">=</span>SLUGS, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    stamp <span class="op">=</span> dt.date.today().isoformat()</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/protocol_metrics_</span><span class="sc">{</span>stamp<span class="sc">}</span><span class="ss">.csv"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        rows <span class="op">=</span> []</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> slug, cg <span class="kw">in</span> slugs.items():</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            tvl <span class="op">=</span> _get(<span class="ss">f"https://api.llama.fi/tvl/</span><span class="sc">{</span>slug<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            fees <span class="op">=</span> _get(<span class="ss">f"https://api.llama.fi/summary/fees/</span><span class="sc">{</span>slug<span class="sc">}</span><span class="ss">?dataType=dailyFees"</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            rev <span class="op">=</span> _get(<span class="ss">f"https://api.llama.fi/summary/fees/</span><span class="sc">{</span>slug<span class="sc">}</span><span class="ss">?dataType=dailyRevenue"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            rows.append(<span class="bu">dict</span>(protocol<span class="op">=</span>slug, tvl<span class="op">=</span><span class="bu">float</span>(tvl), fees_30d<span class="op">=</span>fees.get(<span class="st">"total30d"</span>), revenue_30d<span class="op">=</span>rev.get(<span class="st">"total30d"</span>)))</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> pd.DataFrame(rows).set_index(<span class="st">"protocol"</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        cg <span class="op">=</span> _get(<span class="st">"https://api.coingecko.com/api/v3/simple/price?ids="</span> <span class="op">+</span> <span class="st">","</span>.join(slugs.values()) <span class="op">+</span> <span class="st">"&amp;vs_currencies=usd&amp;include_market_cap=true"</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        m[<span class="st">"price"</span>] <span class="op">=</span> [cg[c][<span class="st">"usd"</span>] <span class="cf">for</span> c <span class="kw">in</span> slugs.values()]</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        m[<span class="st">"market_cap"</span>] <span class="op">=</span> [cg[c][<span class="st">"usd_market_cap"</span>] <span class="cf">for</span> c <span class="kw">in</span> slugs.values()]</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        m[<span class="st">"source"</span>] <span class="op">=</span> <span class="st">"live "</span> <span class="op">+</span> stamp</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>        m.to_csv(snap)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"[live] DefiLlama + CoinGecko; snapshot saved to"</span>, snap)<span class="op">;</span> <span class="cf">return</span> m</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[warn] live fetch failed:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    snaps <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/protocol_metrics_*.csv"</span>))</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> snaps:</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> pd.read_csv(snaps[<span class="op">-</span><span class="dv">1</span>], index_col<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"[snapshot]"</span>, snaps[<span class="op">-</span><span class="dv">1</span>])<span class="op">;</span> <span class="cf">return</span> m</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] illustrative order-of-magnitude numbers, NOT real data — do not quote them."</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>        <span class="st">"tvl"</span>:         [<span class="fl">4.5e9</span>, <span class="fl">25e9</span>, <span class="fl">28e9</span>],</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"fees_30d"</span>:    [<span class="fl">80e6</span>, <span class="fl">55e6</span>, <span class="fl">90e6</span>],</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"revenue_30d"</span>: [<span class="fl">6e6</span>, <span class="fl">9e6</span>, <span class="fl">9e6</span>],</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">"price"</span>:       [<span class="fl">8.0</span>, <span class="fl">230.0</span>, <span class="fl">1.10</span>],</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>        <span class="st">"market_cap"</span>:  [<span class="fl">5.0e9</span>, <span class="fl">3.5e9</span>, <span class="fl">1.0e9</span>],</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    }, index<span class="op">=</span>pd.Index(<span class="bu">list</span>(slugs), name<span class="op">=</span><span class="st">"protocol"</span>))</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    m[<span class="st">"source"</span>] <span class="op">=</span> <span class="st">"SYNTHETIC"</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> m</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> load_protocol_metrics()</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK (bet 4).</strong> Three protocols, three business models: an exchange (Uniswap), a lender (Aave), a staking service (Lido). Before running: which has the highest <strong>annualised fees / TVL</strong>, and which the highest <strong>revenue / market cap</strong>? Write the two names.</p>
+<div id="91aea169" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> metrics.copy()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"fees_annual"</span>] <span class="op">=</span> m[<span class="st">"fees_30d"</span>] <span class="op">*</span> <span class="dv">12</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"revenue_annual"</span>] <span class="op">=</span> m[<span class="st">"revenue_30d"</span>] <span class="op">*</span> <span class="dv">12</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"fees / TVL"</span>] <span class="op">=</span> m[<span class="st">"fees_annual"</span>] <span class="op">/</span> m[<span class="st">"tvl"</span>]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"revenue / TVL"</span>] <span class="op">=</span> m[<span class="st">"revenue_annual"</span>] <span class="op">/</span> m[<span class="st">"tvl"</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"revenue / mcap"</span>] <span class="op">=</span> m[<span class="st">"revenue_annual"</span>] <span class="op">/</span> m[<span class="st">"market_cap"</span>]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"take rate (rev/fees)"</span>] <span class="op">=</span> m[<span class="st">"revenue_annual"</span>] <span class="op">/</span> m[<span class="st">"fees_annual"</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> m[[<span class="st">"tvl"</span>, <span class="st">"fees_annual"</span>, <span class="st">"revenue_annual"</span>, <span class="st">"market_cap"</span>, <span class="st">"fees / TVL"</span>, <span class="st">"revenue / TVL"</span>, <span class="st">"revenue / mcap"</span>, <span class="st">"take rate (rev/fees)"</span>]]</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>display(out.style.<span class="bu">format</span>({<span class="st">"tvl"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>, <span class="st">"fees_annual"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>, <span class="st">"revenue_annual"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>, <span class="st">"market_cap"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>,</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"fees / TVL"</span>: <span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>, <span class="st">"revenue / TVL"</span>: <span class="st">"</span><span class="sc">{:.2%}</span><span class="st">"</span>, <span class="st">"revenue / mcap"</span>: <span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>, <span class="st">"take rate (rev/fees)"</span>: <span class="st">"</span><span class="sc">{:.0%}</span><span class="st">"</span>}))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"source:"</span>, metrics[<span class="st">"source"</span>].iloc[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Read the ratios as a PM would read a SaaS dashboard: <strong>fees/TVL</strong> is asset turnover (how hard the capital works), <strong>take rate</strong> is what the protocol keeps of what users pay, <strong>revenue/mcap</strong> is the inverse of a price-to-sales multiple. An exchange turns its capital over daily; a lender or a staking service earns a spread on capital that sits. The ratios differ by an order of magnitude <em>because the businesses differ</em>, not because one is “better”.</p>
+<section id="tvl-concentration" class="level3">
+<h3 class="anchored" data-anchor-id="tvl-concentration">TVL concentration</h3>
+<p>How concentrated is DeFi? The whole protocol list from DefiLlama, or a labelled synthetic list.</p>
+<div id="68bacba0" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_tvl_table(cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    stamp <span class="op">=</span> dt.date.today().isoformat()<span class="op">;</span> snap <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/defillama_protocols_</span><span class="sc">{</span>stamp<span class="sc">}</span><span class="ss">.csv"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        js <span class="op">=</span> _get(<span class="st">"https://api.llama.fi/protocols"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        t <span class="op">=</span> pd.DataFrame([{<span class="st">"name"</span>: p[<span class="st">"name"</span>], <span class="st">"category"</span>: p.get(<span class="st">"category"</span>), <span class="st">"tvl"</span>: p.get(<span class="st">"tvl"</span>) <span class="kw">or</span> <span class="dv">0</span>} <span class="cf">for</span> p <span class="kw">in</span> js])</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        t <span class="op">=</span> t[t[<span class="st">"tvl"</span>] <span class="op">&gt;</span> <span class="dv">0</span>].sort_values(<span class="st">"tvl"</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        t.to_csv(snap, index<span class="op">=</span><span class="va">False</span>)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"[live] DefiLlama /protocols:"</span>, <span class="bu">len</span>(t), <span class="st">"protocols; snapshot"</span>, snap)<span class="op">;</span> <span class="cf">return</span> t, <span class="st">"live"</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[warn] DefiLlama /protocols failed:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    snaps <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/defillama_protocols_*.csv"</span>))</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> snaps:</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[snapshot]"</span>, snaps[<span class="op">-</span><span class="dv">1</span>])<span class="op">;</span> <span class="cf">return</span> pd.read_csv(snaps[<span class="op">-</span><span class="dv">1</span>]), <span class="st">"snapshot"</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] illustrative list, NOT real data."</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> pd.DataFrame({<span class="st">"name"</span>: [<span class="st">"Lido"</span>, <span class="st">"Aave"</span>, <span class="st">"EigenLayer"</span>, <span class="st">"ether.fi"</span>, <span class="st">"Sky"</span>, <span class="st">"Binance staked ETH"</span>, <span class="st">"Ethena"</span>, <span class="st">"Uniswap"</span>, <span class="st">"Morpho"</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Pendle"</span>, <span class="st">"Spark"</span>, <span class="st">"Rocket Pool"</span>, <span class="st">"Compound"</span>, <span class="st">"Curve"</span>, <span class="st">"Jito"</span>] <span class="op">+</span> [<span class="ss">f"protocol_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">16</span>, <span class="dv">216</span>)],</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"tvl"</span>: [<span class="fl">28e9</span>, <span class="fl">25e9</span>, <span class="fl">12e9</span>, <span class="fl">8e9</span>, <span class="fl">6e9</span>, <span class="fl">6e9</span>, <span class="fl">5e9</span>, <span class="fl">4.5e9</span>, <span class="fl">4e9</span>, <span class="fl">4e9</span>, <span class="fl">3e9</span>, <span class="fl">3e9</span>, <span class="fl">2.5e9</span>, <span class="fl">2e9</span>, <span class="fl">2e9</span>]</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>                             <span class="op">+</span> <span class="bu">list</span>(np.<span class="bu">round</span>(<span class="fl">1.5e9</span> <span class="op">*</span> <span class="fl">0.97</span> <span class="op">**</span> np.arange(<span class="dv">200</span>), <span class="dv">0</span>))})</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    t[<span class="st">"category"</span>] <span class="op">=</span> <span class="st">"n/a"</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t.sort_values(<span class="st">"tvl"</span>, ascending<span class="op">=</span><span class="va">False</span>).reset_index(drop<span class="op">=</span><span class="va">True</span>), <span class="st">"SYNTHETIC"</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>tvl_table, tvl_source <span class="op">=</span> load_tvl_table()</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> tvl_table[<span class="st">"tvl"</span>].<span class="bu">sum</span>()</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>share <span class="op">=</span> tvl_table[<span class="st">"tvl"</span>] <span class="op">/</span> total</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>hhi <span class="op">=</span> (share <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>()</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span>tvl_source<span class="sc">}</span><span class="ss">] </span><span class="sc">{</span><span class="bu">len</span>(tvl_table)<span class="sc">}</span><span class="ss"> protocols | total TVL </span><span class="sc">{</span>total<span class="op">/</span><span class="fl">1e9</span><span class="sc">:,.1f}</span><span class="ss">B | top-5 share </span><span class="sc">{</span>share<span class="sc">.</span>head(<span class="dv">5</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.1%}</span><span class="ss"> | top-10 share </span><span class="sc">{</span>share<span class="sc">.</span>head(<span class="dv">10</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.1%}</span><span class="ss"> | HHI </span><span class="sc">{</span>hhi<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>tvl_table.head(<span class="dv">10</span>).assign(share<span class="op">=</span>share.head(<span class="dv">10</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK (bet 5).</strong> You wrote a top-10 share before running. Now the interpretive question: DefiLlama counts the same ETH once in Lido (staked) and again in Aave if the stETH is deposited as collateral. Is the concentration you see over- or under-stated by that double counting? (Look for a <code>category</code> column: liquid staking and restaking are the layers most exposed to it.)</p>
+</section>
+<section id="reading-a-governance-proposal-with-the-llm-then-checking-it-against-the-source" class="level3">
+<h3 class="anchored" data-anchor-id="reading-a-governance-proposal-with-the-llm-then-checking-it-against-the-source">Reading a governance proposal with the LLM, then checking it against the source</h3>
+<p>Protocol parameters (collateral ratios, caps, fees) are changed by governance votes. The texts are long and full of numbers. An LLM summary is useful <strong>only</strong> with a mechanical check that every number in the summary exists in the source. <code>llm()</code> is mocked if no key; the mock deliberately contains one wrong number so the check has something to catch.</p>
+<div id="6f5f5cb2" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>proposal <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">AIP-412 — Risk parameter update for wstETH on Aave v3 Ethereum (Chaos Labs)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">Summary. We propose to increase the loan-to-value (LTV) of wstETH from 78.5% to 79.5% and the liquidation threshold</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">from 81% to 82%, reflecting deeper wstETH/ETH liquidity on-chain and lower realised volatility of the stETH/ETH rate</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">over the last 180 days. The liquidation bonus remains at 6%. We also propose raising the wstETH supply cap from 1.0M</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="st">to 1.2M wstETH, given current utilisation of 91</span><span class="sc">% o</span><span class="st">f the cap.</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="st">Risk analysis. The stETH/ETH secondary-market discount has stayed within 0.3</span><span class="sc">% f</span><span class="st">or 180 days. Under a 10</span><span class="sc">% E</span><span class="st">TH price</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="st">shock with a simultaneous 2</span><span class="sc">% s</span><span class="st">tETH discount, simulated bad debt is below 50k USD. The oracle remains the Chainlink</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">wstETH/ETH × ETH/USD feed. Recommended: ARFC forum discussion closes 13 November 2026; on-chain vote closes</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="st">20 November 2026.</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> llm(<span class="st">"Summarise this governance proposal in three sentences, keeping every parameter change with its old and new value.</span><span class="ch">\n\n</span><span class="st">"</span> <span class="op">+</span> proposal,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>              system<span class="op">=</span><span class="st">"You are a DeFi risk analyst. Be precise; never invent numbers."</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3cfb10bb" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numbers_in(text):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""All numeric tokens (with %, k, M) in a text, normalised as strings."""</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>(re.findall(<span class="vs">r"\d+(?:[.,]\d+)?"</span>, text))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>src, summ <span class="op">=</span> numbers_in(proposal), numbers_in(summary)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>unsupported <span class="op">=</span> <span class="bu">sorted</span>(summ <span class="op">-</span> src)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numbers in summary:"</span>, <span class="bu">sorted</span>(summ))</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"NOT in source (possible hallucination):"</span>, unsupported <span class="cf">if</span> unsupported <span class="cf">else</span> <span class="st">"none"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> {<span class="st">"79.5"</span>, <span class="st">"82"</span>, <span class="st">"6"</span>, <span class="st">"1.2"</span>} <span class="op">-</span> summ</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"parameter values missing from the summary:"</span>, <span class="bu">sorted</span>(missing) <span class="cf">if</span> missing <span class="cf">else</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> The check catches a number that is in the summary but not in the source. What does it <em>not</em> catch? (Two kinds of error survive it: a source number attached to the wrong parameter, and a correct number with the wrong direction — “from 80% to 78.5%”.) A number check is necessary, not sufficient — the same lesson as the RAG evals in week 4.</p>
+</section>
+</section>
+<section id="block-d-protocol-risk-canvas" class="level2">
+<h2 class="anchored" data-anchor-id="block-d-protocol-risk-canvas">Block D — Protocol risk canvas</h2>
+<p>Five lenses, one protocol. The table below is a template: fill it for <strong>one</strong> protocol from the metrics table above (or your capstone protocol). Each cell must be a sentence with a fact you can point to (a contract audit date, an oracle name, a governance quorum, a peg history), not an adjective.</p>
+<div id="63e70c4b" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>canvas <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lens"</span>:      [<span class="st">"smart-contract"</span>, <span class="st">"oracle"</span>, <span class="st">"governance"</span>, <span class="st">"depeg / collateral"</span>, <span class="st">"liquidity"</span>],</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"question"</span>:  [<span class="st">"Can the code lose the money? (audits, upgradeability, admin keys, bug history)"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Where does the protocol get prices from, and what happens if that source is wrong for 10 minutes?"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Who can change the parameters, how fast, and what is the quorum?"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"What backs the assets in the pool, and what breaks if the backing trades at a discount?"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"If 20</span><span class="sc">% o</span><span class="st">f TVL leaves today, does the protocol keep working?"</span>],</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"what I found"</span>: [<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>],</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"severity 1-5"</span>: [<span class="va">None</span>] <span class="op">*</span> <span class="dv">5</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"evidence (link / number)"</span>: [<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>],</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>canvas.set_index(<span class="st">"lens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Historical cases, one line each, are on the card; the exercise is to place each case in a row of this table. Every big DeFi loss fits one row — and most fit two, because an oracle failure is usually exploited through a lending contract, and a depeg becomes a liquidity crisis.</p>
+</section>
+<section id="block-e-mica-in-practice-regulation-slot" class="level2">
+<h2 class="anchored" data-anchor-id="block-e-mica-in-practice-regulation-slot">Block E — MiCA in practice (regulation slot)</h2>
+<p>Reading and prompts are in <code>notes.md</code>. Here, one structured LLM call classifies three assets under MiCA. The output is a <em>hypothesis</em>: check each line against the reading before accepting it. (Mocked without a key.)</p>
+<div id="93f53971" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>schema <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"object"</span>, <span class="st">"properties"</span>: {<span class="st">"classifications"</span>: {<span class="st">"type"</span>: <span class="st">"array"</span>, <span class="st">"items"</span>: {<span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"properties"</span>: {<span class="st">"asset"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}, <span class="st">"mica_category"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>, <span class="st">"enum"</span>: [<span class="st">"ART"</span>, <span class="st">"EMT"</span>, <span class="st">"other crypto-asset"</span>, <span class="st">"out of scope"</span>]},</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"reason"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}}, <span class="st">"required"</span>: [<span class="st">"asset"</span>, <span class="st">"mica_category"</span>, <span class="st">"reason"</span>]}}}, <span class="st">"required"</span>: [<span class="st">"classifications"</span>]}</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> llm(<span class="st">"Classify USDC, stETH and UNI under MiCA (Regulation (EU) 2023/1114): ART, EMT, other crypto-asset, or out of scope. One-line reason each."</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          system<span class="op">=</span><span class="st">"You are an EU financial-regulation analyst."</span>, json_schema<span class="op">=</span>schema)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(res[<span class="st">"classifications"</span>]).set_index(<span class="st">"asset"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> For each line: which MiCA article or definition supports the category? If you cannot name one from the reading, the classification is not yet yours. Then the harder question for stETH: is the <em>token</em> the regulated object, or is it the <em>service</em> (staking on behalf of clients) that a CASP would need authorisation for?</p>
+</section>
+<section id="take-home-write-three-lines" class="level2">
+<h2 class="anchored" data-anchor-id="take-home-write-three-lines">Take-home (write three lines)</h2>
+<p><em>Three things you did not know at 09:00 and now can compute. Then <code>File ▸ Save a copy in GitHub</code> → <code>week-08/session.ipynb</code>.</em></p>
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<p><strong>Homework brief</strong> → see <code>week-08/homework.md</code>.</p>
+<p><strong>Vocabulary you now own:</strong> ledger, wallet = key, transaction, block, gas, stablecoin (ART/EMT), smart contract, constant-product AMM, spot vs execution price, price impact, impermanent loss (vs holding), fee yield, TVL, fees vs revenue, take rate, concentration (HHI), oracle, governance, depeg, CASP.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>ESE Florence · Borgo Santi Apostoli 19, 50123 Firenze · Term 1, A.Y. 2026–2027</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Niccolò Salvini · <em>Visibilia ex Invisibilibus</em></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
