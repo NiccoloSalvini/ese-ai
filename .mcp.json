@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "moodle": {
-      "command": "uvx",
-      "args": ["--from", "git+https://github.com/NiccoloSalvini/mcp-moodle-teacher", "mcp-moodle-teacher"],
+      "command": "npx",
+      "args": ["-y", "github:NiccoloSalvini/mcp-moodle-teacher"],
       "env": {
         "MOODLE_URL": "${MOODLE_URL}",
         "MOODLE_TOKEN": "${MOODLE_TOKEN}"
