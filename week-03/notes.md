@@ -1,5 +1,5 @@
 # Week 3 — Machine learning through one problem; from prediction to decision
-**Monday 5 October 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 7 October 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,13 +12,13 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW2 walkthrough** | he presents |
-| 09:20–10:05 | **A. Features, targets, baselines** | talk + notebook A |
-| 10:05–10:15 | break | |
-| 10:15–11:00 | **B. Two models, two splits** | hands-on, notebook B |
-| 11:00–11:20 | **C. Leakage on purpose** | hands-on, notebook C |
-| 11:20–11:50 | **D. From prediction to decision** | hands-on, notebook D |
-| 11:50–12:00 | **Homework brief** | |
+| 10:00–10:20 | **HW2 walkthrough** | he presents |
+| 10:20–11:05 | **A. Features, targets, baselines** | talk + notebook A |
+| 11:05–11:15 | break | |
+| 11:15–12:00 | **B. Two models, two splits** | hands-on, notebook B |
+| 12:00–12:20 | **C. Leakage on purpose** | hands-on, notebook C |
+| 12:20–12:50 | **D. From prediction to decision** | hands-on, notebook D |
+| 12:50–13:00 | **Homework brief** | |
 
 ### HW2 walkthrough (20')
 Read the memo first, then the notebook. Two questions: was the calendar decision stated *before* the analysis, and does the chart title answer the memo? Then challenge the conclusion with the alternative explanation he should have written.
@@ -97,6 +97,6 @@ A probability is not a decision. Scenario: a treasury desk hedges BTC exposure w
 - Volatility clustering: large moves follow large moves; the reason vol is predictable while direction is not.
 
 ## Tutor's notes
-- Needs live yfinance data from 2018 for the point about volatility to appear. Confirm before Monday; commit the snapshot if the ESE network blocks Yahoo.
+- Needs live yfinance data from 2018 for the point about volatility to appear. Confirm before Wednesday; commit the snapshot if the ESE network blocks Yahoo.
 - If he is fast, extension: add the 10y yield change from week 2 as a feature and see whether it helps either target (it should not, much).
 - Keep gradient boosting a black box today; do not get pulled into hyperparameters.

@@ -1,5 +1,5 @@
 # Homework 7 — One strategy, every pitfall answered with evidence
-**Due: Sunday 15 November 2026, 23:59 · folder `week-07/hw/` in your repo**
+**Due: Tuesday 17 November 2026, 23:59 · folder `week-07/hw/` in your repo**
 
 ## Goal
 Backtest one trading rule honestly on at least two assets, with costs and a walk-forward, and — the real deliverable — answer the pitfall checklist with evidence from your own notebook. Then add one text-derived feature and show whether it earns its place. Everything is an educational simulation: no live trading, no advice.

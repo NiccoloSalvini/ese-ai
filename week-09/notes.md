@@ -1,5 +1,5 @@
 # Week 9 — Responsible AI applied to the capstone: explain, audit, red-team, control
-**Monday 23 November 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 25 November 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,12 +12,12 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW8 walkthrough** | he presents |
-| 09:20–10:10 | **A+B. Explainability and fairness** | whiteboard + notebook A, B |
-| 10:10–10:20 | break | |
-| 10:20–11:20 | **C. Red-team harness** | hands-on, notebook C |
-| 11:20–11:50 | **D. Privacy, dependence, oversight — the canvas** | whiteboard + notebook D |
-| 11:50–12:00 | **Homework brief** | |
+| 10:00–10:20 | **HW8 walkthrough** | he presents |
+| 10:20–11:10 | **A+B. Explainability and fairness** | whiteboard + notebook A, B |
+| 11:10–11:20 | break | |
+| 11:20–12:20 | **C. Red-team harness** | hands-on, notebook C |
+| 12:20–12:50 | **D. Privacy, dependence, oversight — the canvas** | whiteboard + notebook D |
+| 12:50–13:00 | **Homework brief** | |
 
 ### HW8 walkthrough (20')
 Two lines of code at random, as always. Then the two questions that matter for the protocol analysis: which number in the notebook came from the protocol's own API and which from a third party (Dune, DefiLlama), and what would change in the conclusion if the third party were wrong by 20%. This is the warm-up for block D (dependence) — say so only at the end.
@@ -187,9 +187,9 @@ Pipeline version tested: <commit hash or date> · Tester: <name> · Date: <date>
 ```
 
 ## Tutor's notes
-- **Live data.** Block A needs real BTC/SPY prices from 2018 for SHAP to rank a volatility feature first and for the test AUC to be above 0.5; on the synthetic fallback the ranking is driven by noise (`ret_21` first in the sandbox run, AUC ≈ 0.48). Run the notebook in Colab on Sunday and commit `data/prices_BTC-USD_SPY.csv` if Yahoo is blocked. Blocks B–D are seeded synthetic and identical everywhere.
+- **Live data.** Block A needs real BTC/SPY prices from 2018 for SHAP to rank a volatility feature first and for the test AUC to be above 0.5; on the synthetic fallback the ranking is driven by noise (`ret_21` first in the sandbox run, AUC ≈ 0.48). Run the notebook in Colab on Tuesday and commit `data/prices_BTC-USD_SPY.csv` if Yahoo is blocked. Blocks B–D are seeded synthetic and identical everywhere.
 - **Units check.** `pipeline_v2` refuses 8/8 on real prices and 7/8 on synthetic (the BTC/SPY ratio check cannot fire when both series start at 100). If synthetic is all you have, use it as the teaching point it is.
-- **Staleness check.** `validate_prices` refuses data older than 5 days. With a Friday snapshot on a Monday it passes; with an older snapshot it refuses the *reference* input — the harness now survives that and prints a warning. Decide in the room whether that is the check working.
+- **Staleness check.** `validate_prices` refuses data older than 5 days. With a Friday snapshot on a Wednesday it passes; with an older snapshot it refuses the *reference* input — the harness now survives that and prints a warning. Decide in the room whether that is the check working.
 - **API key.** C3 runs on the MOCK without `GEMINI_API_KEY` (T2 and T3 fail by design). If his key is set, run it twice and log both results in the template: that is the first row of his regression suite.
 - **`shap` install** takes ~1' in Colab; the pip cell is at the top for that reason. If the beeswarm errors on an older shap, replace `shap.plots.beeswarm(sv)` with `shap.summary_plot(sv.values, X_test)`.
 - **What to cut if behind:** D2 (dependence table) becomes homework; the per-group-threshold mitigation in B can be read rather than run. Do not cut C2 (leakage audit) — it is the one thing he cannot do as a PM and it goes into the capstone today.

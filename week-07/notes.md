@@ -1,5 +1,5 @@
 # Week 7 — AI in markets and trading: backtesting done honestly; LLM signals; model risk
-**Monday 9 November 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 11 November 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,13 +12,13 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **A. HW6 walkthrough + capstone sign-off** | he presents |
-| 09:20–10:00 | **B. Lab first: a backtest in six steps** | notebook B |
-| 10:00–10:40 | **C. The ways it goes wrong** | whiteboard + notebook C |
-| 10:40–10:50 | break | |
-| 10:50–11:30 | **D. An LLM signal, tested honestly** | notebook D |
-| 11:30–11:50 | **E. Model risk** | reading + discussion + notebook E |
-| 11:50–12:00 | **Homework brief** | |
+| 10:00–10:20 | **A. HW6 walkthrough + capstone sign-off** | he presents |
+| 10:20–11:00 | **B. Lab first: a backtest in six steps** | notebook B |
+| 11:00–11:40 | **C. The ways it goes wrong** | whiteboard + notebook C |
+| 11:40–11:50 | break | |
+| 11:50–12:30 | **D. An LLM signal, tested honestly** | notebook D |
+| 12:30–12:50 | **E. Model risk** | reading + discussion + notebook E |
+| 12:50–13:00 | **Homework brief** | |
 
 ### A. HW6 walkthrough and capstone sign-off (20')
 His screen. Two lines of `hw6.ipynb` chosen at random — he explains them. Then the proposal: one question, one dataset, one number that would change a decision. Did `data_check.ipynb` print `[live]` or `[snapshot]`? If it printed `[SYNTHETIC]` the proposal is not signed off; agree the fix and a date. Write the sign-off (or the single revision) at the bottom of his proposal file before opening anything else. Everything from Block B onwards will be reused on his capstone asset, so decide now which asset he replicates on today.
@@ -126,7 +126,7 @@ Reading first (5', silent, `## Reading — Model risk` below), then the three pr
 - Model risk: the loss from a model that is wrong, misused or drifting; managed by inventory, validation, monitoring, kill-switch.
 
 ## Tutor's notes
-- **Live data matters.** On the synthetic fallback all Sharpes sit near zero, momentum and buy-and-hold look alike, and the 200-rule scatter is pure noise (fine for C3, useless for B and C4). Confirm yfinance loads from 2018 for BTC-USD and SPY before Monday; commit `data/prices_BTC-USD_SPY.csv` if the ESE network blocks Yahoo. With the snapshot the bets in B and C4 have real answers.
+- **Live data matters.** On the synthetic fallback all Sharpes sit near zero, momentum and buy-and-hold look alike, and the 200-rule scatter is pure noise (fine for C3, useless for B and C4). Confirm yfinance loads from 2018 for BTC-USD and SPY before Wednesday; commit `data/prices_BTC-USD_SPY.csv` if the ESE network blocks Yahoo. With the snapshot the bets in B and C4 have real answers.
 - **API key.** Only the Gemini scorer in D needs `GEMINI_API_KEY`; without it the lexicon MOCK runs and prints a label. If the key works, show the correlation line and ask him why agreement is high (synthetic headlines are built from the lexicon's vocabulary — the honest caveat). Free-tier quota: one call of 40 headlines, nothing else.
 - **Bugs and bets.** Planted bugs: C1 only (two in one cell). Bets: 1 Sharpe before costs; 2 Sharpe after 10 bps; 3 count of Sharpe > 1 in-sample vs out-of-sample and the sign of the best pair OOS; 4 sentiment AUC gain > 0.02. Four written bets plus C1's directional guess — under the limit.
 - **If behind:** cut C4 (keep the by-year cell as homework), shorten D2 to the leaky-vs-honest table only. Never cut C1 or the reading.

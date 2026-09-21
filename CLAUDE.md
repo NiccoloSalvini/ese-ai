@@ -17,7 +17,7 @@ make clean
 
 No CI. The site is rendered on this machine and `_site/` is pushed to the
 `gh-pages` branch; GitHub Pages serves that branch. Same philosophy as
-`sbd_26_27`: fewer moving parts on a Monday at 08:50.
+`sbd_26_27`: fewer moving parts on a Wednesday at 09:50.
 
 ## Layout
 

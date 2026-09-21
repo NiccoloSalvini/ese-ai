@@ -1,5 +1,5 @@
 # Homework 8 — One protocol through three lenses
-**Due: Sunday 22 November 2026, 23:59 · folder `week-08/hw/` in your repo**
+**Due: Tuesday 24 November 2026, 23:59 · folder `week-08/hw/` in your repo**
 
 ## Goal
 Take one DeFi protocol and analyse it the way you would analyse a fintech before a partnership: as a business (what it sells, what it keeps), through its data (real, with a snapshot), and through its risks (the five-lens canvas). Finish with its MiCA classification and a justification you could defend to a compliance officer.

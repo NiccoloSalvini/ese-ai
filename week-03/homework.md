@@ -1,5 +1,5 @@
 # Homework 3 — A model, a baseline, and what would have to be true
-**Due: Sunday 11 October 2026, 23:59 · folder `week-03/hw/` in your repo**
+**Due: Tuesday 13 October 2026, 23:59 · folder `week-03/hw/` in your repo**
 
 ## Goal
 Build one supervised model on a financial question of your choice, evaluate it honestly against a baseline, and — the real deliverable — write what would have to be true for it to be useful in a decision.

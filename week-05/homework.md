@@ -1,5 +1,5 @@
 # Homework 5 — Minor case brief (40% of the final mark)
-**Due: Sunday 1 November 2026, 23:59 · folder `week-05/hw/` in your repo · Moodle submission of the same files · 8-minute presentation in session 6 (Monday 2 November)**
+**Due: Sunday 1 November 2026, 23:59 · folder `week-05/hw/` in your repo · Moodle submission of the same files · 8-minute presentation in session 6 (Wednesday 4 November)**
 
 ## Goal
 Treat the LLM system you built in weeks 4 and 5 — retrieval over financial documents, an agent with tools, and its evaluation — as a product, and write the brief that would let a team decide whether to build it. The system is the evidence; the brief is the deliverable. It is assessed on the repo and the presentation, not on a PDF.

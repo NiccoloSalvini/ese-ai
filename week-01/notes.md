@@ -1,5 +1,5 @@
 # Week 1 — How LLMs work, and how we will work
-**Monday 21 September 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 23 September 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,16 +12,16 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **A. Orientation and contract** | talk |
-| 09:20–10:10 | **B. LLMs at a working level** | talk + notebook B1–B5 |
-| 10:10–10:20 | break | |
-| 10:20–11:40 | **C. First data notebook** | hands-on, notebook C |
-| 11:40–12:00 | **D. Prompting that matters; homework brief** | discussion |
+| 10:00–10:20 | **A. Orientation and contract** | talk |
+| 10:20–11:10 | **B. LLMs at a working level** | talk + notebook B1–B5 |
+| 11:10–11:20 | break | |
+| 11:20–12:40 | **C. First data notebook** | hands-on, notebook C |
+| 12:40–13:00 | **D. Prompting that matters; homework brief** | discussion |
 
 ### A. Orientation and contract (20')
 State the deal explicitly, once:
 - This is a lab. He will write code from today, with an assistant; he does not need to know Python, he needs to be able to judge what the assistant produces. Every session contains something he cannot already do as a PM.
-- Rhythm: Monday 9–12; homework published Tuesday; due Sunday 23:59 in the repo; first 20 minutes of every Monday are his walkthrough of the homework.
+- Rhythm: Wednesday 10–13; homework published Thursday; due Tuesday 23:59 in the repo; first 20 minutes of every Wednesday are his walkthrough of the homework.
 - Assessment: minor case brief 40% (after session 5, presented session 6), portfolio 60% (revision week). Both assessed on the repo.
 - Tools: Colab, GitHub, one chat assistant of his choice, Gemini API key (free tier) from week 4.
 - Rule of the course: *anything an AI produced and you submit, you must be able to explain line by line.*
@@ -112,6 +112,6 @@ Run the three prompts of block D in his assistant, side by side. Draw out: role 
 - Tool use / agent: the model requests an action; your code performs it; the result re-enters the context; repeat.
 
 ## Tutor's notes
-- The notebooks fall back to synthetic data when Yahoo is unreachable. Run the notebook once in Colab before Monday to confirm live data works from the ESE network; if it does not, run it at home and commit the `data/prices_*.csv` snapshot to the repo so the session runs on the snapshot.
+- The notebooks fall back to synthetic data when Yahoo is unreachable. Run the notebook once in Colab before Wednesday to confirm live data works from the ESE network; if it does not, run it at home and commit the `data/prices_*.csv` snapshot to the repo so the session runs on the snapshot.
 - Tokenizer: `tiktoken` downloads its encoding on first use; needs network. Fallback is built in.
 - Keep block B to 50 minutes. The temptation is to lecture; the value is in C.

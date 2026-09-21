@@ -1,5 +1,5 @@
 # Week 5 — LLM applications II: agents and tool use; evals; the product lens
-**Monday 19 October 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 21 October 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,12 +12,12 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW4 walkthrough** | he presents |
-| 09:20–10:00 | **A. Agents = LLM + tools + loop** | whiteboard + notebook A |
-| 10:00–10:15 | break | |
-| 10:15–11:15 | **B. Lab: research analyst agent, then its evals** | hands-on, notebook B |
-| 11:15–11:50 | **C. The product lens** | cards + notebook C |
-| 11:50–12:00 | **Minor case brief** | |
+| 10:00–10:20 | **HW4 walkthrough** | he presents |
+| 10:20–11:00 | **A. Agents = LLM + tools + loop** | whiteboard + notebook A |
+| 11:00–11:15 | break | |
+| 11:15–12:15 | **B. Lab: research analyst agent, then its evals** | hands-on, notebook B |
+| 12:15–12:50 | **C. The product lens** | cards + notebook C |
+| 12:50–13:00 | **Minor case brief** | |
 
 ### HW4 walkthrough (20')
 Open his `hw4.ipynb` and the ten test questions. Pick two lines at random (one in the chunker, one in the retrieval) and ask what they do. Then the two questions that matter for today: of the misses, how many were retrieval misses and how many were generation misses — did he separate them? And: is there any test question whose expected answer he took *from the RAG* rather than from the document? If so, that eval tested nothing; that is the theme of block B, so leave it hanging.
@@ -103,8 +103,8 @@ C2 unit economics. **Bet 5** on the cost of 1,000 queries a day. Run: with a sma
 - Unit economics of inference: tokens per query × price × volume, against value per query — the last term is the one no notebook produces.
 
 ## Tutor's notes
-- **Live data.** `load_prices` needs yfinance for BTC-USD, ETH-USD, AAPL, SPY from 2023. Run the notebook in Colab on Sunday; if the ESE network blocks Yahoo, commit `data/prices_BTC-USD_ETH-USD_AAPL_SPY.csv`. The synthetic fallback runs everything but the numbers are meaningless — the drawdown/90-day story does not depend on real data, so the session survives it; the "with numbers" framing is weaker.
-- **API key.** With `GEMINI_API_KEY` in Colab Secrets, A3, A5, B3 and B4 use Gemini function calling; without it, the `[MOCK]` planner and judge. The mock is deterministic and produces exactly the planted outcomes (loop to 8, injection followed, 7/10 → 8/10 with +3 −2). With a live model the counts will differ: a good model may find drawdown on its own in v1, may refuse the injection, may pass 9/10 in v1. **Run the live path on Sunday and rewrite Bets 3–4 with the actual numbers**; if the live model makes the B5 regression story vanish, use the mock for B4–B5 (set `client = None` in the wrapper cell) and say why. Free-tier rate limits: the two `run_eval` calls make ~30–40 model calls each including the judge; if throttled, cut `GOLDEN` to the first six plus q09–q10.
+- **Live data.** `load_prices` needs yfinance for BTC-USD, ETH-USD, AAPL, SPY from 2023. Run the notebook in Colab on Tuesday; if the ESE network blocks Yahoo, commit `data/prices_BTC-USD_ETH-USD_AAPL_SPY.csv`. The synthetic fallback runs everything but the numbers are meaningless — the drawdown/90-day story does not depend on real data, so the session survives it; the "with numbers" framing is weaker.
+- **API key.** With `GEMINI_API_KEY` in Colab Secrets, A3, A5, B3 and B4 use Gemini function calling; without it, the `[MOCK]` planner and judge. The mock is deterministic and produces exactly the planted outcomes (loop to 8, injection followed, 7/10 → 8/10 with +3 −2). With a live model the counts will differ: a good model may find drawdown on its own in v1, may refuse the injection, may pass 9/10 in v1. **Run the live path on Tuesday and rewrite Bets 3–4 with the actual numbers**; if the live model makes the B5 regression story vanish, use the mock for B4–B5 (set `client = None` in the wrapper cell) and say why. Free-tier rate limits: the two `run_eval` calls make ~30–40 model calls each including the judge; if throttled, cut `GOLDEN` to the first six plus q09–q10.
 - **Costs shown are illustrative.** `PRICE_PER_1M` is a placeholder; check the provider's price page on the day and change the constant in front of him.
 - **If behind:** cut A2 (spec cell, one sentence suffices), the second injection run, and the B5 tool fix. Never cut the two 🔍 CHECKs or the regression table. If far behind, C2 becomes a two-minute reading of the table, and the brief skeleton moves to the homework discussion.
 - **Energy.** Block B is sixty minutes of hands-on right after the break, deliberately; C is cards and conversation. If he is flagging at 11:15, do C standing at the whiteboard with [card 6] and skip straight to Bet 5.

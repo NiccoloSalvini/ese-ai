@@ -1,5 +1,5 @@
 # Homework 6 — Capstone proposal and data check
-**Due: Sunday 8 November 2026, 23:59 · folder `week-06/hw/` in your repo**
+**Due: Tuesday 10 November 2026, 23:59 · folder `week-06/hw/` in your repo**
 
 ## Goal
 Commit to a capstone question, write it as a one-page proposal in the template from the session, and prove the data exists by loading it: shape, date range, missing values, a dated snapshot. The proposal is the argument; the data check is what makes it a proposal instead of a wish.
@@ -16,7 +16,7 @@ Commit to a capstone question, write it as a one-page proposal in the template f
    - **Method** — in the toolkit's words (time-ordered validation, threshold on costs, walk-forward backtest with costs, RAG/extraction with evals, AMM/lending simulation, SHAP); the baseline you must beat.
    - **Deliverable** — notebook pipeline, ~2,000-word decision memo, risk and controls canvas, roadmap, 15' presentation — and what is specific to your question in each.
    - **Risk** — the most likely way it fails, and what you deliver if it does (a well-evidenced negative is a deliverable).
-   - **Weekly plan** — a table, weeks 7–10, one row per weekend: the file that exists on Sunday night. No row may say "explore".
+   - **Weekly plan** — a table, weeks 7–10, one row per weekend: the file that exists on Tuesday night. No row may say "explore".
    - **AI-use disclosure** — which parts the assistant drafted, which parts you rewrote.
 2. `data_check.ipynb` — runs from a clean runtime and, for **every** data source in the proposal:
    - loads it with the three-tier pattern (live → snapshot in `data/` → synthetic, clearly labelled);
@@ -27,7 +27,7 @@ Commit to a capstone question, write it as a one-page proposal in the template f
 ## Constraints
 - The question must be answerable with data you have already loaded. "I will find the data in week 7" fails the check.
 - Every method named in the proposal must be one taught by week 9 or shown in the toolkit list. No new libraries as the plan.
-- If the assistant proposes a question you would not defend in front of your last employer, rewrite it. I will ask you to defend it on Monday.
+- If the assistant proposes a question you would not defend in front of your last employer, rewrite it. I will ask you to defend it on Wednesday.
 - Nothing confidential from previous employers as data or as the case.
 
 ## Scope

@@ -1,5 +1,5 @@
 # Week 2 — Data analysis with AI as pair programmer
-**Monday 28 September 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 30 September 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,12 +12,12 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW1 walkthrough** | he presents, tutor questions |
-| 09:20–10:00 | **A. pandas by doing** | hands-on, notebook A |
-| 10:00–10:10 | break | |
-| 10:10–11:00 | **B. Join with external series** | hands-on, notebook B |
-| 11:00–11:35 | **C. Charts that answer a question; rolling statistics** | hands-on, notebook C |
-| 11:35–12:00 | **D. Reproducibility and privacy; homework brief** | talk |
+| 10:00–10:20 | **HW1 walkthrough** | he presents, tutor questions |
+| 10:20–11:00 | **A. pandas by doing** | hands-on, notebook A |
+| 11:00–11:10 | break | |
+| 11:10–12:00 | **B. Join with external series** | hands-on, notebook B |
+| 12:00–12:35 | **C. Charts that answer a question; rolling statistics** | hands-on, notebook C |
+| 12:35–13:00 | **D. Reproducibility and privacy; homework brief** | talk |
 
 ### HW1 walkthrough (20')
 He opens his notebook and README; tutor picks two lines of code at random and asks what they do. Then: was the "what the assistant got wrong" error real and the check real? If the check was "I looked at it and it seemed fine", push: what number would have been different if the code were wrong?
@@ -74,7 +74,7 @@ Snapshot the merged data with a date in the filename; `pip freeze` the four libr
 
 ### D. Reproducibility and privacy
 **Opening:** "Which of your past projects could you have pasted into a chatbot, and which not? Be specific." [card 5]
-**Closing:** "Snapshot with a date, seed, four pinned libraries. The memo you write for homework must be re-runnable by me on Sunday night."
+**Closing:** "Snapshot with a date, seed, four pinned libraries. The memo you write for homework must be re-runnable by me on Tuesday night."
 **Take-home:** "Three lines. Commit."
 
 ## Key concepts, in one line each

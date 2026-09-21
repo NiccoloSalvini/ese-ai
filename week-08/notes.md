@@ -1,5 +1,5 @@
 # Week 8 — Digital assets, on-chain data and DeFi; MiCA/ESMA
-**Monday 16 November 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 18 November 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -13,12 +13,12 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW7 walkthrough** | he presents |
-| 09:20–10:00 | **A. Ledger to pool** | whiteboard + bets |
-| 10:00–10:50 | **B. Lab 1: constant-product pool** | hands-on, notebook B |
-| 10:50–11:00 | break | |
-| 11:00–11:30 | **C. Lab 2: protocol data + LLM summary** | hands-on, notebook C |
-| 11:30–12:00 | **D. Protocol risk lenses** (canvas, 20') → **E. MiCA/ESMA reading** (30' incl. prompts) → **Homework brief** | canvas + reading |
+| 10:00–10:20 | **HW7 walkthrough** | he presents |
+| 10:20–11:00 | **A. Ledger to pool** | whiteboard + bets |
+| 11:00–11:50 | **B. Lab 1: constant-product pool** | hands-on, notebook B |
+| 11:50–12:00 | break | |
+| 12:00–12:30 | **C. Lab 2: protocol data + LLM summary** | hands-on, notebook C |
+| 12:30–13:00 | **D. Protocol risk lenses** (canvas, 20') → **E. MiCA/ESMA reading** (30' incl. prompts) → **Homework brief** | canvas + reading |
 
 *The plan compresses D+E+brief into the last 30' on paper; in practice Lab 2 must end by 11:25 and D takes 15', E takes 20' with the reading assigned as pre-read on Friday (see Tutor's notes). If the reading was not done, E becomes the homework's first step and D gets the time.*
 
@@ -117,7 +117,7 @@ Reading is at the end of this file (`## Reading — MiCA and ESMA`); ideally pre
 - MiCA: ART / EMT / other crypto-asset; CASP authorisation for services; ESMA and EBA guidelines and the transitional period.
 
 ## Tutor's notes
-- **Live data:** `load_prices(["ETH-USD"])` (yfinance), DefiLlama (`api.llama.fi/tvl`, `/summary/fees`, `/protocols`) and CoinGecko `simple/price`. All three degrade to snapshot then labelled SYNTHETIC. Run the notebook on Friday on the ESE network and commit `data/` so the snapshot tier works on Monday if Yahoo or CoinGecko rate-limit (CoinGecko free tier can 429 — the loader treats it as a failure and falls to snapshot).
+- **Live data:** `load_prices(["ETH-USD"])` (yfinance), DefiLlama (`api.llama.fi/tvl`, `/summary/fees`, `/protocols`) and CoinGecko `simple/price`. All three degrade to snapshot then labelled SYNTHETIC. Run the notebook on Friday on the ESE network and commit `data/` so the snapshot tier works on Wednesday if Yahoo or CoinGecko rate-limit (CoinGecko free tier can 429 — the loader treats it as a failure and falls to snapshot).
 - **API key:** `llm()` needs `GEMINI_API_KEY` in Colab Secrets; without it the mock summary has the planted 80%/79.5% error, which is actually the better teaching case. With a live key, if the check catches nothing, use the "what would it not catch" question.
 - **Synthetic fallback caveat:** the real-path LP chart on a random walk has no story; the fee-line crossing depends only on `vol_over_tvl`. The bet-4 answer on synthetic data (Uniswap on fees/TVL, Aave on revenue/mcap) is illustrative only — say so before he compares with his bet.
 - **Cut if behind:** the real-path LP cell (keep the table), the TVL concentration cell (keep bet 5 as a discussion), and the notebook MiCA classification cell (do it verbally with the reading). Never cut the two planted bugs or bets 1–2.

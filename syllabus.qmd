@@ -5,13 +5,13 @@ toc-depth: 3
 ---
 
 ::: {.callout-note appearance="simple"}
-This is the web version of the course design document. The original is available as [Word document](syllabus/ESE_AI_FinTech_Course_Design_v2.docx). Readings may be updated before and during the course; the student is informed in writing.
+This is the web version of the course design document. The original is available as [Word document](syllabus/ESE_AI_FinTech_Course_Design_v2.docx); it still shows the Monday slot proposed in September. The timetable agreed with ESE is **Wednesdays 10:00–13:00 from 23 September**, and the dates on this page and on the [schedule](index.qmd) are the agreed ones. Readings may be updated before and during the course; the student is informed in writing.
 :::
 
 | **Course status** | Non-credit ESE Short Course; ESE Certificate on successful completion |
 |----|----|
-| **Term / dates** | Term 1, AY 2026–27. Teaching 21 September – 30 November 2026 (10 sessions). Reading Week 26 Oct – 1 Nov (no class). Final presentation in Revision Week, 7–13 December 2026. |
-| **Contact hours** | 30 hours — one 3-hour session per week, Mondays 09:00–12:00, in person (ESE Florence) |
+| **Term / dates** | Term 1, AY 2026–27. Teaching 23 September – 2 December 2026 (10 sessions). Reading Week 26 Oct – 1 Nov (no class). Final presentation in Revision Week, 7–13 December 2026. |
+| **Contact hours** | 30 hours — one 3-hour session per week, Wednesdays 10:00–13:00, in person (ESE Florence) |
 | **Module leader** | Niccolò Salvini |
 | **Format** | One-to-one tutorial and lab. Every session combines a short conceptual block with hands-on building in Python (Google Colab) using AI coding assistants. |
 | **Language** | English |
@@ -67,13 +67,13 @@ On successful completion the student will be able to:
 
 ## Teaching method and weekly rhythm
 
-Every Monday session follows the same shape: 20 minutes reviewing the previous homework together (the student walks the tutor through the notebook), roughly 50 minutes of concepts, about 90 minutes of lab work in Colab with the tutor at the student's side, and 20 minutes to brief the next homework. The tutor demonstrates, then the student does the same thing on different data. The AI assistant is used openly and constantly; the skill being taught is how to direct it, read its output and catch its errors.
+Every Wednesday session follows the same shape: 20 minutes reviewing the previous homework together (the student walks the tutor through the notebook), roughly 50 minutes of concepts, about 90 minutes of lab work in Colab with the tutor at the student's side, and 20 minutes to brief the next homework. The tutor demonstrates, then the student does the same thing on different data. The AI assistant is used openly and constantly; the skill being taught is how to direct it, read its output and catch its errors.
 
-Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 so it can open the following session. Each piece of homework is a folder in the student's course repository; the artefacts accumulate into the capstone rather than being discarded. Homework is formative (reviewed and discussed, not marked) but completion of all weekly work is a condition for certification.
+Homework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59 so it can open the following session. Each piece of homework is a folder in the student's course repository; the artefacts accumulate into the capstone rather than being discarded. Homework is formative (reviewed and discussed, not marked) but completion of all weekly work is a condition for certification.
 
 ## Session plan
 
-### Session 1 — Mon 21 Sep — How LLMs work, and how we will work
+### Session 1 — Wed 23 Sep — How LLMs work, and how we will work
 
 | **0:00–0:20** | Orientation: course contract, tools, repository, weekly rhythm, assessment. |
 |----|----|
@@ -83,7 +83,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW1 — Notebook with three assets (one equity, one cryptocurrency, one index): daily returns, summary statistics, one chart that answers a question. Plus a 200-word note describing one thing the assistant got wrong and how you caught it.
 
-### Session 2 — Mon 28 Sep — Data analysis with AI as pair programmer
+### Session 2 — Wed 30 Sep — Data analysis with AI as pair programmer
 
 | **0:00–0:20** | HW1 review. |
 |----|----|
@@ -93,7 +93,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW2 — Exploratory analysis memo: one question ("does X co-move with Y?", "what happened to Z around event E?"), a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.
 
-### Session 3 — Mon 5 Oct — Machine learning through one problem; from prediction to decision
+### Session 3 — Wed 7 Oct — Machine learning through one problem; from prediction to decision
 
 | **0:00–0:20** | HW2 review. |
 |----|----|
@@ -103,7 +103,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW3 — Model vs baseline with honest, time-aware evaluation, and a section titled "What would have to be true for this to be useful" (decision rule, KPI, cost of errors).
 
-### Session 4 — Mon 12 Oct — LLM applications I — API, structured output, retrieval (RAG)
+### Session 4 — Wed 14 Oct — LLM applications I — API, structured output, retrieval (RAG)
 
 | **0:00–0:20** | HW3 review. |
 |----|----|
@@ -113,7 +113,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW4 — Extend the RAG system with a corpus of your choice; write 10 test questions with expected answers; record hits and misses and explain the misses.
 
-### Session 5 — Mon 19 Oct — LLM applications II — agents, tool use, evaluation; the product lens
+### Session 5 — Wed 21 Oct — LLM applications II — agents, tool use, evaluation; the product lens
 
 | **0:00–0:20** | HW4 review. |
 |----|----|
@@ -128,7 +128,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 |  | Independent work on the Minor Applied Case Brief. One optional 45-minute online office hour. |
 |----|----|
 
-### Session 6 — Mon 2 Nov — Minor presentation; fintech landscape; capstone scoping
+### Session 6 — Wed 4 Nov — Minor presentation; fintech landscape; capstone scoping
 
 | **0:00–0:45** | Minor Applied Case presentation, questions, written feedback. |
 |----|----|
@@ -137,7 +137,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW6 — Capstone proposal (one page): question, data sources, method, deliverable, risks, week-by-week plan.
 
-### Session 7 — Mon 9 Nov — AI in markets and trading — backtesting done honestly
+### Session 7 — Wed 11 Nov — AI in markets and trading — backtesting done honestly
 
 | **0:00–0:20** | HW6 review and proposal sign-off. |
 |----|----|
@@ -147,7 +147,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW7 — Backtest of one strategy with costs and walk-forward validation, a completed pitfall checklist, and one LLM-derived feature tested against the baseline. No live trading; educational simulation only.
 
-### Session 8 — Mon 16 Nov — Digital assets, on-chain data and DeFi
+### Session 8 — Wed 18 Nov — Digital assets, on-chain data and DeFi
 
 | **0:00–0:20** | HW7 review. |
 |----|----|
@@ -157,7 +157,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW8 — Protocol analysis through business-model, data and risk lenses, with at least one quantitative element (LP simulation, TVL/fee analysis or token-flow analysis).
 
-### Session 9 — Mon 23 Nov — Responsible AI applied to the capstone; red-team
+### Session 9 — Wed 25 Nov — Responsible AI applied to the capstone; red-team
 
 | **0:00–0:20** | HW8 review. |
 |----|----|
@@ -167,7 +167,7 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 
 **Homework:** HW9 — Near-final capstone prototype with a completed risk and controls canvas and a log of what the red-team found and how it was fixed.
 
-### Session 10 — Mon 30 Nov — Implementation, operating model and capstone studio
+### Session 10 — Wed 2 Dec — Implementation, operating model and capstone studio
 
 | **0:00–0:20** | HW9 review. |
 |----|----|
@@ -175,13 +175,13 @@ Homework is set every week, requires 4–6 hours, and is due on Sunday at 23:59 
 | **1:10–2:40** | Studio: finalise the prototype and roadmap; rehearse the final presentation. |
 | **2:40–3:00** | Course wrap-up and reflection. |
 
-**Homework:** Final AI Strategy and Prototype Portfolio (60%) due Sunday 6 December. Final oral presentation in Revision Week (proposed Monday 7 December, 09:00; 8 December is a holiday).
+**Homework:** Final AI Strategy and Prototype Portfolio (60%) due Sunday 6 December. Final oral presentation in Revision Week (proposed Wednesday 9 December, 10:00; 8 December is a holiday).
 
 ## Assessment
 
 | **Assessment** | **Weight** | **Specification** | **Timing** |
 |----|----|----|----|
-| **Minor Applied Case Brief** | 40% | Individual 1,500-word brief plus 8-minute presentation. The LLM application built in weeks 4–5 is treated as a product: problem, users, evidence from evaluation, risks, controls, success metrics. The working notebook is submitted with the brief. | Brief due Sun 1 Nov (Reading Week). Presentation Mon 2 Nov. |
+| **Minor Applied Case Brief** | 40% | Individual 1,500-word brief plus 8-minute presentation. The LLM application built in weeks 4–5 is treated as a product: problem, users, evidence from evaluation, risks, controls, success metrics. The working notebook is submitted with the brief. | Brief due Sun 1 Nov (Reading Week). Presentation Wed 4 Nov. |
 | **Final AI Strategy and Prototype Portfolio** | 60% | Individual capstone: decision memo (2,000 words), a working prototype or reproducible workflow in the course repository, evidence of testing and evaluation, risk and controls canvas, implementation roadmap. Topic in fintech, market analytics, digital assets/DeFi or another approved business context. | Portfolio due Sun 6 Dec. Oral presentation in Revision Week (7–13 Dec). |
 
 ### Marking criteria
@@ -206,14 +206,14 @@ AI tools are not only permitted but expected. Every submission discloses which t
 
 | **Channel** | **Purpose** |
 |----|----|
-| **GitHub** | Single source of truth. The course repository ([NiccoloSalvini/ese-ai](https://github.com/NiccoloSalvini/ese-ai), mirrored on this site) holds one folder per week with the session notebook, the concept cards and the homework. The student's private repository `ese-ai-fintech` holds `week-NN/hw/` and `capstone/`. Homework is pushed by Sunday 23:59. |
+| **GitHub** | Single source of truth. The course repository ([NiccoloSalvini/ese-ai](https://github.com/NiccoloSalvini/ese-ai), mirrored on this site) holds one folder per week with the session notebook, the concept cards and the homework. The student's private repository `ese-ai-fintech` holds `week-NN/hw/` and `capstone/`. Homework is pushed by Tuesday 23:59. |
 | **Google Colab** | Runtime for all code. API keys stored in Colab Secrets, never in notebooks. Free tier is sufficient for the whole course. |
 | **Moodle** | Official mirror once available: syllabus, one section per week linking here, submission points and written feedback for the two formal assessments, grades. |
 | **Telegram (or WhatsApp)** | Quick questions between sessions, office-hour scheduling, links. Not for deliverables. |
 | **LLM access** | Google AI Studio API key (free tier) for all API work in Colab, with OpenAI-compatible code so it ports to other providers. The student's own chat subscription (ChatGPT, Claude or Gemini) for day-to-day assistance. Optional: a small OpenAI/Anthropic API budget for comparison in weeks 4–5. |
 | **Data** | yfinance, CoinGecko, FRED, DefiLlama, Etherscan and Dune (free tiers); SEC EDGAR for filings; protocol whitepapers and governance forums. |
 
-Weekly cycle: Monday lesson; notes and homework published on GitHub and Moodle by Tuesday; homework due Sunday 23:59; reviewed together at the start of the following Monday.
+Weekly cycle: Wednesday lesson; notes and homework published on GitHub and Moodle by Thursday; homework due Tuesday 23:59; reviewed together at the start of the following Wednesday.
 
 ## Core and recommended resources
 

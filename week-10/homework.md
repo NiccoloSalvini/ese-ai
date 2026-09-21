@@ -1,6 +1,6 @@
 # Portfolio (60%) — Capstone brief
 **Due: Sunday 6 December 2026, 23:59 · folder `capstone/` in your repo, link posted on Moodle**
-**Final presentation: Monday 7 December 2026, 09:00 (proposed), ESE Florence, 15 minutes + questions**
+**Final presentation: Wednesday 9 December 2026, 10:00 (proposed), ESE Florence, 15 minutes + questions**
 
 ## Goal
 Deliver the AI pipeline you have been building since week 6 as one reproducible repository, and make the case — with numbers — for whether, how and at what cost it should be run for a real decision in finance. The portfolio is assessed on the content of the repo (notebooks, commits, markdown), not on PDFs or slides.
@@ -30,7 +30,7 @@ Your capstone as proposed in week 6 and prototyped in week 9: a pipeline that ta
    - **AI-use disclosure** (see below).
 3. **Risk & controls canvas** — `capstone/canvas.md`: the week-9 canvas, current. Every red-team finding from HW9 appears with a status (open / mitigated / accepted) and, if mitigated, the cell or control that does it.
 4. **Roadmap** — `capstone/roadmap.md`: 30/60/90 days, one table with scope, gate criteria that can fail, KPI, rollback, owner. Each gate criterion names the notebook cell that produces its number. Add the readiness table from week 10 with your scores and the gates it generated.
-5. **Presentation** — 15 minutes on Monday 7 December, from your laptop, following the six-beat storyline in `week-10/notes.md` (decision → pipeline → honest result → cost → what could go wrong → what would have to be true). No slide deck is required; a notebook, the memo and `cards.md`-style pages are all acceptable. Whatever you show must be in the repo by the deadline.
+5. **Presentation** — 15 minutes on Wednesday 9 December, from your laptop, following the six-beat storyline in `week-10/notes.md` (decision → pipeline → honest result → cost → what could go wrong → what would have to be true). No slide deck is required; a notebook, the memo and `cards.md`-style pages are all acceptable. Whatever you show must be in the repo by the deadline.
 
 Also in `capstone/`: `README.md` (what it is, how to run it in Colab in five lines, which cells need the key, snapshot dates) and `data/` with dated snapshots small enough to commit.
 
@@ -58,10 +58,10 @@ Your notebook is reproducible if a person who has never seen it, given only the 
 3. obtains the same numbers as in your memo for every non-LLM figure (returns, scores, costs, thresholds), and the same numbers up to the provider's stated nondeterminism for LLM figures — with the snapshot tier, not the live one;
 4. can find, from the file names alone, the date of every snapshot and the version of every prompt.
 
-The tutor will do exactly this on 7 December before the presentation.
+The tutor will do exactly this on 9 December before the presentation.
 
 ## AI-use disclosure
-Assistants are allowed and expected. The disclosure in `memo.md` states, specifically: which assistants you used and for which parts (code, text, debugging, ideas); which parts you wrote without assistance; at least three things the assistant got wrong that you caught, with the cell or paragraph where it happened; and a sentence confirming that no confidential data from any employer was given to an AI tool. A disclosure that says "I used ChatGPT for help" is incomplete. Every line in the repo must be one you can explain; the tutor will pick lines at random on 7 December.
+Assistants are allowed and expected. The disclosure in `memo.md` states, specifically: which assistants you used and for which parts (code, text, debugging, ideas); which parts you wrote without assistance; at least three things the assistant got wrong that you caught, with the cell or paragraph where it happened; and a sentence confirming that no confidential data from any employer was given to an AI tool. A disclosure that says "I used ChatGPT for help" is incomplete. Every line in the repo must be one you can explain; the tutor will pick lines at random on 9 December.
 
 ## Constraints
 - No shuffled split, no evaluation without a baseline, no cost figure without tokens in and out shown separately.

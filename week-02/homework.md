@@ -1,5 +1,5 @@
 # Homework 2 — One question, one dataset, one memo
-**Due: Sunday 4 October 2026, 23:59 · folder `week-02/hw/` in your repo**
+**Due: Tuesday 6 October 2026, 23:59 · folder `week-02/hw/` in your repo**
 
 ## Goal
 Answer one empirical question about a financial asset by joining market data with at least one external series, and write it up the way you would for a manager who has ten minutes.

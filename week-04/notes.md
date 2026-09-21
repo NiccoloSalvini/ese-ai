@@ -1,5 +1,5 @@
 # Week 4 — LLM applications I: API, structured output, embeddings, RAG · EU AI Act
-**Monday 12 October 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 14 October 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,13 +12,13 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW3 walkthrough** | he presents |
-| 09:20–10:00 | **A. Calling a model from Python** | whiteboard + notebook A |
-| 10:00–10:45 | **B (1). Lab: corpus, chunking, the first planted bug** | hands-on, notebook B1–B2 |
-| 10:45–10:55 | break | |
-| 10:55–11:20 | **B (2). Lab: embeddings, retrieval, generation, the second bug, test set, cost** | hands-on, notebook B3–B6 |
-| 11:20–11:50 | **C. EU AI Act** | reading + whiteboard discussion |
-| 11:50–12:00 | **Homework brief** | |
+| 10:00–10:20 | **HW3 walkthrough** | he presents |
+| 10:20–11:00 | **A. Calling a model from Python** | whiteboard + notebook A |
+| 11:00–11:45 | **B (1). Lab: corpus, chunking, the first planted bug** | hands-on, notebook B1–B2 |
+| 11:45–11:55 | break | |
+| 11:55–12:20 | **B (2). Lab: embeddings, retrieval, generation, the second bug, test set, cost** | hands-on, notebook B3–B6 |
+| 12:20–12:50 | **C. EU AI Act** | reading + whiteboard discussion |
+| 12:50–13:00 | **Homework brief** | |
 
 ### HW3 walkthrough (20')
 Memo first, notebook second. Two questions: is the base rate written next to every accuracy figure, and does the "what would have to be true" section name a decision, a cost per error and a KPI? Then pick two features from his table and ask him for the latest row each one uses. If the leaky variant is missing or unlabelled, that is the first thing to fix, not a footnote.
@@ -28,7 +28,7 @@ Whiteboard: one box, four arrows in (prompt, system, temperature, schema), two a
 
 Three cells, worked-example style: a plain call; temperature 0 vs 1 (bet first); structured output with a `pydantic` schema and an `assert` on the value. The point of the schema: the type is guaranteed, the truth is not. He still verifies the number against the sentence, as in week 1.
 
-If no key: the notebook prints a loud MOCK banner and every call returns canned text. Retrieval numbers are real in mock mode, generated answers are not. Make sure the key is in Colab Secrets before Monday.
+If no key: the notebook prints a loud MOCK banner and every call returns canned text. Retrieval numbers are real in mock mode, generated answers are not. Make sure the key is in Colab Secrets before Wednesday.
 
 ### B. Lab: a RAG pipeline, step by step (70' in two halves)
 Whiteboard before any code: the four boxes — chunk, embed, retrieve, generate — and the question that drives the whole block: *when the answer is wrong, which box is wrong?* [card 2]
@@ -58,7 +58,7 @@ Prompts:
 
 ### HW3 walkthrough
 - Opening: "Read me the sentence in your memo that says what the model beat and by how much. Now show me the base rate next to it."
-- Closing: "Next Monday you will present a RAG system; today you learn why its errors are of two kinds."
+- Closing: "Next Wednesday you will present a RAG system; today you learn why its errors are of two kinds."
 
 ### A. Calling a model from Python
 - Opening question: "You have used the model through a chat window for two years. What does the window hide from you?" (Expected: the system prompt, the temperature, the price, the token count.) Draw [card 1].
@@ -98,7 +98,7 @@ Prompts:
 - Provider vs deployer: who puts the system on the market under their name vs who uses it under their authority.
 
 ## Tutor's notes
-- **Needs the API key** in Colab Secrets (`GEMINI_API_KEY`). Without it the whole lab runs in MOCK mode: retrieval and both planted bugs still work, but bets 1, 3 and 4 lose their point. Check on Sunday evening with a one-line call.
+- **Needs the API key** in Colab Secrets (`GEMINI_API_KEY`). Without it the whole lab runs in MOCK mode: retrieval and both planted bugs still work, but bets 1, 3 and 4 lose their point. Check on Tuesday evening with a one-line call.
 - EDGAR fetch needs the ESE network to allow `sec.gov`; if it fails the notebook falls back to the synthetic corpus silently and nothing else changes. If it works, one real 10-K section (~60k chars) joins the corpus and B5 top scores drop — good talking point, but do not let it eat time.
 - Embeddings: with a key, Gemini `text-embedding-004`. Without a key, `sentence-transformers` is a 2–3 minute download; decide before class whether to allow it or stay on TF-IDF.
 - Model name and prices in the notebook (`gemini-2.5-flash`, `PRICE_PER_1M`) are illustrative; check the provider's price page the week before and update the constants.

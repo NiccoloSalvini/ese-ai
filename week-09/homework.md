@@ -1,5 +1,5 @@
 # Homework 9 — Near-final capstone: prototype, canvas, red-team log
-**Due: Sunday 29 November 2026, 23:59 · folder `week-09/hw/` in your repo**
+**Due: Tuesday 1 December 2026, 23:59 · folder `week-09/hw/` in your repo**
 
 ## Goal
 Bring the capstone to a state where the pipeline runs end-to-end from a clean runtime, has been attacked by you and survived or been fixed, and comes with a completed risk & controls canvas. Week 10 is for finishing and rehearsing; nothing new is built after this week. The artefact is the deliverable.

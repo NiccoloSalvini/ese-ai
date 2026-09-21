@@ -1,5 +1,5 @@
 # Week 10 — Implementation and operating model; capstone studio
-**Monday 30 November 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 2 December 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -12,12 +12,12 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:20 | **HW9 walkthrough** (red-team log) | he presents |
-| 09:20–10:10 | **B. Prototype → production, as decisions with numbers** | whiteboard + notebook B |
-| 10:10–10:20 | break | |
-| 10:20–10:40 | **C. Readiness, roles, roadmap** | notebook C |
-| 10:40–11:40 | **D. Studio** — review pass on the repo, then rehearsal | his repo on the projector |
-| 11:40–12:00 | **Wrap-up** — portfolio brief, three take-home lines for the course, commit | |
+| 10:00–10:20 | **HW9 walkthrough** (red-team log) | he presents |
+| 10:20–11:10 | **B. Prototype → production, as decisions with numbers** | whiteboard + notebook B |
+| 11:10–11:20 | break | |
+| 11:20–11:40 | **C. Readiness, roles, roadmap** | notebook C |
+| 11:40–12:40 | **D. Studio** — review pass on the repo, then rehearsal | his repo on the projector |
+| 12:40–13:00 | **Wrap-up** — portfolio brief, three take-home lines for the course, commit | |
 
 (The plan in the course design says studio 1:20–2:40; C is short and the studio starts ten minutes early. If C runs long, take the time from the review pass, not from the rehearsal.)
 
@@ -128,8 +128,8 @@ Two passes, his repo on the projector, tutor does not touch the keyboard.
 - **Closing:** "Beat 3 is the sentence they will remember. Everything else supports it." `[card 8]`
 
 ### Wrap-up
-- **Opening:** "Three lines for the whole course. What can you do now that you could not do on 21 September?"
-- **Closing:** "Commit. Portfolio due Sunday 6 December, 23:59. Presentation Monday 7 December, 09:00, this room."
+- **Opening:** "Three lines for the whole course. What can you do now that you could not do on 23 September?"
+- **Closing:** "Commit. Portfolio due Sunday 6 December, 23:59. Presentation Wednesday 9 December, 10:00, this room."
 
 ## Review checklist (used in the studio; the same list is in `homework.md`)
 
@@ -205,9 +205,9 @@ Rule for all twelve weeks: the assistant is allowed, but every week has one arte
 - Reproducible: a stranger with the repo and no key gets the same numbers; with the key, the same numbers up to the model's stated nondeterminism.
 
 ## Tutor's notes
-- Nothing in this notebook needs a key or the network; all cells run offline. The only live element is his repo: he must have it cloned or mounted in Colab before 10:40 (ask on Telegram on Sunday).
-- The prices in `PRICES` are illustrative tiers. Check the provider's price page on Sunday and update the three rows in `build_nb.py` if they have moved; the argument does not depend on the exact figures, the ratio input/output does.
+- Nothing in this notebook needs a key or the network; all cells run offline. The only live element is his repo: he must have it cloned or mounted in Colab before 11:40 (ask on Telegram on Tuesday).
+- The prices in `PRICES` are illustrative tiers. Check the provider's price page on Tuesday and update the three rows in `build_nb.py` if they have moved; the argument does not depend on the exact figures, the ratio input/output does.
 - If behind: cut B1 (he did it in week 6) and C2 (fold roles into the roadmap table). Never cut the planted bug in B2, the review pass, or the rehearsal.
 - If ahead: in B4, replace the fixed 80/20 routing split with a split driven by a confidence score from his own evals; or add a second budget line for the latency chart.
-- Energy: the studio is hour three. Keep it his voice and his keyboard; the tutor's only tool is the timer and the checklist. The rehearsal must happen — a first run that goes badly on 30 November is worth more than a polished memo on 6 December.
-- Feedback template for the ESE record is in `final_feedback_template.md`; fill it after the presentation on 7 December.
+- Energy: the studio is hour three. Keep it his voice and his keyboard; the tutor's only tool is the timer and the checklist. The rehearsal must happen — a first run that goes badly on 2 December is worth more than a polished memo on 6 December.
+- Feedback template for the ESE record is in `final_feedback_template.md`; fill it after the presentation on 9 December.

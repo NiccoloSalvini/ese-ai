@@ -1,5 +1,5 @@
 # Week 6 — Minor case presentation and feedback; where AI earns money in fintech; capstone scoping
-**Monday 2 November 2026, 09:00–12:00 · ESE Florence**
+**Wednesday 4 November 2026, 10:00–13:00 · ESE Florence**
 
 ## Learning objectives
 By the end of the session the student can:
@@ -13,13 +13,13 @@ By the end of the session the student can:
 
 | Time | Block | Mode |
 |---|---|---|
-| 09:00–09:45 | **A. Minor case presentation, questions, feedback** | he presents; tutor writes |
-| 09:45–10:20 | **B1. Fraud detection: accuracy is useless** | hands-on, notebook |
-| 10:20–10:45 | **B2. Credit scoring: explain the rejection, check the gap** | hands-on, notebook |
-| 10:45–11:00 | **B3. Build / buy / partner; what the regulator expects** | cards + notebook |
-| 11:00–11:10 | break | |
-| 11:10–11:50 | **C. Capstone scoping workshop** | hands-on, notebook |
-| 11:50–12:00 | **Homework brief** | |
+| 10:00–10:45 | **A. Minor case presentation, questions, feedback** | he presents; tutor writes |
+| 10:45–11:20 | **B1. Fraud detection: accuracy is useless** | hands-on, notebook |
+| 11:20–11:45 | **B2. Credit scoring: explain the rejection, check the gap** | hands-on, notebook |
+| 11:45–12:00 | **B3. Build / buy / partner; what the regulator expects** | cards + notebook |
+| 12:00–12:10 | break | |
+| 12:10–12:50 | **C. Capstone scoping workshop** | hands-on, notebook |
+| 12:50–13:00 | **Homework brief** | |
 
 ### A. Minor case presentation, questions, feedback (45')
 He presents the week-4/5 LLM system as a product: 8 minutes, timed, laptop on the projector. Do not interrupt. Then 15–20 minutes of questions from the list in the Script (eight, ordered by rubric criterion; ask at least one per criterion, all eight if there is time). Then 10 minutes: fill the written-feedback template below while he reads the presentation back to himself, hand it over, and say the mark band aloud with the single sentence that decides it. The feedback is the deliverable of this block; the presentation is the excuse. [card 1] has the rubric with the four questions the criteria really ask.
@@ -34,14 +34,14 @@ Synthetic loans, two regions, region B poorer and with shorter history; **region
 The weighted table [card 7]. Weights are the argument, not the scores. Run it for credit (explainability weight 5), then re-weight for fraud and see whether the winner flips. He writes the one criterion that decided it — that sentence is the executive summary of the memo. Close with [card 6]: the three regulatory expectations he must be able to name — model risk management (a documented, validated, monitored model with an owner; week 7 in depth), explainability in credit (a reason list the applicant can act on), and GDPR Art. 22 (right not to be subject to a solely automated decision with legal effect; a human review path must exist). No reading this week; model risk gets its own slot in week 7.
 
 ### C. Capstone scoping workshop (40')
-Four building weeks remain. The template makes candidates comparable: question, data, method, deliverable, risk, plan for weeks 7–10. The LLM proposes three from his stated interests (MOCK gives three sound ones); he edits each until he would defend it. Feasibility scoring with the tutor's weights, "data obtainable this week" weighing most. He picks one — or two, if the data check on Sunday may kill the first. Then the data-check pattern: load, shape, date range, missing values, dated snapshot. 🔍 CHECK: `[SYNTHETIC]` on the first line means the check has failed. [card 8] is the template.
+Four building weeks remain. The template makes candidates comparable: question, data, method, deliverable, risk, plan for weeks 7–10. The LLM proposes three from his stated interests (MOCK gives three sound ones); he edits each until he would defend it. Feasibility scoring with the tutor's weights, "data obtainable this week" weighing most. He picks one — or two, if the data check on Tuesday may kill the first. Then the data-check pattern: load, shape, date range, missing values, dated snapshot. 🔍 CHECK: `[SYNTHETIC]` on the first line means the check has failed. [card 8] is the template.
 
 ### Homework brief (10')
-`homework.md`. The proposal is one page; the data check is what makes it a proposal rather than a wish. Both due Sunday 8 November.
+`homework.md`. The proposal is one page; the data check is what makes it a proposal rather than a wish. Both due Tuesday 10 November.
 
 ## Script
 
-### A. Presentation (09:00–09:45)
+### A. Presentation (10:00–10:45)
 **Opening:** "Eight minutes, I keep time, I do not interrupt. Your user is in the room. Go."
 
 **The eight probing questions** (one per rubric criterion at minimum; ask in this order, follow up on the weakest answer):
@@ -59,7 +59,7 @@ Four building weeks remain. The template makes candidates comparable: question, 
 
 **Written-feedback template** (fill in during the read-back; 200–400 words when complete):
 
-> **Minor case — written feedback · Danila · 2 Nov 2026**
+> **Minor case — written feedback · Danila · 4 Nov 2026**
 > *Overall band:* ___ /100 · *The one sentence that decided it:* ______________________________
 >
 > **1. Problem framing and user (__/25).** Strongest point: ______. The user was / was not concrete: ______. What the brief promised that the demo did not show: ______. One change: ______.
@@ -104,7 +104,7 @@ Four building weeks remain. The template makes candidates comparable: question, 
 **Opening question:** "In five weeks you present for 15 minutes to someone who will ask 'so what should I do?'. What is the question you want to be able to answer?"
 **Run the candidate cell.** "Three proposals from your interests. Which of the three would you be embarrassed to present as your own? Fix that one first." He edits the dictionary; he fills the weekly plan; any week that says 'explore' is sent back.
 **Feasibility scoring:** he scores, tutor challenges the 'data obtainable' score only: "Have you seen the endpoint? Have you seen the date range?"
-**Data check cell:** worked example on BTC; "adapt it to your source before Sunday." 🔍 CHECK: "[SYNTHETIC] means fail." If the ESE network blocks Yahoo, show that `[snapshot]` from the committed CSV passes.
+**Data check cell:** worked example on BTC; "adapt it to your source before Tuesday." 🔍 CHECK: "[SYNTHETIC] means fail." If the ESE network blocks Yahoo, show that `[snapshot]` from the committed CSV passes.
 **Closing sentence:** "A capstone is a question, a dataset you have already loaded, and four weekends that each end with a file. Anything else is a wish."
 
 ### Homework brief (11:50–12:00)
@@ -126,7 +126,7 @@ Four building weeks remain. The template makes candidates comparable: question, 
 ## Tutor's notes
 - **Nothing in blocks B needs live data.** Both datasets are synthetic with fixed seeds by design; every number is reproducible offline. Do not spend a minute apologising for it — say once why (no lawful, realistic labelled fraud/loan data), then move on.
 - **API key:** only two cells call `llm()` (adverse-action notice, capstone candidates). The MOCK is deliberately imperfect for the notice — the second reason is wrong for the median applicant — which makes the 🔍 CHECK work *better* without a key. With a live key, the notice usually matches; check anyway.
-- **Data check cell** needs yfinance; if the ESE network blocks Yahoo, commit a `data/prices_BTC-USD.csv` snapshot before Monday so it prints `[snapshot]` and the pattern is shown as passing.
+- **Data check cell** needs yfinance; if the ESE network blocks Yahoo, commit a `data/prices_BTC-USD.csv` snapshot before Wednesday so it prints `[snapshot]` and the pattern is shown as passing.
 - **If behind:** cut the build/buy sensitivity run (keep the card); cut Bet 5 (dropping correlated features) and state the result. Never cut the feedback write-up or the data check.
 - **Energy:** the presentation drains him; B1 is deliberately bet-heavy and fast to restart. B2 is the intellectual peak (the fairness theorem) — protect it. The break must be a real break before scoping; scoping is a conversation, not a lecture, so sit next to him.
 - **Feedback mark:** decide the band before the questions end; the write-up should not take longer than ten minutes. Hand it to him on paper; it is also the first document in his portfolio's "reflection" folder.

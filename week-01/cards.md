@@ -20,12 +20,12 @@ format:
 
 | # | Date | We build |
 |---|---|---|
-| 1–3 | 21 Sep – 5 Oct | Data pipeline and an honest model |
-| 4–5 | 12 – 19 Oct | An LLM application with retrieval, tools and evals |
+| 1–3 | 23 Sep – 7 Oct | Data pipeline and an honest model |
+| 4–5 | 14 – 21 Oct | An LLM application with retrieval, tools and evals |
 | — | 26 Oct | Reading week — **minor case brief (40%)** |
-| 6–8 | 2 – 16 Nov | Fintech cases, a backtest, a DeFi analysis |
-| 9–10 | 23 – 30 Nov | Red-team and finish the capstone — **portfolio (60%)** |
-| Rev. | 7 Dec | Final presentation |
+| 6–8 | 4 – 18 Nov | Fintech cases, a backtest, a DeFi analysis |
+| 9–10 | 25 Nov – 2 Dec | Red-team and finish the capstone — **portfolio (60%)** |
+| Rev. | 9 Dec | Final presentation |
 
 Every line you submit, you can explain.
 

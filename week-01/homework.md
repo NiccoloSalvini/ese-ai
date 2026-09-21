@@ -1,5 +1,5 @@
 # Homework 1 — Three assets, one honest table
-**Due: Sunday 27 September 2026, 23:59 · folder `week-01/hw/` in your repo**
+**Due: Tuesday 29 September 2026, 23:59 · folder `week-01/hw/` in your repo**
 
 ## Goal
 Reproduce, on your own, the loop we practised in class: get data with the assistant's help, compute a few numbers, chart one thing that answers a question, and document one mistake the assistant made and how you caught it.

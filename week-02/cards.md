@@ -78,4 +78,4 @@ Event lines for what the reader already knows happened.
 | client names, contracts, personal data | never |
 | internal strategy documents | not without an approved deployment |
 
-Snapshot with a date · seed · pinned versions. Re-runnable by someone else on Sunday night.
+Snapshot with a date · seed · pinned versions. Re-runnable by someone else on Tuesday night.

@@ -1,5 +1,5 @@
 # Homework 4 — Your own RAG, tested
-**Due: Sunday 18 October 2026, 23:59 · folder `week-04/hw/` in your repo**
+**Due: Tuesday 20 October 2026, 23:59 · folder `week-04/hw/` in your repo**
 
 ## Goal
 Point the pipeline from class at documents of your own choosing, write ten questions with the answers you expect, and — the real deliverable — say for every miss whether retrieval or generation failed, and why. This is the first half of your minor case brief: the system you test here is the product you will present.
