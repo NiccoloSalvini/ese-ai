@@ -153,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="portfolio-60-capstone-brief" class="level1">
 <h1>Portfolio (60%) — Capstone brief</h1>
-<p><strong>Due: Sunday 6 December 2026, 23:59 · folder <code>capstone/</code> in your repo, link posted on Moodle</strong> <strong>Final presentation: Monday 7 December 2026, 09:00 (proposed), ESE Florence, 15 minutes + questions</strong></p>
+<p><strong>Due: Sunday 6 December 2026, 23:59 · folder <code>capstone/</code> in your repo, link posted on Moodle</strong> <strong>Final presentation: Wednesday 9 December 2026, 10:00 (proposed), ESE Florence, 15 minutes + questions</strong></p>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
 <p>Deliver the AI pipeline you have been building since week 6 as one reproducible repository, and make the case — with numbers — for whether, how and at what cost it should be run for a real decision in finance. The portfolio is assessed on the content of the repo (notebooks, commits, markdown), not on PDFs or slides.</p>
@@ -189,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 <li><strong>Risk &amp; controls canvas</strong> — <code>capstone/canvas.md</code>: the week-9 canvas, current. Every red-team finding from HW9 appears with a status (open / mitigated / accepted) and, if mitigated, the cell or control that does it.</li>
 <li><strong>Roadmap</strong> — <code>capstone/roadmap.md</code>: 30/60/90 days, one table with scope, gate criteria that can fail, KPI, rollback, owner. Each gate criterion names the notebook cell that produces its number. Add the readiness table from week 10 with your scores and the gates it generated.</li>
-<li><strong>Presentation</strong> — 15 minutes on Monday 7 December, from your laptop, following the six-beat storyline in <code>week-10/notes.md</code> (decision → pipeline → honest result → cost → what could go wrong → what would have to be true). No slide deck is required; a notebook, the memo and <code>cards.md</code>-style pages are all acceptable. Whatever you show must be in the repo by the deadline.</li>
+<li><strong>Presentation</strong> — 15 minutes on Wednesday 9 December, from your laptop, following the six-beat storyline in <code>week-10/notes.md</code> (decision → pipeline → honest result → cost → what could go wrong → what would have to be true). No slide deck is required; a notebook, the memo and <code>cards.md</code>-style pages are all acceptable. Whatever you show must be in the repo by the deadline.</li>
 </ol>
 <p>Also in <code>capstone/</code>: <code>README.md</code> (what it is, how to run it in Colab in five lines, which cells need the key, snapshot dates) and <code>data/</code> with dated snapshots small enough to commit.</p>
 </section>
@@ -242,11 +242,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-reproducible-means-here-operational-definition" class="level2">
 <h2 class="anchored" data-anchor-id="what-reproducible-means-here-operational-definition">What “reproducible” means here (operational definition)</h2>
 <p>Your notebook is reproducible if a person who has never seen it, given only the repo: 1. opens <code>pipeline.ipynb</code> in Colab, runs <em>Runtime ▸ Restart and run all</em> <strong>without any API key</strong>, and reaches the last cell with zero errors, with every LLM-dependent cell printing that it used the mock or cached path; 2. repeats with <code>GEMINI_API_KEY</code> set and reaches the last cell with zero errors; 3. obtains the same numbers as in your memo for every non-LLM figure (returns, scores, costs, thresholds), and the same numbers up to the provider’s stated nondeterminism for LLM figures — with the snapshot tier, not the live one; 4. can find, from the file names alone, the date of every snapshot and the version of every prompt.</p>
-<p>The tutor will do exactly this on 7 December before the presentation.</p>
+<p>The tutor will do exactly this on 9 December before the presentation.</p>
 </section>
 <section id="ai-use-disclosure" class="level2">
 <h2 class="anchored" data-anchor-id="ai-use-disclosure">AI-use disclosure</h2>
-<p>Assistants are allowed and expected. The disclosure in <code>memo.md</code> states, specifically: which assistants you used and for which parts (code, text, debugging, ideas); which parts you wrote without assistance; at least three things the assistant got wrong that you caught, with the cell or paragraph where it happened; and a sentence confirming that no confidential data from any employer was given to an AI tool. A disclosure that says “I used ChatGPT for help” is incomplete. Every line in the repo must be one you can explain; the tutor will pick lines at random on 7 December.</p>
+<p>Assistants are allowed and expected. The disclosure in <code>memo.md</code> states, specifically: which assistants you used and for which parts (code, text, debugging, ideas); which parts you wrote without assistance; at least three things the assistant got wrong that you caught, with the cell or paragraph where it happened; and a sentence confirming that no confidential data from any employer was given to an AI tool. A disclosure that says “I used ChatGPT for help” is incomplete. Every line in the repo must be one you can explain; the tutor will pick lines at random on 9 December.</p>
 </section>
 <section id="constraints" class="level2">
 <h2 class="anchored" data-anchor-id="constraints">Constraints</h2>

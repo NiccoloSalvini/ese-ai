@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>ESE · AI for Business and FinTech · 2 November 2026</strong></p>
+<p><strong>ESE · AI for Business and FinTech · 4 November 2026</strong></p>
 <p>Three parts. First hour: your minor case presentation (nothing to run). Then a lab through three fintech decisions where models make or lose money — fraud, credit, build/buy/partner — each with a small dataset you generate here. Last part: scope your capstone and prove its data exists.</p>
 <p><strong>Why the datasets are synthetic today.</strong> There is no public, labelled fraud or loan dataset with realistic structure (0.5% fraud, real customer behaviour, demographic proxies) that fits in a session and that we could lawfully use. So we generate them with a fixed seed: the <em>structure</em> is realistic, the <em>numbers</em> are not evidence about any real bank. Every conclusion today is about the method, not the world. Your capstone must use real data — that is what the last block is for.</p>
 <div id="7d1a1e7e" class="cell">
@@ -550,7 +550,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 </div>
 <section id="the-data-check-the-only-part-of-the-proposal-that-can-fail-before-it-starts" class="level3">
 <h3 class="anchored" data-anchor-id="the-data-check-the-only-part-of-the-proposal-that-can-fail-before-it-starts">The data check — the only part of the proposal that can fail before it starts</h3>
-<p>A proposal whose data cannot be loaded by Sunday is not a proposal. The homework asks for <code>data_check.ipynb</code>; this is the pattern. Loads the series, prints shape and date range, saves a dated snapshot. Adapt the loader to whichever source your candidate needs (FRED, DefiLlama, SEC EDGAR — same three tiers).</p>
+<p>A proposal whose data cannot be loaded by Tuesday is not a proposal. The homework asks for <code>data_check.ipynb</code>; this is the pattern. Loads the series, prints shape and date range, saves a dated snapshot. Adapt the loader to whichever source your candidate needs (FRED, DefiLlama, SEC EDGAR — same three tiers).</p>
 <div id="30d95dca" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt, os</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>], start<span class="op">=</span><span class="st">"2020-01-01"</span>)</span>
@@ -570,7 +570,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <li>_</li>
 <li>_</li>
 </ol>
-<p><strong>Homework brief</strong> → <code>week-06/homework.md</code> (capstone proposal + data check, due Sunday 8 November).</p>
+<p><strong>Homework brief</strong> → <code>week-06/homework.md</code> (capstone proposal + data check, due Tuesday 10 November).</p>
 
 
 </section>
