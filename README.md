@@ -4,16 +4,18 @@ Course site: **<https://niccolosalvini.github.io/ese-ai/>** (Quarto, rendered lo
 
 ## Moodle MCP
 
-Server MCP `moodle` definito in `.mcp.json` (pacchetto [moodle-mcp](https://github.com/loyaniu/moodle-mcp), via `uvx`).
+Teacher-side server `mcp-moodle-teacher` (<https://github.com/NiccoloSalvini/mcp-moodle-teacher>),
+configurato in `.mcp.json`: iscritti, consegne, chi manca, voti con feedback, annunci.
 
-Setup quando avrai l'account Moodle:
+1. `MOODLE_SITE=https://esestudents.com bash ~/dev/mcp-moodle-teacher/scripts/get-moodle-token.sh`
+   (chiede la password in silenzio, scrive `.env` con chmod 600).
+2. `set -a; . .env; set +a` nella shell prima di lanciare Claude Code.
+3. `claude mcp list` deve mostrare `moodle ... Connected`.
 
-1. Vai su `https://<moodle-host>/user/managetoken.php`, copia il token della riga **Moodle mobile web service**.
-2. `cp .env.template .env` e compila `MOODLE_URL` e `MOODLE_TOKEN`.
-3. Esporta le variabili nella shell prima di lanciare Claude Code (es. `set -a; source .env; set +a`), oppure sostituisci direttamente i valori in `.mcp.json` (non committarlo in quel caso).
-4. `claude mcp list` deve mostrare `moodle ... Connected`.
+Sito: `https://esestudents.com` senza `www`. Questo corso è id **2531**
+(`SHC015_262701_FL`); QnB è 2546. I materiali non si caricano via API — su Moodle
+vanno i link a <https://niccolosalvini.github.io/ese-ai/>.
 
-Nota: `--with "mcp<2"` è necessario perché `moodle-mcp` 0.2.1 usa `FastMCP`, rimosso in `mcp` 2.x.
 
 ## Grading skill
 

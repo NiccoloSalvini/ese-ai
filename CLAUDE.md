@@ -62,6 +62,15 @@ submit, you can explain". Motto in the footer: *Visibilia ex Invisibilibus*.
 - Rendered `.ipynb` uses stored outputs only (`execute: enabled: false`). The
   notebooks have no outputs committed, so the preview shows code and prose.
 
+## Moodle
+
+Site <https://esestudents.com> (no `www`), Moodle 4.5.10, this course is id
+**2531**. Access through `mcp-moodle-teacher`
+(<https://github.com/NiccoloSalvini/mcp-moodle-teacher>), wired in `.mcp.json`;
+token in `.env` (gitignored, mode 600) from that repo's
+`scripts/get-moodle-token.sh`. Materials cannot be uploaded through the API —
+the Moodle page links here instead.
+
 ## Weekly loop
 
 Materials for week N are already in the repo. Publishing them is `make deploy`.
