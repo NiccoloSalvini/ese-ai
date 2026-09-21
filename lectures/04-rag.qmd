@@ -1,0 +1,162 @@
+---
+title: "Making it answer from your documents"
+subtitle: "Week 4 · Wednesday 14 October 2026 · 10:00–13:00"
+author: "Niccolò Salvini, PhD"
+institute: "AI for Business and FinTech · European School of Economics, Florence"
+---
+
+## Where we are
+
+| | | |
+|---|---|---|
+| 1–3 | 23 Sep – 7 Oct | data, a model, and an honest evaluation ✓ |
+| **4** | **14 Oct** | **call a model from code; make it cite your documents** |
+| 5 | 21 Oct | agents, tools, evals · the product lens |
+| — | 1 Nov | **case brief, 40%** — on what you build today and next week |
+
+[From today you are building the thing you will be assessed on.]{.red}
+
+## [Block A]{.section-kicker} Four knobs, and they are the whole API {.section-slide background-color="#AF1F25"}
+
+## What you control on every call
+
+| | |
+|---|---|
+| **system prompt** | who the model is, and what it must never do |
+| **the prompt** | what you are asking, this time |
+| **temperature** | `0` when the answer must be reproducible |
+| **schema** | the shape the answer must have, validated |
+
+. . .
+
+And three numbers come back with every response, whether you look or not:
+
+**tokens in · tokens out · latency.** Log all three from the first call. In week 10 you will need them to say what this costs at volume, and by then nobody remembers.
+
+## Structured output guarantees the type, not the truth {.statement}
+
+## A valid JSON object can be entirely wrong.
+
+[The schema stops your code crashing. It does nothing about whether the number in the field is real.]{.muted}
+
+## First calls {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § A]{.kicker}
+
+1. The same prompt at `T = 0` three times, then at `T = 1` three times. Look at what changed.
+2. Ask for free text. Then ask for a JSON schema. Compare how much code you need after each.
+3. Print tokens and latency for every call, and keep printing them all term.
+
+## [Block B]{.section-kicker} Making it answer from documents it has never seen {.section-slide background-color="#AF1F25"}
+
+## The problem, stated plainly
+
+The model has never read your contract, your filing, or last month's board pack. It was trained before they existed, and it cannot open a file.
+
+::: {.callout-important title="Bet before we build"}
+Two ways to fix this: paste the whole document into the prompt, or retrieve just the relevant part. When does the first one stop working?
+:::
+
+. . .
+
+At about the point where it becomes expensive, slow, and worse — models attend badly to the middle of very long inputs. **Retrieval is the alternative**, and it is four steps.
+
+## Four steps, and each one can fail differently
+
+| | | fails when |
+|---|---|---|
+| **chunk** | cut the documents into passages | a fact is split across the boundary |
+| **embed** | turn each passage into a vector | rarely — this part mostly works |
+| **retrieve** | take the nearest passages to the question | the right passage was not in the top `k` |
+| **generate** | answer **only** from those passages, with citations | it was there and the model still got it wrong |
+
+## Why the nearest passage is the right one {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w04_retrieval_poster.png"><source src="media/w04_retrieval.mp4" type="video/mp4"></video>
+
+Not one word in common, and still the three nearest. That is what an embedding buys you.
+
+## Build it, with two bugs planted {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B]{.kicker}
+
+Corpus: risk sections from three filings, two whitepapers, a MiCA summary.
+
+1. Chunk it. **Bug one is in the chunking** — a fact gets cut in half.
+2. Embed and retrieve. Print the passages that came back, every time, before the answer.
+3. Generate with citations. **Bug two is in the prompt** — the model is allowed to use what it already knows.
+
+## The diagnosis that matters
+
+A wrong answer is one of two things, and the fix is different:
+
+:::: {.columns}
+::: {.column width="50%"}
+**Retrieval failure**
+The right passage never came back.
+
+→ chunk size, overlap, `k`, the query itself
+:::
+::: {.column width="50%"}
+**Generation failure**
+It came back and the model still got it wrong.
+
+→ the prompt, the temperature, the citation requirement
+:::
+::::
+
+::: {.callout-tip title="The habit"}
+**Always print the retrieved passages before the answer.** Without them you are guessing which half of the pipeline is broken, and you will tune the wrong one.
+:::
+
+## Ten questions you already know the answer to {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B6]{.kicker}
+
+Write ten questions with answers **you computed independently** of the system.
+
+Run them. Record hits and misses. For each miss, write `retrieval` or `generation` next to it.
+
+[That table is your evidence section in the case brief. Build it now, not the night before.]{.red}
+
+## [Block C]{.section-kicker} The EU AI Act, in thirty minutes {.section-slide background-color="#AF1F25"}
+
+## It regulates the use, not the technology
+
+| tier | what it means |
+|---|---|
+| **prohibited** | social scoring, some biometric categorisation — not deployable at all |
+| **high-risk** | credit, employment, essential services — conformity, documentation, human oversight |
+| **transparency** | chatbots, synthetic media — people must know |
+| **minimal** | everything else, which is most things |
+
+. . .
+
+The same model can sit in three different tiers depending on what you point it at. **A CV screener and a recipe generator are different risk classes of the same technology.**
+
+## And the word that decides who is liable
+
+:::: {.columns}
+::: {.column width="50%"}
+**Provider**
+Puts the system on the market under their own name.
+:::
+::: {.column width="50%"}
+**Deployer**
+Uses it under their own authority.
+:::
+::::
+
+. . .
+
+**Take an open model, fine-tune it, put your logo on it, and you may have become the provider.** That is the sentence to remember from this half hour, because it is the one that surprises people.
+
+## Close
+
+**Homework 4** — extend the retrieval system with a corpus of your own, write ten test questions with expected answers, record hits and misses, and explain each miss as retrieval or generation.
+
+Due Tuesday 20 October, 23:59.
+
+. . .
+
+[Next week the model stops answering and starts **acting** — and everything that can go wrong, does.]{.muted}

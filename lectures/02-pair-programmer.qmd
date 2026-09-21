@@ -1,0 +1,155 @@
+---
+title: "The assistant writes it. You decide whether it is true."
+subtitle: "Week 2 · Wednesday 30 September 2026 · 10:00–13:00"
+author: "Niccolò Salvini, PhD"
+institute: "AI for Business and FinTech · European School of Economics, Florence"
+---
+
+## Where we are
+
+| | | |
+|---|---|---|
+| 1 | 23 Sep | how the model works, and the checking habit ✓ |
+| **2** | **30 Sep** | **pandas, joins, and the two errors that hide** |
+| 3 | 7 Oct | a model, and an honest evaluation of it |
+| 4–5 | 14–21 Oct | an LLM application, then agents and evals |
+
+[Last week the assistant got a constant wrong and it looked fine. Today you meet the two mistakes it makes most, and neither of them raises an error.]{.red}
+
+## Four verbs, and you can do most of data work
+
+| | | in pandas |
+|---|---|---|
+| **filter** | keep some rows | `df[df.volume > 0]` |
+| **derive** | make a new column | `df["ret"] = df.close.pct_change()` |
+| **aggregate** | many rows into one number | `df.groupby(...).mean()` |
+| **join** | put two tables side by side | `a.join(b)` |
+
+[The assistant writes all four faster than you can. The job is not writing them. It is knowing what the result *should* look like before you see it.]{.red}
+
+## Ask for it, run it, then check it {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § A]{.kicker}
+
+Get the assistant to write each of the four, then **before running anything**, say out loud:
+
+1. how many rows should come back
+2. what the units of the new column are
+3. which rows would be dropped, and whether that matters
+
+Run it. Where your prediction and the result disagree, one of you is wrong — find out which.
+
+## [Block B]{.section-kicker} The first error: two calendars that do not line up {.section-slide background-color="#AF1F25"}
+
+## Bitcoin trades on Sunday. The stock exchange does not.
+
+::: {.callout-important title="Bet before we compute"}
+You join a year of BTC prices to a year of SPY prices and compute the correlation. What has already gone wrong, before any arithmetic?
+:::
+
+. . .
+
+One series has 365 rows a year, the other about 252. **Something has to give**, and whichever way you resolve it changes the answer.
+
+## Watch what the join does {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_calendars_poster.png"><source src="media/w02_calendars.mp4" type="video/mp4"></video>
+
+Drop the weekend, or invent it. There is no third option, and neither is free.
+
+## Two ways to resolve it, and what each costs
+
+:::: {.columns}
+::: {.column width="50%"}
+**Inner join** — keep only days both have.
+
+You lose every weekend. Crypto's real weekend moves disappear, and Monday's return quietly becomes a three-day move labelled as one day.
+:::
+::: {.column width="50%"}
+**Forward fill** — carry Friday's price.
+
+You invent two prices that never traded. Volatility is diluted by a third, and any model fed this learns from data that does not exist.
+:::
+::::
+
+::: {.callout-tip title="The sentence to remember"}
+Decide which days exist **before** you compute anything across assets, and write the decision down. There is no neutral default.
+:::
+
+## Break it yourself {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B]{.kicker}
+
+1. Join BTC and SPY with `dropna()`. Count the rows you lost.
+2. Join them with `ffill()`. Compute BTC's annualised volatility both ways.
+3. Print the mean **Monday** return for BTC under each.
+
+Then answer: **which of the two numbers would you put in a report, and what sentence goes underneath it?**
+
+## [Block C]{.section-kicker} The second error: units {.section-slide background-color="#AF1F25"}
+
+## A correlation between mismatched units is still a number
+
+That is the whole problem. Nothing breaks. Nothing warns you.
+
+| what you joined | what you got |
+|---|---|
+| returns as `0.012` against returns as `1.2` | a coefficient off by a hundred |
+| a rate in percent against a rate in decimal | a chart that looks fine and is wrong |
+| dollars against thousands of dollars | a ratio nobody notices until the Board does |
+
+. . .
+
+**The assistant cannot see units.** They are not in the data; they are in the documentation, and often only in someone's head.
+
+## Three habits that catch it
+
+1. **Print `head()` and read it.** Not glance — read. Is that number plausible as a daily return?
+2. **Plot before you model.** A wrong unit is usually visible as a wrong axis.
+3. **Compute one number a second way.** Cumulative return from first and last price, against the same thing from the return series. If they disagree, stop.
+
+::: {.callout-tip title="The sentence to remember"}
+The assistant is fluent about code and blind about meaning. Units, calendars and conventions are exactly where it fails silently.
+:::
+
+## Join something that is not a price {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § C]{.kicker}
+
+Bring in one external series — a FRED interest rate, or on-chain active addresses.
+
+1. State its **frequency** and its **units** before you join.
+2. Join it. Say which calendar the result is in.
+3. Find one known event in the chart. If you cannot see it, the join is wrong.
+
+## [Block D]{.section-kicker} Making it repeatable, and safe {.section-slide background-color="#AF1F25"}
+
+## A number without a snapshot is an anecdote
+
+Data changes under you. Yahoo revises. An API returns something different tomorrow.
+
+- **Save the data behind every reported number**, with the date you pulled it.
+- **Pin your versions.** `pandas 2.2.1`, not "latest".
+- **Set the seed** anywhere randomness enters.
+
+[The test: can someone else, on another machine, get your number? If the answer needs you in the room, it is not a result yet.]{.red}
+
+## And the rule that has no exceptions {.statement}
+
+## Nothing confidential goes into an AI tool.
+
+Not client names, not unpublished figures, not personal data. Not "just to check the formatting".
+
+[If you would not email it to a stranger, do not paste it into a chat box.]{.muted}
+
+## Close
+
+**Homework 2** — one question you actually want answered, a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.
+
+Due Tuesday 6 October, 23:59.
+
+. . .
+
+The memo is the part that matters. **One question, one chart, one answer**, for someone who will not open your notebook.
+
+[Next week: a model, and how to tell whether it is any good.]{.muted}
