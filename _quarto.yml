@@ -8,7 +8,10 @@ project:
     - "week-*/homework.md"
     - "week-*/session.ipynb"
     - "week-*/cards.md"
+    - "lectures/*.qmd"
   resources:
+    - "lectures/img/*.svg"
+    - "lectures/media/*"
     - "syllabus/*.docx"
     - "week-*/data/**"
 

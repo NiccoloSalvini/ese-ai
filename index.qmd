@@ -7,7 +7,7 @@ toc: false
 ::: {.hero}
 <span class="kicker">ESE Short Course · Term 1, A.Y. 2026–2027</span>
 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours<br>
-Module leader **Niccolò Salvini**
+Module leader **Niccolò Salvini, PhD**
 :::
 
 ::: {.facts}
@@ -24,7 +24,7 @@ Everything for this course is on this page. One row per session: the Colab noteb
 ::: {.schedule}
 | # | Date | Theme | Materials | Homework |
 |---|------|-------|-----------|----------|
-| 1 | Wed 23 Sep | How LLMs work, and how we will work | [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb) · [notebook](week-01/session.ipynb) · [cards](week-01/cards.md) | [HW1](week-01/homework.md) · due Tue 29 Sep |
+| 1 | Wed 23 Sep | How LLMs work, and how we will work | [slides](lectures/01-how-llms-work.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb) · [notebook](week-01/session.ipynb) | [HW1](week-01/homework.md) · due Tue 29 Sep |
 | 2 | Wed 30 Sep | Data analysis with AI as pair programmer | [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-02/session.ipynb) · [notebook](week-02/session.ipynb) · [cards](week-02/cards.md) | [HW2](week-02/homework.md) · due Tue 6 Oct |
 | 3 | Wed 7 Oct | Machine learning through one problem · from prediction to decision | [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-03/session.ipynb) · [notebook](week-03/session.ipynb) · [cards](week-03/cards.md) | [HW3](week-03/homework.md) · due Tue 13 Oct |
 | 4 | Wed 14 Oct | LLM applications I — API, structured output, RAG · EU AI Act | [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-04/session.ipynb) · [notebook](week-04/session.ipynb) · [cards](week-04/cards.md) | [HW4](week-04/homework.md) · due Tue 20 Oct |
@@ -62,6 +62,6 @@ Everything for this course is on this page. One row per session: the Colab noteb
 ::: {.people}
 ::: {.person}
 ![](images/salvini.jpeg)
-**Niccolò Salvini**<br><span class="role">Module leader</span>
+**Niccolò Salvini, PhD**<br><span class="role">Module leader</span>
 :::
 :::

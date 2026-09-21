@@ -1,0 +1,227 @@
+---
+title: "How LLMs work, and how we will work"
+subtitle: "Week 1 · Wednesday 23 September 2026 · 10:00–13:00"
+author: "Niccolò Salvini, PhD"
+institute: "AI for Business and FinTech · European School of Economics, Florence"
+---
+
+## Ten weeks, one thing built each time
+
+| | | |
+|---|---|---|
+| **1–3** | 23 Sep – 7 Oct | a data pipeline, and a model evaluated honestly |
+| **4–5** | 14 – 21 Oct | an LLM application: retrieval, tools, evaluations |
+| — | 26 Oct | reading week — **case brief, 40%** |
+| **6–8** | 4 – 18 Nov | fintech cases, a backtest, a DeFi analysis |
+| **9–10** | 25 Nov – 2 Dec | red-team, and finish the capstone — **portfolio, 60%** |
+| Rev. | 9 Dec | you present it |
+
+[Every artefact you build stays in your repository and becomes part of the next one. Nothing here is thrown away.]{.red}
+
+## The deal, said once
+
+- **This is a lab.** You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to **judge what the assistant produces**.
+- **The rule of the course:** anything an AI produced and you submit, you must be able to explain line by line. I will ask.
+- **Nothing confidential** goes into an AI tool. Ever.
+- Markets, crypto and DeFi here are **educational simulations**. Nothing in this course is investment advice.
+
+::: {.callout-tip title="What you actually leave with"}
+Not "an overview of AI tools". The ability to build a thing, test it, find where it is wrong, and defend it to people who will not read your appendix.
+:::
+
+## [Block A]{.section-kicker} The model does not read {.section-slide background-color="#AF1F25"}
+
+## It never sees a word
+
+::: {.callout-important title="Bet before we look"}
+`"Il margine è insostenibile"` — four words. How many pieces does the model cut that into? Write a number.
+:::
+
+. . .
+
+![](img/tokens-pipeline.svg){fig-align="center" width="95%"}
+
+## Take it apart yourself {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
+
+Type your own sentences and watch the count. Try, in this order:
+
+1. the same sentence in **English**, then **Italian**, then **Russian**
+2. a **number**: `1,234,567.89`
+3. a line of **Python**
+4. a **company name** the model has never seen
+
+Then answer, from what you saw: **why does the same meaning cost different amounts in different languages?**
+
+## What follows from it, in a business
+
+| what you saw | what it costs you |
+|---|---|
+| tokens, not words | you are billed per token, in and out |
+| non-English fragments more | the same document costs 1.5–3× more in Italian |
+| numbers shatter into pieces | arithmetic is weak — never trust a total it computed |
+| the window is counted in tokens | long conversations silently become expensive |
+
+::: {.callout-tip title="The sentence to remember"}
+The unit the system counts in is not the unit you think in. Story points, not hours.
+:::
+
+## [Block B]{.section-kicker} Its only memory is what you just sent {.section-slide background-color="#AF1F25"}
+
+## Everything it knows, every time
+
+![](img/context-window.svg){fig-align="center" width="95%"}
+
+## So where do hallucinations come from?
+
+::: {.callout-important title="Bet before we look"}
+The model invents a plausible figure for a company's 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?
+:::
+
+. . .
+
+**Working as designed.** It completes patterns. When the pattern needs a number that was never in the box, it produces the *shape* of a number that would fit.
+
+It has no way to feel the difference between recalling and inventing. **That is your job**, and it is the habit this whole course builds.
+
+## Watch a conversation get expensive {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B2 — the cost cell]{.kicker}
+
+1. Price one 10-K at today's rates. Then a thousand a day, for a year.
+2. Now the part nobody expects: a **twenty-turn conversation** re-sends the whole history every turn. Compute what turn twenty costs against turn one.
+
+[This is why "just paste the whole document in" is a strategy with a budget attached, and why week 4 exists.]{.red}
+
+## [Block C]{.section-kicker} Why the same question gives different answers {.section-slide background-color="#AF1F25"}
+
+## It is choosing, not looking up
+
+At every step the model has a **distribution** over what comes next.
+
+> "The quarterly margin came in **below** ⟶ 41% · **above** ⟶ 22% · **at** ⟶ 12% · **around** ⟶ 8% …"
+
+. . .
+
+**Temperature** decides how much it respects those odds.
+
+| | |
+|---|---|
+| `T = 0` | always take the top one — extraction, classification, anything you must reproduce |
+| `T ≈ 0.7` | sample near the top — drafting, ideation |
+| `T` high | wander — rarely what a business wants |
+
+[Same prompt, different answer, is not a malfunction. Set `T = 0` and it stops.]{.red}
+
+## The habit this course is really about {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B3 — 🔍 CHECK]{.kicker}
+
+Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:
+
+:::: {.columns}
+::: {.column width="50%"}
+**Verifiable**
+a number you can look up, a date, a name, a claim with a source
+:::
+::: {.column width="50%"}
+**Plausible but unverifiable**
+fluent, confident, no way to check it, and quite possibly invented
+:::
+::::
+
+[Do this on every answer, all term, until it is automatic. It is the single habit that separates someone who uses these tools from someone who is used by them.]{.red}
+
+## [Block D]{.section-kicker} How a machine measures meaning {.section-slide background-color="#AF1F25"}
+
+## Words become directions
+
+An **embedding** turns text into a list of numbers, arranged so that **similar meanings land near each other**.
+
+$$\text{"the margin fell"} \;\longrightarrow\; [0.21,\, -0.04,\, 0.88,\, \ldots]$$
+
+Once meaning is a position, "similar" becomes a distance, and a computer can sort by it.
+
+. . .
+
+That is the whole of how search over your own documents works — which is week 4.
+
+## Find out why word-matching is not enough {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B4 — TF-IDF]{.kicker}
+
+Two sentences that mean the same thing, with **no words in common**:
+
+> "Revenue declined sharply in the third quarter."
+> "Q3 takings were well down."
+
+1. Score them by shared words. The answer will be about zero.
+2. Now say what a search box built that way would do to a user who phrased it differently.
+
+[That gap is exactly what neural embeddings close, and why week 4 works at all.]{.red}
+
+## [Block E]{.section-kicker} And then it can act {.section-slide background-color="#AF1F25"}
+
+## The loop behind every "agent"
+
+| | |
+|---|---|
+| 1 | you describe some tools: `get_price`, `search_docs`, `send_email` |
+| 2 | the model replies not with prose but with **a structured call** |
+| 3 | **your code** runs it — the model cannot touch anything itself |
+| 4 | the result goes back into the context window |
+| 5 | repeat until it has an answer |
+
+. . .
+
+**An agent is that loop, run more than once.** There is nothing else in the word.
+
+## Which is also where they fail {.statement}
+
+## Every agent failure is a failure of that loop.
+
+Wrong tool. Loop that never ends. Cost that runs away. A document that contains instructions and the model obeys them.
+
+[Weeks 4 and 5 are this loop, built and then broken on purpose.]{.muted}
+
+## [Block F]{.section-kicker} Your turn — the first notebook {.section-slide background-color="#AF1F25"}
+
+## Three assets, and one number that is wrong {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § C — 80 minutes, you drive]{.kicker}
+
+1. Pull daily prices for BTC, an equity and an index.
+2. Returns, summary statistics, one chart that answers a question.
+3. **🔍 CHECK** — the volatility cell was written by an assistant. It contains two errors. Find them.
+
+[I will not touch the keyboard. When it breaks, read the error before asking me.]{.muted}
+
+## The two planted errors, and why they matter
+
+:::: {.columns}
+::: {.column width="50%"}
+**√252 applied to crypto**
+Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.
+:::
+::: {.column width="50%"}
+**Returns added up**
+Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.
+:::
+::::
+
+::: {.callout-tip title="The sentence to remember"}
+The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.
+:::
+
+## Close
+
+**Homework 1** — three assets of your own, an honest table, one chart that answers a stated question, and a section titled *"What the assistant got wrong"*.
+
+Due Tuesday 29 September, 23:59, in your repository.
+
+. . .
+
+**Before you leave:** Colab runs, GitHub repository created, tutor added as collaborator, and one notebook saved to it.
+
+[Next week: the same loop on real data, and the first thing you will show someone.]{.muted}

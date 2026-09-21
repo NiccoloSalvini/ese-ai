@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="330" fill="#ffffff"/>
+  <text x="30" y="34" font-size="18" font-weight="700" fill="#363636">The model's entire world, every time you press send</text>
+  <text x="30" y="56" font-size="13" fill="#7a7f85">It has no memory, no file access and no notes. What is inside the box is everything it knows.</text>
+
+  <rect x="30" y="76" width="560" height="196" rx="4" fill="#fcfbf8" stroke="#AF1F25" stroke-width="2"/>
+  <text x="46" y="100" font-size="11" font-weight="700" letter-spacing="1.3" fill="#AF1F25">THE CONTEXT WINDOW</text>
+
+  <rect x="50" y="112" width="520" height="34" rx="3" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="134" font-size="13" fill="#363636">the system instruction you wrote</text>
+  <rect x="50" y="152" width="520" height="34" rx="3" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="174" font-size="13" fill="#363636">everything said earlier in this conversation, re-sent in full</text>
+  <rect x="50" y="192" width="520" height="34" rx="3" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="214" font-size="13" fill="#363636">any document you pasted or retrieved</text>
+  <rect x="50" y="232" width="520" height="30" rx="3" fill="#f3e3e4" stroke="#AF1F25"/>
+  <text x="64" y="252" font-size="13" font-weight="700" fill="#AF1F25">your question</text>
+
+  <rect x="620" y="76" width="314" height="92" rx="4" fill="#fbfaf6" stroke="#e6e2d8"/>
+  <text x="636" y="100" font-size="11" font-weight="700" letter-spacing="1.3" fill="#a8955a">OUTSIDE THE BOX</text>
+  <text x="636" y="124" font-size="13" fill="#7a7f85">last week's conversation</text>
+  <text x="636" y="144" font-size="13" fill="#7a7f85">your files, your database, today's news</text>
+  <text x="636" y="162" font-size="13" font-weight="700" fill="#363636">— it cannot see any of it</text>
+
+  <rect x="620" y="180" width="314" height="92" rx="4" fill="#fdf6f6" stroke="#e8cdce"/>
+  <text x="636" y="204" font-size="13" font-weight="700" fill="#AF1F25">So a hallucination is not a lie</text>
+  <text x="636" y="226" font-size="13" fill="#7a7f85">It is the model completing a pattern over</text>
+  <text x="636" y="244" font-size="13" fill="#7a7f85">information that was never in the box.</text>
+  <text x="636" y="262" font-size="13" fill="#7a7f85">Fluent, confident, and made up.</text>
+
+  <text x="30" y="300" font-size="13" fill="#363636">A 10-K annual report is roughly <tspan font-weight="700">90,000 tokens</tspan>. Read a thousand of them a day and the bill is a real line in a budget.</text>
+</svg>

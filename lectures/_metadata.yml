@@ -1,0 +1,29 @@
+# Every .qmd in lectures/ is a revealjs deck with the ESE theme.
+# A lecture file sets title, subtitle (Week n · date), author and content — nothing visual.
+format:
+  revealjs:
+    theme: [default, ese.scss]
+    width: 1280
+    height: 720
+    margin: 0.06
+    slide-number: c/t
+    footer: "AI for Business & FinTech · ESE Florence"
+    transition: fade
+    transition-speed: fast
+    controls: false
+    progress: false
+    hash: true
+    history: false
+    menu: false
+    html-math-method: katex
+    embed-resources: false
+    toc: false
+    center: false
+    center-title-slide: false
+    include-in-header: ../_fonts.html
+
+title-slide-attributes:
+  data-background-color: "#AF1F25"
+  data-background-image: "/images/ese-logo-white.svg"
+  data-background-size: "14%"
+  data-background-position: "top 7% right 4%"
