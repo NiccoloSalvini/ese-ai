@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="960" height="360" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="360" fill="#ffffff"/>
+  <text x="30" y="58" font-size="15" fill="#7a7f85">&#8220;The quarterly margin came in <tspan fill="#363636" font-weight="700">&#8212;&#8212;&#8212;</tspan>&#8221; &#8212; what the model holds is a distribution over the next piece</text>
+  <line x1="96" y1="290" x2="700" y2="290" stroke="#c9c4b8"/>
+  <rect x="110" y="151" width="90" height="139" fill="#AF1F25" fill-opacity="0.9"/>
+  <text x="155" y="143" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">41%</text>
+  <text x="155" y="310" font-size="13" fill="#363636" text-anchor="middle">below</text>
+  <rect x="226" y="215" width="90" height="75" fill="#7a7f85" fill-opacity="0.9"/>
+  <text x="271" y="207" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="middle">22%</text>
+  <text x="271" y="310" font-size="13" fill="#363636" text-anchor="middle">above</text>
+  <rect x="342" y="249" width="90" height="41" fill="#7a7f85" fill-opacity="0.9"/>
+  <text x="387" y="241" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="middle">12%</text>
+  <text x="387" y="310" font-size="13" fill="#363636" text-anchor="middle">at</text>
+  <rect x="458" y="263" width="90" height="27" fill="#7a7f85" fill-opacity="0.9"/>
+  <text x="503" y="255" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="middle">8%</text>
+  <text x="503" y="310" font-size="13" fill="#363636" text-anchor="middle">around</text>
+  <rect x="574" y="232" width="90" height="58" fill="#c9c4b8" fill-opacity="0.9"/>
+  <text x="619" y="224" font-size="14" font-weight="700" fill="#c9c4b8" text-anchor="middle">17%</text>
+  <text x="619" y="310" font-size="13" fill="#363636" text-anchor="middle">everything else</text>
+  <path d="M155 128 L155 106" stroke="#AF1F25" stroke-width="2"/>
+  <text x="155" y="98" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="middle">T = 0 lands here, every time</text>
+  <path d="M104 300 L104 316 L438 316 L438 300" fill="none" stroke="#a8955a" stroke-width="2"/>
+  <text x="271" y="334" font-size="13" font-weight="700" fill="#a8955a" text-anchor="middle">T &#8776; 0.7 samples in here</text>
+
+  <line x1="740" y1="80" x2="740" y2="330" stroke="#e6e2d8"/>
+  <text x="768" y="120" font-size="15" font-weight="700" fill="#AF1F25">T = 0</text>
+  <text x="768" y="140" font-size="13" fill="#7a7f85">extraction, classification,</text>
+  <text x="768" y="157" font-size="13" fill="#7a7f85">anything you must reproduce</text>
+  <text x="768" y="198" font-size="15" font-weight="700" fill="#a8955a">T &#8776; 0.7</text>
+  <text x="768" y="218" font-size="13" fill="#7a7f85">drafting, ideation</text>
+  <text x="768" y="258" font-size="15" font-weight="700" fill="#7a7f85">T high</text>
+  <text x="768" y="278" font-size="13" fill="#7a7f85">wanders &#8212; rarely what</text>
+  <text x="768" y="295" font-size="13" fill="#7a7f85">a business wants</text>
+  <text x="768" y="330" font-size="13" fill="#363636">Different answer twice is</text>
+  <text x="768" y="347" font-size="13" fill="#363636">not a fault. <tspan font-weight="700">Set T = 0.</tspan></text>
+</svg>

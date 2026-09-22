@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="380" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">features on the left, the target on the right, and one rule that governs everything else</text>
+  <defs>
+    <marker id="aw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/>
+    </marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/>
+    </marker>
+  </defs>
+
+  <!-- bands -->
+  <rect x="40" y="86" width="480" height="66" fill="#2471a3" fill-opacity="0.10" stroke="#2471a3"/>
+  <text x="280" y="114" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">features</text>
+  <text x="280" y="136" font-size="13" fill="#2471a3" text-anchor="middle">everything you could have known at t, and nothing else</text>
+
+  <rect x="524" y="86" width="316" height="66" fill="#a8955a" fill-opacity="0.14" stroke="#a8955a"/>
+  <text x="682" y="114" font-size="15" font-weight="700" fill="#a8955a" text-anchor="middle">target</text>
+  <text x="682" y="136" font-size="13" fill="#a8955a" text-anchor="middle">what happens over (t, t + h]</text>
+
+  <!-- the wall -->
+  <line x1="522" y1="70" x2="522" y2="300" stroke="#AF1F25" stroke-width="5"/>
+  <text x="522" y="62" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">t</text>
+
+  <!-- timeline -->
+  <line x1="40" y1="172" x2="900" y2="172" stroke="#c9c4b8"/>
+  <text x="40" y="192" font-size="12" fill="#7a7f85">the past</text>
+  <text x="900" y="192" font-size="12" fill="#7a7f85" text-anchor="end">the future, which you do not have</text>
+
+  <!-- leaks -->
+  <text x="40" y="228" font-size="11" font-weight="700" letter-spacing="1.3" fill="#a8955a">THREE FEATURES THAT REACH ACROSS IT, AND NO SPLIT WILL EVER FIND THEM</text>
+  <path d="M790 252 L372 252" fill="none" stroke="#AF1F25" stroke-width="2" marker-end="url(#aw)"/>
+  <text x="44" y="257" font-size="13" fill="#AF1F25">a rolling mean computed over the whole series</text>
+  <path d="M790 282 L372 282" fill="none" stroke="#AF1F25" stroke-width="2" marker-end="url(#aw)"/>
+  <text x="44" y="287" font-size="13" fill="#AF1F25">a fundamental dated by the quarter it describes</text>
+  <path d="M790 312 L372 312" fill="none" stroke="#AF1F25" stroke-width="2" marker-end="url(#aw)"/>
+  <text x="44" y="317" font-size="13" fill="#AF1F25">a normalisation using the full-sample deviation</text>
+
+  <text x="40" y="352" font-size="15" font-weight="700" fill="#363636">For every feature, write down the latest row it touches.</text>
+  <text x="40" y="372" font-size="14" fill="#7a7f85">If that row is later than t, it is a leak &#8212; and a leak looks exactly like success.</text>
+</svg>

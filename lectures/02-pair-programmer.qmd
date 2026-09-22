@@ -59,22 +59,7 @@ Drop the weekend, or invent it. There is no third option, and neither is free.
 
 ## Two ways to resolve it, and what each costs
 
-:::: {.columns}
-::: {.column width="50%"}
-**Inner join** — keep only days both have.
-
-You lose every weekend. Crypto's real weekend moves disappear, and Monday's return quietly becomes a three-day move labelled as one day.
-:::
-::: {.column width="50%"}
-**Forward fill** — carry Friday's price.
-
-You invent two prices that never traded. Volatility is diluted by a third, and any model fed this learns from data that does not exist.
-:::
-::::
-
-::: {.callout-tip title="The sentence to remember"}
-Decide which days exist **before** you compute anything across assets, and write the decision down. There is no neutral default.
-:::
+![](img/join-calendars.svg){fig-align="center" width="95%"}
 
 ## Break it yourself {.lab background-color="#2471a3"}
 

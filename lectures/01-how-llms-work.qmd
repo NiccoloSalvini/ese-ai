@@ -79,16 +79,9 @@ Same model family, same sentence. 33 pieces became 18.
 
 ## Read that clip as a line in a budget
 
-| | tokens | vs English |
-|---|---|---|
-| English sentence | 12 | 1.00× |
-| Italian, same meaning | 17 | 1.42× |
-| Russian, **GPT-4 tokenizer** | 33 | 2.75× |
-| Russian, **GPT-4o tokenizer** | 18 | 1.50× |
+![](img/token-budget.svg){fig-align="center" width="95%"}
 
-. . .
-
-[A Russian-language pilot priced on the first tokenizer and delivered on the second lost **45% of its unit cost** to a change nobody in the room chose. This is not a detail. It is the sort of thing that decides whether a pilot clears its business case.]{.red}
+[A pilot priced on one tokenizer and delivered on the other moves by **45% of its unit cost**. That is the sort of thing that decides whether it clears its business case.]{.red}
 
 ## Take it apart yourself {.lab background-color="#2471a3"}
 
@@ -131,14 +124,10 @@ The unit the system counts in is not the unit you think in, and the exchange rat
 
 ## And a longer window is not a free upgrade
 
-The attention step compares every token with every other token. **Double the context and that step costs roughly four times as much**, not twice.
-
-. . .
-
-Worse, it is not uniform. Put a fact at the start, at the middle and at the end of a very long input and ask for it back: **the middle is recovered least often**. Measured repeatedly, across model families.
+![](img/context-cost.svg){fig-align="center" width="95%"}
 
 ::: {.callout-tip title="What this rules out"}
-"Just paste the whole thing in and ask" fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer correct. That is week 4.
+"Just paste the whole thing in and ask" fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer **correct**. That is week 4.
 :::
 
 ## So where do hallucinations come from?
@@ -155,15 +144,9 @@ It has no way to feel the difference between recalling and inventing. **That is 
 
 ## "We will train it on your data" is three different products
 
-| what is actually done | changes | costs | shows up in |
-|---|---|---|---|
-| **put it in the prompt** | nothing, ever | per call, for ever | seconds |
-| **retrieval** | what it can look up | an index, plus per call | days |
-| **fine-tuning** | the model's *style and format* | a training run, repeated | weeks |
+![](img/train-on-your-data.svg){fig-align="center" width="95%"}
 
-. . .
-
-[Fine-tuning teaches a model **how to say things**. It is an unreliable way to teach it **what is true** — a fact you fine-tuned in cannot be updated, cited, or withdrawn. When a vendor says "we train on your data", the question is which of these three, and you will not get a straight answer unless you name them.]{.red}
+[A fact you fine-tuned in cannot be updated, cited, or withdrawn. Name the three, or you will not get a straight answer about which one you are buying.]{.red}
 
 ## And it disposes of claim two
 
@@ -191,21 +174,9 @@ What can honestly be meant is one of two things: your correction was **written t
 
 ## It is choosing, not looking up
 
-At every step the model has a **distribution** over what comes next.
+![](img/next-token.svg){fig-align="center" width="95%"}
 
-> "The quarterly margin came in **below** ⟶ 41% · **above** ⟶ 22% · **at** ⟶ 12% · **around** ⟶ 8% …"
-
-. . .
-
-**Temperature** decides how much it respects those odds.
-
-| | |
-|---|---|
-| `T = 0` | always take the top one — extraction, classification, anything you must reproduce |
-| `T ≈ 0.7` | sample near the top — drafting, ideation |
-| `T` high | wander — rarely what a business wants |
-
-[Same prompt, different answer, is not a malfunction. Set `T = 0` and it stops.]{.red}
+[**Temperature** decides how much it respects those odds — and nothing else about the model changes.]{.red}
 
 ## And write that into the procedure, not the folklore
 
@@ -270,17 +241,7 @@ Two sentences that mean the same thing, with **no words in common**:
 
 ## The loop behind every "agent"
 
-| | |
-|---|---|
-| 1 | you describe some tools: `get_price`, `search_docs`, `send_email` |
-| 2 | the model replies not with prose but with **a structured call** |
-| 3 | **your code** runs it — the model cannot touch anything itself |
-| 4 | the result goes back into the context window |
-| 5 | repeat until it has an answer |
-
-. . .
-
-**An agent is that loop, run more than once.** There is nothing else in the word.
+![](img/agent-loop.svg){fig-align="center" width="95%"}
 
 ## Which is also where they fail {.statement}
 

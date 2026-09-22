@@ -66,9 +66,11 @@ $$\text{expected best Sharpe from } N \text{ tries} \;\approx\; \frac{\sqrt{2\ln
 
 Twenty tries over five years: about **1.1**, from pure noise. So a Sharpe of 1.2 after twenty attempts is **not evidence of anything**.
 
-::: {.callout-tip title="The honest form"}
-Count your attempts and report the number. A parameter search is only legitimate inside **walk-forward**: fit on a past window, test on the next, roll forward, never look back.
-:::
+[Count your attempts, and report the number next to the result.]{.red}
+
+## The only honest home for a parameter search
+
+![](img/walk-forward.svg){fig-align="center" width="95%"}
 
 ## Four: one regime wearing a full-sample average
 

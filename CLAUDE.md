@@ -77,3 +77,21 @@ Materials for week N are already in the repo. Publishing them is `make deploy`.
 To change a date or a link, edit the row in `index.qmd`. When Moodle is available,
 add the Moodle link to the navbar and to the syllabus "Materials and channels" row;
 the Moodle MCP is configured in `.mcp.json` (see README).
+
+## Figures
+
+A slide that is a table of concepts is usually a figure that has not been drawn
+yet. The decks carry seventeen SVGs in `lectures/img/`.
+
+- **The slide heading is the figure's title.** A figure never repeats it; it
+  carries a muted subtitle at `y=34` and nothing else above the content.
+- **Anything with a number in it is generated**, by `lectures/img/figs.py`, so
+  the picture and the arithmetic cannot drift apart. Pure box-and-arrow diagrams
+  are hand-written SVG next to it.
+- ESE palette only: `#AF1F25` red, `#CDBA80`/`#a8955a` gold, `#2471a3` navy,
+  `#1e8449` green, `#363636` ink, `#7a7f85` muted, `#e6e2d8` rule.
+- 960 wide, embedded at `width="95%"`; keep the height at or under 450 so the
+  figure clears the reveal frame under its heading.
+- Check every figure by rasterising it (`rsvg-convert -w 1100 f.svg -o /tmp/f.png`)
+  before shipping. Source Sans 3 is not installed locally, so text is measured in
+  the fallback face — anything that fits there fits in the browser.

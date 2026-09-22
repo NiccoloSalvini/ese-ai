@@ -59,16 +59,7 @@ Below that line the system **loses money on every call**, and volume makes it wo
 
 ## Three: is it fast enough?
 
-A latency budget is a sum, and it either fits or it does not:
-
-| | |
-|---|---|
-| retrieval | 120 ms |
-| model, time to first token | 400 ms |
-| generation | `tokens_out ÷ tokens per second` |
-| your own code | whatever you measured |
-
-[Against a target you state up front. "It feels quick" is not a budget, and it stops being true under load.]{.red}
+![](img/latency-budget.svg){fig-align="center" width="95%"}
 
 ## Price your own {.lab background-color="#2471a3"}
 

@@ -64,17 +64,7 @@ You moved the price by trading. That gap is slippage, and it is not a fee.
 
 ## Three prices, and people confuse them daily
 
-| | |
-|---|---|
-| **pool price** | `y / x` — where the pool sits right now |
-| **execution price** | what you actually paid, on average, across the trade |
-| **pool price after** | where it sits once you are done |
-
-. . .
-
-The difference between the first and the second is **price impact**, and it grows with your size relative to the pool. A fee is charged on top of all three.
-
-[A big order in a small pool pays badly, and no amount of shopping around changes it: the curve is the market.]{.red}
+![](img/amm-three-prices.svg){fig-align="center" width="95%"}
 
 ## Simulate it {.lab background-color="#2471a3"}
 
@@ -86,15 +76,9 @@ The difference between the first and the second is **price impact**, and it grow
 
 ## Impermanent loss, and why the benchmark matters
 
-$$\frac{\text{LP value}}{\text{hold value}} - 1 = \frac{2\sqrt{r}}{1+r} - 1 \;\leq\; 0$$
+![](img/impermanent-loss.svg){fig-align="center" width="95%"}
 
-. . .
-
-**Always negative** when the price moves, in either direction.
-
-The benchmark is **holding the two assets**, never your initial deposit. An LP can be up in euros and still have lost to doing nothing — which is the comparison that decides whether the position made sense.
-
-[Fee income is the payment for bearing this. Fee yield ≈ fee × (daily volume ÷ TVL) × 365. Compare the two, or you are not analysing anything.]{.red}
+[Fee yield ≈ fee × (daily volume ÷ TVL) × 365. Compare the two, or you are not analysing anything.]{.red}
 
 ## [Block C]{.section-kicker} The numbers a protocol reports {.section-slide background-color="#AF1F25"}
 

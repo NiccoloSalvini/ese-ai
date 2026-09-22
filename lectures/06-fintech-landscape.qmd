@@ -31,15 +31,9 @@ A model that flags nothing at all. What is its accuracy?
 
 ## Three numbers that do mean something
 
-| | asks |
-|---|---|
-| **precision** | of the transactions we flagged, how many were fraud? |
-| **recall** | of the fraud, how much did we catch? |
-| **false positive rate** | of the good customers, how many did we block? |
+![](img/confusion-costs.svg){fig-align="center" width="95%"}
 
-. . .
-
-They trade off. Catch more fraud and you block more good customers. **There is no setting that is good at everything**, and pretending otherwise is how these projects fail.
+[They trade off. Catch more fraud and you block more good customers. **There is no setting that is good at everything**, and pretending otherwise is how these projects fail.]{.red}
 
 ## So the threshold is a business decision
 

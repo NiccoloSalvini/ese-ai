@@ -119,15 +119,7 @@ Run the harness against **your own capstone pipeline**.
 
 ## Nine boxes, every one a specific noun
 
-| | | |
-|---|---|---|
-| purpose | users | data |
-| failure modes | controls | monitoring |
-| human oversight | kill-switch | audit log |
-
-. . .
-
-[Every box names a file, a cell, a function or a person. "We will monitor for drift" is not a control. "`monitor.py` compares this week's feature means against the training window and emails me above 2σ" is.]{.red}
+![](img/risk-canvas.svg){fig-align="center" width="95%"}
 
 ## Three questions to finish
 

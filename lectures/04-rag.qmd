@@ -63,12 +63,7 @@ At about the point where it becomes expensive, slow, and worse — models attend
 
 ## Four steps, and each one can fail differently
 
-| | | fails when |
-|---|---|---|
-| **chunk** | cut the documents into passages | a fact is split across the boundary |
-| **embed** | turn each passage into a vector | rarely — this part mostly works |
-| **retrieve** | take the nearest passages to the question | the right passage was not in the top `k` |
-| **generate** | answer **only** from those passages, with citations | it was there and the model still got it wrong |
+![](img/rag-pipeline.svg){fig-align="center" width="95%"}
 
 ## Why the nearest passage is the right one {.clip background-color="#000000"}
 
@@ -86,29 +81,6 @@ Corpus: risk sections from three filings, two whitepapers, a MiCA summary.
 2. Embed and retrieve. Print the passages that came back, every time, before the answer.
 3. Generate with citations. **Bug two is in the prompt** — the model is allowed to use what it already knows.
 
-## The diagnosis that matters
-
-A wrong answer is one of two things, and the fix is different:
-
-:::: {.columns}
-::: {.column width="50%"}
-**Retrieval failure**
-The right passage never came back.
-
-→ chunk size, overlap, `k`, the query itself
-:::
-::: {.column width="50%"}
-**Generation failure**
-It came back and the model still got it wrong.
-
-→ the prompt, the temperature, the citation requirement
-:::
-::::
-
-::: {.callout-tip title="The habit"}
-**Always print the retrieved passages before the answer.** Without them you are guessing which half of the pipeline is broken, and you will tune the wrong one.
-:::
-
 ## Ten questions you already know the answer to {.lab background-color="#2471a3"}
 
 [LAB · session.ipynb § B6]{.kicker}
@@ -123,33 +95,7 @@ Run them. Record hits and misses. For each miss, write `retrieval` or `generatio
 
 ## It regulates the use, not the technology
 
-| tier | what it means |
-|---|---|
-| **prohibited** | social scoring, some biometric categorisation — not deployable at all |
-| **high-risk** | credit, employment, essential services — conformity, documentation, human oversight |
-| **transparency** | chatbots, synthetic media — people must know |
-| **minimal** | everything else, which is most things |
-
-. . .
-
-The same model can sit in three different tiers depending on what you point it at. **A CV screener and a recipe generator are different risk classes of the same technology.**
-
-## And the word that decides who is liable
-
-:::: {.columns}
-::: {.column width="50%"}
-**Provider**
-Puts the system on the market under their own name.
-:::
-::: {.column width="50%"}
-**Deployer**
-Uses it under their own authority.
-:::
-::::
-
-. . .
-
-**Take an open model, fine-tune it, put your logo on it, and you may have become the provider.** That is the sentence to remember from this half hour, because it is the one that surprises people.
+![](img/ai-act-tiers.svg){fig-align="center" width="95%"}
 
 ## Close
 

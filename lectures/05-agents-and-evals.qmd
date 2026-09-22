@@ -115,18 +115,7 @@ Then fix each, and re-run. **Keep the before and after** — it is evidence for 
 
 ## "It seemed good when I tried it" is not evidence
 
-An evaluation you can **re-run after every change**. Four parts:
-
-| | |
-|---|---|
-| **golden set** | questions with answers computed independently of the system |
-| **checker** | an exact test with a tolerance — and verified on cases you wrote by hand |
-| **LLM-as-judge** | a second model grading against a rubric, for what regex cannot see |
-| **regression table** | the same set, every change, reported **per question** |
-
-. . .
-
-[Per question, not only in aggregate. An average hides the one that broke, and the one that broke is the one your client will find.]{.red}
+![](img/eval-harness.svg){fig-align="center" width="95%"}
 
 ## The judge is biased, and still useful
 
