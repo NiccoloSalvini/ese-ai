@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 370" width="960" height="370" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="370" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">your evaluation score against your measured cost per query &#8212; one dot per candidate</text>
+  <line x1="120" y1="96" x2="120" y2="300" stroke="#c9c4b8"/>
+  <line x1="120" y1="300" x2="600" y2="300" stroke="#c9c4b8"/>
+  <text x="182.8" y="320" font-size="12" fill="#7a7f85" text-anchor="middle">&#8364;0.1</text>
+  <text x="391.4" y="320" font-size="12" fill="#7a7f85" text-anchor="middle">&#8364;1</text>
+  <text x="600.0" y="320" font-size="12" fill="#7a7f85" text-anchor="middle">&#8364;10</text>
+  <text x="110" y="259.7" font-size="12" fill="#7a7f85" text-anchor="end">0.6</text>
+  <text x="110" y="214.3" font-size="12" fill="#7a7f85" text-anchor="end">0.7</text>
+  <text x="110" y="169.0" font-size="12" fill="#7a7f85" text-anchor="end">0.8</text>
+  <text x="110" y="123.7" font-size="12" fill="#7a7f85" text-anchor="end">0.9</text>
+  <path d="M182.8 263.7 L319.1 191.2 L462.8 136.8" fill="none" stroke="#1e8449" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <circle cx="182.8" cy="263.7" r="7" fill="#7a7f85" fill-opacity="1" stroke="#7a7f85" stroke-width="2"/>
+  <text x="196.8" y="268.7" font-size="12" fill="#7a7f85" text-anchor="start">a small model</text>
+  <circle cx="319.1" cy="191.2" r="7" fill="#2471a3" fill-opacity="1" stroke="#2471a3" stroke-width="2"/>
+  <text x="319.1" y="175.2" font-size="12" fill="#2471a3" text-anchor="middle">a mid model</text>
+  <circle cx="462.8" cy="136.8" r="7" fill="#AF1F25" fill-opacity="1" stroke="#AF1F25" stroke-width="2"/>
+  <text x="448.8" y="128.8" font-size="12" fill="#AF1F25" text-anchor="end">a frontier model</text>
+  <circle cx="553.7" cy="132.3" r="7" fill="#AF1F25" fill-opacity="0.3" stroke="#AF1F25" stroke-width="2"/>
+  <text x="553.7" y="158.3" font-size="12" fill="#AF1F25" text-anchor="middle">frontier, long context</text>
+  <circle cx="434.0" cy="209.3" r="7" fill="#7a7f85" fill-opacity="0.3" stroke="#7a7f85" stroke-width="2"/>
+  <text x="450.0" y="201.3" font-size="12" fill="#7a7f85" text-anchor="start">an older frontier model</text>
+  <text x="120" y="82" font-size="12" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOUR EVAL SCORE</text>
+  <text x="360" y="344" font-size="13" fill="#7a7f85" text-anchor="middle">cost per query, log scale</text>
+  <text x="478" y="230" font-size="12" font-style="italic" fill="#7a7f85" text-anchor="middle">dominated</text>
+  <line x1="640" y1="82" x2="640" y2="346" stroke="#e6e2d8"/>
+  <text x="666" y="120" font-size="15" font-weight="700" fill="#1e8449">The frontier is the only</text>
+  <text x="666" y="140" font-size="15" font-weight="700" fill="#1e8449">shortlist.</text>
+  <text x="666" y="166" font-size="13" fill="#7a7f85">Anything below and to the right of</text>
+  <text x="666" y="183" font-size="13" fill="#7a7f85">it is dominated: you are paying more</text>
+  <text x="666" y="200" font-size="13" fill="#7a7f85">for less. Drop it without debate.</text>
+  <text x="666" y="240" font-size="15" font-weight="700" fill="#363636">Then routing moves you</text>
+  <text x="666" y="260" font-size="15" font-weight="700" fill="#363636">along the dashed line.</text>
+  <text x="666" y="286" font-size="13" fill="#7a7f85">Easy queries small, hard ones large:</text>
+  <text x="666" y="303" font-size="13" fill="#7a7f85">the cost becomes a weighted average,</text>
+  <text x="666" y="320" font-size="13" fill="#7a7f85">and whether quality survives is a</text>
+  <text x="666" y="337" font-size="13" fill="#7a7f85">question for your evals, not a vendor.</text>
+</svg>

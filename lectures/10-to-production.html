@@ -425,6 +425,10 @@ Niccolò Salvini, PhD
 <p><em>Cost becomes a weighted average. Whether quality survives is a question for your evals, not for a vendor.</em></p>
 </div></div>
 </section>
+<section id="and-which-model-also-a-chart" class="slide level2">
+<h2>And which model — also a chart</h2>
+
+<img data-src="img/cost-quality.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="two-is-it-worth-it" class="slide level2">
 <h2>Two: is it worth it?</h2>
 <p><span class="math display">\text{break-even value per query} = \text{cost per query}</span></p>
@@ -444,6 +448,7 @@ Niccolò Salvini, PhD
 <li>Measure real tokens in and out from <strong>your</strong> logs — not an estimate.</li>
 <li>Cost one query, then a thousand a day, then ten thousand.</li>
 <li>Build the <strong>sensitivity table</strong>: across volume, across tiers, with and without caching.</li>
+<li><strong>Plot the chart</strong>: your eval score against your measured cost, one dot per model you tried. Drop everything that is dominated.</li>
 <li>State your break-even value per query, and say whether you believe it.</li>
 </ol>
 <div title="The honest form of an estimate">

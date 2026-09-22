@@ -28,6 +28,13 @@
     "text": "Two things that change the arithmetic\n\n\nCached input The reusable prefix — system prompt plus fixed context — billed at a discount when the provider serves it from cache.\nRestructure the prompt so the fixed part comes first.\n\nRouting Easy queries to a small model, hard ones to a frontier model.\nCost becomes a weighted average. Whether quality survives is a question for your evals, not for a vendor."
   },
   {
+    "objectID": "lectures/10-to-production.html#and-which-model-also-a-chart",
+    "href": "lectures/10-to-production.html#and-which-model-also-a-chart",
+    "title": "From a prototype to something a firm would run",
+    "section": "And which model — also a chart",
+    "text": "And which model — also a chart"
+  },
+  {
     "objectID": "lectures/10-to-production.html#two-is-it-worth-it",
     "href": "lectures/10-to-production.html#two-is-it-worth-it",
     "title": "From a prototype to something a firm would run",
@@ -46,7 +53,7 @@
     "href": "lectures/10-to-production.html#price-your-own",
     "title": "From a prototype to something a firm would run",
     "section": "Price your own",
-    "text": "Price your own\nLAB · session.ipynb § B\n\nMeasure real tokens in and out from your logs — not an estimate.\nCost one query, then a thousand a day, then ten thousand.\nBuild the sensitivity table: across volume, across tiers, with and without caching.\nState your break-even value per query, and say whether you believe it.\n\n\n\n\n\n\n\n\nThe honest form of an estimate\n\n\nOne number is a guess with a decimal point. A sensitivity table is an estimate, because it shows what would have to be true for it to be wrong."
+    "text": "Price your own\nLAB · session.ipynb § B\n\nMeasure real tokens in and out from your logs — not an estimate.\nCost one query, then a thousand a day, then ten thousand.\nBuild the sensitivity table: across volume, across tiers, with and without caching.\nPlot the chart: your eval score against your measured cost, one dot per model you tried. Drop everything that is dominated.\nState your break-even value per query, and say whether you believe it.\n\n\n\n\n\n\n\n\nThe honest form of an estimate\n\n\nOne number is a guess with a decimal point. A sensitivity table is an estimate, because it shows what would have to be true for it to be wrong."
   },
   {
     "objectID": "lectures/10-to-production.html#block-c-readiness-and-gates-that-can-fail",
@@ -1713,6 +1720,27 @@
     "title": "How LLMs work, and how we will work",
     "section": "The three claims",
     "text": "The three claims\n\n\n\n\n\n\n\nBet before we start\n\n\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\n\n\n\n\n\nYou will meet a version of all three in a data room. By the end of today you will know which part of the machine each one is lying about — and, more useful, the one question that collapses each claim.\nThis is the actual product of the course: not enthusiasm, and not scepticism. A short list of questions that separate a system from a demo."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
+    "href": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
+    "title": "How LLMs work, and how we will work",
+    "section": "Three ways to write the same decision",
+    "text": "Three ways to write the same decision\n\nThe frame is Andrej Karpathy’s. It is the most useful map I know, because it makes “should we use AI for this?” into a question with three named answers instead of a mood."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#and-3.0-does-not-replace-the-other-two",
+    "href": "lectures/01-how-llms-work.html#and-3.0-does-not-replace-the-other-two",
+    "title": "How LLMs work, and how we will work",
+    "section": "And 3.0 does not replace the other two",
+    "text": "And 3.0 does not replace the other two"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#a-rule-you-can-write-down-beats-a-model-that-guesses-it.",
+    "href": "lectures/01-how-llms-work.html#a-rule-you-can-write-down-beats-a-model-that-guesses-it.",
+    "title": "How LLMs work, and how we will work",
+    "section": "A rule you can write down beats a model that guesses it.",
+    "text": "A rule you can write down beats a model that guesses it.\nMost of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#block-a-the-model-does-not-read",
