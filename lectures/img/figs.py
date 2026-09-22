@@ -357,6 +357,98 @@ def risk_canvas():
     write("risk-canvas.svg", s)
 
 
+
+# ---------------------------------------------------------------- week 1
+def software_123():
+    """Three ways to write the same decision, and what each one costs you.
+
+    The frame is Karpathy's; the worked example is the one this course keeps
+    coming back to — block this transaction, or do not.
+    """
+    cols = [
+        ("SOFTWARE 1.0", "rules, since 1950", MUTED,
+         ["if amount > 10_000", "and country != home:", "    block()"], True,
+         [("you write", "the logic itself"),
+          ("it fails when", "the fraud is new"),
+          ("you debug it by", "reading the code"),
+          ("you can always say", "exactly why")]),
+        ("SOFTWARE 2.0", "learned, since 2010", NAVY,
+         ["fit(features, labels)", "p = model(transaction)", "if p > t: block()"], True,
+         [("you write", "the data and the target"),
+          ("it fails when", "tomorrow stops looking like yesterday"),
+          ("you debug it by", "auditing the data and the split"),
+          ("you give up", "being able to read why")]),
+        ("SOFTWARE 3.0", "prompted, since 2023", RED,
+         ["\u201cHere is the transaction", "and the customer\u2019s history.", "Block it? And why?\u201d"], False,
+         [("you write", "the instruction, in English"),
+          ("it fails when", "the answer is fluent and invented"),
+          ("you debug it by", "checking the output against the source"),
+          ("you give up", "reproducibility, unless you pin T=0")]),
+    ]
+    s = head(960, 440, "Software 1.0, 2.0, 3.0",
+             "the same decision &#8212; block this transaction, or do not &#8212; written three ways")
+    X, W, GAP = 36, 288, 12
+    for i, (name, era, col, code, mono, rows) in enumerate(cols):
+        x = X + i * (W + GAP)
+        s += [f'  <text x="{x}" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="{col}">{name}</text>',
+              f'  <text x="{x}" y="99" font-size="12" fill="{MUTED}">{era}</text>',
+              f'  <rect x="{x}" y="112" width="{W}" height="76" fill="{col}" fill-opacity="0.08" stroke="{col}"/>']
+        fam = ' font-family="\'JetBrains Mono\',Menlo,monospace"' if mono else ''
+        for j, line in enumerate(code):
+            s.append(f'  <text x="{x+14}" y="{135+j*21}" font-size="{12 if mono else 13}" fill="{col}"{fam}>{line}</text>')
+        for j, (k, v) in enumerate(rows):
+            yy = 214 + j * 50
+            s += [f'  <text x="{x}" y="{yy}" font-size="11" font-weight="700" letter-spacing="1.1" fill="{GOLDDK}">{k.upper()}</text>',
+                  f'  <text x="{x}" y="{yy+19}" font-size="13" fill="{INK}">{v}</text>']
+    s += [f'  <line x1="{X}" y1="418" x2="924" y2="418" stroke="{RULE}"/>',
+          f'  <text x="{X}" y="436" font-size="13" fill="{INK}">You build <tspan font-weight="700" fill="{NAVY}">2.0 in week 3</tspan>, <tspan font-weight="700" fill="{RED}">3.0 in weeks 4 and 5</tspan>, and in week 6 you decide which of the three a problem actually needs.</text>']
+    write("software-123.svg", s)
+
+
+# ---------------------------------------------------------------- week 10
+def cost_quality():
+    """The chart that picks a model. Axes and rule are stable; the dots are not."""
+    # (label, cost, score, colour, dx, dy, anchor) — offsets are hand-placed
+    # because five labels round five dots collide in every automatic scheme.
+    pts = [("a small model",           0.10, 0.58, MUTED,  14,   5, "start"),
+           ("a mid model",             0.45, 0.74, NAVY,    0, -16, "middle"),
+           ("a frontier model",        2.20, 0.86, RED,   -14,  -8, "end"),
+           ("frontier, long context",  6.00, 0.87, RED,     0,  26, "middle"),
+           ("an older frontier model", 1.60, 0.70, MUTED,  16,  -8, "start")]
+    import math
+    A = Axes(math.log10(0.05), math.log10(10.0), 0.50, 0.95, 120, 600, 96, 300)
+    s = head(960, 370, "Choosing a model is a chart, not an opinion",
+             "your evaluation score against your measured cost per query &#8212; one dot per candidate")
+    s += A.frame()
+    for v in (0.1, 1.0, 10.0):
+        s.append(f'  <text x="{A.x(math.log10(v)):.1f}" y="{A.b+20}" font-size="12" fill="{MUTED}" text-anchor="middle">&#8364;{v:g}</text>')
+    for v in (0.6, 0.7, 0.8, 0.9):
+        s.append(f'  <text x="{A.l-10}" y="{A.y(v)+5:.1f}" font-size="12" fill="{MUTED}" text-anchor="end">{v:.1f}</text>')
+    # the frontier: the upper-left envelope
+    front = [p for p in pts if p[0] in ("a small model", "a mid model", "a frontier model")]
+    s.append(A.path([(math.log10(p[1]), p[2]) for p in front], stroke=GREEN, stroke_width="2.5", stroke_dasharray="6 4"))
+    for lab, c, q, col, dx, dy, anc in pts:
+        dominated = lab in ("frontier, long context", "an older frontier model")
+        s += [f'  <circle cx="{A.x(math.log10(c)):.1f}" cy="{A.y(q):.1f}" r="7" fill="{col}" fill-opacity="{0.3 if dominated else 1}" stroke="{col}" stroke-width="2"/>',
+              f'  <text x="{A.x(math.log10(c))+dx:.1f}" y="{A.y(q)+dy:.1f}" font-size="12" fill="{col}" text-anchor="{anc}">{lab}</text>']
+    s += [f'  <text x="{A.l}" y="{A.t-14}" font-size="12" font-weight="700" letter-spacing="1.1" fill="{GOLDDK}">YOUR EVAL SCORE</text>',
+          f'  <text x="{(A.l+A.r)/2:.0f}" y="{A.b+44}" font-size="13" fill="{MUTED}" text-anchor="middle">cost per query, log scale</text>',
+          f'  <text x="{A.x(math.log10(2.6)):.0f}" y="{A.y(0.655):.0f}" font-size="12" font-style="italic" fill="{MUTED}" text-anchor="middle">dominated</text>',
+          f'  <line x1="640" y1="82" x2="640" y2="346" stroke="{RULE}"/>',
+          f'  <text x="666" y="120" font-size="15" font-weight="700" fill="{GREEN}">The frontier is the only</text>',
+          f'  <text x="666" y="140" font-size="15" font-weight="700" fill="{GREEN}">shortlist.</text>',
+          f'  <text x="666" y="166" font-size="13" fill="{MUTED}">Anything below and to the right of</text>',
+          f'  <text x="666" y="183" font-size="13" fill="{MUTED}">it is dominated: you are paying more</text>',
+          f'  <text x="666" y="200" font-size="13" fill="{MUTED}">for less. Drop it without debate.</text>',
+          f'  <text x="666" y="240" font-size="15" font-weight="700" fill="{INK}">Then routing moves you</text>',
+          f'  <text x="666" y="260" font-size="15" font-weight="700" fill="{INK}">along the dashed line.</text>',
+          f'  <text x="666" y="286" font-size="13" fill="{MUTED}">Easy queries small, hard ones large:</text>',
+          f'  <text x="666" y="303" font-size="13" fill="{MUTED}">the cost becomes a weighted average,</text>',
+          f'  <text x="666" y="320" font-size="13" fill="{MUTED}">and whether quality survives is a</text>',
+          f'  <text x="666" y="337" font-size="13" fill="{MUTED}">question for your evals, not a vendor.</text>']
+    write("cost-quality.svg", s)
+
+
 if __name__ == "__main__":
     print("threshold:", threshold_ev())
     print("IL:", impermanent_loss())
@@ -366,3 +458,5 @@ if __name__ == "__main__":
     print("latency:", latency_budget())
     ai_act_tiers()
     risk_canvas()
+    software_123()
+    cost_quality()

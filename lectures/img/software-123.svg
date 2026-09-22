@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the same decision &#8212; block this transaction, or do not &#8212; written three ways</text>
+  <text x="36" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="#7a7f85">SOFTWARE 1.0</text>
+  <text x="36" y="99" font-size="12" fill="#7a7f85">rules, since 1950</text>
+  <rect x="36" y="112" width="288" height="76" fill="#7a7f85" fill-opacity="0.08" stroke="#7a7f85"/>
+  <text x="50" y="135" font-size="12" fill="#7a7f85" font-family="'JetBrains Mono',Menlo,monospace">if amount > 10_000</text>
+  <text x="50" y="156" font-size="12" fill="#7a7f85" font-family="'JetBrains Mono',Menlo,monospace">and country != home:</text>
+  <text x="50" y="177" font-size="12" fill="#7a7f85" font-family="'JetBrains Mono',Menlo,monospace">    block()</text>
+  <text x="36" y="214" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU WRITE</text>
+  <text x="36" y="233" font-size="13" fill="#363636">the logic itself</text>
+  <text x="36" y="264" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">IT FAILS WHEN</text>
+  <text x="36" y="283" font-size="13" fill="#363636">the fraud is new</text>
+  <text x="36" y="314" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU DEBUG IT BY</text>
+  <text x="36" y="333" font-size="13" fill="#363636">reading the code</text>
+  <text x="36" y="364" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU CAN ALWAYS SAY</text>
+  <text x="36" y="383" font-size="13" fill="#363636">exactly why</text>
+  <text x="336" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="#2471a3">SOFTWARE 2.0</text>
+  <text x="336" y="99" font-size="12" fill="#7a7f85">learned, since 2010</text>
+  <rect x="336" y="112" width="288" height="76" fill="#2471a3" fill-opacity="0.08" stroke="#2471a3"/>
+  <text x="350" y="135" font-size="12" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">fit(features, labels)</text>
+  <text x="350" y="156" font-size="12" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">p = model(transaction)</text>
+  <text x="350" y="177" font-size="12" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">if p > t: block()</text>
+  <text x="336" y="214" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU WRITE</text>
+  <text x="336" y="233" font-size="13" fill="#363636">the data and the target</text>
+  <text x="336" y="264" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">IT FAILS WHEN</text>
+  <text x="336" y="283" font-size="13" fill="#363636">tomorrow stops looking like yesterday</text>
+  <text x="336" y="314" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU DEBUG IT BY</text>
+  <text x="336" y="333" font-size="13" fill="#363636">auditing the data and the split</text>
+  <text x="336" y="364" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU GIVE UP</text>
+  <text x="336" y="383" font-size="13" fill="#363636">being able to read why</text>
+  <text x="636" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="#AF1F25">SOFTWARE 3.0</text>
+  <text x="636" y="99" font-size="12" fill="#7a7f85">prompted, since 2023</text>
+  <rect x="636" y="112" width="288" height="76" fill="#AF1F25" fill-opacity="0.08" stroke="#AF1F25"/>
+  <text x="650" y="135" font-size="13" fill="#AF1F25">“Here is the transaction</text>
+  <text x="650" y="156" font-size="13" fill="#AF1F25">and the customer’s history.</text>
+  <text x="650" y="177" font-size="13" fill="#AF1F25">Block it? And why?”</text>
+  <text x="636" y="214" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU WRITE</text>
+  <text x="636" y="233" font-size="13" fill="#363636">the instruction, in English</text>
+  <text x="636" y="264" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">IT FAILS WHEN</text>
+  <text x="636" y="283" font-size="13" fill="#363636">the answer is fluent and invented</text>
+  <text x="636" y="314" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU DEBUG IT BY</text>
+  <text x="636" y="333" font-size="13" fill="#363636">checking the output against the source</text>
+  <text x="636" y="364" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU GIVE UP</text>
+  <text x="636" y="383" font-size="13" fill="#363636">reproducibility, unless you pin T=0</text>
+  <line x1="36" y1="418" x2="924" y2="418" stroke="#e6e2d8"/>
+  <text x="36" y="436" font-size="13" fill="#363636">You build <tspan font-weight="700" fill="#2471a3">2.0 in week 3</tspan>, <tspan font-weight="700" fill="#AF1F25">3.0 in weeks 4 and 5</tspan>, and in week 6 you decide which of the three a problem actually needs.</text>
+</svg>

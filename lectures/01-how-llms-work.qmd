@@ -49,6 +49,18 @@ You will meet a version of all three in a data room. By the end of today you wil
 
 [This is the actual product of the course: not enthusiasm, and not scepticism. A short list of questions that separate a system from a demo.]{.red}
 
+## Three ways to write the same decision
+
+![](img/software-123.svg){fig-align="center" width="95%"}
+
+[The frame is Andrej Karpathy's. It is the most useful map I know, because it makes "should we use AI for this?" into a question with three named answers instead of a mood.]{.muted}
+
+## And 3.0 does not replace the other two {.statement}
+
+## A rule you can write down beats a model that guesses it.
+
+[Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks.]{.muted}
+
 ## [Block A]{.section-kicker} The model does not read {.section-slide background-color="#AF1F25"}
 
 ## It never sees a word

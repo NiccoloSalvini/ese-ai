@@ -47,6 +47,10 @@ Easy queries to a small model, hard ones to a frontier model.
 :::
 ::::
 
+## And which model — also a chart
+
+![](img/cost-quality.svg){fig-align="center" width="95%"}
+
 ## Two: is it worth it?
 
 $$\text{break-even value per query} = \text{cost per query}$$
@@ -68,7 +72,8 @@ Below that line the system **loses money on every call**, and volume makes it wo
 1. Measure real tokens in and out from **your** logs — not an estimate.
 2. Cost one query, then a thousand a day, then ten thousand.
 3. Build the **sensitivity table**: across volume, across tiers, with and without caching.
-4. State your break-even value per query, and say whether you believe it.
+4. **Plot the chart**: your eval score against your measured cost, one dot per model you tried. Drop everything that is dominated.
+5. State your break-even value per query, and say whether you believe it.
 
 ::: {.callout-tip title="The honest form of an estimate"}
 One number is a guess with a decimal point. A sensitivity table is an estimate, because it shows what would have to be true for it to be wrong.
