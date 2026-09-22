@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 390" width="960" height="390" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="390" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the model asks, your code decides, the result goes back in &#8212; and that is the whole of it</text>
+  <defs>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/>
+    </marker>
+  </defs>
+
+  <!-- boxes -->
+  <rect x="50" y="110" width="190" height="76" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="145" y="143" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">the model</text>
+  <text x="145" y="164" font-size="13" fill="#2471a3" text-anchor="middle">reads text, writes text</text>
+
+  <rect x="330" y="110" width="190" height="76" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="425" y="143" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">your code</text>
+  <text x="425" y="164" font-size="13" fill="#AF1F25" text-anchor="middle">decides whether to honour it</text>
+
+  <rect x="610" y="110" width="300" height="76" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="760" y="136" font-size="13" font-weight="700" letter-spacing="1.1" fill="#a8955a" text-anchor="middle">THE TOOLS</text>
+  <text x="760" y="162" font-size="12" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">get_price &#183; search_docs &#183; send_email</text>
+
+  <rect x="330" y="280" width="470" height="60" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="565" y="305" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">the context window</text>
+  <text x="565" y="325" font-size="13" fill="#7a7f85" text-anchor="middle">everything so far, re-sent in full, every single turn</text>
+
+  <!-- arrows -->
+  <line x1="244" y1="148" x2="324" y2="148" stroke="#a8955a" stroke-width="2" marker-end="url(#a2)"/>
+  <text x="284" y="106" font-size="12" fill="#363636" text-anchor="middle">it asks</text>
+  <text x="284" y="90" font-size="12" fill="#7a7f85" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">get_price("BTC-USD")</text>
+
+  <line x1="524" y1="148" x2="604" y2="148" stroke="#a8955a" stroke-width="2" marker-end="url(#a2)"/>
+  <text x="564" y="96" font-size="12" fill="#363636" text-anchor="middle">your code runs it</text>
+
+  <path d="M760 190 L760 274" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#a2)"/>
+  <text x="774" y="238" font-size="12" fill="#363636">the result goes back in</text>
+
+  <path d="M330 310 L145 310 L145 192" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#a2)"/>
+  <text x="238" y="330" font-size="12" fill="#363636" text-anchor="middle">and round again</text>
+
+  <!-- the point -->
+  <line x1="425" y1="192" x2="425" y2="216" stroke="#AF1F25" stroke-dasharray="3 3"/>
+  <text x="425" y="234" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">the model never touches anything itself</text>
+  <text x="425" y="254" font-size="13" fill="#7a7f85" text-anchor="middle">this gap is the only control point you have &#8212; everything called &#8220;AI safety&#8221; lives here</text>
+</svg>

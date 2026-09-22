@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/>
+    </marker>
+    <marker id="apr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/>
+    </marker>
+    <marker id="apb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/>
+    </marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">a wrong answer is one of two things, and the fix is not the same</text>
+
+  <rect x="36" y="92" width="196" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="134" y="120" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">chunk</text>
+  <text x="134" y="141" font-size="12" fill="#7a7f85" text-anchor="middle">cut documents into passages</text>
+  <line x1="238" y1="124" x2="270" y2="124" stroke="#a8955a" stroke-width="2" marker-end="url(#ap)"/>
+
+  <rect x="278" y="92" width="196" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="376" y="120" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">embed</text>
+  <text x="376" y="141" font-size="12" fill="#7a7f85" text-anchor="middle">each passage becomes a vector</text>
+  <line x1="480" y1="124" x2="512" y2="124" stroke="#a8955a" stroke-width="2" marker-end="url(#ap)"/>
+
+  <rect x="520" y="92" width="196" height="64" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="618" y="120" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">retrieve</text>
+  <text x="618" y="141" font-size="12" fill="#2471a3" text-anchor="middle">the nearest k to the question</text>
+  <line x1="722" y1="124" x2="754" y2="124" stroke="#a8955a" stroke-width="2" marker-end="url(#ap)"/>
+
+  <rect x="762" y="92" width="162" height="64" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="843" y="120" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">generate</text>
+  <text x="843" y="141" font-size="12" fill="#AF1F25" text-anchor="middle">answer only from those</text>
+
+  <text x="134" y="180" font-size="12" fill="#7a7f85" text-anchor="middle">a fact split across a boundary</text>
+  <text x="376" y="180" font-size="12" fill="#7a7f85" text-anchor="middle">rarely &#8212; this part mostly works</text>
+
+  <!-- the diagnosis -->
+  <line x1="36" y1="208" x2="924" y2="208" stroke="#e6e2d8"/>
+  <text x="36" y="240" font-size="15" font-weight="700" fill="#363636">The answer is wrong. Print the retrieved passages <tspan font-style="italic">before</tspan> the answer, and look:</text>
+
+  <path d="M618 256 L618 282 L300 282 L300 302" fill="none" stroke="#2471a3" stroke-width="2" marker-end="url(#apb)"/>
+  <path d="M618 256 L618 282 L700 282 L700 302" fill="none" stroke="#AF1F25" stroke-width="2" marker-end="url(#apr)"/>
+
+  <rect x="120" y="306" width="360" height="72" rx="3" fill="#eaf1f7" stroke="#2471a3"/>
+  <text x="300" y="330" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">the right passage never came back</text>
+  <text x="300" y="350" font-size="13" fill="#2471a3" text-anchor="middle">a <tspan font-weight="700">retrieval</tspan> failure</text>
+  <text x="300" y="370" font-size="12" fill="#2471a3" text-anchor="middle">chunk size, overlap, k, the query itself</text>
+
+  <rect x="520" y="306" width="360" height="72" rx="3" fill="#faeeee" stroke="#AF1F25"/>
+  <text x="700" y="330" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">it came back and the answer is still wrong</text>
+  <text x="700" y="350" font-size="13" fill="#AF1F25" text-anchor="middle">a <tspan font-weight="700">generation</tspan> failure</text>
+  <text x="700" y="370" font-size="12" fill="#AF1F25" text-anchor="middle">the prompt, the temperature, the citation rule</text>
+</svg>

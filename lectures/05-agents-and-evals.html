@@ -558,35 +558,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="it-seemed-good-when-i-tried-it-is-not-evidence" class="slide level2">
 <h2>“It seemed good when I tried it” is not evidence</h2>
-<p>An evaluation you can <strong>re-run after every change</strong>. Four parts:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>golden set</strong></td>
-<td>questions with answers computed independently of the system</td>
-</tr>
-<tr class="even">
-<td><strong>checker</strong></td>
-<td>an exact test with a tolerance — and verified on cases you wrote by hand</td>
-</tr>
-<tr class="odd">
-<td><strong>LLM-as-judge</strong></td>
-<td>a second model grading against a rubric, for what regex cannot see</td>
-</tr>
-<tr class="even">
-<td><strong>regression table</strong></td>
-<td>the same set, every change, reported <strong>per question</strong></td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p><span class="red">Per question, not only in aggregate. An average hides the one that broke, and the one that broke is the one your client will find.</span></p>
-</div>
-</section>
+
+<img data-src="img/eval-harness.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="the-judge-is-biased-and-still-useful" class="slide level2">
 <h2>The judge is biased, and still useful</h2>
 <p>A model grading a model prefers longer answers, its own phrasing, and confident wrong ones.</p>

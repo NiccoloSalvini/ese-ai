@@ -458,49 +458,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="and-leakage-that-no-split-can-catch" class="slide level2">
 <h2>And leakage that no split can catch</h2>
-<p>The split is the obvious way future information gets in. The dangerous way is through a <strong>feature</strong>.</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>feature</th>
-<th>what is wrong with it</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a rolling mean computed over the whole series</td>
-<td>every row knows the future</td>
-</tr>
-<tr class="even">
-<td>a fundamental dated by the quarter it <em>describes</em></td>
-<td>you could not read it until weeks later</td>
-</tr>
-<tr class="odd">
-<td>a normalisation using the full-sample standard deviation</td>
-<td>the scale itself contains tomorrow</td>
-</tr>
-</tbody>
-</table>
-<div title="The only defence">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The only defence</strong></p>
-</div>
-<div class="callout-content">
-<p>For every feature, write the <strong>latest row it touches</strong>. If that row is later than <code>t</code>, it is a leak — and no validation scheme will find it for you.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
+
+<img data-src="img/the-wall.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="do-it-on-purpose" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Do it on purpose</h2>
 <p><span class="kicker">LAB · session.ipynb § C</span></p>
@@ -517,16 +476,9 @@ Niccolò Salvini, PhD
 </section>
 <section id="the-model-says-0.61.-now-what" class="slide level2">
 <h2>The model says 0.61. Now what?</h2>
-<p>A prediction becomes a decision only when you add two things it does not contain:</p>
-<ol type="1">
-<li><strong>What each mistake costs.</strong> A missed fraud is not the same size as a blocked customer.</li>
-<li><strong>A threshold.</strong> The probability above which you act — chosen from those costs, <strong>never</strong> left at 0.5.</li>
-</ol>
-<div class="fragment">
-<p><span class="math display">\text{expected value} = p \cdot (\text{gain}) - (1-p) \cdot (\text{cost})</span></p>
-<p><span class="red">Act when that is positive. The threshold falls straight out of it, and it is almost never a half.</span></p>
-</div>
-</section>
+<p>A prediction becomes a decision only when you add two things the model does not contain: <strong>what each mistake costs</strong>, and <strong>the probability above which you act</strong>.</p>
+
+<img data-src="img/threshold-ev.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="and-one-more-question-which-the-model-cannot-answer" class="slide level2">
 <h2>And one more question, which the model cannot answer</h2>
 <p><strong>Is 0.61 actually 61%?</strong></p>

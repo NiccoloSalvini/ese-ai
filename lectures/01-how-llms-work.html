@@ -506,40 +506,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="read-that-clip-as-a-line-in-a-budget" class="slide level2">
 <h2>Read that clip as a line in a budget</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>tokens</th>
-<th>vs English</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>English sentence</td>
-<td>12</td>
-<td>1.00×</td>
-</tr>
-<tr class="even">
-<td>Italian, same meaning</td>
-<td>17</td>
-<td>1.42×</td>
-</tr>
-<tr class="odd">
-<td>Russian, <strong>GPT-4 tokenizer</strong></td>
-<td>33</td>
-<td>2.75×</td>
-</tr>
-<tr class="even">
-<td>Russian, <strong>GPT-4o tokenizer</strong></td>
-<td>18</td>
-<td>1.50×</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p><span class="red">A Russian-language pilot priced on the first tokenizer and delivered on the second lost <strong>45% of its unit cost</strong> to a change nobody in the room chose. This is not a detail. It is the sort of thing that decides whether a pilot clears its business case.</span></p>
-</div>
+
+<img data-src="img/token-budget.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red">A pilot priced on one tokenizer and delivered on the other moves by <strong>45% of its unit cost</strong>. That is the sort of thing that decides whether it clears its business case.</span></p>
 </section>
 <section id="take-it-apart-yourself" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Take it apart yourself</h2>
@@ -621,10 +589,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="and-a-longer-window-is-not-a-free-upgrade" class="slide level2">
 <h2>And a longer window is not a free upgrade</h2>
-<p>The attention step compares every token with every other token. <strong>Double the context and that step costs roughly four times as much</strong>, not twice.</p>
-<div class="fragment">
-<p>Worse, it is not uniform. Put a fact at the start, at the middle and at the end of a very long input and ask for it back: <strong>the middle is recovered least often</strong>. Measured repeatedly, across model families.</p>
-<div title="What this rules out">
+
+<img data-src="img/context-cost.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><div title="What this rules out">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -634,8 +600,7 @@ Niccolò Salvini, PhD
 <p><strong>What this rules out</strong></p>
 </div>
 <div class="callout-content">
-<p>“Just paste the whole thing in and ask” fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer correct. That is week 4.</p>
-</div>
+<p>“Just paste the whole thing in and ask” fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer <strong>correct</strong>. That is week 4.</p>
 </div>
 </div>
 </div>
@@ -665,45 +630,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="we-will-train-it-on-your-data-is-three-different-products" class="slide level2">
 <h2>“We will train it on your data” is three different products</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>what is actually done</th>
-<th>changes</th>
-<th>costs</th>
-<th>shows up in</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>put it in the prompt</strong></td>
-<td>nothing, ever</td>
-<td>per call, for ever</td>
-<td>seconds</td>
-</tr>
-<tr class="even">
-<td><strong>retrieval</strong></td>
-<td>what it can look up</td>
-<td>an index, plus per call</td>
-<td>days</td>
-</tr>
-<tr class="odd">
-<td><strong>fine-tuning</strong></td>
-<td>the model’s <em>style and format</em></td>
-<td>a training run, repeated</td>
-<td>weeks</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p><span class="red">Fine-tuning teaches a model <strong>how to say things</strong>. It is an unreliable way to teach it <strong>what is true</strong> — a fact you fine-tuned in cannot be updated, cited, or withdrawn. When a vendor says “we train on your data”, the question is which of these three, and you will not get a straight answer unless you name them.</span></p>
-</div>
+
+<img data-src="img/train-on-your-data.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red">A fact you fine-tuned in cannot be updated, cited, or withdrawn. Name the three, or you will not get a straight answer about which one you are buying.</span></p>
 </section>
 <section id="and-it-disposes-of-claim-two" class="slide level2">
 <h2>And it disposes of claim two</h2>
@@ -729,34 +657,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="it-is-choosing-not-looking-up" class="slide level2">
 <h2>It is choosing, not looking up</h2>
-<p>At every step the model has a <strong>distribution</strong> over what comes next.</p>
-<blockquote>
-<p>“The quarterly margin came in <strong>below</strong> ⟶ 41% · <strong>above</strong> ⟶ 22% · <strong>at</strong> ⟶ 12% · <strong>around</strong> ⟶ 8% …”</p>
-</blockquote>
-<div class="fragment">
-<p><strong>Temperature</strong> decides how much it respects those odds.</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><code>T = 0</code></td>
-<td>always take the top one — extraction, classification, anything you must reproduce</td>
-</tr>
-<tr class="even">
-<td><code>T ≈ 0.7</code></td>
-<td>sample near the top — drafting, ideation</td>
-</tr>
-<tr class="odd">
-<td><code>T</code> high</td>
-<td>wander — rarely what a business wants</td>
-</tr>
-</tbody>
-</table>
-<p><span class="red">Same prompt, different answer, is not a malfunction. Set <code>T = 0</code> and it stops.</span></p>
-</div>
+
+<img data-src="img/next-token.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red"><strong>Temperature</strong> decides how much it respects those odds — and nothing else about the model changes.</span></p>
 </section>
 <section id="and-write-that-into-the-procedure-not-the-folklore" class="slide level2">
 <h2>And write that into the procedure, not the folklore</h2>
@@ -824,38 +726,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="the-loop-behind-every-agent" class="slide level2">
 <h2>The loop behind every “agent”</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>you describe some tools: <code>get_price</code>, <code>search_docs</code>, <code>send_email</code></td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>the model replies not with prose but with <strong>a structured call</strong></td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td><strong>your code</strong> runs it — the model cannot touch anything itself</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>the result goes back into the context window</td>
-</tr>
-<tr class="odd">
-<td>5</td>
-<td>repeat until it has an answer</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p><strong>An agent is that loop, run more than once.</strong> There is nothing else in the word.</p>
-</div>
-</section>
+
+<img data-src="img/agent-loop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="which-is-also-where-they-fail" class="slide level2 statement">
 <h2>Which is also where they fail</h2>
 </section>

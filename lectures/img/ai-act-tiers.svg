@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the same model sits in a different tier depending on what you point it at</text>
+  <rect x="260" y="92" width="200" height="58" fill="#AF1F25" fill-opacity="0.12" stroke="#AF1F25" stroke-width="2"/>
+  <text x="360" y="116" font-size="14" font-weight="700" letter-spacing="1.1" fill="#AF1F25" text-anchor="middle">PROHIBITED</text>
+  <text x="360" y="137" font-size="12" fill="#AF1F25" text-anchor="middle">social scoring, some biometrics</text>
+  <text x="700" y="121" font-size="12" fill="#7a7f85">not deployable at all</text>
+  <rect x="188" y="160" width="344" height="58" fill="#d35400" fill-opacity="0.12" stroke="#d35400" stroke-width="2"/>
+  <text x="360" y="184" font-size="14" font-weight="700" letter-spacing="1.1" fill="#d35400" text-anchor="middle">HIGH-RISK</text>
+  <text x="360" y="205" font-size="12" fill="#d35400" text-anchor="middle">credit scoring, employment, essential services</text>
+  <text x="700" y="182" font-size="12" fill="#7a7f85">conformity assessment, documentation,</text>
+  <text x="700" y="199" font-size="12" fill="#7a7f85">human oversight</text>
+  <rect x="116" y="228" width="488" height="58" fill="#a8955a" fill-opacity="0.12" stroke="#a8955a" stroke-width="2"/>
+  <text x="360" y="252" font-size="14" font-weight="700" letter-spacing="1.1" fill="#a8955a" text-anchor="middle">TRANSPARENCY</text>
+  <text x="360" y="273" font-size="12" fill="#a8955a" text-anchor="middle">chatbots, synthetic media</text>
+  <text x="700" y="257" font-size="12" fill="#7a7f85">people must be told</text>
+  <rect x="40" y="296" width="640" height="58" fill="#1e8449" fill-opacity="0.12" stroke="#1e8449" stroke-width="2"/>
+  <text x="360" y="320" font-size="14" font-weight="700" letter-spacing="1.1" fill="#1e8449" text-anchor="middle">MINIMAL</text>
+  <text x="360" y="341" font-size="12" fill="#1e8449" text-anchor="middle">everything else, which is most things</text>
+  <text x="700" y="325" font-size="12" fill="#7a7f85">no specific obligation</text>
+  <text x="40" y="392" font-size="15" font-weight="700" fill="#363636">A CV screener and a recipe generator are different risk classes of the same technology.</text>
+  <text x="40" y="420" font-size="14" fill="#363636">And the word that decides who is liable: a <tspan font-weight="700" fill="#AF1F25">provider</tspan> puts it on the market under their own name;</text>
+  <text x="40" y="440" font-size="14" fill="#363636">a <tspan font-weight="700" fill="#2471a3">deployer</tspan> uses it under theirs. Fine-tune an open model, put your logo on it, and you may have become the provider.</text>
+</svg>

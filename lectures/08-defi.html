@@ -463,31 +463,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="three-prices-and-people-confuse-them-daily" class="slide level2">
 <h2>Three prices, and people confuse them daily</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>pool price</strong></td>
-<td><code>y / x</code> — where the pool sits right now</td>
-</tr>
-<tr class="even">
-<td><strong>execution price</strong></td>
-<td>what you actually paid, on average, across the trade</td>
-</tr>
-<tr class="odd">
-<td><strong>pool price after</strong></td>
-<td>where it sits once you are done</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p>The difference between the first and the second is <strong>price impact</strong>, and it grows with your size relative to the pool. A fee is charged on top of all three.</p>
-<p><span class="red">A big order in a small pool pays badly, and no amount of shopping around changes it: the curve is the market.</span></p>
-</div>
-</section>
+
+<img data-src="img/amm-three-prices.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="simulate-it" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Simulate it</h2>
 <p><span class="kicker">LAB · session.ipynb § B</span></p>
@@ -499,12 +476,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="impermanent-loss-and-why-the-benchmark-matters" class="slide level2">
 <h2>Impermanent loss, and why the benchmark matters</h2>
-<p><span class="math display">\frac{\text{LP value}}{\text{hold value}} - 1 = \frac{2\sqrt{r}}{1+r} - 1 \;\leq\; 0</span></p>
-<div class="fragment">
-<p><strong>Always negative</strong> when the price moves, in either direction.</p>
-<p>The benchmark is <strong>holding the two assets</strong>, never your initial deposit. An LP can be up in euros and still have lost to doing nothing — which is the comparison that decides whether the position made sense.</p>
-<p><span class="red">Fee income is the payment for bearing this. Fee yield ≈ fee × (daily volume ÷ TVL) × 365. Compare the two, or you are not analysing anything.</span></p>
-</div>
+
+<img data-src="img/impermanent-loss.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red">Fee yield ≈ fee × (daily volume ÷ TVL) × 365. Compare the two, or you are not analysing anything.</span></p>
 </section>
 <section id="block-c-the-numbers-a-protocol-reports" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Block C</span> The numbers a protocol reports</h2>

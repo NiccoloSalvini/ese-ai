@@ -451,43 +451,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="four-steps-and-each-one-can-fail-differently" class="slide level2">
 <h2>Four steps, and each one can fail differently</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th></th>
-<th>fails when</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>chunk</strong></td>
-<td>cut the documents into passages</td>
-<td>a fact is split across the boundary</td>
-</tr>
-<tr class="even">
-<td><strong>embed</strong></td>
-<td>turn each passage into a vector</td>
-<td>rarely — this part mostly works</td>
-</tr>
-<tr class="odd">
-<td><strong>retrieve</strong></td>
-<td>take the nearest passages to the question</td>
-<td>the right passage was not in the top <code>k</code></td>
-</tr>
-<tr class="even">
-<td><strong>generate</strong></td>
-<td>answer <strong>only</strong> from those passages, with citations</td>
-<td>it was there and the model still got it wrong</td>
-</tr>
-</tbody>
-</table>
-</section>
+
+<img data-src="img/rag-pipeline.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="why-the-nearest-passage-is-the-right-one" class="slide level2 clip" data-background-color="#000000">
 <h2>Why the nearest passage is the right one</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w04_retrieval_poster.png">
@@ -505,33 +470,6 @@ Niccolò Salvini, PhD
 <li>Generate with citations. <strong>Bug two is in the prompt</strong> — the model is allowed to use what it already knows.</li>
 </ol>
 </section>
-<section id="the-diagnosis-that-matters" class="slide level2">
-<h2>The diagnosis that matters</h2>
-<p>A wrong answer is one of two things, and the fix is different:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Retrieval failure</strong> The right passage never came back.</p>
-<p>→ chunk size, overlap, <code>k</code>, the query itself</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Generation failure</strong> It came back and the model still got it wrong.</p>
-<p>→ the prompt, the temperature, the citation requirement</p>
-</div></div>
-<div title="The habit">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The habit</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Always print the retrieved passages before the answer.</strong> Without them you are guessing which half of the pipeline is broken, and you will tune the wrong one.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="ten-questions-you-already-know-the-answer-to" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Ten questions you already know the answer to</h2>
 <p><span class="kicker">LAB · session.ipynb § B6</span></p>
@@ -544,52 +482,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="it-regulates-the-use-not-the-technology" class="slide level2">
 <h2>It regulates the use, not the technology</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>tier</th>
-<th>what it means</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>prohibited</strong></td>
-<td>social scoring, some biometric categorisation — not deployable at all</td>
-</tr>
-<tr class="even">
-<td><strong>high-risk</strong></td>
-<td>credit, employment, essential services — conformity, documentation, human oversight</td>
-</tr>
-<tr class="odd">
-<td><strong>transparency</strong></td>
-<td>chatbots, synthetic media — people must know</td>
-</tr>
-<tr class="even">
-<td><strong>minimal</strong></td>
-<td>everything else, which is most things</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p>The same model can sit in three different tiers depending on what you point it at. <strong>A CV screener and a recipe generator are different risk classes of the same technology.</strong></p>
-</div>
-</section>
-<section id="and-the-word-that-decides-who-is-liable" class="slide level2">
-<h2>And the word that decides who is liable</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Provider</strong> Puts the system on the market under their own name.</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Deployer</strong> Uses it under their own authority.</p>
-</div></div>
-<div class="fragment">
-<p><strong>Take an open model, fine-tune it, put your logo on it, and you may have become the provider.</strong> That is the sentence to remember from this half hour, because it is the one that surprises people.</p>
-</div>
-</section>
+
+<img data-src="img/ai-act-tiers.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
 <p><strong>Homework 4</strong> — extend the retrieval system with a corpus of your own, write ten test questions with expected answers, record hits and misses, and explain each miss as retrieval or generation.</p>

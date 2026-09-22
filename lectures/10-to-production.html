@@ -435,29 +435,8 @@ Niccolò Salvini, PhD
 </section>
 <section id="three-is-it-fast-enough" class="slide level2">
 <h2>Three: is it fast enough?</h2>
-<p>A latency budget is a sum, and it either fits or it does not:</p>
-<table class="caption-top">
-<tbody>
-<tr class="odd">
-<td>retrieval</td>
-<td>120 ms</td>
-</tr>
-<tr class="even">
-<td>model, time to first token</td>
-<td>400 ms</td>
-</tr>
-<tr class="odd">
-<td>generation</td>
-<td><code>tokens_out ÷ tokens per second</code></td>
-</tr>
-<tr class="even">
-<td>your own code</td>
-<td>whatever you measured</td>
-</tr>
-</tbody>
-</table>
-<p><span class="red">Against a target you state up front. “It feels quick” is not a budget, and it stops being true under load.</span></p>
-</section>
+
+<img data-src="img/latency-budget.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="price-your-own" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Price your own</h2>
 <p><span class="kicker">LAB · session.ipynb § B</span></p>

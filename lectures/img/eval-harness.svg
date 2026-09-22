@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 370" width="960" height="370" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="370" fill="#ffffff"/>
+  <defs>
+    <marker id="ae" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/>
+    </marker>
+    <marker id="aeg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/>
+    </marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">an evaluation is something you can re-run after every change &#8212; four parts, and a loop</text>
+
+  <rect x="36" y="112" width="210" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="141" y="138" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">golden set</text>
+  <text x="141" y="159" font-size="12" fill="#7a7f85" text-anchor="middle">ten questions, answers computed</text>
+  <text x="141" y="174" font-size="12" fill="#7a7f85" text-anchor="middle">independently of the system</text>
+
+  <line x1="252" y1="144" x2="300" y2="144" stroke="#a8955a" stroke-width="2" marker-end="url(#ae)"/>
+
+  <rect x="306" y="112" width="180" height="64" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="396" y="144" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">your system</text>
+  <text x="396" y="164" font-size="12" fill="#2471a3" text-anchor="middle">whatever it is this week</text>
+
+  <path d="M492 130 L522 114 L540 114" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ae)"/>
+  <path d="M492 158 L522 178 L540 178" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ae)"/>
+
+  <rect x="546" y="88" width="250" height="52" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="671" y="110" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">checker</text>
+  <text x="671" y="129" font-size="12" fill="#7a7f85" text-anchor="middle">exact, with a tolerance, tested by hand</text>
+
+  <rect x="546" y="152" width="250" height="52" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="671" y="174" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">LLM-as-judge</text>
+  <text x="671" y="193" font-size="12" fill="#7a7f85" text-anchor="middle">biased, useful, never the only signal</text>
+
+  <path d="M802 114 L864 114 L864 294 L802 294" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ae)"/>
+  <path d="M802 178 L864 178" fill="none" stroke="#a8955a" stroke-width="2"/>
+
+  <rect x="306" y="262" width="490" height="64" rx="3" fill="#faf6ea" stroke="#a8955a" stroke-width="2"/>
+  <text x="551" y="288" font-size="15" font-weight="700" fill="#a8955a" text-anchor="middle">regression table &#8212; the same set, reported per question</text>
+  <text x="551" y="310" font-size="12" fill="#a8955a" text-anchor="middle">two rows of it, before and after, is the strongest exhibit in your brief</text>
+
+  <path d="M306 294 L262 294 L262 160 L300 160" fill="none" stroke="#1e8449" stroke-width="2" marker-end="url(#aeg)"/>
+  <text x="256" y="238" font-size="12" font-weight="700" fill="#1e8449" text-anchor="end">change one thing</text>
+  <text x="256" y="254" font-size="12" font-weight="700" fill="#1e8449" text-anchor="end">and run it again</text>
+
+  <text x="30" y="356" font-size="14" fill="#363636"><tspan font-weight="700">Per question, not only in aggregate.</tspan> An average hides the one that broke, and the one that broke is the one your client will find.</text>
+</svg>

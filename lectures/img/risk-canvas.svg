@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 434" width="960" height="434" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="434" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">each box names a file, a cell, a function or a person. Nothing in a box may be a verb phrase.</text>
+  <rect x="30" y="86" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="46" y="118" font-size="15" font-weight="700" fill="#363636">purpose</text>
+  <text x="46" y="144" font-size="12" fill="#7a7f85">one sentence, and who signed it</text>
+  <rect x="326" y="86" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="342" y="118" font-size="15" font-weight="700" fill="#363636">users</text>
+  <text x="342" y="144" font-size="12" fill="#7a7f85">named, and what they did before</text>
+  <rect x="622" y="86" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="638" y="118" font-size="15" font-weight="700" fill="#363636">data</text>
+  <text x="638" y="144" font-size="12" fill="#7a7f85">the source, the licence, the snapshot</text>
+  <rect x="30" y="180" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="46" y="212" font-size="15" font-weight="700" fill="#363636">failure modes</text>
+  <text x="46" y="238" font-size="12" fill="#7a7f85">the red-team log, by outcome</text>
+  <rect x="326" y="180" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="342" y="212" font-size="15" font-weight="700" fill="#363636">controls</text>
+  <text x="342" y="238" font-size="12" fill="#7a7f85">a validation gate, one per failure</text>
+  <rect x="622" y="180" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="638" y="212" font-size="15" font-weight="700" fill="#363636">monitoring</text>
+  <text x="638" y="238" font-size="12" fill="#7a7f85">monitor.py, 2&#963; on feature means</text>
+  <rect x="30" y="274" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="46" y="306" font-size="15" font-weight="700" fill="#363636">human oversight</text>
+  <text x="46" y="332" font-size="12" fill="#7a7f85">who reviews, on what sample</text>
+  <rect x="326" y="274" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="342" y="306" font-size="15" font-weight="700" fill="#363636">kill-switch</text>
+  <text x="342" y="332" font-size="12" fill="#7a7f85">who stops it, and the date tested</text>
+  <rect x="622" y="274" width="288" height="86" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="638" y="306" font-size="15" font-weight="700" fill="#363636">audit log</text>
+  <text x="638" y="332" font-size="12" fill="#7a7f85">what is written, and by whom</text>
+  <text x="30" y="398" font-size="14" fill="#363636">&#8220;We will monitor for drift&#8221; is not a control.</text>
+  <text x="30" y="420" font-size="14" font-weight="700" fill="#AF1F25">&#8220;monitor.py compares this week&#8217;s feature means against the training window and emails me above 2&#963;&#8221; is.</text>
+</svg>

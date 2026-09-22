@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="400" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">Bitcoin trades 365 days a year. The stock exchange trades about 252. Something has to give.</text>
+  <text x="40" y="96" font-size="11" font-weight="700" letter-spacing="1.3" fill="#a8955a">WHAT EXISTS</text>
+  <text x="40" y="122" font-size="12" fill="#7a7f85">BTC</text>
+  <text x="136" y="122" font-size="12" fill="#7a7f85">SPY</text>
+  <text x="392" y="96" font-size="11" font-weight="700" letter-spacing="1.3" fill="#2471a3">INNER JOIN &#8212; DROP THE WEEKEND</text>
+  <text x="392" y="122" font-size="12" fill="#7a7f85">BTC</text>
+  <text x="488" y="122" font-size="12" fill="#7a7f85">SPY</text>
+  <text x="706" y="96" font-size="11" font-weight="700" letter-spacing="1.3" fill="#AF1F25">FORWARD FILL &#8212; INVENT IT</text>
+  <text x="706" y="122" font-size="12" fill="#7a7f85">BTC</text>
+  <text x="802" y="122" font-size="12" fill="#7a7f85">SPY</text>
+  <text x="40" y="150" font-size="13" fill="#363636">Fri</text>
+  <text x="120" y="150" font-size="13" fill="#363636" text-anchor="end">61,200</text>
+  <text x="136" y="150" font-size="13" fill="#363636">Fri</text>
+  <text x="216" y="150" font-size="13" fill="#363636" text-anchor="end">512.40</text>
+  <text x="40" y="178" font-size="13" fill="#363636">Sat</text>
+  <text x="120" y="178" font-size="13" fill="#363636" text-anchor="end">59,050</text>
+  <text x="136" y="178" font-size="13" fill="#c9c4b8">Sat</text>
+  <text x="216" y="178" font-size="13" fill="#c9c4b8" text-anchor="end">&#8212;</text>
+  <text x="40" y="206" font-size="13" fill="#363636">Sun</text>
+  <text x="120" y="206" font-size="13" fill="#363636" text-anchor="end">58,100</text>
+  <text x="136" y="206" font-size="13" fill="#c9c4b8">Sun</text>
+  <text x="216" y="206" font-size="13" fill="#c9c4b8" text-anchor="end">&#8212;</text>
+  <text x="40" y="234" font-size="13" fill="#363636">Mon</text>
+  <text x="120" y="234" font-size="13" fill="#363636" text-anchor="end">57,800</text>
+  <text x="136" y="234" font-size="13" fill="#363636">Mon</text>
+  <text x="216" y="234" font-size="13" fill="#363636" text-anchor="end">509.10</text>
+  <text x="392" y="150" font-size="13" fill="#363636">Fri</text>
+  <text x="472" y="150" font-size="13" fill="#363636" text-anchor="end">61,200</text>
+  <text x="488" y="150" font-size="13" fill="#363636">Fri</text>
+  <text x="568" y="150" font-size="13" fill="#363636" text-anchor="end">512.40</text>
+  <line x1="386" y1="172" x2="578" y2="200" stroke="#2471a3" stroke-width="1.5"/>
+  <line x1="386" y1="200" x2="578" y2="172" stroke="#2471a3" stroke-width="1.5"/>
+  <text x="482" y="222" font-size="12" fill="#2471a3" text-anchor="middle">two rows gone</text>
+  <text x="392" y="252" font-size="13" fill="#363636">Mon</text>
+  <text x="472" y="252" font-size="13" fill="#363636" text-anchor="end">57,800</text>
+  <text x="488" y="252" font-size="13" fill="#363636">Mon</text>
+  <text x="568" y="252" font-size="13" fill="#363636" text-anchor="end">509.10</text>
+  <text x="706" y="150" font-size="13" fill="#363636">Fri</text>
+  <text x="786" y="150" font-size="13" fill="#363636" text-anchor="end">61,200</text>
+  <text x="802" y="150" font-size="13" fill="#363636">Fri</text>
+  <text x="882" y="150" font-size="13" fill="#363636" text-anchor="end">512.40</text>
+  <text x="706" y="178" font-size="13" fill="#363636">Sat</text>
+  <text x="786" y="178" font-size="13" fill="#363636" text-anchor="end">59,050</text>
+  <text x="802" y="178" font-size="13" fill="#AF1F25">Sat</text>
+  <text x="882" y="178" font-size="13" fill="#AF1F25" text-anchor="end" font-style="italic">512.40</text>
+  <text x="706" y="206" font-size="13" fill="#363636">Sun</text>
+  <text x="786" y="206" font-size="13" fill="#363636" text-anchor="end">58,100</text>
+  <text x="802" y="206" font-size="13" fill="#AF1F25">Sun</text>
+  <text x="882" y="206" font-size="13" fill="#AF1F25" text-anchor="end" font-style="italic">512.40</text>
+  <text x="706" y="234" font-size="13" fill="#363636">Mon</text>
+  <text x="786" y="234" font-size="13" fill="#363636" text-anchor="end">57,800</text>
+  <text x="802" y="234" font-size="13" fill="#363636">Mon</text>
+  <text x="882" y="234" font-size="13" fill="#363636" text-anchor="end">509.10</text>
+  <text x="706" y="262" font-size="12" fill="#AF1F25">two prices that never traded</text>
+  <line x1="40" y1="292" x2="920" y2="292" stroke="#e6e2d8"/>
+  <text x="40" y="322" font-size="14" fill="#2471a3">Monday&#8217;s BTC return reads <tspan font-weight="700">&#8722;5.56%</tspan> instead of <tspan font-weight="700">&#8722;0.52%</tspan> &#8212; a three-day move wearing a one-day label.</text>
+  <text x="40" y="346" font-size="14" fill="#AF1F25">Two of every seven SPY returns are now exactly zero: <tspan font-weight="700">29% of the sample is fabricated</tspan>.</text>
+  <text x="40" y="380" font-size="15" font-weight="700" fill="#363636">Decide which days exist before you compute anything across assets, and write the decision down.</text>
+</svg>

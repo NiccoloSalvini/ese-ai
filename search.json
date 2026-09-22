@@ -39,7 +39,7 @@
     "href": "lectures/10-to-production.html#three-is-it-fast-enough",
     "title": "From a prototype to something a firm would run",
     "section": "Three: is it fast enough?",
-    "text": "Three: is it fast enough?\nA latency budget is a sum, and it either fits or it does not:\n\n\n\nretrieval\n120 ms\n\n\nmodel, time to first token\n400 ms\n\n\ngeneration\ntokens_out ÷ tokens per second\n\n\nyour own code\nwhatever you measured\n\n\n\nAgainst a target you state up front. “It feels quick” is not a budget, and it stops being true under load."
+    "text": "Three: is it fast enough?"
   },
   {
     "objectID": "lectures/10-to-production.html#price-your-own",
@@ -172,7 +172,7 @@
     "href": "lectures/08-defi.html#three-prices-and-people-confuse-them-daily",
     "title": "One equation runs a market",
     "section": "Three prices, and people confuse them daily",
-    "text": "Three prices, and people confuse them daily\n\n\n\n\n\n\n\npool price\ny / x — where the pool sits right now\n\n\nexecution price\nwhat you actually paid, on average, across the trade\n\n\npool price after\nwhere it sits once you are done\n\n\n\n\nThe difference between the first and the second is price impact, and it grows with your size relative to the pool. A fee is charged on top of all three.\nA big order in a small pool pays badly, and no amount of shopping around changes it: the curve is the market."
+    "text": "Three prices, and people confuse them daily"
   },
   {
     "objectID": "lectures/08-defi.html#simulate-it",
@@ -186,7 +186,7 @@
     "href": "lectures/08-defi.html#impermanent-loss-and-why-the-benchmark-matters",
     "title": "One equation runs a market",
     "section": "Impermanent loss, and why the benchmark matters",
-    "text": "Impermanent loss, and why the benchmark matters\n\\frac{\\text{LP value}}{\\text{hold value}} - 1 = \\frac{2\\sqrt{r}}{1+r} - 1 \\;\\leq\\; 0\n\nAlways negative when the price moves, in either direction.\nThe benchmark is holding the two assets, never your initial deposit. An LP can be up in euros and still have lost to doing nothing — which is the comparison that decides whether the position made sense.\nFee income is the payment for bearing this. Fee yield ≈ fee × (daily volume ÷ TVL) × 365. Compare the two, or you are not analysing anything."
+    "text": "Impermanent loss, and why the benchmark matters\n\nFee yield ≈ fee × (daily volume ÷ TVL) × 365. Compare the two, or you are not analysing anything."
   },
   {
     "objectID": "lectures/08-defi.html#block-c-the-numbers-a-protocol-reports",
@@ -256,7 +256,7 @@
     "href": "lectures/06-fintech-landscape.html#three-numbers-that-do-mean-something",
     "title": "Where AI actually earns money in finance",
     "section": "Three numbers that do mean something",
-    "text": "Three numbers that do mean something\n\n\n\n\n\n\n\n\nasks\n\n\n\n\nprecision\nof the transactions we flagged, how many were fraud?\n\n\nrecall\nof the fraud, how much did we catch?\n\n\nfalse positive rate\nof the good customers, how many did we block?\n\n\n\n\nThey trade off. Catch more fraud and you block more good customers. There is no setting that is good at everything, and pretending otherwise is how these projects fail."
+    "text": "Three numbers that do mean something\n\nThey trade off. Catch more fraud and you block more good customers. There is no setting that is good at everything, and pretending otherwise is how these projects fail."
   },
   {
     "objectID": "lectures/06-fintech-landscape.html#so-the-threshold-is-a-business-decision",
@@ -396,7 +396,7 @@
     "href": "lectures/04-rag.html#four-steps-and-each-one-can-fail-differently",
     "title": "Making it answer from your documents",
     "section": "Four steps, and each one can fail differently",
-    "text": "Four steps, and each one can fail differently\n\n\n\n\n\n\n\n\n\n\nfails when\n\n\n\n\nchunk\ncut the documents into passages\na fact is split across the boundary\n\n\nembed\nturn each passage into a vector\nrarely — this part mostly works\n\n\nretrieve\ntake the nearest passages to the question\nthe right passage was not in the top k\n\n\ngenerate\nanswer only from those passages, with citations\nit was there and the model still got it wrong"
+    "text": "Four steps, and each one can fail differently"
   },
   {
     "objectID": "lectures/04-rag.html#why-the-nearest-passage-is-the-right-one",
@@ -411,13 +411,6 @@
     "title": "Making it answer from your documents",
     "section": "Build it, with two bugs planted",
     "text": "Build it, with two bugs planted\nLAB · session.ipynb § B\nCorpus: risk sections from three filings, two whitepapers, a MiCA summary.\n\nChunk it. Bug one is in the chunking — a fact gets cut in half.\nEmbed and retrieve. Print the passages that came back, every time, before the answer.\nGenerate with citations. Bug two is in the prompt — the model is allowed to use what it already knows."
-  },
-  {
-    "objectID": "lectures/04-rag.html#the-diagnosis-that-matters",
-    "href": "lectures/04-rag.html#the-diagnosis-that-matters",
-    "title": "Making it answer from your documents",
-    "section": "The diagnosis that matters",
-    "text": "The diagnosis that matters\nA wrong answer is one of two things, and the fix is different:\n\n\nRetrieval failure The right passage never came back.\n→ chunk size, overlap, k, the query itself\n\nGeneration failure It came back and the model still got it wrong.\n→ the prompt, the temperature, the citation requirement\n\n\n\n\n\n\n\n\nThe habit\n\n\nAlways print the retrieved passages before the answer. Without them you are guessing which half of the pipeline is broken, and you will tune the wrong one."
   },
   {
     "objectID": "lectures/04-rag.html#ten-questions-you-already-know-the-answer-to",
@@ -438,14 +431,7 @@
     "href": "lectures/04-rag.html#it-regulates-the-use-not-the-technology",
     "title": "Making it answer from your documents",
     "section": "It regulates the use, not the technology",
-    "text": "It regulates the use, not the technology\n\n\n\n\n\n\n\ntier\nwhat it means\n\n\n\n\nprohibited\nsocial scoring, some biometric categorisation — not deployable at all\n\n\nhigh-risk\ncredit, employment, essential services — conformity, documentation, human oversight\n\n\ntransparency\nchatbots, synthetic media — people must know\n\n\nminimal\neverything else, which is most things\n\n\n\n\nThe same model can sit in three different tiers depending on what you point it at. A CV screener and a recipe generator are different risk classes of the same technology."
-  },
-  {
-    "objectID": "lectures/04-rag.html#and-the-word-that-decides-who-is-liable",
-    "href": "lectures/04-rag.html#and-the-word-that-decides-who-is-liable",
-    "title": "Making it answer from your documents",
-    "section": "And the word that decides who is liable",
-    "text": "And the word that decides who is liable\n\n\nProvider Puts the system on the market under their own name.\n\nDeployer Uses it under their own authority.\n\n\nTake an open model, fine-tune it, put your logo on it, and you may have become the provider. That is the sentence to remember from this half hour, because it is the one that surprises people."
+    "text": "It regulates the use, not the technology"
   },
   {
     "objectID": "lectures/04-rag.html#close",
@@ -501,7 +487,7 @@
     "href": "lectures/02-pair-programmer.html#two-ways-to-resolve-it-and-what-each-costs",
     "title": "The assistant writes it. You decide whether it is true.",
     "section": "Two ways to resolve it, and what each costs",
-    "text": "Two ways to resolve it, and what each costs\n\n\nInner join — keep only days both have.\nYou lose every weekend. Crypto’s real weekend moves disappear, and Monday’s return quietly becomes a three-day move labelled as one day.\n\nForward fill — carry Friday’s price.\nYou invent two prices that never traded. Volatility is diluted by a third, and any model fed this learns from data that does not exist.\n\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nDecide which days exist before you compute anything across assets, and write the decision down. There is no neutral default."
+    "text": "Two ways to resolve it, and what each costs"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#break-it-yourself",
@@ -1761,7 +1747,7 @@
     "href": "lectures/01-how-llms-work.html#read-that-clip-as-a-line-in-a-budget",
     "title": "How LLMs work, and how we will work",
     "section": "Read that clip as a line in a budget",
-    "text": "Read that clip as a line in a budget\n\n\n\n\ntokens\nvs English\n\n\n\n\nEnglish sentence\n12\n1.00×\n\n\nItalian, same meaning\n17\n1.42×\n\n\nRussian, GPT-4 tokenizer\n33\n2.75×\n\n\nRussian, GPT-4o tokenizer\n18\n1.50×\n\n\n\n\nA Russian-language pilot priced on the first tokenizer and delivered on the second lost 45% of its unit cost to a change nobody in the room chose. This is not a detail. It is the sort of thing that decides whether a pilot clears its business case."
+    "text": "Read that clip as a line in a budget\n\nA pilot priced on one tokenizer and delivered on the other moves by 45% of its unit cost. That is the sort of thing that decides whether it clears its business case."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#take-it-apart-yourself",
@@ -1810,7 +1796,7 @@
     "href": "lectures/01-how-llms-work.html#and-a-longer-window-is-not-a-free-upgrade",
     "title": "How LLMs work, and how we will work",
     "section": "And a longer window is not a free upgrade",
-    "text": "And a longer window is not a free upgrade\nThe attention step compares every token with every other token. Double the context and that step costs roughly four times as much, not twice.\n\nWorse, it is not uniform. Put a fact at the start, at the middle and at the end of a very long input and ask for it back: the middle is recovered least often. Measured repeatedly, across model families.\n\n\n\n\n\n\n\nWhat this rules out\n\n\n“Just paste the whole thing in and ask” fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer correct. That is week 4."
+    "text": "And a longer window is not a free upgrade\n\n\n\n\n\n\n\n\nWhat this rules out\n\n\n“Just paste the whole thing in and ask” fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer correct. That is week 4."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#so-where-do-hallucinations-come-from",
@@ -1824,7 +1810,7 @@
     "href": "lectures/01-how-llms-work.html#we-will-train-it-on-your-data-is-three-different-products",
     "title": "How LLMs work, and how we will work",
     "section": "“We will train it on your data” is three different products",
-    "text": "“We will train it on your data” is three different products\n\n\n\n\n\n\n\n\n\nwhat is actually done\nchanges\ncosts\nshows up in\n\n\n\n\nput it in the prompt\nnothing, ever\nper call, for ever\nseconds\n\n\nretrieval\nwhat it can look up\nan index, plus per call\ndays\n\n\nfine-tuning\nthe model’s style and format\na training run, repeated\nweeks\n\n\n\n\nFine-tuning teaches a model how to say things. It is an unreliable way to teach it what is true — a fact you fine-tuned in cannot be updated, cited, or withdrawn. When a vendor says “we train on your data”, the question is which of these three, and you will not get a straight answer unless you name them."
+    "text": "“We will train it on your data” is three different products\n\nA fact you fine-tuned in cannot be updated, cited, or withdrawn. Name the three, or you will not get a straight answer about which one you are buying."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#and-it-disposes-of-claim-two",
@@ -1852,7 +1838,7 @@
     "href": "lectures/01-how-llms-work.html#it-is-choosing-not-looking-up",
     "title": "How LLMs work, and how we will work",
     "section": "It is choosing, not looking up",
-    "text": "It is choosing, not looking up\nAt every step the model has a distribution over what comes next.\n\n“The quarterly margin came in below ⟶ 41% · above ⟶ 22% · at ⟶ 12% · around ⟶ 8% …”\n\n\nTemperature decides how much it respects those odds.\n\n\n\n\n\n\n\nT = 0\nalways take the top one — extraction, classification, anything you must reproduce\n\n\nT ≈ 0.7\nsample near the top — drafting, ideation\n\n\nT high\nwander — rarely what a business wants\n\n\n\nSame prompt, different answer, is not a malfunction. Set T = 0 and it stops."
+    "text": "It is choosing, not looking up\n\nTemperature decides how much it respects those odds — and nothing else about the model changes."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#and-write-that-into-the-procedure-not-the-folklore",
@@ -1901,7 +1887,7 @@
     "href": "lectures/01-how-llms-work.html#the-loop-behind-every-agent",
     "title": "How LLMs work, and how we will work",
     "section": "The loop behind every “agent”",
-    "text": "The loop behind every “agent”\n\n\n\n\n\n\n\n1\nyou describe some tools: get_price, search_docs, send_email\n\n\n2\nthe model replies not with prose but with a structured call\n\n\n3\nyour code runs it — the model cannot touch anything itself\n\n\n4\nthe result goes back into the context window\n\n\n5\nrepeat until it has an answer\n\n\n\n\nAn agent is that loop, run more than once. There is nothing else in the word."
+    "text": "The loop behind every “agent”"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#which-is-also-where-they-fail",
@@ -2006,7 +1992,7 @@
     "href": "lectures/03-one-problem.html#and-leakage-that-no-split-can-catch",
     "title": "A model, and whether to believe it",
     "section": "And leakage that no split can catch",
-    "text": "And leakage that no split can catch\nThe split is the obvious way future information gets in. The dangerous way is through a feature.\n\n\n\n\n\n\n\nfeature\nwhat is wrong with it\n\n\n\n\na rolling mean computed over the whole series\nevery row knows the future\n\n\na fundamental dated by the quarter it describes\nyou could not read it until weeks later\n\n\na normalisation using the full-sample standard deviation\nthe scale itself contains tomorrow\n\n\n\n\n\n\n\n\n\n\nThe only defence\n\n\nFor every feature, write the latest row it touches. If that row is later than t, it is a leak — and no validation scheme will find it for you."
+    "text": "And leakage that no split can catch"
   },
   {
     "objectID": "lectures/03-one-problem.html#do-it-on-purpose",
@@ -2027,7 +2013,7 @@
     "href": "lectures/03-one-problem.html#the-model-says-0.61.-now-what",
     "title": "A model, and whether to believe it",
     "section": "The model says 0.61. Now what?",
-    "text": "The model says 0.61. Now what?\nA prediction becomes a decision only when you add two things it does not contain:\n\nWhat each mistake costs. A missed fraud is not the same size as a blocked customer.\nA threshold. The probability above which you act — chosen from those costs, never left at 0.5.\n\n\n\\text{expected value} = p \\cdot (\\text{gain}) - (1-p) \\cdot (\\text{cost})\nAct when that is positive. The threshold falls straight out of it, and it is almost never a half."
+    "text": "The model says 0.61. Now what?\nA prediction becomes a decision only when you add two things the model does not contain: what each mistake costs, and the probability above which you act."
   },
   {
     "objectID": "lectures/03-one-problem.html#and-one-more-question-which-the-model-cannot-answer",
@@ -2139,7 +2125,7 @@
     "href": "lectures/05-agents-and-evals.html#it-seemed-good-when-i-tried-it-is-not-evidence",
     "title": "When it stops answering and starts acting",
     "section": "“It seemed good when I tried it” is not evidence",
-    "text": "“It seemed good when I tried it” is not evidence\nAn evaluation you can re-run after every change. Four parts:\n\n\n\n\n\n\n\ngolden set\nquestions with answers computed independently of the system\n\n\nchecker\nan exact test with a tolerance — and verified on cases you wrote by hand\n\n\nLLM-as-judge\na second model grading against a rubric, for what regex cannot see\n\n\nregression table\nthe same set, every change, reported per question\n\n\n\n\nPer question, not only in aggregate. An average hides the one that broke, and the one that broke is the one your client will find."
+    "text": "“It seemed good when I tried it” is not evidence"
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#the-judge-is-biased-and-still-useful",
@@ -2237,7 +2223,14 @@
     "href": "lectures/07-backtesting.html#three-you-tried-a-hundred-things",
     "title": "Backtesting, done honestly",
     "section": "Three: you tried a hundred things",
-    "text": "Three: you tried a hundred things\nTest enough parameters and one of them looks brilliant by chance.\n\\text{expected best Sharpe from } N \\text{ tries} \\;\\approx\\; \\frac{\\sqrt{2\\ln N}}{\\sqrt{\\text{years}}}\n\nTwenty tries over five years: about 1.1, from pure noise. So a Sharpe of 1.2 after twenty attempts is not evidence of anything.\n\n\n\n\n\n\n\nThe honest form\n\n\nCount your attempts and report the number. A parameter search is only legitimate inside walk-forward: fit on a past window, test on the next, roll forward, never look back."
+    "text": "Three: you tried a hundred things\nTest enough parameters and one of them looks brilliant by chance.\n\\text{expected best Sharpe from } N \\text{ tries} \\;\\approx\\; \\frac{\\sqrt{2\\ln N}}{\\sqrt{\\text{years}}}\n\nTwenty tries over five years: about 1.1, from pure noise. So a Sharpe of 1.2 after twenty attempts is not evidence of anything.\nCount your attempts, and report the number next to the result."
+  },
+  {
+    "objectID": "lectures/07-backtesting.html#the-only-honest-home-for-a-parameter-search",
+    "href": "lectures/07-backtesting.html#the-only-honest-home-for-a-parameter-search",
+    "title": "Backtesting, done honestly",
+    "section": "The only honest home for a parameter search",
+    "text": "The only honest home for a parameter search"
   },
   {
     "objectID": "lectures/07-backtesting.html#four-one-regime-wearing-a-full-sample-average",
@@ -2384,7 +2377,7 @@
     "href": "lectures/09-responsible.html#nine-boxes-every-one-a-specific-noun",
     "title": "Attacking your own system before somebody else does",
     "section": "Nine boxes, every one a specific noun",
-    "text": "Nine boxes, every one a specific noun\n\n\n\npurpose\nusers\ndata\n\n\nfailure modes\ncontrols\nmonitoring\n\n\nhuman oversight\nkill-switch\naudit log\n\n\n\n\nEvery box names a file, a cell, a function or a person. “We will monitor for drift” is not a control. “monitor.py compares this week’s feature means against the training window and emails me above 2σ” is."
+    "text": "Nine boxes, every one a specific noun"
   },
   {
     "objectID": "lectures/09-responsible.html#three-questions-to-finish",
