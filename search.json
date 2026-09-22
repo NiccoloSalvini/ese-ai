@@ -634,7 +634,7 @@
     "href": "index.html",
     "title": "Artificial Intelligence for Business and FinTech",
     "section": "",
-    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Module leader Niccolò Salvini, PhD\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your repository.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow LLMs work, and how we will work\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nData analysis with AI as pair programmer\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook directly in Google Colab. Once it is open, File ▸ Save a copy in GitHub into your own repository, path week-NN/session.ipynb. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your repository. Details in the syllabus.\nTools: Google Colab, GitHub, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDModule leader"
+    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your repository.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow LLMs work, and how we will work\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nData analysis with AI as pair programmer\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook directly in Google Colab. Once it is open, File ▸ Save a copy in GitHub into your own repository, path week-NN/session.ipynb. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your repository. Details in the syllabus.\nTools: Google Colab, GitHub, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
   },
   {
     "objectID": "week-09/session.html",
@@ -1708,6 +1708,27 @@
     "text": "The deal, said once\n\nThis is a lab. You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nNothing confidential goes into an AI tool. Ever.\nMarkets, crypto and DeFi here are educational simulations. Nothing in this course is investment advice.\n\n\n\n\n\n\n\n\nWhat you actually leave with\n\n\nNot “an overview of AI tools”. The ability to build a thing, test it, find where it is wrong, and defend it to people who will not read your appendix."
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#three-sentences-from-three-pitch-decks",
+    "href": "lectures/01-how-llms-work.html#three-sentences-from-three-pitch-decks",
+    "title": "How LLMs work, and how we will work",
+    "section": "Three sentences from three pitch decks",
+    "text": "Three sentences from three pitch decks"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#two-of-these-are-impossible.-one-is-unanswerable-as-written.",
+    "href": "lectures/01-how-llms-work.html#two-of-these-are-impossible.-one-is-unanswerable-as-written.",
+    "title": "How LLMs work, and how we will work",
+    "section": "Two of these are impossible. One is unanswerable as written.",
+    "text": "Two of these are impossible. One is unanswerable as written.\nWrite down which is which. We come back to this at 12:55."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-three-claims",
+    "href": "lectures/01-how-llms-work.html#the-three-claims",
+    "title": "How LLMs work, and how we will work",
+    "section": "The three claims",
+    "text": "The three claims\n\n\n\n\n\n\n\nBet before we start\n\n\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\n\n\n\n\n\nYou will meet a version of all three in a data room. By the end of today you will know which part of the machine each one is lying about — and, more useful, the one question that collapses each claim.\nThis is the actual product of the course: not enthusiasm, and not scepticism. A short list of questions that separate a system from a demo."
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#block-a-the-model-does-not-read",
     "href": "lectures/01-how-llms-work.html#block-a-the-model-does-not-read",
     "title": "How LLMs work, and how we will work",
@@ -1722,18 +1743,39 @@
     "text": "It never sees a word\n\n\n\n\n\n\n\nBet before we look\n\n\n\"Il margine è insostenibile\" — four words. How many pieces does the model cut that into? Write a number."
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#a-tokenizer-is-trained-and-it-has-a-native-language",
+    "href": "lectures/01-how-llms-work.html#a-tokenizer-is-trained-and-it-has-a-native-language",
+    "title": "How LLMs work, and how we will work",
+    "section": "A tokenizer is trained, and it has a native language",
+    "text": "A tokenizer is trained, and it has a native language\nThe vocabulary is learned from a corpus, by merging the pairs of characters that occur most often. A corpus that is mostly English learns mostly English pieces.\nEverything else gets spelled out in fragments: Italian, Russian, a ticker, a surname, a number.\n\nWhich means the price of a document depends on a design decision taken before your document existed."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-same-sentence-twice-one-tokenizer-apart",
+    "href": "lectures/01-how-llms-work.html#the-same-sentence-twice-one-tokenizer-apart",
+    "title": "How LLMs work, and how we will work",
+    "section": "The same sentence, twice, one tokenizer apart",
+    "text": "The same sentence, twice, one tokenizer apart\n\n\n\nSame model family, same sentence. 33 pieces became 18."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#read-that-clip-as-a-line-in-a-budget",
+    "href": "lectures/01-how-llms-work.html#read-that-clip-as-a-line-in-a-budget",
+    "title": "How LLMs work, and how we will work",
+    "section": "Read that clip as a line in a budget",
+    "text": "Read that clip as a line in a budget\n\n\n\n\ntokens\nvs English\n\n\n\n\nEnglish sentence\n12\n1.00×\n\n\nItalian, same meaning\n17\n1.42×\n\n\nRussian, GPT-4 tokenizer\n33\n2.75×\n\n\nRussian, GPT-4o tokenizer\n18\n1.50×\n\n\n\n\nA Russian-language pilot priced on the first tokenizer and delivered on the second lost 45% of its unit cost to a change nobody in the room chose. This is not a detail. It is the sort of thing that decides whether a pilot clears its business case."
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#take-it-apart-yourself",
     "href": "lectures/01-how-llms-work.html#take-it-apart-yourself",
     "title": "How LLMs work, and how we will work",
     "section": "Take it apart yourself",
-    "text": "Take it apart yourself\nLAB · session.ipynb § B1 — tiktoken\nType your own sentences and watch the count. Try, in this order:\n\nthe same sentence in English, then Italian, then Russian\na number: 1,234,567.89\na line of Python\na company name the model has never seen\n\nThen answer, from what you saw: why does the same meaning cost different amounts in different languages?"
+    "text": "Take it apart yourself\nLAB · session.ipynb § B1 — tiktoken\nType your own text and watch the count. Try, in this order:\n\nthe same sentence in English, then Italian, then Russian\na number: 1,234,567.89 — count the pieces before you look\nyour own surname, then a listed company, then a company founded last year\na line of Python\n\nThen answer, from what you saw: which of those four is the model least equipped to reason about, and why?"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#what-follows-from-it-in-a-business",
     "href": "lectures/01-how-llms-work.html#what-follows-from-it-in-a-business",
     "title": "How LLMs work, and how we will work",
     "section": "What follows from it, in a business",
-    "text": "What follows from it, in a business\n\n\n\n\n\n\n\nwhat you saw\nwhat it costs you\n\n\n\n\ntokens, not words\nyou are billed per token, in and out\n\n\nnon-English fragments more\nthe same document costs 1.5–3× more in Italian\n\n\nnumbers shatter into pieces\narithmetic is weak — never trust a total it computed\n\n\nthe window is counted in tokens\nlong conversations silently become expensive\n\n\n\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nThe unit the system counts in is not the unit you think in. Story points, not hours."
+    "text": "What follows from it, in a business\n\n\n\n\n\n\n\nwhat you saw\nwhat it costs you\n\n\n\n\ntokens, not words\nyou are billed per token, in and out\n\n\nnon-English fragments more\nthe same document costs 1.4–2.8× depending on language and tokenizer\n\n\n1,234,567.89 is 7 tokens, not one number\narithmetic is weak by construction — never trust a total it computed\n\n\na new company name shatters; an old one does not\nthe model is systematically more fluent about the past\n\n\nthe window is counted in tokens\nlong conversations silently become expensive\n\n\n\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nThe unit the system counts in is not the unit you think in, and the exchange rate between them is not stable."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#block-b-its-only-memory-is-what-you-just-sent",
@@ -1750,6 +1792,27 @@
     "text": "Everything it knows, every time"
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#which-disposes-of-claim-one",
+    "href": "lectures/01-how-llms-work.html#which-disposes-of-claim-one",
+    "title": "How LLMs work, and how we will work",
+    "section": "Which disposes of claim one",
+    "text": "Which disposes of claim one"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-model-remembers-nothing.-something-else-is-storing-and-re-sending.",
+    "href": "lectures/01-how-llms-work.html#the-model-remembers-nothing.-something-else-is-storing-and-re-sending.",
+    "title": "How LLMs work, and how we will work",
+    "section": "The model remembers nothing. Something else is storing and re-sending.",
+    "text": "The model remembers nothing. Something else is storing and re-sending.\nThat something is a database, it has an owner, and every turn you pay to send it again. “It remembers” is not an AI capability. It is an infrastructure invoice."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#and-a-longer-window-is-not-a-free-upgrade",
+    "href": "lectures/01-how-llms-work.html#and-a-longer-window-is-not-a-free-upgrade",
+    "title": "How LLMs work, and how we will work",
+    "section": "And a longer window is not a free upgrade",
+    "text": "And a longer window is not a free upgrade\nThe attention step compares every token with every other token. Double the context and that step costs roughly four times as much, not twice.\n\nWorse, it is not uniform. Put a fact at the start, at the middle and at the end of a very long input and ask for it back: the middle is recovered least often. Measured repeatedly, across model families.\n\n\n\n\n\n\n\nWhat this rules out\n\n\n“Just paste the whole thing in and ask” fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer correct. That is week 4."
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#so-where-do-hallucinations-come-from",
     "href": "lectures/01-how-llms-work.html#so-where-do-hallucinations-come-from",
     "title": "How LLMs work, and how we will work",
@@ -1757,11 +1820,25 @@
     "text": "So where do hallucinations come from?\n\n\n\n\n\n\n\nBet before we look\n\n\nThe model invents a plausible figure for a company’s 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?\n\n\n\n\n\nWorking as designed. It completes patterns. When the pattern needs a number that was never in the box, it produces the shape of a number that would fit.\nIt has no way to feel the difference between recalling and inventing. That is your job, and it is the habit this whole course builds."
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#we-will-train-it-on-your-data-is-three-different-products",
+    "href": "lectures/01-how-llms-work.html#we-will-train-it-on-your-data-is-three-different-products",
+    "title": "How LLMs work, and how we will work",
+    "section": "“We will train it on your data” is three different products",
+    "text": "“We will train it on your data” is three different products\n\n\n\n\n\n\n\n\n\nwhat is actually done\nchanges\ncosts\nshows up in\n\n\n\n\nput it in the prompt\nnothing, ever\nper call, for ever\nseconds\n\n\nretrieval\nwhat it can look up\nan index, plus per call\ndays\n\n\nfine-tuning\nthe model’s style and format\na training run, repeated\nweeks\n\n\n\n\nFine-tuning teaches a model how to say things. It is an unreliable way to teach it what is true — a fact you fine-tuned in cannot be updated, cited, or withdrawn. When a vendor says “we train on your data”, the question is which of these three, and you will not get a straight answer unless you name them."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#and-it-disposes-of-claim-two",
+    "href": "lectures/01-how-llms-work.html#and-it-disposes-of-claim-two",
+    "title": "How LLMs work, and how we will work",
+    "section": "And it disposes of claim two",
+    "text": "And it disposes of claim two\n“It learns from your corrections in real time.”\nThe weights are frozen when you call it. Nothing you type changes them.\n\nWhat can honestly be meant is one of two things: your correction was written to a store and re-sent next time (fast, cheap, and not learning), or it entered a retraining queue (real, and measured in weeks).\nAsk which. The answer tells you whether you are buying a model or a database, and they have very different prices."
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#watch-a-conversation-get-expensive",
     "href": "lectures/01-how-llms-work.html#watch-a-conversation-get-expensive",
     "title": "How LLMs work, and how we will work",
     "section": "Watch a conversation get expensive",
-    "text": "Watch a conversation get expensive\nLAB · session.ipynb § B2 — the cost cell\n\nPrice one 10-K at today’s rates. Then a thousand a day, for a year.\nNow the part nobody expects: a twenty-turn conversation re-sends the whole history every turn. Compute what turn twenty costs against turn one.\n\nThis is why “just paste the whole document in” is a strategy with a budget attached, and why week 4 exists."
+    "text": "Watch a conversation get expensive\nLAB · session.ipynb § B2 — the cost cell\n\nPrice one 10-K at today’s rates. Then a thousand a day, for a year.\nNow the part nobody expects: a twenty-turn conversation re-sends the whole history every turn. Compute what turn twenty costs against turn one.\nRe-price the whole thing with the Russian multiplier from the clip.\n\nThree numbers, and you can argue about a pilot’s unit economics with the people who sold it."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#block-c-why-the-same-question-gives-different-answers",
@@ -1776,6 +1853,13 @@
     "title": "How LLMs work, and how we will work",
     "section": "It is choosing, not looking up",
     "text": "It is choosing, not looking up\nAt every step the model has a distribution over what comes next.\n\n“The quarterly margin came in below ⟶ 41% · above ⟶ 22% · at ⟶ 12% · around ⟶ 8% …”\n\n\nTemperature decides how much it respects those odds.\n\n\n\n\n\n\n\nT = 0\nalways take the top one — extraction, classification, anything you must reproduce\n\n\nT ≈ 0.7\nsample near the top — drafting, ideation\n\n\nT high\nwander — rarely what a business wants\n\n\n\nSame prompt, different answer, is not a malfunction. Set T = 0 and it stops."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#and-write-that-into-the-procedure-not-the-folklore",
+    "href": "lectures/01-how-llms-work.html#and-write-that-into-the-procedure-not-the-folklore",
+    "title": "How LLMs work, and how we will work",
+    "section": "And write that into the procedure, not the folklore",
+    "text": "And write that into the procedure, not the folklore\nA process that an auditor will look at cannot say “we asked the AI”.\n\nthe exact prompt, versioned like code\nT = 0, and the model name and version recorded with the output\nthe input stored next to the answer\n\n\n\n\n\n\n\n\nWhy this matters more here than anywhere else\n\n\nIn a regulated process, “we cannot reproduce last quarter’s output” is not an inconvenience. It is the finding."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#the-habit-this-course-is-really-about",
@@ -1855,11 +1939,18 @@
     "text": "The two planted errors, and why they matter\n\n\n√252 applied to crypto Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.\n\nReturns added up Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.\n\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nThe assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look."
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#back-to-the-three-claims",
+    "href": "lectures/01-how-llms-work.html#back-to-the-three-claims",
+    "title": "How LLMs work, and how we will work",
+    "section": "Back to the three claims",
+    "text": "Back to the three claims\n\n\n\n\n\n\n\nthe claim\nthe one question\n\n\n\n\n“it remembers every conversation”\nwhat stores it, and who pays to re-send it every turn?\n\n\n“it learns from corrections in real time”\ndoes that change the weights, or write a row in a database?\n\n\n“99.2% accuracy”\non whose test set, of what size, against what baseline?\n\n\n\n\nThe first two you can now answer yourself. The third you cannot — not because it is complicated, but because the number is meaningless without the base rate. That is week 3, and it is the one that costs people money."
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#close",
     "href": "lectures/01-how-llms-work.html#close",
     "title": "How LLMs work, and how we will work",
     "section": "Close",
-    "text": "Close\nHomework 1 — three assets of your own, an honest table, one chart that answers a stated question, and a section titled “What the assistant got wrong”.\nDue Tuesday 29 September, 23:59, in your repository.\n\nBefore you leave: Colab runs, GitHub repository created, tutor added as collaborator, and one notebook saved to it.\nNext week: the same loop on real data, and the first thing you will show someone.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 1 — three assets of your own, an honest table, one chart that answers a stated question, and a section titled “What the assistant got wrong”.\nDue Tuesday 29 September, 23:59, in your repository.\n\nBefore you leave: Colab runs, GitHub repository created, and one notebook saved to it.\nNext week: the same loop on real data, and the first thing you will show someone.\n\n\n\nAI for Business & FinTech · ESE Florence"
   },
   {
     "objectID": "lectures/03-one-problem.html#where-we-are",
