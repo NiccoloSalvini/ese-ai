@@ -193,10 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><strong>ESE · AI for Business and FinTech · 7 October 2026</strong></p>
 <p>One problem, done properly, teaches more than a tour of algorithms. Today: <em>can we predict anything about next week’s BTC from what we know today?</em> We build features, train two models against a trivial baseline, and — most importantly — evaluate them in the only way that means anything for time series. Then we turn a prediction into a decision.</p>
-<div id="297a07d3" class="cell">
+<div id="5f345f37" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0c587f71" class="cell">
+<div id="bf8dfae3" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d5686ac8" class="cell">
+<div id="1c68280f" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>], start<span class="op">=</span><span class="st">"2018-01-01"</span>).ffill().dropna()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>px.index)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"ret"</span>] <span class="op">=</span> px[<span class="st">"BTC-USD"</span>].pct_change()</span>
@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="block-a-features-targets-baselines">Block A — Features, targets, baselines</h2>
 <p><strong>Feature</strong> = something known <em>at the time of prediction</em>. <strong>Target</strong> = the thing we want to know, which happens <em>after</em>. The entire discipline of ML on time series is keeping the wall between them intact.</p>
 <p>We define two targets for the same features, because they behave very differently: - <strong>Direction</strong>: is the return over the next 5 trading days positive? - <strong>Volatility regime</strong>: will realised volatility over the next 5 days be above its trailing median?</p>
-<div id="1ac9ab50" class="cell">
+<div id="c305c8fa" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="dv">5</span>   <span class="co"># horizon in trading days</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Features: everything uses only past information (note the .shift(1) is NOT needed because rolling windows end at t inclusive, and the target starts at t+1)</span></span>
@@ -268,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>data.tail(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK — verify the target by hand.</strong> Pick a date, and confirm that <code>fwd_ret</code> on that date equals the sum of <code>ret</code> over the <em>following</em> 5 rows. If it includes the current day, the target leaks. Do this every single time you build a forward-looking target; it takes one minute and it is the most common bug in trading ML.</p>
-<div id="2fe3fcad" class="cell">
+<div id="c7478e5a" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1000</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> data.index[i]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>manual <span class="op">=</span> d[<span class="st">"ret"</span>].loc[t:].iloc[<span class="dv">1</span>:H<span class="op">+</span><span class="dv">1</span>].<span class="bu">sum</span>()</span>
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">abs</span>(manual <span class="op">-</span> data.loc[t, <span class="st">"fwd_ret"</span>]) <span class="op">&lt;</span> <span class="fl">1e-12</span>, <span class="st">"target leaks or is misaligned"</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"OK — target uses only future rows"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8c44c2ae" class="cell">
+<div id="7c676612" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base rates: what does 'doing nothing clever' score?</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: share of 1s = </span><span class="sc">{</span>data[col]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">  -&gt; majority-class accuracy = </span><span class="sc">{</span><span class="bu">max</span>(data[col].mean(), <span class="dv">1</span><span class="op">-</span>data[col].mean())<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -285,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="block-b-two-models-two-ways-of-splitting" class="level2">
 <h2 class="anchored" data-anchor-id="block-b-two-models-two-ways-of-splitting">Block B — Two models, two ways of splitting</h2>
-<div id="c9abf66d" class="cell">
+<div id="54b75285" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> HistGradientBoostingClassifier</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
@@ -312,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="check-the-assistants-split" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-split">🔍 CHECK — the assistant’s split</h3>
 <p>Asked to “evaluate the model with cross-validation”, the assistant used the sklearn default: a <strong>random shuffle</strong>. For time series this is a leak: the model trains on Wednesday and Friday and is tested on Thursday, with overlapping 21-day windows on both sides. Compare with a <strong>time-ordered</strong> split where the test set is always in the future of the training set.</p>
-<div id="1dc25ac8" class="cell">
+<div id="af70536e" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(X)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> [(tr, te) <span class="cf">for</span> tr, te <span class="kw">in</span> [train_test_split(np.arange(n), test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>s) <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]]</span>
@@ -340,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="block-c-leakage-on-purpose" class="level2">
 <h2 class="anchored" data-anchor-id="block-c-leakage-on-purpose">Block C — Leakage on purpose</h2>
 <p>To recognise leakage you must see it once. We add a feature that is <em>almost</em> legitimate: a 5-day rolling volatility computed with a <strong>centred</strong> window (<code>center=True</code>), which is what an assistant may write when asked to “smooth” a series. Centred windows use future rows.</p>
-<div id="162d44e6" class="cell">
+<div id="3e3737dc" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X_leak <span class="op">=</span> X.copy()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_leak[<span class="st">"vol_5_centred"</span>] <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">5</span>, center<span class="op">=</span><span class="va">True</span>).std().reindex(X.index)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X_leak <span class="op">=</span> X_leak.dropna()<span class="op">;</span> y <span class="op">=</span> data.loc[X_leak.index, <span class="st">"y_vol"</span>]</span>
@@ -353,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="block-d-from-prediction-to-decision" class="level2">
 <h2 class="anchored" data-anchor-id="block-d-from-prediction-to-decision">Block D — From prediction to decision</h2>
 <p>A probability is not a decision. To act you need a <strong>decision rule</strong> (a threshold) and the <strong>cost of each error</strong>. Example: a treasury desk that wants to hedge BTC exposure when a high-volatility week is coming. Hedging costs money (<code>c_hedge</code>); an unhedged high-vol week costs more (<code>c_miss</code>). The best threshold depends on that ratio, not on accuracy.</p>
-<div id="6a1a08a8" class="cell">
+<div id="29b4df0b" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Walk-forward probabilities for the volatility target (out-of-sample only)</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">"y_vol"</span>]<span class="op">;</span> m <span class="op">=</span> models[<span class="st">"gradient boosting"</span>]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>oos <span class="op">=</span> pd.Series(index<span class="op">=</span>X.index, dtype<span class="op">=</span><span class="bu">float</span>)</span>
@@ -372,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>dec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> Which threshold minimises cost? Does it change if <code>c_miss</code> is 2 instead of 4? Now the important question: <em>what KPI would you report to management for this system in production?</em> Accuracy is wrong (it does not price errors). Candidates: cost per week vs the always-hedge policy; recall at the chosen threshold; calibration (when the model says 70%, does it happen 70% of the time?). Pick one and defend it.</p>
-<div id="949e01c0" class="cell">
+<div id="668dbfac" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibration: does p=0.7 mean 70%?</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> pd.cut(oos, [<span class="dv">0</span>, <span class="fl">.3</span>, <span class="fl">.4</span>, <span class="fl">.5</span>, <span class="fl">.6</span>, <span class="fl">.7</span>, <span class="fl">1.0</span>])</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cal <span class="op">=</span> pd.DataFrame({<span class="st">"predicted"</span>: oos.groupby(bins).mean(), <span class="st">"observed"</span>: y_oos.groupby(bins).mean(), <span class="st">"n"</span>: oos.groupby(bins).size()}).<span class="bu">round</span>(<span class="dv">3</span>)</span>

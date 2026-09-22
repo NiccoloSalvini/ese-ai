@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <text x="336" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="#2471a3">SOFTWARE 2.0</text>
+  <text x="336" y="99" font-size="12" fill="#7a7f85">learned, since 2010</text>
+  <rect x="336" y="112" width="288" height="76" fill="#2471a3" fill-opacity="0.08" stroke="#2471a3"/>
+  <text x="350" y="135" font-size="12" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">fit(features, labels)</text>
+  <text x="350" y="156" font-size="12" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">p = model(transaction)</text>
+  <text x="350" y="177" font-size="12" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">if p > t: block()</text>
+  <text x="336" y="214" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU WRITE</text>
+  <text x="336" y="233" font-size="13" fill="#363636">the data and the target</text>
+  <text x="336" y="264" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">IT FAILS WHEN</text>
+  <text x="336" y="283" font-size="13" fill="#363636">tomorrow stops looking like yesterday</text>
+  <text x="336" y="314" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU DEBUG IT BY</text>
+  <text x="336" y="333" font-size="13" fill="#363636">auditing the data and the split</text>
+  <text x="336" y="364" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">YOU GIVE UP</text>
+  <text x="336" y="383" font-size="13" fill="#363636">being able to read why</text>
+</svg>

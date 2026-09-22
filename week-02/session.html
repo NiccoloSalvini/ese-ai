@@ -193,10 +193,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><strong>ESE · AI for Business and FinTech · 30 September 2026</strong></p>
 <p>Goal of the session: acquire, clean, join and chart financial data with the assistant writing most of the code — while you catch its silent errors. By the end you will have a reproducible pipeline that joins market prices with an external macro series and an on-chain series.</p>
-<div id="f5b3ead6" class="cell">
+<div id="b7ef8e8a" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a1ea73fa" class="cell">
+<div id="706ae4a3" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
@@ -233,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="block-a-pandas-by-doing" class="level2">
 <h2 class="anchored" data-anchor-id="block-a-pandas-by-doing">Block A — pandas by doing</h2>
-<div id="0dfdbd67" class="cell">
+<div id="32851b08" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>, <span class="st">"AAPL"</span>], start<span class="op">=</span><span class="st">"2022-01-01"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.index.<span class="bu">min</span>().date(), <span class="st">"→"</span>, px.index.<span class="bu">max</span>().date(), <span class="st">"|"</span>, px.shape)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>px.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -275,12 +275,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<div id="01890629" class="cell">
+<div id="76c99f1d" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Missing values: BTC trades 7 days a week, SPY and AAPL 5. Look at a week that contains a weekend.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>px.loc[<span class="st">"2024-01-05"</span>:<span class="st">"2024-01-09"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> <code>load_prices</code> already dropped rows where <em>all</em> columns were missing, but weekend rows survive because BTC has a value. Before computing anything across assets you must decide: drop weekends (equity calendar), or fill equities forward (crypto calendar)? Neither is “right” — but choosing silently is wrong. Which one does <code>pct_change()</code> implicitly choose if you do nothing?</p>
-<div id="4ea1f1b0" class="cell">
+<div id="7795b44d" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two explicit choices, side by side</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>px_eq <span class="op">=</span> px.dropna()                       <span class="co"># equity calendar: only days where everything traded</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>px_cr <span class="op">=</span> px.ffill()                        <span class="co"># crypto calendar: carry equities over the weekend</span></span>
@@ -291,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">BTC daily vol — equity calendar: </span><span class="sc">%.4f</span><span class="st"> | crypto calendar: </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> (rets_eq[<span class="st">"BTC-USD"</span>].std(), rets_cr[<span class="st">"BTC-USD"</span>].std()))</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"BTC mean Monday return on equity calendar (Fri→Mon, 3 days of moves): </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> rets_eq[<span class="st">"BTC-USD"</span>][rets_eq.index.dayofweek <span class="op">==</span> <span class="dv">0</span>].mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f0118bd8" class="cell">
+<div id="dfb24f0a" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resampling: weekly prices (last obs of the week), and weekly returns</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>wk <span class="op">=</span> px_eq.resample(<span class="st">"W-FRI"</span>).last()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>wk_rets <span class="op">=</span> wk.pct_change().dropna()</span>
@@ -302,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="block-b-join-with-external-series-macro-on-chain">Block B — Join with external series (macro + on-chain)</h2>
 <p>This is where analysis becomes interesting: internal or market data alone rarely answers a business question. We add: - <strong>US 10-year Treasury yield</strong> (FRED series <code>DGS10</code>), a proxy for the risk-free rate / macro regime; - <strong>Bitcoin unique active addresses</strong> (blockchain.com public chart API), an on-chain adoption proxy.</p>
 <p>Both are free and need no key. Both fetches have a fallback so the notebook still runs offline.</p>
-<div id="b527e49f" class="cell">
+<div id="6fa7168e" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests, io, os</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_fred(series<span class="op">=</span><span class="st">"DGS10"</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="check-the-assistants-join" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-join">🔍 CHECK — the assistant’s join</h3>
 <p>Asked to “merge the price data with the yield and the on-chain series”, the assistant wrote the cell below. It runs. Look at the row count and the date range of the result before and after, then explain what was lost and why.</p>
-<div id="4eacf0f7" class="cell">
+<div id="5bfa0ca5" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>merged_bad <span class="op">=</span> pd.merge(px, dgs10, left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>).merge(addr, left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"rows before:"</span>, <span class="bu">len</span>(px), <span class="st">"| rows after:"</span>, <span class="bu">len</span>(merged_bad))</span>
@@ -352,7 +352,7 @@ What went wrong
 </summary>
 <code>pd.merge</code> defaults to an <strong>inner join</strong>: only dates present in <em>all three</em> series survive. FRED has no weekends and has <code>NaN</code> on US holidays (which survive as NaN — check the <code>isna()</code> output); the on-chain series is daily. The result silently dropped weekends and is on an equity calendar without anyone deciding that. Also: FRED yields are in <strong>percent</strong> (4.25 = 4.25%), prices in dollars, addresses in counts — the assistant will happily correlate them without saying so. Units are your job.
 </details>
-<div id="04fef751" class="cell">
+<div id="af58ce15" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicit version: choose the calendar (equity days), left-join, forward-fill macro, state units.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> px.dropna()                                    <span class="co"># equity calendar</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> base.join(dgs10.ffill(), how<span class="op">=</span><span class="st">"left"</span>).join(addr, how<span class="op">=</span><span class="st">"left"</span>)</span>
@@ -365,7 +365,7 @@ What went wrong
 </section>
 <section id="block-c-charts-that-answer-a-question-and-rolling-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="block-c-charts-that-answer-a-question-and-rolling-statistics">Block C — Charts that answer a question, and rolling statistics</h2>
-<div id="26faf1a4" class="cell">
+<div id="1a4c0d0b" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rets <span class="op">=</span> df[[<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>, <span class="st">"AAPL"</span>]].pct_change()</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>roll_corr <span class="op">=</span> rets[<span class="st">"BTC-USD"</span>].rolling(<span class="dv">60</span>).corr(rets[<span class="st">"SPY"</span>])</span>
@@ -382,7 +382,7 @@ What went wrong
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> Does the correlation chart <em>answer a question</em>, or only show a line? Write the question it answers in one sentence. If you cannot, the chart is not finished. (Sanity check the data too: you should see BTC’s correlation with equities fall after some events and rise in macro-stress periods. If the line looks like noise around zero everywhere, suspect an alignment problem.)</p>
-<div id="eaa32d0e" class="cell">
+<div id="69b4921b" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On-chain vs price: is address activity leading or lagging price? Cross-correlation at different lags (weekly data).</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> df[[<span class="st">"BTC-USD"</span>, <span class="st">"active_addresses"</span>]].resample(<span class="st">"W-FRI"</span>).last().pct_change().dropna()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> <span class="bu">range</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">9</span>)</span>
@@ -394,7 +394,7 @@ What went wrong
 </section>
 <section id="block-d-reproducibility-and-privacy" class="level2">
 <h2 class="anchored" data-anchor-id="block-d-reproducibility-and-privacy">Block D — Reproducibility and privacy</h2>
-<div id="c17bc46b" class="cell">
+<div id="535cf5bf" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Snapshot the exact data you analysed, with the date, so the memo can be re-run.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt, os</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">"data"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>

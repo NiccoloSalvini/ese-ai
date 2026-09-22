@@ -463,8 +463,13 @@ Niccolò Salvini, PhD
 </section>
 <section id="three-ways-to-write-the-same-decision" class="slide level2">
 <h2>Three ways to write the same decision</h2>
-
-<img data-src="img/software-123.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="muted">The frame is Andrej Karpathy’s. It is the most useful map I know, because it makes “should we use AI for this?” into a question with three named answers instead of a mood.</span></p>
+<div class="r-stack">
+<p><img data-src="img/software-123-l0.svg" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l1.svg" class="fragment" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l2.svg" class="fragment" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l3.svg" class="fragment" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l4.svg" class="fragment" style="width:100.0%"></p>
+</div>
 </section>
 <section id="and-3.0-does-not-replace-the-other-two" class="slide level2 statement">
 <h2>And 3.0 does not replace the other two</h2>
@@ -472,6 +477,17 @@ Niccolò Salvini, PhD
 <section id="a-rule-you-can-write-down-beats-a-model-that-guesses-it." class="slide level2">
 <h2>A rule you can write down beats a model that guesses it.</h2>
 <p><span class="muted">Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks.</span></p>
+</section>
+<section id="run-all-three-on-the-same-transactions" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Run all three, on the same transactions</h2>
+<p><span class="kicker">LAB · session.ipynb § A2</span></p>
+<p>Twenty thousand card payments, one cost table, three kinds of software:</p>
+<ol type="1">
+<li>the rule blocks 240 of them. <strong>Bet how much of the fraud it catches</strong> before you run it.</li>
+<li>the model gets the <strong>same budget</strong> — 240 blocks, no more — and only chooses differently.</li>
+<li>then the fraud that is in the <em>words</em> and in neither of the first two.</li>
+</ol>
+<p><span class="red">Then the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged.</span></p>
 </section>
 <section id="block-a-the-model-does-not-read" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Block A</span> The model does not read</h2>
