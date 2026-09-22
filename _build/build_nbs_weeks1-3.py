@@ -2,7 +2,7 @@
 import nbformat as nbf
 from pathlib import Path
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent.parent
 
 def md(s): return nbf.v4.new_markdown_cell(s.strip("\n"))
 def code(s): return nbf.v4.new_code_cell(s.strip("\n"))
@@ -49,7 +49,7 @@ def load_prices(tickers, start="2022-01-01", end=None, cache_dir="data"):
 w1 = [
 md("""
 # Week 1 — How LLMs work, and how we will work
-**ESE · AI for Business and FinTech · 21 September 2026**
+**ESE · AI for Business and FinTech · 23 September 2026**
 
 This notebook is the live material for session 1. Run it top to bottom in Google Colab (`Runtime ▸ Run all` is fine the first time).
 Cells marked **🔍 CHECK** contain something you must verify or critique before moving on — that is the main skill of this course.
@@ -80,10 +80,201 @@ md("""
 
 **API key** (optional today, needed from week 4): create a free key at Google AI Studio, then in Colab open the 🔑 *Secrets* panel on the left, add `GEMINI_API_KEY`, and enable notebook access. Never paste a key into a cell.
 """),
+md("## Block A2 — One decision, three kinds of software"),
+md("""
+The slide split *"block this transaction, or do not"* into Software **1.0** (a rule you write), **2.0** (a model you fit) and **3.0** (an instruction you give). Here it is as code, on the same data, judged by the same euros.
+
+The book of transactions below is **synthetic on purpose**: the point of this section is the comparison between three kinds of software, not the fraud model. Everything is reproducible from the seed. Real data arrives in Block C.
+"""),
+code("""
+import numpy as np, pandas as pd
+
+rng = np.random.default_rng(11)
+N = 20_000
+MU, SD = 4.6, 0.85
+
+benign  = ["GROCERY", "PHARMACY", "FUEL", "RESTAURANT", "TRANSIT", "BOOKSHOP"]
+voucher = ["PREPAID VOUCHER RELOAD", "DIGITAL GIFT CERTIFICATE",
+           "STORED VALUE TOP-UP", "E-VOUCHER PURCHASE"]
+
+amount     = np.round(np.exp(rng.normal(MU, SD, N)), 2)
+hour       = rng.integers(0, 24, N)
+abroad     = (rng.random(N) < 0.09).astype(int)
+new_device = (rng.random(N) < 0.13).astype(int)
+odd_hour   = ((hour < 5) | (hour > 22)).astype(int)
+
+# Fraud mode 1 — the classic pattern, and all of it is in the numbers.
+z      = (np.log(amount) - MU) / SD
+latent = 0.9*z + 1.5*abroad + 2.0*new_device + 1.3*odd_hour
+fraud_numeric = rng.random(N) < 1/(1 + np.exp(-(latent - 5.6)))
+
+# Fraud mode 2 — a pattern that exists only in the merchant descriptor.
+is_voucher  = rng.random(N) < 0.025
+fraud_words = is_voucher & (rng.random(N) < 0.45)
+
+fraud = fraud_numeric | fraud_words
+note  = np.where(is_voucher, rng.choice(voucher, N), rng.choice(benign, N))
+
+tx = pd.DataFrame(dict(amount=amount, hour=hour, abroad=abroad,
+                       new_device=new_device, note=note, fraud=fraud.astype(int)))
+
+CUT  = int(N * 0.6)          # rows are in time order: fit on the first 60%,
+TEST = slice(CUT, N)         # and report on the rest. Week 3 is about why.
+
+print(f"{N:,} transactions | fraud {fraud.mean():.2%} | test rows {N-CUT:,}")
+print(f"of the fraud, {(fraud_words & ~fraud_numeric).sum()} cases are visible ONLY in the merchant text")
+tx.head(3)
+"""),
+md("""
+One scoring function for all three, so nothing is compared on its own terms.
+
+A blocked good customer costs **€8** to contact. A missed fraud costs **the amount of the transaction** — that is what a chargeback is.
+"""),
+code("""
+CONTACT = 8.0
+
+def evaluate(blocked, name):
+    b = np.asarray(blocked)[TEST]; t = fraud[TEST]; a = amount[TEST]
+    cost = (b & ~t).sum() * CONTACT + a[~b & t].sum()
+    print(f"{name:<32} blocked {b.sum():>5,}   caught {(b & t).sum():>4}/{t.sum():<5}"
+          f"good blocked {(b & ~t).sum():>5,}   cost EUR {cost:>10,.0f}")
+    return cost
+"""),
+md("""
+**Bet before you run it.** The rule blocks a card payment made abroad for more than €150. Of all the fraud in the test period, what share do you think it catches? Write a number down now.
+"""),
+code("""
+rule = ((tx.amount > 150) & (tx.abroad == 1)).values
+cost_1 = evaluate(rule, "1.0  the rule")
+"""),
+md("""
+Now **2.0**, held to exactly the same budget: it may block the *same number* of transactions as the rule, no more. Only the choice of which ones changes.
+
+That constraint is the whole comparison. A model that blocks more will always catch more, and it will also annoy more customers.
+"""),
+code("""
+from sklearn.linear_model import LogisticRegression
+
+X = pd.DataFrame(dict(log_amount=np.log1p(tx.amount), abroad=tx.abroad,
+                      new_device=tx.new_device, odd_hour=odd_hour))
+
+model  = LogisticRegression(max_iter=1000).fit(X[:CUT], fraud[:CUT])
+p      = model.predict_proba(X)[:, 1]
+budget = int(rule[TEST].sum())
+thr    = np.sort(p[TEST])[-budget]
+blocked_20 = p >= thr
+
+cost_2 = evaluate(blocked_20, "2.0  the model, same budget")
+print(f"\\nsaved against the rule: EUR {cost_1-cost_2:,.0f}  ({cost_2/cost_1-1:+.0%})")
+print("\\nwhat it learned to weight:")
+print(pd.Series(model.coef_[0], index=X.columns).round(2).sort_values(ascending=False))
+"""),
+md("""
+**🔍 CHECK.** The model blocked *exactly as many* transactions as the rule and caught roughly twice the fraud. Look at the coefficients: which feature does the rule ignore entirely? Write the sentence you would say to the fraud team — in words, not coefficients.
+"""),
+md("""
+_Your sentence here:_
+"""),
+md("""
+### And now the part neither of them can see
+
+Some of the fraud is not in the numbers at all. It is in the **merchant descriptor** — four different ways of writing the same thing:
+
+`PREPAID VOUCHER RELOAD` · `DIGITAL GIFT CERTIFICATE` · `STORED VALUE TOP-UP` · `E-VOUCHER PURCHASE`
+
+Your first instinct is a keyword list. Try it.
+"""),
+code("""
+keyword = tx.note.str.contains("VOUCHER").values
+cost_kw = evaluate(blocked_20 | keyword, "3.0 faked with a keyword")
+print("\\ndescriptors the keyword catches:")
+for d in sorted(set(tx.note[keyword & is_voucher])): print("   ", d)
+print("descriptors it misses:")
+for d in sorted(set(tx.note[is_voucher]) - set(tx.note[keyword & is_voucher])): print("   ", d)
+
+# What a model that actually reads the descriptor would reach. We are standing in
+# for it here so the comparison runs with no API key; the real call is below.
+cost_3 = evaluate(blocked_20 | is_voucher, "3.0  something that reads words")
+print(f"\\nsaved against 2.0: EUR {cost_2-cost_3:,.0f}  ({cost_3/cost_2-1:+.0%})")
+"""),
+md("""
+**🔍 CHECK.** The keyword version is Software **1.0 wearing a 3.0 costume**, and it catches half the descriptors.
+
+That is the test to carry out of this room: **if a keyword list would have done the job, you did not need a model.** Most of what is sold as AI fails exactly here — and the way to find out costs you ten minutes, which is what you just spent.
+"""),
+md("""
+### The real call — optional today, and the point of week 4
+
+If you added `GEMINI_API_KEY` to Colab's 🔑 *Secrets* panel, this asks a model to judge five descriptors it has never been given a list for. If you have not, read the prompt and move on.
+"""),
+code("""
+PROMPT = (
+    "You review card transactions for a bank.\\n"
+    'Merchant descriptor: "{note}"\\n'
+    "Amount: EUR {amount:.2f}\\n\\n"
+    "Is this merchant category one commonly used to convert stolen card funds "
+    "into untraceable value? Answer with one word, YES or NO, then one short "
+    "sentence of why."
+)
+
+# the three largest voucher transactions and two ordinary ones, so the model
+# is asked something a reviewer would actually have escalated
+suspect = tx.loc[tx.index[is_voucher]].nlargest(3, "amount").index
+ordinary = tx.loc[tx.index[~is_voucher]].nlargest(2, "amount").index
+samples = tx.loc[[*suspect, *ordinary], ["note", "amount"]]
+
+try:
+    import os
+    from google.colab import userdata
+    from google import genai
+    client = genai.Client(api_key=userdata.get("GEMINI_API_KEY"))
+    for _, r in samples.iterrows():
+        out = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=PROMPT.format(note=r.note, amount=r.amount),
+            config={"temperature": 0})
+        print(f"{r.note:<26} -> {out.text.strip().splitlines()[0]}")
+except Exception as e:
+    print(f"[no key / no network: {type(e).__name__}] Here is what would be sent:\\n")
+    print(PROMPT.format(**samples.iloc[0].to_dict()))
+"""),
+md("""
+### So which one do you build?
+
+The honest answer is **all three, in a pipeline** — and the arithmetic below is why you do not simply put 3.0 in front of every transaction.
+"""),
+code("""
+# Illustrative prices. CHECK TODAY'S PAGE before you quote any of this to anyone;
+# this is the number that goes stale fastest in the whole notebook.
+PRICE_IN, PRICE_OUT = 3.00, 15.00       # EUR per million tokens
+TOK_IN, TOK_OUT     = 700, 120          # per transaction reviewed
+DAILY               = 1_000_000
+
+per_call = (TOK_IN*PRICE_IN + TOK_OUT*PRICE_OUT) / 1e6
+flag_rate = blocked_20[TEST].mean()
+
+print(f"cost of one 3.0 review          EUR {per_call:,.4f}")
+print(f"3.0 on every transaction        EUR {per_call*DAILY:>10,.0f} / day"
+      f"   = EUR {per_call*DAILY*365:>12,.0f} / year")
+print(f"3.0 only on what 2.0 flagged    EUR {per_call*DAILY*flag_rate:>10,.0f} / day"
+      f"   = EUR {per_call*DAILY*flag_rate*365:>12,.0f} / year")
+print(f"\\n2.0 flags {flag_rate:.1%} of traffic, so the escalation costs {flag_rate:.1%} of the naive design.")
+"""),
+md("""
+**The architecture that falls out of this, and you will meet it again in weeks 6 and 10:**
+
+| | does | costs |
+|---|---|---|
+| **1.0** | throws away the obvious, in microseconds | nothing |
+| **2.0** | ranks what is left, and sets the budget | cents per million |
+| **3.0** | reads and *explains* the few that get escalated | cents per call |
+
+**Vocabulary you now own:** rule, fitted model, prompt; block budget; the cost of a false positive against the cost of a miss; and the question that ends most AI pitches — *would a keyword list have done this?*
+"""),
 md("## Block B — LLMs at a working level"),
 md("""
 ### B1. Tokens: the model does not see words
-An LLM reads and writes **tokens** — chunks of characters, roughly ¾ of an English word each. Everything is billed, limited and reasoned about in tokens. Numbers, code and non-English text tokenize badly: a Russian sentence costs ~2–3× the tokens of its English translation.
+An LLM reads and writes **tokens** — chunks of characters, roughly ¾ of an English word each. Everything is billed, limited and reasoned about in tokens. Numbers, code and non-English text tokenize badly: a Russian sentence costs 1.5× the tokens of its English translation on the GPT-4o tokenizer, and 2.75× on the older GPT-4 one — same sentence, same model family.
 """),
 code("""
 try:
@@ -249,7 +440,7 @@ What changed and why: role and context reduce generic filler; explicit conventio
 w2 = [
 md("""
 # Week 2 — Data analysis with AI as pair programmer
-**ESE · AI for Business and FinTech · 28 September 2026**
+**ESE · AI for Business and FinTech · 30 September 2026**
 
 Goal of the session: acquire, clean, join and chart financial data with the assistant writing most of the code — while you catch its silent errors. By the end you will have a reproducible pipeline that joins market prices with an external macro series and an on-chain series.
 """),
@@ -422,7 +613,7 @@ md("""
 w3 = [
 md("""
 # Week 3 — Machine learning through one problem
-**ESE · AI for Business and FinTech · 5 October 2026**
+**ESE · AI for Business and FinTech · 7 October 2026**
 
 One problem, done properly, teaches more than a tour of algorithms. Today: *can we predict anything about next week's BTC from what we know today?* We build features, train two models against a trivial baseline, and — most importantly — evaluate them in the only way that means anything for time series. Then we turn a prediction into a decision.
 """),

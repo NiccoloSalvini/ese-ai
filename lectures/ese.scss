@@ -125,4 +125,12 @@ $presentation-block-margin: 14px;
 .reveal .footer { color: $muted; font-size: 0.42em; left: 1.6em; bottom: 0.9em; }
 .reveal .slide-number { color: $muted; font-size: 0.42em; right: 1.6em; bottom: 0.9em; background: none; }
 .reveal .slide-logo { display: none; }
+// ---- Layered figures: an .r-stack of SVGs revealed one fragment at a time ----
+// The stack is a CSS grid whose children all sit in cell 1/1. Without an explicit
+// width the track sizes itself from the images and a percentage width has nothing
+// stable to resolve against, so the figure renders small.
+.reveal .r-stack { width: 100%; }
+.reveal .r-stack > p { width: 100%; margin: 0; }
+.reveal .r-stack img { width: 100%; height: auto; max-height: none; }
+
 .reveal .clipvideo { display: block; margin: 0.3em auto 0; max-width: 100%; max-height: 520px; border: 1px solid $rule; }

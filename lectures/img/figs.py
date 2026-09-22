@@ -364,10 +364,14 @@ def software_123():
 
     The frame is Karpathy's; the worked example is the one this course keeps
     coming back to — block this transaction, or do not.
+
+    Written twice: once complete, and once as four transparent layers on the
+    same 960x440 grid, so the deck can reveal a column at a time inside an
+    `.r-stack`. The layers carry no background rect — the slide is the canvas.
     """
     cols = [
         ("SOFTWARE 1.0", "rules, since 1950", MUTED,
-         ["if amount > 10_000", "and country != home:", "    block()"], True,
+         ["if amount > 150", "and country != home:", "    block()"], True,
          [("you write", "the logic itself"),
           ("it fails when", "the fraud is new"),
           ("you debug it by", "reading the code"),
@@ -385,24 +389,47 @@ def software_123():
           ("you debug it by", "checking the output against the source"),
           ("you give up", "reproducibility, unless you pin T=0")]),
     ]
-    s = head(960, 440, "Software 1.0, 2.0, 3.0",
-             "the same decision &#8212; block this transaction, or do not &#8212; written three ways")
     X, W, GAP = 36, 288, 12
-    for i, (name, era, col, code, mono, rows) in enumerate(cols):
+
+    def column(i):
+        name, era, col, code, mono, rows = cols[i]
         x = X + i * (W + GAP)
-        s += [f'  <text x="{x}" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="{col}">{name}</text>',
-              f'  <text x="{x}" y="99" font-size="12" fill="{MUTED}">{era}</text>',
-              f'  <rect x="{x}" y="112" width="{W}" height="76" fill="{col}" fill-opacity="0.08" stroke="{col}"/>']
+        out = [f'  <text x="{x}" y="80" font-size="13" font-weight="700" letter-spacing="1.2" fill="{col}">{name}</text>',
+               f'  <text x="{x}" y="99" font-size="12" fill="{MUTED}">{era}</text>',
+               f'  <rect x="{x}" y="112" width="{W}" height="76" fill="{col}" fill-opacity="0.08" stroke="{col}"/>']
         fam = ' font-family="\'JetBrains Mono\',Menlo,monospace"' if mono else ''
         for j, line in enumerate(code):
-            s.append(f'  <text x="{x+14}" y="{135+j*21}" font-size="{12 if mono else 13}" fill="{col}"{fam}>{line}</text>')
+            out.append(f'  <text x="{x+14}" y="{135+j*21}" font-size="{12 if mono else 13}" fill="{col}"{fam}>{line}</text>')
         for j, (k, v) in enumerate(rows):
             yy = 214 + j * 50
-            s += [f'  <text x="{x}" y="{yy}" font-size="11" font-weight="700" letter-spacing="1.1" fill="{GOLDDK}">{k.upper()}</text>',
-                  f'  <text x="{x}" y="{yy+19}" font-size="13" fill="{INK}">{v}</text>']
-    s += [f'  <line x1="{X}" y1="418" x2="924" y2="418" stroke="{RULE}"/>',
-          f'  <text x="{X}" y="436" font-size="13" fill="{INK}">You build <tspan font-weight="700" fill="{NAVY}">2.0 in week 3</tspan>, <tspan font-weight="700" fill="{RED}">3.0 in weeks 4 and 5</tspan>, and in week 6 you decide which of the three a problem actually needs.</text>']
-    write("software-123.svg", s)
+            out += [f'  <text x="{x}" y="{yy}" font-size="11" font-weight="700" letter-spacing="1.1" fill="{GOLDDK}">{k.upper()}</text>',
+                    f'  <text x="{x}" y="{yy+19}" font-size="13" fill="{INK}">{v}</text>']
+        return out
+
+    footer = [f'  <line x1="{X}" y1="418" x2="924" y2="418" stroke="{RULE}"/>',
+              f'  <text x="{X}" y="436" font-size="13" fill="{INK}">You build <tspan font-weight="700" fill="{NAVY}">2.0 in week 3</tspan>, <tspan font-weight="700" fill="{RED}">3.0 in weeks 4 and 5</tspan>, and in week 6 you decide which of the three a problem actually needs.</text>']
+
+    full = head(960, 440, "Software 1.0, 2.0, 3.0",
+                "the same decision &#8212; block this transaction, or do not &#8212; written three ways")
+    for i in range(3):
+        full += column(i)
+    write("software-123.svg", full + footer)
+
+    # the same grid, as reveal layers
+    def layer(name, body, background):
+        s = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" '
+             f'width="960" height="440" {FONT}>']
+        if background:
+            s.append('  <rect width="960" height="440" fill="#ffffff"/>')
+        write(name, s + body)
+
+    layer("software-123-l0.svg",
+          [f'  <text x="30" y="34" font-size="13" fill="{MUTED}">the same decision &#8212; block this transaction, or do not &#8212; written three ways</text>',
+           f'  <text x="924" y="34" font-size="12" fill="{MUTED}" text-anchor="end">frame: Andrej Karpathy</text>'],
+          background=True)
+    for i in range(3):
+        layer(f"software-123-l{i+1}.svg", column(i), background=False)
+    layer("software-123-l4.svg", footer, background=False)
 
 
 # ---------------------------------------------------------------- week 10

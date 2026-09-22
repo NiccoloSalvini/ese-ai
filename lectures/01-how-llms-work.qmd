@@ -51,15 +51,36 @@ You will meet a version of all three in a data room. By the end of today you wil
 
 ## Three ways to write the same decision
 
-![](img/software-123.svg){fig-align="center" width="95%"}
+::: {.r-stack}
+![](img/software-123-l0.svg){width="100%"}
 
-[The frame is Andrej Karpathy's. It is the most useful map I know, because it makes "should we use AI for this?" into a question with three named answers instead of a mood.]{.muted}
+![](img/software-123-l1.svg){.fragment width="100%"}
+
+![](img/software-123-l2.svg){.fragment width="100%"}
+
+![](img/software-123-l3.svg){.fragment width="100%"}
+
+![](img/software-123-l4.svg){.fragment width="100%"}
+:::
+
 
 ## And 3.0 does not replace the other two {.statement}
 
 ## A rule you can write down beats a model that guesses it.
 
 [Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks.]{.muted}
+
+## Run all three, on the same transactions {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § A2]{.kicker}
+
+Twenty thousand card payments, one cost table, three kinds of software:
+
+1. the rule blocks 240 of them. **Bet how much of the fraud it catches** before you run it.
+2. the model gets the **same budget** — 240 blocks, no more — and only chooses differently.
+3. then the fraud that is in the *words* and in neither of the first two.
+
+[Then the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged.]{.red}
 
 ## [Block A]{.section-kicker} The model does not read {.section-slide background-color="#AF1F25"}
 
