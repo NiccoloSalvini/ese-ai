@@ -12,7 +12,7 @@ This is the web version of the course design document. The original is available
 |----|----|
 | **Term / dates** | Term 1, AY 2026–27. Teaching 23 September – 2 December 2026 (10 sessions). Reading Week 26 Oct – 1 Nov (no class). Final presentation in Revision Week, 7–13 December 2026. |
 | **Contact hours** | 30 hours — one 3-hour session per week, Wednesdays 10:00–13:00, in person (ESE Florence) |
-| **Module leader** | Niccolò Salvini |
+| **Adjunct Professor** | Niccolò Salvini, PhD |
 | **Format** | One-to-one tutorial and lab. Every session combines a short conceptual block with hands-on building in Python (Google Colab) using AI coding assistants. |
 | **Language** | English |
 | **Tools** | Google Colab (student Google account), GitHub, an LLM API key (Google AI Studio free tier by default; OpenAI/Anthropic optional), a ChatGPT/Claude/Gemini chat subscription of the student's choice. Public data: yfinance, CoinGecko, DefiLlama, FRED, Etherscan/Dune free tiers. |

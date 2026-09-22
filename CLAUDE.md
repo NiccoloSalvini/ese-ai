@@ -2,7 +2,7 @@
 
 Course repository *and* course website for *Artificial Intelligence for Business
 and FinTech*, ESE Short Course, European School of Economics, Florence, Term 1
-A.Y. 2026–2027. Module leader Niccolò Salvini. One-to-one tutorial and lab.
+A.Y. 2026–2027. Adjunct Professor Niccolò Salvini, PhD. One-to-one tutorial and lab.
 
 Live site: <https://niccolosalvini.github.io/ese-ai/> · Repo: `NiccoloSalvini/ese-ai` (public)
 

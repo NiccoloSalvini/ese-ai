@@ -14,6 +14,7 @@ render () {  # render <module> <Scene> <output-name>
 }
 
 only="${1:-all}"
+[ "$only" = all ] || [ "$only" = w01 ] && render w01_tokens     TwoTokenizers   w01_tokens
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_calendars  Calendars       w02_calendars
 [ "$only" = all ] || [ "$only" = w03 ] && render w03_splits     Splits          w03_splits
 [ "$only" = all ] || [ "$only" = w04 ] && render w04_retrieval  MeaningIsAPlace w04_retrieval

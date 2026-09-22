@@ -108,6 +108,20 @@ $presentation-block-margin: 14px;
 .reveal .statement p { font-size: 1em; margin-top: 0.3em; }
 
 .red { color: $red; } .muted { color: $muted; } .gold { color: $golddk; }
+
+// ---- Emphasis on dark frames ----
+// $red on $navy is 1.6:1 and $red on $red is invisible. On any dark frame the
+// emphasis span becomes pale gold (4.6:1 on navy) and .muted becomes translucent
+// white; grey-on-blue was 1.3:1. Attribute selectors carry `i` because the decks
+// write the colour in both cases.
+.reveal .lab, .reveal .clip, .reveal .section-slide,
+.reveal section[data-background-color="#2471a3" i],
+.reveal section[data-background-color="#AF1F25" i],
+.reveal section[data-background-color="#000000" i] {
+  .red  { color: #f7efd4; font-weight: 600; }
+  .muted { color: rgba(255,255,255,.78); }
+  .gold { color: $gold; }
+}
 .reveal .footer { color: $muted; font-size: 0.42em; left: 1.6em; bottom: 0.9em; }
 .reveal .slide-number { color: $muted; font-size: 0.42em; right: 1.6em; bottom: 0.9em; background: none; }
 .reveal .slide-logo { display: none; }

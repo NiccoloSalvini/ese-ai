@@ -29,6 +29,26 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 Not "an overview of AI tools". The ability to build a thing, test it, find where it is wrong, and defend it to people who will not read your appendix.
 :::
 
+## Three sentences from three pitch decks {.statement}
+
+## Two of these are impossible. One is unanswerable as written.
+
+[Write down which is which. We come back to this at 12:55.]{.muted}
+
+## The three claims
+
+::: {.callout-important title="Bet before we start"}
+1. *"Our assistant **remembers** every conversation it has had with your customers."*
+2. *"It **learns from your corrections in real time**."*
+3. *"**99.2% accuracy** on invoice extraction."*
+:::
+
+. . .
+
+You will meet a version of all three in a data room. By the end of today you will know which part of the machine each one is lying about — and, more useful, **the one question that collapses each claim**.
+
+[This is the actual product of the course: not enthusiasm, and not scepticism. A short list of questions that separate a system from a demo.]{.red}
+
 ## [Block A]{.section-kicker} The model does not read {.section-slide background-color="#AF1F25"}
 
 ## It never sees a word
@@ -41,30 +61,60 @@ Not "an overview of AI tools". The ability to build a thing, test it, find where
 
 ![](img/tokens-pipeline.svg){fig-align="center" width="95%"}
 
+## A **tokenizer** is trained, and it has a native language
+
+The vocabulary is learned from a corpus, by merging the pairs of characters that occur most often. A corpus that is mostly English learns mostly English pieces.
+
+Everything else gets spelled out in fragments: **Italian, Russian, a ticker, a surname, a number.**
+
+. . .
+
+[Which means the price of a document depends on a design decision taken before your document existed.]{.red}
+
+## The same sentence, twice, one tokenizer apart {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_tokens_poster.png"><source src="media/w01_tokens.mp4" type="video/mp4"></video>
+
+Same model family, same sentence. 33 pieces became 18.
+
+## Read that clip as a line in a budget
+
+| | tokens | vs English |
+|---|---|---|
+| English sentence | 12 | 1.00× |
+| Italian, same meaning | 17 | 1.42× |
+| Russian, **GPT-4 tokenizer** | 33 | 2.75× |
+| Russian, **GPT-4o tokenizer** | 18 | 1.50× |
+
+. . .
+
+[A Russian-language pilot priced on the first tokenizer and delivered on the second lost **45% of its unit cost** to a change nobody in the room chose. This is not a detail. It is the sort of thing that decides whether a pilot clears its business case.]{.red}
+
 ## Take it apart yourself {.lab background-color="#2471a3"}
 
 [LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
 
-Type your own sentences and watch the count. Try, in this order:
+Type your own text and watch the count. Try, in this order:
 
 1. the same sentence in **English**, then **Italian**, then **Russian**
-2. a **number**: `1,234,567.89`
-3. a line of **Python**
-4. a **company name** the model has never seen
+2. a **number**: `1,234,567.89` — count the pieces before you look
+3. **your own surname**, then a listed company, then a company founded last year
+4. a line of **Python**
 
-Then answer, from what you saw: **why does the same meaning cost different amounts in different languages?**
+[Then answer, from what you saw: which of those four is the model **least** equipped to reason about, and why?]{.red}
 
 ## What follows from it, in a business
 
 | what you saw | what it costs you |
 |---|---|
-| tokens, not words | you are billed per token, in and out |
-| non-English fragments more | the same document costs 1.5–3× more in Italian |
-| numbers shatter into pieces | arithmetic is weak — never trust a total it computed |
+| tokens, not words | you are billed per token, in **and** out |
+| non-English fragments more | the same document costs 1.4–2.8× depending on language **and** tokenizer |
+| `1,234,567.89` is **7 tokens**, not one number | arithmetic is weak by construction — never trust a total it computed |
+| a new company name shatters; an old one does not | the model is systematically more fluent about the past |
 | the window is counted in tokens | long conversations silently become expensive |
 
 ::: {.callout-tip title="The sentence to remember"}
-The unit the system counts in is not the unit you think in. Story points, not hours.
+The unit the system counts in is not the unit you think in, and the exchange rate between them is not stable.
 :::
 
 ## [Block B]{.section-kicker} Its only memory is what you just sent {.section-slide background-color="#AF1F25"}
@@ -72,6 +122,24 @@ The unit the system counts in is not the unit you think in. Story points, not ho
 ## Everything it knows, every time
 
 ![](img/context-window.svg){fig-align="center" width="95%"}
+
+## Which disposes of claim one {.statement}
+
+## The model remembers nothing. Something else is storing and re-sending.
+
+[That something is a database, it has an owner, and every turn you pay to send it again. "It remembers" is not an AI capability. It is an infrastructure invoice.]{.muted}
+
+## And a longer window is not a free upgrade
+
+The attention step compares every token with every other token. **Double the context and that step costs roughly four times as much**, not twice.
+
+. . .
+
+Worse, it is not uniform. Put a fact at the start, at the middle and at the end of a very long input and ask for it back: **the middle is recovered least often**. Measured repeatedly, across model families.
+
+::: {.callout-tip title="What this rules out"}
+"Just paste the whole thing in and ask" fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer correct. That is week 4.
+:::
 
 ## So where do hallucinations come from?
 
@@ -85,14 +153,39 @@ The model invents a plausible figure for a company's 2025 revenue. Is that a bug
 
 It has no way to feel the difference between recalling and inventing. **That is your job**, and it is the habit this whole course builds.
 
+## "We will train it on your data" is three different products
+
+| what is actually done | changes | costs | shows up in |
+|---|---|---|---|
+| **put it in the prompt** | nothing, ever | per call, for ever | seconds |
+| **retrieval** | what it can look up | an index, plus per call | days |
+| **fine-tuning** | the model's *style and format* | a training run, repeated | weeks |
+
+. . .
+
+[Fine-tuning teaches a model **how to say things**. It is an unreliable way to teach it **what is true** — a fact you fine-tuned in cannot be updated, cited, or withdrawn. When a vendor says "we train on your data", the question is which of these three, and you will not get a straight answer unless you name them.]{.red}
+
+## And it disposes of claim two
+
+**"It learns from your corrections in real time."**
+
+The weights are frozen when you call it. Nothing you type changes them.
+
+. . .
+
+What can honestly be meant is one of two things: your correction was **written to a store and re-sent next time** (fast, cheap, and not learning), or it entered a **retraining queue** (real, and measured in weeks).
+
+[Ask which. The answer tells you whether you are buying a model or a database, and they have very different prices.]{.red}
+
 ## Watch a conversation get expensive {.lab background-color="#2471a3"}
 
 [LAB · session.ipynb § B2 — the cost cell]{.kicker}
 
 1. Price one 10-K at today's rates. Then a thousand a day, for a year.
 2. Now the part nobody expects: a **twenty-turn conversation** re-sends the whole history every turn. Compute what turn twenty costs against turn one.
+3. Re-price the whole thing with the Russian multiplier from the clip.
 
-[This is why "just paste the whole document in" is a strategy with a budget attached, and why week 4 exists.]{.red}
+[Three numbers, and you can argue about a pilot's unit economics with the people who sold it.]{.red}
 
 ## [Block C]{.section-kicker} Why the same question gives different answers {.section-slide background-color="#AF1F25"}
 
@@ -113,6 +206,18 @@ At every step the model has a **distribution** over what comes next.
 | `T` high | wander — rarely what a business wants |
 
 [Same prompt, different answer, is not a malfunction. Set `T = 0` and it stops.]{.red}
+
+## And write that into the procedure, not the folklore
+
+A process that an auditor will look at cannot say *"we asked the AI"*.
+
+- the **exact prompt**, versioned like code
+- `T = 0`, and the model **name and version** recorded with the output
+- the **input** stored next to the answer
+
+::: {.callout-tip title="Why this matters more here than anywhere else"}
+In a regulated process, "we cannot reproduce last quarter's output" is not an inconvenience. It is the finding.
+:::
 
 ## The habit this course is really about {.lab background-color="#2471a3"}
 
@@ -214,6 +319,18 @@ Cumulative return is not the sum of daily returns. Compounding is a product. Clo
 The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.
 :::
 
+## Back to the three claims
+
+| the claim | the one question |
+|---|---|
+| *"it remembers every conversation"* | **what stores it, and who pays to re-send it every turn?** |
+| *"it learns from corrections in real time"* | **does that change the weights, or write a row in a database?** |
+| *"99.2% accuracy"* | **on whose test set, of what size, against what baseline?** |
+
+. . .
+
+[The first two you can now answer yourself. The third you cannot — not because it is complicated, but because the number is meaningless without the base rate. That is week 3, and it is the one that costs people money.]{.red}
+
 ## Close
 
 **Homework 1** — three assets of your own, an honest table, one chart that answers a stated question, and a section titled *"What the assistant got wrong"*.
@@ -222,6 +339,6 @@ Due Tuesday 29 September, 23:59, in your repository.
 
 . . .
 
-**Before you leave:** Colab runs, GitHub repository created, tutor added as collaborator, and one notebook saved to it.
+**Before you leave:** Colab runs, GitHub repository created, and one notebook saved to it.
 
 [Next week: the same loop on real data, and the first thing you will show someone.]{.muted}
