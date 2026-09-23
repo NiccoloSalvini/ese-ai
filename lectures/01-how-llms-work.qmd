@@ -273,17 +273,15 @@ One step on payment E (large, abroad, fraud), with η = 1:
 ![](img/story-same-machine.svg){fig-align="center" width="86%"}
 
 
-## The same nudge, on text
+## The same nudge, on text {.clip background-color="#000000"}
 
-`The ECB left rates` → ?
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_faders_poster.png"><source src="media/w01_faders.mp4" type="video/mp4"></video>
 
-| next token | before | after one step |
-|---|---|---|
-| **"unchanged"** ✓ | 3% | **4%** |
-| "steady" | 4% | 3.8% |
-| "at" | 2% | 1.9% |
+[Think of a mixer: one knob per possible next token. Each sentence turns the right knob up a little — exactly the step we took on payment E.]{.explain}
 
-[Exactly the step we took on payment E: raise the probability of the right answer, lower the others. Here the right answer is in the text itself.]{.explain}
+## Where the knobs end up
+
+![](img/story-faders.svg){fig-align="center" width="88%"}
 
 ## Pre-training is compressing the internet
 

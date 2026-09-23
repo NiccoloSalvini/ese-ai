@@ -160,26 +160,34 @@ def card_testing():
     A, F, H = S["amounts"], S["fraud2"], S["hidden"]
     def net(a):
         hs = sig(H["small"][0] * a + H["small"][1]); hl = sig(H["large"][0] * a + H["large"][1])
-        return hs, hl, sig(H["out"][0] * hs + H["out"][1] * hl + H["out"][2])
-    x0, W = 110, 800
+        return hs, hl, sig(H["out"][0] * hs + H["out"][1] * hl + H["out"][2]), hl
+    x0, W = 130, 780
     X = lambda a: x0 + a / 3.0 * W
     B = []
-    rows = [(("neuron 1", "small?"), 0, NAVY, 60), (("neuron 2", "large?"), 1, GOLDDK, 150), (("output", "fraud?"), 2, RED, 240)]
-    for label, k, col, y0 in rows:
-        Y = lambda v, y0=y0: y0 + 70 - v * 60
+    rows = [(("one neuron alone", "fraud?"), 3, MUTED, 52, "its best try: one threshold"),
+            (("hidden neuron 1", "small?"), 0, NAVY, 142, ""),
+            (("hidden neuron 2", "large?"), 1, GOLDDK, 222, ""),
+            (("output", "fraud?"), 2, RED, 302, "small OR large")]
+    for label, k, col, y0, note in rows:
+        Y = lambda v, y0=y0: y0 + 62 - v * 52
         B += [f'  <line x1="{x0}" y1="{Y(0)}" x2="{x0+W}" y2="{Y(0)}" stroke="{RULE}"/>',
-              t(x0 - 12, y0 + 44, label[0], 13, MUTED, "400", "end"), t(x0 - 12, y0 + 62, label[1], 16, col, "700", "end")]
+              f'  <line x1="{x0}" y1="{Y(1)}" x2="{x0+W}" y2="{Y(1)}" stroke="{RULE}" stroke-dasharray="2 4"/>',
+              t(x0 - 8, Y(1) + 4, "1", 10, MUTED, "400", "end"), t(x0 - 8, Y(0) + 4, "0", 10, MUTED, "400", "end"),
+              t(x0 - 24, y0 + 30, label[0], 12, MUTED, "400", "end"), t(x0 - 24, y0 + 48, label[1], 15, col, "700", "end")]
         pts = " ".join(f"{X(3*i/300):.1f},{Y(net(3*i/300)[k]):.1f}" for i in range(301))
         B.append(f'  <polyline points="{pts}" fill="none" stroke="{col}" stroke-width="3"/>')
+        if note:
+            B.append(t(X(1.05), Y(1) + 14, note, 12, col, "700", "middle"))
+    B += [t(X(0.02) + 8, 100, "misses the €10–€50 tests ✗", 12, RED, "700")]
+    yp = 392
+    B += [f'  <line x1="{x0}" y1="{yp}" x2="{x0+W}" y2="{yp}" stroke="{RULE}"/>', t(x0 - 24, yp + 4, "payments", 12, MUTED, "400", "end")]
     for a, y in zip(A, F):
-        B.append(f'  <circle cx="{X(a):.1f}" cy="342" r="6" fill="{RED if y else "#fff"}" stroke="{RED if y else INK}" stroke-width="2"/>')
-    B += [f'  <line x1="{x0}" y1="342" x2="{x0+W}" y2="342" stroke="{RULE}"/>', t(x0 - 6, 346, "payments", 12, MUTED, "400", "end"),
-          t(X(0.03) + 10, 330, "€10–€50 tests", 12, RED, "700")]
+        B.append(f'  <circle cx="{X(a):.1f}" cy="{yp}" r="6" fill="{RED if y else "#fff"}" stroke="{RED if y else INK}" stroke-width="2"/>')
     for a in (0, 1, 2, 3):
-        B.append(t(X(a), 368, f"€{a*1000:,}", 12, MUTED, "400", "middle"))
-    B += [t(30, 398, "One neuron draws one threshold. Two hidden neurons each learn a question; the output neuron combines them.", 14, INK),
-          t(30, 420, "Parameters: 2 × 2 in the hidden layer + 3 in the output = 7.", 14, INK, "700")]
-    svg("story-card-testing.svg", 960, 432, B, "card testing — a fraudster tries the card with €1, then spends €2,000: fraud sits at both ends")
+        B.append(t(X(a), yp + 24, f"€{a*1000:,}", 12, MUTED, "400", "middle"))
+    B += [t(30, 446, "Red = fraud. One neuron draws one threshold, so it can catch one end only. Two hidden neurons each learn a question;", 14, INK),
+          t(30, 466, "the output neuron combines them. Parameters: 2 × 2 in the hidden layer + 3 in the output = 7.", 14, INK, "700")]
+    svg("story-card-testing.svg", 960, 478, B, "card testing — a fraudster tries the card with €10, then spends €2,000: fraud sits at both ends of the amount")
 
 
 # ------------------------------------------------------------------ 6. same machine, bigger: fraud network vs LLM
@@ -223,5 +231,34 @@ def scale():
     svg("story-scale.svg", 960, 410, B, "number of weights (parameters), log scale — each step right is ten times more")
 
 
+# ------------------------------------------------------------------ 8. the same nudge on text: a mixer of next tokens
+def faders():
+    F = S["faders"]
+    toks = F["tokens"]
+    B = [t(30, 66, "the training text", 13, MUTED, "700")]
+    for i, (ctx, y) in enumerate(F["sentences"]):
+        B.append(t(30, 92 + i * 24, f"{ctx} <tspan font-weight=\"700\" fill=\"{RED}\">{y}</tspan>", 14, INK))
+    panels = F["snaps"]
+    x0 = 300
+    for k, sn in enumerate(panels):
+        px0 = x0 + k * 160
+        B.append(t(px0 + 62, 66, sn["label"], 12, INK, "700", "middle"))
+        for j, (tok, pv) in enumerate(zip(toks, sn["p"])):
+            cx = px0 + 10 + j * 26
+            top, bot = 90, 300
+            yk = bot - pv * (bot - top)
+            col = RED if tok == "unchanged" else (NAVY if tok in ("steady", "at") else MUTED)
+            B += [f'  <line x1="{cx}" y1="{top}" x2="{cx}" y2="{bot}" stroke="{RULE}" stroke-width="4" stroke-linecap="round"/>',
+                  f'  <line x1="{cx}" y1="{yk:.1f}" x2="{cx}" y2="{bot}" stroke="{col}" stroke-width="4" stroke-linecap="round" stroke-opacity=".55"/>',
+                  f'  <rect x="{cx-9}" y="{yk-6:.1f}" width="18" height="12" rx="2" fill="{col}"/>',
+                  f'  <text x="{cx}" y="{bot+16}" font-size="10" fill="{MUTED}" text-anchor="end" transform="rotate(-45 {cx} {bot+16})">{tok}</text>']
+        top_p = sn["p"][0]
+        B.append(t(px0 + 62, 356, f"unchanged {top_p:.0%}", 13, RED, "700", "middle"))
+    B += [f'  <line x1="30" y1="376" x2="930" y2="376" stroke="{RULE}"/>',
+          t(30, 400, "One knob per possible next token. Each sentence turns the right one up a little and the others down.", 14, INK),
+          t(30, 422, "After many passes the knobs sit where the text is: 3 in 5 said “unchanged”. Tokens never seen after “left rates” go to zero.", 14, INK, "700")]
+    svg("story-faders.svg", 960, 436, B, "“… left rates” → ?  five sentences, five knobs, the same nudge as on payment E")
+
+
 if __name__ == "__main__":
-    neuron(); step_sigmoid(); graph(); loop(); card_testing(); same_machine(); scale()
+    neuron(); step_sigmoid(); graph(); loop(); card_testing(); same_machine(); scale(); faders()

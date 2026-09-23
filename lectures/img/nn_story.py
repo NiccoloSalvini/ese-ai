@@ -98,6 +98,35 @@ def hidden_net(a):
     return hs, hl, sig(ws * hs + wl * hl + bo)
 
 
+# ---------------------------------------------------------------- 5. the same nudge, on text: a mixer of next tokens
+SENTENCES = [("The ECB left rates", "unchanged"), ("The Fed left rates", "steady"), ("The BoE left rates", "unchanged"),
+             ("The SNB left rates", "at"), ("The BoJ left rates", "unchanged")]
+NEXT = ["unchanged", "steady", "at", "higher", "lower"]
+ETA_T = 0.5
+
+def faders(passes=40):
+    """Softmax over five next tokens, one knob (logit) each; every sentence nudges the right one up."""
+    logit = {t: 0.0 for t in NEXT}
+    def probs():
+        e = {t: math.exp(v) for t, v in logit.items()}; s = sum(e.values())
+        return [round(e[t] / s, 3) for t in NEXT]
+    snaps = [dict(label="start", p=probs())]
+    steps = []
+    for k in range(passes):
+        for i, (ctx, y) in enumerate(SENTENCES):
+            p = dict(zip(NEXT, probs()))
+            for t in NEXT:
+                logit[t] += ETA_T * ((t == y) - p[t])
+            if k == 0:
+                steps.append(dict(sentence=ctx, answer=y, p=probs()))
+                if i == 0:
+                    snaps.append(dict(label="after 1 sentence", p=probs()))
+        if k == 0:
+            snaps.append(dict(label="after the 5 sentences once", p=probs()))
+    snaps.append(dict(label=f"after {passes} passes", p=probs()))
+    return snaps, steps
+
+
 if __name__ == "__main__":
     trace, final = perceptron()
     print(f"PERCEPTRON  start {START}  eta {ETA_P}")
@@ -142,7 +171,12 @@ if __name__ == "__main__":
     ok = sum((hidden_net(a)[2] >= 0.5) == y for a, y in zip(AMOUNTS, FRAUD2))
     print(f"  correct {ok}/{len(AMOUNTS)}; parameters 2*2 + 3 = 7")
 
-    out = dict(features=FEATURES, payments=PAYMENTS, start=START, eta_p=ETA_P, perceptron=trace,
+    snaps, fsteps = faders()
+    print("\nFADERS", NEXT)
+    for sn in snaps: print(f"  {sn['label']:28} {sn['p']}")
+    out_faders = dict(sentences=SENTENCES, tokens=NEXT, eta=ETA_T, snaps=snaps, steps=fsteps)
+
+    out = dict(faders=out_faders, features=FEATURES, payments=PAYMENTS, start=START, eta_p=ETA_P, perceptron=trace,
                rounds=rounds, perceptron_final=final,
                probs={n: round(v, 4) for n, v in p_final.items()}, loss_before={n: round(v, 4) for n, v in loss_before.items()},
                avg_before=avg_before, trained=trained, train_eta=TRAIN_ETA, train_steps=TRAIN_STEPS,

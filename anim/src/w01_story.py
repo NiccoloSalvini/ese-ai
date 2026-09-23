@@ -130,3 +130,45 @@ class LearningRate(Scene):
             self.play(Create(curve), FadeIn(lg), run_time=2.2, rate_func=linear)
             self.add(dot)
         self.wait(2.0)
+
+
+class Faders(Scene):
+    """The same nudge on text: one knob per possible next token."""
+
+    def construct(self):
+        F = S["faders"]
+        toks = F["tokens"]
+        title = Text("“… left rates” → ?   one knob per next token", font_size=30, weight=BOLD).to_edge(UP, buff=0.3)
+        self.add(title)
+        top, bot = 2.1, -1.9
+        xs = [0.3 + i * 1.35 for i in range(len(toks))]
+        cols = [RED, NAVY, NAVY, GREY, GREY]
+        rails = VGroup(*[Line([x, bot, 0], [x, top, 0], color=GREY, stroke_width=6, stroke_opacity=0.35) for x in xs])
+        names = VGroup(*[Text(tk, font_size=20).move_to([x, bot - 0.35, 0]) for tk, x in zip(toks, xs)])
+        self.add(rails, names)
+
+        def rects(ps):
+            return VGroup(*[RoundedRectangle(width=0.7, height=0.28, corner_radius=0.05, fill_color=c, fill_opacity=1,
+                                             stroke_width=0).move_to([x, bot + p * (top - bot), 0]) for p, x, c in zip(ps, xs, cols)])
+        def labels(ps):
+            return VGroup(*[Text(f"{p:.0%}", font_size=18).move_to([x + 0.62, bot + p * (top - bot), 0]) for p, x in zip(ps, xs)])
+
+        r, l = rects(F["snaps"][0]["p"]), labels(F["snaps"][0]["p"])
+        self.play(FadeIn(r), FadeIn(l), run_time=0.6)
+        lines = VGroup(*[Text(f"{ctx} {y}", font_size=23, color=GREY) for ctx, y in F["sentences"]]).arrange(DOWN, aligned_edge=LEFT, buff=0.25).move_to([-4.3, 0.4, 0])
+        self.add(lines)
+        self.wait(0.8)
+        for i, st in enumerate(F["steps"]):
+            hl = lines[i].copy().set_color(RED if st["answer"] == "unchanged" else NAVY)
+            nl = labels(st["p"])
+            self.play(Transform(lines[i], hl), Transform(r, rects(st["p"])), FadeOut(l), run_time=0.9)
+            self.play(FadeIn(nl), run_time=0.25)
+            l = nl
+            self.wait(0.5)
+        fast = Text("… 40 passes over the same five sentences", font_size=22, color=GOLD).move_to([-4.3, -1.9, 0])
+        nl = labels(F["snaps"][-1]["p"])
+        self.play(FadeIn(fast), Transform(r, rects(F["snaps"][-1]["p"])), FadeOut(l), run_time=2.2)
+        self.play(FadeIn(nl), run_time=0.3)
+        end = Text("The knobs end where the text is: 3 in 5 said “unchanged”. Never seen → zero.", font_size=22, weight=BOLD).move_to([0, -3.1, 0])
+        self.play(FadeIn(end), run_time=0.6)
+        self.wait(2.5)

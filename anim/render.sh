@@ -17,6 +17,7 @@ only="${1:-all}"
 [ "$only" = all ] || [ "$only" = w01 ] && render w01_tokens     TwoTokenizers   w01_tokens
 [ "$only" = all ] || [ "$only" = w01 ] && render w01_story      PerceptronPayments w01_perceptron
 [ "$only" = all ] || [ "$only" = w01 ] && render w01_story      LearningRate    w01_lr
+[ "$only" = all ] || [ "$only" = w01 ] && render w01_story      Faders          w01_faders
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_calendars  Calendars       w02_calendars
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_story      Temperature     w02_temperature
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_story      Compounding     w02_compounding

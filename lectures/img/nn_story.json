@@ -1,4 +1,135 @@
 {
+ "faders": {
+  "sentences": [
+   [
+    "The ECB left rates",
+    "unchanged"
+   ],
+   [
+    "The Fed left rates",
+    "steady"
+   ],
+   [
+    "The BoE left rates",
+    "unchanged"
+   ],
+   [
+    "The SNB left rates",
+    "at"
+   ],
+   [
+    "The BoJ left rates",
+    "unchanged"
+   ]
+  ],
+  "tokens": [
+   "unchanged",
+   "steady",
+   "at",
+   "higher",
+   "lower"
+  ],
+  "eta": 0.5,
+  "snaps": [
+   {
+    "label": "start",
+    "p": [
+     0.2,
+     0.2,
+     0.2,
+     0.2,
+     0.2
+    ]
+   },
+   {
+    "label": "after 1 sentence",
+    "p": [
+     0.292,
+     0.177,
+     0.177,
+     0.177,
+     0.177
+    ]
+   },
+   {
+    "label": "after the 5 sentences once",
+    "p": [
+     0.4,
+     0.173,
+     0.188,
+     0.119,
+     0.119
+    ]
+   },
+   {
+    "label": "after 40 passes",
+    "p": [
+     0.606,
+     0.172,
+     0.211,
+     0.006,
+     0.006
+    ]
+   }
+  ],
+  "steps": [
+   {
+    "sentence": "The ECB left rates",
+    "answer": "unchanged",
+    "p": [
+     0.292,
+     0.177,
+     0.177,
+     0.177,
+     0.177
+    ]
+   },
+   {
+    "sentence": "The Fed left rates",
+    "answer": "steady",
+    "p": [
+     0.251,
+     0.266,
+     0.161,
+     0.161,
+     0.161
+    ]
+   },
+   {
+    "sentence": "The BoE left rates",
+    "answer": "unchanged",
+    "p": [
+     0.35,
+     0.223,
+     0.142,
+     0.142,
+     0.142
+    ]
+   },
+   {
+    "sentence": "The SNB left rates",
+    "answer": "at",
+    "p": [
+     0.3,
+     0.204,
+     0.224,
+     0.136,
+     0.136
+    ]
+   },
+   {
+    "sentence": "The BoJ left rates",
+    "answer": "unchanged",
+    "p": [
+     0.4,
+     0.173,
+     0.188,
+     0.119,
+     0.119
+    ]
+   }
+  ]
+ },
  "features": [
   "large",
   "abroad",
