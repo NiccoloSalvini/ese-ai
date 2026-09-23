@@ -10,6 +10,23 @@
 > errors → C calendars → D units → E reproducibility. **This is dense.** If behind: move "Join something
 > that is not a price" into HW2 (it already is, in effect), and do Block E in ten minutes.
 
+> **Rebuilt 23 Sep 2026 (v2).** The deck and the notebook follow one plan; the session plan below
+> supersedes the older one further down, kept only for the join/rolling material used in HW2.
+>
+> | Time | Block | Slides / notebook |
+> |---|---|---|
+> | 10:00 | recap of week 1 · his HW1 question | "Last week, in one slide" · "Your starting point" |
+> | 10:25 | temperature (clip + table), invented numbers, two piles, procedure | § 1–2 |
+> | 10:55 | tiny LLM piece 1: a tokenizer by byte-pair merges, then on his own EN/RU text | § 3 |
+> | 11:15 | break | |
+> | 11:25 | ten real days (Jan 2024), four verbs, a return by hand, volatility (bet), compounding clip + BTC 2022, planted-error cell | § 4 |
+> | 12:05 | calendars: ten-days clip, four and a half years (bet: SPY vol 17.4% → 14.4% when weekends are filled), three checks after a join | § 5 |
+> | 12:30 | units (1.2/−0.8/0.5 → +0.89% vs −34%; slope 0.01 vs 1.02), snapshot, privacy | § 6–7 |
+> | 12:50 | HW2 brief · three lines | |
+>
+> Every number comes from `lectures/img/w02_story.py` on the snapshot in `week-02/data/`.
+> If behind: the units slope figure and the "four verbs" table can be shown, not discussed.
+
 ## Learning objectives
 By the end of the session the student can:
 1. Perform the four core pandas operations (filter, derive, aggregate/resample, join) on real financial data with the assistant writing the code.

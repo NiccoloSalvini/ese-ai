@@ -15,6 +15,21 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [Today you will build a model that scores 0.71 and is worthless, and one that scores 0.53 and is worth money. Telling them apart is the entire skill.]{.red}
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+The model's side: **temperature** decides how it picks from the odds; T = 0 always takes the top token. It invents by design — there is always a most likely next token.
+
+A **tokenizer** learns pieces by merging the most frequent pair.
+:::
+::: {.column width="50%"}
+The data side: Bitcoin is about **three times** as volatile as the S&P 500 — with √365, not √252. Returns **compound**: +50% then −50% is −25%.
+
+A **join** decides which days exist: filling the weekends invented 540 calm days. Units live in your head, not in the data.
+:::
+::::
+
 ## Three ways to write the same decision
 
 ::: {.r-stack}

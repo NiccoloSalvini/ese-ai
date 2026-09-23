@@ -5,200 +5,282 @@ author: "Niccolò Salvini, PhD"
 institute: "AI for Business and FinTech · European School of Economics, Florence"
 ---
 
-## Where we are
+## Today
 
-| | | |
-|---|---|---|
-| 1 | 23 Sep | who we are, the plan, how the model reads ✓ |
-| **2** | **30 Sep** | **the checking habit, three assets, joins, and the errors that hide** |
-| 3 | 7 Oct | a model, and an honest evaluation of it |
-| 4–5 | 14–21 Oct | an LLM application, then agents and evals |
+| | |
+|---|---|
+| **10:00** | last week in one slide · your starting point |
+| **10:25** | the model's side: temperature, and why it invents |
+| **10:55** | your tiny LLM, piece 1: a tokenizer |
+| **11:15** | break |
+| **11:25** | is Bitcoin riskier than the stock market? — ten real days by hand |
+| **12:05** | two calendars, one join |
+| **12:30** | units, snapshots, and what never goes into a chatbot |
+| **12:50** | homework · three lines |
 
-[Last week you saw what the model reads. Today you see what it gets wrong — a constant that looks fine, then the two mistakes that never raise an error.]{.red}
+## Last week, in one slide
 
-## [Block A]{.section-kicker} Why the same question gives different answers {.section-slide background-color="#AF1F25"}
+:::: {.columns}
+::: {.column width="50%"}
+**A neuron** multiplies each answer by a weight, adds a bias, and squashes.
 
-## It is choosing, not looking up
+**Training** is one loop: guess → how wrong (the loss) → blame each weight (backpropagation) → nudge it: $w \leftarrow w - \eta\,(p-y)\,x$.
+:::
+::: {.column width="50%"}
+**An LLM** is the same machine, answering "which of 200,000 tokens comes next?".
 
-![](img/next-token.svg){fig-align="center" width="95%"}
+It reads **tokens**, lets them **attend** to each other, and knows only what is in its **context window**.
+:::
+::::
 
-[**Temperature** decides how much it respects those odds — and nothing else about the model changes.]{.red}
+[Today: what it does with those probabilities — and then data, where the assistant writes the code and you check it.]{.explain}
 
-## So where do hallucinations come from?
+## Your starting point {.statement}
 
-::: {.callout-important title="Bet before we look"}
-The model invents a plausible figure for a company's 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?
+[Homework 1: the question you want answered by December. Tell me in two minutes, as if to a manager.]{.muted}
+
+## [Part 1]{.section-kicker} The model's side {.section-slide background-color="#AF1F25"}
+
+## Last week's table, again
+
+`The ECB left rates` → ?
+
+::: {.bigtable}
+| unchanged | steady | at | on | higher |
+|---|---|---|---|---|
+| 0.62 | 0.15 | 0.10 | 0.08 | 0.05 |
+:::
+
+::: {.callout-important title="Bet"}
+Ask the same question ten times. How many times does it answer "unchanged"?
+:::
+
+[It does not look the answer up. It **picks** from these odds — and the setting that decides how it picks is called **temperature**.]{.explain}
+
+## Temperature reshapes the odds {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_temperature_poster.png"><source src="media/w02_temperature.mp4" type="video/mp4"></video>
+
+## The same five tokens, four temperatures
+
+::: {.bigtable}
+| next token | T = 0 | T = 0.5 | T = 1 | T = 2 |
+|---|---|---|---|---|
+| **unchanged** | 1.00 | 0.90 | 0.62 | 0.39 |
+| **steady** | 0.00 | 0.05 | 0.15 | 0.19 |
+| **at** | 0.00 | 0.02 | 0.10 | 0.16 |
+| **on** | 0.00 | 0.01 | 0.08 | 0.14 |
+| **higher** | 0.00 | 0.01 | 0.05 | 0.11 |
+:::
+
+[**T = 0**: always the top token — the same answer every time. Use it for anything that must be reproducible: extraction, classification, anything an auditor will read. Higher T for ideas.]{.explain}
+
+## So where do invented numbers come from?
+
+::: {.callout-important title="Bet"}
+You ask for a company's 2025 revenue. The model gives a precise, wrong figure. Bug, lie, or working as designed?
 :::
 
 . . .
 
-**Working as designed.** It completes patterns. When the pattern needs a number that was never in the box, it produces the *shape* of a number that would fit.
+**Working as designed.** There is always a most likely next token — even when the fact was never in the training data or the context. It produces the *shape* of a number that would fit, with the same confidence.
 
-It has no way to feel the difference between recalling and inventing. **That is your job**, and it is the habit this whole course builds.
+[It cannot feel the difference between recalling and inventing. That is your job, all term.]{.explain}
 
-## The habit this course is really about {.lab background-color="#2471a3"}
+## Two piles {.lab background-color="#2471a3"}
 
-[LAB · week-01/session.ipynb § B3 — 🔍 CHECK]{.kicker}
+[LAB · session.ipynb § 2]{.kicker}
 
-Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:
+Ask your assistant about a real company. Split every sentence of the answer:
 
 :::: {.columns}
 ::: {.column width="50%"}
 **Verifiable**
-a number you can look up, a date, a name, a claim with a source
+
+a number, a date, a name, a source you can open
 :::
 ::: {.column width="50%"}
-**Plausible but unverifiable**
-fluent, confident, no way to check it, and quite possibly invented
+**Plausible**
+
+fluent, confident — and nothing to check it against
 :::
 ::::
 
-[Do this on every answer, all term, until it is automatic.]{.red}
+## Write it into the procedure
 
-## And write that into the procedure, not the folklore
-
-A process that an auditor will look at cannot say *"we asked the AI"*.
+A process an auditor will read cannot say *"we asked the AI"*. It records:
 
 - the **exact prompt**, versioned like code
-- `T = 0`, and the model **name and version** recorded with the output
+- **T = 0**, and the model's **name and version**
 - the **input** stored next to the answer
 
-## [Block B]{.section-kicker} Four verbs, three assets {.section-slide background-color="#AF1F25"}
+## [Part 2]{.section-kicker} Your tiny LLM, piece 1: the tokenizer {.section-slide background-color="#AF1F25"}
 
-## Four verbs, and you can do most of data work
+## How a tokenizer is learned
 
-| | | in pandas |
+Find the pair of symbols that appears most often. Give it a name. Repeat.
+
+::: {.plain}
+| merge | the pair seen most often | times | new piece | text length |
+|---|---|---|---|---|
+| start | | | | 127 |
+| 1 | `a` + `n` | 6 | `an` | 121 |
+| 2 | `s` + `_` | 5 | `s_` | 116 |
+| 3 | `e` + `_` | 4 | `e_` | 112 |
+| 4 | `r` + `a` | 4 | `ra` | 108 |
+| 5 | `ra` + `t` | 4 | `rat` | 104 |
+| 6 | `rat` + `e` | 4 | `rate` | 100 |
+| 7 | `rate` + `s_` | 4 | `rates_` | 96 |
+| 8 | `t` + `h` | 3 | `th` | 93 |
+:::
+
+[Trained on a text about rates, it learns `rates_` as one piece after seven merges. Trained mostly on English, it learns English pieces — and your Russian costs more.]{.explain}
+
+## Train one on your own texts {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § 3]{.kicker}
+
+1. Paste a paragraph of your own — English, then Russian.
+2. Run the merges. Which pieces does it learn first?
+3. Count: how many symbols per word, in each language?
+
+[Next week the pieces become the input of a model that guesses the next one.]{.muted}
+
+## Break — ten minutes. {.statement}
+
+## [Part 3]{.section-kicker} Is Bitcoin riskier than the stock market? {.section-slide background-color="#AF1F25"}
+
+## Ten real days, January 2024
+
+::: {.plain}
+| day | Bitcoin, $ | S&P 500 (SPY), $ |
 |---|---|---|
-| **filter** | keep some rows | `df[df.volume > 0]` |
-| **derive** | make a new column | `df["ret"] = df.close.pct_change()` |
-| **aggregate** | many rows into one number | `df.groupby(...).mean()` |
-| **join** | put two tables side by side | `a.join(b)` |
-
-[The assistant writes all four faster than you can. The job is not writing them. It is knowing what the result *should* look like before you see it.]{.red}
-
-## Three assets, and one number that is wrong {.lab background-color="#2471a3"}
-
-[LAB · week-01/session.ipynb § C — you drive]{.kicker}
-
-1. Pull daily prices for BTC, an equity and an index.
-2. Returns, summary statistics, one chart that answers a question. **Before each cell runs, say how many rows should come back.**
-3. **🔍 CHECK** — the volatility cell was written by an assistant. It contains two errors. Find them.
-
-[I will not touch the keyboard. When it breaks, read the error before asking me.]{.muted}
-
-## The two planted errors, and why they matter
-
-:::: {.columns}
-::: {.column width="50%"}
-**√252 applied to crypto**
-Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.
-:::
-::: {.column width="50%"}
-**Returns added up**
-Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.
-:::
-::::
-
-::: {.callout-tip title="The sentence to remember"}
-The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.
+| Fri 05 Jan | 44,163 | 453.09 |
+| Sat 06 Jan | 43,989 | — |
+| Sun 07 Jan | 43,943 | — |
+| Mon 08 Jan | 46,971 | 459.56 |
+| Tue 09 Jan | 46,140 | 458.86 |
+| Wed 10 Jan | 46,628 | 461.46 |
+| Thu 11 Jan | 46,369 | 461.26 |
+| Fri 12 Jan | 42,853 | 461.57 |
+| Sat 13 Jan | 42,842 | — |
+| Sun 14 Jan | 41,796 | — |
+| Mon 15 Jan | 42,512 | — |
+| Tue 16 Jan | 43,155 | 459.88 |
 :::
 
-## [Block C]{.section-kicker} The first error: two calendars that do not line up {.section-slide background-color="#AF1F25"}
+[The week the US approved spot Bitcoin ETFs. Bitcoin: 12 prices. The stock market: 7 — weekends, and Monday 15 January was a US holiday.]{.explain}
 
-## Bitcoin trades on Sunday. The stock exchange does not.
+## Four verbs cover most of data work
 
-::: {.callout-important title="Bet before we compute"}
-You join a year of BTC prices to a year of SPY prices and compute the correlation. What has already gone wrong, before any arithmetic?
+::: {.bigtable}
+| verb | in Excel | in pandas | on our ten days |
+|---|---|---|---|
+| **filter** | AutoFilter | `df[df.SPY.notna()]` | keep the days the stock market traded |
+| **derive** | a formula column | `df.pct_change()` | daily returns |
+| **aggregate** | a pivot table | `df.std()` | one volatility number |
+| **join** | VLOOKUP | `a.join(b)` | Bitcoin next to the S&P 500 |
+:::
+
+[The assistant writes all four faster than you. Your job is to know what the result should look like before you see it.]{.explain}
+
+## A return, by hand
+
+$$\text{return} = \frac{\text{price today}}{\text{price yesterday}} - 1$$
+
+Monday 8 January, Bitcoin: 46,971 / 43,943 − 1 = **+6.9%**
+
+## Riskier by how much?
+
+::: {.callout-important title="Bet"}
+Bitcoin's yearly volatility against the S&P 500's: twice? three times?
 :::
 
 . . .
 
-One series has 365 rows a year, the other about 252. **Something has to give**, and whichever way you resolve it changes the answer.
+![](img/w02-vol.svg){fig-align="center" width="86%"}
 
-## Watch what the join does {.clip background-color="#000000"}
+## Up 50%, then down 50% {.clip background-color="#000000"}
 
-<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_calendars_poster.png"><source src="media/w02_calendars.mp4" type="video/mp4"></video>
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_compounding_poster.png"><source src="media/w02_compounding.mp4" type="video/mp4"></video>
 
-Drop the weekend, or invent it. There is no third option, and neither is free.
+## The same mistake, on a whole year
 
-## Two ways to resolve it, and what each costs
+![](img/w02-compounding.svg){fig-align="center" width="86%"}
 
-![](img/join-calendars.svg){fig-align="center" width="95%"}
+## Find the two errors {.lab background-color="#2471a3"}
 
-## Break it yourself {.lab background-color="#2471a3"}
+[LAB · session.ipynb § 4 — 🔍 CHECK]{.kicker}
 
-[LAB · session.ipynb § B]{.kicker}
+The assistant wrote a cell that reports Bitcoin's volatility and its return. It runs, and the numbers look reasonable. Two are wrong.
 
-1. Join BTC and SPY with `dropna()`. Count the rows you lost.
-2. Join them with `ffill()`. Compute BTC's annualised volatility both ways.
-3. Print the mean **Monday** return for BTC under each.
+[Ten minutes, alone. If you find one: there is another.]{.muted}
 
-Then answer: **which of the two numbers would you put in a report, and what sentence goes underneath it?**
+## [Part 4]{.section-kicker} Two calendars, one join {.section-slide background-color="#AF1F25"}
 
-## [Block D]{.section-kicker} The second error: units {.section-slide background-color="#AF1F25"}
+## What a join does to ten days {.clip background-color="#000000"}
 
-## A correlation between mismatched units is still a number
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_tendays_poster.png"><source src="media/w02_tendays.mp4" type="video/mp4"></video>
 
-That is the whole problem. Nothing breaks. Nothing warns you.
+## The same choice, on four and a half years
 
-| what you joined | what you got |
-|---|---|
-| returns as `0.012` against returns as `1.2` | a coefficient off by a hundred |
-| a rate in percent against a rate in decimal | a chart that looks fine and is wrong |
-| dollars against thousands of dollars | a ratio nobody notices until the Board does |
+::: {.callout-important title="Bet"}
+Fill the stock market's weekends with Friday's price. Does the S&P 500 look more volatile, or less?
+:::
 
 . . .
 
-**The assistant cannot see units.** They are not in the data; they are in the documentation, and often only in someone's head.
+![](img/w02-calendars.svg){fig-align="center" width="86%"}
 
-## Three habits that catch it
+## After every join, three checks
 
-1. **Print `head()` and read it.** Not glance — read. Is that number plausible as a daily return?
-2. **Plot before you model.** A wrong unit is usually visible as a wrong axis.
-3. **Compute one number a second way.** Cumulative return from first and last price, against the same thing from the return series. If they disagree, stop.
+1. **rows before and after** — `len(a)`, `len(b)`, `len(joined)`
+2. **missing values** — `joined.isna().sum()`
+3. **one row from the middle** — read it
 
-::: {.callout-tip title="The sentence to remember"}
-The assistant is fluent about code and blind about meaning. Units, calendars and conventions are exactly where it fails silently.
+[The calendar is a modelling decision, not a cleaning step. The assistant always makes it — silently.]{.explain}
+
+## [Part 5]{.section-kicker} Units, snapshots, privacy {.section-slide background-color="#AF1F25"}
+
+## A number without a unit
+
+Three daily returns, written in percent: **1.2, −0.8, 0.5**.
+
+::: {.bigtable}
+| compounded as | calculation | result |
+|---|---|---|
+| percent → decimals first | 1.012 × 0.992 × 1.005 − 1 | **+0.89%** |
+| read as decimals by mistake | 2.2 × 0.2 × 1.5 − 1 | **−34%** |
 :::
 
-## Join something that is not a price {.lab background-color="#2471a3"}
+[No error, no warning. The code cannot see units; they live in the documentation, and in your head.]{.explain}
 
-[LAB · session.ipynb § C]{.kicker}
+## Same correlation, a slope off by 100
 
-Bring in one external series — a FRED interest rate, or on-chain active addresses.
-
-1. State its **frequency** and its **units** before you join.
-2. Join it. Say which calendar the result is in.
-3. Find one known event in the chart. If you cannot see it, the join is wrong.
-
-## [Block E]{.section-kicker} Making it repeatable, and safe {.section-slide background-color="#AF1F25"}
+![](img/w02-units.svg){fig-align="center" width="86%"}
 
 ## A number without a snapshot is an anecdote
 
-Data changes under you. Yahoo revises. An API returns something different tomorrow.
+Every number in today's slides comes from one file:
 
-- **Save the data behind every reported number**, with the date you pulled it.
-- **Pin your versions.** `pandas 2.2.1`, not "latest".
-- **Set the seed** anywhere randomness enters.
+`btc_spy_2022-01-01_2026-09-18.csv` — 1,722 rows, 2022-01-01 to 2026-09-18.
 
-[The test: can someone else, on another machine, get your number? If the answer needs you in the room, it is not a result yet.]{.red}
+- **save the data** behind every reported number, with the date in the name
+- **pin the versions** of your libraries
+- **set the seed** wherever randomness enters
 
-## And the rule that has no exceptions {.statement}
+[The test: can someone else, on another machine, get your number? If it needs you in the room, it is not a result yet.]{.explain}
 
-## Nothing confidential goes into an AI tool.
+## Nothing confidential goes into an AI tool {.statement}
 
-Not client names, not unpublished figures, not personal data. Not "just to check the formatting".
-
-[If you would not email it to a stranger, do not paste it into a chat box.]{.muted}
+[Not client names, not unpublished figures, not personal data — not even "just to check the formatting".]{.muted}
 
 ## Close
 
-**Homework 2** — one question you actually want answered, a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.
-
-Due Tuesday 6 October, 23:59.
+**Homework 2**, due Tue 6 Oct: one question, one join, one chart whose title is the question, a one-page memo — in your Drive folder, `week-02/`.
 
 . . .
 
-The memo is the part that matters. **One question, one chart, one answer**, for someone who will not open your notebook.
+**Before you leave:** three lines at the bottom of the notebook, in your words.
 
-[Next week: a model, and how to tell whether it is any good.]{.muted}
+[Next week: your tokens become the input of a model that guesses the next character — and we ask whether a model is any good.]{.muted}

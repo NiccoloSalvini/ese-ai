@@ -15,6 +15,21 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [Everything today produces an artefact that goes into the portfolio. Nothing today is a discussion.]{.red}
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+On-chain, **the code is the counterparty**. A stablecoin is a claim; a governance token is not.
+
+An AMM keeps x · y = k: every trade moves the price, and a liquidity provider carries **impermanent loss**.
+:::
+::: {.column width="50%"}
+TVL measures size, not profit; fee yield ≈ fee × volume ÷ TVL × 365.
+
+MiCA asks one question: **what is the holder owed, and by whom?**
+:::
+::::
+
 ## [Block A]{.section-kicker} What is it relying on? {.section-slide background-color="#AF1F25"}
 
 ## Two different questions, often confused

@@ -16,6 +16,21 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [From today you are building the thing you will be assessed on.]{.red}
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+A **feature** is what you know at *t*; the **target** is what happens after. The **base rate** is the score to beat.
+
+A shuffled split let the future leak into training. **Nothing to the right of the wall** may fit what is on the left.
+:::
+::: {.column width="50%"}
+A probability is not a decision: the **threshold** comes from the cost of each kind of error.
+
+Calibration: when the model says 70%, does it happen 70% of the time?
+:::
+::::
+
 ## [Block A]{.section-kicker} Four knobs, and they are the whole API {.section-slide background-color="#AF1F25"}
 
 ## What you control on every call

@@ -17,6 +17,21 @@ You will see a strategy with a Sharpe ratio of 5. What is the single most likely
 
 **A bug.** Hold that thought for forty minutes.
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+Accuracy on rare events is meaningless: 99.5% can catch nothing. **Precision and recall** trade off, and the threshold is a business decision.
+
+A rejection needs a reason, by law; removing the protected field does not remove the bias.
+:::
+::: {.column width="50%"}
+Two definitions of fair cannot both hold — someone chooses, and writes down why.
+
+Your capstone: a question whose **data you have already loaded**.
+:::
+::::
+
 ## The pipeline, and the one line that matters
 
 | | |

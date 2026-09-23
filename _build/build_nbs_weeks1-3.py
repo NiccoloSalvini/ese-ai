@@ -607,52 +607,205 @@ What changed and why: role and context reduce generic filler; explicit conventio
 # =====================================================================
 w2 = [
 md("""
-# Week 2 — Data analysis with AI as pair programmer
+# Week 2 — The assistant writes it. You decide whether it is true.
 **ESE · AI for Business and FinTech · 30 September 2026**
 
-Goal of the session: acquire, clean, join and chart financial data with the assistant writing most of the code — while you catch its silent errors. By the end you will have a reproducible pipeline that joins market prices with an external macro series and an on-chain series.
+The sections follow the slides. Every number here is computed from the same dated snapshot as the slides, so you can check each one.
 """),
-code("!pip -q install yfinance"),
+code("!pip -q install tiktoken yfinance"),
+code("""
+import math, numpy as np, pandas as pd, matplotlib.pyplot as plt
+from collections import Counter
+
+SNAPSHOT = "https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/btc_spy_2022-01-01_2026-09-18.csv"
+YIELDS   = "https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/dgs10_2022-01-01_2026-09-18.csv"
+px  = pd.read_csv(SNAPSHOT, index_col=0, parse_dates=True)       # Bitcoin and the S&P 500 (SPY), dollars
+y10 = pd.read_csv(YIELDS, index_col=0, parse_dates=True)["DGS10"] # US 10-year yield, in PERCENT
+print(px.shape, px.index.min().date(), "->", px.index.max().date())
+"""),
+md("""
+## 1. Temperature reshapes the odds
+
+Last week's table. The model does not look the answer up: it picks from these odds. Temperature `T` decides how: raise every probability to `1/T`, then divide by the new total.
+"""),
+code("""
+tokens = ["unchanged", "steady", "at", "on", "higher"]
+p = np.array([0.62, 0.15, 0.10, 0.08, 0.05])
+
+def at_temperature(p, T):
+    if T == 0:                                   # T = 0: always the top token
+        q = np.zeros_like(p); q[p.argmax()] = 1; return q
+    q = p ** (1 / T)
+    return q / q.sum()
+
+pd.DataFrame({f"T = {T}": at_temperature(p, T).round(2) for T in [0, 0.5, 1, 2]}, index=tokens)
+"""),
+md("""
+**Bet first:** at `T = 1`, ask ten times. How many times "unchanged"? Then run the cell below.
+"""),
+code("""
+rng = np.random.default_rng(0)
+for T in [0, 1, 2]:
+    q = at_temperature(p, T)
+    picks = rng.choice(tokens, size=10, p=q)
+    print(f"T = {T}:", " ".join(picks))
+"""),
+md("""
+## 2. Two piles
+
+Ask your assistant: *"Summarise the last annual results of [a company you know]: revenue, profit, number of employees, and the CEO's name."*
+
+Copy the answer below. Then split every sentence into two piles.
+
+| Verifiable — a number, date, name or source you can open | Plausible — fluent, and nothing to check it against |
+|---|---|
+| … | … |
+
+Now check two items from the left pile against the company's own report. Were they right?
+"""),
+md("""
+## 3. Your tiny LLM, piece 1: a tokenizer
+
+Find the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.
+"""),
+code("""
+def learn_merges(text, merges=8):
+    seq = [c if c != " " else "_" for c in text]          # _ marks a space
+    for step in range(1, merges + 1):
+        pairs = Counter(zip(seq, seq[1:]))
+        (a, b), n = max(pairs.items(), key=lambda kv: (kv[1], -list(pairs).index(kv[0])))
+        if n < 2:
+            break
+        out, i = [], 0
+        while i < len(seq):
+            if i < len(seq) - 1 and (seq[i], seq[i + 1]) == (a, b):
+                out.append(a + b); i += 2
+            else:
+                out.append(seq[i]); i += 1
+        seq = out
+        print(f"merge {step}: {a!r} + {b!r} seen {n} times -> {a+b!r:10}  text is now {len(seq)} symbols")
+    return seq
+
+text = ("the bank left rates unchanged. the bank said rates will stay unchanged. "
+        "rates are high and the bank expects rates to stay high.")
+print(len(text), "characters to start")
+pieces = learn_merges(text)
+"""),
+md("""
+**Your turn.** Paste a paragraph of your own in English, then the same in Russian. Run 30 merges on each. How many symbols per word does each language end up with — and why?
+"""),
+code("""
+mine_en = "paste an English paragraph here"
+mine_ru = "вставьте сюда абзац на русском"
+for name, t in [("English", mine_en), ("Russian", mine_ru)]:
+    seq = learn_merges(t, merges=30)
+    print(f"{name}: {len(seq) / len(t.split()):.1f} symbols per word\\n")
+"""),
+md("""
+## 4. Is Bitcoin riskier than the stock market? Ten real days first
+
+The week the US approved spot Bitcoin ETFs. Note the gaps.
+"""),
+code("""
+ten = px.loc["2024-01-05":"2024-01-16"]
+print(ten.round(2))
+print("\\nBitcoin days:", ten["BTC-USD"].notna().sum(), "| stock-market days:", ten["SPY"].notna().sum())
+print("Monday 8 Jan, Bitcoin: %.0f / %.0f - 1 = %+.1f%%" % (ten.loc["2024-01-08", "BTC-USD"], ten.loc["2024-01-07", "BTC-USD"],
+      100 * (ten.loc["2024-01-08", "BTC-USD"] / ten.loc["2024-01-07", "BTC-USD"] - 1)))
+"""),
+md("""
+### 🔍 CHECK — the assistant's cell
+
+Asked for "Bitcoin's annual volatility and its return in 2022", the assistant wrote the cell below. It runs, and the numbers look reasonable. **Two are wrong.** Ten minutes, alone.
+"""),
+code("""
+# --- as produced by the assistant (do not trust) ---
+r = px["BTC-USD"].pct_change().dropna()
+vol = r.std() * np.sqrt(252)
+r22 = px.loc["2022", "BTC-USD"].pct_change().dropna()
+total_2022 = r22.sum()
+print(f"Bitcoin annual volatility: {vol:.1%}")
+print(f"Bitcoin return in 2022:    {total_2022:.1%}")
+"""),
+md("""
+<details><summary>What went wrong</summary>
+
+1. **√252** is the number of days the *stock market* trades in a year. Bitcoin trades every day: √365. The formula is right, the constant is wrong, and Bitcoin looks 17% calmer than it is.
+2. **Returns added up.** A return compounds: +50% then −50% is not 0%, it is 1.5 × 0.5 − 1 = −25%. Adding the daily returns of 2022 says −85%; the true loss, from the first and last price, is −65%.
+</details>
+"""),
+code("""
+# corrected: the right constant, and returns multiplied — then the same number a second way
+vol_btc = r.std() * np.sqrt(365)
+vol_spy = px["SPY"].dropna().pct_change().std() * np.sqrt(252)
+s22 = px.loc["2022", "BTC-USD"].dropna()
+total_2022 = (1 + s22.pct_change().dropna()).prod() - 1
+check_2022 = s22.iloc[-1] / s22.iloc[0] - 1                 # first and last price: must agree
+print(f"Bitcoin annual volatility {vol_btc:.1%}  vs S&P 500 {vol_spy:.1%}")
+print(f"Bitcoin 2022: compounded {total_2022:.1%}, from first and last price {check_2022:.1%}")
+"""),
+md("""
+## 5. Two calendars, one join
+
+**Bet first:** fill the stock market's weekends with Friday's price. Does the S&P 500 look more volatile, or less?
+"""),
+code("""
+equity = px.dropna()                   # equity calendar: only days both traded
+crypto = px.ffill().dropna()           # crypto calendar: SPY carried over weekends and holidays
+for name, df in [("equity calendar", equity), ("crypto calendar", crypto)]:
+    r = df.pct_change().dropna()
+    print(f"{name}: {len(df):,} rows | S&P 500 vol {r['SPY'].std() * np.sqrt(252):.1%} | "
+          f"corr BTC-S&P {r.corr().iloc[0, 1]:.2f} | days SPY 'returned' exactly 0: {(r['SPY'] == 0).sum()}")
+"""),
+md("""
+**After every join, three checks:** rows before and after; `isna().sum()`; one row from the middle, read.
+"""),
+code("""
+btc = px[["BTC-USD"]].dropna()                   # 7 days a week
+spy = px[["SPY"]].dropna()                       # trading days only
+for how in ["inner", "left"]:
+    joined = btc.join(spy, how=how)
+    print(f"{how:5} join: rows {len(btc):,} and {len(spy):,} -> {len(joined):,} | missing SPY: {joined['SPY'].isna().sum()}")
+print("\\none row from the middle of the left join:")
+print(joined.iloc[len(joined) // 2])
+"""),
+md("""
+## 6. A number without a unit
+"""),
+code("""
+pct_returns = [1.2, -0.8, 0.5]                                   # written in percent
+right = np.prod([1 + r / 100 for r in pct_returns]) - 1          # convert first
+wrong = np.prod([1 + r for r in pct_returns]) - 1                # read as decimals by mistake
+print(f"right: {right:+.2%}   wrong: {wrong:+.0%}")
+
+wk = equity.join(y10, how="left").ffill().resample("W-FRI").last().dropna()
+d_btc = wk["BTC-USD"].pct_change()
+for label, y in [("percentage points", wk["DGS10"]), ("decimal", wk["DGS10"] / 100)]:
+    d_y = y.diff(); ok = d_btc.notna() & d_y.notna()
+    print(f"yield in {label:17}: correlation {d_btc[ok].corr(d_y[ok]):.3f}   slope {np.polyfit(d_y[ok], d_btc[ok], 1)[0]:.2f}")
+"""),
+md("""
+## 7. Snapshots, and what never goes into a chatbot
+
+Every number above came from one dated file. Save the data behind every number you report, with the date in the name; pin your library versions; set a seed wherever randomness enters.
+
+Nothing confidential goes into an AI tool: no client names, no unpublished figures, no personal data.
+
+### Before you leave: three lines, in your words
+
+1. …
+2. …
+3. …
+
+---
+# For the homework: joining an external series
+
+The sections below show the full pattern on live data — a macro series (FRED) and an on-chain series — for Homework 2.
+"""),
 code(UTILS),
-md("## Block A — pandas by doing"),
 code("""
 px = load_prices(["BTC-USD", "SPY", "AAPL"], start="2022-01-01")
-print(px.index.min().date(), "→", px.index.max().date(), "|", px.shape)
-px.head(3)
-"""),
-md("""
-A DataFrame is a spreadsheet with an index. The four operations you will use 90% of the time:
-
-| Operation | Excel analogue | pandas |
-|---|---|---|
-| filter rows | AutoFilter | `df[df["col"] > 0]` |
-| new column | formula column | `df["ret"] = df["px"].pct_change()` |
-| aggregate | PivotTable | `df.groupby(...).agg(...)` / `df.resample("W").last()` |
-| join | VLOOKUP / Power Query merge | `df.join(other)` / `pd.merge(...)` |
-"""),
-code("""
-# Missing values: BTC trades 7 days a week, SPY and AAPL 5. Look at a week that contains a weekend.
-px.loc["2024-01-05":"2024-01-09"]
-"""),
-md("""
-**🔍 CHECK.** `load_prices` already dropped rows where *all* columns were missing, but weekend rows survive because BTC has a value. Before computing anything across assets you must decide: drop weekends (equity calendar), or fill equities forward (crypto calendar)? Neither is "right" — but choosing silently is wrong. Which one does `pct_change()` implicitly choose if you do nothing?
-"""),
-code("""
-# Two explicit choices, side by side
-px_eq = px.dropna()                       # equity calendar: only days where everything traded
-px_cr = px.ffill()                        # crypto calendar: carry equities over the weekend
-print("equity calendar rows:", len(px_eq), "| crypto calendar rows:", len(px_cr))
-
-rets_eq = px_eq.pct_change().dropna()
-rets_cr = px_cr.pct_change().dropna()
-print("\\nBTC daily vol — equity calendar: %.4f | crypto calendar: %.4f" % (rets_eq["BTC-USD"].std(), rets_cr["BTC-USD"].std()))
-print("BTC mean Monday return on equity calendar (Fri→Mon, 3 days of moves): %.4f" % rets_eq["BTC-USD"][rets_eq.index.dayofweek == 0].mean())
-"""),
-code("""
-# Resampling: weekly prices (last obs of the week), and weekly returns
-wk = px_eq.resample("W-FRI").last()
-wk_rets = wk.pct_change().dropna()
-wk_rets.tail()
+print(px.index.min().date(), "->", px.index.max().date(), "|", px.shape)
 """),
 md("## Block B — Join with external series (macro + on-chain)"),
 md("""

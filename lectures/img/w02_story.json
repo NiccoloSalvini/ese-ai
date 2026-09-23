@@ -1,0 +1,298 @@
+{
+ "temperature": {
+  "tokens": [
+   "unchanged",
+   "steady",
+   "at",
+   "on",
+   "higher"
+  ],
+  "temps": [
+   0,
+   0.5,
+   1,
+   2
+  ],
+  "probs": {
+   "0": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "0.5": [
+    0.903,
+    0.053,
+    0.023,
+    0.015,
+    0.006
+   ],
+   "1": [
+    0.62,
+    0.15,
+    0.1,
+    0.08,
+    0.05
+   ],
+   "2": [
+    0.394,
+    0.194,
+    0.158,
+    0.142,
+    0.112
+   ]
+  }
+ },
+ "temperature_hand": {
+  "squares": [
+   0.3844,
+   0.0225,
+   0.01,
+   0.0064,
+   0.0025
+  ],
+  "total": 0.4258,
+  "result": [
+   0.9,
+   0.05,
+   0.02,
+   0.02,
+   0.01
+  ]
+ },
+ "bpe": {
+  "text": "the bank left rates unchanged. the bank said rates will stay unchanged. rates are high and the bank expects rates to stay high.",
+  "start": 127,
+  "steps": [
+   {
+    "pair": [
+     "a",
+     "n"
+    ],
+    "count": 6,
+    "new": "an",
+    "length": 121
+   },
+   {
+    "pair": [
+     "s",
+     "_"
+    ],
+    "count": 5,
+    "new": "s_",
+    "length": 116
+   },
+   {
+    "pair": [
+     "e",
+     "_"
+    ],
+    "count": 4,
+    "new": "e_",
+    "length": 112
+   },
+   {
+    "pair": [
+     "r",
+     "a"
+    ],
+    "count": 4,
+    "new": "ra",
+    "length": 108
+   },
+   {
+    "pair": [
+     "ra",
+     "t"
+    ],
+    "count": 4,
+    "new": "rat",
+    "length": 104
+   },
+   {
+    "pair": [
+     "rat",
+     "e"
+    ],
+    "count": 4,
+    "new": "rate",
+    "length": 100
+   },
+   {
+    "pair": [
+     "rate",
+     "s_"
+    ],
+    "count": 4,
+    "new": "rates_",
+    "length": 96
+   },
+   {
+    "pair": [
+     "t",
+     "h"
+    ],
+    "count": 3,
+    "new": "th",
+    "length": 93
+   }
+  ],
+  "final_len": 93,
+  "pieces": [
+   "th",
+   "e_",
+   "b",
+   "an",
+   "k",
+   "_",
+   "l",
+   "e",
+   "f",
+   "t",
+   "_",
+   "rates_",
+   "u",
+   "n",
+   "c",
+   "h",
+   "an",
+   "g",
+   "e",
+   "d",
+   ".",
+   "_",
+   "th",
+   "e_"
+  ]
+ },
+ "ten_days": [
+  {
+   "date": "Fri 05 Jan",
+   "btc": 44163.0,
+   "spy": 453.09
+  },
+  {
+   "date": "Sat 06 Jan",
+   "btc": 43989.0,
+   "spy": null
+  },
+  {
+   "date": "Sun 07 Jan",
+   "btc": 43943.0,
+   "spy": null
+  },
+  {
+   "date": "Mon 08 Jan",
+   "btc": 46971.0,
+   "spy": 459.56
+  },
+  {
+   "date": "Tue 09 Jan",
+   "btc": 46140.0,
+   "spy": 458.86
+  },
+  {
+   "date": "Wed 10 Jan",
+   "btc": 46628.0,
+   "spy": 461.46
+  },
+  {
+   "date": "Thu 11 Jan",
+   "btc": 46369.0,
+   "spy": 461.26
+  },
+  {
+   "date": "Fri 12 Jan",
+   "btc": 42853.0,
+   "spy": 461.57
+  },
+  {
+   "date": "Sat 13 Jan",
+   "btc": 42842.0,
+   "spy": null
+  },
+  {
+   "date": "Sun 14 Jan",
+   "btc": 41796.0,
+   "spy": null
+  },
+  {
+   "date": "Mon 15 Jan",
+   "btc": 42512.0,
+   "spy": null
+  },
+  {
+   "date": "Tue 16 Jan",
+   "btc": 43155.0,
+   "spy": 459.88
+  }
+ ],
+ "ten_rows": {
+  "btc": 12,
+  "spy": 7,
+  "both": 7
+ },
+ "monday": {
+  "fri": 44162.6914,
+  "sun": 43943.0977,
+  "mon": 46970.5039,
+  "one_day": 0.06889378215136621,
+  "three_days": 0.06357883568663114
+ },
+ "vol": {
+  "sd_btc": 0.02658480689408521,
+  "sd_spy": 0.010943011537394824,
+  "btc_365": 0.5079020225618984,
+  "btc_252": 0.4220207261665495,
+  "spy_252": 0.1737149227323438,
+  "understatement": 0.16909028233862278
+ },
+ "toy": {
+  "up": 0.5,
+  "down": -0.5,
+  "added": 0.0,
+  "compounded": -0.25
+ },
+ "btc2022": {
+  "first": 47686.8125,
+  "last": 16547.4961,
+  "true": -0.6529963897251467,
+  "added": -0.8535811563560686,
+  "compounded": -0.6529963897251465
+ },
+ "calendar": {
+  "rows_btc": 1722,
+  "rows_spy": 1182,
+  "rows_eq": 1182,
+  "rows_cr": 1720,
+  "corr_eq": 0.4131394498539019,
+  "corr_cr": 0.3892427890874303,
+  "spy_vol_eq": 0.1737149227323438,
+  "spy_vol_cr_252": 0.1440168687852529,
+  "spy_zero_days": 540
+ },
+ "units": {
+  "y10_last": 5.01,
+  "corr_pct": 0.019183973359938624,
+  "corr_dec": 0.01918397335993868,
+  "slope_pct": 0.010241371253604086,
+  "slope_dec": 1.0241371253604097,
+  "weeks": 245
+ },
+ "units_toy": {
+  "pct": [
+   1.2,
+   -0.8,
+   0.5
+  ],
+  "right": 0.00892351999999974,
+  "wrong": -0.3400000000000001
+ },
+ "snapshot": {
+  "file": "btc_spy_2022-01-01_2026-09-18.csv",
+  "rows": 1722,
+  "first": "2022-01-01",
+  "last": "2026-09-18"
+ }
+}

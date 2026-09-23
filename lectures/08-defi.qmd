@@ -16,6 +16,21 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [No enthusiasm and no dismissal today. It is a database with unusual properties, and the properties have consequences you can compute.]{.red}
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+A backtest lies four ways: the position earns the return that produced it, survivors only, a hundred tries, one regime.
+
+A parameter search belongs inside **walk-forward**, and the number of attempts is reported with the result.
+:::
+::: {.column width="50%"}
+An LLM-derived signal is dated by when it was **readable**, not by what it is about.
+
+Model risk: an owner, a limit, and a kill-switch that has been tested.
+:::
+::::
+
 ## Five words, defined once
 
 | | |

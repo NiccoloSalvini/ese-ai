@@ -50,6 +50,7 @@ $presentation-block-margin: 14px;
 .reveal table { font-size: 0.72em; margin: 0.4em 0; }
 .reveal table th { border-bottom: 2px solid $red; color: $muted; font-size: 0.85em; text-transform: uppercase; letter-spacing: .06em; }
 .reveal table td { border-bottom: 1px solid $rule; }
+.reveal .bigtable table { font-size: 1em; }   // short tables whose numbers are the point of the slide
 .reveal table th .katex { text-transform: none; letter-spacing: 0; }
 .reveal .katex-display { margin: 0.35em 0; }
 .reveal .columns { gap: 1.2em; }

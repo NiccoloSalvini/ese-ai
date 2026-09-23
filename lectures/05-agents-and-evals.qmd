@@ -16,6 +16,21 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [By 13:00 today you will have everything the case brief needs. What is left after that is writing.]{.red}
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+An API call has four knobs: the system prompt, the prompt, temperature, and the schema of the answer. **Structured output** guarantees the type, not the truth.
+
+**Retrieval**: cut the documents into pieces, embed them, find the nearest to the question, answer only from those — and cite them.
+:::
+::: {.column width="50%"}
+Ten questions you already know the answer to are your first **evaluation**.
+
+The EU AI Act regulates the **use**, not the technology.
+:::
+::::
+
 ## The loop, and nothing else {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w05_agentloop_poster.png"><source src="media/w05_agentloop.mp4" type="video/mp4"></video>

@@ -16,6 +16,21 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [Ten weeks ago you had not called an API. Today you cost one at volume and defend the number.]{.red}
 
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+An explanation describes the **model**, not the world; compute it on the period you report.
+
+Measure errors **by group**; every mitigation is paid for by somebody — name who.
+:::
+::: {.column width="50%"}
+**Red-team** your own pipeline: a list of things that should break it, run as code, with a before-and-after log.
+
+The risk and controls canvas: nine boxes, every one a specific noun.
+:::
+::::
+
 ## [Block B]{.section-kicker} Three decisions, each with a number {.section-slide background-color="#AF1F25"}
 
 ## One: what does a query cost?
