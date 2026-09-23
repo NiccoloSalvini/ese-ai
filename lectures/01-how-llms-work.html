@@ -358,28 +358,28 @@ Niccolò Salvini, PhD
 <td>who I am, and who you are</td>
 </tr>
 <tr class="even">
-<td><strong>10:35</strong></td>
+<td><strong>10:25</strong></td>
 <td>what this course is for, and how we shape it around you</td>
 </tr>
 <tr class="odd">
-<td><strong>10:55</strong></td>
+<td><strong>10:43</strong></td>
 <td>open your notebook — one click</td>
 </tr>
 <tr class="even">
-<td><strong>11:05</strong></td>
+<td><strong>10:50</strong></td>
 <td>break</td>
 </tr>
 <tr class="odd">
-<td><strong>11:15</strong></td>
-<td>from one neuron to an LLM, and one token’s journey through it</td>
+<td><strong>11:00</strong></td>
+<td>from one neuron to an LLM</td>
 </tr>
 <tr class="even">
-<td><strong>12:40</strong></td>
-<td>read a real model release like an engineer</td>
+<td><strong>11:35</strong></td>
+<td>what the model actually reads: tokens, attention, the box</td>
 </tr>
 <tr class="odd">
-<td><strong>12:52</strong></td>
-<td>between Wednesdays, homework, three lines in your own words</td>
+<td><strong>11:46</strong></td>
+<td>between Wednesdays, and homework</td>
 </tr>
 </tbody>
 </table>
@@ -644,7 +644,7 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </div>
-<p>You have heard a version of all three in your work. <strong>Two are impossible as stated. One is unanswerable as written.</strong> Write down which is which — by one o’clock you can answer two of them yourself.</p>
+<p>You have heard a version of all three in your work. <strong>Two are impossible as stated. One is unanswerable as written.</strong> Write down which is which — before you leave you can answer two of them yourself.</p>
 </section>
 <section id="three-ways-to-write-the-same-decision" class="slide level2">
 <h2>Three ways to write the same decision</h2>
@@ -732,15 +732,22 @@ Niccolò Salvini, PhD
 <div class="columns">
 <div class="column" style="width:33%;">
 <p><strong>1 · Pre-training</strong></p>
-<p>About 15 trillion tokens of filtered web text — ~44 TB. Months of GPUs. Out comes a <strong>base model</strong>: it continues documents. Ask it a question and it may answer with three more questions.</p>
+<p>About 15 trillion tokens of filtered web text. Months of GPUs, done <strong>once a year or so</strong>. Out comes a <strong>base model</strong> — an <em>internet document simulator</em>. Ask it a question and it may answer with three more questions.</p>
 </div><div class="column" style="width:33%;">
 <p><strong>2 · Post-training</strong></p>
-<p>Many thousands of example conversations, written or checked by people. Then reinforcement learning on what gets rated well. Out comes an <strong>assistant</strong>.</p>
+<p>Swap the data: on the order of 100,000 example conversations, written or checked by people, then reinforcement learning on what gets rated well. Days, not months — <strong>every week or so</strong>. Out comes an <strong>assistant</strong>.</p>
 </div><div class="column" style="width:33%;">
 <p><strong>3 · What you download</strong></p>
-<p>Two files: the <strong>weights</strong> — billions of numbers — and a few hundred lines of code that run them. That is a model.</p>
+<p>Two files: the <strong>parameters</strong> — billions of numbers — and ~500 lines of code that run them. That is a model.</p>
 </div></div>
 <p><span class="muted">The frame is Karpathy’s. When a vendor says “our model”, ask which of the three they actually did. It is almost never the first.</span></p>
+</section>
+<section id="pre-training-is-compressing-the-internet" class="slide level2">
+<h2>Pre-training is compressing the internet</h2>
+
+<img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><div class="fragment">
+<p><span class="red">Lossy, and oddly: it knows Tom Cruise’s mother is Mary Lee Pfeiffer, but not whose son Mary Lee Pfeiffer’s is. You evaluate these models; you cannot read them.</span></p>
+</div>
 </section>
 <section id="training-an-llm-is-the-same-nudge-a-trillion-times" class="slide level2">
 <h2>Training an LLM is the same nudge, a trillion times</h2>
@@ -809,23 +816,43 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </section>
+<section id="why-pieces-and-not-letters" class="slide level2">
+<h2>Why pieces, and not letters?</h2>
+<p>The network reads a sequence, and <strong>shorter sequences are cheaper</strong>. So the text is compressed before it goes in:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>the same 5,000 characters, as</th>
+<th>length</th>
+<th>alphabet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bits</td>
+<td>40,000</td>
+<td>2 symbols</td>
+</tr>
+<tr class="even">
+<td>bytes</td>
+<td>5,000</td>
+<td>256 symbols</td>
+</tr>
+<tr class="odd">
+<td>GPT-4 tokens</td>
+<td><strong>~1,300</strong></td>
+<td><strong>100,277 symbols</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="muted">A tokenizer is learned by merging the pairs that occur most often, again and again. It learns the language of its training data — which is why <em>your</em> language costs more. (Karpathy’s example.)</span></p>
+</section>
 <section id="the-same-sentence-twice-one-tokenizer-apart" class="slide level2 clip" data-background-color="#000000">
 <h2>The same sentence, twice, one tokenizer apart</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_tokens_poster.png">
 <source src="media/w01_tokens.mp4" type="video/mp4">
 </video>
 <p>Same model family, same sentence. 33 pieces became 18.</p>
-</section>
-<section id="take-it-apart-yourself" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Take it apart yourself</h2>
-<p><span class="kicker">LAB · session.ipynb § B1 — <code>tiktoken</code></span></p>
-<p>Type your own text and watch the count:</p>
-<ol type="1">
-<li>the same sentence in <strong>English</strong>, then <strong>Italian</strong>, then <strong>Russian</strong></li>
-<li>a <strong>number</strong>: <code>1,234,567.89</code> — count the pieces before you look</li>
-<li><strong>your own surname</strong>, then a listed company, then a company founded last year</li>
-</ol>
-<p><span class="red">Then tell me: which of those is the model <strong>least</strong> equipped to reason about, and why?</span></p>
 </section>
 <section id="how-the-tokens-talk-to-each-other-attention" class="slide level2">
 <h2>How the tokens talk to each other: <strong>attention</strong></h2>
@@ -872,8 +899,77 @@ Niccolò Salvini, PhD
 <p><span class="red">Ask which. The answer tells you whether you are buying a model or a database. Claim three — the 99.2% — needs a base rate, and that is week 3.</span></p>
 </div>
 </section>
-<section id="part-5-read-a-release-like-an-engineer" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 5</span> Read a release like an engineer</h2>
+<section id="if-you-want-to-go-further-this-week" class="slide level2">
+<h2>If you want to go further this week</h2>
+<ul>
+<li><strong>Andrej Karpathy, <em>Deep Dive into LLMs like ChatGPT</em></strong> (YouTube, 2025) — the first hour covers everything we did today, slower and better drawn. Stop at <em>inference</em>.</li>
+<li><strong>Andrej Karpathy, <em>Intro to Large Language Models</em></strong> (YouTube, 2023) — one hour, and the source of the “two files” and “compressing the internet” pictures.</li>
+<li><strong>LLM Visualization</strong>, bbycroft.net/llm — a real small model in 3D, and you can follow one token through every block.</li>
+<li>Your <strong><a href="../glossary.html">glossary</a></strong> for this course.</li>
+</ul>
+</section>
+<section id="part-6-before-you-go" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 6</span> Before you go</h2>
+</section>
+<section id="between-wednesdays" class="slide level2">
+<h2>Between Wednesdays</h2>
+<div class="columns">
+<div class="column" style="width:64%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 66%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>quick questions</strong></td>
+<td>WhatsApp or Telegram — whichever you prefer. I answer within one working day</td>
+</tr>
+<tr class="even">
+<td><strong>anything that counts</strong></td>
+<td>in your repository, never in chat</td>
+</tr>
+<tr class="odd">
+<td><strong>Wed 11 November</strong></td>
+<td>I may be in Milan that day — we agree a make-up date now</td>
+</tr>
+<tr class="even">
+<td><strong>if you miss a session</strong></td>
+<td>tell me before, and the notebook is on the site the same day</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:36%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/whatsapp-qr.svg" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+<p><span class="muted" style="display:block;text-align:center;font-size:.6em">Scan it now — WhatsApp.<br>Telegram: tell me your handle.</span></p>
+</div></div>
+</section>
+<section id="close" class="slide level2">
+<h2>Close</h2>
+<p><strong>Homework 1</strong> — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.</p>
+<p>Due Tuesday 29 September, 23:59, in your repository.</p>
+<div class="fragment">
+<p><strong>Before you leave:</strong> three lines at the bottom of the notebook, in your words — then commit.</p>
+<p><span class="muted">Next week: we read a real model release line by line, the assistant writes the code and you decide whether it is true — and you train your first tokenizer.</span></p>
+</div>
+</section>
+<section id="spare-for-next-week-or-if-there-is-time" class="slide level2 section-slide" data-background-color="#7a7f85">
+<h2><span class="section-kicker">Spare</span> For next week, or if there is time</h2>
+</section>
+<section id="take-it-apart-yourself" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Take it apart yourself</h2>
+<p><span class="kicker">LAB · session.ipynb § B1 — <code>tiktoken</code></span></p>
+<p>Type your own text and watch the count:</p>
+<ol type="1">
+<li>the same sentence in <strong>English</strong>, then <strong>Italian</strong>, then <strong>Russian</strong></li>
+<li>a <strong>number</strong>: <code>1,234,567.89</code> — count the pieces before you look</li>
+<li><strong>your own surname</strong>, then a listed company, then a company founded last year</li>
+</ol>
+<p><span class="red">Then tell me: which of those is the model <strong>least</strong> equipped to reason about, and why?</span></p>
 </section>
 <section id="from-openais-release-of-gpt-oss-august-2025" class="slide level2">
 <h2>From OpenAI’s release of gpt-oss, August 2025</h2>
@@ -944,65 +1040,8 @@ Niccolò Salvini, PhD
 </table>
 <p><span class="muted">Every word is in the <a href="../glossary.html">glossary</a>, with the week it becomes something you compute.</span></p>
 </section>
-<section id="if-you-want-to-go-further-this-week" class="slide level2">
-<h2>If you want to go further this week</h2>
-<ul>
-<li><strong>Andrej Karpathy, <em>Deep Dive into LLMs like ChatGPT</em></strong> (YouTube, 2025) — the first hour covers everything we did today, slower and better drawn. Stop at <em>inference</em>.</li>
-<li><strong>LLM Visualization</strong>, bbycroft.net/llm — a real small model in 3D, and you can follow one token through every block.</li>
-<li>Your <strong><a href="../glossary.html">glossary</a></strong> for this course.</li>
-</ul>
-</section>
-<section id="part-6-before-you-go" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 6</span> Before you go</h2>
-</section>
-<section id="between-wednesdays" class="slide level2">
-<h2>Between Wednesdays</h2>
-<div class="columns">
-<div class="column" style="width:64%;">
-<table class="caption-top">
-<colgroup>
-<col style="width: 34%">
-<col style="width: 66%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>quick questions</strong></td>
-<td>WhatsApp or Telegram — whichever you prefer. I answer within one working day</td>
-</tr>
-<tr class="even">
-<td><strong>anything that counts</strong></td>
-<td>in your repository, never in chat</td>
-</tr>
-<tr class="odd">
-<td><strong>Wed 11 November</strong></td>
-<td>I may be in Milan that day — we agree a make-up date now</td>
-</tr>
-<tr class="even">
-<td><strong>if you miss a session</strong></td>
-<td>tell me before, and the notebook is on the site the same day</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:36%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/whatsapp-qr.svg" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
-</figure>
-</div>
-<p><span class="muted" style="display:block;text-align:center;font-size:.6em">Scan it now — WhatsApp.<br>Telegram: tell me your handle.</span></p>
-</div></div>
-</section>
-<section id="close" class="slide level2">
-<h2>Close</h2>
-<p><strong>Homework 1</strong> — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.</p>
-<p>Due Tuesday 29 September, 23:59, in your repository.</p>
-<div class="fragment">
-<p><strong>Before you leave:</strong> three lines at the bottom of the notebook, in your words — then commit.</p>
-<p><span class="muted">Next week: the assistant writes the code, you decide whether it is true — and you train your first tokenizer.</span></p>
-</div>
-</section>
-<section id="spare-if-there-is-time-a-taste-of-defi" class="slide level2">
-<h2>Spare, if there is time: a taste of DeFi</h2>
+<section id="a-taste-of-defi" class="slide level2">
+<h2>A taste of DeFi</h2>
 <div title="Bet before we compute">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
