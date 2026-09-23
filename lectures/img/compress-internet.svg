@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 375" width="960" height="375" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
-  <text x="30" y="34" font-size="13" fill="#7a7f85">pre-training, as Karpathy draws it: training is compressing the internet</text>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">pre-training: training is compressing the internet</text>
   <rect x="30" y="70" width="260" height="120" fill="#f7f5ef" stroke="#363636" stroke-width="2"/>
   <text x="160" y="125" font-size="24" font-weight="700" text-anchor="middle" fill="#363636">~10 TB of text</text>
   <text x="160" y="155" font-size="14" text-anchor="middle" fill="#363636">a chunk of the internet</text>
@@ -24,5 +24,5 @@
   <text x="30" y="266" font-size="17" fill="#363636">So it is a <tspan font-weight="700">lossy zip file</tspan> of the internet:</text>
   <text x="30" y="292" font-size="17" fill="#363636">the gist is in there, the exact facts not always.</text>
   <line x1="30" y1="338" x2="930" y2="338" stroke="#e6e2d8"/>
-  <text x="30" y="362" font-size="14" fill="#7a7f85">numbers for Llama 2 70B (2023), from Andrej Karpathy, "Intro to Large Language Models" &#8212; today&#8217;s frontier models are far bigger</text>
+  <text x="30" y="362" font-size="14" fill="#7a7f85">numbers for Llama 2 70B (2023) &#8212; today&#8217;s frontier models are far bigger</text>
 </svg>

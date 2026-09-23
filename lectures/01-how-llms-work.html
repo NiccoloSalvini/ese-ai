@@ -331,7 +331,7 @@
 
 <section id="title-slide" data-background-color="#AF1F25" data-background-image="../images/ese-logo-white.svg" data-background-position="top 7% right 4%" data-background-size="14%" class="quarto-title-block">
   <h1 class="title">How we will work, and what is inside the machine</h1>
-  <p class="subtitle">Week 1 · Wednesday 23 September 2026 · 10:00–13:00</p>
+  <p class="subtitle">Week 1 · Wednesday 23 September 2026 · 10:00–12:00</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -345,13 +345,9 @@ Niccolò Salvini, PhD
 </div>
 
 </section>
-<section id="today-at-a-walking-pace" class="slide level2">
-<h2>Today, at a walking pace</h2>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <tbody>
 <tr class="odd">
 <td><strong>10:00</strong></td>
@@ -359,11 +355,11 @@ Niccolò Salvini, PhD
 </tr>
 <tr class="even">
 <td><strong>10:25</strong></td>
-<td>what this course is for, and how we shape it around you</td>
+<td>what this course is for</td>
 </tr>
 <tr class="odd">
 <td><strong>10:43</strong></td>
-<td>open your notebook — one click</td>
+<td>open your notebook</td>
 </tr>
 <tr class="even">
 <td><strong>10:50</strong></td>
@@ -374,16 +370,19 @@ Niccolò Salvini, PhD
 <td>from one neuron to an LLM</td>
 </tr>
 <tr class="even">
-<td><strong>11:35</strong></td>
-<td>what the model actually reads: tokens, attention, the box</td>
+<td><strong>11:30</strong></td>
+<td>what the model reads</td>
 </tr>
 <tr class="odd">
-<td><strong>11:46</strong></td>
-<td>between Wednesdays, and homework</td>
+<td><strong>11:40</strong></td>
+<td>a real model release, taken apart</td>
+</tr>
+<tr class="even">
+<td><strong>11:50</strong></td>
+<td>close</td>
 </tr>
 </tbody>
 </table>
-<p><span class="muted">Thirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one.</span></p>
 </section>
 <section id="part-1-two-people-one-room" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 1</span> Two people, one room</h2>
@@ -397,11 +396,11 @@ Niccolò Salvini, PhD
 <p><strong>Niccolò Salvini, PhD</strong> · Adjunct Professor</p>
 <div>
 <ul>
-<li class="fragment"><strong>Economics</strong>, Florence — where I learned that theory needs data to survive contact with reality</li>
-<li class="fragment"><strong>MSc, Statistical and Actuarial Sciences</strong>, Milan — from reading data to engineering it</li>
-<li class="fragment"><strong>PhD, Healthcare Data Science</strong>, Rome — why a model works, and exactly where it breaks</li>
-<li class="fragment"><strong>Founder, Intuo</strong> — data pipelines and AI for companies that wanted AI before they had clean data</li>
-<li class="fragment"><strong>Adjunct Professor</strong> — Health Data Science at Università Cattolica, and this course at ESE</li>
+<li class="fragment"><strong>Economics</strong>, Florence</li>
+<li class="fragment"><strong>MSc, Statistical and Actuarial Sciences</strong>, Milan</li>
+<li class="fragment"><strong>PhD, Healthcare Data Science</strong>, Rome</li>
+<li class="fragment"><strong>Founder, Intuo</strong> — data pipelines and AI for companies</li>
+<li class="fragment"><strong>Adjunct Professor</strong> — Università Cattolica, and ESE</li>
 </ul>
 </div>
 </div></div>
@@ -412,10 +411,10 @@ Niccolò Salvini, PhD
 <section id="what-you-leave-with-in-december" class="slide level2">
 <h2>What you leave with in December</h2>
 <ol type="1">
-<li><strong>Build</strong> — a working pipeline in Python: data in, analysis, a model or an LLM application, a result you can reproduce.</li>
-<li><strong>Check</strong> — the habit of testing what an assistant or a vendor tells you, with a number and not with a feeling.</li>
-<li><strong>Decide</strong> — turn a model’s output into a decision with a cost, and say when <em>not</em> to use AI at all.</li>
-<li><strong>Defend</strong> — present it to people who will not read your notebook, including a regulator.</li>
+<li><strong>Build</strong> — a working pipeline in Python, reproducible.</li>
+<li><strong>Check</strong> — what an assistant or a vendor tells you, with a number.</li>
+<li><strong>Decide</strong> — turn a model’s output into a decision with a cost.</li>
+<li><strong>Defend</strong> — to people who will not read your notebook.</li>
 </ol>
 </section>
 <section id="ten-weeks-one-thing-built-each-time" class="slide level2">
@@ -459,156 +458,122 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="red">Every artefact you build stays in your repository and becomes part of the next one. Nothing here is thrown away.</span></p>
 </section>
-<section id="one-thread-through-all-of-it-you-build-a-tiny-llm" class="slide level2">
-<h2>One thread through all of it: you build a tiny LLM</h2>
-<p>The best way to understand the pieces is to build them. A few pieces a week, small and on purpose badly trained — the point is <strong>how</strong>, not a good model.</p>
+<section id="one-thread-through-it-you-build-a-tiny-llm" class="slide level2">
+<h2>One thread through it: you build a tiny LLM</h2>
 <table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>week</th>
 <th>the piece</th>
-<th>what it makes obvious</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>2</strong></td>
 <td>a tokenizer, trained on your own texts</td>
-<td>why Russian costs more — you watch it happen</td>
 </tr>
 <tr class="even">
 <td><strong>3</strong></td>
 <td>a model that guesses the next character</td>
-<td>predicting text is just classification, with a base rate</td>
 </tr>
 <tr class="odd">
 <td><strong>4</strong></td>
-<td>embeddings that it learns</td>
-<td>“similar meaning” as a distance, before we search with it</td>
+<td>embeddings it learns by itself</td>
 </tr>
 <tr class="even">
 <td><strong>5</strong></td>
 <td>attention, and a tiny GPT trained on central-bank statements</td>
-<td>today’s figure, computed by you</td>
 </tr>
 </tbody>
 </table>
-<p><span class="muted">Following Andrej Karpathy’s <em>Zero to Hero</em> — in Colab, on the free GPU, a few minutes of training each.</span></p>
+<p><span class="muted">Small, badly trained on purpose. The point is how, not a good model.</span></p>
 </section>
 <section id="what-you-wrote-in-your-application" class="slide level2">
 <h2>What you wrote in your application</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>you wrote</th>
 <th>where it lands</th>
-<th>and before that</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>product and project work</strong></td>
-<td>5 · the product lens · 10 · build/buy, cost at scale</td>
-<td>it is the lens, every week</td>
+<td>weeks 5 and 10 — and the lens every week</td>
 </tr>
 <tr class="even">
 <td><strong>data and decisions</strong></td>
-<td>2 · analysis · 3 · a model, and a threshold that costs money</td>
-<td>the whole first month</td>
+<td>weeks 2 and 3</td>
 </tr>
 <tr class="odd">
 <td><strong>trading</strong></td>
-<td>7 · a backtest, and every way it lies</td>
-<td>market data from week 2</td>
+<td>week 7 — market data from week 2</td>
 </tr>
 <tr class="even">
 <td><strong>crypto and DeFi</strong></td>
-<td>8 · on-chain data, AMMs, lending, MiCA</td>
-<td>on-chain series from week 2</td>
+<td>week 8 — on-chain data from week 2</td>
 </tr>
 </tbody>
 </table>
 <div class="fragment">
-<p><strong>Is this still true?</strong> What is missing, and what would you pull forward?</p>
-<p><span class="red">The map is a plan, not a contract. The <strong>capstone is yours to choose</strong> — and with one student, the order can move.</span></p>
+<p><strong>Is this still true? What is missing?</strong></p>
 </div>
 </section>
-<section id="how-we-work-with-only-two-of-us" class="slide level2">
-<h2>How we work, with only two of us</h2>
+<section id="how-we-work" class="slide level2">
+<h2>How we work</h2>
 <ul>
-<li><strong>A lab, not a lecture.</strong> You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to <strong>judge what the assistant produces</strong>.</li>
-<li><strong>Bets, not quizzes.</strong> Before a cell runs I will ask you to write down a number. Being wrong is the point; it is how the result sticks.</li>
-<li><strong>Your keyboard.</strong> I will not touch it. When it breaks, read the error before asking me.</li>
-<li><strong>Every Wednesday starts with you:</strong> twenty minutes on your homework. I pick two lines at random and ask what they do.</li>
-<li><strong>Feedback runs both ways.</strong> Too fast, too slow, not relevant to you — say it that week, not in December.</li>
+<li><strong>A lab.</strong> You write code from today, with an assistant. You judge what it produces.</li>
+<li><strong>Bets, not quizzes.</strong> Write a number before the cell runs.</li>
+<li><strong>Your keyboard.</strong> I do not touch it.</li>
+<li><strong>Wednesdays start with you</strong> — twenty minutes on your homework.</li>
+<li><strong>Feedback both ways</strong>, every week.</li>
 </ul>
 </section>
-<section id="the-deal-said-once" class="slide level2">
-<h2>The deal, said once</h2>
+<section id="the-deal" class="slide level2">
+<h2>The deal</h2>
 <ul>
-<li><strong>The rule of the course:</strong> anything an AI produced and you submit, you must be able to explain line by line. I will ask.</li>
-<li><strong>Nothing confidential</strong> goes into an AI tool. Ever.</li>
-<li>Markets, crypto and DeFi here are <strong>educational simulations</strong>. Nothing in this course is investment advice.</li>
+<li>Anything an AI produced that you submit, you <strong>explain line by line</strong>.</li>
+<li><strong>Nothing confidential</strong> goes into an AI tool.</li>
+<li>Markets and crypto here are <strong>simulations</strong>, not investment advice.</li>
 </ul>
 <table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
 <th></th>
 <th>weight</th>
-<th>when</th>
-<th>what</th>
+<th>due</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Case brief</strong></td>
 <td>40%</td>
-<td>due Sun 1 Nov, presented 4 Nov</td>
-<td>the LLM application of weeks 4–5, treated as a product</td>
+<td>Sun 1 Nov</td>
 </tr>
 <tr class="even">
 <td><strong>Portfolio</strong></td>
 <td>60%</td>
-<td>due Sun 6 Dec, presented 9 Dec</td>
-<td>your capstone: pipeline, memo, risk canvas, roadmap</td>
+<td>Sun 6 Dec</td>
 </tr>
 </tbody>
 </table>
-<p><span class="muted">Both are assessed on your repository — the commits, not a PDF. Weekly homework is formative, and completing it is a condition of the certificate.</span></p>
-</section>
-<section id="part-3-the-workbench" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 3</span> The workbench</h2>
 </section>
 <section id="open-your-notebook-one-click" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Open your notebook: one click</h2>
 <div class="columns">
 <div class="column" style="width:62%;">
-<p><span class="kicker">LAB · week 1 notebook</span></p>
 <ol type="1">
-<li><strong>Click the link, or scan the code.</strong> Colab opens the notebook.</li>
-<li><code>File ▸ Save a copy in Drive</code> — now it is yours.</li>
+<li><strong>Click, or scan.</strong></li>
+<li><code>File ▸ Save a copy in Drive</code></li>
 <li>Run the first two cells.</li>
 </ol>
 <p><strong><a href="https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb">Open in Colab ↗</a></strong></p>
-<p><span style="font-size:.7em">GitHub comes at home, with the <a href="../setup.html">setup page</a> — ten minutes.</span></p>
 </div><div class="column" style="width:38%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -620,31 +585,8 @@ Niccolò Salvini, PhD
 <section id="break-ten-minutes." class="slide level2 statement">
 <h2>Break — ten minutes.</h2>
 </section>
-<section id="part-4-from-one-neuron-to-an-llm" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 4</span> From one neuron to an LLM</h2>
-</section>
-<section id="three-sentences-from-three-pitch-decks" class="slide level2">
-<h2>Three sentences from three pitch decks</h2>
-<div title="Bet before we start">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet before we start</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li><em>“Our assistant <strong>remembers</strong> every conversation it has had with your customers.”</em></li>
-<li><em>“It <strong>learns from your corrections in real time</strong>.”</em></li>
-<li><em>“<strong>99.2% accuracy</strong> on invoice extraction.”</em></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<p>You have heard a version of all three in your work. <strong>Two are impossible as stated. One is unanswerable as written.</strong> Write down which is which — before you leave you can answer two of them yourself.</p>
+<section id="part-3-from-one-neuron-to-an-llm" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> From one neuron to an LLM</h2>
 </section>
 <section id="three-ways-to-write-the-same-decision" class="slide level2">
 <h2>Three ways to write the same decision</h2>
@@ -656,19 +598,19 @@ Niccolò Salvini, PhD
 <p><img data-src="img/software-123-l4.svg" class="fragment" style="width:100.0%"></p>
 </div>
 </section>
-<section id="one-neuron-is-a-decision-you-already-know" class="slide level2">
-<h2>One neuron is a decision you already know</h2>
-<div title="Bet before we look">
+<section id="one-neuron" class="slide level2">
+<h2>One neuron</h2>
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we look</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>A card payment: large, made abroad, from a new device. Three numbers in, one number out. What would you do with each of the three before adding them up?</p>
+<p>Large payment, abroad, new device. What do you do with each number before adding them up?</p>
 </div>
 </div>
 </div>
@@ -681,88 +623,78 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </section>
-<section id="the-squash-has-a-name-the-activation-function" class="slide level2">
-<h2>The squash has a name: the <strong>activation function</strong></h2>
+<section id="the-squash-the-activation-function" class="slide level2">
+<h2>The squash: the activation function</h2>
 
-<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="muted"><strong>Weights</strong>: how much each input matters. <strong>Bias</strong>: how trigger-happy the neuron is. <strong>Activation</strong>: what it passes on.</span></p>
-</section>
-<section id="training-it-by-hand-four-rows-one-rule" class="slide level2 clip" data-background-color="#000000">
-<h2>Training it by hand: four rows, one rule</h2>
+<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:90.0%"></section>
+<section id="training-it-by-hand" class="slide level2 clip" data-background-color="#000000">
+<h2>Training it by hand</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_PerceptronByHand_poster.png">
 <source src="media/nn_PerceptronByHand.mp4" type="video/mp4">
 </video>
-<p>Wrong answer → move each weight a little towards the right one. Right answer → leave it alone. Repeat until nothing changes. <strong>That is learning.</strong></p>
 </section>
-<section id="learning-means-walking-downhill" class="slide level2 clip" data-background-color="#000000">
-<h2>Learning means walking downhill</h2>
+<section id="how-every-network-learns" class="slide level2">
+<h2>How every network learns</h2>
+
+<img data-src="img/training-loop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="downhill" class="slide level2 clip" data-background-color="#000000">
+<h2>Downhill</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_GradientDescent_poster.png">
 <source src="media/nn_GradientDescent.mp4" type="video/mp4">
 </video>
-<p>Measure how wrong it is. Nudge every weight a little in the direction that makes it less wrong. Repeat. <strong>That is training</strong> — for four weights, or for a hundred billion.</p>
 </section>
-<section id="more-neurons-and-the-line-learns-to-bend" class="slide level2 clip" data-background-color="#000000">
-<h2>More neurons, and the line learns to bend</h2>
+<section id="more-neurons-the-line-bends" class="slide level2 clip" data-background-color="#000000">
+<h2>More neurons: the line bends</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_HiddenLayer_poster.png">
 <source src="media/nn_HiddenLayer.mp4" type="video/mp4">
 </video>
-<p>One neuron draws a line. Five of them, blended, follow a curve. Stack layers of them and the network invents its own features — nobody tells it which.</p>
 </section>
 <section id="from-4-numbers-to-117-billion" class="slide level2">
 <h2>From 4 numbers to 117 billion</h2>
 
-<img data-src="img/nn-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="muted">Think of the parameters as the knobs on a DJ mixer. Training is finding a setting of billions of knobs that makes the output match the data. — Karpathy</span></p>
-</section>
-<section id="an-llm-is-that-network-given-one-job" class="slide level2">
-<h2>An LLM is that network, given one job</h2>
-<div title="Guess the next piece of text.">
-<div class="callout callout-important callout-titled callout-style-default">
+<img data-src="img/nn-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="an-llm-is-that-network-with-one-job" class="slide level2">
+<h2>An LLM is that network, with one job</h2>
+<div class="callout callout-important callout-style-simple">
 <div class="callout-body">
-<div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Guess the next piece of text.</strong></p>
-</div>
 <div class="callout-content">
-<p>That is the whole training objective. Everything else you have seen a chatbot do is learned on the way to doing that well.</p>
-</div>
+<p><strong>Guess the next piece of text.</strong> That is the whole job.</p>
 </div>
 </div>
 </div>
 <div class="columns">
 <div class="column" style="width:33%;">
 <p><strong>1 · Pre-training</strong></p>
-<p>About 15 trillion tokens of filtered web text. Months of GPUs, done <strong>once a year or so</strong>. Out comes a <strong>base model</strong> — an <em>internet document simulator</em>. Ask it a question and it may answer with three more questions.</p>
+<p>trillions of tokens of web text → a <strong>base model</strong> that continues documents</p>
 </div><div class="column" style="width:33%;">
 <p><strong>2 · Post-training</strong></p>
-<p>Swap the data: on the order of 100,000 example conversations, written or checked by people, then reinforcement learning on what gets rated well. Days, not months — <strong>every week or so</strong>. Out comes an <strong>assistant</strong>.</p>
+<p>~100,000 example conversations, then feedback → an <strong>assistant</strong></p>
 </div><div class="column" style="width:33%;">
 <p><strong>3 · What you download</strong></p>
-<p>Two files: the <strong>parameters</strong> — billions of numbers — and ~500 lines of code that run them. That is a model.</p>
+<p>the <strong>parameters</strong>, and a short program that runs them</p>
 </div></div>
-<p><span class="muted">The frame is Karpathy’s. When a vendor says “our model”, ask which of the three they actually did. It is almost never the first.</span></p>
 </section>
 <section id="pre-training-is-compressing-the-internet" class="slide level2">
 <h2>Pre-training is compressing the internet</h2>
 
-<img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><div class="fragment">
-<p><span class="red">Lossy, and oddly: it knows Tom Cruise’s mother is Mary Lee Pfeiffer, but not whose son Mary Lee Pfeiffer’s is. You evaluate these models; you cannot read them.</span></p>
-</div>
-</section>
-<section id="training-an-llm-is-the-same-nudge-a-trillion-times" class="slide level2">
-<h2>Training an LLM is the same nudge, a trillion times</h2>
-<p>Take four tokens from the training text — <code>The ECB left rates</code> — and ask for the next one. The right answer is known: it is in the text.</p>
+<img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="the-same-nudge-trillions-of-times" class="slide level2">
+<h2>The same nudge, trillions of times</h2>
+<p><code>The ECB left rates</code> → ?</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th>next token</th>
-<th>before the update</th>
+<th>before</th>
 <th>after</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>“unchanged”</strong> — the right one</td>
+<td><strong>“unchanged”</strong> ✓</td>
 <td>3%</td>
 <td><strong>4%</strong></td>
 </tr>
@@ -776,34 +708,29 @@ Niccolò Salvini, PhD
 <td>2%</td>
 <td>1.9%</td>
 </tr>
-<tr class="even">
-<td>…the other 200,000</td>
-<td>the rest</td>
-<td>slightly less</td>
-</tr>
 </tbody>
 </table>
-<div class="fragment">
-<p><span class="red">Nudge the knobs so the right token gets slightly more likely. Do it for every token of 15 trillion, many times over. What comes out is a model of <strong>how text continues</strong> — and nothing else. It has <strong>no memory</strong>: a fixed expression from input to output.</span></p>
-</div>
 </section>
-<section id="follow-one-prediction-through" class="slide level2">
-<h2>Follow one prediction through</h2>
+<section id="one-prediction-end-to-end" class="slide level2">
+<h2>One prediction, end to end</h2>
 
 <img data-src="img/token-journey.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="part-4-what-the-model-reads" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 4</span> What the model reads</h2>
+</section>
 <section id="it-never-sees-a-word" class="slide level2">
 <h2>It never sees a word</h2>
-<div title="Bet before we look">
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we look</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p><code>"Il margine è insostenibile"</code> — four words. How many pieces does the model cut that into? Write a number.</p>
+<p><code>"Il margine è insostenibile"</code> — four words. How many pieces?</p>
 </div>
 </div>
 </div>
@@ -818,7 +745,6 @@ Niccolò Salvini, PhD
 </section>
 <section id="why-pieces-and-not-letters" class="slide level2">
 <h2>Why pieces, and not letters?</h2>
-<p>The network reads a sequence, and <strong>shorter sequences are cheaper</strong>. So the text is compressed before it goes in:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -831,42 +757,107 @@ Niccolò Salvini, PhD
 <tr class="odd">
 <td>bits</td>
 <td>40,000</td>
-<td>2 symbols</td>
+<td>2</td>
 </tr>
 <tr class="even">
 <td>bytes</td>
 <td>5,000</td>
-<td>256 symbols</td>
+<td>256</td>
 </tr>
 <tr class="odd">
-<td>GPT-4 tokens</td>
+<td>tokens</td>
 <td><strong>~1,300</strong></td>
-<td><strong>100,277 symbols</strong></td>
+<td><strong>~100,000</strong></td>
 </tr>
 </tbody>
 </table>
-<p><span class="muted">A tokenizer is learned by merging the pairs that occur most often, again and again. It learns the language of its training data — which is why <em>your</em> language costs more. (Karpathy’s example.)</span></p>
 </section>
-<section id="the-same-sentence-twice-one-tokenizer-apart" class="slide level2 clip" data-background-color="#000000">
-<h2>The same sentence, twice, one tokenizer apart</h2>
+<section id="how-a-tokenizer-is-learned" class="slide level2">
+<h2>How a tokenizer is learned</h2>
+<p>Merge the most frequent pair. Repeat.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>step</th>
+<th>text</th>
+<th>new symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>start</td>
+<td><code>aaabdaaabac</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><code>ZabdZabac</code></td>
+<td>Z = aa</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><code>ZYdZYac</code></td>
+<td>Y = ab</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><code>XdXac</code></td>
+<td>X = ZY</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>11 symbols → 5. Train it on English, and it learns English pieces.</p>
+</div>
+</section>
+<section id="the-same-sentence-twice" class="slide level2 clip" data-background-color="#000000">
+<h2>The same sentence, twice</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_tokens_poster.png">
 <source src="media/w01_tokens.mp4" type="video/mp4">
 </video>
-<p>Same model family, same sentence. 33 pieces became 18.</p>
+</section>
+<section id="much-of-the-weirdness-is-tokenization" class="slide level2">
+<h2>Much of the weirdness is tokenization</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>it struggles with</th>
+<th>because</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>spelling a word backwards</td>
+<td>the word is one token, not letters</td>
+</tr>
+<tr class="even">
+<td>Russian, Italian</td>
+<td>more, smaller pieces</td>
+</tr>
+<tr class="odd">
+<td>arithmetic</td>
+<td><code>1,234,567.89</code> is 7 arbitrary pieces</td>
+</tr>
+<tr class="even">
+<td><code>egg</code> · <code>Egg</code> · <code>egg</code> · <code>EGG</code></td>
+<td>four different tokens</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="how-the-tokens-talk-to-each-other-attention" class="slide level2">
 <h2>How the tokens talk to each other: <strong>attention</strong></h2>
-<div title="Bet before we look">
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we look</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p><em>“The bank raised rates because <strong>it</strong> feared inflation.”</em> — how does the model know what <strong>it</strong> refers to?</p>
+<p><em>“The bank raised rates because <strong>it</strong> feared inflation.”</em> — what is <strong>it</strong>?</p>
 </div>
 </div>
 </div>
@@ -877,190 +868,173 @@ Niccolò Salvini, PhD
 <p><img data-src="img/attention.svg" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
+<p><span class="muted">Vaswani et al., <em>Attention Is All You Need</em>, 2017 — the paper behind every model since.</span></p>
 </div>
 </section>
 <section id="everything-it-knows-every-time" class="slide level2">
 <h2>Everything it knows, every time</h2>
 
 <img data-src="img/context-window.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="which-disposes-of-claim-one" class="slide level2 statement">
-<h2>Which disposes of claim one</h2>
+<section id="part-5-a-real-release-taken-apart" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 5</span> A real release, taken apart</h2>
 </section>
-<section id="the-model-remembers-nothing.-something-else-is-storing-and-re-sending." class="slide level2">
-<h2>The model remembers nothing. Something else is storing and re-sending.</h2>
-<p><span class="muted">That something is a database, it has an owner, and every turn you pay to send it again. “It remembers” is not an AI capability. It is an infrastructure invoice.</span></p>
-</section>
-<section id="and-claim-two" class="slide level2">
-<h2>And claim two</h2>
-<p><strong>“It learns from your corrections in real time.”</strong></p>
-<p>You have just seen what learning is: weights nudged downhill, over trillions of tokens, for months. When you call the model the weights are <strong>frozen</strong>. Nothing you type changes them.</p>
-<div class="fragment">
-<p>What can honestly be meant is one of two things: your correction was <strong>written to a store and re-sent next time</strong> (fast, cheap, and not learning), or it entered a <strong>retraining queue</strong> (real, and measured in weeks).</p>
-<p><span class="red">Ask which. The answer tells you whether you are buying a model or a database. Claim three — the 99.2% — needs a base rate, and that is week 3.</span></p>
-</div>
-</section>
-<section id="if-you-want-to-go-further-this-week" class="slide level2">
-<h2>If you want to go further this week</h2>
-<ul>
-<li><strong>Andrej Karpathy, <em>Deep Dive into LLMs like ChatGPT</em></strong> (YouTube, 2025) — the first hour covers everything we did today, slower and better drawn. Stop at <em>inference</em>.</li>
-<li><strong>Andrej Karpathy, <em>Intro to Large Language Models</em></strong> (YouTube, 2023) — one hour, and the source of the “two files” and “compressing the internet” pictures.</li>
-<li><strong>LLM Visualization</strong>, bbycroft.net/llm — a real small model in 3D, and you can follow one token through every block.</li>
-<li>Your <strong><a href="../glossary.html">glossary</a></strong> for this course.</li>
-</ul>
-</section>
-<section id="part-6-before-you-go" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 6</span> Before you go</h2>
-</section>
-<section id="between-wednesdays" class="slide level2">
-<h2>Between Wednesdays</h2>
-<div class="columns">
-<div class="column" style="width:64%;">
-<table class="caption-top">
-<colgroup>
-<col style="width: 34%">
-<col style="width: 66%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>quick questions</strong></td>
-<td>WhatsApp or Telegram — whichever you prefer. I answer within one working day</td>
-</tr>
-<tr class="even">
-<td><strong>anything that counts</strong></td>
-<td>in your repository, never in chat</td>
-</tr>
-<tr class="odd">
-<td><strong>Wed 11 November</strong></td>
-<td>I may be in Milan that day — we agree a make-up date now</td>
-</tr>
-<tr class="even">
-<td><strong>if you miss a session</strong></td>
-<td>tell me before, and the notebook is on the site the same day</td>
-</tr>
-</tbody>
-</table>
-</div><div class="column" style="width:36%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/whatsapp-qr.svg" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
-</figure>
-</div>
-<p><span class="muted" style="display:block;text-align:center;font-size:.6em">Scan it now — WhatsApp.<br>Telegram: tell me your handle.</span></p>
-</div></div>
-</section>
-<section id="close" class="slide level2">
-<h2>Close</h2>
-<p><strong>Homework 1</strong> — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.</p>
-<p>Due Tuesday 29 September, 23:59, in your repository.</p>
-<div class="fragment">
-<p><strong>Before you leave:</strong> three lines at the bottom of the notebook, in your words — then commit.</p>
-<p><span class="muted">Next week: we read a real model release line by line, the assistant writes the code and you decide whether it is true — and you train your first tokenizer.</span></p>
-</div>
-</section>
-<section id="spare-for-next-week-or-if-there-is-time" class="slide level2 section-slide" data-background-color="#7a7f85">
-<h2><span class="section-kicker">Spare</span> For next week, or if there is time</h2>
-</section>
-<section id="take-it-apart-yourself" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Take it apart yourself</h2>
-<p><span class="kicker">LAB · session.ipynb § B1 — <code>tiktoken</code></span></p>
-<p>Type your own text and watch the count:</p>
-<ol type="1">
-<li>the same sentence in <strong>English</strong>, then <strong>Italian</strong>, then <strong>Russian</strong></li>
-<li>a <strong>number</strong>: <code>1,234,567.89</code> — count the pieces before you look</li>
-<li><strong>your own surname</strong>, then a listed company, then a company founded last year</li>
-</ol>
-<p><span class="red">Then tell me: which of those is the model <strong>least</strong> equipped to reason about, and why?</span></p>
-</section>
-<section id="from-openais-release-of-gpt-oss-august-2025" class="slide level2">
-<h2>From OpenAI’s release of gpt-oss, August 2025</h2>
+<section id="openai-gpt-oss-august-2025" class="slide level2">
+<h2>OpenAI, gpt-oss, August 2025</h2>
 <div style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef">
 <p>“Each model is a <strong>Transformer</strong> which leverages <strong>mixture-of-experts</strong> to reduce the number of <strong>active parameters</strong> needed to process input. gpt-oss-120b activates <strong>5.1B parameters per token</strong> … The models have <strong>117b</strong> and 21b <strong>total parameters</strong> …</p>
 <p>We <strong>tokenized</strong> the data using … <strong>o200k_harmony</strong> … The models were <strong>post-trained</strong> … including a <strong>supervised fine-tuning</strong> stage and a high-compute <strong>RL</strong> stage. … The weights … are freely available … and come natively <strong>quantized</strong> in MXFP4. This allows for the gpt-oss-120B model to run within <strong>80GB of memory</strong> … Available under the flexible <strong>Apache 2.0</strong> license.”</p>
-<p><span style="color:#7a7f85">And from their spec table: <strong>context length 128k</strong>.</span></p>
+<p><span style="color:#7a7f85">Spec table: <strong>context length 128k</strong>.</span></p>
 </div>
-<p><span class="red">Circle every word you could now explain to your old team in one sentence. Then we take the rest, one at a time.</span></p>
+<p><strong>Circle every word you can now explain.</strong></p>
 </section>
-<section id="what-each-one-means-and-the-question-it-answers" class="slide level2">
-<h2>What each one means, and the question it answers</h2>
+<section id="every-word-taken-apart" class="slide level2">
+<h2>Every word, taken apart</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>in the release</th>
 <th>what it is</th>
-<th>why you care</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Transformer</strong></td>
-<td>the block you saw: attention + neurons, stacked</td>
-<td>every current LLM is one</td>
+<td>attention + neurons, stacked — the block you just saw</td>
 </tr>
 <tr class="even">
 <td><strong>117B total parameters</strong></td>
-<td>the weights — the numbers learned in training</td>
-<td>roughly how much it can hold</td>
+<td>the numbers learned in training</td>
 </tr>
 <tr class="odd">
-<td><strong>mixture-of-experts, 5.1B active</strong></td>
-<td>only a few specialist sub-networks run per token</td>
-<td>big model, cost of a small one</td>
+<td><strong>mixture-of-experts</strong></td>
+<td>many specialist sub-networks; only a few run per token</td>
 </tr>
 <tr class="even">
-<td><strong>o200k_harmony tokenizer</strong></td>
+<td><strong>5.1B active per token</strong></td>
+<td>the cost of a small model, the capacity of a big one</td>
+</tr>
+<tr class="odd">
+<td><strong>tokenized, o200k_harmony</strong></td>
 <td>the ~200,000-piece vocabulary</td>
-<td>the price of <em>your</em> language</td>
-</tr>
-<tr class="odd">
-<td><strong>post-trained: SFT + RL</strong></td>
-<td>step 2 — from base model to assistant</td>
-<td>where its manners come from</td>
 </tr>
 <tr class="even">
+<td><strong>post-trained</strong></td>
+<td>base model → assistant</td>
+</tr>
+<tr class="odd">
+<td><strong>supervised fine-tuning</strong></td>
+<td>trained on example conversations</td>
+</tr>
+<tr class="even">
+<td><strong>RL</strong></td>
+<td>reinforcement learning: rewarded for good answers</td>
+</tr>
+<tr class="odd">
 <td><strong>context length 128k</strong></td>
 <td>the size of the box</td>
-<td>how much you can show it at once</td>
-</tr>
-<tr class="odd">
-<td><strong>quantized, 80GB</strong></td>
-<td>each weight stored in fewer bits</td>
-<td>runs on one GPU instead of a rack</td>
 </tr>
 <tr class="even">
+<td><strong>quantized, MXFP4, 80GB</strong></td>
+<td>each number stored in 4 bits — fits on one GPU</td>
+</tr>
+<tr class="odd">
 <td><strong>open-weight, Apache 2.0</strong></td>
-<td>you download the weights and may use them commercially</td>
-<td>nothing leaves your servers</td>
+<td>download it, run it on your own servers, use it commercially</td>
 </tr>
 </tbody>
 </table>
-<p><span class="muted">Every word is in the <a href="../glossary.html">glossary</a>, with the week it becomes something you compute.</span></p>
 </section>
-<section id="a-taste-of-defi" class="slide level2">
-<h2>A taste of DeFi</h2>
-<div title="Bet before we compute">
+<section id="now-three-sentences-from-three-pitch-decks" class="slide level2">
+<h2>Now, three sentences from three pitch decks</h2>
+<div title="Which are impossible? Which is unanswerable?">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we compute</strong></p>
+<p><strong>Which are impossible? Which is unanswerable?</strong></p>
 </div>
 <div class="callout-content">
-<p>A pool holds <strong>10 ETH</strong> and <strong>30,000 USDC</strong>, so the quoted price is 3,000 USDC per ETH. You buy <strong>1 ETH</strong> from it. What do you pay?</p>
+<ol type="1">
+<li><em>“Our assistant <strong>remembers</strong> every conversation it has had with your customers.”</em></li>
+<li><em>“It <strong>learns from your corrections in real time</strong>.”</em></li>
+<li><em>“<strong>99.2% accuracy</strong> on invoice extraction.”</em></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-the-model-remembers-nothing" class="slide level2 statement">
+<h2>One: the model remembers nothing</h2>
+<p><span class="muted">Something else stores the history and re-sends it, every turn.</span></p>
+</section>
+<section id="two-the-weights-are-frozen-when-you-call-it" class="slide level2 statement">
+<h2>Two: the weights are frozen when you call it</h2>
+<p><span class="muted">A correction goes into a database, or into a retraining queue. Ask which.</span></p>
+</section>
+<section id="three-accurate-compared-with-what" class="slide level2 statement">
+<h2>Three: accurate compared with what?</h2>
+<p><span class="muted">That needs a base rate. Week 3.</span></p>
+</section>
+<section id="close" class="slide level2">
+<h2>Close</h2>
+<div class="columns">
+<div class="column" style="width:64%;">
+<p><strong>Homework 1</strong>, due Tue 29 Sep:</p>
+<ul>
+<li>your starting point, in writing</li>
+<li>the question you want answered by December</li>
+<li>the tokenizer on five texts of yours</li>
+<li>ten glossary words, in your words</li>
+<li>GitHub repo, via the <a href="../setup.html">setup page</a></li>
+</ul>
+<p>Questions: WhatsApp or Telegram.</p>
+</div><div class="column" style="width:36%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/whatsapp-qr.svg" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="spare-if-there-is-time" class="slide level2 section-slide" data-background-color="#7a7f85">
+<h2><span class="section-kicker">Spare</span> If there is time</h2>
+</section>
+<section id="take-it-apart-yourself" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Take it apart yourself</h2>
+<p><span class="kicker">LAB · session.ipynb § B1 — <code>tiktoken</code></span></p>
+<ol type="1">
+<li>one sentence in <strong>English</strong>, <strong>Italian</strong>, <strong>Russian</strong></li>
+<li><code>1,234,567.89</code></li>
+<li>your surname, a listed company, a start-up</li>
+</ol>
+</section>
+<section id="a-taste-of-defi" class="slide level2">
+<h2>A taste of DeFi</h2>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>A pool holds <strong>10 ETH</strong> and <strong>30,000 USDC</strong> — 3,000 per ETH on screen. You buy <strong>1 ETH</strong>. What do you pay?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>The pool keeps one rule: <strong>ETH × USDC stays constant.</strong> 10 × 30,000 = 300,000.</p>
-<p>After your trade it holds 9 ETH, so it must hold 300,000 ÷ 9 = <strong>33,333 USDC</strong>. You paid <strong>3,333</strong> — 11% above the price on the screen.</p>
-<p><span class="red">And that is before any fee: the price moved <em>because you traded</em>. In week 8 you simulate what it does to the people who fund the pool.</span></p>
+<p><strong>ETH × USDC stays constant:</strong> 10 × 30,000 = 300,000.</p>
+<p>9 ETH left → 300,000 ÷ 9 = 33,333 USDC → you paid <strong>3,333</strong>, 11% above the screen.</p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

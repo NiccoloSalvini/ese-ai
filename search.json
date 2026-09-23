@@ -1792,11 +1792,11 @@
     "text": "Something is not working?\nWrite on the course channel with a screenshot of the error and the cell that produced it. Reading the error message before asking is already half of the course."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#today-at-a-walking-pace",
-    "href": "lectures/01-how-llms-work.html#today-at-a-walking-pace",
+    "objectID": "lectures/01-how-llms-work.html#today",
+    "href": "lectures/01-how-llms-work.html#today",
     "title": "How we will work, and what is inside the machine",
-    "section": "Today, at a walking pace",
-    "text": "Today, at a walking pace\n\n\n\n\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:25\nwhat this course is for, and how we shape it around you\n\n\n10:43\nopen your notebook — one click\n\n\n10:50\nbreak\n\n\n11:00\nfrom one neuron to an LLM\n\n\n11:35\nwhat the model actually reads: tokens, attention, the box\n\n\n11:46\nbetween Wednesdays, and homework\n\n\n\nThirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one."
+    "section": "Today",
+    "text": "Today\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:25\nwhat this course is for\n\n\n10:43\nopen your notebook\n\n\n10:50\nbreak\n\n\n11:00\nfrom one neuron to an LLM\n\n\n11:30\nwhat the model reads\n\n\n11:40\na real model release, taken apart\n\n\n11:50\nclose"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-1-two-people-one-room",
@@ -1810,7 +1810,7 @@
     "href": "lectures/01-how-llms-work.html#who-i-am",
     "title": "How we will work, and what is inside the machine",
     "section": "Who I am",
-    "text": "Who I am\n\n\n\n\nNiccolò Salvini, PhD · Adjunct Professor\n\n\nEconomics, Florence — where I learned that theory needs data to survive contact with reality\nMSc, Statistical and Actuarial Sciences, Milan — from reading data to engineering it\nPhD, Healthcare Data Science, Rome — why a model works, and exactly where it breaks\nFounder, Intuo — data pipelines and AI for companies that wanted AI before they had clean data\nAdjunct Professor — Health Data Science at Università Cattolica, and this course at ESE"
+    "text": "Who I am\n\n\n\n\nNiccolò Salvini, PhD · Adjunct Professor\n\n\nEconomics, Florence\nMSc, Statistical and Actuarial Sciences, Milan\nPhD, Healthcare Data Science, Rome\nFounder, Intuo — data pipelines and AI for companies\nAdjunct Professor — Università Cattolica, and ESE"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-2-what-this-course-is-for",
@@ -1824,56 +1824,49 @@
     "href": "lectures/01-how-llms-work.html#what-you-leave-with-in-december",
     "title": "How we will work, and what is inside the machine",
     "section": "What you leave with in December",
-    "text": "What you leave with in December\n\nBuild — a working pipeline in Python: data in, analysis, a model or an LLM application, a result you can reproduce.\nCheck — the habit of testing what an assistant or a vendor tells you, with a number and not with a feeling.\nDecide — turn a model’s output into a decision with a cost, and say when not to use AI at all.\nDefend — present it to people who will not read your notebook, including a regulator."
+    "text": "What you leave with in December\n\nBuild — a working pipeline in Python, reproducible.\nCheck — what an assistant or a vendor tells you, with a number.\nDecide — turn a model’s output into a decision with a cost.\nDefend — to people who will not read your notebook."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#ten-weeks-one-thing-built-each-time",
     "href": "lectures/01-how-llms-work.html#ten-weeks-one-thing-built-each-time",
     "title": "How we will work, and what is inside the machine",
     "section": "Ten weeks, one thing built each time",
-    "text": "Ten weeks, one thing built each time\n\n\n\n\n\n\n\n\n1–3\n23 Sep – 7 Oct\na data pipeline, and a model evaluated honestly\n\n\n4–5\n14 – 21 Oct\nan LLM application: retrieval, tools, evaluations\n\n\n—\n26 Oct\nreading week — case brief, 40%\n\n\n6–8\n4 – 18 Nov\nfintech cases, a backtest, a DeFi analysis\n\n\n9–10\n25 Nov – 2 Dec\nred-team, and finish the capstone — portfolio, 60%\n\n\nRev.\n9 Dec\nyou present it\n\n\n\nEvery artefact you build stays in your repository and becomes part of the next one. Nothing here is thrown away."
+    "text": "Ten weeks, one thing built each time\n\n\n\n\n\n\n\n\n1–3\n23 Sep – 7 Oct\na data pipeline, and a model evaluated honestly\n\n\n4–5\n14 – 21 Oct\nan LLM application: retrieval, tools, evaluations\n\n\n—\n26 Oct\nreading week — case brief, 40%\n\n\n6–8\n4 – 18 Nov\nfintech cases, a backtest, a DeFi analysis\n\n\n9–10\n25 Nov – 2 Dec\nred-team, and finish the capstone — portfolio, 60%\n\n\nRev.\n9 Dec\nyou present it"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#one-thread-through-all-of-it-you-build-a-tiny-llm",
-    "href": "lectures/01-how-llms-work.html#one-thread-through-all-of-it-you-build-a-tiny-llm",
+    "objectID": "lectures/01-how-llms-work.html#one-thread-through-it-you-build-a-tiny-llm",
+    "href": "lectures/01-how-llms-work.html#one-thread-through-it-you-build-a-tiny-llm",
     "title": "How we will work, and what is inside the machine",
-    "section": "One thread through all of it: you build a tiny LLM",
-    "text": "One thread through all of it: you build a tiny LLM\nThe best way to understand the pieces is to build them. A few pieces a week, small and on purpose badly trained — the point is how, not a good model.\n\n\n\n\n\n\n\n\nweek\nthe piece\nwhat it makes obvious\n\n\n\n\n2\na tokenizer, trained on your own texts\nwhy Russian costs more — you watch it happen\n\n\n3\na model that guesses the next character\npredicting text is just classification, with a base rate\n\n\n4\nembeddings that it learns\n“similar meaning” as a distance, before we search with it\n\n\n5\nattention, and a tiny GPT trained on central-bank statements\ntoday’s figure, computed by you\n\n\n\nFollowing Andrej Karpathy’s Zero to Hero — in Colab, on the free GPU, a few minutes of training each."
+    "section": "One thread through it: you build a tiny LLM",
+    "text": "One thread through it: you build a tiny LLM\n\n\n\nweek\nthe piece\n\n\n\n\n2\na tokenizer, trained on your own texts\n\n\n3\na model that guesses the next character\n\n\n4\nembeddings it learns by itself\n\n\n5\nattention, and a tiny GPT trained on central-bank statements\n\n\n\nSmall, badly trained on purpose. The point is how, not a good model."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#what-you-wrote-in-your-application",
     "href": "lectures/01-how-llms-work.html#what-you-wrote-in-your-application",
     "title": "How we will work, and what is inside the machine",
     "section": "What you wrote in your application",
-    "text": "What you wrote in your application\n\n\n\n\n\n\n\n\nyou wrote\nwhere it lands\nand before that\n\n\n\n\nproduct and project work\n5 · the product lens · 10 · build/buy, cost at scale\nit is the lens, every week\n\n\ndata and decisions\n2 · analysis · 3 · a model, and a threshold that costs money\nthe whole first month\n\n\ntrading\n7 · a backtest, and every way it lies\nmarket data from week 2\n\n\ncrypto and DeFi\n8 · on-chain data, AMMs, lending, MiCA\non-chain series from week 2\n\n\n\n\nIs this still true? What is missing, and what would you pull forward?\nThe map is a plan, not a contract. The capstone is yours to choose — and with one student, the order can move."
+    "text": "What you wrote in your application\n\n\n\n\n\n\n\nyou wrote\nwhere it lands\n\n\n\n\nproduct and project work\nweeks 5 and 10 — and the lens every week\n\n\ndata and decisions\nweeks 2 and 3\n\n\ntrading\nweek 7 — market data from week 2\n\n\ncrypto and DeFi\nweek 8 — on-chain data from week 2\n\n\n\n\nIs this still true? What is missing?"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#how-we-work-with-only-two-of-us",
-    "href": "lectures/01-how-llms-work.html#how-we-work-with-only-two-of-us",
+    "objectID": "lectures/01-how-llms-work.html#how-we-work",
+    "href": "lectures/01-how-llms-work.html#how-we-work",
     "title": "How we will work, and what is inside the machine",
-    "section": "How we work, with only two of us",
-    "text": "How we work, with only two of us\n\nA lab, not a lecture. You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to judge what the assistant produces.\nBets, not quizzes. Before a cell runs I will ask you to write down a number. Being wrong is the point; it is how the result sticks.\nYour keyboard. I will not touch it. When it breaks, read the error before asking me.\nEvery Wednesday starts with you: twenty minutes on your homework. I pick two lines at random and ask what they do.\nFeedback runs both ways. Too fast, too slow, not relevant to you — say it that week, not in December."
+    "section": "How we work",
+    "text": "How we work\n\nA lab. You write code from today, with an assistant. You judge what it produces.\nBets, not quizzes. Write a number before the cell runs.\nYour keyboard. I do not touch it.\nWednesdays start with you — twenty minutes on your homework.\nFeedback both ways, every week."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#the-deal-said-once",
-    "href": "lectures/01-how-llms-work.html#the-deal-said-once",
+    "objectID": "lectures/01-how-llms-work.html#the-deal",
+    "href": "lectures/01-how-llms-work.html#the-deal",
     "title": "How we will work, and what is inside the machine",
-    "section": "The deal, said once",
-    "text": "The deal, said once\n\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nNothing confidential goes into an AI tool. Ever.\nMarkets, crypto and DeFi here are educational simulations. Nothing in this course is investment advice.\n\n\n\n\n\n\n\n\n\n\n\nweight\nwhen\nwhat\n\n\n\n\nCase brief\n40%\ndue Sun 1 Nov, presented 4 Nov\nthe LLM application of weeks 4–5, treated as a product\n\n\nPortfolio\n60%\ndue Sun 6 Dec, presented 9 Dec\nyour capstone: pipeline, memo, risk canvas, roadmap\n\n\n\nBoth are assessed on your repository — the commits, not a PDF. Weekly homework is formative, and completing it is a condition of the certificate."
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#part-3-the-workbench",
-    "href": "lectures/01-how-llms-work.html#part-3-the-workbench",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Part 3 The workbench",
-    "text": "Part 3 The workbench"
+    "section": "The deal",
+    "text": "The deal\n\nAnything an AI produced that you submit, you explain line by line.\nNothing confidential goes into an AI tool.\nMarkets and crypto here are simulations, not investment advice.\n\n\n\n\n\nweight\ndue\n\n\n\n\nCase brief\n40%\nSun 1 Nov\n\n\nPortfolio\n60%\nSun 6 Dec"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#open-your-notebook-one-click",
     "href": "lectures/01-how-llms-work.html#open-your-notebook-one-click",
     "title": "How we will work, and what is inside the machine",
     "section": "Open your notebook: one click",
-    "text": "Open your notebook: one click\n\n\nLAB · week 1 notebook\n\nClick the link, or scan the code. Colab opens the notebook.\nFile ▸ Save a copy in Drive — now it is yours.\nRun the first two cells.\n\nOpen in Colab ↗\nGitHub comes at home, with the setup page — ten minutes."
+    "text": "Open your notebook: one click\n\n\n\nClick, or scan.\nFile ▸ Save a copy in Drive\nRun the first two cells.\n\nOpen in Colab ↗"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#break-ten-minutes.",
@@ -1883,18 +1876,11 @@
     "text": "Break — ten minutes."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#part-4-from-one-neuron-to-an-llm",
-    "href": "lectures/01-how-llms-work.html#part-4-from-one-neuron-to-an-llm",
+    "objectID": "lectures/01-how-llms-work.html#part-3-from-one-neuron-to-an-llm",
+    "href": "lectures/01-how-llms-work.html#part-3-from-one-neuron-to-an-llm",
     "title": "How we will work, and what is inside the machine",
-    "section": "Part 4 From one neuron to an LLM",
-    "text": "Part 4 From one neuron to an LLM"
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#three-sentences-from-three-pitch-decks",
-    "href": "lectures/01-how-llms-work.html#three-sentences-from-three-pitch-decks",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Three sentences from three pitch decks",
-    "text": "Three sentences from three pitch decks\n\n\n\n\n\n\n\nBet before we start\n\n\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\n\n\n\n\nYou have heard a version of all three in your work. Two are impossible as stated. One is unanswerable as written. Write down which is which — before you leave you can answer two of them yourself."
+    "section": "Part 3 From one neuron to an LLM",
+    "text": "Part 3 From one neuron to an LLM"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
@@ -1904,102 +1890,130 @@
     "text": "Three ways to write the same decision"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#one-neuron-is-a-decision-you-already-know",
-    "href": "lectures/01-how-llms-work.html#one-neuron-is-a-decision-you-already-know",
+    "objectID": "lectures/01-how-llms-work.html#one-neuron",
+    "href": "lectures/01-how-llms-work.html#one-neuron",
     "title": "How we will work, and what is inside the machine",
-    "section": "One neuron is a decision you already know",
-    "text": "One neuron is a decision you already know\n\n\n\n\n\n\n\nBet before we look\n\n\nA card payment: large, made abroad, from a new device. Three numbers in, one number out. What would you do with each of the three before adding them up?"
+    "section": "One neuron",
+    "text": "One neuron\n\n\n\n\n\n\n\nBet\n\n\nLarge payment, abroad, new device. What do you do with each number before adding them up?"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#the-squash-has-a-name-the-activation-function",
-    "href": "lectures/01-how-llms-work.html#the-squash-has-a-name-the-activation-function",
+    "objectID": "lectures/01-how-llms-work.html#the-squash-the-activation-function",
+    "href": "lectures/01-how-llms-work.html#the-squash-the-activation-function",
     "title": "How we will work, and what is inside the machine",
-    "section": "The squash has a name: the activation function",
-    "text": "The squash has a name: the activation function\n\nWeights: how much each input matters. Bias: how trigger-happy the neuron is. Activation: what it passes on."
+    "section": "The squash: the activation function",
+    "text": "The squash: the activation function"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#training-it-by-hand-four-rows-one-rule",
-    "href": "lectures/01-how-llms-work.html#training-it-by-hand-four-rows-one-rule",
+    "objectID": "lectures/01-how-llms-work.html#training-it-by-hand",
+    "href": "lectures/01-how-llms-work.html#training-it-by-hand",
     "title": "How we will work, and what is inside the machine",
-    "section": "Training it by hand: four rows, one rule",
-    "text": "Training it by hand: four rows, one rule\n\n\n\nWrong answer → move each weight a little towards the right one. Right answer → leave it alone. Repeat until nothing changes. That is learning."
+    "section": "Training it by hand",
+    "text": "Training it by hand"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#learning-means-walking-downhill",
-    "href": "lectures/01-how-llms-work.html#learning-means-walking-downhill",
+    "objectID": "lectures/01-how-llms-work.html#how-every-network-learns",
+    "href": "lectures/01-how-llms-work.html#how-every-network-learns",
     "title": "How we will work, and what is inside the machine",
-    "section": "Learning means walking downhill",
-    "text": "Learning means walking downhill\n\n\n\nMeasure how wrong it is. Nudge every weight a little in the direction that makes it less wrong. Repeat. That is training — for four weights, or for a hundred billion."
+    "section": "How every network learns",
+    "text": "How every network learns"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#more-neurons-and-the-line-learns-to-bend",
-    "href": "lectures/01-how-llms-work.html#more-neurons-and-the-line-learns-to-bend",
+    "objectID": "lectures/01-how-llms-work.html#downhill",
+    "href": "lectures/01-how-llms-work.html#downhill",
     "title": "How we will work, and what is inside the machine",
-    "section": "More neurons, and the line learns to bend",
-    "text": "More neurons, and the line learns to bend\n\n\n\nOne neuron draws a line. Five of them, blended, follow a curve. Stack layers of them and the network invents its own features — nobody tells it which."
+    "section": "Downhill",
+    "text": "Downhill"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#more-neurons-the-line-bends",
+    "href": "lectures/01-how-llms-work.html#more-neurons-the-line-bends",
+    "title": "How we will work, and what is inside the machine",
+    "section": "More neurons: the line bends",
+    "text": "More neurons: the line bends"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
     "href": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
     "title": "How we will work, and what is inside the machine",
     "section": "From 4 numbers to 117 billion",
-    "text": "From 4 numbers to 117 billion\n\nThink of the parameters as the knobs on a DJ mixer. Training is finding a setting of billions of knobs that makes the output match the data. — Karpathy"
+    "text": "From 4 numbers to 117 billion"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#an-llm-is-that-network-given-one-job",
-    "href": "lectures/01-how-llms-work.html#an-llm-is-that-network-given-one-job",
+    "objectID": "lectures/01-how-llms-work.html#an-llm-is-that-network-with-one-job",
+    "href": "lectures/01-how-llms-work.html#an-llm-is-that-network-with-one-job",
     "title": "How we will work, and what is inside the machine",
-    "section": "An LLM is that network, given one job",
-    "text": "An LLM is that network, given one job\n\n\n\n\n\n\n\nGuess the next piece of text.\n\n\nThat is the whole training objective. Everything else you have seen a chatbot do is learned on the way to doing that well.\n\n\n\n\n\n\n1 · Pre-training\nAbout 15 trillion tokens of filtered web text. Months of GPUs, done once a year or so. Out comes a base model — an internet document simulator. Ask it a question and it may answer with three more questions.\n\n2 · Post-training\nSwap the data: on the order of 100,000 example conversations, written or checked by people, then reinforcement learning on what gets rated well. Days, not months — every week or so. Out comes an assistant.\n\n3 · What you download\nTwo files: the parameters — billions of numbers — and ~500 lines of code that run them. That is a model.\n\nThe frame is Karpathy’s. When a vendor says “our model”, ask which of the three they actually did. It is almost never the first."
+    "section": "An LLM is that network, with one job",
+    "text": "An LLM is that network, with one job\n\n\n\n\n\n\nGuess the next piece of text. That is the whole job.\n\n\n\n\n\n1 · Pre-training\ntrillions of tokens of web text → a base model that continues documents\n\n2 · Post-training\n~100,000 example conversations, then feedback → an assistant\n\n3 · What you download\nthe parameters, and a short program that runs them"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
     "href": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
     "title": "How we will work, and what is inside the machine",
     "section": "Pre-training is compressing the internet",
-    "text": "Pre-training is compressing the internet\n\n\nLossy, and oddly: it knows Tom Cruise’s mother is Mary Lee Pfeiffer, but not whose son Mary Lee Pfeiffer’s is. You evaluate these models; you cannot read them."
+    "text": "Pre-training is compressing the internet"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#training-an-llm-is-the-same-nudge-a-trillion-times",
-    "href": "lectures/01-how-llms-work.html#training-an-llm-is-the-same-nudge-a-trillion-times",
+    "objectID": "lectures/01-how-llms-work.html#the-same-nudge-trillions-of-times",
+    "href": "lectures/01-how-llms-work.html#the-same-nudge-trillions-of-times",
     "title": "How we will work, and what is inside the machine",
-    "section": "Training an LLM is the same nudge, a trillion times",
-    "text": "Training an LLM is the same nudge, a trillion times\nTake four tokens from the training text — The ECB left rates — and ask for the next one. The right answer is known: it is in the text.\n\n\n\nnext token\nbefore the update\nafter\n\n\n\n\n“unchanged” — the right one\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%\n\n\n…the other 200,000\nthe rest\nslightly less\n\n\n\n\nNudge the knobs so the right token gets slightly more likely. Do it for every token of 15 trillion, many times over. What comes out is a model of how text continues — and nothing else. It has no memory: a fixed expression from input to output."
+    "section": "The same nudge, trillions of times",
+    "text": "The same nudge, trillions of times\nThe ECB left rates → ?\n\n\n\nnext token\nbefore\nafter\n\n\n\n\n“unchanged” ✓\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#follow-one-prediction-through",
-    "href": "lectures/01-how-llms-work.html#follow-one-prediction-through",
+    "objectID": "lectures/01-how-llms-work.html#one-prediction-end-to-end",
+    "href": "lectures/01-how-llms-work.html#one-prediction-end-to-end",
     "title": "How we will work, and what is inside the machine",
-    "section": "Follow one prediction through",
-    "text": "Follow one prediction through"
+    "section": "One prediction, end to end",
+    "text": "One prediction, end to end"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#part-4-what-the-model-reads",
+    "href": "lectures/01-how-llms-work.html#part-4-what-the-model-reads",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Part 4 What the model reads",
+    "text": "Part 4 What the model reads"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#it-never-sees-a-word",
     "href": "lectures/01-how-llms-work.html#it-never-sees-a-word",
     "title": "How we will work, and what is inside the machine",
     "section": "It never sees a word",
-    "text": "It never sees a word\n\n\n\n\n\n\n\nBet before we look\n\n\n\"Il margine è insostenibile\" — four words. How many pieces does the model cut that into? Write a number."
+    "text": "It never sees a word\n\n\n\n\n\n\n\nBet\n\n\n\"Il margine è insostenibile\" — four words. How many pieces?"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#why-pieces-and-not-letters",
     "href": "lectures/01-how-llms-work.html#why-pieces-and-not-letters",
     "title": "How we will work, and what is inside the machine",
     "section": "Why pieces, and not letters?",
-    "text": "Why pieces, and not letters?\nThe network reads a sequence, and shorter sequences are cheaper. So the text is compressed before it goes in:\n\n\n\nthe same 5,000 characters, as\nlength\nalphabet\n\n\n\n\nbits\n40,000\n2 symbols\n\n\nbytes\n5,000\n256 symbols\n\n\nGPT-4 tokens\n~1,300\n100,277 symbols\n\n\n\nA tokenizer is learned by merging the pairs that occur most often, again and again. It learns the language of its training data — which is why your language costs more. (Karpathy’s example.)"
+    "text": "Why pieces, and not letters?\n\n\n\nthe same 5,000 characters, as\nlength\nalphabet\n\n\n\n\nbits\n40,000\n2\n\n\nbytes\n5,000\n256\n\n\ntokens\n~1,300\n~100,000"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#the-same-sentence-twice-one-tokenizer-apart",
-    "href": "lectures/01-how-llms-work.html#the-same-sentence-twice-one-tokenizer-apart",
+    "objectID": "lectures/01-how-llms-work.html#how-a-tokenizer-is-learned",
+    "href": "lectures/01-how-llms-work.html#how-a-tokenizer-is-learned",
     "title": "How we will work, and what is inside the machine",
-    "section": "The same sentence, twice, one tokenizer apart",
-    "text": "The same sentence, twice, one tokenizer apart\n\n\n\nSame model family, same sentence. 33 pieces became 18."
+    "section": "How a tokenizer is learned",
+    "text": "How a tokenizer is learned\nMerge the most frequent pair. Repeat.\n\n\n\nstep\ntext\nnew symbol\n\n\n\n\nstart\naaabdaaabac\n\n\n\n1\nZabdZabac\nZ = aa\n\n\n2\nZYdZYac\nY = ab\n\n\n3\nXdXac\nX = ZY\n\n\n\n\n11 symbols → 5. Train it on English, and it learns English pieces."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-same-sentence-twice",
+    "href": "lectures/01-how-llms-work.html#the-same-sentence-twice",
+    "title": "How we will work, and what is inside the machine",
+    "section": "The same sentence, twice",
+    "text": "The same sentence, twice"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
+    "href": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Much of the weirdness is tokenization",
+    "text": "Much of the weirdness is tokenization\n\n\n\nit struggles with\nbecause\n\n\n\n\nspelling a word backwards\nthe word is one token, not letters\n\n\nRussian, Italian\nmore, smaller pieces\n\n\narithmetic\n1,234,567.89 is 7 arbitrary pieces\n\n\negg · Egg · egg · EGG\nfour different tokens"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#how-the-tokens-talk-to-each-other-attention",
     "href": "lectures/01-how-llms-work.html#how-the-tokens-talk-to-each-other-attention",
     "title": "How we will work, and what is inside the machine",
     "section": "How the tokens talk to each other: attention",
-    "text": "How the tokens talk to each other: attention\n\n\n\n\n\n\n\nBet before we look\n\n\n“The bank raised rates because it feared inflation.” — how does the model know what it refers to?"
+    "text": "How the tokens talk to each other: attention\n\n\n\n\n\n\n\nBet\n\n\n“The bank raised rates because it feared inflation.” — what is it?\n\n\n\n\n\n\n\n\n\n\nVaswani et al., Attention Is All You Need, 2017 — the paper behind every model since."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#everything-it-knows-every-time",
@@ -2009,88 +2023,81 @@
     "text": "Everything it knows, every time"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#which-disposes-of-claim-one",
-    "href": "lectures/01-how-llms-work.html#which-disposes-of-claim-one",
+    "objectID": "lectures/01-how-llms-work.html#part-5-a-real-release-taken-apart",
+    "href": "lectures/01-how-llms-work.html#part-5-a-real-release-taken-apart",
     "title": "How we will work, and what is inside the machine",
-    "section": "Which disposes of claim one",
-    "text": "Which disposes of claim one"
+    "section": "Part 5 A real release, taken apart",
+    "text": "Part 5 A real release, taken apart"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#the-model-remembers-nothing.-something-else-is-storing-and-re-sending.",
-    "href": "lectures/01-how-llms-work.html#the-model-remembers-nothing.-something-else-is-storing-and-re-sending.",
+    "objectID": "lectures/01-how-llms-work.html#openai-gpt-oss-august-2025",
+    "href": "lectures/01-how-llms-work.html#openai-gpt-oss-august-2025",
     "title": "How we will work, and what is inside the machine",
-    "section": "The model remembers nothing. Something else is storing and re-sending.",
-    "text": "The model remembers nothing. Something else is storing and re-sending.\nThat something is a database, it has an owner, and every turn you pay to send it again. “It remembers” is not an AI capability. It is an infrastructure invoice."
+    "section": "OpenAI, gpt-oss, August 2025",
+    "text": "OpenAI, gpt-oss, August 2025\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nSpec table: context length 128k.\n\nCircle every word you can now explain."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#and-claim-two",
-    "href": "lectures/01-how-llms-work.html#and-claim-two",
+    "objectID": "lectures/01-how-llms-work.html#every-word-taken-apart",
+    "href": "lectures/01-how-llms-work.html#every-word-taken-apart",
     "title": "How we will work, and what is inside the machine",
-    "section": "And claim two",
-    "text": "And claim two\n“It learns from your corrections in real time.”\nYou have just seen what learning is: weights nudged downhill, over trillions of tokens, for months. When you call the model the weights are frozen. Nothing you type changes them.\n\nWhat can honestly be meant is one of two things: your correction was written to a store and re-sent next time (fast, cheap, and not learning), or it entered a retraining queue (real, and measured in weeks).\nAsk which. The answer tells you whether you are buying a model or a database. Claim three — the 99.2% — needs a base rate, and that is week 3."
+    "section": "Every word, taken apart",
+    "text": "Every word, taken apart\n\n\n\n\n\n\n\nin the release\nwhat it is\n\n\n\n\nTransformer\nattention + neurons, stacked — the block you just saw\n\n\n117B total parameters\nthe numbers learned in training\n\n\nmixture-of-experts\nmany specialist sub-networks; only a few run per token\n\n\n5.1B active per token\nthe cost of a small model, the capacity of a big one\n\n\ntokenized, o200k_harmony\nthe ~200,000-piece vocabulary\n\n\npost-trained\nbase model → assistant\n\n\nsupervised fine-tuning\ntrained on example conversations\n\n\nRL\nreinforcement learning: rewarded for good answers\n\n\ncontext length 128k\nthe size of the box\n\n\nquantized, MXFP4, 80GB\neach number stored in 4 bits — fits on one GPU\n\n\nopen-weight, Apache 2.0\ndownload it, run it on your own servers, use it commercially"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#if-you-want-to-go-further-this-week",
-    "href": "lectures/01-how-llms-work.html#if-you-want-to-go-further-this-week",
+    "objectID": "lectures/01-how-llms-work.html#now-three-sentences-from-three-pitch-decks",
+    "href": "lectures/01-how-llms-work.html#now-three-sentences-from-three-pitch-decks",
     "title": "How we will work, and what is inside the machine",
-    "section": "If you want to go further this week",
-    "text": "If you want to go further this week\n\nAndrej Karpathy, Deep Dive into LLMs like ChatGPT (YouTube, 2025) — the first hour covers everything we did today, slower and better drawn. Stop at inference.\nAndrej Karpathy, Intro to Large Language Models (YouTube, 2023) — one hour, and the source of the “two files” and “compressing the internet” pictures.\nLLM Visualization, bbycroft.net/llm — a real small model in 3D, and you can follow one token through every block.\nYour glossary for this course."
+    "section": "Now, three sentences from three pitch decks",
+    "text": "Now, three sentences from three pitch decks\n\n\n\n\n\n\n\nWhich are impossible? Which is unanswerable?\n\n\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#part-6-before-you-go",
-    "href": "lectures/01-how-llms-work.html#part-6-before-you-go",
+    "objectID": "lectures/01-how-llms-work.html#one-the-model-remembers-nothing",
+    "href": "lectures/01-how-llms-work.html#one-the-model-remembers-nothing",
     "title": "How we will work, and what is inside the machine",
-    "section": "Part 6 Before you go",
-    "text": "Part 6 Before you go"
+    "section": "One: the model remembers nothing",
+    "text": "One: the model remembers nothing\nSomething else stores the history and re-sends it, every turn."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#between-wednesdays",
-    "href": "lectures/01-how-llms-work.html#between-wednesdays",
+    "objectID": "lectures/01-how-llms-work.html#two-the-weights-are-frozen-when-you-call-it",
+    "href": "lectures/01-how-llms-work.html#two-the-weights-are-frozen-when-you-call-it",
     "title": "How we will work, and what is inside the machine",
-    "section": "Between Wednesdays",
-    "text": "Between Wednesdays\n\n\n\n\n\n\n\n\n\nquick questions\nWhatsApp or Telegram — whichever you prefer. I answer within one working day\n\n\nanything that counts\nin your repository, never in chat\n\n\nWed 11 November\nI may be in Milan that day — we agree a make-up date now\n\n\nif you miss a session\ntell me before, and the notebook is on the site the same day\n\n\n\n\n\n\n\n\n\nScan it now — WhatsApp.Telegram: tell me your handle."
+    "section": "Two: the weights are frozen when you call it",
+    "text": "Two: the weights are frozen when you call it\nA correction goes into a database, or into a retraining queue. Ask which."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#three-accurate-compared-with-what",
+    "href": "lectures/01-how-llms-work.html#three-accurate-compared-with-what",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Three: accurate compared with what?",
+    "text": "Three: accurate compared with what?\nThat needs a base rate. Week 3."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#close",
     "href": "lectures/01-how-llms-work.html#close",
     "title": "How we will work, and what is inside the machine",
     "section": "Close",
-    "text": "Close\nHomework 1 — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.\nDue Tuesday 29 September, 23:59, in your repository.\n\nBefore you leave: three lines at the bottom of the notebook, in your words — then commit.\nNext week: we read a real model release line by line, the assistant writes the code and you decide whether it is true — and you train your first tokenizer."
+    "text": "Close\n\n\nHomework 1, due Tue 29 Sep:\n\nyour starting point, in writing\nthe question you want answered by December\nthe tokenizer on five texts of yours\nten glossary words, in your words\nGitHub repo, via the setup page\n\nQuestions: WhatsApp or Telegram."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#spare-for-next-week-or-if-there-is-time",
-    "href": "lectures/01-how-llms-work.html#spare-for-next-week-or-if-there-is-time",
+    "objectID": "lectures/01-how-llms-work.html#spare-if-there-is-time",
+    "href": "lectures/01-how-llms-work.html#spare-if-there-is-time",
     "title": "How we will work, and what is inside the machine",
-    "section": "Spare For next week, or if there is time",
-    "text": "Spare For next week, or if there is time"
+    "section": "Spare If there is time",
+    "text": "Spare If there is time"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#take-it-apart-yourself",
     "href": "lectures/01-how-llms-work.html#take-it-apart-yourself",
     "title": "How we will work, and what is inside the machine",
     "section": "Take it apart yourself",
-    "text": "Take it apart yourself\nLAB · session.ipynb § B1 — tiktoken\nType your own text and watch the count:\n\nthe same sentence in English, then Italian, then Russian\na number: 1,234,567.89 — count the pieces before you look\nyour own surname, then a listed company, then a company founded last year\n\nThen tell me: which of those is the model least equipped to reason about, and why?"
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#from-openais-release-of-gpt-oss-august-2025",
-    "href": "lectures/01-how-llms-work.html#from-openais-release-of-gpt-oss-august-2025",
-    "title": "How we will work, and what is inside the machine",
-    "section": "From OpenAI’s release of gpt-oss, August 2025",
-    "text": "From OpenAI’s release of gpt-oss, August 2025\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nAnd from their spec table: context length 128k.\n\nCircle every word you could now explain to your old team in one sentence. Then we take the rest, one at a time."
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#what-each-one-means-and-the-question-it-answers",
-    "href": "lectures/01-how-llms-work.html#what-each-one-means-and-the-question-it-answers",
-    "title": "How we will work, and what is inside the machine",
-    "section": "What each one means, and the question it answers",
-    "text": "What each one means, and the question it answers\n\n\n\n\n\n\n\n\nin the release\nwhat it is\nwhy you care\n\n\n\n\nTransformer\nthe block you saw: attention + neurons, stacked\nevery current LLM is one\n\n\n117B total parameters\nthe weights — the numbers learned in training\nroughly how much it can hold\n\n\nmixture-of-experts, 5.1B active\nonly a few specialist sub-networks run per token\nbig model, cost of a small one\n\n\no200k_harmony tokenizer\nthe ~200,000-piece vocabulary\nthe price of your language\n\n\npost-trained: SFT + RL\nstep 2 — from base model to assistant\nwhere its manners come from\n\n\ncontext length 128k\nthe size of the box\nhow much you can show it at once\n\n\nquantized, 80GB\neach weight stored in fewer bits\nruns on one GPU instead of a rack\n\n\nopen-weight, Apache 2.0\nyou download the weights and may use them commercially\nnothing leaves your servers\n\n\n\nEvery word is in the glossary, with the week it becomes something you compute."
+    "text": "Take it apart yourself\nLAB · session.ipynb § B1 — tiktoken\n\none sentence in English, Italian, Russian\n1,234,567.89\nyour surname, a listed company, a start-up"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#a-taste-of-defi",
     "href": "lectures/01-how-llms-work.html#a-taste-of-defi",
     "title": "How we will work, and what is inside the machine",
     "section": "A taste of DeFi",
-    "text": "A taste of DeFi\n\n\n\n\n\n\n\nBet before we compute\n\n\nA pool holds 10 ETH and 30,000 USDC, so the quoted price is 3,000 USDC per ETH. You buy 1 ETH from it. What do you pay?\n\n\n\n\n\nThe pool keeps one rule: ETH × USDC stays constant. 10 × 30,000 = 300,000.\nAfter your trade it holds 9 ETH, so it must hold 300,000 ÷ 9 = 33,333 USDC. You paid 3,333 — 11% above the price on the screen.\nAnd that is before any fee: the price moved because you traded. In week 8 you simulate what it does to the people who fund the pool.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "A taste of DeFi\n\n\n\n\n\n\n\nBet\n\n\nA pool holds 10 ETH and 30,000 USDC — 3,000 per ETH on screen. You buy 1 ETH. What do you pay?\n\n\n\n\n\nETH × USDC stays constant: 10 × 30,000 = 300,000.\n9 ETH left → 300,000 ÷ 9 = 33,333 USDC → you paid 3,333, 11% above the screen.\n\n\n\nAI for Business & FinTech · ESE Florence"
   },
   {
     "objectID": "lectures/03-one-problem.html#where-we-are",
