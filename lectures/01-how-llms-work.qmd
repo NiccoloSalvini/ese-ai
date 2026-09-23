@@ -224,7 +224,7 @@ What can honestly be meant is one of two things: your correction was **written t
 
 ## The words we will use
 
-About sixty terms carry this course — from *token* to *walk-forward* to *impermanent loss*. They are on one page, each with the week where it becomes something you compute.
+About seventy terms carry this course — from *token* to *walk-forward* to *impermanent loss*. They are on one page, each with the week where it becomes something you compute.
 
 **[→ Glossary](../glossary.qmd)**
 
