@@ -9,7 +9,11 @@
 > The spoken draft for today is `speech.md`. The sections below the new plan are kept as the
 > script for the blocks that moved.
 
-## Session plan (revised, v2 — 23 Sep 08:50)
+## Session plan (revised, v3 — 23 Sep 09:15) — today runs 2 h: 50' + 10' break + 50'
+
+Agenda on the title slide is authoritative: 10:00 me+him · 10:25 course · 10:43 notebook · 10:50 break · 11:00 neuron→LLM (adds Karpathy's 'compressing the internet' and bits→bytes→tokens) · 11:35 tokens/attention/context · 11:46 close. Release reading, tokens lab and DeFi are in the Spare section.
+
+Older v2 plan, for reference:
 
 | Time | Block | Mode |
 |---|---|---|

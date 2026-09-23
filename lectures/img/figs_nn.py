@@ -129,3 +129,35 @@ def activations():
     svg("activations.svg", 960, 380, b, "three activation functions: what a neuron does to its sum before passing it on (input from &#8722;4 to 4)")
 
 activations()
+
+# ------------------------------------------------------------------ Karpathy: training is compressing the internet
+def compress():
+    text_tb, gpus, days, usd, params_gb = 10, 6000, 12, 2e6, 140
+    ratio = text_tb * 1000 / params_gb
+    b = []
+    boxes = [(30, "~10 TB of text", "a chunk of the internet", INK),
+             (350, f"{gpus:,} GPUs &#215; {days} days", f"about ${usd/1e6:.0f} million of compute", NAVY),
+             (670, f"a {params_gb} GB file", "the parameters", RED)]
+    for x, big, small, col in boxes:
+        b += [f'  <rect x="{x}" y="70" width="260" height="120" fill="#f7f5ef" stroke="{col}" stroke-width="2"/>',
+              f'  <text x="{x+130}" y="125" font-size="24" font-weight="700" text-anchor="middle" fill="{col}">{big}</text>',
+              f'  <text x="{x+130}" y="155" font-size="14" text-anchor="middle" fill="{INK}">{small}</text>']
+    for x in (290, 610):
+        b += [f'  <line x1="{x+6}" y1="130" x2="{x+50}" y2="130" stroke="{INK}" stroke-width="2"/>',
+              f'  <polygon points="{x+50},123 {x+60},130 {x+50},137" fill="{INK}"/>']
+    b += [f'  <rect x="670" y="220" width="125" height="70" fill="#fff" stroke="{RED}" stroke-width="2"/>',
+          f'  <text x="732" y="252" font-size="15" font-weight="700" text-anchor="middle" fill="{RED}">parameters</text>',
+          f'  <text x="732" y="274" font-size="13" text-anchor="middle" fill="{INK}">{params_gb} GB</text>',
+          f'  <rect x="805" y="220" width="125" height="70" fill="#fff" stroke="{INK}" stroke-width="2"/>',
+          f'  <text x="867" y="252" font-size="15" font-weight="700" text-anchor="middle" fill="{INK}">run.c</text>',
+          f'  <text x="867" y="274" font-size="13" text-anchor="middle" fill="{INK}">~500 lines of code</text>',
+          f'  <text x="800" y="312" font-size="13" text-anchor="middle" fill="{MUTED}">what you download: two files</text>',
+          f'  <text x="30" y="240" font-size="17" fill="{INK}">About <tspan font-weight="700" fill="{RED}">{round(ratio,-1):.0f}&#215; smaller</tspan> than the text it was trained on.</text>',
+          f'  <text x="30" y="266" font-size="17" fill="{INK}">So it is a <tspan font-weight="700">lossy zip file</tspan> of the internet:</text>',
+          f'  <text x="30" y="292" font-size="17" fill="{INK}">the gist is in there, the exact facts not always.</text>',
+          f'  <line x1="30" y1="338" x2="930" y2="338" stroke="{RULE}"/>',
+          f'  <text x="30" y="362" font-size="14" fill="{MUTED}">numbers for Llama 2 70B (2023), from Andrej Karpathy, "Intro to Large Language Models" &#8212; today&#8217;s frontier models are far bigger</text>']
+    svg("compress-internet.svg", 960, 375, b, "pre-training, as Karpathy draws it: training is compressing the internet")
+    return ratio
+
+print("compression ratio", round(compress()))

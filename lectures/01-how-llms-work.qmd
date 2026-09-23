@@ -10,12 +10,12 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 | | |
 |---|---|
 | **10:00** | who I am, and who you are |
-| **10:35** | what this course is for, and how we shape it around you |
-| **10:55** | open your notebook — one click |
-| **11:05** | break |
-| **11:15** | from one neuron to an LLM, and one token’s journey through it |
-| **12:40** | read a real model release like an engineer |
-| **12:52** | between Wednesdays, homework, three lines in your own words |
+| **10:25** | what this course is for, and how we shape it around you |
+| **10:43** | open your notebook — one click |
+| **10:50** | break |
+| **11:00** | from one neuron to an LLM |
+| **11:35** | what the model actually reads: tokens, attention, the box |
+| **11:46** | between Wednesdays, and homework |
 
 [Thirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one.]{.muted}
 
@@ -144,7 +144,7 @@ The best way to understand the pieces is to build them. A few pieces a week, sma
 3. *"**99.2% accuracy** on invoice extraction."*
 :::
 
-You have heard a version of all three in your work. **Two are impossible as stated. One is unanswerable as written.** Write down which is which — by one o'clock you can answer two of them yourself.
+You have heard a version of all three in your work. **Two are impossible as stated. One is unanswerable as written.** Write down which is which — before you leave you can answer two of them yourself.
 
 ## Three ways to write the same decision
 
@@ -210,21 +210,29 @@ That is the whole training objective. Everything else you have seen a chatbot do
 ::: {.column width="33%"}
 **1 · Pre-training**
 
-About 15 trillion tokens of filtered web text — ~44 TB. Months of GPUs. Out comes a **base model**: it continues documents. Ask it a question and it may answer with three more questions.
+About 15 trillion tokens of filtered web text. Months of GPUs, done **once a year or so**. Out comes a **base model** — an *internet document simulator*. Ask it a question and it may answer with three more questions.
 :::
 ::: {.column width="33%"}
 **2 · Post-training**
 
-Many thousands of example conversations, written or checked by people. Then reinforcement learning on what gets rated well. Out comes an **assistant**.
+Swap the data: on the order of 100,000 example conversations, written or checked by people, then reinforcement learning on what gets rated well. Days, not months — **every week or so**. Out comes an **assistant**.
 :::
 ::: {.column width="33%"}
 **3 · What you download**
 
-Two files: the **weights** — billions of numbers — and a few hundred lines of code that run them. That is a model.
+Two files: the **parameters** — billions of numbers — and ~500 lines of code that run them. That is a model.
 :::
 ::::
 
 [The frame is Karpathy's. When a vendor says "our model", ask which of the three they actually did. It is almost never the first.]{.muted}
+
+## Pre-training is compressing the internet
+
+![](img/compress-internet.svg){fig-align="center" width="95%"}
+
+. . .
+
+[Lossy, and oddly: it knows Tom Cruise's mother is Mary Lee Pfeiffer, but not whose son Mary Lee Pfeiffer's is. You evaluate these models; you cannot read them.]{.red}
 
 ## Training an LLM is the same nudge, a trillion times
 
@@ -255,23 +263,23 @@ Take four tokens from the training text — `The ECB left rates` — and ask for
 
 ![](img/tokens-pipeline.svg){fig-align="center" width="95%"}
 
+## Why pieces, and not letters?
+
+The network reads a sequence, and **shorter sequences are cheaper**. So the text is compressed before it goes in:
+
+| the same 5,000 characters, as | length | alphabet |
+|---|---|---|
+| bits | 40,000 | 2 symbols |
+| bytes | 5,000 | 256 symbols |
+| GPT-4 tokens | **~1,300** | **100,277 symbols** |
+
+[A tokenizer is learned by merging the pairs that occur most often, again and again. It learns the language of its training data — which is why *your* language costs more. (Karpathy's example.)]{.muted}
+
 ## The same sentence, twice, one tokenizer apart {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_tokens_poster.png"><source src="media/w01_tokens.mp4" type="video/mp4"></video>
 
 Same model family, same sentence. 33 pieces became 18.
-
-## Take it apart yourself {.lab background-color="#2471a3"}
-
-[LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
-
-Type your own text and watch the count:
-
-1. the same sentence in **English**, then **Italian**, then **Russian**
-2. a **number**: `1,234,567.89` — count the pieces before you look
-3. **your own surname**, then a listed company, then a company founded last year
-
-[Then tell me: which of those is the model **least** equipped to reason about, and why?]{.red}
 
 ## How the tokens talk to each other: **attention**
 
@@ -305,38 +313,10 @@ What can honestly be meant is one of two things: your correction was **written t
 
 [Ask which. The answer tells you whether you are buying a model or a database. Claim three — the 99.2% — needs a base rate, and that is week 3.]{.red}
 
-## [Part 5]{.section-kicker} Read a release like an engineer {.section-slide background-color="#AF1F25"}
-
-## From OpenAI's release of gpt-oss, August 2025
-
-::: {style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef"}
-"Each model is a **Transformer** which leverages **mixture-of-experts** to reduce the number of **active parameters** needed to process input. gpt-oss-120b activates **5.1B parameters per token** … The models have **117b** and 21b **total parameters** …
-
-We **tokenized** the data using … **o200k_harmony** … The models were **post-trained** … including a **supervised fine-tuning** stage and a high-compute **RL** stage. … The weights … are freely available … and come natively **quantized** in MXFP4. This allows for the gpt-oss-120B model to run within **80GB of memory** … Available under the flexible **Apache 2.0** license."
-
-[And from their spec table: **context length 128k**.]{style="color:#7a7f85"}
-:::
-
-[Circle every word you could now explain to your old team in one sentence. Then we take the rest, one at a time.]{.red}
-
-## What each one means, and the question it answers
-
-| in the release | what it is | why you care |
-|---|---|---|
-| **Transformer** | the block you saw: attention + neurons, stacked | every current LLM is one |
-| **117B total parameters** | the weights — the numbers learned in training | roughly how much it can hold |
-| **mixture-of-experts, 5.1B active** | only a few specialist sub-networks run per token | big model, cost of a small one |
-| **o200k_harmony tokenizer** | the ~200,000-piece vocabulary | the price of *your* language |
-| **post-trained: SFT + RL** | step 2 — from base model to assistant | where its manners come from |
-| **context length 128k** | the size of the box | how much you can show it at once |
-| **quantized, 80GB** | each weight stored in fewer bits | runs on one GPU instead of a rack |
-| **open-weight, Apache 2.0** | you download the weights and may use them commercially | nothing leaves your servers |
-
-[Every word is in the [glossary](../glossary.qmd), with the week it becomes something you compute.]{.muted}
-
 ## If you want to go further this week
 
 - **Andrej Karpathy, *Deep Dive into LLMs like ChatGPT*** (YouTube, 2025) — the first hour covers everything we did today, slower and better drawn. Stop at *inference*.
+- **Andrej Karpathy, *Intro to Large Language Models*** (YouTube, 2023) — one hour, and the source of the "two files" and "compressing the internet" pictures.
 - **LLM Visualization**, bbycroft.net/llm — a real small model in 3D, and you can follow one token through every block.
 - Your **[glossary](../glossary.qmd)** for this course.
 
@@ -372,9 +352,50 @@ Due Tuesday 29 September, 23:59, in your repository.
 
 **Before you leave:** three lines at the bottom of the notebook, in your words — then commit.
 
-[Next week: the assistant writes the code, you decide whether it is true — and you train your first tokenizer.]{.muted}
+[Next week: we read a real model release line by line, the assistant writes the code and you decide whether it is true — and you train your first tokenizer.]{.muted}
 
-## Spare, if there is time: a taste of DeFi
+## [Spare]{.section-kicker} For next week, or if there is time {.section-slide background-color="#7a7f85"}
+
+## Take it apart yourself {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
+
+Type your own text and watch the count:
+
+1. the same sentence in **English**, then **Italian**, then **Russian**
+2. a **number**: `1,234,567.89` — count the pieces before you look
+3. **your own surname**, then a listed company, then a company founded last year
+
+[Then tell me: which of those is the model **least** equipped to reason about, and why?]{.red}
+
+## From OpenAI's release of gpt-oss, August 2025
+
+::: {style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef"}
+"Each model is a **Transformer** which leverages **mixture-of-experts** to reduce the number of **active parameters** needed to process input. gpt-oss-120b activates **5.1B parameters per token** … The models have **117b** and 21b **total parameters** …
+
+We **tokenized** the data using … **o200k_harmony** … The models were **post-trained** … including a **supervised fine-tuning** stage and a high-compute **RL** stage. … The weights … are freely available … and come natively **quantized** in MXFP4. This allows for the gpt-oss-120B model to run within **80GB of memory** … Available under the flexible **Apache 2.0** license."
+
+[And from their spec table: **context length 128k**.]{style="color:#7a7f85"}
+:::
+
+[Circle every word you could now explain to your old team in one sentence. Then we take the rest, one at a time.]{.red}
+
+## What each one means, and the question it answers
+
+| in the release | what it is | why you care |
+|---|---|---|
+| **Transformer** | the block you saw: attention + neurons, stacked | every current LLM is one |
+| **117B total parameters** | the weights — the numbers learned in training | roughly how much it can hold |
+| **mixture-of-experts, 5.1B active** | only a few specialist sub-networks run per token | big model, cost of a small one |
+| **o200k_harmony tokenizer** | the ~200,000-piece vocabulary | the price of *your* language |
+| **post-trained: SFT + RL** | step 2 — from base model to assistant | where its manners come from |
+| **context length 128k** | the size of the box | how much you can show it at once |
+| **quantized, 80GB** | each weight stored in fewer bits | runs on one GPU instead of a rack |
+| **open-weight, Apache 2.0** | you download the weights and may use them commercially | nothing leaves your servers |
+
+[Every word is in the [glossary](../glossary.qmd), with the week it becomes something you compute.]{.muted}
+
+## A taste of DeFi
 
 ::: {.callout-important title="Bet before we compute"}
 A pool holds **10 ETH** and **30,000 USDC**, so the quoted price is 3,000 USDC per ETH. You buy **1 ETH** from it. What do you pay?
