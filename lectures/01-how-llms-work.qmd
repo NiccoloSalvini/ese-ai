@@ -15,8 +15,8 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 | **10:50** | break |
 | **11:00** | from one neuron to an LLM |
 | **11:30** | what the model reads |
-| **11:40** | a real model release, taken apart |
-| **11:50** | close |
+| **11:40** | a real model release, taken apart, word by word |
+| **11:55** | close |
 
 ## [Part 1]{.section-kicker} Two people, one room {.section-slide background-color="#AF1F25"}
 
@@ -305,26 +305,6 @@ We **tokenized** the data using … **o200k_harmony** … The models were **post
 | **quantized, MXFP4, 80GB** | each number stored in 4 bits — fits on one GPU |
 | **open-weight, Apache 2.0** | download it, run it on your own servers, use it commercially |
 
-## Now, three sentences from three pitch decks
-
-::: {.callout-important title="Which are impossible? Which is unanswerable?"}
-1. *"Our assistant **remembers** every conversation it has had with your customers."*
-2. *"It **learns from your corrections in real time**."*
-3. *"**99.2% accuracy** on invoice extraction."*
-:::
-
-## One: the model remembers nothing {.statement}
-
-[Something else stores the history and re-sends it, every turn.]{.muted}
-
-## Two: the weights are frozen when you call it {.statement}
-
-[A correction goes into a database, or into a retraining queue. Ask which.]{.muted}
-
-## Three: accurate compared with what? {.statement}
-
-[That needs a base rate. Week 3.]{.muted}
-
 ## Close
 
 :::: {.columns}
@@ -335,6 +315,7 @@ We **tokenized** the data using … **o200k_harmony** … The models were **post
 - the question you want answered by December
 - the tokenizer on five texts of yours
 - ten glossary words, in your words
+- three pitch-deck sentences to take apart
 - GitHub repo, via the [setup page](../setup.qmd)
 
 Questions: WhatsApp or Telegram.

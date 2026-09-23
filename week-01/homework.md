@@ -15,6 +15,13 @@ This is a lighter week on purpose. The three-asset notebook we would have starte
 2. `tokens.ipynb` — the tokenizer cell from the session notebook (§ B1), run on **five texts of your choice**: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: *which text surprised you, and what would that mean for the cost of a real project you know?*
 3. `glossary.md` — **ten terms** from the [course glossary](../glossary.qmd), at least three from *Crypto and DeFi*. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.
 
+4. `pitch.md` — **three sentences from three pitch decks.** You will meet a version of each in a data room:
+   1. *"Our assistant **remembers** every conversation it has had with your customers."*
+   2. *"It **learns from your corrections in real time**."*
+   3. *"**99.2% accuracy** on invoice extraction."*
+
+   Two are impossible as stated, one is unanswerable as written. For each: which is it, which part of the machine from today (weights, training, context window, tokens) it is really talking about, and **the one question** you would ask the vendor. Half a page in total.
+
 ## Constraints
 - Use an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.
 - The README and the glossary are in **your** words. An assistant may correct the English; it may not write the content.
@@ -29,6 +36,7 @@ This is a lighter week on purpose. The three-asset notebook we would have starte
 - [ ] `tokens.ipynb` runs with `Runtime ▸ Restart and run all`.
 - [ ] The question in the README names a user and a decision.
 - [ ] Three of the ten glossary terms are from Crypto and DeFi.
+- [ ] `pitch.md` names one question per sentence.
 
 ## How this feeds the capstone
 The question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change.
