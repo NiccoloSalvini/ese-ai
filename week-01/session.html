@@ -205,11 +205,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>How to use the AI assistant in this course: ask it to write code, run the code, read the error or the output, ask again, and <strong>verify against something you already know</strong> (a price you can look up, a number you can compute by hand, a date you remember).</p>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="08366805" class="cell">
+<div id="6d01931a" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install what is not already in Colab. (~30 s)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance tiktoken google<span class="op">-</span>genai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d31ce287" class="cell">
+<div id="8f922a1c" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys, platform, pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np, matplotlib</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python"</span>, sys.version.split()[<span class="dv">0</span>], <span class="st">"| pandas"</span>, pd.__version__, <span class="st">"| numpy"</span>, np.__version__)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -220,124 +220,150 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Running in Colab:"</span>, IN_COLAB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Make it yours:</strong> <code>File ▸ Save a copy in Drive</code>. From now on you work on your copy.</p>
-<p><strong>At home, once</strong> (ten minutes, see the Setup page on the course site): create a private GitHub repository <code>ese-ai-fintech</code>, add the tutor as a collaborator, and from then on use <code>File ▸ Save a copy in GitHub</code>, path <code>week-NN/…</code>. The commit history is your evidence of work. Homework goes in <code>week-01/hw/</code>.</p>
+<p><strong>Once:</strong> in Google Drive, create a folder <code>ese-ai-fintech</code>, share it with the tutor, and save every notebook and homework there, one sub-folder per week.</p>
 <p><strong>API key</strong> (optional today, needed from week 4): create a free key at Google AI Studio, then in Colab open the 🔑 <em>Secrets</em> panel on the left, add <code>GEMINI_API_KEY</code>, and enable notebook access. Never paste a key into a cell.</p>
 </section>
 <section id="today-from-one-neuron-to-an-llm" class="level2">
 <h2 class="anchored" data-anchor-id="today-from-one-neuron-to-an-llm">Today — from one neuron to an LLM</h2>
-<section id="one-neuron" class="level3">
-<h3 class="anchored" data-anchor-id="one-neuron">1. One neuron</h3>
-<p><strong>Bet first.</strong> A card payment: large, made abroad, from a new device. Three numbers in, one number out. Write down what you would do with each number before adding them up.</p>
-<div id="5c52378e" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<p>One question from start to finish: <strong>is this card payment fraud?</strong> Each section adds one piece. The numbers are the same as on the slides.</p>
+<section id="four-past-payments" class="level3">
+<h3 class="anchored" data-anchor-id="four-past-payments">1. Four past payments</h3>
+<div id="bc58a127" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> {<span class="st">"log amount (scaled)"</span>: <span class="fl">1.2</span>, <span class="st">"paid abroad"</span>: <span class="dv">1</span>, <span class="st">"new device"</span>: <span class="dv">1</span>}   <span class="co"># the inputs</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="st">"log amount (scaled)"</span>: <span class="fl">0.6</span>, <span class="st">"paid abroad"</span>: <span class="fl">1.1</span>, <span class="st">"new device"</span>: <span class="fl">1.4</span>}   <span class="co"># the weights: what it learns</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="op">-</span><span class="fl">2.0</span>                                                                  <span class="co"># the bias</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="bu">sum</span>(x[k] <span class="op">*</span> w[k] <span class="cf">for</span> k <span class="kw">in</span> x) <span class="op">+</span> b        <span class="co"># multiply, add</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> math.exp(<span class="op">-</span>z))                 <span class="co"># squash to 0-1 (sigmoid)</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"sum = </span><span class="sc">{</span>z<span class="sc">:.2f}</span><span class="ss">   -&gt;   chance of fraud = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>payments <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"large"</span>:  [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],      <span class="co"># over EUR 1,000?</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abroad"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],      <span class="co"># paid abroad?</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fraud"</span>:  [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>[<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>payments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Try:</strong> set <code>paid abroad</code> to 0. Then make <code>new device</code> weigh 3.0. What moves, and by how much?</p>
 </section>
-<section id="the-squash-activation-functions" class="level3">
-<h3 class="anchored" data-anchor-id="the-squash-activation-functions">2. The squash: activation functions</h3>
-<div id="2f672d8d" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, matplotlib.pyplot <span class="im">as</span> plt</span>
+<section id="a-first-guess-as-one-neuron" class="level3">
+<h3 class="anchored" data-anchor-id="a-first-guess-as-one-neuron">2. A first guess, as one neuron</h3>
+<p><strong>Bet first:</strong> weight 1 on <code>large</code>, 0 on <code>abroad</code>, bias −1, block if the score is above 0. Which payments does it block?</p>
+<div id="0ac8240d" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>w_large, w_abroad, bias <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">1.0</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">200</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">3</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, (name, f) <span class="kw">in</span> <span class="bu">zip</span>(ax, [(<span class="st">"sigmoid"</span>, <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span>z))), (<span class="st">"tanh"</span>, np.tanh(z)), (<span class="st">"ReLU"</span>, np.maximum(<span class="dv">0</span>, z))]):</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    a.plot(z, f, lw<span class="op">=</span><span class="dv">3</span>)<span class="op">;</span> a.set_title(name)<span class="op">;</span> a.axhline(<span class="dv">0</span>, c<span class="op">=</span><span class="st">"grey"</span>, lw<span class="op">=</span><span class="fl">.5</span>)<span class="op">;</span> a.axvline(<span class="dv">0</span>, c<span class="op">=</span><span class="st">"grey"</span>, lw<span class="op">=</span><span class="fl">.5</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"score"</span>] <span class="op">=</span> w_large <span class="op">*</span> payments.large <span class="op">+</span> w_abroad <span class="op">*</span> payments.abroad <span class="op">+</span> bias</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"block"</span>] <span class="op">=</span> (payments.score <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>payments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="training-it-by-hand-the-perceptron-learns-and" class="level3">
-<h3 class="anchored" data-anchor-id="training-it-by-hand-the-perceptron-learns-and">3. Training it by hand: the perceptron learns AND</h3>
-<p>Output 1 only when both inputs are 1. Start from weights <code>(0.3, -0.1)</code>, learning rate <code>0.1</code>, threshold <code>0.25</code>. The rule: <strong>wrong → move each weight a little towards the right answer; right → leave it.</strong></p>
-<div id="3d123e37" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [(<span class="dv">0</span>, <span class="dv">0</span>), (<span class="dv">0</span>, <span class="dv">1</span>), (<span class="dv">1</span>, <span class="dv">0</span>), (<span class="dv">1</span>, <span class="dv">1</span>)]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>w1, w2, eta, theta <span class="op">=</span> <span class="fl">0.3</span>, <span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.1</span>, <span class="fl">0.25</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>):</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    mistakes <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (x1, x2), y <span class="kw">in</span> <span class="bu">zip</span>(X, Y):</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        guess <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> w1<span class="op">*</span>x1 <span class="op">+</span> w2<span class="op">*</span>x2 <span class="op">&gt;=</span> theta <span class="cf">else</span> <span class="dv">0</span>      <span class="co"># 1. guess</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> y <span class="op">-</span> guess                               <span class="co"># 2. how wrong?</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> error:                                       <span class="co"># 3. who is to blame: the inputs that were on</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            w1 <span class="op">+=</span> eta <span class="op">*</span> error <span class="op">*</span> x1                      <span class="co"># 4. nudge</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            w2 <span class="op">+=</span> eta <span class="op">*</span> error <span class="op">*</span> x2</span>
+<section id="learning-from-mistakes-by-hand-the-perceptron" class="level3">
+<h3 class="anchored" data-anchor-id="learning-from-mistakes-by-hand-the-perceptron">3. Learning from mistakes, by hand (the perceptron)</h3>
+<p>Wrong → move each weight a little towards the right answer. Right → leave it. The learning rate <code>eta</code> is how big each move is.</p>
+<div id="a65d730b" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w_large, w_abroad, bias, eta <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">0.5</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rnd <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    mistakes <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, row <span class="kw">in</span> payments.iterrows():</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> w_large <span class="op">*</span> row.large <span class="op">+</span> w_abroad <span class="op">*</span> row.abroad <span class="op">+</span> bias</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        decision <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> score <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> row.fraud <span class="op">-</span> decision                  <span class="co"># +1 missed fraud, -1 false alarm, 0 right</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> error:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            w_large  <span class="op">+=</span> eta <span class="op">*</span> error <span class="op">*</span> row.large</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            w_abroad <span class="op">+=</span> eta <span class="op">*</span> error <span class="op">*</span> row.abroad</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            bias     <span class="op">+=</span> eta <span class="op">*</span> error</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            mistakes <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>mistakes<span class="sc">}</span><span class="ss"> mistakes   w = (</span><span class="sc">{</span>w1<span class="sc">:.1f}</span><span class="ss">, </span><span class="sc">{</span>w2<span class="sc">:.1f}</span><span class="ss">)"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mistakes <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"round </span><span class="sc">{</span>rnd<span class="sc">}</span><span class="ss">  </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: score </span><span class="sc">{</span>score<span class="sc">:+.1f}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="st">'block'</span> <span class="cf">if</span> decision <span class="cf">else</span> <span class="st">'no block'</span><span class="sc">}</span><span class="ss">  WRONG  "</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                  <span class="ss">f"-&gt; weights (</span><span class="sc">{</span>w_large<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>w_abroad<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>bias<span class="sc">:g}</span><span class="ss">)"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mistakes <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"round </span><span class="sc">{</span>rnd<span class="sc">}</span><span class="ss">: no mistakes. Learned weights: (</span><span class="sc">{</span>w_large<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>w_abroad<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>bias<span class="sc">:g}</span><span class="ss">)"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="the-same-loop-with-a-smooth-nudge-gradient-descent" class="level3">
-<h3 class="anchored" data-anchor-id="the-same-loop-with-a-smooth-nudge-gradient-descent">4. The same loop, with a smooth nudge: gradient descent</h3>
-<p>200 synthetic payments. One neuron. Watch the loss fall as the weights are nudged downhill, step after step. The step that works out <em>how much each weight is to blame</em> is called <strong>backpropagation</strong>.</p>
-<div id="c5d60ec1" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">200</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>Xp <span class="op">=</span> np.column_stack([rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, n), rng.integers(<span class="dv">0</span>, <span class="dv">2</span>, n), rng.integers(<span class="dv">0</span>, <span class="dv">2</span>, n)])   <span class="co"># amount, abroad, new device</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>true_w, true_b <span class="op">=</span> np.array([<span class="fl">0.8</span>, <span class="fl">1.2</span>, <span class="fl">1.6</span>]), <span class="op">-</span><span class="fl">2.0</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>yp <span class="op">=</span> (rng.random(n) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span>(Xp <span class="op">@</span> true_w <span class="op">+</span> true_b)))).astype(<span class="bu">float</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>W, B, lr <span class="op">=</span> np.zeros(<span class="dv">3</span>), <span class="fl">0.0</span>, <span class="fl">0.5</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">301</span>):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span>(Xp <span class="op">@</span> W <span class="op">+</span> B)))                                   <span class="co"># 1. guess</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> <span class="op">-</span>np.mean(yp<span class="op">*</span>np.log(p<span class="op">+</span><span class="fl">1e-9</span>) <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>yp)<span class="op">*</span>np.log(<span class="dv">1</span><span class="op">-</span>p<span class="op">+</span><span class="fl">1e-9</span>))      <span class="co"># 2. how wrong?</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    gW, gB <span class="op">=</span> Xp.T <span class="op">@</span> (p <span class="op">-</span> yp) <span class="op">/</span> n, np.mean(p <span class="op">-</span> yp)                     <span class="co"># 3. who is to blame (the gradient)</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    W, B <span class="op">=</span> W <span class="op">-</span> lr<span class="op">*</span>gW, B <span class="op">-</span> lr<span class="op">*</span>gB                                       <span class="co"># 4. nudge</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">50</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"step </span><span class="sc">{</span>step<span class="sc">:3d}</span><span class="ss">   loss </span><span class="sc">{</span>loss<span class="sc">:.3f}</span><span class="ss">   weights </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(W, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">   bias </span><span class="sc">{</span>B<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"the weights that generated the data:"</span>, true_w, true_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="yes-or-no-is-not-enough-the-sigmoid" class="level3">
+<h3 class="anchored" data-anchor-id="yes-or-no-is-not-enough-the-sigmoid">4. Yes or no is not enough: the sigmoid</h3>
+<p>Same weights, but instead of a step we squash the score into a probability.</p>
+<div id="ea4919ea" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(z):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"score"</span>] <span class="op">=</span> w_large <span class="op">*</span> payments.large <span class="op">+</span> w_abroad <span class="op">*</span> payments.abroad <span class="op">+</span> bias</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"p_fraud"</span>] <span class="op">=</span> sigmoid(payments.score).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>payments[[<span class="st">"large"</span>, <span class="st">"abroad"</span>, <span class="st">"fraud"</span>, <span class="st">"score"</span>, <span class="st">"p_fraud"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>🔍 CHECK.</strong> The learned weights are close to the true ones but not equal. Why not? (Hint: 200 payments.)</p>
-<p>An LLM runs exactly this loop. The inputs are tokens, the right answer is the next token, and there are billions of weights instead of four.</p>
+<p><strong>🔍 CHECK.</strong> B sits exactly on the line. What probability does it get, and why is that more honest than “don’t block”?</p>
+</section>
+<section id="how-wrong-as-one-number-the-loss" class="level3">
+<h3 class="anchored" data-anchor-id="how-wrong-as-one-number-the-loss">5. How wrong, as one number: the loss</h3>
+<div id="f42afce6" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(p, y):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>math.log(p) <span class="cf">if</span> y <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="op">-</span>math.log(<span class="dv">1</span> <span class="op">-</span> p)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> [<span class="st">"D"</span>, <span class="st">"B"</span>]:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    p, y <span class="op">=</span> sigmoid(payments.loc[name, <span class="st">"score"</span>]), payments.loc[name, <span class="st">"fraud"</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: p(fraud) = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">, fraud = </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">  -&gt;  loss = </span><span class="sc">{</span>loss(p, y)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-formula-for-every-weight" class="level3">
+<h3 class="anchored" data-anchor-id="the-formula-for-every-weight">6. The formula for every weight</h3>
+<p><code>w &lt;- w - eta * (p - y) * x</code>. One step on payment D, with <code>eta = 1</code>.</p>
+<div id="f92d5156" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> {<span class="st">"large"</span>: <span class="dv">1</span>, <span class="st">"abroad"</span>: <span class="dv">1</span>, <span class="st">"bias"</span>: <span class="dv">1</span>}                  <span class="co"># payment D (the bias always sees a 1)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="st">"large"</span>: <span class="bu">float</span>(w_large), <span class="st">"abroad"</span>: <span class="bu">float</span>(w_abroad), <span class="st">"bias"</span>: <span class="bu">float</span>(bias)}</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>y, eta <span class="op">=</span> <span class="dv">1</span>, <span class="fl">1.0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> sigmoid(<span class="bu">sum</span>(w[k] <span class="op">*</span> x[k] <span class="cf">for</span> k <span class="kw">in</span> w))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>blame <span class="op">=</span> {k: (p <span class="op">-</span> y) <span class="op">*</span> x[k] <span class="cf">for</span> k <span class="kw">in</span> w}                     <span class="co"># what backpropagation computes</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>w_new <span class="op">=</span> {k: w[k] <span class="op">-</span> eta <span class="op">*</span> blame[k] <span class="cf">for</span> k <span class="kw">in</span> w}</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>p_new <span class="op">=</span> sigmoid(<span class="bu">sum</span>(w_new[k] <span class="op">*</span> x[k] <span class="cf">for</span> k <span class="kw">in</span> w))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"before "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> w.items()}, <span class="ss">f"  p(fraud) for D = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"blame  "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> blame.items()})</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"after  "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> w_new.items()}, <span class="ss">f"  p(fraud) for D = </span><span class="sc">{</span>p_new<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-learning-rate" class="level3">
+<h3 class="anchored" data-anchor-id="the-learning-rate">7. The learning rate</h3>
+<p>Real data is messier. Add payment E: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.</p>
+<div id="8ca419ad" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])    <span class="co"># A B C D E</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(eta, steps<span class="op">=</span><span class="dv">30</span>, w<span class="op">=</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>), b<span class="op">=-</span><span class="fl">1.0</span>):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    w, b, hist <span class="op">=</span> np.array(w, <span class="bu">float</span>), b, []</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(steps):</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> np.clip(sigmoid(X <span class="op">@</span> w <span class="op">+</span> b), <span class="fl">1e-12</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-12</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        hist.append(<span class="op">-</span>np.mean(Y <span class="op">*</span> np.log(p) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> Y) <span class="op">*</span> np.log(<span class="dv">1</span> <span class="op">-</span> p)))    <span class="co"># how wrong</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        w, b <span class="op">=</span> w <span class="op">-</span> eta <span class="op">*</span> X.T <span class="op">@</span> (p <span class="op">-</span> Y) <span class="op">/</span> <span class="bu">len</span>(Y), b <span class="op">-</span> eta <span class="op">*</span> np.mean(p <span class="op">-</span> Y)  <span class="co"># nudge</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hist</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eta <span class="kw">in</span> (<span class="fl">0.3</span>, <span class="dv">3</span>, <span class="dv">20</span>):</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    plt.plot(train(eta), label<span class="op">=</span><span class="ss">f"eta = </span><span class="sc">{</span>eta<span class="sc">}</span><span class="ss">"</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"training steps"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"loss"</span>)<span class="op">;</span> plt.ylim(<span class="dv">0</span>, <span class="fl">2.6</span>)<span class="op">;</span> plt.legend()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Try:</strong> <code>eta = 8</code>. Does it settle, or keep jumping?</p>
+</section>
+<section id="a-pattern-one-neuron-cannot-draw-card-testing" class="level3">
+<h3 class="anchored" data-anchor-id="a-pattern-one-neuron-cannot-draw-card-testing">8. A pattern one neuron cannot draw: card testing</h3>
+<p>A fraudster tries the card with €10, then spends €2,000. Fraud sits at both ends of the amount. Two hidden neurons each answer one question; the output combines them.</p>
+<div id="234e3398" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>amount <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">300</span>)                             <span class="co"># thousands of euros</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>small  <span class="op">=</span> sigmoid(<span class="op">-</span><span class="dv">10</span> <span class="op">*</span> amount <span class="op">+</span> <span class="dv">2</span>)                          <span class="co"># hidden neuron 1: "small?"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>large  <span class="op">=</span> sigmoid( <span class="dv">10</span> <span class="op">*</span> amount <span class="op">-</span> <span class="dv">19</span>)                         <span class="co"># hidden neuron 2: "large?"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>fraud  <span class="op">=</span> sigmoid(<span class="dv">8</span> <span class="op">*</span> small <span class="op">+</span> <span class="dv">8</span> <span class="op">*</span> large <span class="op">-</span> <span class="dv">4</span>)                 <span class="co"># output: "small OR large"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, (name, curve) <span class="kw">in</span> <span class="bu">zip</span>(ax, [(<span class="st">"small?"</span>, small), (<span class="st">"large?"</span>, large), (<span class="st">"fraud?"</span>, fraud)]):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    a.plot(amount, curve, lw<span class="op">=</span><span class="dv">2</span>)<span class="op">;</span> a.set_ylabel(name)<span class="op">;</span> a.set_ylim(<span class="op">-</span><span class="fl">0.05</span>, <span class="fl">1.05</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="op">-</span><span class="dv">1</span>].set_xlabel(<span class="st">"amount, thousands of euros"</span>)<span class="op">;</span> plt.show()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"parameters: 2 x 2 in the hidden layer + 3 in the output ="</span>, <span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Try:</strong> change <code>-19</code> to <code>-10</code>. What does the network now call fraud?</p>
 </section>
 <section id="what-the-model-reads-tokens" class="level3">
-<h3 class="anchored" data-anchor-id="what-the-model-reads-tokens">5. What the model reads: tokens</h3>
-<p><strong>Bet first:</strong> <code>"Il margine è insostenibile"</code> — four words. How many tokens?</p>
-<div id="74be4d8c" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tiktoken</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"Il margine è insostenibile"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">"The margin is unsustainable"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Маржа неустойчива"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">"1,234,567.89"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">"egg Egg  egg EGG"</span>]:</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> enc.encode(s)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(t)<span class="sc">:2d}</span><span class="ss"> tokens | </span><span class="sc">{</span>s<span class="sc">:30s}</span><span class="ss"> | </span><span class="sc">{</span>[enc.decode([i]) <span class="cf">for</span> i <span class="kw">in</span> t]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 class="anchored" data-anchor-id="what-the-model-reads-tokens">9. What the model reads: tokens</h3>
+<p>The same machine, with one difference: the input is text, cut into pieces called tokens.</p>
+<div id="bcb8ab8d" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tiktoken</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"Il margine è insostenibile"</span>, <span class="st">"The margin is unsustainable"</span>, <span class="st">"Маржа неустойчива"</span>]:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> enc.encode(s)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(t)<span class="sc">:2d}</span><span class="ss"> tokens | </span><span class="sc">{</span>s<span class="sc">:30s}</span><span class="ss"> | </span><span class="sc">{</span>[enc.decode([i]) <span class="cf">for</span> i <span class="kw">in</span> t]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Your turn:</strong> your surname, a company you worked for, a sentence in Russian. Which one splits the most?</p>
-</section>
-<section id="how-a-tokenizer-is-learned-merge-the-most-frequent-pair" class="level3">
-<h3 class="anchored" data-anchor-id="how-a-tokenizer-is-learned-merge-the-most-frequent-pair">6. How a tokenizer is learned: merge the most frequent pair</h3>
-<div id="d4fa46ad" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>seq, new_symbols <span class="op">=</span> <span class="bu">list</span>(<span class="st">"aaabdaaabac"</span>), <span class="bu">iter</span>(<span class="st">"ZYXWV"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"start:"</span>, <span class="st">""</span>.join(seq))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    pairs <span class="op">=</span> Counter(<span class="bu">zip</span>(seq, seq[<span class="dv">1</span>:]))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    (a, b), count <span class="op">=</span> pairs.most_common(<span class="dv">1</span>)[<span class="dv">0</span>]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> count <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="bu">next</span>(new_symbols)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    out, i <span class="op">=</span> [], <span class="dv">0</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(seq):</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">&lt;</span> <span class="bu">len</span>(seq) <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> (seq[i], seq[i<span class="op">+</span><span class="dv">1</span>]) <span class="op">==</span> (a, b):</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            out.append(s)<span class="op">;</span> i <span class="op">+=</span> <span class="dv">2</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            out.append(seq[i])<span class="op">;</span> i <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> out</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>a<span class="sc">}{</span>b<span class="sc">}</span><span class="ss">:  </span><span class="sc">{</span><span class="st">''</span><span class="sc">.</span>join(seq)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"11 symbols -&gt; </span><span class="sc">{</span><span class="bu">len</span>(seq)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Next week you train one of these on your own texts.</p>
 </section>
 <section id="before-you-leave-three-lines-in-your-words" class="level3">
 <h3 class="anchored" data-anchor-id="before-you-leave-three-lines-in-your-words">Before you leave: three lines, in your words</h3>
@@ -346,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>…</li>
 <li>…</li>
 </ol>
-<p>Then <code>File ▸ Save a copy in Drive</code> (and, once your repository exists, in GitHub).</p>
+<p>Then <code>File ▸ Save a copy in Drive</code>, into your <code>ese-ai-fintech</code> folder.</p>
 <hr>
 </section>
 </section>
@@ -357,80 +383,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="block-a2-one-decision-three-kinds-of-software">Block A2 — One decision, three kinds of software</h2>
 <p>The slide split <em>“block this transaction, or do not”</em> into Software <strong>1.0</strong> (a rule you write), <strong>2.0</strong> (a model you fit) and <strong>3.0</strong> (an instruction you give). Here it is as code, on the same data, judged by the same euros.</p>
 <p>The book of transactions below is <strong>synthetic on purpose</strong>: the point of this section is the comparison between three kinds of software, not the fraud model. Everything is reproducible from the seed. Real data arrives in Block C.</p>
-<div id="d1190b26" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">20_000</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>MU, SD <span class="op">=</span> <span class="fl">4.6</span>, <span class="fl">0.85</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>benign  <span class="op">=</span> [<span class="st">"GROCERY"</span>, <span class="st">"PHARMACY"</span>, <span class="st">"FUEL"</span>, <span class="st">"RESTAURANT"</span>, <span class="st">"TRANSIT"</span>, <span class="st">"BOOKSHOP"</span>]</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>voucher <span class="op">=</span> [<span class="st">"PREPAID VOUCHER RELOAD"</span>, <span class="st">"DIGITAL GIFT CERTIFICATE"</span>,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">"STORED VALUE TOP-UP"</span>, <span class="st">"E-VOUCHER PURCHASE"</span>]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>amount     <span class="op">=</span> np.<span class="bu">round</span>(np.exp(rng.normal(MU, SD, N)), <span class="dv">2</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>hour       <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">24</span>, N)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>abroad     <span class="op">=</span> (rng.random(N) <span class="op">&lt;</span> <span class="fl">0.09</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>new_device <span class="op">=</span> (rng.random(N) <span class="op">&lt;</span> <span class="fl">0.13</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>odd_hour   <span class="op">=</span> ((hour <span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">|</span> (hour <span class="op">&gt;</span> <span class="dv">22</span>)).astype(<span class="bu">int</span>)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fraud mode 1 — the classic pattern, and all of it is in the numbers.</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>z      <span class="op">=</span> (np.log(amount) <span class="op">-</span> MU) <span class="op">/</span> SD</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>latent <span class="op">=</span> <span class="fl">0.9</span><span class="op">*</span>z <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>abroad <span class="op">+</span> <span class="fl">2.0</span><span class="op">*</span>new_device <span class="op">+</span> <span class="fl">1.3</span><span class="op">*</span>odd_hour</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>fraud_numeric <span class="op">=</span> rng.random(N) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>(latent <span class="op">-</span> <span class="fl">5.6</span>)))</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Fraud mode 2 — a pattern that exists only in the merchant descriptor.</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>is_voucher  <span class="op">=</span> rng.random(N) <span class="op">&lt;</span> <span class="fl">0.025</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>fraud_words <span class="op">=</span> is_voucher <span class="op">&amp;</span> (rng.random(N) <span class="op">&lt;</span> <span class="fl">0.45</span>)</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>fraud <span class="op">=</span> fraud_numeric <span class="op">|</span> fraud_words</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>note  <span class="op">=</span> np.where(is_voucher, rng.choice(voucher, N), rng.choice(benign, N))</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>tx <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(amount<span class="op">=</span>amount, hour<span class="op">=</span>hour, abroad<span class="op">=</span>abroad,</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                       new_device<span class="op">=</span>new_device, note<span class="op">=</span>note, fraud<span class="op">=</span>fraud.astype(<span class="bu">int</span>)))</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>CUT  <span class="op">=</span> <span class="bu">int</span>(N <span class="op">*</span> <span class="fl">0.6</span>)          <span class="co"># rows are in time order: fit on the first 60%,</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>TEST <span class="op">=</span> <span class="bu">slice</span>(CUT, N)         <span class="co"># and report on the rest. Week 3 is about why.</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>N<span class="sc">:,}</span><span class="ss"> transactions | fraud </span><span class="sc">{</span>fraud<span class="sc">.</span>mean()<span class="sc">:.2%}</span><span class="ss"> | test rows </span><span class="sc">{</span>N<span class="op">-</span>CUT<span class="sc">:,}</span><span class="ss">"</span>)</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"of the fraud, </span><span class="sc">{</span>(fraud_words <span class="op">&amp;</span> <span class="op">~</span>fraud_numeric)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> cases are visible ONLY in the merchant text"</span>)</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>tx.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0c1bfe38" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">20_000</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>MU, SD <span class="op">=</span> <span class="fl">4.6</span>, <span class="fl">0.85</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>benign  <span class="op">=</span> [<span class="st">"GROCERY"</span>, <span class="st">"PHARMACY"</span>, <span class="st">"FUEL"</span>, <span class="st">"RESTAURANT"</span>, <span class="st">"TRANSIT"</span>, <span class="st">"BOOKSHOP"</span>]</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>voucher <span class="op">=</span> [<span class="st">"PREPAID VOUCHER RELOAD"</span>, <span class="st">"DIGITAL GIFT CERTIFICATE"</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">"STORED VALUE TOP-UP"</span>, <span class="st">"E-VOUCHER PURCHASE"</span>]</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>amount     <span class="op">=</span> np.<span class="bu">round</span>(np.exp(rng.normal(MU, SD, N)), <span class="dv">2</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>hour       <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">24</span>, N)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>abroad     <span class="op">=</span> (rng.random(N) <span class="op">&lt;</span> <span class="fl">0.09</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>new_device <span class="op">=</span> (rng.random(N) <span class="op">&lt;</span> <span class="fl">0.13</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>odd_hour   <span class="op">=</span> ((hour <span class="op">&lt;</span> <span class="dv">5</span>) <span class="op">|</span> (hour <span class="op">&gt;</span> <span class="dv">22</span>)).astype(<span class="bu">int</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fraud mode 1 — the classic pattern, and all of it is in the numbers.</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>z      <span class="op">=</span> (np.log(amount) <span class="op">-</span> MU) <span class="op">/</span> SD</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>latent <span class="op">=</span> <span class="fl">0.9</span><span class="op">*</span>z <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>abroad <span class="op">+</span> <span class="fl">2.0</span><span class="op">*</span>new_device <span class="op">+</span> <span class="fl">1.3</span><span class="op">*</span>odd_hour</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>fraud_numeric <span class="op">=</span> rng.random(N) <span class="op">&lt;</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>(latent <span class="op">-</span> <span class="fl">5.6</span>)))</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Fraud mode 2 — a pattern that exists only in the merchant descriptor.</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>is_voucher  <span class="op">=</span> rng.random(N) <span class="op">&lt;</span> <span class="fl">0.025</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>fraud_words <span class="op">=</span> is_voucher <span class="op">&amp;</span> (rng.random(N) <span class="op">&lt;</span> <span class="fl">0.45</span>)</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>fraud <span class="op">=</span> fraud_numeric <span class="op">|</span> fraud_words</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>note  <span class="op">=</span> np.where(is_voucher, rng.choice(voucher, N), rng.choice(benign, N))</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>tx <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(amount<span class="op">=</span>amount, hour<span class="op">=</span>hour, abroad<span class="op">=</span>abroad,</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>                       new_device<span class="op">=</span>new_device, note<span class="op">=</span>note, fraud<span class="op">=</span>fraud.astype(<span class="bu">int</span>)))</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>CUT  <span class="op">=</span> <span class="bu">int</span>(N <span class="op">*</span> <span class="fl">0.6</span>)          <span class="co"># rows are in time order: fit on the first 60%,</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>TEST <span class="op">=</span> <span class="bu">slice</span>(CUT, N)         <span class="co"># and report on the rest. Week 3 is about why.</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>N<span class="sc">:,}</span><span class="ss"> transactions | fraud </span><span class="sc">{</span>fraud<span class="sc">.</span>mean()<span class="sc">:.2%}</span><span class="ss"> | test rows </span><span class="sc">{</span>N<span class="op">-</span>CUT<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"of the fraud, </span><span class="sc">{</span>(fraud_words <span class="op">&amp;</span> <span class="op">~</span>fraud_numeric)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> cases are visible ONLY in the merchant text"</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>tx.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>One scoring function for all three, so nothing is compared on its own terms.</p>
 <p>A blocked good customer costs <strong>€8</strong> to contact. A missed fraud costs <strong>the amount of the transaction</strong> — that is what a chargeback is.</p>
-<div id="526bb1fa" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>CONTACT <span class="op">=</span> <span class="fl">8.0</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(blocked, name):</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.asarray(blocked)[TEST]<span class="op">;</span> t <span class="op">=</span> fraud[TEST]<span class="op">;</span> a <span class="op">=</span> amount[TEST]</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    cost <span class="op">=</span> (b <span class="op">&amp;</span> <span class="op">~</span>t).<span class="bu">sum</span>() <span class="op">*</span> CONTACT <span class="op">+</span> a[<span class="op">~</span>b <span class="op">&amp;</span> t].<span class="bu">sum</span>()</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:&lt;32}</span><span class="ss"> blocked </span><span class="sc">{</span>b<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&gt;5,}</span><span class="ss">   caught </span><span class="sc">{</span>(b <span class="op">&amp;</span> t)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&gt;4}</span><span class="ss">/</span><span class="sc">{</span>t<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&lt;5}</span><span class="ss">"</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"good blocked </span><span class="sc">{</span>(b <span class="op">&amp;</span> <span class="op">~</span>t)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&gt;5,}</span><span class="ss">   cost EUR </span><span class="sc">{</span>cost<span class="sc">:&gt;10,.0f}</span><span class="ss">"</span>)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="dbaaf5cd" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>CONTACT <span class="op">=</span> <span class="fl">8.0</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(blocked, name):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> np.asarray(blocked)[TEST]<span class="op">;</span> t <span class="op">=</span> fraud[TEST]<span class="op">;</span> a <span class="op">=</span> amount[TEST]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    cost <span class="op">=</span> (b <span class="op">&amp;</span> <span class="op">~</span>t).<span class="bu">sum</span>() <span class="op">*</span> CONTACT <span class="op">+</span> a[<span class="op">~</span>b <span class="op">&amp;</span> t].<span class="bu">sum</span>()</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:&lt;32}</span><span class="ss"> blocked </span><span class="sc">{</span>b<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&gt;5,}</span><span class="ss">   caught </span><span class="sc">{</span>(b <span class="op">&amp;</span> t)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&gt;4}</span><span class="ss">/</span><span class="sc">{</span>t<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&lt;5}</span><span class="ss">"</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"good blocked </span><span class="sc">{</span>(b <span class="op">&amp;</span> <span class="op">~</span>t)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:&gt;5,}</span><span class="ss">   cost EUR </span><span class="sc">{</span>cost<span class="sc">:&gt;10,.0f}</span><span class="ss">"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Bet before you run it.</strong> The rule blocks a card payment made abroad for more than €150. Of all the fraud in the test period, what share do you think it catches? Write a number down now.</p>
-<div id="27cc4c38" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rule <span class="op">=</span> ((tx.amount <span class="op">&gt;</span> <span class="dv">150</span>) <span class="op">&amp;</span> (tx.abroad <span class="op">==</span> <span class="dv">1</span>)).values</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cost_1 <span class="op">=</span> evaluate(rule, <span class="st">"1.0  the rule"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e3db7ad5" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rule <span class="op">=</span> ((tx.amount <span class="op">&gt;</span> <span class="dv">150</span>) <span class="op">&amp;</span> (tx.abroad <span class="op">==</span> <span class="dv">1</span>)).values</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cost_1 <span class="op">=</span> evaluate(rule, <span class="st">"1.0  the rule"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now <strong>2.0</strong>, held to exactly the same budget: it may block the <em>same number</em> of transactions as the rule, no more. Only the choice of which ones changes.</p>
 <p>That constraint is the whole comparison. A model that blocks more will always catch more, and it will also annoy more customers.</p>
-<div id="3e8e9630" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(log_amount<span class="op">=</span>np.log1p(tx.amount), abroad<span class="op">=</span>tx.abroad,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                      new_device<span class="op">=</span>tx.new_device, odd_hour<span class="op">=</span>odd_hour))</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>model  <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>).fit(X[:CUT], fraud[:CUT])</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>p      <span class="op">=</span> model.predict_proba(X)[:, <span class="dv">1</span>]</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>budget <span class="op">=</span> <span class="bu">int</span>(rule[TEST].<span class="bu">sum</span>())</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>thr    <span class="op">=</span> np.sort(p[TEST])[<span class="op">-</span>budget]</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>blocked_20 <span class="op">=</span> p <span class="op">&gt;=</span> thr</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>cost_2 <span class="op">=</span> evaluate(blocked_20, <span class="st">"2.0  the model, same budget"</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">saved against the rule: EUR </span><span class="sc">{</span>cost_1<span class="op">-</span>cost_2<span class="sc">:,.0f}</span><span class="ss">  (</span><span class="sc">{</span>cost_2<span class="op">/</span>cost_1<span class="op">-</span><span class="dv">1</span><span class="sc">:+.0%}</span><span class="ss">)"</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">what it learned to weight:"</span>)</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.Series(model.coef_[<span class="dv">0</span>], index<span class="op">=</span>X.columns).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="692b37bc" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(log_amount<span class="op">=</span>np.log1p(tx.amount), abroad<span class="op">=</span>tx.abroad,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                      new_device<span class="op">=</span>tx.new_device, odd_hour<span class="op">=</span>odd_hour))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>model  <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>).fit(X[:CUT], fraud[:CUT])</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>p      <span class="op">=</span> model.predict_proba(X)[:, <span class="dv">1</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>budget <span class="op">=</span> <span class="bu">int</span>(rule[TEST].<span class="bu">sum</span>())</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>thr    <span class="op">=</span> np.sort(p[TEST])[<span class="op">-</span>budget]</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>blocked_20 <span class="op">=</span> p <span class="op">&gt;=</span> thr</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>cost_2 <span class="op">=</span> evaluate(blocked_20, <span class="st">"2.0  the model, same budget"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">saved against the rule: EUR </span><span class="sc">{</span>cost_1<span class="op">-</span>cost_2<span class="sc">:,.0f}</span><span class="ss">  (</span><span class="sc">{</span>cost_2<span class="op">/</span>cost_1<span class="op">-</span><span class="dv">1</span><span class="sc">:+.0%}</span><span class="ss">)"</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">what it learned to weight:"</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.Series(model.coef_[<span class="dv">0</span>], index<span class="op">=</span>X.columns).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> The model blocked <em>exactly as many</em> transactions as the rule and caught roughly twice the fraud. Look at the coefficients: which feature does the rule ignore entirely? Write the sentence you would say to the fraud team — in words, not coefficients.</p>
 <p><em>Your sentence here:</em></p>
@@ -439,18 +465,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Some of the fraud is not in the numbers at all. It is in the <strong>merchant descriptor</strong> — four different ways of writing the same thing:</p>
 <p><code>PREPAID VOUCHER RELOAD</code> · <code>DIGITAL GIFT CERTIFICATE</code> · <code>STORED VALUE TOP-UP</code> · <code>E-VOUCHER PURCHASE</code></p>
 <p>Your first instinct is a keyword list. Try it.</p>
-<div id="0022ede6" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>keyword <span class="op">=</span> tx.note.<span class="bu">str</span>.contains(<span class="st">"VOUCHER"</span>).values</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cost_kw <span class="op">=</span> evaluate(blocked_20 <span class="op">|</span> keyword, <span class="st">"3.0 faked with a keyword"</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">descriptors the keyword catches:"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> <span class="bu">sorted</span>(<span class="bu">set</span>(tx.note[keyword <span class="op">&amp;</span> is_voucher])): <span class="bu">print</span>(<span class="st">"   "</span>, d)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"descriptors it misses:"</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> <span class="bu">sorted</span>(<span class="bu">set</span>(tx.note[is_voucher]) <span class="op">-</span> <span class="bu">set</span>(tx.note[keyword <span class="op">&amp;</span> is_voucher])): <span class="bu">print</span>(<span class="st">"   "</span>, d)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># What a model that actually reads the descriptor would reach. We are standing in</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for it here so the comparison runs with no API key; the real call is below.</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>cost_3 <span class="op">=</span> evaluate(blocked_20 <span class="op">|</span> is_voucher, <span class="st">"3.0  something that reads words"</span>)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">saved against 2.0: EUR </span><span class="sc">{</span>cost_2<span class="op">-</span>cost_3<span class="sc">:,.0f}</span><span class="ss">  (</span><span class="sc">{</span>cost_3<span class="op">/</span>cost_2<span class="op">-</span><span class="dv">1</span><span class="sc">:+.0%}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0b482256" class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>keyword <span class="op">=</span> tx.note.<span class="bu">str</span>.contains(<span class="st">"VOUCHER"</span>).values</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cost_kw <span class="op">=</span> evaluate(blocked_20 <span class="op">|</span> keyword, <span class="st">"3.0 faked with a keyword"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">descriptors the keyword catches:"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> <span class="bu">sorted</span>(<span class="bu">set</span>(tx.note[keyword <span class="op">&amp;</span> is_voucher])): <span class="bu">print</span>(<span class="st">"   "</span>, d)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"descriptors it misses:"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d <span class="kw">in</span> <span class="bu">sorted</span>(<span class="bu">set</span>(tx.note[is_voucher]) <span class="op">-</span> <span class="bu">set</span>(tx.note[keyword <span class="op">&amp;</span> is_voucher])): <span class="bu">print</span>(<span class="st">"   "</span>, d)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># What a model that actually reads the descriptor would reach. We are standing in</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for it here so the comparison runs with no API key; the real call is below.</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>cost_3 <span class="op">=</span> evaluate(blocked_20 <span class="op">|</span> is_voucher, <span class="st">"3.0  something that reads words"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">saved against 2.0: EUR </span><span class="sc">{</span>cost_2<span class="op">-</span>cost_3<span class="sc">:,.0f}</span><span class="ss">  (</span><span class="sc">{</span>cost_3<span class="op">/</span>cost_2<span class="op">-</span><span class="dv">1</span><span class="sc">:+.0%}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> The keyword version is Software <strong>1.0 wearing a 3.0 costume</strong>, and it catches half the descriptors.</p>
 <p>That is the test to carry out of this room: <strong>if a keyword list would have done the job, you did not need a model.</strong> Most of what is sold as AI fails exactly here — and the way to find out costs you ten minutes, which is what you just spent.</p>
@@ -458,57 +484,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-real-call-optional-today-and-the-point-of-week-4" class="level3">
 <h3 class="anchored" data-anchor-id="the-real-call-optional-today-and-the-point-of-week-4">The real call — optional today, and the point of week 4</h3>
 <p>If you added <code>GEMINI_API_KEY</code> to Colab’s 🔑 <em>Secrets</em> panel, this asks a model to judge five descriptors it has never been given a list for. If you have not, read the prompt and move on.</p>
-<div id="5c73586c" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>PROMPT <span class="op">=</span> (</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"You review card transactions for a bank.</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Merchant descriptor: "</span><span class="sc">{note}</span><span class="st">"</span><span class="ch">\n</span><span class="st">'</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Amount: EUR </span><span class="sc">{amount:.2f}</span><span class="ch">\n\n</span><span class="st">"</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Is this merchant category one commonly used to convert stolen card funds "</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"into untraceable value? Answer with one word, YES or NO, then one short "</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sentence of why."</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the three largest voucher transactions and two ordinary ones, so the model</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># is asked something a reviewer would actually have escalated</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>suspect <span class="op">=</span> tx.loc[tx.index[is_voucher]].nlargest(<span class="dv">3</span>, <span class="st">"amount"</span>).index</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>ordinary <span class="op">=</span> tx.loc[tx.index[<span class="op">~</span>is_voucher]].nlargest(<span class="dv">2</span>, <span class="st">"amount"</span>).index</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> tx.loc[[<span class="op">*</span>suspect, <span class="op">*</span>ordinary], [<span class="st">"note"</span>, <span class="st">"amount"</span>]]</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>userdata.get(<span class="st">"GEMINI_API_KEY"</span>))</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, r <span class="kw">in</span> samples.iterrows():</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> client.models.generate_content(</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>            model<span class="op">=</span><span class="st">"gemini-2.0-flash"</span>,</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>            contents<span class="op">=</span>PROMPT.<span class="bu">format</span>(note<span class="op">=</span>r.note, amount<span class="op">=</span>r.amount),</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>            config<span class="op">=</span>{<span class="st">"temperature"</span>: <span class="dv">0</span>})</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>r<span class="sc">.</span>note<span class="sc">:&lt;26}</span><span class="ss"> -&gt; </span><span class="sc">{</span>out<span class="sc">.</span>text<span class="sc">.</span>strip()<span class="sc">.</span>splitlines()[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"[no key / no network: </span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">] Here is what would be sent:</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(PROMPT.<span class="bu">format</span>(<span class="op">**</span>samples.iloc[<span class="dv">0</span>].to_dict()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f396c23e" class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>PROMPT <span class="op">=</span> (</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"You review card transactions for a bank.</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Merchant descriptor: "</span><span class="sc">{note}</span><span class="st">"</span><span class="ch">\n</span><span class="st">'</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Amount: EUR </span><span class="sc">{amount:.2f}</span><span class="ch">\n\n</span><span class="st">"</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Is this merchant category one commonly used to convert stolen card funds "</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"into untraceable value? Answer with one word, YES or NO, then one short "</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"sentence of why."</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># the three largest voucher transactions and two ordinary ones, so the model</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># is asked something a reviewer would actually have escalated</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>suspect <span class="op">=</span> tx.loc[tx.index[is_voucher]].nlargest(<span class="dv">3</span>, <span class="st">"amount"</span>).index</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ordinary <span class="op">=</span> tx.loc[tx.index[<span class="op">~</span>is_voucher]].nlargest(<span class="dv">2</span>, <span class="st">"amount"</span>).index</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> tx.loc[[<span class="op">*</span>suspect, <span class="op">*</span>ordinary], [<span class="st">"note"</span>, <span class="st">"amount"</span>]]</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>userdata.get(<span class="st">"GEMINI_API_KEY"</span>))</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _, r <span class="kw">in</span> samples.iterrows():</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> client.models.generate_content(</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>            model<span class="op">=</span><span class="st">"gemini-2.0-flash"</span>,</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>            contents<span class="op">=</span>PROMPT.<span class="bu">format</span>(note<span class="op">=</span>r.note, amount<span class="op">=</span>r.amount),</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>            config<span class="op">=</span>{<span class="st">"temperature"</span>: <span class="dv">0</span>})</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>r<span class="sc">.</span>note<span class="sc">:&lt;26}</span><span class="ss"> -&gt; </span><span class="sc">{</span>out<span class="sc">.</span>text<span class="sc">.</span>strip()<span class="sc">.</span>splitlines()[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"[no key / no network: </span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">] Here is what would be sent:</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(PROMPT.<span class="bu">format</span>(<span class="op">**</span>samples.iloc[<span class="dv">0</span>].to_dict()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="so-which-one-do-you-build" class="level3">
 <h3 class="anchored" data-anchor-id="so-which-one-do-you-build">So which one do you build?</h3>
 <p>The honest answer is <strong>all three, in a pipeline</strong> — and the arithmetic below is why you do not simply put 3.0 in front of every transaction.</p>
-<div id="e98a6687" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Illustrative prices. CHECK TODAY'S PAGE before you quote any of this to anyone;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the number that goes stale fastest in the whole notebook.</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>PRICE_IN, PRICE_OUT <span class="op">=</span> <span class="fl">3.00</span>, <span class="fl">15.00</span>       <span class="co"># EUR per million tokens</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>TOK_IN, TOK_OUT     <span class="op">=</span> <span class="dv">700</span>, <span class="dv">120</span>          <span class="co"># per transaction reviewed</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>DAILY               <span class="op">=</span> <span class="dv">1_000_000</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>per_call <span class="op">=</span> (TOK_IN<span class="op">*</span>PRICE_IN <span class="op">+</span> TOK_OUT<span class="op">*</span>PRICE_OUT) <span class="op">/</span> <span class="fl">1e6</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>flag_rate <span class="op">=</span> blocked_20[TEST].mean()</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"cost of one 3.0 review          EUR </span><span class="sc">{</span>per_call<span class="sc">:,.4f}</span><span class="ss">"</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"3.0 on every transaction        EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="sc">:&gt;10,.0f}</span><span class="ss"> / day"</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"   = EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="op">*</span><span class="dv">365</span><span class="sc">:&gt;12,.0f}</span><span class="ss"> / year"</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"3.0 only on what 2.0 flagged    EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="op">*</span>flag_rate<span class="sc">:&gt;10,.0f}</span><span class="ss"> / day"</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"   = EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="op">*</span>flag_rate<span class="op">*</span><span class="dv">365</span><span class="sc">:&gt;12,.0f}</span><span class="ss"> / year"</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">2.0 flags </span><span class="sc">{</span>flag_rate<span class="sc">:.1%}</span><span class="ss"> of traffic, so the escalation costs </span><span class="sc">{</span>flag_rate<span class="sc">:.1%}</span><span class="ss"> of the naive design."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c3c45837" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Illustrative prices. CHECK TODAY'S PAGE before you quote any of this to anyone;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the number that goes stale fastest in the whole notebook.</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>PRICE_IN, PRICE_OUT <span class="op">=</span> <span class="fl">3.00</span>, <span class="fl">15.00</span>       <span class="co"># EUR per million tokens</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>TOK_IN, TOK_OUT     <span class="op">=</span> <span class="dv">700</span>, <span class="dv">120</span>          <span class="co"># per transaction reviewed</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>DAILY               <span class="op">=</span> <span class="dv">1_000_000</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>per_call <span class="op">=</span> (TOK_IN<span class="op">*</span>PRICE_IN <span class="op">+</span> TOK_OUT<span class="op">*</span>PRICE_OUT) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>flag_rate <span class="op">=</span> blocked_20[TEST].mean()</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"cost of one 3.0 review          EUR </span><span class="sc">{</span>per_call<span class="sc">:,.4f}</span><span class="ss">"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"3.0 on every transaction        EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="sc">:&gt;10,.0f}</span><span class="ss"> / day"</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"   = EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="op">*</span><span class="dv">365</span><span class="sc">:&gt;12,.0f}</span><span class="ss"> / year"</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"3.0 only on what 2.0 flagged    EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="op">*</span>flag_rate<span class="sc">:&gt;10,.0f}</span><span class="ss"> / day"</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"   = EUR </span><span class="sc">{</span>per_call<span class="op">*</span>DAILY<span class="op">*</span>flag_rate<span class="op">*</span><span class="dv">365</span><span class="sc">:&gt;12,.0f}</span><span class="ss"> / year"</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">2.0 flags </span><span class="sc">{</span>flag_rate<span class="sc">:.1%}</span><span class="ss"> of traffic, so the escalation costs </span><span class="sc">{</span>flag_rate<span class="sc">:.1%}</span><span class="ss"> of the naive design."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>The architecture that falls out of this, and you will meet it again in weeks 6 and 10:</strong></p>
 <table class="caption-top table">
@@ -550,65 +576,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b1.-tokens-the-model-does-not-see-words" class="level3">
 <h3 class="anchored" data-anchor-id="b1.-tokens-the-model-does-not-see-words">B1. Tokens: the model does not see words</h3>
 <p>An LLM reads and writes <strong>tokens</strong> — chunks of characters, roughly ¾ of an English word each. Everything is billed, limited and reasoned about in tokens. Numbers, code and non-English text tokenize badly: a Russian sentence costs 1.5× the tokens of its English translation on the GPT-4o tokenizer, and 2.75× on the older GPT-4 one — same sentence, same model family.</p>
-<div id="b4c67043" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> tiktoken</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)   <span class="co"># tokenizer family used by recent OpenAI models; others are similar</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:                           <span class="co"># offline fallback: crude approximation, only to show the idea</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> re</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> _Enc:</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> encode(<span class="va">self</span>, s): <span class="cf">return</span> re.findall(<span class="vs">r"\w+|[^\w\s]"</span>, s)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> decode(<span class="va">self</span>, t): <span class="cf">return</span> t[<span class="dv">0</span>]</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    enc <span class="op">=</span> _Enc()<span class="op">;</span> <span class="bu">print</span>(<span class="st">"tiktoken unavailable (</span><span class="sc">%s</span><span class="st">) — using a crude word/punctuation splitter instead"</span> <span class="op">%</span> <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> [</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The ECB left rates unchanged at 2.00</span><span class="sc">% o</span><span class="st">n Thursday."</span>,</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bitcoin fell 4.2% to $58,310 after the ETF outflow data."</span>,</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ЕЦБ оставил ставки без изменений на уровне 2,00%."</span>,</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"df.groupby('ticker')['ret'].rolling(21).std()"</span>,</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> samples:</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    toks <span class="op">=</span> enc.encode(s)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(toks)<span class="sc">:3d}</span><span class="ss"> tokens | </span><span class="sc">{</span><span class="bu">len</span>(s.split())<span class="sc">:2d}</span><span class="ss"> words | </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"     "</span>, [enc.decode([t]) <span class="cf">for</span> t <span class="kw">in</span> toks][:<span class="dv">14</span>], <span class="st">"...</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7e10b025" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> tiktoken</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)   <span class="co"># tokenizer family used by recent OpenAI models; others are similar</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:                           <span class="co"># offline fallback: crude approximation, only to show the idea</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> re</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">class</span> _Enc:</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> encode(<span class="va">self</span>, s): <span class="cf">return</span> re.findall(<span class="vs">r"\w+|[^\w\s]"</span>, s)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> decode(<span class="va">self</span>, t): <span class="cf">return</span> t[<span class="dv">0</span>]</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    enc <span class="op">=</span> _Enc()<span class="op">;</span> <span class="bu">print</span>(<span class="st">"tiktoken unavailable (</span><span class="sc">%s</span><span class="st">) — using a crude word/punctuation splitter instead"</span> <span class="op">%</span> <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> [</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The ECB left rates unchanged at 2.00</span><span class="sc">% o</span><span class="st">n Thursday."</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Bitcoin fell 4.2% to $58,310 after the ETF outflow data."</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ЕЦБ оставил ставки без изменений на уровне 2,00%."</span>,</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"df.groupby('ticker')['ret'].rolling(21).std()"</span>,</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> samples:</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    toks <span class="op">=</span> enc.encode(s)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">len</span>(toks)<span class="sc">:3d}</span><span class="ss"> tokens | </span><span class="sc">{</span><span class="bu">len</span>(s.split())<span class="sc">:2d}</span><span class="ss"> words | </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"     "</span>, [enc.decode([t]) <span class="cf">for</span> t <span class="kw">in</span> toks][:<span class="dv">14</span>], <span class="st">"...</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="b2.-context-window-the-models-working-memory" class="level3">
 <h3 class="anchored" data-anchor-id="b2.-context-window-the-models-working-memory">B2. Context window: the model’s working memory</h3>
 <p>Everything the model knows about <em>your</em> problem must fit in the context window (today: 128k–1M tokens depending on the model). What is not in the context does not exist for the model — it will fill the gap with something plausible. This is the root of most “hallucinations”: not lying, but <strong>completing a pattern with missing information</strong>.</p>
 <p>Practical consequences for business use: - long documents must be chunked and only the relevant parts fed in (that is what <em>retrieval</em> does — week 4); - the model has no memory between calls unless you send the history again; - cost ≈ (input tokens + output tokens) × price per token — so verbosity is money.</p>
-<div id="524a5137" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rough cost of sending a document to a model. Prices are illustrative — check the provider page.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>price_per_1M_input <span class="op">=</span> {<span class="st">"small model"</span>: <span class="fl">0.10</span>, <span class="st">"mid model"</span>: <span class="fl">1.00</span>, <span class="st">"frontier model"</span>: <span class="fl">5.00</span>}   <span class="co"># USD per 1M input tokens</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>doc_tokens <span class="op">=</span> <span class="dv">90_000</span>          <span class="co"># e.g. a 10-K annual report, ~60 pages of dense text</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, p <span class="kw">in</span> price_per_1M_input.items():</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:15s}</span><span class="ss">: $</span><span class="sc">{</span>doc_tokens<span class="op">/</span><span class="fl">1e6</span><span class="op">*</span>p<span class="sc">:.3f}</span><span class="ss"> per read; 1,000 reads/day -&gt; $</span><span class="sc">{</span>doc_tokens<span class="op">/</span><span class="fl">1e6</span><span class="op">*</span>p<span class="op">*</span><span class="dv">1000</span><span class="sc">:,.0f}</span><span class="ss">/day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a55a2d22" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rough cost of sending a document to a model. Prices are illustrative — check the provider page.</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>price_per_1M_input <span class="op">=</span> {<span class="st">"small model"</span>: <span class="fl">0.10</span>, <span class="st">"mid model"</span>: <span class="fl">1.00</span>, <span class="st">"frontier model"</span>: <span class="fl">5.00</span>}   <span class="co"># USD per 1M input tokens</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>doc_tokens <span class="op">=</span> <span class="dv">90_000</span>          <span class="co"># e.g. a 10-K annual report, ~60 pages of dense text</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, p <span class="kw">in</span> price_per_1M_input.items():</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:15s}</span><span class="ss">: $</span><span class="sc">{</span>doc_tokens<span class="op">/</span><span class="fl">1e6</span><span class="op">*</span>p<span class="sc">:.3f}</span><span class="ss"> per read; 1,000 reads/day -&gt; $</span><span class="sc">{</span>doc_tokens<span class="op">/</span><span class="fl">1e6</span><span class="op">*</span>p<span class="op">*</span><span class="dv">1000</span><span class="sc">:,.0f}</span><span class="ss">/day"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="b3.-sampling-the-same-prompt-gives-different-answers" class="level3">
 <h3 class="anchored" data-anchor-id="b3.-sampling-the-same-prompt-gives-different-answers">B3. Sampling: the same prompt gives different answers</h3>
 <p>The model outputs a probability distribution over the next token and <em>samples</em> from it. <code>temperature</code> controls how much randomness is allowed. Temperature 0 is (almost) deterministic — use it for extraction and classification. Higher temperatures for brainstorming.</p>
 <p>The cell below calls Gemini <strong>only if</strong> you set up the key. If not, skip it — the tutor will demonstrate.</p>
-<div id="4e0dc1a8" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> userdata.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> os.environ.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> API_KEY:</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.genai <span class="im">import</span> types</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>API_KEY)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> <span class="st">"In one sentence: why did Bitcoin fall in the week of 5 August 2024?"</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> temp <span class="kw">in</span> (<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>):</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> client.models.generate_content(model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>, contents<span class="op">=</span>prompt,</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                                           config<span class="op">=</span>types.GenerateContentConfig(temperature<span class="op">=</span>temp))</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"T=</span><span class="sc">{</span>temp<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>r<span class="sc">.</span>text<span class="sc">.</span>strip()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No API key found — skipping. Ask the tutor to run this cell on the projector."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c2d2a939" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> userdata.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    API_KEY <span class="op">=</span> os.environ.get(<span class="st">"GEMINI_API_KEY"</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> API_KEY:</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.genai <span class="im">import</span> types</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>API_KEY)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    prompt <span class="op">=</span> <span class="st">"In one sentence: why did Bitcoin fall in the week of 5 August 2024?"</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> temp <span class="kw">in</span> (<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>):</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> client.models.generate_content(model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>, contents<span class="op">=</span>prompt,</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>                                           config<span class="op">=</span>types.GenerateContentConfig(temperature<span class="op">=</span>temp))</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"T=</span><span class="sc">{</span>temp<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>r<span class="sc">.</span>text<span class="sc">.</span>strip()<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"No API key found — skipping. Ask the tutor to run this cell on the projector."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> Whatever the model answered above: which claims can you verify in five minutes, and from which source? Which claims are <em>plausible but unverifiable</em>? Write two lines in the cell below. (This exact exercise — separate what you can check from what merely sounds right — is what you will do with every AI output in this course.)</p>
 <p><em>Your notes here:</em></p>
@@ -616,22 +642,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b4.-embeddings-meaning-as-geometry" class="level3">
 <h3 class="anchored" data-anchor-id="b4.-embeddings-meaning-as-geometry">B4. Embeddings: meaning as geometry</h3>
 <p>An <strong>embedding</strong> turns a piece of text into a vector (a list of numbers) so that texts with similar meaning are close together. This is what makes search-by-meaning, clustering and retrieval possible. We do not need a neural model to understand the idea — the cell below uses a crude bag-of-words embedding so you can see the mechanics; real embeddings from a model are much better at <em>meaning</em>, but the geometry is the same.</p>
-<div id="47993d66" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> [</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The central bank raised interest rates to fight inflation."</span>,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Monetary policy tightened as the ECB hiked its deposit rate."</span>,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The football match ended in a draw after extra time."</span>,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ethereum gas fees dropped after the network upgrade."</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Transaction costs on the blockchain fell following the protocol update."</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> TfidfVectorizer().fit_transform(docs)</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> pd.DataFrame(cosine_similarity(X), index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(docs)), columns<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(docs))).<span class="bu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sim)</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Doc 0 vs doc 1 (same meaning, different words):"</span>, sim.loc[<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Doc 3 vs doc 4 (same meaning, different words):"</span>, sim.loc[<span class="dv">3</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="30a5525d" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>docs <span class="op">=</span> [</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The central bank raised interest rates to fight inflation."</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Monetary policy tightened as the ECB hiked its deposit rate."</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The football match ended in a draw after extra time."</span>,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ethereum gas fees dropped after the network upgrade."</span>,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Transaction costs on the blockchain fell following the protocol update."</span>,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> TfidfVectorizer().fit_transform(docs)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> pd.DataFrame(cosine_similarity(X), index<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(docs)), columns<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(docs))).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sim)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Doc 0 vs doc 1 (same meaning, different words):"</span>, sim.loc[<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Doc 3 vs doc 4 (same meaning, different words):"</span>, sim.loc[<span class="dv">3</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>🔍 CHECK.</strong> Docs 0–1 and docs 3–4 say the same thing in different words, yet the crude embedding gives them low similarity. Why? What would a model-based embedding do differently? (Hint: “raised rates” and “hiked its deposit rate” share no words.) This is the gap that neural embeddings close — we will use them in week 4.</p>
 </section>
@@ -642,65 +668,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="block-c-first-data-notebook-three-assets" class="level2">
 <h2 class="anchored" data-anchor-id="block-c-first-data-notebook-three-assets">Block C — First data notebook: three assets</h2>
-<div id="f962acdb" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="037c2f9a" class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="83ed5916" class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tickers <span class="op">=</span> [<span class="st">"BTC-USD"</span>, <span class="st">"AAPL"</span>, <span class="st">"^GSPC"</span>]</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>px.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c3ff409a" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tickers <span class="op">=</span> [<span class="st">"BTC-USD"</span>, <span class="st">"AAPL"</span>, <span class="st">"^GSPC"</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>px.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="a44844d6" class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daily simple returns</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rets <span class="op">=</span> px.pct_change().dropna()</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rets.describe().<span class="bu">round</span>(<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c0183202" class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daily simple returns</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>rets <span class="op">=</span> px.pct_change().dropna()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rets.describe().<span class="bu">round</span>(<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="01d207f7" class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>(px <span class="op">/</span> px.iloc[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">100</span>).plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">"Growth of 100 (rebased)"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"index"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0f29b547" class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>(px <span class="op">/</span> px.iloc[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">100</span>).plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">"Growth of 100 (rebased)"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"index"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="check-the-assistants-volatility-code" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-volatility-code">🔍 CHECK — the assistant’s volatility code</h3>
 <p>The cell below is the kind of code an assistant produces when asked “annualise the volatility of these assets”. It runs without errors. <strong>It contains two mistakes.</strong> Find them before reading the solution.</p>
-<div id="c7efb736" class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ann_vol <span class="op">=</span> rets.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>cum_ret <span class="op">=</span> rets.<span class="bu">sum</span>()</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame({<span class="st">"annualised_vol"</span>: ann_vol, <span class="st">"cumulative_return"</span>: cum_ret}).<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="86f1fb79" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ann_vol <span class="op">=</span> rets.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>cum_ret <span class="op">=</span> rets.<span class="bu">sum</span>()</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame({<span class="st">"annualised_vol"</span>: ann_vol, <span class="st">"cumulative_return"</span>: cum_ret}).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <details>
 <summary>
@@ -712,13 +738,13 @@ Solution (open after you have tried)
 </ol>
 The general lesson: the assistant is fluent, not correct. The cheapest verification is always <em>compute the same number a second way</em>.
 </details>
-<div id="bed65d37" class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected version</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>days_per_year <span class="op">=</span> {t: (<span class="dv">365</span> <span class="cf">if</span> t.endswith(<span class="st">"-USD"</span>) <span class="cf">else</span> <span class="dv">252</span>) <span class="cf">for</span> t <span class="kw">in</span> px.columns}</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ann_vol <span class="op">=</span> pd.Series({t: rets[t].std() <span class="op">*</span> np.sqrt(days_per_year[t]) <span class="cf">for</span> t <span class="kw">in</span> px.columns})</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>cum_ret <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> rets).prod() <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> px.iloc[<span class="op">-</span><span class="dv">1</span>] <span class="op">/</span> px.iloc[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>           <span class="co"># second way</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"annualised_vol"</span>: ann_vol, <span class="st">"cumulative_return"</span>: cum_ret, <span class="st">"check"</span>: check}).<span class="bu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="81aad447" class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected version</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>days_per_year <span class="op">=</span> {t: (<span class="dv">365</span> <span class="cf">if</span> t.endswith(<span class="st">"-USD"</span>) <span class="cf">else</span> <span class="dv">252</span>) <span class="cf">for</span> t <span class="kw">in</span> px.columns}</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>ann_vol <span class="op">=</span> pd.Series({t: rets[t].std() <span class="op">*</span> np.sqrt(days_per_year[t]) <span class="cf">for</span> t <span class="kw">in</span> px.columns})</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>cum_ret <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> rets).prod() <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>check <span class="op">=</span> px.iloc[<span class="op">-</span><span class="dv">1</span>] <span class="op">/</span> px.iloc[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>           <span class="co"># second way</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"annualised_vol"</span>: ann_vol, <span class="st">"cumulative_return"</span>: cum_ret, <span class="st">"check"</span>: check}).<span class="bu">round</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

@@ -1250,7 +1250,7 @@
     "href": "week-01/homework.html",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Due: Tuesday 29 September 2026, 23:59 · folder week-01/hw/ in your repo\n\n\nWrite down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.\n\n\n\n\nREADME.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\npitch.md — three sentences from three pitch decks. You will meet a version of each in a data room:\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\nTwo are impossible as stated, one is unanswerable as written. For each: which is it, which part of the machine from today (weights, training, context window, tokens) it is really talking about, and the one question you would ask the vendor. Half a page in total.\n\n\n\n\n\nUse an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\nCommit at least twice (the history is part of the work).\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.\n\n\n\n\nRepository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\npitch.md names one question per sentence.\n\n\n\n\nThe question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change."
+    "text": "Due: Tuesday 29 September 2026, 23:59 · folder week-01/ in your shared Drive folder ese-ai-fintech\n\n\nWrite down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.\n\n\n\n\nREADME.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\npitch.md — three sentences from three pitch decks. You will meet a version of each in a data room:\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\nTwo are impossible as stated, one is unanswerable as written. For each: which is it, which part of the machine from today (weights, training, context window, tokens) it is really talking about, and the one question you would ask the vendor. Half a page in total.\n\n\n\n\n\nUse an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, save what you have, and write down where you got stuck.\n\n\n\n\nDrive folder ese-ai-fintech exists and is shared with me (see Setup).\nToday’s notebook is saved there, in week-01/.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\npitch.md names one question per sentence.\n\n\n\n\nThe question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change."
   },
   {
     "objectID": "week-01/homework.html#goal",
@@ -1260,8 +1260,8 @@
     "text": "Write down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together."
   },
   {
-    "objectID": "week-01/homework.html#deliverables-in-week-01hw",
-    "href": "week-01/homework.html#deliverables-in-week-01hw",
+    "objectID": "week-01/homework.html#deliverables-in-week-01",
+    "href": "week-01/homework.html#deliverables-in-week-01",
     "title": "Homework 1 — Your starting point",
     "section": "",
     "text": "README.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\npitch.md — three sentences from three pitch decks. You will meet a version of each in a data room:\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\nTwo are impossible as stated, one is unanswerable as written. For each: which is it, which part of the machine from today (weights, training, context window, tokens) it is really talking about, and the one question you would ask the vendor. Half a page in total."
@@ -1271,21 +1271,21 @@
     "href": "week-01/homework.html#constraints",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Use an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\nCommit at least twice (the history is part of the work)."
+    "text": "Use an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content."
   },
   {
     "objectID": "week-01/homework.html#scope",
     "href": "week-01/homework.html#scope",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck."
+    "text": "3–4 hours. If you are past 4 hours, stop, save what you have, and write down where you got stuck."
   },
   {
     "objectID": "week-01/homework.html#self-check-before-submitting",
     "href": "week-01/homework.html#self-check-before-submitting",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Repository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\npitch.md names one question per sentence."
+    "text": "Drive folder ese-ai-fintech exists and is shared with me (see Setup).\nToday’s notebook is saved there, in week-01/.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\npitch.md names one question per sentence."
   },
   {
     "objectID": "week-01/homework.html#how-this-feeds-the-capstone",
@@ -1537,14 +1537,14 @@
     "href": "week-01/session.html#setup",
     "title": "Week 1 — How we will work, and what is inside the machine",
     "section": "Setup",
-    "text": "Setup\n\n# Install what is not already in Colab. (~30 s)\n!pip -q install yfinance tiktoken google-genai\n\n\nimport sys, platform, pandas as pd, numpy as np, matplotlib\nprint(\"Python\", sys.version.split()[0], \"| pandas\", pd.__version__, \"| numpy\", np.__version__)\ntry:\n    import google.colab  # noqa\n    IN_COLAB = True\nexcept ImportError:\n    IN_COLAB = False\nprint(\"Running in Colab:\", IN_COLAB)\n\nMake it yours: File ▸ Save a copy in Drive. From now on you work on your copy.\nAt home, once (ten minutes, see the Setup page on the course site): create a private GitHub repository ese-ai-fintech, add the tutor as a collaborator, and from then on use File ▸ Save a copy in GitHub, path week-NN/…. The commit history is your evidence of work. Homework goes in week-01/hw/.\nAPI key (optional today, needed from week 4): create a free key at Google AI Studio, then in Colab open the 🔑 Secrets panel on the left, add GEMINI_API_KEY, and enable notebook access. Never paste a key into a cell."
+    "text": "Setup\n\n# Install what is not already in Colab. (~30 s)\n!pip -q install yfinance tiktoken google-genai\n\n\nimport sys, platform, pandas as pd, numpy as np, matplotlib\nprint(\"Python\", sys.version.split()[0], \"| pandas\", pd.__version__, \"| numpy\", np.__version__)\ntry:\n    import google.colab  # noqa\n    IN_COLAB = True\nexcept ImportError:\n    IN_COLAB = False\nprint(\"Running in Colab:\", IN_COLAB)\n\nMake it yours: File ▸ Save a copy in Drive. From now on you work on your copy.\nOnce: in Google Drive, create a folder ese-ai-fintech, share it with the tutor, and save every notebook and homework there, one sub-folder per week.\nAPI key (optional today, needed from week 4): create a free key at Google AI Studio, then in Colab open the 🔑 Secrets panel on the left, add GEMINI_API_KEY, and enable notebook access. Never paste a key into a cell."
   },
   {
     "objectID": "week-01/session.html#today-from-one-neuron-to-an-llm",
     "href": "week-01/session.html#today-from-one-neuron-to-an-llm",
     "title": "Week 1 — How we will work, and what is inside the machine",
     "section": "Today — from one neuron to an LLM",
-    "text": "Today — from one neuron to an LLM\n\n1. One neuron\nBet first. A card payment: large, made abroad, from a new device. Three numbers in, one number out. Write down what you would do with each number before adding them up.\n\nimport math\n\nx = {\"log amount (scaled)\": 1.2, \"paid abroad\": 1, \"new device\": 1}   # the inputs\nw = {\"log amount (scaled)\": 0.6, \"paid abroad\": 1.1, \"new device\": 1.4}   # the weights: what it learns\nb = -2.0                                                                  # the bias\n\nz = sum(x[k] * w[k] for k in x) + b        # multiply, add\np = 1 / (1 + math.exp(-z))                 # squash to 0-1 (sigmoid)\nprint(f\"sum = {z:.2f}   -&gt;   chance of fraud = {p:.2f}\")\n\nTry: set paid abroad to 0. Then make new device weigh 3.0. What moves, and by how much?\n\n\n2. The squash: activation functions\n\nimport numpy as np, matplotlib.pyplot as plt\n\nz = np.linspace(-4, 4, 200)\nfig, ax = plt.subplots(1, 3, figsize=(11, 3))\nfor a, (name, f) in zip(ax, [(\"sigmoid\", 1/(1+np.exp(-z))), (\"tanh\", np.tanh(z)), (\"ReLU\", np.maximum(0, z))]):\n    a.plot(z, f, lw=3); a.set_title(name); a.axhline(0, c=\"grey\", lw=.5); a.axvline(0, c=\"grey\", lw=.5)\nplt.tight_layout(); plt.show()\n\n\n\n3. Training it by hand: the perceptron learns AND\nOutput 1 only when both inputs are 1. Start from weights (0.3, -0.1), learning rate 0.1, threshold 0.25. The rule: wrong → move each weight a little towards the right answer; right → leave it.\n\nX = [(0, 0), (0, 1), (1, 0), (1, 1)]\nY = [0, 0, 0, 1]\nw1, w2, eta, theta = 0.3, -0.1, 0.1, 0.25\n\nfor epoch in range(1, 10):\n    mistakes = 0\n    for (x1, x2), y in zip(X, Y):\n        guess = 1 if w1*x1 + w2*x2 &gt;= theta else 0      # 1. guess\n        error = y - guess                               # 2. how wrong?\n        if error:                                       # 3. who is to blame: the inputs that were on\n            w1 += eta * error * x1                      # 4. nudge\n            w2 += eta * error * x2\n            mistakes += 1\n    print(f\"epoch {epoch}: {mistakes} mistakes   w = ({w1:.1f}, {w2:.1f})\")\n    if mistakes == 0:\n        break\n\n\n\n4. The same loop, with a smooth nudge: gradient descent\n200 synthetic payments. One neuron. Watch the loss fall as the weights are nudged downhill, step after step. The step that works out how much each weight is to blame is called backpropagation.\n\nrng = np.random.default_rng(1)\nn = 200\nXp = np.column_stack([rng.normal(0, 1, n), rng.integers(0, 2, n), rng.integers(0, 2, n)])   # amount, abroad, new device\ntrue_w, true_b = np.array([0.8, 1.2, 1.6]), -2.0\nyp = (rng.random(n) &lt; 1/(1+np.exp(-(Xp @ true_w + true_b)))).astype(float)\n\nW, B, lr = np.zeros(3), 0.0, 0.5\nfor step in range(301):\n    p = 1/(1+np.exp(-(Xp @ W + B)))                                   # 1. guess\n    loss = -np.mean(yp*np.log(p+1e-9) + (1-yp)*np.log(1-p+1e-9))      # 2. how wrong?\n    gW, gB = Xp.T @ (p - yp) / n, np.mean(p - yp)                     # 3. who is to blame (the gradient)\n    W, B = W - lr*gW, B - lr*gB                                       # 4. nudge\n    if step % 50 == 0:\n        print(f\"step {step:3d}   loss {loss:.3f}   weights {np.round(W, 2)}   bias {B:.2f}\")\nprint(\"the weights that generated the data:\", true_w, true_b)\n\n🔍 CHECK. The learned weights are close to the true ones but not equal. Why not? (Hint: 200 payments.)\nAn LLM runs exactly this loop. The inputs are tokens, the right answer is the next token, and there are billions of weights instead of four.\n\n\n5. What the model reads: tokens\nBet first: \"Il margine è insostenibile\" — four words. How many tokens?\n\nimport tiktoken\nenc = tiktoken.get_encoding(\"o200k_base\")\nfor s in [\"Il margine è insostenibile\",\n          \"The margin is unsustainable\",\n          \"Маржа неустойчива\",\n          \"1,234,567.89\",\n          \"egg Egg  egg EGG\"]:\n    t = enc.encode(s)\n    print(f\"{len(t):2d} tokens | {s:30s} | {[enc.decode([i]) for i in t]}\")\n\nYour turn: your surname, a company you worked for, a sentence in Russian. Which one splits the most?\n\n\n6. How a tokenizer is learned: merge the most frequent pair\n\nfrom collections import Counter\n\nseq, new_symbols = list(\"aaabdaaabac\"), iter(\"ZYXWV\")\nprint(\"start:\", \"\".join(seq))\nwhile True:\n    pairs = Counter(zip(seq, seq[1:]))\n    (a, b), count = pairs.most_common(1)[0]\n    if count &lt; 2:\n        break\n    s = next(new_symbols)\n    out, i = [], 0\n    while i &lt; len(seq):\n        if i &lt; len(seq) - 1 and (seq[i], seq[i+1]) == (a, b):\n            out.append(s); i += 2\n        else:\n            out.append(seq[i]); i += 1\n    seq = out\n    print(f\"{s} = {a}{b}:  {''.join(seq)}\")\nprint(f\"11 symbols -&gt; {len(seq)}\")\n\nNext week you train one of these on your own texts.\n\n\nBefore you leave: three lines, in your words\n\n…\n…\n…\n\nThen File ▸ Save a copy in Drive (and, once your repository exists, in GitHub)."
+    "text": "Today — from one neuron to an LLM\nOne question from start to finish: is this card payment fraud? Each section adds one piece. The numbers are the same as on the slides.\n\n1. Four past payments\n\nimport math, numpy as np, pandas as pd, matplotlib.pyplot as plt\n\npayments = pd.DataFrame({\n    \"large\":  [0, 1, 0, 1],      # over EUR 1,000?\n    \"abroad\": [0, 0, 1, 1],      # paid abroad?\n    \"fraud\":  [0, 0, 0, 1],\n}, index=[\"A\", \"B\", \"C\", \"D\"])\npayments\n\n\n\n2. A first guess, as one neuron\nBet first: weight 1 on large, 0 on abroad, bias −1, block if the score is above 0. Which payments does it block?\n\nw_large, w_abroad, bias = 1.0, 0.0, -1.0\n\npayments[\"score\"] = w_large * payments.large + w_abroad * payments.abroad + bias\npayments[\"block\"] = (payments.score &gt; 0).astype(int)\npayments\n\n\n\n3. Learning from mistakes, by hand (the perceptron)\nWrong → move each weight a little towards the right answer. Right → leave it. The learning rate eta is how big each move is.\n\nw_large, w_abroad, bias, eta = 1.0, 0.0, -1.0, 0.5\n\nfor rnd in range(1, 6):\n    mistakes = 0\n    for name, row in payments.iterrows():\n        score = w_large * row.large + w_abroad * row.abroad + bias\n        decision = 1 if score &gt; 0 else 0\n        error = row.fraud - decision                  # +1 missed fraud, -1 false alarm, 0 right\n        if error:\n            w_large  += eta * error * row.large\n            w_abroad += eta * error * row.abroad\n            bias     += eta * error\n            mistakes += 1\n            print(f\"round {rnd}  {name}: score {score:+.1f} -&gt; {'block' if decision else 'no block'}  WRONG  \"\n                  f\"-&gt; weights ({w_large:g}, {w_abroad:g}, {bias:g})\")\n    if mistakes == 0:\n        print(f\"round {rnd}: no mistakes. Learned weights: ({w_large:g}, {w_abroad:g}, {bias:g})\")\n        break\n\n\n\n4. Yes or no is not enough: the sigmoid\nSame weights, but instead of a step we squash the score into a probability.\n\ndef sigmoid(z):\n    return 1 / (1 + np.exp(-z))\n\npayments[\"score\"] = w_large * payments.large + w_abroad * payments.abroad + bias\npayments[\"p_fraud\"] = sigmoid(payments.score).round(2)\npayments[[\"large\", \"abroad\", \"fraud\", \"score\", \"p_fraud\"]]\n\n🔍 CHECK. B sits exactly on the line. What probability does it get, and why is that more honest than “don’t block”?\n\n\n5. How wrong, as one number: the loss\n\ndef loss(p, y):\n    return -math.log(p) if y == 1 else -math.log(1 - p)\n\nfor name in [\"D\", \"B\"]:\n    p, y = sigmoid(payments.loc[name, \"score\"]), payments.loc[name, \"fraud\"]\n    print(f\"{name}: p(fraud) = {p:.2f}, fraud = {y}  -&gt;  loss = {loss(p, y):.2f}\")\n\n\n\n6. The formula for every weight\nw &lt;- w - eta * (p - y) * x. One step on payment D, with eta = 1.\n\nx = {\"large\": 1, \"abroad\": 1, \"bias\": 1}                  # payment D (the bias always sees a 1)\nw = {\"large\": float(w_large), \"abroad\": float(w_abroad), \"bias\": float(bias)}\ny, eta = 1, 1.0\n\np = sigmoid(sum(w[k] * x[k] for k in w))\nblame = {k: (p - y) * x[k] for k in w}                     # what backpropagation computes\nw_new = {k: w[k] - eta * blame[k] for k in w}\np_new = sigmoid(sum(w_new[k] * x[k] for k in w))\n\nprint(\"before \", {k: round(float(v), 2) for k, v in w.items()}, f\"  p(fraud) for D = {p:.2f}\")\nprint(\"blame  \", {k: round(float(v), 2) for k, v in blame.items()})\nprint(\"after  \", {k: round(float(v), 2) for k, v in w_new.items()}, f\"  p(fraud) for D = {p_new:.2f}\")\n\n\n\n7. The learning rate\nReal data is messier. Add payment E: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.\n\nX = np.array([[0, 0], [1, 0], [0, 1], [1, 1], [1, 1]])    # A B C D E\nY = np.array([0, 0, 0, 1, 0])\n\ndef train(eta, steps=30, w=(1.0, 0.5), b=-1.0):\n    w, b, hist = np.array(w, float), b, []\n    for _ in range(steps):\n        p = np.clip(sigmoid(X @ w + b), 1e-12, 1 - 1e-12)\n        hist.append(-np.mean(Y * np.log(p) + (1 - Y) * np.log(1 - p)))    # how wrong\n        w, b = w - eta * X.T @ (p - Y) / len(Y), b - eta * np.mean(p - Y)  # nudge\n    return hist\n\nfor eta in (0.3, 3, 20):\n    plt.plot(train(eta), label=f\"eta = {eta}\", lw=2)\nplt.xlabel(\"training steps\"); plt.ylabel(\"loss\"); plt.ylim(0, 2.6); plt.legend(); plt.show()\n\nTry: eta = 8. Does it settle, or keep jumping?\n\n\n8. A pattern one neuron cannot draw: card testing\nA fraudster tries the card with €10, then spends €2,000. Fraud sits at both ends of the amount. Two hidden neurons each answer one question; the output combines them.\n\namount = np.linspace(0, 3, 300)                             # thousands of euros\nsmall  = sigmoid(-10 * amount + 2)                          # hidden neuron 1: \"small?\"\nlarge  = sigmoid( 10 * amount - 19)                         # hidden neuron 2: \"large?\"\nfraud  = sigmoid(8 * small + 8 * large - 4)                 # output: \"small OR large\"\n\nfig, ax = plt.subplots(3, 1, figsize=(9, 6), sharex=True)\nfor a, (name, curve) in zip(ax, [(\"small?\", small), (\"large?\", large), (\"fraud?\", fraud)]):\n    a.plot(amount, curve, lw=2); a.set_ylabel(name); a.set_ylim(-0.05, 1.05)\nax[-1].set_xlabel(\"amount, thousands of euros\"); plt.show()\nprint(\"parameters: 2 x 2 in the hidden layer + 3 in the output =\", 2 * 2 + 3)\n\nTry: change -19 to -10. What does the network now call fraud?\n\n\n9. What the model reads: tokens\nThe same machine, with one difference: the input is text, cut into pieces called tokens.\n\nimport tiktoken\nenc = tiktoken.get_encoding(\"o200k_base\")\nfor s in [\"Il margine è insostenibile\", \"The margin is unsustainable\", \"Маржа неустойчива\"]:\n    t = enc.encode(s)\n    print(f\"{len(t):2d} tokens | {s:30s} | {[enc.decode([i]) for i in t]}\")\n\n\n\nBefore you leave: three lines, in your words\n\n…\n…\n…\n\nThen File ▸ Save a copy in Drive, into your ese-ai-fintech folder."
   },
   {
     "objectID": "week-01/session.html#block-a2-one-decision-three-kinds-of-software",
@@ -1740,49 +1740,42 @@
     "href": "index.html",
     "title": "Artificial Intelligence for Business and FinTech",
     "section": "",
-    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your repository.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nData analysis with AI as pair programmer\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook directly in Google Colab. Once it is open, File ▸ Save a copy in GitHub into your own repository, path week-NN/session.ipynb. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your repository. Details in the syllabus.\nTools: Google Colab, GitHub, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
+    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nData analysis with AI as pair programmer\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
   },
   {
     "objectID": "setup.html",
     "href": "setup.html",
     "title": "Setup",
     "section": "",
-    "text": "Nothing is installed on your laptop. You need three accounts and one key. Bring the laptop to session 1 with the first three items done; we finish the rest together in the first twenty minutes."
+    "text": "Nothing is installed on your laptop. You need a Google account, a chat assistant, and — from week 4 — one key."
   },
   {
     "objectID": "setup.html#google-account-and-colab",
     "href": "setup.html#google-account-and-colab",
     "title": "Setup",
     "section": "1. Google account and Colab",
-    "text": "1. Google account and Colab\nGoogle Colab is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.\n\nOpen this notebook and press Runtime ▸ Run all. If the first cells run, Colab works.\nRuntime ▸ Restart and run all is the self-check you will use before every submission: a notebook that runs top to bottom from a clean runtime, with no errors."
+    "text": "1. Google account and Colab\nGoogle Colab is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.\nEvery session notebook opens from the course site with the Colab ↗ link. Then File ▸ Save a copy in Drive: from that moment the copy is yours."
   },
   {
-    "objectID": "setup.html#github-account-and-your-course-repository",
-    "href": "setup.html#github-account-and-your-course-repository",
+    "objectID": "setup.html#your-course-folder",
+    "href": "setup.html#your-course-folder",
     "title": "Setup",
-    "section": "2. GitHub account and your course repository",
-    "text": "2. GitHub account and your course repository\nGitHub holds your homework and, by the end, your capstone. It is the single source of truth for assessment.\n\nCreate a GitHub account if you do not have one.\nCreate a private repository named ese-ai-fintech.\nAdd the tutor (NiccoloSalvini) as a collaborator: Settings ▸ Collaborators ▸ Add people.\nFolder convention, one per week: week-01/hw/, week-02/hw/, …, capstone/.\n\nCommit often. The history is part of the work: I read it."
-  },
-  {
-    "objectID": "setup.html#saving-a-colab-notebook-to-github",
-    "href": "setup.html#saving-a-colab-notebook-to-github",
-    "title": "Setup",
-    "section": "3. Saving a Colab notebook to GitHub",
-    "text": "3. Saving a Colab notebook to GitHub\nEach session notebook opens from this site with the Colab ↗ link. Save your own copy once, then keep working on it:\n\nIn Colab, File ▸ Save a copy in GitHub.\nRepository: ese-ai-fintech. File path: week-01/session.ipynb (change the week as you go).\nThe first time, Colab asks you to authorise GitHub and to tick Include private repos under File ▸ Open notebook ▸ GitHub."
+    "section": "2. Your course folder",
+    "text": "2. Your course folder\n\nIn Google Drive, create a folder named ese-ai-fintech and share it with the tutor.\nOne sub-folder per week: week-01/, week-02/, …, and later capstone/.\nYour session notebooks and your homework go there. That folder is what gets read and assessed.\n\nBefore handing anything in: Runtime ▸ Restart and run all. A notebook that runs top to bottom from a clean start, with no errors, is the minimum."
   },
   {
     "objectID": "setup.html#an-llm-api-key-from-week-4",
     "href": "setup.html#an-llm-api-key-from-week-4",
     "title": "Setup",
-    "section": "4. An LLM API key — from week 4",
-    "text": "4. An LLM API key — from week 4\nFrom session 4 the notebooks call a language model from Python. The default is the Google AI Studio free tier, with OpenAI-compatible code so it ports to other providers.\n\nCreate a key at aistudio.google.com.\nIn Colab, open the key icon in the left sidebar (Secrets), add a secret named GEMINI_API_KEY, paste the key, and enable notebook access.\nNever paste a key into a notebook cell. Keys live in Colab Secrets only; the notebooks read them from there.\n\nAn OpenAI or Anthropic key is optional, for comparison in weeks 4–5."
+    "section": "3. An LLM API key — from week 4",
+    "text": "3. An LLM API key — from week 4\nFrom session 4 the notebooks call a language model from Python. The default is the Google AI Studio free tier, with OpenAI-compatible code so it ports to other providers.\n\nCreate a key at aistudio.google.com.\nIn Colab, open the key icon in the left sidebar (Secrets), add a secret named GEMINI_API_KEY, paste the key, and enable notebook access.\nNever paste a key into a notebook cell. Keys live in Colab Secrets only; the notebooks read them from there.\n\nAn OpenAI or Anthropic key is optional, for comparison in weeks 4–5."
   },
   {
     "objectID": "setup.html#a-chat-assistant",
     "href": "setup.html#a-chat-assistant",
     "title": "Setup",
-    "section": "5. A chat assistant",
-    "text": "5. A chat assistant\nPick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.\nTwo rules apply from the first day:\n\nNo confidential, personal or commercially sensitive data goes into an AI service.\nEvery submission includes an AI-use disclosure: which tools, for what, and how the outputs were verified."
+    "section": "4. A chat assistant",
+    "text": "4. A chat assistant\nPick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.\nTwo rules apply from the first day:\n\nNo confidential, personal or commercially sensitive data goes into an AI service.\nEvery submission includes an AI-use disclosure: which tools, for what, and how the outputs were verified."
   },
   {
     "objectID": "setup.html#data-sources-you-will-use",
@@ -1904,88 +1897,137 @@
     "text": "Three ways to write the same decision\n\n\n\n\n\n\n\n1.0 you write the rule yourself. 2.0 you give examples and the machine learns the rule — as numbers called weights. 3.0 you give an instruction in plain English to a model that has already learned from huge amounts of text. 2.0 and 3.0 are built from the same thing: neurons."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#one-neuron",
-    "href": "lectures/01-how-llms-work.html#one-neuron",
+    "objectID": "lectures/01-how-llms-work.html#four-past-payments",
+    "href": "lectures/01-how-llms-work.html#four-past-payments",
     "title": "How we will work, and what is inside the machine",
-    "section": "One neuron",
-    "text": "One neuron\n\n\n\n\n\n\n\nBet\n\n\nLarge payment, abroad, new device. What do you do with each number before adding them up?\n\n\n\n\n\n\n\n\n\n\nEach input is multiplied by a weight (how much it matters), the results are added up with a bias (how easily it fires), and the sum is squashed between 0 and 1. The weights are the only thing it learns. With this squash, one neuron is exactly a logistic regression."
+    "section": "Four past payments",
+    "text": "Four past payments\n\n\n\npayment\nlarge? (over €1,000)\nabroad?\nfraud?\n\n\n\n\nA\n0\n0\nno\n\n\nB\n1\n0\nno\n\n\nC\n0\n1\nno\n\n\nD\n1\n1\nyes\n\n\n\n\n\n\n\n\n\n\nBet\n\n\nA first guess: weight 1 on “large”, 0 on “abroad”, bias −1; block if the score is above zero. Which payments does it block?\n\n\n\n\nFrom here to the end of the lesson, one question: is this payment fraud? Every step makes the answer a little more capable."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#the-squash-the-activation-function",
-    "href": "lectures/01-how-llms-work.html#the-squash-the-activation-function",
+    "objectID": "lectures/01-how-llms-work.html#the-first-guess-as-one-neuron",
+    "href": "lectures/01-how-llms-work.html#the-first-guess-as-one-neuron",
     "title": "How we will work, and what is inside the machine",
-    "section": "The squash: the activation function",
-    "text": "The squash: the activation function\n\nAfter adding up, a neuron passes the sum through a curve. Sigmoid turns it into a probability; tanh into −1…1; ReLU keeps positives and zeroes negatives. Without this bend, stacking a thousand neurons still gives a straight line."
+    "section": "The first guess, as one neuron",
+    "text": "The first guess, as one neuron"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#training-it-by-hand",
-    "href": "lectures/01-how-llms-work.html#training-it-by-hand",
+    "objectID": "lectures/01-how-llms-work.html#learning-from-mistakes-by-hand",
+    "href": "lectures/01-how-llms-work.html#learning-from-mistakes-by-hand",
     "title": "How we will work, and what is inside the machine",
-    "section": "Training it by hand",
-    "text": "Training it by hand\n\n\n\nFour examples, one rule. Wrong answer → move each weight a little towards the right answer. Right answer → leave it alone. Repeat until nothing changes: the neuron has learned AND."
+    "section": "Learning from mistakes, by hand",
+    "text": "Learning from mistakes, by hand\n\n\n\nWrong → move each weight a little towards the right answer; right → leave it. η, the learning rate, is how big each move is."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-rule-it-learned",
+    "href": "lectures/01-how-llms-work.html#the-rule-it-learned",
+    "title": "How we will work, and what is inside the machine",
+    "section": "The rule it learned",
+    "text": "The rule it learned\nw \\;\\leftarrow\\; w + \\eta \\cdot (\\text{fraud} - \\text{decision}) \\cdot x\n\n\n\n\nw large\nw abroad\nbias\n\n\n\n\nfirst guess\n1\n0\n−1\n\n\nafter 2 mistakes\n1\n0.5\n−1\n\n\n\nNobody wrote “large and abroad”. The weights found it from four examples. This is Software 2.0 — and this neuron has a name: the perceptron, 1958."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#yes-or-no-is-not-enough",
+    "href": "lectures/01-how-llms-work.html#yes-or-no-is-not-enough",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Yes or no is not enough",
+    "text": "Yes or no is not enough"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#how-wrong-as-one-number",
+    "href": "lectures/01-how-llms-work.html#how-wrong-as-one-number",
+    "title": "How we will work, and what is inside the machine",
+    "section": "How wrong, as one number",
+    "text": "How wrong, as one number\nThe loss: small when the model gave the right answer a high probability.\n\n\n\npayment\np(fraud)\nright answer\nloss = −log p(right answer)\n\n\n\n\nD\n0.62\nfraud\n−log 0.62 = 0.47\n\n\nB\n0.50\nnot fraud\n−log 0.50 = 0.69\n\n\n\nTraining means one thing: change the weights so this number goes down."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-formula-for-every-weight",
+    "href": "lectures/01-how-llms-work.html#the-formula-for-every-weight",
+    "title": "How we will work, and what is inside the machine",
+    "section": "The formula for every weight",
+    "text": "The formula for every weight\nw \\;\\leftarrow\\; w - \\eta \\cdot (p - y) \\cdot x\nOne step on payment D, with η = 1:\n\n\n\n\nw large\nw abroad\nbias\np(fraud) for D\n\n\n\n\nbefore\n1\n0.5\n−1\n0.62\n\n\nblame = (p − y)·x\n−0.38\n−0.38\n−0.38\n\n\n\nafter\n1.38\n0.88\n−0.62\n0.84\n\n\n\nSame shape as the perceptron rule — with a probability in place of a yes/no. D is now 84% fraud instead of 62%."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#where-the-blame-comes-from-backpropagation",
+    "href": "lectures/01-how-llms-work.html#where-the-blame-comes-from-backpropagation",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Where the blame comes from: backpropagation",
+    "text": "Where the blame comes from: backpropagation"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-learning-rate",
+    "href": "lectures/01-how-llms-work.html#the-learning-rate",
+    "title": "How we will work, and what is inside the machine",
+    "section": "The learning rate",
+    "text": "The learning rate\n\n\n\nAdd payment E — a customer on holiday, large, abroad, genuine — and there is no perfect rule. Too small a step crawls; too large jumps over the best answer."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#how-every-network-learns",
     "href": "lectures/01-how-llms-work.html#how-every-network-learns",
     "title": "How we will work, and what is inside the machine",
     "section": "How every network learns",
-    "text": "How every network learns\n\nThe loss is one number that says how wrong the network is. Backpropagation works out, for every weight, whether nudging it up or down would lower the loss. Then every weight moves a little. That loop, repeated, is all of training."
+    "text": "How every network learns"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#downhill",
-    "href": "lectures/01-how-llms-work.html#downhill",
+    "objectID": "lectures/01-how-llms-work.html#a-pattern-one-neuron-cannot-draw",
+    "href": "lectures/01-how-llms-work.html#a-pattern-one-neuron-cannot-draw",
     "title": "How we will work, and what is inside the machine",
-    "section": "Downhill",
-    "text": "Downhill\n\n\n\nPicture the loss as a landscape and the weights as your position. Training walks downhill. Step too big and you overshoot the valley; too small and it takes forever. The step size is the learning rate."
+    "section": "A pattern one neuron cannot draw",
+    "text": "A pattern one neuron cannot draw"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#more-neurons-the-line-bends",
-    "href": "lectures/01-how-llms-work.html#more-neurons-the-line-bends",
+    "objectID": "lectures/01-how-llms-work.html#more-activation-functions",
+    "href": "lectures/01-how-llms-work.html#more-activation-functions",
     "title": "How we will work, and what is inside the machine",
-    "section": "More neurons: the line bends",
-    "text": "More neurons: the line bends\n\n\n\nOne neuron can only draw a straight boundary. Put several side by side in a hidden layer and blend them: the boundary bends to follow the data. Stack more layers and the network invents its own intermediate features."
+    "section": "More activation functions",
+    "text": "More activation functions"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
-    "href": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
+    "objectID": "lectures/01-how-llms-work.html#from-3-weights-to-117-billion",
+    "href": "lectures/01-how-llms-work.html#from-3-weights-to-117-billion",
     "title": "How we will work, and what is inside the machine",
-    "section": "From 4 numbers to 117 billion",
-    "text": "From 4 numbers to 117 billion\n\nEvery model on this chart is the same arithmetic — multiply, add, squash — repeated. The parameters are all the weights and biases. What changed from a neuron to an LLM is how many there are, and how much data they were trained on."
+    "section": "From 3 weights to 117 billion",
+    "text": "From 3 weights to 117 billion"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#an-llm-is-that-network-with-one-job",
-    "href": "lectures/01-how-llms-work.html#an-llm-is-that-network-with-one-job",
+    "objectID": "lectures/01-how-llms-work.html#an-llm-is-the-same-machine",
+    "href": "lectures/01-how-llms-work.html#an-llm-is-the-same-machine",
     "title": "How we will work, and what is inside the machine",
-    "section": "An LLM is that network, with one job",
-    "text": "An LLM is that network, with one job\n\n\n\n\n\n\nGuess the next piece of text. That is the whole job.\n\n\n\n\n\n1 · Pre-training\ntrillions of tokens of web text → a base model that continues documents\n\n2 · Post-training\n~100,000 example conversations, then feedback → an assistant\n\n3 · What you download\nthe parameters, and a short program that runs them\n\nThe only thing an LLM is trained to do is predict the next piece of text. To do that well across the whole internet it has to absorb grammar, facts and patterns of reasoning. Answering questions comes later, in post-training."
+    "section": "An LLM is the same machine",
+    "text": "An LLM is the same machine"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-same-nudge-on-text",
+    "href": "lectures/01-how-llms-work.html#the-same-nudge-on-text",
+    "title": "How we will work, and what is inside the machine",
+    "section": "The same nudge, on text",
+    "text": "The same nudge, on text\nThe ECB left rates → ?\n\n\n\nnext token\nbefore\nafter one step\n\n\n\n\n“unchanged” ✓\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%\n\n\n\nExactly the step we took on payment D: raise the probability of the right answer, lower the others. Here the right answer is in the text itself."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
     "href": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
     "title": "How we will work, and what is inside the machine",
     "section": "Pre-training is compressing the internet",
-    "text": "Pre-training is compressing the internet\n\nTraining squeezes terabytes of text into a file of parameters about 70 times smaller. Like a lossy zip: the gist survives, exact facts do not always. That is one reason a model can sound right and be wrong."
+    "text": "Pre-training is compressing the internet\n\nRepeat that nudge on trillions of tokens and the weights end up holding a lossy summary of the text: the gist survives, exact facts do not always."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#the-same-nudge-trillions-of-times",
-    "href": "lectures/01-how-llms-work.html#the-same-nudge-trillions-of-times",
+    "objectID": "lectures/01-how-llms-work.html#then-it-learns-to-be-an-assistant",
+    "href": "lectures/01-how-llms-work.html#then-it-learns-to-be-an-assistant",
     "title": "How we will work, and what is inside the machine",
-    "section": "The same nudge, trillions of times",
-    "text": "The same nudge, trillions of times\nThe ECB left rates → ?\n\n\n\nnext token\nbefore\nafter\n\n\n\n\n“unchanged” ✓\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%\n\n\n\nTake a window of text from the training data; the next token is known because it is in the text. Nudge the weights so that token becomes slightly more likely and the others slightly less. Repeat for every token of the training set."
+    "section": "Then it learns to be an assistant",
+    "text": "Then it learns to be an assistant\n\n\n1 · Pre-training\ninternet text → a base model that continues documents\n\n2 · Post-training\n~100,000 example conversations, then rewards → an assistant\n\nPost-training is the same loop again. Only the examples change: now the right answer is a good reply."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#one-prediction-end-to-end",
     "href": "lectures/01-how-llms-work.html#one-prediction-end-to-end",
     "title": "How we will work, and what is inside the machine",
     "section": "One prediction, end to end",
-    "text": "One prediction, end to end\n\nText → tokens → numbers. Each token becomes a long vector, which goes through the same block many times: attention (tokens look at each other) and neurons (each token is processed). At the end, a probability for every token in the vocabulary; one is picked, appended, and the whole thing runs again."
+    "text": "One prediction, end to end"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#every-word-taken-apart-with-our-small-network",
-    "href": "lectures/01-how-llms-work.html#every-word-taken-apart-with-our-small-network",
+    "objectID": "lectures/01-how-llms-work.html#every-word-taken-apart-with-our-fraud-neuron",
+    "href": "lectures/01-how-llms-work.html#every-word-taken-apart-with-our-fraud-neuron",
     "title": "How we will work, and what is inside the machine",
-    "section": "Every word, taken apart — with our small network",
-    "text": "Every word, taken apart — with our small network\n\n\n\n\n\n\n\nin the release\nin terms of the network we just built\n\n\n\n\nTransformer\nour neurons, plus attention, stacked in 36 layers\n\n\n117B total parameters\nour neuron had 4 weights; this has 117 billion\n\n\nmixture-of-experts\n128 smaller networks inside; a router picks 4 for each token\n\n\n5.1B active per token\nonly those 4 run, so it costs like a 5-billion model\n\n\ntokenized, o200k_harmony\nhow text becomes numbers before the first neuron\n\n\npost-trained\nmore rounds of the same training loop, on new data\n\n\nsupervised fine-tuning\nthe loop, where the right answers are good conversations\n\n\nRL\nthe loop, where the “right answer” is a reward score\n\n\ncontext length 128k\nhow many tokens go in at once — a few hundred pages\n\n\nquantized, MXFP4, 80GB\neach weight stored in ~4 bits instead of 16: fits on one GPU\n\n\nopen-weight, Apache 2.0\nyou download the weights themselves, and may use them commercially\n\n\n\nNothing in this list is magic. Every line is a neuron, a weight, the training loop, or a way of making them cheaper to run."
+    "section": "Every word, taken apart — with our fraud neuron",
+    "text": "Every word, taken apart — with our fraud neuron\n\n\n\n\n\n\n\nin the release\nin terms of what we just built\n\n\n\n\nTransformer\nour neurons, plus attention, stacked in 36 layers\n\n\n117B total parameters\nour neuron had 3 weights; this has 117 billion\n\n\nmixture-of-experts\n128 smaller networks inside; a router picks 4 for each token\n\n\n5.1B active per token\nonly those 4 run, so it costs like a 5-billion model\n\n\ntokenized, o200k_harmony\nhow text becomes numbers before the first neuron\n\n\npost-trained\nmore rounds of the same training loop, on new data\n\n\nsupervised fine-tuning\nthe loop, where the right answers are good conversations\n\n\nRL\nthe loop, where the “right answer” is a reward score\n\n\ncontext length 128k\nhow many tokens go in at once — a few hundred pages\n\n\nquantized, MXFP4, 80GB\neach weight stored in ~4 bits instead of 16: fits on one GPU\n\n\nopen-weight, Apache 2.0\nyou download the weights themselves, and may use them commercially"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-4-what-the-model-reads",
@@ -2034,7 +2076,7 @@
     "href": "lectures/01-how-llms-work.html#close",
     "title": "How we will work, and what is inside the machine",
     "section": "Close",
-    "text": "Close\n\n\nHomework 1, due Tue 29 Sep:\n\nyour starting point, in writing\nthe question you want answered by December\nthe tokenizer on five texts of yours\nten glossary words, in your words\nthree pitch-deck sentences to take apart\nGitHub repo, via the setup page\n\nQuestions: WhatsApp or Telegram."
+    "text": "Close\n\n\nHomework 1, due Tue 29 Sep:\n\nyour starting point, in writing\nthe question you want answered by December\nthe tokenizer on five texts of yours\nten glossary words, in your words\nthree pitch-deck sentences to take apart\na Drive folder ese-ai-fintech, shared with me — see Setup\n\nQuestions: WhatsApp or Telegram."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#spare-if-there-is-time",

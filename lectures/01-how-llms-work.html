@@ -32,6 +32,22 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -604,8 +620,44 @@ Niccolò Salvini, PhD
 </div>
 <p><span class="explain"><strong>1.0</strong> you write the rule yourself. <strong>2.0</strong> you give examples and the machine learns the rule — as numbers called weights. <strong>3.0</strong> you give an instruction in plain English to a model that has already learned from huge amounts of text. 2.0 and 3.0 are built from the same thing: neurons.</span></p>
 </section>
-<section id="one-neuron" class="slide level2">
-<h2>One neuron</h2>
+<section id="four-past-payments" class="slide level2">
+<h2>Four past payments</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>payment</th>
+<th>large? (over €1,000)</th>
+<th>abroad?</th>
+<th>fraud?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A</strong></td>
+<td>0</td>
+<td>0</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td>1</td>
+<td>0</td>
+<td>no</td>
+</tr>
+<tr class="odd">
+<td><strong>C</strong></td>
+<td>0</td>
+<td>1</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td><strong>D</strong></td>
+<td>1</td>
+<td>1</td>
+<td><strong>yes</strong></td>
+</tr>
+</tbody>
+</table>
 <div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -616,95 +668,166 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>Large payment, abroad, new device. What do you do with each number before adding them up?</p>
+<p>A first guess: weight <strong>1</strong> on “large”, <strong>0</strong> on “abroad”, bias <strong>−1</strong>; block if the score is above zero. Which payments does it block?</p>
 </div>
 </div>
 </div>
 </div>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/neuron.svg" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
-</figure>
-</div>
-<p><span class="explain">Each input is multiplied by a <strong>weight</strong> (how much it matters), the results are added up with a <strong>bias</strong> (how easily it fires), and the sum is squashed between 0 and 1. The weights are the only thing it learns. With this squash, one neuron is exactly a logistic regression.</span></p>
-</div>
+<p><span class="explain">From here to the end of the lesson, one question: <strong>is this payment fraud?</strong> Every step makes the answer a little more capable.</span></p>
 </section>
-<section id="the-squash-the-activation-function" class="slide level2">
-<h2>The squash: the activation function</h2>
+<section id="the-first-guess-as-one-neuron" class="slide level2">
+<h2>The first guess, as one neuron</h2>
 
-<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:68.0%"><p><span class="explain">After adding up, a neuron passes the sum through a curve. <strong>Sigmoid</strong> turns it into a probability; <strong>tanh</strong> into −1…1; <strong>ReLU</strong> keeps positives and zeroes negatives. Without this bend, stacking a thousand neurons still gives a straight line.</span></p>
-</section>
-<section id="training-it-by-hand" class="slide level2 clip" data-background-color="#000000">
-<h2>Training it by hand</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_PerceptronByHand_poster.png">
-<source src="media/nn_PerceptronByHand.mp4" type="video/mp4">
+<img data-src="img/story-neuron.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:78.0%"></section>
+<section id="learning-from-mistakes-by-hand" class="slide level2 clip" data-background-color="#000000">
+<h2>Learning from mistakes, by hand</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_perceptron_poster.png">
+<source src="media/w01_perceptron.mp4" type="video/mp4">
 </video>
-<p><span class="explain">Four examples, one rule. Wrong answer → move each weight a little towards the right answer. Right answer → leave it alone. Repeat until nothing changes: the neuron has learned AND.</span></p>
+<p><span class="explain">Wrong → move each weight a little towards the right answer; right → leave it. <strong>η</strong>, the learning rate, is how big each move is.</span></p>
+</section>
+<section id="the-rule-it-learned" class="slide level2">
+<h2>The rule it learned</h2>
+<p><span class="math display">w \;\leftarrow\; w + \eta \cdot (\text{fraud} - \text{decision}) \cdot x</span></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>w large</th>
+<th>w abroad</th>
+<th>bias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>first guess</td>
+<td>1</td>
+<td>0</td>
+<td>−1</td>
+</tr>
+<tr class="even">
+<td>after 2 mistakes</td>
+<td><strong>1</strong></td>
+<td><strong>0.5</strong></td>
+<td><strong>−1</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Nobody wrote “large <strong>and</strong> abroad”. The weights found it from four examples. This is Software 2.0 — and this neuron has a name: the <strong>perceptron</strong>, 1958.</span></p>
+</section>
+<section id="yes-or-no-is-not-enough" class="slide level2">
+<h2>Yes or no is not enough</h2>
+
+<img data-src="img/story-step-sigmoid.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="how-wrong-as-one-number" class="slide level2">
+<h2>How wrong, as one number</h2>
+<p>The <strong>loss</strong>: small when the model gave the right answer a high probability.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>payment</th>
+<th>p(fraud)</th>
+<th>right answer</th>
+<th>loss = −log p(right answer)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>D</strong></td>
+<td>0.62</td>
+<td>fraud</td>
+<td>−log 0.62 = <strong>0.47</strong></td>
+</tr>
+<tr class="even">
+<td><strong>B</strong></td>
+<td>0.50</td>
+<td>not fraud</td>
+<td>−log 0.50 = <strong>0.69</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Training means one thing: change the weights so this number goes down.</span></p>
+</section>
+<section id="the-formula-for-every-weight" class="slide level2">
+<h2>The formula for every weight</h2>
+<p><span class="math display">w \;\leftarrow\; w - \eta \cdot (p - y) \cdot x</span></p>
+<p>One step on payment D, with η = 1:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>w large</th>
+<th>w abroad</th>
+<th>bias</th>
+<th>p(fraud) for D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>before</td>
+<td>1</td>
+<td>0.5</td>
+<td>−1</td>
+<td>0.62</td>
+</tr>
+<tr class="even">
+<td>blame = (p − y)·x</td>
+<td>−0.38</td>
+<td>−0.38</td>
+<td>−0.38</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>after</td>
+<td><strong>1.38</strong></td>
+<td><strong>0.88</strong></td>
+<td><strong>−0.62</strong></td>
+<td><strong>0.84</strong></td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Same shape as the perceptron rule — with a probability in place of a yes/no. D is now 84% fraud instead of 62%.</span></p>
+</section>
+<section id="where-the-blame-comes-from-backpropagation" class="slide level2">
+<h2>Where the blame comes from: backpropagation</h2>
+
+<img data-src="img/story-backprop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="the-learning-rate" class="slide level2 clip" data-background-color="#000000">
+<h2>The learning rate</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_lr_poster.png">
+<source src="media/w01_lr.mp4" type="video/mp4">
+</video>
+<p><span class="explain">Add payment E — a customer on holiday, large, abroad, genuine — and there is no perfect rule. Too small a step crawls; too large jumps over the best answer.</span></p>
 </section>
 <section id="how-every-network-learns" class="slide level2">
 <h2>How every network learns</h2>
 
-<img data-src="img/training-loop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p><span class="explain">The <strong>loss</strong> is one number that says how wrong the network is. <strong>Backpropagation</strong> works out, for every weight, whether nudging it up or down would lower the loss. Then every weight moves a little. That loop, repeated, is all of training.</span></p>
-</section>
-<section id="downhill" class="slide level2 clip" data-background-color="#000000">
-<h2>Downhill</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_GradientDescent_poster.png">
-<source src="media/nn_GradientDescent.mp4" type="video/mp4">
-</video>
-<p><span class="explain">Picture the loss as a landscape and the weights as your position. Training walks downhill. Step too big and you overshoot the valley; too small and it takes forever. The step size is the <strong>learning rate</strong>.</span></p>
-</section>
-<section id="more-neurons-the-line-bends" class="slide level2 clip" data-background-color="#000000">
-<h2>More neurons: the line bends</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_HiddenLayer_poster.png">
-<source src="media/nn_HiddenLayer.mp4" type="video/mp4">
-</video>
-<p><span class="explain">One neuron can only draw a straight boundary. Put several side by side in a <strong>hidden layer</strong> and blend them: the boundary bends to follow the data. Stack more layers and the network invents its own intermediate features.</span></p>
-</section>
-<section id="from-4-numbers-to-117-billion" class="slide level2">
-<h2>From 4 numbers to 117 billion</h2>
+<img data-src="img/story-loop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="a-pattern-one-neuron-cannot-draw" class="slide level2">
+<h2>A pattern one neuron cannot draw</h2>
 
-<img data-src="img/nn-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p><span class="explain">Every model on this chart is the same arithmetic — multiply, add, squash — repeated. The <strong>parameters</strong> are all the weights and biases. What changed from a neuron to an LLM is how many there are, and how much data they were trained on.</span></p>
-</section>
-<section id="an-llm-is-that-network-with-one-job" class="slide level2">
-<h2>An LLM is that network, with one job</h2>
-<div class="callout callout-important callout-style-simple">
-<div class="callout-body">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-content">
-<p><strong>Guess the next piece of text.</strong> That is the whole job.</p>
-</div>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:33%;">
-<p><strong>1 · Pre-training</strong></p>
-<p>trillions of tokens of web text → a <strong>base model</strong> that continues documents</p>
-</div><div class="column" style="width:33%;">
-<p><strong>2 · Post-training</strong></p>
-<p>~100,000 example conversations, then feedback → an <strong>assistant</strong></p>
-</div><div class="column" style="width:33%;">
-<p><strong>3 · What you download</strong></p>
-<p>the <strong>parameters</strong>, and a short program that runs them</p>
-</div></div>
-<p><span class="explain">The only thing an LLM is trained to do is predict the next piece of text. To do that well across the whole internet it has to absorb grammar, facts and patterns of reasoning. Answering questions comes later, in post-training.</span></p>
-</section>
-<section id="pre-training-is-compressing-the-internet" class="slide level2">
-<h2>Pre-training is compressing the internet</h2>
+<img data-src="img/story-card-testing.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="more-activation-functions" class="slide level2">
+<h2>More activation functions</h2>
 
-<img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p><span class="explain">Training squeezes terabytes of text into a file of parameters about 70 times smaller. Like a lossy zip: the gist survives, exact facts do not always. That is one reason a model can sound right and be wrong.</span></p>
-</section>
-<section id="the-same-nudge-trillions-of-times" class="slide level2">
-<h2>The same nudge, trillions of times</h2>
+<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="from-3-weights-to-117-billion" class="slide level2">
+<h2>From 3 weights to 117 billion</h2>
+
+<img data-src="img/story-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:78.0%"></section>
+<section id="an-llm-is-the-same-machine" class="slide level2">
+<h2>An LLM is the same machine</h2>
+
+<img data-src="img/story-same-machine.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="the-same-nudge-on-text" class="slide level2">
+<h2>The same nudge, on text</h2>
 <p><code>The ECB left rates</code> → ?</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th>next token</th>
 <th>before</th>
-<th>after</th>
+<th>after one step</th>
 </tr>
 </thead>
 <tbody>
@@ -725,15 +848,31 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="explain">Take a window of text from the training data; the next token is known because it is in the text. Nudge the weights so that token becomes slightly more likely and the others slightly less. Repeat for every token of the training set.</span></p>
+<p><span class="explain">Exactly the step we took on payment D: raise the probability of the right answer, lower the others. Here the right answer is in the text itself.</span></p>
+</section>
+<section id="pre-training-is-compressing-the-internet" class="slide level2">
+<h2>Pre-training is compressing the internet</h2>
+
+<img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:78.0%"><p><span class="explain">Repeat that nudge on trillions of tokens and the weights end up holding a lossy summary of the text: the gist survives, exact facts do not always.</span></p>
+</section>
+<section id="then-it-learns-to-be-an-assistant" class="slide level2">
+<h2>Then it learns to be an assistant</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1 · Pre-training</strong></p>
+<p>internet text → a <strong>base model</strong> that continues documents</p>
+</div><div class="column" style="width:50%;">
+<p><strong>2 · Post-training</strong></p>
+<p>~100,000 example conversations, then rewards → an <strong>assistant</strong></p>
+</div></div>
+<p><span class="explain">Post-training is the same loop again. Only the examples change: now the right answer is a good reply.</span></p>
 </section>
 <section id="one-prediction-end-to-end" class="slide level2">
 <h2>One prediction, end to end</h2>
 
-<img data-src="img/token-journey.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p><span class="explain">Text → tokens → numbers. Each token becomes a long vector, which goes through the same block many times: <strong>attention</strong> (tokens look at each other) and <strong>neurons</strong> (each token is processed). At the end, a probability for every token in the vocabulary; one is picked, appended, and the whole thing runs again.</span></p>
-</section>
-<section id="every-word-taken-apart-with-our-small-network" class="slide level2">
-<h2>Every word, taken apart — with our small network</h2>
+<img data-src="img/token-journey.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="every-word-taken-apart-with-our-fraud-neuron" class="slide level2">
+<h2>Every word, taken apart — with our fraud neuron</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 50%">
@@ -742,7 +881,7 @@ Niccolò Salvini, PhD
 <thead>
 <tr class="header">
 <th>in the release</th>
-<th>in terms of the network we just built</th>
+<th>in terms of what we just built</th>
 </tr>
 </thead>
 <tbody>
@@ -752,7 +891,7 @@ Niccolò Salvini, PhD
 </tr>
 <tr class="even">
 <td><strong>117B total parameters</strong></td>
-<td>our neuron had 4 weights; this has 117 billion</td>
+<td>our neuron had 3 weights; this has 117 billion</td>
 </tr>
 <tr class="odd">
 <td><strong>mixture-of-experts</strong></td>
@@ -792,7 +931,6 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="explain">Nothing in this list is magic. Every line is a neuron, a weight, the training loop, or a way of making them cheaper to run.</span></p>
 </section>
 <section id="part-4-what-the-model-reads" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 4</span> What the model reads</h2>
@@ -876,7 +1014,7 @@ Niccolò Salvini, PhD
 <li>the tokenizer on five texts of yours</li>
 <li>ten glossary words, in your words</li>
 <li>three pitch-deck sentences to take apart</li>
-<li>GitHub repo, via the <a href="../setup.html">setup page</a></li>
+<li>a Drive folder <code>ese-ai-fintech</code>, shared with me — see <a href="../setup.html">Setup</a></li>
 </ul>
 <p>Questions: WhatsApp or Telegram.</p>
 </div><div class="column" style="width:36%;">

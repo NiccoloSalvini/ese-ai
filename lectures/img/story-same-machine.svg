@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 418" width="960" height="418" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">an LLM is a classifier: instead of “fraud or not?”, “which of 200,000 tokens comes next?”</text>
+  <text x="300" y="80" font-size="18" font-weight="700" fill="#2471a3" text-anchor="middle" >our fraud neuron</text>
+  <text x="700" y="80" font-size="18" font-weight="700" fill="#AF1F25" text-anchor="middle" >an LLM</text>
+  <line x1="30" y1="94" x2="930" y2="94" stroke="#e6e2d8"/>
+  <text x="30" y="120" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">INPUT</text>
+  <text x="300" y="120" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >2 answers: large? abroad?</text>
+  <text x="700" y="120" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >the text so far, as token vectors</text>
+  <line x1="30" y1="138" x2="930" y2="138" stroke="#e6e2d8"/>
+  <text x="30" y="164" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">OUTPUT</text>
+  <text x="300" y="164" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >1 probability: fraud?</text>
+  <text x="700" y="164" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >~200,000 probabilities: which token next?</text>
+  <line x1="30" y1="182" x2="930" y2="182" stroke="#e6e2d8"/>
+  <text x="30" y="208" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">LOSS</text>
+  <text x="300" y="208" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >−log p(right answer)</text>
+  <text x="700" y="208" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >−log p(right next token)</text>
+  <line x1="30" y1="226" x2="930" y2="226" stroke="#e6e2d8"/>
+  <text x="30" y="252" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">UPDATE</text>
+  <text x="300" y="252" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >w ← w − η · blame</text>
+  <text x="700" y="252" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >w ← w − η · blame</text>
+  <line x1="30" y1="270" x2="930" y2="270" stroke="#e6e2d8"/>
+  <text x="30" y="296" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WEIGHTS</text>
+  <text x="300" y="296" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >3</text>
+  <text x="700" y="296" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >117,000,000,000</text>
+  <line x1="30" y1="314" x2="930" y2="314" stroke="#e6e2d8"/>
+  <text x="30" y="340" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">TRAINING DATA</text>
+  <text x="300" y="340" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >4 payments</text>
+  <text x="700" y="340" font-size="16" font-weight="400" fill="#363636" text-anchor="middle" >~15 trillion tokens of text</text>
+  <line x1="30" y1="358" x2="930" y2="358" stroke="#e6e2d8"/>
+  <text x="480" y="402" font-size="17" font-weight="700" fill="#AF1F25" text-anchor="middle" >Same loss. Same update. Same loop. Only the size changed.</text>
+</svg>

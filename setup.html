@@ -133,10 +133,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#google-account-and-colab" id="toc-google-account-and-colab" class="nav-link active" data-scroll-target="#google-account-and-colab">1. Google account and Colab</a></li>
-  <li><a href="#github-account-and-your-course-repository" id="toc-github-account-and-your-course-repository" class="nav-link" data-scroll-target="#github-account-and-your-course-repository">2. GitHub account and your course repository</a></li>
-  <li><a href="#saving-a-colab-notebook-to-github" id="toc-saving-a-colab-notebook-to-github" class="nav-link" data-scroll-target="#saving-a-colab-notebook-to-github">3. Saving a Colab notebook to GitHub</a></li>
-  <li><a href="#an-llm-api-key-from-week-4" id="toc-an-llm-api-key-from-week-4" class="nav-link" data-scroll-target="#an-llm-api-key-from-week-4">4. An LLM API key — from week 4</a></li>
-  <li><a href="#a-chat-assistant" id="toc-a-chat-assistant" class="nav-link" data-scroll-target="#a-chat-assistant">5. A chat assistant</a></li>
+  <li><a href="#your-course-folder" id="toc-your-course-folder" class="nav-link" data-scroll-target="#your-course-folder">2. Your course folder</a></li>
+  <li><a href="#an-llm-api-key-from-week-4" id="toc-an-llm-api-key-from-week-4" class="nav-link" data-scroll-target="#an-llm-api-key-from-week-4">3. An LLM API key — from week 4</a></li>
+  <li><a href="#a-chat-assistant" id="toc-a-chat-assistant" class="nav-link" data-scroll-target="#a-chat-assistant">4. A chat assistant</a></li>
   <li><a href="#data-sources-you-will-use" id="toc-data-sources-you-will-use" class="nav-link" data-scroll-target="#data-sources-you-will-use">Data sources you will use</a></li>
   <li><a href="#something-is-not-working" id="toc-something-is-not-working" class="nav-link" data-scroll-target="#something-is-not-working">Something is not working?</a></li>
   </ul>
@@ -165,37 +164,23 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Nothing is installed on your laptop. You need three accounts and one key. Bring the laptop to session 1 with the first three items done; we finish the rest together in the first twenty minutes.</p>
+<p>Nothing is installed on your laptop. You need a Google account, a chat assistant, and — from week 4 — one key.</p>
 <section id="google-account-and-colab" class="level2">
 <h2 class="anchored" data-anchor-id="google-account-and-colab">1. Google account and Colab</h2>
 <p><a href="https://colab.research.google.com/">Google Colab</a> is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.</p>
-<ul>
-<li>Open <a href="https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb">this notebook</a> and press <code>Runtime ▸ Run all</code>. If the first cells run, Colab works.</li>
-<li><code>Runtime ▸ Restart and run all</code> is the self-check you will use before every submission: a notebook that runs top to bottom from a clean runtime, with no errors.</li>
-</ul>
+<p>Every session notebook opens from the course site with the <em>Colab ↗</em> link. Then <code>File ▸ Save a copy in Drive</code>: from that moment the copy is yours.</p>
 </section>
-<section id="github-account-and-your-course-repository" class="level2">
-<h2 class="anchored" data-anchor-id="github-account-and-your-course-repository">2. GitHub account and your course repository</h2>
-<p><a href="https://github.com/">GitHub</a> holds your homework and, by the end, your capstone. It is the single source of truth for assessment.</p>
+<section id="your-course-folder" class="level2">
+<h2 class="anchored" data-anchor-id="your-course-folder">2. Your course folder</h2>
 <ol type="1">
-<li>Create a GitHub account if you do not have one.</li>
-<li>Create a <strong>private</strong> repository named <code>ese-ai-fintech</code>.</li>
-<li>Add the tutor (<code>NiccoloSalvini</code>) as a collaborator: <code>Settings ▸ Collaborators ▸ Add people</code>.</li>
-<li>Folder convention, one per week: <code>week-01/hw/</code>, <code>week-02/hw/</code>, …, <code>capstone/</code>.</li>
+<li>In Google Drive, create a folder named <code>ese-ai-fintech</code> and share it with the tutor.</li>
+<li>One sub-folder per week: <code>week-01/</code>, <code>week-02/</code>, …, and later <code>capstone/</code>.</li>
+<li>Your session notebooks and your homework go there. That folder is what gets read and assessed.</li>
 </ol>
-<p>Commit often. The history is part of the work: I read it.</p>
-</section>
-<section id="saving-a-colab-notebook-to-github" class="level2">
-<h2 class="anchored" data-anchor-id="saving-a-colab-notebook-to-github">3. Saving a Colab notebook to GitHub</h2>
-<p>Each session notebook opens from this site with the <em>Colab ↗</em> link. Save your own copy once, then keep working on it:</p>
-<ol type="1">
-<li>In Colab, <code>File ▸ Save a copy in GitHub</code>.</li>
-<li>Repository: <code>ese-ai-fintech</code>. File path: <code>week-01/session.ipynb</code> (change the week as you go).</li>
-<li>The first time, Colab asks you to authorise GitHub and to tick <em>Include private repos</em> under <code>File ▸ Open notebook ▸ GitHub</code>.</li>
-</ol>
+<p>Before handing anything in: <code>Runtime ▸ Restart and run all</code>. A notebook that runs top to bottom from a clean start, with no errors, is the minimum.</p>
 </section>
 <section id="an-llm-api-key-from-week-4" class="level2">
-<h2 class="anchored" data-anchor-id="an-llm-api-key-from-week-4">4. An LLM API key — from week 4</h2>
+<h2 class="anchored" data-anchor-id="an-llm-api-key-from-week-4">3. An LLM API key — from week 4</h2>
 <p>From session 4 the notebooks call a language model from Python. The default is the <strong>Google AI Studio</strong> free tier, with OpenAI-compatible code so it ports to other providers.</p>
 <ol type="1">
 <li>Create a key at <a href="https://aistudio.google.com/apikey">aistudio.google.com</a>.</li>
@@ -205,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 <p>An OpenAI or Anthropic key is optional, for comparison in weeks 4–5.</p>
 </section>
 <section id="a-chat-assistant" class="level2">
-<h2 class="anchored" data-anchor-id="a-chat-assistant">5. A chat assistant</h2>
+<h2 class="anchored" data-anchor-id="a-chat-assistant">4. A chat assistant</h2>
 <p>Pick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.</p>
 <p>Two rules apply from the first day:</p>
 <ul>
