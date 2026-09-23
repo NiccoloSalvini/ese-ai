@@ -15,11 +15,29 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [Today you will build a model that scores 0.71 and is worthless, and one that scores 0.53 and is worth money. Telling them apart is the entire skill.]{.red}
 
+## Three ways to write the same decision
+
+::: {.r-stack}
+![](img/software-123-l0.svg){width="100%"}
+
+![](img/software-123-l1.svg){.fragment width="100%"}
+
+![](img/software-123-l2.svg){.fragment width="100%"}
+
+![](img/software-123-l3.svg){.fragment width="100%"}
+
+![](img/software-123-l4.svg){.fragment width="100%"}
+:::
+
+## A rule you can write down beats a model that guesses it. {.statement}
+
+[Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Today you find out which is which, in euros.]{.muted}
+
 ## Run all three, on the same transactions {.lab background-color="#2471a3"}
 
 [LAB · week-01/session.ipynb § A2 — one decision, three kinds of software]{.kicker}
 
-In week 1 you saw the 1.0 / 2.0 / 3.0 figure. Now twenty thousand card payments, one cost table:
+Twenty thousand card payments, one cost table, the three columns of that figure:
 
 1. the rule blocks 240 of them. **Bet how much of the fraud it catches** before you run it.
 2. the model gets the **same budget** — 240 blocks, no more — and only chooses differently.

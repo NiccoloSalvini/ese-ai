@@ -4,7 +4,7 @@
 > **Revised 23 Sep 2026 — slower first session.** Week 1 is now introductions, the student's
 > starting point, the course map shaped on his interests, setup, and only tokens + context window.
 > What moved: sampling / the verify habit (B3) and the three-asset notebook with planted errors (C)
-> → **week 2**; the 1.0/2.0/3.0 lab (A2) and claim three → **week 3**; embeddings (B4) → **week 4**
+> → **week 2**; the 1.0/2.0/3.0 figure, its lab (A2) and claim three → **week 3**; embeddings (B4) → **week 4**
 > (already there); agent loop (B5) → **week 5** (already there). HW1 is now "Your starting point".
 > The spoken draft for today is `speech.md`. The sections below the new plan are kept as the
 > script for the blocks that moved.
@@ -18,8 +18,9 @@
 | 10:40–11:10 | **What the course is for**: outcomes, map, his interests on it, how we work, the deal, assessment | talk + discussion |
 | 11:10–11:20 | break | |
 | 11:20–11:50 | **Workbench**: Colab, GitHub repo, first save, optional API key | hands-on, notebook § A |
-| 11:50–12:40 | **Inside the machine**: three claims (bet), 1.0/2.0/3.0 figure, tokens (bet + clip + § B1), context window, claims 1 and 2 closed | talk + notebook § B1 |
-| 12:40–12:50 | **Glossary + DeFi taste** (x·y=k bet) | talk |
+| 11:50–12:40 | **Inside the machine**: three claims (bet), tokens (bet + clip + § B1), context window, claims 1 and 2 closed | talk + notebook § B1 |
+| 12:40–12:48 | **Glossary + DeFi taste** (x·y=k bet) | talk |
+| 12:48–12:50 | **Between Wednesdays**: Telegram, 11 Nov make-up date, GitHub account | talk |
 | 12:50–13:00 | **Close**: HW1, three lines at the bottom of the notebook, commit | he writes |
 
 **Intake — what to get out of 10:10–10:40** (write it into `week-01/intake-notes.md`, keep it off the site):
@@ -27,8 +28,7 @@ projects he is proud of / one that failed; a decision made without the data he w
 avoids; what he wants to *do* in December; markets/crypto/DeFi as user, investor or builder; the question he
 wants a model to answer; trying-first vs seeing-first; anything that would make the course a waste of time.
 
-**If behind:** cut the 1.0/2.0/3.0 figure to one sentence (it comes back in week 3); the tokens lab can shrink
-to the Russian sentence only. Never cut the intake or the setup.
+**If behind:** the tokens lab can shrink to the Russian sentence only. (The 1.0/2.0/3.0 figure now opens week 3.) Never cut the intake or the setup.
 
 ---
 
