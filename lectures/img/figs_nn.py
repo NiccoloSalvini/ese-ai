@@ -102,7 +102,6 @@ def journey():
     svg("token-journey.svg", 960, 445, b, "follow one prediction through the machine")
 
 journey()
-print(f"neuron z={z:.2f} p={p:.2f}; small network weights={small}")
 
 # ------------------------------------------------------------------ activation functions
 def activations():
