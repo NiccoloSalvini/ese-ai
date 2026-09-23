@@ -363,14 +363,14 @@ Niccolò Salvini, PhD
 </tr>
 <tr class="odd">
 <td><strong>10:55</strong></td>
-<td>set up the workbench: Colab, GitHub, the notebook</td>
+<td>open your notebook — one click</td>
 </tr>
 <tr class="even">
-<td><strong>11:20</strong></td>
+<td><strong>11:05</strong></td>
 <td>break</td>
 </tr>
 <tr class="odd">
-<td><strong>11:30</strong></td>
+<td><strong>11:15</strong></td>
 <td>from one neuron to an LLM, and one token’s journey through it</td>
 </tr>
 <tr class="even">
@@ -597,19 +597,28 @@ Niccolò Salvini, PhD
 <section id="part-3-the-workbench" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 3</span> The workbench</h2>
 </section>
-<section id="set-it-up-once-together" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Set it up once, together</h2>
-<p><span class="kicker">LAB · session.ipynb § A — Setup</span></p>
+<section id="open-your-notebook-one-click" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Open your notebook: one click</h2>
+<div class="columns">
+<div class="column" style="width:62%;">
+<p><span class="kicker">LAB · week 1 notebook</span></p>
 <ol type="1">
-<li>Open the week 1 notebook in <strong>Colab</strong>, and run the first two cells.</li>
-<li>Create a <strong>private</strong> GitHub repository, <code>ese-ai-fintech</code>, and add me as a collaborator.</li>
-<li><code>File ▸ Save a copy in GitHub</code> → <code>week-01/session.ipynb</code>. That is your first commit.</li>
-<li>Optional today, needed from week 4: a Google AI Studio key in Colab’s 🔑 <em>Secrets</em>, as <code>GEMINI_API_KEY</code>.</li>
+<li><strong>Click the link, or scan the code.</strong> Colab opens the notebook.</li>
+<li><code>File ▸ Save a copy in Drive</code> — now it is yours.</li>
+<li>Run the first two cells.</li>
 </ol>
-<p><span class="muted">If something refuses to work, we fix it now — not at 23:50 on a Tuesday.</span></p>
+<p><strong><a href="https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb">Open in Colab ↗</a></strong></p>
+<p><span style="font-size:.7em">GitHub comes at home, with the <a href="../setup.html">setup page</a> — ten minutes.</span></p>
+</div><div class="column" style="width:38%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/colab-w01-qr.svg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="break-ten-minutes-outside-the-room." class="slide level2 statement">
-<h2>Break — ten minutes, outside the room.</h2>
+<section id="break-ten-minutes." class="slide level2 statement">
+<h2>Break — ten minutes.</h2>
 </section>
 <section id="part-4-from-one-neuron-to-an-llm" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 4</span> From one neuron to an LLM</h2>
@@ -637,6 +646,16 @@ Niccolò Salvini, PhD
 </div>
 <p>You have heard a version of all three in your work. <strong>Two are impossible as stated. One is unanswerable as written.</strong> Write down which is which — by one o’clock you can answer two of them yourself.</p>
 </section>
+<section id="three-ways-to-write-the-same-decision" class="slide level2">
+<h2>Three ways to write the same decision</h2>
+<div class="r-stack">
+<p><img data-src="img/software-123-l0.svg" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l1.svg" class="fragment" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l2.svg" class="fragment" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l3.svg" class="fragment" style="width:100.0%"></p>
+<p><img data-src="img/software-123-l4.svg" class="fragment" style="width:100.0%"></p>
+</div>
+</section>
 <section id="one-neuron-is-a-decision-you-already-know" class="slide level2">
 <h2>One neuron is a decision you already know</h2>
 <div title="Bet before we look">
@@ -662,6 +681,18 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </section>
+<section id="the-squash-has-a-name-the-activation-function" class="slide level2">
+<h2>The squash has a name: the <strong>activation function</strong></h2>
+
+<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="muted"><strong>Weights</strong>: how much each input matters. <strong>Bias</strong>: how trigger-happy the neuron is. <strong>Activation</strong>: what it passes on.</span></p>
+</section>
+<section id="training-it-by-hand-four-rows-one-rule" class="slide level2 clip" data-background-color="#000000">
+<h2>Training it by hand: four rows, one rule</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_PerceptronByHand_poster.png">
+<source src="media/nn_PerceptronByHand.mp4" type="video/mp4">
+</video>
+<p>Wrong answer → move each weight a little towards the right one. Right answer → leave it alone. Repeat until nothing changes. <strong>That is learning.</strong></p>
+</section>
 <section id="learning-means-walking-downhill" class="slide level2 clip" data-background-color="#000000">
 <h2>Learning means walking downhill</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/nn_GradientDescent_poster.png">
@@ -679,7 +710,8 @@ Niccolò Salvini, PhD
 <section id="from-4-numbers-to-117-billion" class="slide level2">
 <h2>From 4 numbers to 117 billion</h2>
 
-<img data-src="img/nn-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<img data-src="img/nn-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="muted">Think of the parameters as the knobs on a DJ mixer. Training is finding a setting of billions of knobs that makes the output match the data. — Karpathy</span></p>
+</section>
 <section id="an-llm-is-that-network-given-one-job" class="slide level2">
 <h2>An LLM is that network, given one job</h2>
 <div title="Guess the next piece of text.">
@@ -700,7 +732,7 @@ Niccolò Salvini, PhD
 <div class="columns">
 <div class="column" style="width:33%;">
 <p><strong>1 · Pre-training</strong></p>
-<p>Trillions of tokens of internet text. Months of GPUs. Out comes a <strong>base model</strong>: it continues documents. Ask it a question and it may answer with three more questions.</p>
+<p>About 15 trillion tokens of filtered web text — ~44 TB. Months of GPUs. Out comes a <strong>base model</strong>: it continues documents. Ask it a question and it may answer with three more questions.</p>
 </div><div class="column" style="width:33%;">
 <p><strong>2 · Post-training</strong></p>
 <p>Many thousands of example conversations, written or checked by people. Then reinforcement learning on what gets rated well. Out comes an <strong>assistant</strong>.</p>
@@ -709,6 +741,44 @@ Niccolò Salvini, PhD
 <p>Two files: the <strong>weights</strong> — billions of numbers — and a few hundred lines of code that run them. That is a model.</p>
 </div></div>
 <p><span class="muted">The frame is Karpathy’s. When a vendor says “our model”, ask which of the three they actually did. It is almost never the first.</span></p>
+</section>
+<section id="training-an-llm-is-the-same-nudge-a-trillion-times" class="slide level2">
+<h2>Training an LLM is the same nudge, a trillion times</h2>
+<p>Take four tokens from the training text — <code>The ECB left rates</code> — and ask for the next one. The right answer is known: it is in the text.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>next token</th>
+<th>before the update</th>
+<th>after</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>“unchanged”</strong> — the right one</td>
+<td>3%</td>
+<td><strong>4%</strong></td>
+</tr>
+<tr class="even">
+<td>“steady”</td>
+<td>4%</td>
+<td>3.8%</td>
+</tr>
+<tr class="odd">
+<td>“at”</td>
+<td>2%</td>
+<td>1.9%</td>
+</tr>
+<tr class="even">
+<td>…the other 200,000</td>
+<td>the rest</td>
+<td>slightly less</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><span class="red">Nudge the knobs so the right token gets slightly more likely. Do it for every token of 15 trillion, many times over. What comes out is a model of <strong>how text continues</strong> — and nothing else. It has <strong>no memory</strong>: a fixed expression from input to output.</span></p>
+</div>
 </section>
 <section id="follow-one-prediction-through" class="slide level2">
 <h2>Follow one prediction through</h2>

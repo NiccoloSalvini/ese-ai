@@ -1250,7 +1250,7 @@
     "href": "week-01/homework.html",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Due: Tuesday 29 September 2026, 23:59 · folder week-01/hw/ in your repo\n\n\nWrite down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.\n\n\n\n\nREADME.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\n\n\n\n\n\nUse an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\nCommit at least twice (the history is part of the work).\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.\n\n\n\n\nRepository ese-ai-fintech exists, is private, and I am a collaborator.\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\n\n\n\n\nThe question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change."
+    "text": "Due: Tuesday 29 September 2026, 23:59 · folder week-01/hw/ in your repo\n\n\nWrite down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.\n\n\n\n\nREADME.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\n\n\n\n\n\nUse an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\nCommit at least twice (the history is part of the work).\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.\n\n\n\n\nRepository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\n\n\n\n\nThe question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change."
   },
   {
     "objectID": "week-01/homework.html#goal",
@@ -1285,7 +1285,7 @@
     "href": "week-01/homework.html#self-check-before-submitting",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Repository ese-ai-fintech exists, is private, and I am a collaborator.\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi."
+    "text": "Repository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi."
   },
   {
     "objectID": "week-01/homework.html#how-this-feeds-the-capstone",
@@ -1796,7 +1796,7 @@
     "href": "lectures/01-how-llms-work.html#today-at-a-walking-pace",
     "title": "How we will work, and what is inside the machine",
     "section": "Today, at a walking pace",
-    "text": "Today, at a walking pace\n\n\n\n\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:35\nwhat this course is for, and how we shape it around you\n\n\n10:55\nset up the workbench: Colab, GitHub, the notebook\n\n\n11:20\nbreak\n\n\n11:30\nfrom one neuron to an LLM, and one token’s journey through it\n\n\n12:40\nread a real model release like an engineer\n\n\n12:52\nbetween Wednesdays, homework, three lines in your own words\n\n\n\nThirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one."
+    "text": "Today, at a walking pace\n\n\n\n\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:35\nwhat this course is for, and how we shape it around you\n\n\n10:55\nopen your notebook — one click\n\n\n11:05\nbreak\n\n\n11:15\nfrom one neuron to an LLM, and one token’s journey through it\n\n\n12:40\nread a real model release like an engineer\n\n\n12:52\nbetween Wednesdays, homework, three lines in your own words\n\n\n\nThirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-1-two-people-one-room",
@@ -1869,18 +1869,18 @@
     "text": "Part 3 The workbench"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#set-it-up-once-together",
-    "href": "lectures/01-how-llms-work.html#set-it-up-once-together",
+    "objectID": "lectures/01-how-llms-work.html#open-your-notebook-one-click",
+    "href": "lectures/01-how-llms-work.html#open-your-notebook-one-click",
     "title": "How we will work, and what is inside the machine",
-    "section": "Set it up once, together",
-    "text": "Set it up once, together\nLAB · session.ipynb § A — Setup\n\nOpen the week 1 notebook in Colab, and run the first two cells.\nCreate a private GitHub repository, ese-ai-fintech, and add me as a collaborator.\nFile ▸ Save a copy in GitHub → week-01/session.ipynb. That is your first commit.\nOptional today, needed from week 4: a Google AI Studio key in Colab’s 🔑 Secrets, as GEMINI_API_KEY.\n\nIf something refuses to work, we fix it now — not at 23:50 on a Tuesday."
+    "section": "Open your notebook: one click",
+    "text": "Open your notebook: one click\n\n\nLAB · week 1 notebook\n\nClick the link, or scan the code. Colab opens the notebook.\nFile ▸ Save a copy in Drive — now it is yours.\nRun the first two cells.\n\nOpen in Colab ↗\nGitHub comes at home, with the setup page — ten minutes."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#break-ten-minutes-outside-the-room.",
-    "href": "lectures/01-how-llms-work.html#break-ten-minutes-outside-the-room.",
+    "objectID": "lectures/01-how-llms-work.html#break-ten-minutes.",
+    "href": "lectures/01-how-llms-work.html#break-ten-minutes.",
     "title": "How we will work, and what is inside the machine",
-    "section": "Break — ten minutes, outside the room.",
-    "text": "Break — ten minutes, outside the room."
+    "section": "Break — ten minutes.",
+    "text": "Break — ten minutes."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-4-from-one-neuron-to-an-llm",
@@ -1897,11 +1897,32 @@
     "text": "Three sentences from three pitch decks\n\n\n\n\n\n\n\nBet before we start\n\n\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\n\n\n\n\nYou have heard a version of all three in your work. Two are impossible as stated. One is unanswerable as written. Write down which is which — by one o’clock you can answer two of them yourself."
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
+    "href": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Three ways to write the same decision",
+    "text": "Three ways to write the same decision"
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#one-neuron-is-a-decision-you-already-know",
     "href": "lectures/01-how-llms-work.html#one-neuron-is-a-decision-you-already-know",
     "title": "How we will work, and what is inside the machine",
     "section": "One neuron is a decision you already know",
     "text": "One neuron is a decision you already know\n\n\n\n\n\n\n\nBet before we look\n\n\nA card payment: large, made abroad, from a new device. Three numbers in, one number out. What would you do with each of the three before adding them up?"
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#the-squash-has-a-name-the-activation-function",
+    "href": "lectures/01-how-llms-work.html#the-squash-has-a-name-the-activation-function",
+    "title": "How we will work, and what is inside the machine",
+    "section": "The squash has a name: the activation function",
+    "text": "The squash has a name: the activation function\n\nWeights: how much each input matters. Bias: how trigger-happy the neuron is. Activation: what it passes on."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#training-it-by-hand-four-rows-one-rule",
+    "href": "lectures/01-how-llms-work.html#training-it-by-hand-four-rows-one-rule",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Training it by hand: four rows, one rule",
+    "text": "Training it by hand: four rows, one rule\n\n\n\nWrong answer → move each weight a little towards the right one. Right answer → leave it alone. Repeat until nothing changes. That is learning."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#learning-means-walking-downhill",
@@ -1922,14 +1943,21 @@
     "href": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
     "title": "How we will work, and what is inside the machine",
     "section": "From 4 numbers to 117 billion",
-    "text": "From 4 numbers to 117 billion"
+    "text": "From 4 numbers to 117 billion\n\nThink of the parameters as the knobs on a DJ mixer. Training is finding a setting of billions of knobs that makes the output match the data. — Karpathy"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#an-llm-is-that-network-given-one-job",
     "href": "lectures/01-how-llms-work.html#an-llm-is-that-network-given-one-job",
     "title": "How we will work, and what is inside the machine",
     "section": "An LLM is that network, given one job",
-    "text": "An LLM is that network, given one job\n\n\n\n\n\n\n\nGuess the next piece of text.\n\n\nThat is the whole training objective. Everything else you have seen a chatbot do is learned on the way to doing that well.\n\n\n\n\n\n\n1 · Pre-training\nTrillions of tokens of internet text. Months of GPUs. Out comes a base model: it continues documents. Ask it a question and it may answer with three more questions.\n\n2 · Post-training\nMany thousands of example conversations, written or checked by people. Then reinforcement learning on what gets rated well. Out comes an assistant.\n\n3 · What you download\nTwo files: the weights — billions of numbers — and a few hundred lines of code that run them. That is a model.\n\nThe frame is Karpathy’s. When a vendor says “our model”, ask which of the three they actually did. It is almost never the first."
+    "text": "An LLM is that network, given one job\n\n\n\n\n\n\n\nGuess the next piece of text.\n\n\nThat is the whole training objective. Everything else you have seen a chatbot do is learned on the way to doing that well.\n\n\n\n\n\n\n1 · Pre-training\nAbout 15 trillion tokens of filtered web text — ~44 TB. Months of GPUs. Out comes a base model: it continues documents. Ask it a question and it may answer with three more questions.\n\n2 · Post-training\nMany thousands of example conversations, written or checked by people. Then reinforcement learning on what gets rated well. Out comes an assistant.\n\n3 · What you download\nTwo files: the weights — billions of numbers — and a few hundred lines of code that run them. That is a model.\n\nThe frame is Karpathy’s. When a vendor says “our model”, ask which of the three they actually did. It is almost never the first."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#training-an-llm-is-the-same-nudge-a-trillion-times",
+    "href": "lectures/01-how-llms-work.html#training-an-llm-is-the-same-nudge-a-trillion-times",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Training an LLM is the same nudge, a trillion times",
+    "text": "Training an LLM is the same nudge, a trillion times\nTake four tokens from the training text — The ECB left rates — and ask for the next one. The right answer is known: it is in the text.\n\n\n\nnext token\nbefore the update\nafter\n\n\n\n\n“unchanged” — the right one\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%\n\n\n…the other 200,000\nthe rest\nslightly less\n\n\n\n\nNudge the knobs so the right token gets slightly more likely. Do it for every token of 15 trillion, many times over. What comes out is a model of how text continues — and nothing else. It has no memory: a fixed expression from input to output."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#follow-one-prediction-through",
