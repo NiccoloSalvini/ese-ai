@@ -103,3 +103,29 @@ def journey():
 
 z, p = neuron(); small = scale(); journey()
 print(f"neuron z={z:.2f} p={p:.2f}; small network weights={small}")
+
+# ------------------------------------------------------------------ activation functions
+def activations():
+    fns = [("sigmoid", lambda z: 1/(1+math.exp(-z)), (0, 1), "squash to 0&#8211;1: a probability", GOLDDK),
+           ("tanh", math.tanh, (-1, 1), "squash to &#8722;1&#8211;1: Karpathy's micrograd", NAVY),
+           ("ReLU", lambda z: max(0.0, z), (0, 4), "negative &#8594; 0, else pass it on: most modern networks", RED)]
+    b = []
+    for i, (name, f, (lo, hi), note, col) in enumerate(fns):
+        x0, y0, W, H = 30 + i * 310, 70, 280, 190
+        b += [f'  <rect x="{x0}" y="{y0}" width="{W}" height="{H}" fill="#f7f5ef" stroke="{RULE}"/>',
+              f'  <line x1="{x0+W/2}" y1="{y0+8}" x2="{x0+W/2}" y2="{y0+H-8}" stroke="{RULE}"/>']
+        yz = y0 + H - 12 - (0 - lo) / (hi - lo) * (H - 24)
+        b.append(f'  <line x1="{x0+8}" y1="{yz:.0f}" x2="{x0+W-8}" y2="{yz:.0f}" stroke="{RULE}"/>')
+        pts = []
+        for k in range(101):
+            z = -4 + 8 * k / 100
+            v = min(max(f(z), lo), hi)
+            pts.append(f"{x0+12+(W-24)*k/100:.1f},{y0+H-12-(v-lo)/(hi-lo)*(H-24):.1f}")
+        b += [f'  <polyline points="{" ".join(pts)}" fill="none" stroke="{col}" stroke-width="3.5"/>',
+              f'  <text x="{x0}" y="{y0+H+28}" font-size="18" font-weight="700" fill="{col}">{name}</text>',
+              f'  <text x="{x0}" y="{y0+H+50}" font-size="13" fill="{INK}">{note}</text>']
+    b += [f'  <line x1="30" y1="340" x2="930" y2="340" stroke="{RULE}"/>',
+          f'  <text x="30" y="366" font-size="15" fill="{INK}">The <tspan font-weight="700">activation function</tspan> is the squash. Without it, a thousand layers collapse into one straight line &#8212; it is what lets the network bend.</text>']
+    svg("activations.svg", 960, 380, b, "three activation functions: what a neuron does to its sum before passing it on (input from &#8722;4 to 4)")
+
+activations()

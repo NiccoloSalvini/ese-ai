@@ -16,9 +16,9 @@
 | 10:00–10:08 | **Who I am** — five incremental bullets (Economics Florence → MSc Milan → PhD Rome → Intuo → teaching) | talk |
 | 10:08–10:35 | **Who you are** — intake conversation, no slide | he talks, tutor takes notes |
 | 10:35–10:55 | **The course**: outcomes, map, the tiny-LLM thread (weeks 2–5), his application on the map, how we work, the deal | talk + discussion |
-| 10:55–11:20 | **Workbench**: Colab, GitHub repo, first save, optional API key | hands-on, notebook § A |
-| 11:20–11:30 | break | |
-| 11:30–12:10 | **From one neuron to an LLM**: three claims (bet) → neuron (bet) → gradient-descent clip → hidden-layer clip → 4 to 117B → pre/post-training → one token's journey | talk + figures |
+| 10:55–11:05 | **Open the notebook**: one click (link/QR) → Save a copy in Drive → run two cells. GitHub is homework (setup page) | hands-on |
+| 11:05–11:15 | break | |
+| 11:15–12:10 | **From one neuron to an LLM**: three claims (bet) → Software 1.0/2.0/3.0 → neuron (bet) → activation functions → perceptron by hand (clip, skippable) → gradient descent (clip) → hidden layer (clip) → 4 to 117B, DJ knobs → pre/post-training → the next-token nudge (3% → 4%) → one token's journey | talk + figures |
 | 12:10–12:40 | **Tokens** (bet + clip + § B1), **attention** (bet), **context window**, claims 1 and 2 closed | talk + notebook § B1 |
 | 12:40–12:52 | **Read a release**: gpt-oss announcement, he circles what he can explain, then the table | discussion |
 | 12:52–13:00 | **Between Wednesdays** (WhatsApp QR, 11 Nov), HW1, three lines, commit | he writes |

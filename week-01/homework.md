@@ -24,7 +24,7 @@ This is a lighter week on purpose. The three-asset notebook we would have starte
 3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.
 
 ## Self-check before submitting
-- [ ] Repository `ese-ai-fintech` exists, is private, and I am a collaborator.
+- [ ] Repository `ese-ai-fintech` exists, is private, and I am a collaborator (follow the [Setup](../setup.qmd) page — ten minutes).
 - [ ] `week-01/session.ipynb` is saved there from Colab.
 - [ ] `tokens.ipynb` runs with `Runtime ▸ Restart and run all`.
 - [ ] The question in the README names a user and a decision.

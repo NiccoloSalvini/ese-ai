@@ -11,9 +11,9 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 |---|---|
 | **10:00** | who I am, and who you are |
 | **10:35** | what this course is for, and how we shape it around you |
-| **10:55** | set up the workbench: Colab, GitHub, the notebook |
-| **11:20** | break |
-| **11:30** | from one neuron to an LLM, and one token's journey through it |
+| **10:55** | open your notebook — one click |
+| **11:05** | break |
+| **11:15** | from one neuron to an LLM, and one token’s journey through it |
 | **12:40** | read a real model release like an engineer |
 | **12:52** | between Wednesdays, homework, three lines in your own words |
 
@@ -113,18 +113,26 @@ The best way to understand the pieces is to build them. A few pieces a week, sma
 
 ## [Part 3]{.section-kicker} The workbench {.section-slide background-color="#AF1F25"}
 
-## Set it up once, together {.lab background-color="#2471a3"}
+## Open your notebook: one click {.lab background-color="#2471a3"}
 
-[LAB · session.ipynb § A — Setup]{.kicker}
+:::: {.columns}
+::: {.column width="62%"}
+[LAB · week 1 notebook]{.kicker}
 
-1. Open the week 1 notebook in **Colab**, and run the first two cells.
-2. Create a **private** GitHub repository, `ese-ai-fintech`, and add me as a collaborator.
-3. `File ▸ Save a copy in GitHub` → `week-01/session.ipynb`. That is your first commit.
-4. Optional today, needed from week 4: a Google AI Studio key in Colab's 🔑 *Secrets*, as `GEMINI_API_KEY`.
+1. **Click the link, or scan the code.** Colab opens the notebook.
+2. `File ▸ Save a copy in Drive` — now it is yours.
+3. Run the first two cells.
 
-[If something refuses to work, we fix it now — not at 23:50 on a Tuesday.]{.muted}
+**[Open in Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb)**
 
-## Break — ten minutes, outside the room. {.statement}
+[GitHub comes at home, with the [setup page](../setup.qmd) — ten minutes.]{style="font-size:.7em"}
+:::
+::: {.column width="38%"}
+![](img/colab-w01-qr.svg){width="80%" fig-align="center"}
+:::
+::::
+
+## Break — ten minutes. {.statement}
 
 ## [Part 4]{.section-kicker} From one neuron to an LLM {.section-slide background-color="#AF1F25"}
 
@@ -138,6 +146,20 @@ The best way to understand the pieces is to build them. A few pieces a week, sma
 
 You have heard a version of all three in your work. **Two are impossible as stated. One is unanswerable as written.** Write down which is which — by one o'clock you can answer two of them yourself.
 
+## Three ways to write the same decision
+
+::: {.r-stack}
+![](img/software-123-l0.svg){width="100%"}
+
+![](img/software-123-l1.svg){.fragment width="100%"}
+
+![](img/software-123-l2.svg){.fragment width="100%"}
+
+![](img/software-123-l3.svg){.fragment width="100%"}
+
+![](img/software-123-l4.svg){.fragment width="100%"}
+:::
+
 ## One neuron is a decision you already know
 
 ::: {.callout-important title="Bet before we look"}
@@ -147,6 +169,18 @@ A card payment: large, made abroad, from a new device. Three numbers in, one num
 . . .
 
 ![](img/neuron.svg){fig-align="center" width="95%"}
+
+## The squash has a name: the **activation function**
+
+![](img/activations.svg){fig-align="center" width="86%"}
+
+[**Weights**: how much each input matters. **Bias**: how trigger-happy the neuron is. **Activation**: what it passes on.]{.muted}
+
+## Training it by hand: four rows, one rule {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_PerceptronByHand_poster.png"><source src="media/nn_PerceptronByHand.mp4" type="video/mp4"></video>
+
+Wrong answer → move each weight a little towards the right one. Right answer → leave it alone. Repeat until nothing changes. **That is learning.**
 
 ## Learning means walking downhill {.clip background-color="#000000"}
 
@@ -164,6 +198,8 @@ One neuron draws a line. Five of them, blended, follow a curve. Stack layers of 
 
 ![](img/nn-scale.svg){fig-align="center" width="95%"}
 
+[Think of the parameters as the knobs on a DJ mixer. Training is finding a setting of billions of knobs that makes the output match the data. — Karpathy]{.muted}
+
 ## An LLM is that network, given one job
 
 ::: {.callout-important title="Guess the next piece of text."}
@@ -174,7 +210,7 @@ That is the whole training objective. Everything else you have seen a chatbot do
 ::: {.column width="33%"}
 **1 · Pre-training**
 
-Trillions of tokens of internet text. Months of GPUs. Out comes a **base model**: it continues documents. Ask it a question and it may answer with three more questions.
+About 15 trillion tokens of filtered web text — ~44 TB. Months of GPUs. Out comes a **base model**: it continues documents. Ask it a question and it may answer with three more questions.
 :::
 ::: {.column width="33%"}
 **2 · Post-training**
@@ -189,6 +225,21 @@ Two files: the **weights** — billions of numbers — and a few hundred lines o
 ::::
 
 [The frame is Karpathy's. When a vendor says "our model", ask which of the three they actually did. It is almost never the first.]{.muted}
+
+## Training an LLM is the same nudge, a trillion times
+
+Take four tokens from the training text — `The ECB left rates` — and ask for the next one. The right answer is known: it is in the text.
+
+| next token | before the update | after |
+|---|---|---|
+| **"unchanged"** — the right one | 3% | **4%** |
+| "steady" | 4% | 3.8% |
+| "at" | 2% | 1.9% |
+| …the other 200,000 | the rest | slightly less |
+
+. . .
+
+[Nudge the knobs so the right token gets slightly more likely. Do it for every token of 15 trillion, many times over. What comes out is a model of **how text continues** — and nothing else. It has **no memory**: a fixed expression from input to output.]{.red}
 
 ## Follow one prediction through
 
