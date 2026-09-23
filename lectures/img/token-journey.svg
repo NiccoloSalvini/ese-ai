@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 445" width="960" height="445" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">follow one prediction through the machine</text>
+  <text x="30" y="78" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">TEXT</text>
+  <text x="120" y="78" font-size="16" fill="#363636" font-family="'JetBrains Mono',Menlo,monospace">"The ECB left rates"</text>
+  <text x="90" y="102" font-size="14" fill="#7a7f85">&#8595;</text>
+  <text x="30" y="130" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">TOKENS</text>
+  <text x="120" y="130" font-size="16" fill="#363636" font-family="'JetBrains Mono',Menlo,monospace">The | ECB | left | rates</text>
+  <text x="90" y="154" font-size="14" fill="#7a7f85">&#8595;</text>
+  <text x="30" y="182" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">IDS</text>
+  <text x="120" y="182" font-size="16" fill="#7a7f85" font-family="'JetBrains Mono',Menlo,monospace">976 · 81201 · 3561 · 8104</text>
+  <text x="90" y="206" font-size="14" fill="#7a7f85">&#8595;</text>
+  <text x="30" y="234" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">VECTORS</text>
+  <text x="120" y="234" font-size="16" fill="#2471a3" font-family="'JetBrains Mono',Menlo,monospace">each id &#8594; a list of ~3,000 numbers</text>
+  <rect x="30" y="270" width="520" height="118" fill="#f7f5ef" stroke="#2471a3" stroke-width="2"/>
+  <text x="46" y="296" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">ONE BLOCK &#8212; REPEATED 24 TO 100+ TIMES</text>
+  <text x="46" y="324" font-size="15" fill="#363636"><tspan font-weight="700" fill="#AF1F25">attention</tspan> &#8212; every token looks at the others and takes what it needs</text>
+  <text x="46" y="350" font-size="15" fill="#363636"><tspan font-weight="700" fill="#2471a3">neurons</tspan> &#8212; each token's numbers go through a layer like the ones before</text>
+  <text x="46" y="374" font-size="13" fill="#7a7f85">the vector changes a little at every block; the words never come back until the end</text>
+  <line x1="550" y1="330" x2="600" y2="330" stroke="#363636" stroke-width="2"/>
+  <polygon points="600,324 610,330 600,336" fill="#363636"/>
+  <text x="625" y="80" font-size="11" font-weight="700" letter-spacing="1.1" fill="#a8955a">A SCORE FOR EVERY TOKEN IT KNOWS</text>
+  <text x="625" y="116" font-size="15" fill="#363636">unchanged</text>
+  <rect x="760" y="103" width="161" height="18" fill="#AF1F25"/>
+  <text x="929" y="117" font-size="13" fill="#363636">0.62</text>
+  <text x="625" y="150" font-size="15" fill="#363636">steady</text>
+  <rect x="760" y="137" width="29" height="18" fill="#CDBA80"/>
+  <text x="797" y="151" font-size="13" fill="#363636">0.11</text>
+  <text x="625" y="184" font-size="15" fill="#363636">at</text>
+  <rect x="760" y="171" width="21" height="18" fill="#CDBA80"/>
+  <text x="789" y="185" font-size="13" fill="#363636">0.08</text>
+  <text x="625" y="218" font-size="15" fill="#363636">on</text>
+  <rect x="760" y="205" width="13" height="18" fill="#CDBA80"/>
+  <text x="781" y="219" font-size="13" fill="#363636">0.05</text>
+  <text x="625" y="252" font-size="15" fill="#363636">…200,000 more</text>
+  <rect x="760" y="239" width="36" height="18" fill="#CDBA80"/>
+  <text x="804" y="253" font-size="13" fill="#363636">0.14</text>
+  <text x="625" y="290" font-size="15" fill="#363636">pick one &#8212; <tspan font-weight="700">temperature</tspan> decides how boldly</text>
+  <text x="625" y="316" font-size="15" fill="#363636">append it, and run the <tspan font-weight="700" fill="#AF1F25">whole thing again</tspan></text>
+  <text x="625" y="342" font-size="15" fill="#363636">for the next token. That is all it does.</text>
+  <line x1="30" y1="408" x2="930" y2="408" stroke="#e6e2d8"/>
+  <text x="30" y="432" font-size="14" fill="#7a7f85">token ids and probabilities are illustrative; the shape of the pipeline is not</text>
+</svg>
