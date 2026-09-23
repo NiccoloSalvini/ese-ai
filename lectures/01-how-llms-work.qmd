@@ -165,6 +165,16 @@ Type your own text and watch the count:
 
 ![](img/context-window.svg){fig-align="center" width="95%"}
 
+## How it reads the box: **attention**
+
+::: {.callout-important title="Bet before we look"}
+*"The bank raised rates because **it** feared inflation."* — how does the model know what **it** refers to?
+:::
+
+. . .
+
+![](img/attention.svg){fig-align="center" width="95%"}
+
 ## Which disposes of claim one {.statement}
 
 ## The model remembers nothing. Something else is storing and re-sending.
@@ -211,14 +221,23 @@ After your trade it holds 9 ETH, so it must hold 300,000 ÷ 9 = **33,333 USDC**.
 
 ## Between Wednesdays
 
+:::: {.columns}
+::: {.column width="64%"}
 | | |
 |---|---|
-| **quick questions** | Telegram — I answer within one working day |
+| **quick questions** | WhatsApp or Telegram — whichever you prefer. I answer within one working day |
 | **anything that counts** | in your repository, never in chat |
 | **Wed 11 November** | I may be in Milan that day — we agree a make-up date now |
 | **if you miss a session** | tell me before, and the notebook is on the site the same day |
 
-: {tbl-colwidths="[28,72]"}
+: {tbl-colwidths="[34,66]"}
+:::
+::: {.column width="36%"}
+![](img/whatsapp-qr.svg){width="78%" fig-align="center"}
+
+[Scan it now — WhatsApp.<br>Telegram: tell me your handle.]{.muted style="display:block;text-align:center;font-size:.6em"}
+:::
+::::
 
 ## Close
 

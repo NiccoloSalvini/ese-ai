@@ -17,6 +17,7 @@ The **Wk** column says where the term is introduced properly.
 | **Token** | The unit a model reads and writes: a chunk of characters, often part of a word. You are billed, limited and measured in tokens, not words. | 1 |
 | **Tokenizer** | The component that cuts text into tokens. It is trained on a corpus, so text unlike that corpus (other languages, numbers, new names) cuts into more pieces. | 1 |
 | **Context window** | Everything the model can see in one call: instructions, history, documents, and its own answer so far. Nothing outside it exists for the model. | 1 |
+| **Attention** | How the model reads its context: to process each token it weighs every other token in the window, and decides how much each one matters. Every-token-with-every-token is why long contexts cost more than they look. | 1 |
 | **Weights** | The numbers learned in training. They are frozen when you call the model; nothing you type changes them. | 1 |
 | **Prompt** | The text you send. In production it is code: versioned, tested, and stored next to what it produced. | 1–4 |
 | **Temperature** | How strictly the model follows its own probabilities when choosing the next token. `T = 0` for extraction and anything auditable; higher for ideas. | 2 |
