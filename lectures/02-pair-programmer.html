@@ -348,16 +348,21 @@ Niccolò Salvini, PhD
 <section id="where-we-are" class="slide level2">
 <h2>Where we are</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <tbody>
 <tr class="odd">
 <td>1</td>
 <td>23 Sep</td>
-<td>how the model works, and the checking habit ✓</td>
+<td>who we are, the plan, how the model reads ✓</td>
 </tr>
 <tr class="even">
 <td><strong>2</strong></td>
 <td><strong>30 Sep</strong></td>
-<td><strong>pandas, joins, and the two errors that hide</strong></td>
+<td><strong>the checking habit, three assets, joins, and the errors that hide</strong></td>
 </tr>
 <tr class="odd">
 <td>3</td>
@@ -371,7 +376,61 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="red">Last week the assistant got a constant wrong and it looked fine. Today you meet the two mistakes it makes most, and neither of them raises an error.</span></p>
+<p><span class="red">Last week you saw what the model reads. Today you see what it gets wrong — a constant that looks fine, then the two mistakes that never raise an error.</span></p>
+</section>
+<section id="block-a-why-the-same-question-gives-different-answers" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Block A</span> Why the same question gives different answers</h2>
+</section>
+<section id="it-is-choosing-not-looking-up" class="slide level2">
+<h2>It is choosing, not looking up</h2>
+
+<img data-src="img/next-token.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red"><strong>Temperature</strong> decides how much it respects those odds — and nothing else about the model changes.</span></p>
+</section>
+<section id="so-where-do-hallucinations-come-from" class="slide level2">
+<h2>So where do hallucinations come from?</h2>
+<div title="Bet before we look">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet before we look</strong></p>
+</div>
+<div class="callout-content">
+<p>The model invents a plausible figure for a company’s 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Working as designed.</strong> It completes patterns. When the pattern needs a number that was never in the box, it produces the <em>shape</em> of a number that would fit.</p>
+<p>It has no way to feel the difference between recalling and inventing. <strong>That is your job</strong>, and it is the habit this whole course builds.</p>
+</div>
+</section>
+<section id="the-habit-this-course-is-really-about" class="slide level2 lab" data-background-color="#2471a3">
+<h2>The habit this course is really about</h2>
+<p><span class="kicker">LAB · week-01/session.ipynb § B3 — 🔍 CHECK</span></p>
+<p>Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Verifiable</strong> a number you can look up, a date, a name, a claim with a source</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Plausible but unverifiable</strong> fluent, confident, no way to check it, and quite possibly invented</p>
+</div></div>
+<p><span class="red">Do this on every answer, all term, until it is automatic.</span></p>
+</section>
+<section id="and-write-that-into-the-procedure-not-the-folklore" class="slide level2">
+<h2>And write that into the procedure, not the folklore</h2>
+<p>A process that an auditor will look at cannot say <em>“we asked the AI”</em>.</p>
+<ul>
+<li>the <strong>exact prompt</strong>, versioned like code</li>
+<li><code>T = 0</code>, and the model <strong>name and version</strong> recorded with the output</li>
+<li>the <strong>input</strong> stored next to the answer</li>
+</ul>
+</section>
+<section id="block-b-four-verbs-three-assets" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Block B</span> Four verbs, three assets</h2>
 </section>
 <section id="four-verbs-and-you-can-do-most-of-data-work" class="slide level2">
 <h2>Four verbs, and you can do most of data work</h2>
@@ -408,19 +467,42 @@ Niccolò Salvini, PhD
 </table>
 <p><span class="red">The assistant writes all four faster than you can. The job is not writing them. It is knowing what the result <em>should</em> look like before you see it.</span></p>
 </section>
-<section id="ask-for-it-run-it-then-check-it" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Ask for it, run it, then check it</h2>
-<p><span class="kicker">LAB · session.ipynb § A</span></p>
-<p>Get the assistant to write each of the four, then <strong>before running anything</strong>, say out loud:</p>
+<section id="three-assets-and-one-number-that-is-wrong" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Three assets, and one number that is wrong</h2>
+<p><span class="kicker">LAB · week-01/session.ipynb § C — you drive</span></p>
 <ol type="1">
-<li>how many rows should come back</li>
-<li>what the units of the new column are</li>
-<li>which rows would be dropped, and whether that matters</li>
+<li>Pull daily prices for BTC, an equity and an index.</li>
+<li>Returns, summary statistics, one chart that answers a question. <strong>Before each cell runs, say how many rows should come back.</strong></li>
+<li><strong>🔍 CHECK</strong> — the volatility cell was written by an assistant. It contains two errors. Find them.</li>
 </ol>
-<p>Run it. Where your prediction and the result disagree, one of you is wrong — find out which.</p>
+<p><span class="muted">I will not touch the keyboard. When it breaks, read the error before asking me.</span></p>
 </section>
-<section id="block-b-the-first-error-two-calendars-that-do-not-line-up" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block B</span> The first error: two calendars that do not line up</h2>
+<section id="the-two-planted-errors-and-why-they-matter" class="slide level2">
+<h2>The two planted errors, and why they matter</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>√252 applied to crypto</strong> Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Returns added up</strong> Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.</p>
+</div></div>
+<div title="The sentence to remember">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>The sentence to remember</strong></p>
+</div>
+<div class="callout-content">
+<p>The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="block-c-the-first-error-two-calendars-that-do-not-line-up" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Block C</span> The first error: two calendars that do not line up</h2>
 </section>
 <section id="bitcoin-trades-on-sunday.-the-stock-exchange-does-not." class="slide level2">
 <h2>Bitcoin trades on Sunday. The stock exchange does not.</h2>
@@ -464,8 +546,8 @@ Niccolò Salvini, PhD
 </ol>
 <p>Then answer: <strong>which of the two numbers would you put in a report, and what sentence goes underneath it?</strong></p>
 </section>
-<section id="block-c-the-second-error-units" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block C</span> The second error: units</h2>
+<section id="block-d-the-second-error-units" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Block D</span> The second error: units</h2>
 </section>
 <section id="a-correlation-between-mismatched-units-is-still-a-number" class="slide level2">
 <h2>A correlation between mismatched units is still a number</h2>
@@ -533,8 +615,8 @@ Niccolò Salvini, PhD
 <li>Find one known event in the chart. If you cannot see it, the join is wrong.</li>
 </ol>
 </section>
-<section id="block-d-making-it-repeatable-and-safe" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block D</span> Making it repeatable, and safe</h2>
+<section id="block-e-making-it-repeatable-and-safe" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Block E</span> Making it repeatable, and safe</h2>
 </section>
 <section id="a-number-without-a-snapshot-is-an-anecdote" class="slide level2">
 <h2>A number without a snapshot is an anecdote</h2>

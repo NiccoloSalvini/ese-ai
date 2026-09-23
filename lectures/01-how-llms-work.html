@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Niccolò Salvini, PhD">
-  <title>AI for Business &amp; FinTech – How LLMs work, and how we will work</title>
+  <title>AI for Business &amp; FinTech – How we will work, and what the model actually reads</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -32,22 +32,6 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -346,7 +330,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#AF1F25" data-background-image="../images/ese-logo-white.svg" data-background-position="top 7% right 4%" data-background-size="14%" class="quarto-title-block">
-  <h1 class="title">How LLMs work, and how we will work</h1>
+  <h1 class="title">How we will work, and what the model actually reads</h1>
   <p class="subtitle">Week 1 · Wednesday 23 September 2026 · 10:00–13:00</p>
 
 <div class="quarto-title-authors">
@@ -360,6 +344,94 @@ Niccolò Salvini, PhD
     </div>
 </div>
 
+</section>
+<section id="today-at-a-walking-pace" class="slide level2">
+<h2>Today, at a walking pace</h2>
+<table class="caption-top">
+<tbody>
+<tr class="odd">
+<td><strong>10:00</strong></td>
+<td>who I am, and who you are</td>
+</tr>
+<tr class="even">
+<td><strong>10:40</strong></td>
+<td>what this course is for, and how we shape it around you</td>
+</tr>
+<tr class="odd">
+<td><strong>11:10</strong></td>
+<td>break</td>
+</tr>
+<tr class="even">
+<td><strong>11:20</strong></td>
+<td>set up the workbench: Colab, GitHub, the notebook</td>
+</tr>
+<tr class="odd">
+<td><strong>11:50</strong></td>
+<td>a first look inside the machine: tokens, and memory</td>
+</tr>
+<tr class="even">
+<td><strong>12:40</strong></td>
+<td>the words we will use, and a taste of week 8</td>
+</tr>
+<tr class="odd">
+<td><strong>12:50</strong></td>
+<td>homework, and three lines in your own words</td>
+</tr>
+</tbody>
+</table>
+<p><span class="muted">Thirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one.</span></p>
+</section>
+<section id="part-1-two-people-one-room" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> Two people, one room</h2>
+</section>
+<section id="who-i-am" class="slide level2">
+<h2>Who I am</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="../images/salvini.jpeg" style="width:100.0%"></p>
+</div><div class="column" style="width:70%;">
+<p><strong>Niccolò Salvini, PhD</strong> · Adjunct Professor</p>
+</div></div>
+</section>
+<section id="who-you-are" class="slide level2 statement">
+<h2>Who you are</h2>
+</section>
+<section id="tell-me-and-i-will-build-the-course-around-it." class="slide level2">
+<h2>Tell me, and I will build the course around it.</h2>
+<p><span class="muted">No slides for this part. I will take notes.</span></p>
+</section>
+<section id="one-question-to-start" class="slide level2">
+<h2>One question to start</h2>
+<div title="Take your time">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Take your time</strong></p>
+</div>
+<div class="callout-content">
+<p>What do you want to be able to <strong>do</strong> in December that you cannot do today?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-2-what-this-course-is-for" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2</span> What this course is for</h2>
+</section>
+<section id="what-you-leave-with-in-december" class="slide level2">
+<h2>What you leave with in December</h2>
+<ol type="1">
+<li><strong>Build</strong> — a working pipeline in Python: data in, analysis, a model or an LLM application, a result you can reproduce.</li>
+<li><strong>Check</strong> — the habit of testing what an assistant or a vendor tells you, with a number and not with a feeling.</li>
+<li><strong>Decide</strong> — turn a model’s output into a decision with a cost, and say when <em>not</em> to use AI at all.</li>
+<li><strong>Defend</strong> — present it to people who will not read your notebook, including a regulator.</li>
+</ol>
+<div class="fragment">
+<p><span class="red">Not “an overview of AI tools”. You already have that from your work. This is the part underneath.</span></p>
+</div>
 </section>
 <section id="ten-weeks-one-thing-built-each-time" class="slide level2">
 <h2>Ten weeks, one thing built each time</h2>
@@ -404,39 +476,120 @@ Niccolò Salvini, PhD
 </table>
 <p><span class="red">Every artefact you build stays in your repository and becomes part of the next one. Nothing here is thrown away.</span></p>
 </section>
+<section id="what-you-wrote-in-your-application" class="slide level2">
+<h2>What you wrote in your application</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>you wrote</th>
+<th>where it lands</th>
+<th>and before that</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>product and project work</strong></td>
+<td>5 · the product lens · 10 · build/buy, cost at scale</td>
+<td>it is the lens, every week</td>
+</tr>
+<tr class="even">
+<td><strong>data and decisions</strong></td>
+<td>2 · analysis · 3 · a model, and a threshold that costs money</td>
+<td>the whole first month</td>
+</tr>
+<tr class="odd">
+<td><strong>trading</strong></td>
+<td>7 · a backtest, and every way it lies</td>
+<td>market data from week 2</td>
+</tr>
+<tr class="even">
+<td><strong>crypto and DeFi</strong></td>
+<td>8 · on-chain data, AMMs, lending, MiCA</td>
+<td>on-chain series from week 2</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>Is this still true?</strong> What is missing, and what would you pull forward?</p>
+<p><span class="red">The map is a plan, not a contract. The <strong>capstone is yours to choose</strong> — and with one student, the order can move. Tell me by week 3 what you would pull forward.</span></p>
+</div>
+</section>
+<section id="how-we-work-with-only-two-of-us" class="slide level2">
+<h2>How we work, with only two of us</h2>
+<ul>
+<li><strong>A lab, not a lecture.</strong> You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to <strong>judge what the assistant produces</strong>.</li>
+<li><strong>Bets, not quizzes.</strong> Before a cell runs I will ask you to write down a number. Being wrong is the point; it is how the result sticks.</li>
+<li><strong>Your keyboard.</strong> I will not touch it. When it breaks, read the error before asking me.</li>
+<li><strong>Every Wednesday starts with you:</strong> twenty minutes on your homework. I pick two lines at random and ask what they do.</li>
+<li><strong>Feedback runs both ways.</strong> Too fast, too slow, not relevant to you — say it that week, not in December.</li>
+</ul>
+</section>
 <section id="the-deal-said-once" class="slide level2">
 <h2>The deal, said once</h2>
 <ul>
-<li><strong>This is a lab.</strong> You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to <strong>judge what the assistant produces</strong>.</li>
 <li><strong>The rule of the course:</strong> anything an AI produced and you submit, you must be able to explain line by line. I will ask.</li>
 <li><strong>Nothing confidential</strong> goes into an AI tool. Ever.</li>
 <li>Markets, crypto and DeFi here are <strong>educational simulations</strong>. Nothing in this course is investment advice.</li>
 </ul>
-<div title="What you actually leave with">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What you actually leave with</strong></p>
-</div>
-<div class="callout-content">
-<p>Not “an overview of AI tools”. The ability to build a thing, test it, find where it is wrong, and defend it to people who will not read your appendix.</p>
-</div>
-</div>
-</div>
-</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>weight</th>
+<th>when</th>
+<th>what</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Case brief</strong></td>
+<td>40%</td>
+<td>due Sun 1 Nov, presented 4 Nov</td>
+<td>the LLM application of weeks 4–5, treated as a product</td>
+</tr>
+<tr class="even">
+<td><strong>Portfolio</strong></td>
+<td>60%</td>
+<td>due Sun 6 Dec, presented 9 Dec</td>
+<td>your capstone: pipeline, memo, risk canvas, roadmap</td>
+</tr>
+</tbody>
+</table>
+<p><span class="muted">Both are assessed on your repository — the commits, not a PDF. Weekly homework is formative, and completing it is a condition of the certificate.</span></p>
 </section>
-<section id="three-sentences-from-three-pitch-decks" class="slide level2 statement">
+<section id="break-ten-minutes-outside-the-room." class="slide level2 statement">
+<h2>Break — ten minutes, outside the room.</h2>
+</section>
+<section id="part-3-the-workbench" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> The workbench</h2>
+</section>
+<section id="set-it-up-once-together" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Set it up once, together</h2>
+<p><span class="kicker">LAB · session.ipynb § A — Setup</span></p>
+<ol type="1">
+<li>Open the week 1 notebook in <strong>Colab</strong>, and run the first two cells.</li>
+<li>Create a <strong>private</strong> GitHub repository, <code>ese-ai-fintech</code>, and add me as a collaborator.</li>
+<li><code>File ▸ Save a copy in GitHub</code> → <code>week-01/session.ipynb</code>. That is your first commit.</li>
+<li>Optional today, needed from week 4: a Google AI Studio key in Colab’s 🔑 <em>Secrets</em>, as <code>GEMINI_API_KEY</code>.</li>
+</ol>
+<p><span class="muted">If something refuses to work, we fix it now — not at 23:50 on a Tuesday.</span></p>
+</section>
+<section id="part-4-a-first-look-inside-the-machine" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 4</span> A first look inside the machine</h2>
+</section>
+<section id="three-sentences-from-three-pitch-decks" class="slide level2">
 <h2>Three sentences from three pitch decks</h2>
-</section>
-<section id="two-of-these-are-impossible.-one-is-unanswerable-as-written." class="slide level2">
-<h2>Two of these are impossible. One is unanswerable as written.</h2>
-<p><span class="muted">Write down which is which. We come back to this at 12:55.</span></p>
-</section>
-<section id="the-three-claims" class="slide level2">
-<h2>The three claims</h2>
 <div title="Bet before we start">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -456,41 +609,7 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </div>
-<div class="fragment">
-<p>You will meet a version of all three in a data room. By the end of today you will know which part of the machine each one is lying about — and, more useful, <strong>the one question that collapses each claim</strong>.</p>
-<p><span class="red">This is the actual product of the course: not enthusiasm, and not scepticism. A short list of questions that separate a system from a demo.</span></p>
-</div>
-</section>
-<section id="three-ways-to-write-the-same-decision" class="slide level2">
-<h2>Three ways to write the same decision</h2>
-<div class="r-stack">
-<p><img data-src="img/software-123-l0.svg" style="width:100.0%"></p>
-<p><img data-src="img/software-123-l1.svg" class="fragment" style="width:100.0%"></p>
-<p><img data-src="img/software-123-l2.svg" class="fragment" style="width:100.0%"></p>
-<p><img data-src="img/software-123-l3.svg" class="fragment" style="width:100.0%"></p>
-<p><img data-src="img/software-123-l4.svg" class="fragment" style="width:100.0%"></p>
-</div>
-</section>
-<section id="and-3.0-does-not-replace-the-other-two" class="slide level2 statement">
-<h2>And 3.0 does not replace the other two</h2>
-</section>
-<section id="a-rule-you-can-write-down-beats-a-model-that-guesses-it." class="slide level2">
-<h2>A rule you can write down beats a model that guesses it.</h2>
-<p><span class="muted">Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks.</span></p>
-</section>
-<section id="run-all-three-on-the-same-transactions" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Run all three, on the same transactions</h2>
-<p><span class="kicker">LAB · session.ipynb § A2</span></p>
-<p>Twenty thousand card payments, one cost table, three kinds of software:</p>
-<ol type="1">
-<li>the rule blocks 240 of them. <strong>Bet how much of the fraud it catches</strong> before you run it.</li>
-<li>the model gets the <strong>same budget</strong> — 240 blocks, no more — and only chooses differently.</li>
-<li>then the fraud that is in the <em>words</em> and in neither of the first two.</li>
-</ol>
-<p><span class="red">Then the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged.</span></p>
-</section>
-<section id="block-a-the-model-does-not-read" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block A</span> The model does not read</h2>
+<p>You have heard a version of all three in your work. <strong>Two are impossible as stated. One is unanswerable as written.</strong> Write down which is which — we will close two of them today, and the third in week 3.</p>
 </section>
 <section id="it-never-sees-a-word" class="slide level2">
 <h2>It never sees a word</h2>
@@ -517,14 +636,6 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </section>
-<section id="a-tokenizer-is-trained-and-it-has-a-native-language" class="slide level2">
-<h2>A <strong>tokenizer</strong> is trained, and it has a native language</h2>
-<p>The vocabulary is learned from a corpus, by merging the pairs of characters that occur most often. A corpus that is mostly English learns mostly English pieces.</p>
-<p>Everything else gets spelled out in fragments: <strong>Italian, Russian, a ticker, a surname, a number.</strong></p>
-<div class="fragment">
-<p><span class="red">Which means the price of a document depends on a design decision taken before your document existed.</span></p>
-</div>
-</section>
 <section id="the-same-sentence-twice-one-tokenizer-apart" class="slide level2 clip" data-background-color="#000000">
 <h2>The same sentence, twice, one tokenizer apart</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_tokens_poster.png">
@@ -532,110 +643,23 @@ Niccolò Salvini, PhD
 </video>
 <p>Same model family, same sentence. 33 pieces became 18.</p>
 </section>
-<section id="read-that-clip-as-a-line-in-a-budget" class="slide level2">
-<h2>Read that clip as a line in a budget</h2>
-
-<img data-src="img/token-budget.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red">A pilot priced on one tokenizer and delivered on the other moves by <strong>45% of its unit cost</strong>. That is the sort of thing that decides whether it clears its business case.</span></p>
-</section>
 <section id="take-it-apart-yourself" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Take it apart yourself</h2>
 <p><span class="kicker">LAB · session.ipynb § B1 — <code>tiktoken</code></span></p>
-<p>Type your own text and watch the count. Try, in this order:</p>
+<p>Type your own text and watch the count:</p>
 <ol type="1">
 <li>the same sentence in <strong>English</strong>, then <strong>Italian</strong>, then <strong>Russian</strong></li>
 <li>a <strong>number</strong>: <code>1,234,567.89</code> — count the pieces before you look</li>
 <li><strong>your own surname</strong>, then a listed company, then a company founded last year</li>
-<li>a line of <strong>Python</strong></li>
 </ol>
-<p><span class="red">Then answer, from what you saw: which of those four is the model <strong>least</strong> equipped to reason about, and why?</span></p>
-</section>
-<section id="what-follows-from-it-in-a-business" class="slide level2">
-<h2>What follows from it, in a business</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>what you saw</th>
-<th>what it costs you</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>tokens, not words</td>
-<td>you are billed per token, in <strong>and</strong> out</td>
-</tr>
-<tr class="even">
-<td>non-English fragments more</td>
-<td>the same document costs 1.4–2.8× depending on language <strong>and</strong> tokenizer</td>
-</tr>
-<tr class="odd">
-<td><code>1,234,567.89</code> is <strong>7 tokens</strong>, not one number</td>
-<td>arithmetic is weak by construction — never trust a total it computed</td>
-</tr>
-<tr class="even">
-<td>a new company name shatters; an old one does not</td>
-<td>the model is systematically more fluent about the past</td>
-</tr>
-<tr class="odd">
-<td>the window is counted in tokens</td>
-<td>long conversations silently become expensive</td>
-</tr>
-</tbody>
-</table>
-<div title="The sentence to remember">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The sentence to remember</strong></p>
-</div>
-<div class="callout-content">
-<p>The unit the system counts in is not the unit you think in, and the exchange rate between them is not stable.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="block-b-its-only-memory-is-what-you-just-sent" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block B</span> Its only memory is what you just sent</h2>
+<p><span class="red">Then tell me: which of those is the model <strong>least</strong> equipped to reason about, and why?</span></p>
 </section>
 <section id="everything-it-knows-every-time" class="slide level2">
 <h2>Everything it knows, every time</h2>
 
 <img data-src="img/context-window.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="which-disposes-of-claim-one" class="slide level2 statement">
-<h2>Which disposes of claim one</h2>
-</section>
-<section id="the-model-remembers-nothing.-something-else-is-storing-and-re-sending." class="slide level2">
-<h2>The model remembers nothing. Something else is storing and re-sending.</h2>
-<p><span class="muted">That something is a database, it has an owner, and every turn you pay to send it again. “It remembers” is not an AI capability. It is an infrastructure invoice.</span></p>
-</section>
-<section id="and-a-longer-window-is-not-a-free-upgrade" class="slide level2">
-<h2>And a longer window is not a free upgrade</h2>
-
-<img data-src="img/context-cost.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><div title="What this rules out">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>What this rules out</strong></p>
-</div>
-<div class="callout-content">
-<p>“Just paste the whole thing in and ask” fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer <strong>correct</strong>. That is week 4.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="so-where-do-hallucinations-come-from" class="slide level2">
-<h2>So where do hallucinations come from?</h2>
+<section id="how-it-reads-the-box-attention" class="slide level2">
+<h2>How it reads the box: <strong>attention</strong></h2>
 <div title="Bet before we look">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -646,200 +670,113 @@ Niccolò Salvini, PhD
 <p><strong>Bet before we look</strong></p>
 </div>
 <div class="callout-content">
-<p>The model invents a plausible figure for a company’s 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?</p>
+<p><em>“The bank raised rates because <strong>it</strong> feared inflation.”</em> — how does the model know what <strong>it</strong> refers to?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Working as designed.</strong> It completes patterns. When the pattern needs a number that was never in the box, it produces the <em>shape</em> of a number that would fit.</p>
-<p>It has no way to feel the difference between recalling and inventing. <strong>That is your job</strong>, and it is the habit this whole course builds.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/attention.svg" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+</figure>
+</div>
 </div>
 </section>
-<section id="we-will-train-it-on-your-data-is-three-different-products" class="slide level2">
-<h2>“We will train it on your data” is three different products</h2>
-
-<img data-src="img/train-on-your-data.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red">A fact you fine-tuned in cannot be updated, cited, or withdrawn. Name the three, or you will not get a straight answer about which one you are buying.</span></p>
+<section id="which-disposes-of-claim-one" class="slide level2 statement">
+<h2>Which disposes of claim one</h2>
 </section>
-<section id="and-it-disposes-of-claim-two" class="slide level2">
-<h2>And it disposes of claim two</h2>
+<section id="the-model-remembers-nothing.-something-else-is-storing-and-re-sending." class="slide level2">
+<h2>The model remembers nothing. Something else is storing and re-sending.</h2>
+<p><span class="muted">That something is a database, it has an owner, and every turn you pay to send it again. “It remembers” is not an AI capability. It is an infrastructure invoice.</span></p>
+</section>
+<section id="and-claim-two" class="slide level2">
+<h2>And claim two</h2>
 <p><strong>“It learns from your corrections in real time.”</strong></p>
 <p>The weights are frozen when you call it. Nothing you type changes them.</p>
 <div class="fragment">
 <p>What can honestly be meant is one of two things: your correction was <strong>written to a store and re-sent next time</strong> (fast, cheap, and not learning), or it entered a <strong>retraining queue</strong> (real, and measured in weeks).</p>
-<p><span class="red">Ask which. The answer tells you whether you are buying a model or a database, and they have very different prices.</span></p>
+<p><span class="red">Ask which. The answer tells you whether you are buying a model or a database.</span></p>
 </div>
 </section>
-<section id="watch-a-conversation-get-expensive" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Watch a conversation get expensive</h2>
-<p><span class="kicker">LAB · session.ipynb § B2 — the cost cell</span></p>
-<ol type="1">
-<li>Price one 10-K at today’s rates. Then a thousand a day, for a year.</li>
-<li>Now the part nobody expects: a <strong>twenty-turn conversation</strong> re-sends the whole history every turn. Compute what turn twenty costs against turn one.</li>
-<li>Re-price the whole thing with the Russian multiplier from the clip.</li>
-</ol>
-<p><span class="red">Three numbers, and you can argue about a pilot’s unit economics with the people who sold it.</span></p>
+<section id="part-5-the-words-and-a-taste-of-week-8" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 5</span> The words, and a taste of week 8</h2>
 </section>
-<section id="block-c-why-the-same-question-gives-different-answers" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block C</span> Why the same question gives different answers</h2>
-</section>
-<section id="it-is-choosing-not-looking-up" class="slide level2">
-<h2>It is choosing, not looking up</h2>
-
-<img data-src="img/next-token.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red"><strong>Temperature</strong> decides how much it respects those odds — and nothing else about the model changes.</span></p>
-</section>
-<section id="and-write-that-into-the-procedure-not-the-folklore" class="slide level2">
-<h2>And write that into the procedure, not the folklore</h2>
-<p>A process that an auditor will look at cannot say <em>“we asked the AI”</em>.</p>
-<ul>
-<li>the <strong>exact prompt</strong>, versioned like code</li>
-<li><code>T = 0</code>, and the model <strong>name and version</strong> recorded with the output</li>
-<li>the <strong>input</strong> stored next to the answer</li>
-</ul>
-<div title="Why this matters more here than anywhere else">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Why this matters more here than anywhere else</strong></p>
-</div>
-<div class="callout-content">
-<p>In a regulated process, “we cannot reproduce last quarter’s output” is not an inconvenience. It is the finding.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="the-habit-this-course-is-really-about" class="slide level2 lab" data-background-color="#2471a3">
-<h2>The habit this course is really about</h2>
-<p><span class="kicker">LAB · session.ipynb § B3 — 🔍 CHECK</span></p>
-<p>Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Verifiable</strong> a number you can look up, a date, a name, a claim with a source</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Plausible but unverifiable</strong> fluent, confident, no way to check it, and quite possibly invented</p>
-</div></div>
-<p><span class="red">Do this on every answer, all term, until it is automatic. It is the single habit that separates someone who uses these tools from someone who is used by them.</span></p>
-</section>
-<section id="block-d-how-a-machine-measures-meaning" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block D</span> How a machine measures meaning</h2>
-</section>
-<section id="words-become-directions" class="slide level2">
-<h2>Words become directions</h2>
-<p>An <strong>embedding</strong> turns text into a list of numbers, arranged so that <strong>similar meanings land near each other</strong>.</p>
-<p><span class="math display">\text{"the margin fell"} \;\longrightarrow\; [0.21,\, -0.04,\, 0.88,\, \ldots]</span></p>
-<p>Once meaning is a position, “similar” becomes a distance, and a computer can sort by it.</p>
+<section id="the-words-we-will-use" class="slide level2">
+<h2>The words we will use</h2>
+<p>About seventy terms carry this course — from <em>token</em> to <em>walk-forward</em> to <em>impermanent loss</em>. They are on one page, each with the week where it becomes something you compute.</p>
+<p><strong><a href="../glossary.html">→ Glossary</a></strong></p>
 <div class="fragment">
-<p>That is the whole of how search over your own documents works — which is week 4.</p>
+<p><span class="muted">You will not learn them from the page. You will learn them when one of them costs you a wrong number. The page is for when you forget which week that was.</span></p>
 </div>
 </section>
-<section id="find-out-why-word-matching-is-not-enough" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Find out why word-matching is not enough</h2>
-<p><span class="kicker">LAB · session.ipynb § B4 — TF-IDF</span></p>
-<p>Two sentences that mean the same thing, with <strong>no words in common</strong>:</p>
-<blockquote>
-<p>“Revenue declined sharply in the third quarter.” “Q3 takings were well down.”</p>
-</blockquote>
-<ol type="1">
-<li>Score them by shared words. The answer will be about zero.</li>
-<li>Now say what a search box built that way would do to a user who phrased it differently.</li>
-</ol>
-<p><span class="red">That gap is exactly what neural embeddings close, and why week 4 works at all.</span></p>
-</section>
-<section id="block-e-and-then-it-can-act" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block E</span> And then it can act</h2>
-</section>
-<section id="the-loop-behind-every-agent" class="slide level2">
-<h2>The loop behind every “agent”</h2>
-
-<img data-src="img/agent-loop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="which-is-also-where-they-fail" class="slide level2 statement">
-<h2>Which is also where they fail</h2>
-</section>
-<section id="every-agent-failure-is-a-failure-of-that-loop." class="slide level2">
-<h2>Every agent failure is a failure of that loop.</h2>
-<p>Wrong tool. Loop that never ends. Cost that runs away. A document that contains instructions and the model obeys them.</p>
-<p><span class="muted">Weeks 4 and 5 are this loop, built and then broken on purpose.</span></p>
-</section>
-<section id="block-f-your-turn-the-first-notebook" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block F</span> Your turn — the first notebook</h2>
-</section>
-<section id="three-assets-and-one-number-that-is-wrong" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Three assets, and one number that is wrong</h2>
-<p><span class="kicker">LAB · session.ipynb § C — 80 minutes, you drive</span></p>
-<ol type="1">
-<li>Pull daily prices for BTC, an equity and an index.</li>
-<li>Returns, summary statistics, one chart that answers a question.</li>
-<li><strong>🔍 CHECK</strong> — the volatility cell was written by an assistant. It contains two errors. Find them.</li>
-</ol>
-<p><span class="muted">I will not touch the keyboard. When it breaks, read the error before asking me.</span></p>
-</section>
-<section id="the-two-planted-errors-and-why-they-matter" class="slide level2">
-<h2>The two planted errors, and why they matter</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>√252 applied to crypto</strong> Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Returns added up</strong> Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.</p>
-</div></div>
-<div title="The sentence to remember">
-<div class="callout callout-tip callout-titled callout-style-default">
+<section id="a-taste-of-defi-since-you-asked" class="slide level2">
+<h2>A taste of DeFi, since you asked</h2>
+<div title="Bet before we compute">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>The sentence to remember</strong></p>
+<p><strong>Bet before we compute</strong></p>
 </div>
 <div class="callout-content">
-<p>The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.</p>
+<p>A pool holds <strong>10 ETH</strong> and <strong>30,000 USDC</strong>, so the quoted price is 3,000 USDC per ETH. You buy <strong>1 ETH</strong> from it. What do you pay?</p>
 </div>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p>The pool keeps one rule: <strong>ETH × USDC stays constant.</strong> 10 × 30,000 = 300,000.</p>
+<p>After your trade it holds 9 ETH, so it must hold 300,000 ÷ 9 = <strong>33,333 USDC</strong>. You paid <strong>3,333</strong> — 11% above the price on the screen.</p>
+<p><span class="red">And that is before any fee: the price moved <em>because you traded</em>. That one line is an automated market maker, and in week 8 you simulate what it does to the people who fund the pool.</span></p>
 </div>
 </section>
-<section id="back-to-the-three-claims" class="slide level2">
-<h2>Back to the three claims</h2>
+<section id="between-wednesdays" class="slide level2">
+<h2>Between Wednesdays</h2>
+<div class="columns">
+<div class="column" style="width:64%;">
 <table class="caption-top">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 34%">
+<col style="width: 66%">
 </colgroup>
-<thead>
-<tr class="header">
-<th>the claim</th>
-<th>the one question</th>
-</tr>
-</thead>
 <tbody>
 <tr class="odd">
-<td><em>“it remembers every conversation”</em></td>
-<td><strong>what stores it, and who pays to re-send it every turn?</strong></td>
+<td><strong>quick questions</strong></td>
+<td>WhatsApp or Telegram — whichever you prefer. I answer within one working day</td>
 </tr>
 <tr class="even">
-<td><em>“it learns from corrections in real time”</em></td>
-<td><strong>does that change the weights, or write a row in a database?</strong></td>
+<td><strong>anything that counts</strong></td>
+<td>in your repository, never in chat</td>
 </tr>
 <tr class="odd">
-<td><em>“99.2% accuracy”</em></td>
-<td><strong>on whose test set, of what size, against what baseline?</strong></td>
+<td><strong>Wed 11 November</strong></td>
+<td>I may be in Milan that day — we agree a make-up date now</td>
+</tr>
+<tr class="even">
+<td><strong>if you miss a session</strong></td>
+<td>tell me before, and the notebook is on the site the same day</td>
 </tr>
 </tbody>
 </table>
-<div class="fragment">
-<p><span class="red">The first two you can now answer yourself. The third you cannot — not because it is complicated, but because the number is meaningless without the base rate. That is week 3, and it is the one that costs people money.</span></p>
+</div><div class="column" style="width:36%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/whatsapp-qr.svg" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
 </div>
+<p><span class="muted" style="display:block;text-align:center;font-size:.6em">Scan it now — WhatsApp.<br>Telegram: tell me your handle.</span></p>
+</div></div>
 </section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>Homework 1</strong> — three assets of your own, an honest table, one chart that answers a stated question, and a section titled <em>“What the assistant got wrong”</em>.</p>
+<p><strong>Homework 1</strong> — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.</p>
 <p>Due Tuesday 29 September, 23:59, in your repository.</p>
 <div class="fragment">
-<p><strong>Before you leave:</strong> Colab runs, GitHub repository created, and one notebook saved to it.</p>
-<p><span class="muted">Next week: the same loop on real data, and the first thing you will show someone.</span></p>
+<p><strong>Before you leave:</strong> three lines at the bottom of the notebook, in your words — then commit.</p>
+<p><span class="muted">Next week: the assistant writes the code, you decide whether it is true. Three assets, and a number that is wrong.</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

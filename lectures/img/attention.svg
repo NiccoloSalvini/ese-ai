@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">to read one token, the model weighs every other token in the box &#8212; weights here are illustrative</text>
+  <!-- arcs from "it" (x=585) to earlier tokens; thickness = how much it looks there -->
+  <path d="M585,200 C585,70 175,70 175,200" fill="none" stroke="#AF1F25" stroke-width="11" stroke-opacity="0.9"/>
+  <path d="M585,200 C585,110 355,110 355,200" fill="none" stroke="#AF1F25" stroke-width="4" stroke-opacity="0.55"/>
+  <path d="M585,200 C585,125 265,125 265,200" fill="none" stroke="#AF1F25" stroke-width="2" stroke-opacity="0.4"/>
+  <path d="M585,200 C585,150 470,150 470,200" fill="none" stroke="#AF1F25" stroke-width="1.5" stroke-opacity="0.35"/>
+  <path d="M585,200 C585,165 85,165 85,200" fill="none" stroke="#AF1F25" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="380" y="82" font-size="13" font-weight="700" fill="#AF1F25">0.71</text>
+  <text x="440" y="126" font-size="12" fill="#AF1F25">0.14</text>
+  <!-- tokens -->
+  <g font-size="22" text-anchor="middle" fill="#363636">
+    <text x="85"  y="228">The</text>
+    <text x="175" y="228" font-weight="700" fill="#AF1F25">bank</text>
+    <text x="265" y="228">raised</text>
+    <text x="355" y="228">rates</text>
+    <text x="470" y="228">because</text>
+    <text x="585" y="228" font-weight="700">it</text>
+    <text x="680" y="228">feared</text>
+    <text x="800" y="228">inflation</text>
+  </g>
+  <rect x="566" y="204" width="38" height="32" fill="none" stroke="#363636" stroke-width="1.5"/>
+  <line x1="30" y1="262" x2="930" y2="262" stroke="#e6e2d8"/>
+  <text x="30" y="290" font-size="15" fill="#363636">Every token does this with <tspan font-weight="700">every</tspan> other token. Eight tokens: 64 comparisons. Eighty thousand: <tspan font-weight="700" fill="#AF1F25">6.4 billion</tspan>.</text>
+  <text x="30" y="314" font-size="15" fill="#363636">That is why a longer window costs more than it looks, and why text in the middle of a long prompt gets less attention.</text>
+</svg>
