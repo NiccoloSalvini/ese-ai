@@ -48,7 +48,7 @@ def load_prices(tickers, start="2022-01-01", end=None, cache_dir="data"):
 # =====================================================================
 w1 = [
 md("""
-# Week 1 — How LLMs work, and how we will work
+# Week 1 — How we will work, and what is inside the machine
 **ESE · AI for Business and FinTech · 23 September 2026**
 
 This notebook is the live material for session 1. Run it top to bottom in Google Colab (`Runtime ▸ Run all` is fine the first time).
@@ -56,7 +56,7 @@ Cells marked **🔍 CHECK** contain something you must verify or critique before
 
 How to use the AI assistant in this course: ask it to write code, run the code, read the error or the output, ask again, and **verify against something you already know** (a price you can look up, a number you can compute by hand, a date you remember).
 """),
-md("## Block A — Setup (Colab, GitHub, assistant)"),
+md("## Setup"),
 code("""
 # Install what is not already in Colab. (~30 s)
 !pip -q install yfinance tiktoken google-genai
@@ -72,13 +72,152 @@ except ImportError:
 print("Running in Colab:", IN_COLAB)
 """),
 md("""
-**Saving your work to GitHub** (do this now, once):
+**Make it yours:** `File ▸ Save a copy in Drive`. From now on you work on your copy.
 
-1. Create a private repository on GitHub named `ese-ai-fintech` and invite the tutor as a collaborator.
-2. In Colab: `File ▸ Save a copy in GitHub` → choose the repo, path `week-01/session.ipynb`, and write a commit message. Every time you finish work, repeat this. The commit history is your evidence of work.
-3. Homework goes in `week-01/hw/`.
+**At home, once** (ten minutes, see the Setup page on the course site): create a private GitHub repository `ese-ai-fintech`, add the tutor as a collaborator, and from then on use `File ▸ Save a copy in GitHub`, path `week-NN/…`. The commit history is your evidence of work. Homework goes in `week-01/hw/`.
 
 **API key** (optional today, needed from week 4): create a free key at Google AI Studio, then in Colab open the 🔑 *Secrets* panel on the left, add `GEMINI_API_KEY`, and enable notebook access. Never paste a key into a cell.
+"""),
+md("## Today — from one neuron to an LLM"),
+md("""
+### 1. One neuron
+
+**Bet first.** A card payment: large, made abroad, from a new device. Three numbers in, one number out. Write down what you would do with each number before adding them up.
+"""),
+code("""
+import math
+
+x = {"log amount (scaled)": 1.2, "paid abroad": 1, "new device": 1}   # the inputs
+w = {"log amount (scaled)": 0.6, "paid abroad": 1.1, "new device": 1.4}   # the weights: what it learns
+b = -2.0                                                                  # the bias
+
+z = sum(x[k] * w[k] for k in x) + b        # multiply, add
+p = 1 / (1 + math.exp(-z))                 # squash to 0-1 (sigmoid)
+print(f"sum = {z:.2f}   ->   chance of fraud = {p:.2f}")
+"""),
+md("""
+**Try:** set `paid abroad` to 0. Then make `new device` weigh 3.0. What moves, and by how much?
+"""),
+md("### 2. The squash: activation functions"),
+code("""
+import numpy as np, matplotlib.pyplot as plt
+
+z = np.linspace(-4, 4, 200)
+fig, ax = plt.subplots(1, 3, figsize=(11, 3))
+for a, (name, f) in zip(ax, [("sigmoid", 1/(1+np.exp(-z))), ("tanh", np.tanh(z)), ("ReLU", np.maximum(0, z))]):
+    a.plot(z, f, lw=3); a.set_title(name); a.axhline(0, c="grey", lw=.5); a.axvline(0, c="grey", lw=.5)
+plt.tight_layout(); plt.show()
+"""),
+md("""
+### 3. Training it by hand: the perceptron learns AND
+
+Output 1 only when both inputs are 1. Start from weights `(0.3, -0.1)`, learning rate `0.1`, threshold `0.25`.
+The rule: **wrong → move each weight a little towards the right answer; right → leave it.**
+"""),
+code("""
+X = [(0, 0), (0, 1), (1, 0), (1, 1)]
+Y = [0, 0, 0, 1]
+w1, w2, eta, theta = 0.3, -0.1, 0.1, 0.25
+
+for epoch in range(1, 10):
+    mistakes = 0
+    for (x1, x2), y in zip(X, Y):
+        guess = 1 if w1*x1 + w2*x2 >= theta else 0      # 1. guess
+        error = y - guess                               # 2. how wrong?
+        if error:                                       # 3. who is to blame: the inputs that were on
+            w1 += eta * error * x1                      # 4. nudge
+            w2 += eta * error * x2
+            mistakes += 1
+    print(f"epoch {epoch}: {mistakes} mistakes   w = ({w1:.1f}, {w2:.1f})")
+    if mistakes == 0:
+        break
+"""),
+md("""
+### 4. The same loop, with a smooth nudge: gradient descent
+
+200 synthetic payments. One neuron. Watch the loss fall as the weights are nudged downhill, step after step.
+The step that works out *how much each weight is to blame* is called **backpropagation**.
+"""),
+code("""
+rng = np.random.default_rng(1)
+n = 200
+Xp = np.column_stack([rng.normal(0, 1, n), rng.integers(0, 2, n), rng.integers(0, 2, n)])   # amount, abroad, new device
+true_w, true_b = np.array([0.8, 1.2, 1.6]), -2.0
+yp = (rng.random(n) < 1/(1+np.exp(-(Xp @ true_w + true_b)))).astype(float)
+
+W, B, lr = np.zeros(3), 0.0, 0.5
+for step in range(301):
+    p = 1/(1+np.exp(-(Xp @ W + B)))                                   # 1. guess
+    loss = -np.mean(yp*np.log(p+1e-9) + (1-yp)*np.log(1-p+1e-9))      # 2. how wrong?
+    gW, gB = Xp.T @ (p - yp) / n, np.mean(p - yp)                     # 3. who is to blame (the gradient)
+    W, B = W - lr*gW, B - lr*gB                                       # 4. nudge
+    if step % 50 == 0:
+        print(f"step {step:3d}   loss {loss:.3f}   weights {np.round(W, 2)}   bias {B:.2f}")
+print("the weights that generated the data:", true_w, true_b)
+"""),
+md("""
+**🔍 CHECK.** The learned weights are close to the true ones but not equal. Why not? (Hint: 200 payments.)
+
+An LLM runs exactly this loop. The inputs are tokens, the right answer is the next token, and there are billions of weights instead of four.
+"""),
+md("""
+### 5. What the model reads: tokens
+
+**Bet first:** `"Il margine è insostenibile"` — four words. How many tokens?
+"""),
+code("""
+import tiktoken
+enc = tiktoken.get_encoding("o200k_base")
+for s in ["Il margine è insostenibile",
+          "The margin is unsustainable",
+          "Маржа неустойчива",
+          "1,234,567.89",
+          "egg Egg  egg EGG"]:
+    t = enc.encode(s)
+    print(f"{len(t):2d} tokens | {s:30s} | {[enc.decode([i]) for i in t]}")
+"""),
+md("""
+**Your turn:** your surname, a company you worked for, a sentence in Russian. Which one splits the most?
+
+### 6. How a tokenizer is learned: merge the most frequent pair
+"""),
+code("""
+from collections import Counter
+
+seq, new_symbols = list("aaabdaaabac"), iter("ZYXWV")
+print("start:", "".join(seq))
+while True:
+    pairs = Counter(zip(seq, seq[1:]))
+    (a, b), count = pairs.most_common(1)[0]
+    if count < 2:
+        break
+    s = next(new_symbols)
+    out, i = [], 0
+    while i < len(seq):
+        if i < len(seq) - 1 and (seq[i], seq[i+1]) == (a, b):
+            out.append(s); i += 2
+        else:
+            out.append(seq[i]); i += 1
+    seq = out
+    print(f"{s} = {a}{b}:  {''.join(seq)}")
+print(f"11 symbols -> {len(seq)}")
+"""),
+md("""
+Next week you train one of these on your own texts.
+
+### Before you leave: three lines, in your words
+
+1. …
+2. …
+3. …
+
+Then `File ▸ Save a copy in Drive` (and, once your repository exists, in GitHub).
+"""),
+md("""
+---
+# For the next sessions
+
+The sections below are used in sessions 2 and 3. You do not need them today.
 """),
 md("## Block A2 — One decision, three kinds of software"),
 md("""

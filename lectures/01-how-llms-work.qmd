@@ -239,8 +239,8 @@ Merge the most frequent pair. Repeat.
 |---|---|---|
 | start | `aaabdaaabac` | |
 | 1 | `ZabdZabac` | Z = aa |
-| 2 | `ZYdZYac` | Y = ab |
-| 3 | `XdXac` | X = ZY |
+| 2 | `YbdYbac` | Y = Za |
+| 3 | `XdXac` | X = Yb |
 
 . . .
 
@@ -257,7 +257,7 @@ Merge the most frequent pair. Repeat.
 | spelling a word backwards | the word is one token, not letters |
 | Russian, Italian | more, smaller pieces |
 | arithmetic | `1,234,567.89` is 7 arbitrary pieces |
-| `egg` · `Egg` · ` egg` · `EGG` | four different tokens |
+| `egg` · `Egg` · `EGG` | the same word, different pieces |
 
 ## How the tokens talk to each other: **attention**
 
