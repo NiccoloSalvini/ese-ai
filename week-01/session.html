@@ -205,11 +205,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>How to use the AI assistant in this course: ask it to write code, run the code, read the error or the output, ask again, and <strong>verify against something you already know</strong> (a price you can look up, a number you can compute by hand, a date you remember).</p>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="6d01931a" class="cell">
+<div id="82a01845" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install what is not already in Colab. (~30 s)</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance tiktoken google<span class="op">-</span>genai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8f922a1c" class="cell">
+<div id="cd230154" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys, platform, pandas <span class="im">as</span> pd, numpy <span class="im">as</span> np, matplotlib</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python"</span>, sys.version.split()[<span class="dv">0</span>], <span class="st">"| pandas"</span>, pd.__version__, <span class="st">"| numpy"</span>, np.__version__)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -226,84 +226,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="today-from-one-neuron-to-an-llm" class="level2">
 <h2 class="anchored" data-anchor-id="today-from-one-neuron-to-an-llm">Today — from one neuron to an LLM</h2>
 <p>One question from start to finish: <strong>is this card payment fraud?</strong> Each section adds one piece. The numbers are the same as on the slides.</p>
-<section id="four-past-payments" class="level3">
-<h3 class="anchored" data-anchor-id="four-past-payments">1. Four past payments</h3>
-<div id="bc58a127" class="cell">
+<section id="eight-past-payments" class="level3">
+<h3 class="anchored" data-anchor-id="eight-past-payments">1. Eight past payments</h3>
+<div id="41559682" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>payments <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"large"</span>:  [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],      <span class="co"># over EUR 1,000?</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abroad"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],      <span class="co"># paid abroad?</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fraud"</span>:  [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>[<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>])</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>payments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"large"</span>:  [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],      <span class="co"># over EUR 1,000?</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abroad"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>],      <span class="co"># paid abroad?</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"device"</span>: [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],      <span class="co"># new device?</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fraud"</span>:  [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],      <span class="co"># the hidden truth: at least two red flags</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span><span class="bu">list</span>(<span class="st">"ABCDEFGH"</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>payments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="a-first-guess-as-one-neuron" class="level3">
 <h3 class="anchored" data-anchor-id="a-first-guess-as-one-neuron">2. A first guess, as one neuron</h3>
-<p><strong>Bet first:</strong> weight 1 on <code>large</code>, 0 on <code>abroad</code>, bias −1, block if the score is above 0. Which payments does it block?</p>
-<div id="0ac8240d" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>w_large, w_abroad, bias <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">1.0</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"score"</span>] <span class="op">=</span> w_large <span class="op">*</span> payments.large <span class="op">+</span> w_abroad <span class="op">*</span> payments.abroad <span class="op">+</span> bias</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"block"</span>] <span class="op">=</span> (payments.score <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>payments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Bet first:</strong> weight 1 on <code>large</code>, 0 on the others, bias −1, block if the score is above 0. Which payments does it block?</p>
+<div id="72e27240" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="st">"large"</span>: <span class="fl">1.0</span>, <span class="st">"abroad"</span>: <span class="fl">0.0</span>, <span class="st">"device"</span>: <span class="fl">0.0</span>}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bias <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"score"</span>] <span class="op">=</span> <span class="bu">sum</span>(w[f] <span class="op">*</span> payments[f] <span class="cf">for</span> f <span class="kw">in</span> w) <span class="op">+</span> bias</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"block"</span>] <span class="op">=</span> (payments.score <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>payments</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="learning-from-mistakes-by-hand-the-perceptron" class="level3">
 <h3 class="anchored" data-anchor-id="learning-from-mistakes-by-hand-the-perceptron">3. Learning from mistakes, by hand (the perceptron)</h3>
 <p>Wrong → move each weight a little towards the right answer. Right → leave it. The learning rate <code>eta</code> is how big each move is.</p>
-<div id="a65d730b" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w_large, w_abroad, bias, eta <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">0.5</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rnd <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    mistakes <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, row <span class="kw">in</span> payments.iterrows():</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> w_large <span class="op">*</span> row.large <span class="op">+</span> w_abroad <span class="op">*</span> row.abroad <span class="op">+</span> bias</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        decision <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> score <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> row.fraud <span class="op">-</span> decision                  <span class="co"># +1 missed fraud, -1 false alarm, 0 right</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> error:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            w_large  <span class="op">+=</span> eta <span class="op">*</span> error <span class="op">*</span> row.large</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            w_abroad <span class="op">+=</span> eta <span class="op">*</span> error <span class="op">*</span> row.abroad</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            bias     <span class="op">+=</span> eta <span class="op">*</span> error</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            mistakes <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"round </span><span class="sc">{</span>rnd<span class="sc">}</span><span class="ss">  </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: score </span><span class="sc">{</span>score<span class="sc">:+.1f}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="st">'block'</span> <span class="cf">if</span> decision <span class="cf">else</span> <span class="st">'no block'</span><span class="sc">}</span><span class="ss">  WRONG  "</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                  <span class="ss">f"-&gt; weights (</span><span class="sc">{</span>w_large<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>w_abroad<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>bias<span class="sc">:g}</span><span class="ss">)"</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mistakes <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"round </span><span class="sc">{</span>rnd<span class="sc">}</span><span class="ss">: no mistakes. Learned weights: (</span><span class="sc">{</span>w_large<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>w_abroad<span class="sc">:g}</span><span class="ss">, </span><span class="sc">{</span>bias<span class="sc">:g}</span><span class="ss">)"</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1ecc006d" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="st">"large"</span>: <span class="fl">1.0</span>, <span class="st">"abroad"</span>: <span class="fl">0.0</span>, <span class="st">"device"</span>: <span class="fl">0.0</span>}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>bias, eta <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span>, <span class="fl">0.5</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> rnd <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>):</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    mistakes <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, row <span class="kw">in</span> payments.iterrows():</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> <span class="bu">sum</span>(w[f] <span class="op">*</span> row[f] <span class="cf">for</span> f <span class="kw">in</span> w) <span class="op">+</span> bias</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        decision <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> score <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="dv">0</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        error <span class="op">=</span> row.fraud <span class="op">-</span> decision                  <span class="co"># +1 missed fraud, -1 false alarm, 0 right</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> error:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> f <span class="kw">in</span> w:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                w[f] <span class="op">=</span> <span class="bu">float</span>(w[f] <span class="op">+</span> eta <span class="op">*</span> error <span class="op">*</span> row[f])   <span class="co"># weight &lt;- weight + eta * (fraud - decision) * answer</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            bias <span class="op">=</span> <span class="bu">float</span>(bias <span class="op">+</span> eta <span class="op">*</span> error)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            mistakes <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"round </span><span class="sc">{</span>rnd<span class="sc">}</span><span class="ss">  </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: score </span><span class="sc">{</span>score<span class="sc">:+.1f}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="st">'block'</span> <span class="cf">if</span> decision <span class="cf">else</span> <span class="st">'pass'</span><span class="sc">}</span><span class="ss">  WRONG  "</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                  <span class="ss">f"-&gt; </span><span class="sc">{</span>w<span class="sc">}</span><span class="ss">  bias </span><span class="sc">{</span>bias<span class="sc">:g}</span><span class="ss">"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> mistakes <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"round </span><span class="sc">{</span>rnd<span class="sc">}</span><span class="ss">: no mistakes. Learned: </span><span class="sc">{</span>w<span class="sc">}</span><span class="ss">  bias </span><span class="sc">{</span>bias<span class="sc">:g}</span><span class="ss">"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="yes-or-no-is-not-enough-the-sigmoid" class="level3">
 <h3 class="anchored" data-anchor-id="yes-or-no-is-not-enough-the-sigmoid">4. Yes or no is not enough: the sigmoid</h3>
 <p>Same weights, but instead of a step we squash the score into a probability.</p>
-<div id="ea4919ea" class="cell">
+<div id="39c4ab82" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(z):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>z))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"score"</span>] <span class="op">=</span> w_large <span class="op">*</span> payments.large <span class="op">+</span> w_abroad <span class="op">*</span> payments.abroad <span class="op">+</span> bias</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"score"</span>] <span class="op">=</span> <span class="bu">sum</span>(w[f] <span class="op">*</span> payments[f] <span class="cf">for</span> f <span class="kw">in</span> w) <span class="op">+</span> bias</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"p_fraud"</span>] <span class="op">=</span> sigmoid(payments.score).<span class="bu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>payments[[<span class="st">"large"</span>, <span class="st">"abroad"</span>, <span class="st">"fraud"</span>, <span class="st">"score"</span>, <span class="st">"p_fraud"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>payments[[<span class="st">"large"</span>, <span class="st">"abroad"</span>, <span class="st">"device"</span>, <span class="st">"fraud"</span>, <span class="st">"score"</span>, <span class="st">"p_fraud"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>🔍 CHECK.</strong> B sits exactly on the line. What probability does it get, and why is that more honest than “don’t block”?</p>
+<p><strong>🔍 CHECK.</strong> C and D sit exactly on the line. What probability do they get, and why is that more honest than “don’t block”?</p>
 </section>
 <section id="how-wrong-as-one-number-the-loss" class="level3">
 <h3 class="anchored" data-anchor-id="how-wrong-as-one-number-the-loss">5. How wrong, as one number: the loss</h3>
-<div id="f42afce6" class="cell">
+<div id="38ba44eb" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> loss(p, y):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>math.log(p) <span class="cf">if</span> y <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="op">-</span>math.log(<span class="dv">1</span> <span class="op">-</span> p)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name <span class="kw">in</span> [<span class="st">"D"</span>, <span class="st">"B"</span>]:</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    p, y <span class="op">=</span> sigmoid(payments.loc[name, <span class="st">"score"</span>]), payments.loc[name, <span class="st">"fraud"</span>]</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: p(fraud) = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">, fraud = </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">  -&gt;  loss = </span><span class="sc">{</span>loss(p, y)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>payments[<span class="st">"loss"</span>] <span class="op">=</span> [loss(sigmoid(s), y) <span class="cf">for</span> s, y <span class="kw">in</span> <span class="bu">zip</span>(payments.score, payments.fraud)]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(payments[[<span class="st">"fraud"</span>, <span class="st">"p_fraud"</span>, <span class="st">"loss"</span>]].<span class="bu">round</span>(<span class="dv">2</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"average loss: </span><span class="sc">{</span>payments<span class="sc">.</span>loss<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">   &lt;- the one number training pushes down"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-formula-for-every-weight" class="level3">
 <h3 class="anchored" data-anchor-id="the-formula-for-every-weight">6. The formula for every weight</h3>
-<p><code>w &lt;- w - eta * (p - y) * x</code>. One step on payment D, with <code>eta = 1</code>.</p>
-<div id="f92d5156" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> {<span class="st">"large"</span>: <span class="dv">1</span>, <span class="st">"abroad"</span>: <span class="dv">1</span>, <span class="st">"bias"</span>: <span class="dv">1</span>}                  <span class="co"># payment D (the bias always sees a 1)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="st">"large"</span>: <span class="bu">float</span>(w_large), <span class="st">"abroad"</span>: <span class="bu">float</span>(w_abroad), <span class="st">"bias"</span>: <span class="bu">float</span>(bias)}</span>
+<p><code>w &lt;- w - eta * (p - y) * x</code>. One step on payment E (large, abroad, fraud), with <code>eta = 1</code>.</p>
+<div id="67994fb4" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> {<span class="st">"large"</span>: <span class="dv">1</span>, <span class="st">"abroad"</span>: <span class="dv">1</span>, <span class="st">"device"</span>: <span class="dv">0</span>, <span class="st">"bias"</span>: <span class="dv">1</span>}      <span class="co"># payment E (the bias always sees a 1)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> {<span class="op">**</span>{f: <span class="bu">float</span>(v) <span class="cf">for</span> f, v <span class="kw">in</span> w.items()}, <span class="st">"bias"</span>: <span class="bu">float</span>(bias)}</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>y, eta <span class="op">=</span> <span class="dv">1</span>, <span class="fl">1.0</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> sigmoid(<span class="bu">sum</span>(w[k] <span class="op">*</span> x[k] <span class="cf">for</span> k <span class="kw">in</span> w))</span>
@@ -311,19 +314,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>w_new <span class="op">=</span> {k: w[k] <span class="op">-</span> eta <span class="op">*</span> blame[k] <span class="cf">for</span> k <span class="kw">in</span> w}</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>p_new <span class="op">=</span> sigmoid(<span class="bu">sum</span>(w_new[k] <span class="op">*</span> x[k] <span class="cf">for</span> k <span class="kw">in</span> w))</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"before "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> w.items()}, <span class="ss">f"  p(fraud) for D = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"before "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> w.items()}, <span class="ss">f"  p(fraud) for E = </span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"blame  "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> blame.items()})</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"after  "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> w_new.items()}, <span class="ss">f"  p(fraud) for D = </span><span class="sc">{</span>p_new<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"after  "</span>, {k: <span class="bu">round</span>(<span class="bu">float</span>(v), <span class="dv">2</span>) <span class="cf">for</span> k, v <span class="kw">in</span> w_new.items()}, <span class="ss">f"  p(fraud) for E = </span><span class="sc">{</span>p_new<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="the-learning-rate" class="level3">
 <h3 class="anchored" data-anchor-id="the-learning-rate">7. The learning rate</h3>
-<p>Real data is messier. Add payment E: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.</p>
-<div id="8ca419ad" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">1</span>]])    <span class="co"># A B C D E</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<p>Real data is messier. Add payment I: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.</p>
+<div id="523c9dee" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.vstack([payments[[<span class="st">"large"</span>, <span class="st">"abroad"</span>, <span class="st">"device"</span>]].values, [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>]])   <span class="co"># A..H, then I</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.append(payments.fraud.values, <span class="dv">0</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(eta, steps<span class="op">=</span><span class="dv">30</span>, w<span class="op">=</span>(<span class="fl">1.0</span>, <span class="fl">0.5</span>), b<span class="op">=-</span><span class="fl">1.0</span>):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(eta, steps<span class="op">=</span><span class="dv">30</span>, w<span class="op">=</span>(<span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>), b<span class="op">=-</span><span class="fl">1.0</span>):</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    w, b, hist <span class="op">=</span> np.array(w, <span class="bu">float</span>), b, []</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(steps):</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> np.clip(sigmoid(X <span class="op">@</span> w <span class="op">+</span> b), <span class="fl">1e-12</span>, <span class="dv">1</span> <span class="op">-</span> <span class="fl">1e-12</span>)</span>
@@ -333,14 +336,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eta <span class="kw">in</span> (<span class="fl">0.3</span>, <span class="dv">3</span>, <span class="dv">20</span>):</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    plt.plot(train(eta), label<span class="op">=</span><span class="ss">f"eta = </span><span class="sc">{</span>eta<span class="sc">}</span><span class="ss">"</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"training steps"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"loss"</span>)<span class="op">;</span> plt.ylim(<span class="dv">0</span>, <span class="fl">2.6</span>)<span class="op">;</span> plt.legend()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"training steps"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"loss"</span>)<span class="op">;</span> plt.ylim(<span class="dv">0</span>, <span class="dv">5</span>)<span class="op">;</span> plt.legend()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Try:</strong> <code>eta = 8</code>. Does it settle, or keep jumping?</p>
 </section>
 <section id="a-pattern-one-neuron-cannot-draw-card-testing" class="level3">
 <h3 class="anchored" data-anchor-id="a-pattern-one-neuron-cannot-draw-card-testing">8. A pattern one neuron cannot draw: card testing</h3>
 <p>A fraudster tries the card with €10, then spends €2,000. Fraud sits at both ends of the amount. Two hidden neurons each answer one question; the output combines them.</p>
-<div id="234e3398" class="cell">
+<div id="5f1d4068" class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>amount <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">300</span>)                             <span class="co"># thousands of euros</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>small  <span class="op">=</span> sigmoid(<span class="op">-</span><span class="dv">10</span> <span class="op">*</span> amount <span class="op">+</span> <span class="dv">2</span>)                          <span class="co"># hidden neuron 1: "small?"</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>large  <span class="op">=</span> sigmoid( <span class="dv">10</span> <span class="op">*</span> amount <span class="op">-</span> <span class="dv">19</span>)                         <span class="co"># hidden neuron 2: "large?"</span></span>
@@ -357,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-the-model-reads-tokens" class="level3">
 <h3 class="anchored" data-anchor-id="what-the-model-reads-tokens">9. What the model reads: tokens</h3>
 <p>The same machine, with one difference: the input is text, cut into pieces called tokens.</p>
-<div id="bcb8ab8d" class="cell">
+<div id="f35df965" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tiktoken</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> [<span class="st">"Il margine è insostenibile"</span>, <span class="st">"The margin is unsustainable"</span>, <span class="st">"Маржа неустойчива"</span>]:</span>
@@ -383,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="block-a2-one-decision-three-kinds-of-software">Block A2 — One decision, three kinds of software</h2>
 <p>The slide split <em>“block this transaction, or do not”</em> into Software <strong>1.0</strong> (a rule you write), <strong>2.0</strong> (a model you fit) and <strong>3.0</strong> (an instruction you give). Here it is as code, on the same data, judged by the same euros.</p>
 <p>The book of transactions below is <strong>synthetic on purpose</strong>: the point of this section is the comparison between three kinds of software, not the fraud model. Everything is reproducible from the seed. Real data arrives in Block C.</p>
-<div id="0c1bfe38" class="cell">
+<div id="fa6ed4c2" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">11</span>)</span>
@@ -424,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>One scoring function for all three, so nothing is compared on its own terms.</p>
 <p>A blocked good customer costs <strong>€8</strong> to contact. A missed fraud costs <strong>the amount of the transaction</strong> — that is what a chargeback is.</p>
-<div id="dbaaf5cd" class="cell">
+<div id="7209f3c1" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>CONTACT <span class="op">=</span> <span class="fl">8.0</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(blocked, name):</span>
@@ -435,13 +438,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Bet before you run it.</strong> The rule blocks a card payment made abroad for more than €150. Of all the fraud in the test period, what share do you think it catches? Write a number down now.</p>
-<div id="e3db7ad5" class="cell">
+<div id="0876a09a" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rule <span class="op">=</span> ((tx.amount <span class="op">&gt;</span> <span class="dv">150</span>) <span class="op">&amp;</span> (tx.abroad <span class="op">==</span> <span class="dv">1</span>)).values</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cost_1 <span class="op">=</span> evaluate(rule, <span class="st">"1.0  the rule"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now <strong>2.0</strong>, held to exactly the same budget: it may block the <em>same number</em> of transactions as the rule, no more. Only the choice of which ones changes.</p>
 <p>That constraint is the whole comparison. A model that blocks more will always catch more, and it will also annoy more customers.</p>
-<div id="692b37bc" class="cell">
+<div id="ee1fb2a5" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(log_amount<span class="op">=</span>np.log1p(tx.amount), abroad<span class="op">=</span>tx.abroad,</span>
@@ -465,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Some of the fraud is not in the numbers at all. It is in the <strong>merchant descriptor</strong> — four different ways of writing the same thing:</p>
 <p><code>PREPAID VOUCHER RELOAD</code> · <code>DIGITAL GIFT CERTIFICATE</code> · <code>STORED VALUE TOP-UP</code> · <code>E-VOUCHER PURCHASE</code></p>
 <p>Your first instinct is a keyword list. Try it.</p>
-<div id="0b482256" class="cell">
+<div id="25f9274f" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>keyword <span class="op">=</span> tx.note.<span class="bu">str</span>.contains(<span class="st">"VOUCHER"</span>).values</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>cost_kw <span class="op">=</span> evaluate(blocked_20 <span class="op">|</span> keyword, <span class="st">"3.0 faked with a keyword"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">descriptors the keyword catches:"</span>)</span>
@@ -484,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-real-call-optional-today-and-the-point-of-week-4" class="level3">
 <h3 class="anchored" data-anchor-id="the-real-call-optional-today-and-the-point-of-week-4">The real call — optional today, and the point of week 4</h3>
 <p>If you added <code>GEMINI_API_KEY</code> to Colab’s 🔑 <em>Secrets</em> panel, this asks a model to judge five descriptors it has never been given a list for. If you have not, read the prompt and move on.</p>
-<div id="f396c23e" class="cell">
+<div id="9c426036" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>PROMPT <span class="op">=</span> (</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"You review card transactions for a bank.</span><span class="ch">\n</span><span class="st">"</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Merchant descriptor: "</span><span class="sc">{note}</span><span class="st">"</span><span class="ch">\n</span><span class="st">'</span></span>
@@ -519,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="so-which-one-do-you-build" class="level3">
 <h3 class="anchored" data-anchor-id="so-which-one-do-you-build">So which one do you build?</h3>
 <p>The honest answer is <strong>all three, in a pipeline</strong> — and the arithmetic below is why you do not simply put 3.0 in front of every transaction.</p>
-<div id="c3c45837" class="cell">
+<div id="93604fe1" class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Illustrative prices. CHECK TODAY'S PAGE before you quote any of this to anyone;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the number that goes stale fastest in the whole notebook.</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>PRICE_IN, PRICE_OUT <span class="op">=</span> <span class="fl">3.00</span>, <span class="fl">15.00</span>       <span class="co"># EUR per million tokens</span></span>
@@ -576,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b1.-tokens-the-model-does-not-see-words" class="level3">
 <h3 class="anchored" data-anchor-id="b1.-tokens-the-model-does-not-see-words">B1. Tokens: the model does not see words</h3>
 <p>An LLM reads and writes <strong>tokens</strong> — chunks of characters, roughly ¾ of an English word each. Everything is billed, limited and reasoned about in tokens. Numbers, code and non-English text tokenize badly: a Russian sentence costs 1.5× the tokens of its English translation on the GPT-4o tokenizer, and 2.75× on the older GPT-4 one — same sentence, same model family.</p>
-<div id="7e10b025" class="cell">
+<div id="508eaa7c" class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> tiktoken</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)   <span class="co"># tokenizer family used by recent OpenAI models; others are similar</span></span>
@@ -603,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="b2.-context-window-the-models-working-memory">B2. Context window: the model’s working memory</h3>
 <p>Everything the model knows about <em>your</em> problem must fit in the context window (today: 128k–1M tokens depending on the model). What is not in the context does not exist for the model — it will fill the gap with something plausible. This is the root of most “hallucinations”: not lying, but <strong>completing a pattern with missing information</strong>.</p>
 <p>Practical consequences for business use: - long documents must be chunked and only the relevant parts fed in (that is what <em>retrieval</em> does — week 4); - the model has no memory between calls unless you send the history again; - cost ≈ (input tokens + output tokens) × price per token — so verbosity is money.</p>
-<div id="a55a2d22" class="cell">
+<div id="9d989101" class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rough cost of sending a document to a model. Prices are illustrative — check the provider page.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>price_per_1M_input <span class="op">=</span> {<span class="st">"small model"</span>: <span class="fl">0.10</span>, <span class="st">"mid model"</span>: <span class="fl">1.00</span>, <span class="st">"frontier model"</span>: <span class="fl">5.00</span>}   <span class="co"># USD per 1M input tokens</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>doc_tokens <span class="op">=</span> <span class="dv">90_000</span>          <span class="co"># e.g. a 10-K annual report, ~60 pages of dense text</span></span>
@@ -615,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="b3.-sampling-the-same-prompt-gives-different-answers">B3. Sampling: the same prompt gives different answers</h3>
 <p>The model outputs a probability distribution over the next token and <em>samples</em> from it. <code>temperature</code> controls how much randomness is allowed. Temperature 0 is (almost) deterministic — use it for extraction and classification. Higher temperatures for brainstorming.</p>
 <p>The cell below calls Gemini <strong>only if</strong> you set up the key. If not, skip it — the tutor will demonstrate.</p>
-<div id="c2d2a939" class="cell">
+<div id="e0d5ba25" class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -642,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="b4.-embeddings-meaning-as-geometry" class="level3">
 <h3 class="anchored" data-anchor-id="b4.-embeddings-meaning-as-geometry">B4. Embeddings: meaning as geometry</h3>
 <p>An <strong>embedding</strong> turns a piece of text into a vector (a list of numbers) so that texts with similar meaning are close together. This is what makes search-by-meaning, clustering and retrieval possible. We do not need a neural model to understand the idea — the cell below uses a crude bag-of-words embedding so you can see the mechanics; real embeddings from a model are much better at <em>meaning</em>, but the geometry is the same.</p>
-<div id="30a5525d" class="cell">
+<div id="35c07d07" class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -668,7 +671,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="block-c-first-data-notebook-three-assets" class="level2">
 <h2 class="anchored" data-anchor-id="block-c-first-data-notebook-three-assets">Block C — First data notebook: three assets</h2>
-<div id="037c2f9a" class="cell">
+<div id="1d50454d" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
@@ -703,17 +706,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
 <span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c3ff409a" class="cell">
+<div id="75bc7e86" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tickers <span class="op">=</span> [<span class="st">"BTC-USD"</span>, <span class="st">"AAPL"</span>, <span class="st">"^GSPC"</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>px.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="c0183202" class="cell">
+<div id="a423d2a1" class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Daily simple returns</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>rets <span class="op">=</span> px.pct_change().dropna()</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rets.describe().<span class="bu">round</span>(<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="0f29b547" class="cell">
+<div id="412b535b" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>(px <span class="op">/</span> px.iloc[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">100</span>).plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">"Growth of 100 (rebased)"</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"index"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -721,7 +724,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="check-the-assistants-volatility-code" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-volatility-code">🔍 CHECK — the assistant’s volatility code</h3>
 <p>The cell below is the kind of code an assistant produces when asked “annualise the volatility of these assets”. It runs without errors. <strong>It contains two mistakes.</strong> Find them before reading the solution.</p>
-<div id="86f1fb79" class="cell">
+<div id="e2b72fa8" class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ann_vol <span class="op">=</span> rets.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>cum_ret <span class="op">=</span> rets.<span class="bu">sum</span>()</span>
@@ -738,7 +741,7 @@ Solution (open after you have tried)
 </ol>
 The general lesson: the assistant is fluent, not correct. The cheapest verification is always <em>compute the same number a second way</em>.
 </details>
-<div id="81aad447" class="cell">
+<div id="6e6a1b20" class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected version</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>days_per_year <span class="op">=</span> {t: (<span class="dv">365</span> <span class="cf">if</span> t.endswith(<span class="st">"-USD"</span>) <span class="cf">else</span> <span class="dv">252</span>) <span class="cf">for</span> t <span class="kw">in</span> px.columns}</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>ann_vol <span class="op">=</span> pd.Series({t: rets[t].std() <span class="op">*</span> np.sqrt(days_per_year[t]) <span class="cf">for</span> t <span class="kw">in</span> px.columns})</span>
