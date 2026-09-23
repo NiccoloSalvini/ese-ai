@@ -9,26 +9,28 @@
 > The spoken draft for today is `speech.md`. The sections below the new plan are kept as the
 > script for the blocks that moved.
 
-## Session plan (revised)
+## Session plan (revised, v2 — 23 Sep 08:50)
 
 | Time | Block | Mode |
 |---|---|---|
-| 10:00–10:10 | **Who I am** | talk, photo slide |
-| 10:10–10:40 | **Who you are** — intake conversation | he talks, tutor takes notes |
-| 10:40–11:10 | **What the course is for**: outcomes, map, his interests on it, how we work, the deal, assessment | talk + discussion |
-| 11:10–11:20 | break | |
-| 11:20–11:50 | **Workbench**: Colab, GitHub repo, first save, optional API key | hands-on, notebook § A |
-| 11:50–12:40 | **Inside the machine**: three claims (bet), tokens (bet + clip + § B1), context window, claims 1 and 2 closed | talk + notebook § B1 |
-| 12:40–12:48 | **Glossary + DeFi taste** (x·y=k bet) | talk |
-| 12:48–12:50 | **Between Wednesdays**: Telegram, 11 Nov make-up date, GitHub account | talk |
-| 12:50–13:00 | **Close**: HW1, three lines at the bottom of the notebook, commit | he writes |
+| 10:00–10:08 | **Who I am** — five incremental bullets (Economics Florence → MSc Milan → PhD Rome → Intuo → teaching) | talk |
+| 10:08–10:35 | **Who you are** — intake conversation, no slide | he talks, tutor takes notes |
+| 10:35–10:55 | **The course**: outcomes, map, the tiny-LLM thread (weeks 2–5), his application on the map, how we work, the deal | talk + discussion |
+| 10:55–11:20 | **Workbench**: Colab, GitHub repo, first save, optional API key | hands-on, notebook § A |
+| 11:20–11:30 | break | |
+| 11:30–12:10 | **From one neuron to an LLM**: three claims (bet) → neuron (bet) → gradient-descent clip → hidden-layer clip → 4 to 117B → pre/post-training → one token's journey | talk + figures |
+| 12:10–12:40 | **Tokens** (bet + clip + § B1), **attention** (bet), **context window**, claims 1 and 2 closed | talk + notebook § B1 |
+| 12:40–12:52 | **Read a release**: gpt-oss announcement, he circles what he can explain, then the table | discussion |
+| 12:52–13:00 | **Between Wednesdays** (WhatsApp QR, 11 Nov), HW1, three lines, commit | he writes |
+
+Spare slide: the x·y=k DeFi bet, only if five minutes are left.
 
 **Intake — what to get out of 10:10–10:40** (write it into `week-01/intake-notes.md`, keep it off the site):
 projects he is proud of / one that failed; a decision made without the data he wanted; tools he uses daily and
 avoids; what he wants to *do* in December; markets/crypto/DeFi as user, investor or builder; the question he
 wants a model to answer; trying-first vs seeing-first; anything that would make the course a waste of time.
 
-**If behind:** the tokens lab can shrink to the Russian sentence only. (The 1.0/2.0/3.0 figure now opens week 3.) Never cut the intake or the setup.
+**If behind:** the tokens lab shrinks to the Russian sentence only; the release table can be read, not discussed. (The 1.0/2.0/3.0 figure now opens week 3.) Never cut the intake or the setup.
 
 ---
 

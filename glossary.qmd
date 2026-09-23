@@ -14,6 +14,16 @@ The **Wk** column says where the term is introduced properly.
 | Term | In one line | Wk |
 |---|---|---|
 | **LLM** (large language model) | A model trained to predict the next piece of text, given all the text before it. Everything else it does is built on that one operation. | 1 |
+| **Neuron** | Multiply each input by a weight, add them up with a bias, squash the result. One neuron with a sigmoid squash is a logistic regression. | 1 |
+| **Neural network** | Neurons in layers, each layer feeding the next. The hidden layers invent their own features; nobody tells them which. | 1 |
+| **Parameters** | All the weights and biases of a model — the numbers it learns. "117B parameters" means 117 billion of them. | 1 |
+| **Training** (gradient descent) | Measure how wrong the model is (the **loss**), nudge every weight slightly in the direction that reduces it, repeat — millions of times. | 1, 3 |
+| **Pre-training** | Training a network to guess the next token on a huge amount of text. Produces a **base model**, which continues documents rather than answering questions. | 1 |
+| **Post-training** | Turning a base model into an assistant: supervised fine-tuning (**SFT**) on example conversations, then reinforcement learning (**RL**, **RLHF**) on what gets rated well. | 1 |
+| **Transformer** | The architecture of every current LLM: a block of attention plus neurons, repeated dozens of times. | 1 |
+| **Mixture-of-experts** (MoE) | A model split into many specialist sub-networks, of which only a few run for each token — the capacity of a big model at the running cost of a small one. | 1 |
+| **Quantization** | Storing each weight in fewer bits (e.g. 4 instead of 16). Smaller and cheaper to run, slightly less precise. | 1 |
+| **Open-weight** | The weights can be downloaded and run on your own machines. Not the same as open-source: the training data and code usually stay closed. | 1 |
 | **Token** | The unit a model reads and writes: a chunk of characters, often part of a word. You are billed, limited and measured in tokens, not words. | 1 |
 | **Tokenizer** | The component that cuts text into tokens. It is trained on a corpus, so text unlike that corpus (other languages, numbers, new names) cuts into more pieces. | 1 |
 | **Context window** | Everything the model can see in one call: instructions, history, documents, and its own answer so far. Nothing outside it exists for the model. | 1 |
