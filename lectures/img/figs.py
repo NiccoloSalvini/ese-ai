@@ -424,8 +424,7 @@ def software_123():
         write(name, s + body)
 
     layer("software-123-l0.svg",
-          [f'  <text x="30" y="34" font-size="13" fill="{MUTED}">the same decision &#8212; block this transaction, or do not &#8212; written three ways</text>',
-           f'  <text x="924" y="34" font-size="12" fill="{MUTED}" text-anchor="end">frame: Andrej Karpathy</text>'],
+          [f'  <text x="30" y="34" font-size="13" fill="{MUTED}">the same decision &#8212; block this transaction, or do not &#8212; written three ways</text>'],
           background=True)
     for i in range(3):
         layer(f"software-123-l{i+1}.svg", column(i), background=False)

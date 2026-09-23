@@ -46,7 +46,7 @@ def scale():
     small = (2 + 1) * 5 + (5 + 1)     # 2 inputs, 5 hidden, 1 output, with biases — as in the clip
     rows = [("one neuron", 4, "the slide before"),
             ("a small network, 2 &#8594; 5 &#8594; 1", small, "the clip you just saw"),
-            ("GPT-2 small, 2019", 124e6, "the one Karpathy rebuilds from scratch on video"),
+            ("GPT-2 small, 2019", 124e6, "small enough to train yourself"),
             ("gpt-oss-20b, 2025", 21e9, "fits in 16 GB of memory"),
             ("gpt-oss-120b, 2025", 117e9, "fits on one 80 GB GPU")]
     lo, hi = math.log10(1), math.log10(2e11)
@@ -107,7 +107,7 @@ print(f"neuron z={z:.2f} p={p:.2f}; small network weights={small}")
 # ------------------------------------------------------------------ activation functions
 def activations():
     fns = [("sigmoid", lambda z: 1/(1+math.exp(-z)), (0, 1), "squash to 0&#8211;1: a probability", GOLDDK),
-           ("tanh", math.tanh, (-1, 1), "squash to &#8722;1&#8211;1: Karpathy's micrograd", NAVY),
+           ("tanh", math.tanh, (-1, 1), "squash to &#8722;1&#8211;1", NAVY),
            ("ReLU", lambda z: max(0.0, z), (0, 4), "negative &#8594; 0, else pass it on: most modern networks", RED)]
     b = []
     for i, (name, f, (lo, hi), note, col) in enumerate(fns):
@@ -130,7 +130,7 @@ def activations():
 
 activations()
 
-# ------------------------------------------------------------------ Karpathy: training is compressing the internet
+# ------------------------------------------------------------------ training is compressing the internet
 def compress():
     text_tb, gpus, days, usd, params_gb = 10, 6000, 12, 2e6, 140
     ratio = text_tb * 1000 / params_gb
@@ -156,8 +156,33 @@ def compress():
           f'  <text x="30" y="266" font-size="17" fill="{INK}">So it is a <tspan font-weight="700">lossy zip file</tspan> of the internet:</text>',
           f'  <text x="30" y="292" font-size="17" fill="{INK}">the gist is in there, the exact facts not always.</text>',
           f'  <line x1="30" y1="338" x2="930" y2="338" stroke="{RULE}"/>',
-          f'  <text x="30" y="362" font-size="14" fill="{MUTED}">numbers for Llama 2 70B (2023), from Andrej Karpathy, "Intro to Large Language Models" &#8212; today&#8217;s frontier models are far bigger</text>']
-    svg("compress-internet.svg", 960, 375, b, "pre-training, as Karpathy draws it: training is compressing the internet")
+          f'  <text x="30" y="362" font-size="14" fill="{MUTED}">numbers for Llama 2 70B (2023) &#8212; today&#8217;s frontier models are far bigger</text>']
+    svg("compress-internet.svg", 960, 375, b, "pre-training: training is compressing the internet")
     return ratio
 
 print("compression ratio", round(compress()))
+
+
+# ------------------------------------------------------------------ the training loop
+def loop():
+    steps = [("1 · guess", "run the inputs through\nthe network", INK),
+             ("2 · how wrong?", "compare with the right\nanswer: the loss", RED),
+             ("3 · who is to blame?", "for every weight: does\nnudging it help or hurt?", NAVY),
+             ("4 · nudge", "move every weight a little\nthe helpful way", GREEN)]
+    b = []
+    for i, (h, t, c) in enumerate(steps):
+        x = 30 + i * 232
+        b += [f'  <rect x="{x}" y="80" width="200" height="130" fill="#f7f5ef" stroke="{c}" stroke-width="2.5"/>',
+              f'  <text x="{x+100}" y="118" font-size="19" font-weight="700" text-anchor="middle" fill="{c}">{h}</text>']
+        for j, line in enumerate(t.split("\n")):
+            b.append(f'  <text x="{x+100}" y="{152+j*22}" font-size="14" text-anchor="middle" fill="{INK}">{line}</text>')
+        if i < 3:
+            b += [f'  <line x1="{x+202}" y1="145" x2="{x+224}" y2="145" stroke="{INK}" stroke-width="2"/>',
+                  f'  <polygon points="{x+224},139 {x+232},145 {x+224},151" fill="{INK}"/>']
+    b += [f'  <path d="M825,212 C825,285 130,285 130,215" fill="none" stroke="{MUTED}" stroke-width="2" stroke-dasharray="6 5"/>',
+          f'  <polygon points="124,222 130,210 136,222" fill="{MUTED}"/>',
+          f'  <text x="480" y="298" font-size="15" text-anchor="middle" fill="{MUTED}">repeat &#8212; a few rounds for the perceptron, trillions for an LLM</text>',
+          f'  <text x="480" y="340" font-size="14" text-anchor="middle" fill="{INK}">step 3 has a name: <tspan font-weight="700" fill="{NAVY}">backpropagation</tspan></text>']
+    svg("training-loop.svg", 960, 355, b, "how every neural network learns, from four weights to a hundred billion")
+
+loop()

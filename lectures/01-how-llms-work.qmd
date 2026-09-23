@@ -1,23 +1,22 @@
 ---
 title: "How we will work, and what is inside the machine"
-subtitle: "Week 1 · Wednesday 23 September 2026 · 10:00–13:00"
+subtitle: "Week 1 · Wednesday 23 September 2026 · 10:00–12:00"
 author: "Niccolò Salvini, PhD"
 institute: "AI for Business and FinTech · European School of Economics, Florence"
 ---
 
-## Today, at a walking pace
+## Today
 
 | | |
 |---|---|
 | **10:00** | who I am, and who you are |
-| **10:25** | what this course is for, and how we shape it around you |
-| **10:43** | open your notebook — one click |
+| **10:25** | what this course is for |
+| **10:43** | open your notebook |
 | **10:50** | break |
 | **11:00** | from one neuron to an LLM |
-| **11:35** | what the model actually reads: tokens, attention, the box |
-| **11:46** | between Wednesdays, and homework |
-
-[Thirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one.]{.muted}
+| **11:30** | what the model reads |
+| **11:40** | a real model release, taken apart |
+| **11:50** | close |
 
 ## [Part 1]{.section-kicker} Two people, one room {.section-slide background-color="#AF1F25"}
 
@@ -31,11 +30,11 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 **Niccolò Salvini, PhD** · Adjunct Professor
 
 ::: {.incremental}
-- **Economics**, Florence — where I learned that theory needs data to survive contact with reality
-- **MSc, Statistical and Actuarial Sciences**, Milan — from reading data to engineering it
-- **PhD, Healthcare Data Science**, Rome — why a model works, and exactly where it breaks
-- **Founder, Intuo** — data pipelines and AI for companies that wanted AI before they had clean data
-- **Adjunct Professor** — Health Data Science at Università Cattolica, and this course at ESE
+- **Economics**, Florence
+- **MSc, Statistical and Actuarial Sciences**, Milan
+- **PhD, Healthcare Data Science**, Rome
+- **Founder, Intuo** — data pipelines and AI for companies
+- **Adjunct Professor** — Università Cattolica, and ESE
 :::
 :::
 ::::
@@ -44,10 +43,10 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 ## What you leave with in December
 
-1. **Build** — a working pipeline in Python: data in, analysis, a model or an LLM application, a result you can reproduce.
-2. **Check** — the habit of testing what an assistant or a vendor tells you, with a number and not with a feeling.
-3. **Decide** — turn a model's output into a decision with a cost, and say when *not* to use AI at all.
-4. **Defend** — present it to people who will not read your notebook, including a regulator.
+1. **Build** — a working pipeline in Python, reproducible.
+2. **Check** — what an assistant or a vendor tells you, with a number.
+3. **Decide** — turn a model's output into a decision with a cost.
+4. **Defend** — to people who will not read your notebook.
 
 ## Ten weeks, one thing built each time
 
@@ -60,72 +59,58 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 | **9–10** | 25 Nov – 2 Dec | red-team, and finish the capstone — **portfolio, 60%** |
 | Rev. | 9 Dec | you present it |
 
-[Every artefact you build stays in your repository and becomes part of the next one. Nothing here is thrown away.]{.red}
+## One thread through it: you build a tiny LLM
 
-## One thread through all of it: you build a tiny LLM
+| week | the piece |
+|---|---|
+| **2** | a tokenizer, trained on your own texts |
+| **3** | a model that guesses the next character |
+| **4** | embeddings it learns by itself |
+| **5** | attention, and a tiny GPT trained on central-bank statements |
 
-The best way to understand the pieces is to build them. A few pieces a week, small and on purpose badly trained — the point is **how**, not a good model.
-
-| week | the piece | what it makes obvious |
-|---|---|---|
-| **2** | a tokenizer, trained on your own texts | why Russian costs more — you watch it happen |
-| **3** | a model that guesses the next character | predicting text is just classification, with a base rate |
-| **4** | embeddings that it learns | "similar meaning" as a distance, before we search with it |
-| **5** | attention, and a tiny GPT trained on central-bank statements | today's figure, computed by you |
-
-[Following Andrej Karpathy's *Zero to Hero* — in Colab, on the free GPU, a few minutes of training each.]{.muted}
+[Small, badly trained on purpose. The point is how, not a good model.]{.muted}
 
 ## What you wrote in your application
 
-| you wrote | where it lands | and before that |
-|---|---|---|
-| **product and project work** | 5 · the product lens · 10 · build/buy, cost at scale | it is the lens, every week |
-| **data and decisions** | 2 · analysis · 3 · a model, and a threshold that costs money | the whole first month |
-| **trading** | 7 · a backtest, and every way it lies | market data from week 2 |
-| **crypto and DeFi** | 8 · on-chain data, AMMs, lending, MiCA | on-chain series from week 2 |
+| you wrote | where it lands |
+|---|---|
+| **product and project work** | weeks 5 and 10 — and the lens every week |
+| **data and decisions** | weeks 2 and 3 |
+| **trading** | week 7 — market data from week 2 |
+| **crypto and DeFi** | week 8 — on-chain data from week 2 |
 
 . . .
 
-**Is this still true?** What is missing, and what would you pull forward?
+**Is this still true? What is missing?**
 
-[The map is a plan, not a contract. The **capstone is yours to choose** — and with one student, the order can move.]{.red}
+## How we work
 
-## How we work, with only two of us
+- **A lab.** You write code from today, with an assistant. You judge what it produces.
+- **Bets, not quizzes.** Write a number before the cell runs.
+- **Your keyboard.** I do not touch it.
+- **Wednesdays start with you** — twenty minutes on your homework.
+- **Feedback both ways**, every week.
 
-- **A lab, not a lecture.** You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to **judge what the assistant produces**.
-- **Bets, not quizzes.** Before a cell runs I will ask you to write down a number. Being wrong is the point; it is how the result sticks.
-- **Your keyboard.** I will not touch it. When it breaks, read the error before asking me.
-- **Every Wednesday starts with you:** twenty minutes on your homework. I pick two lines at random and ask what they do.
-- **Feedback runs both ways.** Too fast, too slow, not relevant to you — say it that week, not in December.
+## The deal
 
-## The deal, said once
+- Anything an AI produced that you submit, you **explain line by line**.
+- **Nothing confidential** goes into an AI tool.
+- Markets and crypto here are **simulations**, not investment advice.
 
-- **The rule of the course:** anything an AI produced and you submit, you must be able to explain line by line. I will ask.
-- **Nothing confidential** goes into an AI tool. Ever.
-- Markets, crypto and DeFi here are **educational simulations**. Nothing in this course is investment advice.
-
-| | weight | when | what |
-|---|---|---|---|
-| **Case brief** | 40% | due Sun 1 Nov, presented 4 Nov | the LLM application of weeks 4–5, treated as a product |
-| **Portfolio** | 60% | due Sun 6 Dec, presented 9 Dec | your capstone: pipeline, memo, risk canvas, roadmap |
-
-[Both are assessed on your repository — the commits, not a PDF. Weekly homework is formative, and completing it is a condition of the certificate.]{.muted}
-
-## [Part 3]{.section-kicker} The workbench {.section-slide background-color="#AF1F25"}
+| | weight | due |
+|---|---|---|
+| **Case brief** | 40% | Sun 1 Nov |
+| **Portfolio** | 60% | Sun 6 Dec |
 
 ## Open your notebook: one click {.lab background-color="#2471a3"}
 
 :::: {.columns}
 ::: {.column width="62%"}
-[LAB · week 1 notebook]{.kicker}
-
-1. **Click the link, or scan the code.** Colab opens the notebook.
-2. `File ▸ Save a copy in Drive` — now it is yours.
+1. **Click, or scan.**
+2. `File ▸ Save a copy in Drive`
 3. Run the first two cells.
 
 **[Open in Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb)**
-
-[GitHub comes at home, with the [setup page](../setup.qmd) — ten minutes.]{style="font-size:.7em"}
 :::
 ::: {.column width="38%"}
 ![](img/colab-w01-qr.svg){width="80%" fig-align="center"}
@@ -134,17 +119,7 @@ The best way to understand the pieces is to build them. A few pieces a week, sma
 
 ## Break — ten minutes. {.statement}
 
-## [Part 4]{.section-kicker} From one neuron to an LLM {.section-slide background-color="#AF1F25"}
-
-## Three sentences from three pitch decks
-
-::: {.callout-important title="Bet before we start"}
-1. *"Our assistant **remembers** every conversation it has had with your customers."*
-2. *"It **learns from your corrections in real time**."*
-3. *"**99.2% accuracy** on invoice extraction."*
-:::
-
-You have heard a version of all three in your work. **Two are impossible as stated. One is unanswerable as written.** Write down which is which — before you leave you can answer two of them yourself.
+## [Part 3]{.section-kicker} From one neuron to an LLM {.section-slide background-color="#AF1F25"}
 
 ## Three ways to write the same decision
 
@@ -160,103 +135,88 @@ You have heard a version of all three in your work. **Two are impossible as stat
 ![](img/software-123-l4.svg){.fragment width="100%"}
 :::
 
-## One neuron is a decision you already know
+## One neuron
 
-::: {.callout-important title="Bet before we look"}
-A card payment: large, made abroad, from a new device. Three numbers in, one number out. What would you do with each of the three before adding them up?
+::: {.callout-important title="Bet"}
+Large payment, abroad, new device. What do you do with each number before adding them up?
 :::
 
 . . .
 
 ![](img/neuron.svg){fig-align="center" width="95%"}
 
-## The squash has a name: the **activation function**
+## The squash: the activation function
 
-![](img/activations.svg){fig-align="center" width="86%"}
+![](img/activations.svg){fig-align="center" width="90%"}
 
-[**Weights**: how much each input matters. **Bias**: how trigger-happy the neuron is. **Activation**: what it passes on.]{.muted}
-
-## Training it by hand: four rows, one rule {.clip background-color="#000000"}
+## Training it by hand {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_PerceptronByHand_poster.png"><source src="media/nn_PerceptronByHand.mp4" type="video/mp4"></video>
 
-Wrong answer → move each weight a little towards the right one. Right answer → leave it alone. Repeat until nothing changes. **That is learning.**
+## How every network learns
 
-## Learning means walking downhill {.clip background-color="#000000"}
+![](img/training-loop.svg){fig-align="center" width="95%"}
+
+## Downhill {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_GradientDescent_poster.png"><source src="media/nn_GradientDescent.mp4" type="video/mp4"></video>
 
-Measure how wrong it is. Nudge every weight a little in the direction that makes it less wrong. Repeat. **That is training** — for four weights, or for a hundred billion.
-
-## More neurons, and the line learns to bend {.clip background-color="#000000"}
+## More neurons: the line bends {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_HiddenLayer_poster.png"><source src="media/nn_HiddenLayer.mp4" type="video/mp4"></video>
-
-One neuron draws a line. Five of them, blended, follow a curve. Stack layers of them and the network invents its own features — nobody tells it which.
 
 ## From 4 numbers to 117 billion
 
 ![](img/nn-scale.svg){fig-align="center" width="95%"}
 
-[Think of the parameters as the knobs on a DJ mixer. Training is finding a setting of billions of knobs that makes the output match the data. — Karpathy]{.muted}
+## An LLM is that network, with one job
 
-## An LLM is that network, given one job
-
-::: {.callout-important title="Guess the next piece of text."}
-That is the whole training objective. Everything else you have seen a chatbot do is learned on the way to doing that well.
+::: {.callout-important appearance="simple"}
+**Guess the next piece of text.** That is the whole job.
 :::
 
 :::: {.columns}
 ::: {.column width="33%"}
 **1 · Pre-training**
 
-About 15 trillion tokens of filtered web text. Months of GPUs, done **once a year or so**. Out comes a **base model** — an *internet document simulator*. Ask it a question and it may answer with three more questions.
+trillions of tokens of web text → a **base model** that continues documents
 :::
 ::: {.column width="33%"}
 **2 · Post-training**
 
-Swap the data: on the order of 100,000 example conversations, written or checked by people, then reinforcement learning on what gets rated well. Days, not months — **every week or so**. Out comes an **assistant**.
+~100,000 example conversations, then feedback → an **assistant**
 :::
 ::: {.column width="33%"}
 **3 · What you download**
 
-Two files: the **parameters** — billions of numbers — and ~500 lines of code that run them. That is a model.
+the **parameters**, and a short program that runs them
 :::
 ::::
-
-[The frame is Karpathy's. When a vendor says "our model", ask which of the three they actually did. It is almost never the first.]{.muted}
 
 ## Pre-training is compressing the internet
 
 ![](img/compress-internet.svg){fig-align="center" width="95%"}
 
-. . .
+## The same nudge, trillions of times
 
-[Lossy, and oddly: it knows Tom Cruise's mother is Mary Lee Pfeiffer, but not whose son Mary Lee Pfeiffer's is. You evaluate these models; you cannot read them.]{.red}
+`The ECB left rates` → ?
 
-## Training an LLM is the same nudge, a trillion times
-
-Take four tokens from the training text — `The ECB left rates` — and ask for the next one. The right answer is known: it is in the text.
-
-| next token | before the update | after |
+| next token | before | after |
 |---|---|---|
-| **"unchanged"** — the right one | 3% | **4%** |
+| **"unchanged"** ✓ | 3% | **4%** |
 | "steady" | 4% | 3.8% |
 | "at" | 2% | 1.9% |
-| …the other 200,000 | the rest | slightly less |
 
-. . .
-
-[Nudge the knobs so the right token gets slightly more likely. Do it for every token of 15 trillion, many times over. What comes out is a model of **how text continues** — and nothing else. It has **no memory**: a fixed expression from input to output.]{.red}
-
-## Follow one prediction through
+## One prediction, end to end
 
 ![](img/token-journey.svg){fig-align="center" width="95%"}
 
+## [Part 4]{.section-kicker} What the model reads {.section-slide background-color="#AF1F25"}
+
 ## It never sees a word
 
-::: {.callout-important title="Bet before we look"}
-`"Il margine è insostenibile"` — four words. How many pieces does the model cut that into? Write a number.
+::: {.callout-important title="Bet"}
+`"Il margine è insostenibile"` — four words. How many pieces?
 :::
 
 . . .
@@ -265,146 +225,143 @@ Take four tokens from the training text — `The ECB left rates` — and ask for
 
 ## Why pieces, and not letters?
 
-The network reads a sequence, and **shorter sequences are cheaper**. So the text is compressed before it goes in:
-
 | the same 5,000 characters, as | length | alphabet |
 |---|---|---|
-| bits | 40,000 | 2 symbols |
-| bytes | 5,000 | 256 symbols |
-| GPT-4 tokens | **~1,300** | **100,277 symbols** |
+| bits | 40,000 | 2 |
+| bytes | 5,000 | 256 |
+| tokens | **~1,300** | **~100,000** |
 
-[A tokenizer is learned by merging the pairs that occur most often, again and again. It learns the language of its training data — which is why *your* language costs more. (Karpathy's example.)]{.muted}
+## How a tokenizer is learned
 
-## The same sentence, twice, one tokenizer apart {.clip background-color="#000000"}
+Merge the most frequent pair. Repeat.
+
+| step | text | new symbol |
+|---|---|---|
+| start | `aaabdaaabac` | |
+| 1 | `ZabdZabac` | Z = aa |
+| 2 | `ZYdZYac` | Y = ab |
+| 3 | `XdXac` | X = ZY |
+
+. . .
+
+11 symbols → 5. Train it on English, and it learns English pieces.
+
+## The same sentence, twice {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_tokens_poster.png"><source src="media/w01_tokens.mp4" type="video/mp4"></video>
 
-Same model family, same sentence. 33 pieces became 18.
+## Much of the weirdness is tokenization
+
+| it struggles with | because |
+|---|---|
+| spelling a word backwards | the word is one token, not letters |
+| Russian, Italian | more, smaller pieces |
+| arithmetic | `1,234,567.89` is 7 arbitrary pieces |
+| `egg` · `Egg` · ` egg` · `EGG` | four different tokens |
 
 ## How the tokens talk to each other: **attention**
 
-::: {.callout-important title="Bet before we look"}
-*"The bank raised rates because **it** feared inflation."* — how does the model know what **it** refers to?
+::: {.callout-important title="Bet"}
+*"The bank raised rates because **it** feared inflation."* — what is **it**?
 :::
 
 . . .
 
 ![](img/attention.svg){fig-align="center" width="95%"}
 
+[Vaswani et al., *Attention Is All You Need*, 2017 — the paper behind every model since.]{.muted}
+
 ## Everything it knows, every time
 
 ![](img/context-window.svg){fig-align="center" width="95%"}
 
-## Which disposes of claim one {.statement}
+## [Part 5]{.section-kicker} A real release, taken apart {.section-slide background-color="#AF1F25"}
 
-## The model remembers nothing. Something else is storing and re-sending.
-
-[That something is a database, it has an owner, and every turn you pay to send it again. "It remembers" is not an AI capability. It is an infrastructure invoice.]{.muted}
-
-## And claim two
-
-**"It learns from your corrections in real time."**
-
-You have just seen what learning is: weights nudged downhill, over trillions of tokens, for months. When you call the model the weights are **frozen**. Nothing you type changes them.
-
-. . .
-
-What can honestly be meant is one of two things: your correction was **written to a store and re-sent next time** (fast, cheap, and not learning), or it entered a **retraining queue** (real, and measured in weeks).
-
-[Ask which. The answer tells you whether you are buying a model or a database. Claim three — the 99.2% — needs a base rate, and that is week 3.]{.red}
-
-## If you want to go further this week
-
-- **Andrej Karpathy, *Deep Dive into LLMs like ChatGPT*** (YouTube, 2025) — the first hour covers everything we did today, slower and better drawn. Stop at *inference*.
-- **Andrej Karpathy, *Intro to Large Language Models*** (YouTube, 2023) — one hour, and the source of the "two files" and "compressing the internet" pictures.
-- **LLM Visualization**, bbycroft.net/llm — a real small model in 3D, and you can follow one token through every block.
-- Your **[glossary](../glossary.qmd)** for this course.
-
-## [Part 6]{.section-kicker} Before you go {.section-slide background-color="#AF1F25"}
-
-## Between Wednesdays
-
-:::: {.columns}
-::: {.column width="64%"}
-| | |
-|---|---|
-| **quick questions** | WhatsApp or Telegram — whichever you prefer. I answer within one working day |
-| **anything that counts** | in your repository, never in chat |
-| **Wed 11 November** | I may be in Milan that day — we agree a make-up date now |
-| **if you miss a session** | tell me before, and the notebook is on the site the same day |
-
-: {tbl-colwidths="[34,66]"}
-:::
-::: {.column width="36%"}
-![](img/whatsapp-qr.svg){width="78%" fig-align="center"}
-
-[Scan it now — WhatsApp.<br>Telegram: tell me your handle.]{.muted style="display:block;text-align:center;font-size:.6em"}
-:::
-::::
-
-## Close
-
-**Homework 1** — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.
-
-Due Tuesday 29 September, 23:59, in your repository.
-
-. . .
-
-**Before you leave:** three lines at the bottom of the notebook, in your words — then commit.
-
-[Next week: we read a real model release line by line, the assistant writes the code and you decide whether it is true — and you train your first tokenizer.]{.muted}
-
-## [Spare]{.section-kicker} For next week, or if there is time {.section-slide background-color="#7a7f85"}
-
-## Take it apart yourself {.lab background-color="#2471a3"}
-
-[LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
-
-Type your own text and watch the count:
-
-1. the same sentence in **English**, then **Italian**, then **Russian**
-2. a **number**: `1,234,567.89` — count the pieces before you look
-3. **your own surname**, then a listed company, then a company founded last year
-
-[Then tell me: which of those is the model **least** equipped to reason about, and why?]{.red}
-
-## From OpenAI's release of gpt-oss, August 2025
+## OpenAI, gpt-oss, August 2025
 
 ::: {style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef"}
 "Each model is a **Transformer** which leverages **mixture-of-experts** to reduce the number of **active parameters** needed to process input. gpt-oss-120b activates **5.1B parameters per token** … The models have **117b** and 21b **total parameters** …
 
 We **tokenized** the data using … **o200k_harmony** … The models were **post-trained** … including a **supervised fine-tuning** stage and a high-compute **RL** stage. … The weights … are freely available … and come natively **quantized** in MXFP4. This allows for the gpt-oss-120B model to run within **80GB of memory** … Available under the flexible **Apache 2.0** license."
 
-[And from their spec table: **context length 128k**.]{style="color:#7a7f85"}
+[Spec table: **context length 128k**.]{style="color:#7a7f85"}
 :::
 
-[Circle every word you could now explain to your old team in one sentence. Then we take the rest, one at a time.]{.red}
+**Circle every word you can now explain.**
 
-## What each one means, and the question it answers
+## Every word, taken apart
 
-| in the release | what it is | why you care |
-|---|---|---|
-| **Transformer** | the block you saw: attention + neurons, stacked | every current LLM is one |
-| **117B total parameters** | the weights — the numbers learned in training | roughly how much it can hold |
-| **mixture-of-experts, 5.1B active** | only a few specialist sub-networks run per token | big model, cost of a small one |
-| **o200k_harmony tokenizer** | the ~200,000-piece vocabulary | the price of *your* language |
-| **post-trained: SFT + RL** | step 2 — from base model to assistant | where its manners come from |
-| **context length 128k** | the size of the box | how much you can show it at once |
-| **quantized, 80GB** | each weight stored in fewer bits | runs on one GPU instead of a rack |
-| **open-weight, Apache 2.0** | you download the weights and may use them commercially | nothing leaves your servers |
+| in the release | what it is |
+|---|---|
+| **Transformer** | attention + neurons, stacked — the block you just saw |
+| **117B total parameters** | the numbers learned in training |
+| **mixture-of-experts** | many specialist sub-networks; only a few run per token |
+| **5.1B active per token** | the cost of a small model, the capacity of a big one |
+| **tokenized, o200k_harmony** | the ~200,000-piece vocabulary |
+| **post-trained** | base model → assistant |
+| **supervised fine-tuning** | trained on example conversations |
+| **RL** | reinforcement learning: rewarded for good answers |
+| **context length 128k** | the size of the box |
+| **quantized, MXFP4, 80GB** | each number stored in 4 bits — fits on one GPU |
+| **open-weight, Apache 2.0** | download it, run it on your own servers, use it commercially |
 
-[Every word is in the [glossary](../glossary.qmd), with the week it becomes something you compute.]{.muted}
+## Now, three sentences from three pitch decks
+
+::: {.callout-important title="Which are impossible? Which is unanswerable?"}
+1. *"Our assistant **remembers** every conversation it has had with your customers."*
+2. *"It **learns from your corrections in real time**."*
+3. *"**99.2% accuracy** on invoice extraction."*
+:::
+
+## One: the model remembers nothing {.statement}
+
+[Something else stores the history and re-sends it, every turn.]{.muted}
+
+## Two: the weights are frozen when you call it {.statement}
+
+[A correction goes into a database, or into a retraining queue. Ask which.]{.muted}
+
+## Three: accurate compared with what? {.statement}
+
+[That needs a base rate. Week 3.]{.muted}
+
+## Close
+
+:::: {.columns}
+::: {.column width="64%"}
+**Homework 1**, due Tue 29 Sep:
+
+- your starting point, in writing
+- the question you want answered by December
+- the tokenizer on five texts of yours
+- ten glossary words, in your words
+- GitHub repo, via the [setup page](../setup.qmd)
+
+Questions: WhatsApp or Telegram.
+:::
+::: {.column width="36%"}
+![](img/whatsapp-qr.svg){width="78%" fig-align="center"}
+:::
+::::
+
+## [Spare]{.section-kicker} If there is time {.section-slide background-color="#7a7f85"}
+
+## Take it apart yourself {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
+
+1. one sentence in **English**, **Italian**, **Russian**
+2. `1,234,567.89`
+3. your surname, a listed company, a start-up
 
 ## A taste of DeFi
 
-::: {.callout-important title="Bet before we compute"}
-A pool holds **10 ETH** and **30,000 USDC**, so the quoted price is 3,000 USDC per ETH. You buy **1 ETH** from it. What do you pay?
+::: {.callout-important title="Bet"}
+A pool holds **10 ETH** and **30,000 USDC** — 3,000 per ETH on screen. You buy **1 ETH**. What do you pay?
 :::
 
 . . .
 
-The pool keeps one rule: **ETH × USDC stays constant.** 10 × 30,000 = 300,000.
+**ETH × USDC stays constant:** 10 × 30,000 = 300,000.
 
-After your trade it holds 9 ETH, so it must hold 300,000 ÷ 9 = **33,333 USDC**. You paid **3,333** — 11% above the price on the screen.
-
-[And that is before any fee: the price moved *because you traded*. In week 8 you simulate what it does to the people who fund the pool.]{.red}
+9 ETH left → 300,000 ÷ 9 = 33,333 USDC → you paid **3,333**, 11% above the screen.

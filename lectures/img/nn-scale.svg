@@ -11,7 +11,7 @@
   <text x="30" y="206" font-size="15" font-weight="700" fill="#363636">GPT-2 small, 2019</text>
   <rect x="330" y="190" width="266" height="22" fill="#AF1F25" fill-opacity=".85"/>
   <text x="606" y="207" font-size="15" font-weight="700" fill="#AF1F25">124 million</text>
-  <text x="606" y="224" font-size="12" fill="#7a7f85">the one Karpathy rebuilds from scratch on video</text>
+  <text x="606" y="224" font-size="12" fill="#7a7f85">small enough to train yourself</text>
   <text x="30" y="264" font-size="15" font-weight="700" fill="#363636">gpt-oss-20b, 2025</text>
   <rect x="330" y="248" width="331" height="22" fill="#AF1F25" fill-opacity=".85"/>
   <text x="671" y="265" font-size="15" font-weight="700" fill="#AF1F25">21 billion</text>
