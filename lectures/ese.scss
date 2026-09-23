@@ -109,7 +109,7 @@ $presentation-block-margin: 14px;
 
 .red { color: $red; } .muted { color: $muted; } .gold { color: $golddk; }
 // ---- .explain: the plain-language explanation under a figure (week 1 onwards)
-.reveal .explain { display: block; font-size: 0.6em; line-height: 1.4; color: $ink; margin-top: 0.4em; border-left: 3px solid $gold; padding-left: 0.7em; }
+.reveal .explain { display: block; font-size: 0.7em; line-height: 1.4; color: $ink; margin-top: 0.4em; border-left: 3px solid $gold; padding-left: 0.7em; }
 .reveal .clip .explain { color: rgba(255,255,255,.9); border-left-color: $gold; font-size: 1.35em; max-width: 1000px; margin: 0.5em auto 0; }
 
 // ---- Emphasis on dark frames ----

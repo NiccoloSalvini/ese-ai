@@ -149,110 +149,153 @@ We **tokenized** the data using … **o200k_harmony** … The models were **post
 
 [**1.0** you write the rule yourself. **2.0** you give examples and the machine learns the rule — as numbers called weights. **3.0** you give an instruction in plain English to a model that has already learned from huge amounts of text. 2.0 and 3.0 are built from the same thing: neurons.]{.explain}
 
-## One neuron
+## Four past payments
+
+| payment | large? (over €1,000) | abroad? | fraud? |
+|---|---|---|---|
+| **A** | 0 | 0 | no |
+| **B** | 1 | 0 | no |
+| **C** | 0 | 1 | no |
+| **D** | 1 | 1 | **yes** |
 
 ::: {.callout-important title="Bet"}
-Large payment, abroad, new device. What do you do with each number before adding them up?
+A first guess: weight **1** on "large", **0** on "abroad", bias **−1**; block if the score is above zero. Which payments does it block?
 :::
 
-. . .
+[From here to the end of the lesson, one question: **is this payment fraud?** Every step makes the answer a little more capable.]{.explain}
 
-![](img/neuron.svg){fig-align="center" width="70%"}
+## The first guess, as one neuron
 
-[Each input is multiplied by a **weight** (how much it matters), the results are added up with a **bias** (how easily it fires), and the sum is squashed between 0 and 1. The weights are the only thing it learns. With this squash, one neuron is exactly a logistic regression.]{.explain}
+![](img/story-neuron.svg){fig-align="center" width="78%"}
 
-## The squash: the activation function
 
-![](img/activations.svg){fig-align="center" width="68%"}
+## Learning from mistakes, by hand {.clip background-color="#000000"}
 
-[After adding up, a neuron passes the sum through a curve. **Sigmoid** turns it into a probability; **tanh** into −1…1; **ReLU** keeps positives and zeroes negatives. Without this bend, stacking a thousand neurons still gives a straight line.]{.explain}
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_perceptron_poster.png"><source src="media/w01_perceptron.mp4" type="video/mp4"></video>
 
-## Training it by hand {.clip background-color="#000000"}
+[Wrong → move each weight a little towards the right answer; right → leave it. **η**, the learning rate, is how big each move is.]{.explain}
 
-<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_PerceptronByHand_poster.png"><source src="media/nn_PerceptronByHand.mp4" type="video/mp4"></video>
+## The rule it learned
 
-[Four examples, one rule. Wrong answer → move each weight a little towards the right answer. Right answer → leave it alone. Repeat until nothing changes: the neuron has learned AND.]{.explain}
+$$w \;\leftarrow\; w + \eta \cdot (\text{fraud} - \text{decision}) \cdot x$$
+
+| | w large | w abroad | bias |
+|---|---|---|---|
+| first guess | 1 | 0 | −1 |
+| after 2 mistakes | **1** | **0.5** | **−1** |
+
+[Nobody wrote "large **and** abroad". The weights found it from four examples. This is Software 2.0 — and this neuron has a name: the **perceptron**, 1958.]{.explain}
+
+## Yes or no is not enough
+
+![](img/story-step-sigmoid.svg){fig-align="center" width="86%"}
+
+
+## How wrong, as one number
+
+The **loss**: small when the model gave the right answer a high probability.
+
+| payment | p(fraud) | right answer | loss = −log p(right answer) |
+|---|---|---|---|
+| **D** | 0.62 | fraud | −log 0.62 = **0.47** |
+| **B** | 0.50 | not fraud | −log 0.50 = **0.69** |
+
+[Training means one thing: change the weights so this number goes down.]{.explain}
+
+## The formula for every weight
+
+$$w \;\leftarrow\; w - \eta \cdot (p - y) \cdot x$$
+
+One step on payment D, with η = 1:
+
+| | w large | w abroad | bias | p(fraud) for D |
+|---|---|---|---|---|
+| before | 1 | 0.5 | −1 | 0.62 |
+| blame = (p − y)·x | −0.38 | −0.38 | −0.38 | |
+| after | **1.38** | **0.88** | **−0.62** | **0.84** |
+
+[Same shape as the perceptron rule — with a probability in place of a yes/no. D is now 84% fraud instead of 62%.]{.explain}
+
+## Where the blame comes from: backpropagation
+
+![](img/story-backprop.svg){fig-align="center" width="86%"}
+
+
+## The learning rate {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_lr_poster.png"><source src="media/w01_lr.mp4" type="video/mp4"></video>
+
+[Add payment E — a customer on holiday, large, abroad, genuine — and there is no perfect rule. Too small a step crawls; too large jumps over the best answer.]{.explain}
 
 ## How every network learns
 
-![](img/training-loop.svg){fig-align="center" width="70%"}
+![](img/story-loop.svg){fig-align="center" width="80%"}
 
-[The **loss** is one number that says how wrong the network is. **Backpropagation** works out, for every weight, whether nudging it up or down would lower the loss. Then every weight moves a little. That loop, repeated, is all of training.]{.explain}
+## A pattern one neuron cannot draw
 
-## Downhill {.clip background-color="#000000"}
+![](img/story-card-testing.svg){fig-align="center" width="86%"}
 
-<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_GradientDescent_poster.png"><source src="media/nn_GradientDescent.mp4" type="video/mp4"></video>
 
-[Picture the loss as a landscape and the weights as your position. Training walks downhill. Step too big and you overshoot the valley; too small and it takes forever. The step size is the **learning rate**.]{.explain}
+## More activation functions
 
-## More neurons: the line bends {.clip background-color="#000000"}
+![](img/activations.svg){fig-align="center" width="86%"}
 
-<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_HiddenLayer_poster.png"><source src="media/nn_HiddenLayer.mp4" type="video/mp4"></video>
 
-[One neuron can only draw a straight boundary. Put several side by side in a **hidden layer** and blend them: the boundary bends to follow the data. Stack more layers and the network invents its own intermediate features.]{.explain}
+## From 3 weights to 117 billion
 
-## From 4 numbers to 117 billion
+![](img/story-scale.svg){fig-align="center" width="78%"}
 
-![](img/nn-scale.svg){fig-align="center" width="70%"}
+## An LLM is the same machine
 
-[Every model on this chart is the same arithmetic — multiply, add, squash — repeated. The **parameters** are all the weights and biases. What changed from a neuron to an LLM is how many there are, and how much data they were trained on.]{.explain}
+![](img/story-same-machine.svg){fig-align="center" width="86%"}
 
-## An LLM is that network, with one job
 
-::: {.callout-important appearance="simple"}
-**Guess the next piece of text.** That is the whole job.
-:::
-
-:::: {.columns}
-::: {.column width="33%"}
-**1 · Pre-training**
-
-trillions of tokens of web text → a **base model** that continues documents
-:::
-::: {.column width="33%"}
-**2 · Post-training**
-
-~100,000 example conversations, then feedback → an **assistant**
-:::
-::: {.column width="33%"}
-**3 · What you download**
-
-the **parameters**, and a short program that runs them
-:::
-::::
-
-[The only thing an LLM is trained to do is predict the next piece of text. To do that well across the whole internet it has to absorb grammar, facts and patterns of reasoning. Answering questions comes later, in post-training.]{.explain}
-
-## Pre-training is compressing the internet
-
-![](img/compress-internet.svg){fig-align="center" width="70%"}
-
-[Training squeezes terabytes of text into a file of parameters about 70 times smaller. Like a lossy zip: the gist survives, exact facts do not always. That is one reason a model can sound right and be wrong.]{.explain}
-
-## The same nudge, trillions of times
+## The same nudge, on text
 
 `The ECB left rates` → ?
 
-| next token | before | after |
+| next token | before | after one step |
 |---|---|---|
 | **"unchanged"** ✓ | 3% | **4%** |
 | "steady" | 4% | 3.8% |
 | "at" | 2% | 1.9% |
 
-[Take a window of text from the training data; the next token is known because it is in the text. Nudge the weights so that token becomes slightly more likely and the others slightly less. Repeat for every token of the training set.]{.explain}
+[Exactly the step we took on payment D: raise the probability of the right answer, lower the others. Here the right answer is in the text itself.]{.explain}
+
+## Pre-training is compressing the internet
+
+![](img/compress-internet.svg){fig-align="center" width="78%"}
+
+[Repeat that nudge on trillions of tokens and the weights end up holding a lossy summary of the text: the gist survives, exact facts do not always.]{.explain}
+
+## Then it learns to be an assistant
+
+:::: {.columns}
+::: {.column width="50%"}
+**1 · Pre-training**
+
+internet text → a **base model** that continues documents
+:::
+::: {.column width="50%"}
+**2 · Post-training**
+
+~100,000 example conversations, then rewards → an **assistant**
+:::
+::::
+
+[Post-training is the same loop again. Only the examples change: now the right answer is a good reply.]{.explain}
 
 ## One prediction, end to end
 
-![](img/token-journey.svg){fig-align="center" width="70%"}
+![](img/token-journey.svg){fig-align="center" width="86%"}
 
-[Text → tokens → numbers. Each token becomes a long vector, which goes through the same block many times: **attention** (tokens look at each other) and **neurons** (each token is processed). At the end, a probability for every token in the vocabulary; one is picked, appended, and the whole thing runs again.]{.explain}
 
-## Every word, taken apart — with our small network
+## Every word, taken apart — with our fraud neuron
 
-| in the release | in terms of the network we just built |
+| in the release | in terms of what we just built |
 |---|---|
 | **Transformer** | our neurons, plus attention, stacked in 36 layers |
-| **117B total parameters** | our neuron had 4 weights; this has 117 billion |
+| **117B total parameters** | our neuron had 3 weights; this has 117 billion |
 | **mixture-of-experts** | 128 smaller networks inside; a router picks 4 for each token |
 | **5.1B active per token** | only those 4 run, so it costs like a 5-billion model |
 | **tokenized, o200k_harmony** | how text becomes numbers before the first neuron |
@@ -262,8 +305,6 @@ the **parameters**, and a short program that runs them
 | **context length 128k** | how many tokens go in at once — a few hundred pages |
 | **quantized, MXFP4, 80GB** | each weight stored in ~4 bits instead of 16: fits on one GPU |
 | **open-weight, Apache 2.0** | you download the weights themselves, and may use them commercially |
-
-[Nothing in this list is magic. Every line is a neuron, a weight, the training loop, or a way of making them cheaper to run.]{.explain}
 
 ## [Part 4]{.section-kicker} What the model reads {.section-slide background-color="#AF1F25"}
 
@@ -318,7 +359,7 @@ the **parameters**, and a short program that runs them
 - the tokenizer on five texts of yours
 - ten glossary words, in your words
 - three pitch-deck sentences to take apart
-- GitHub repo, via the [setup page](../setup.qmd)
+- a Drive folder `ese-ai-fintech`, shared with me — see [Setup](../setup.qmd)
 
 Questions: WhatsApp or Telegram.
 :::

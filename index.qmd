@@ -17,7 +17,7 @@ European School of Economics, Florence · one-to-one tutorial and lab · 30 cont
 <div><span class="k">Before session 1</span><span class="v">[Setup checklist](setup.qmd)</span></div>
 :::
 
-Everything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your repository.
+Everything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.
 
 <h2 class="module">Sessions <small>Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab</small></h2>
 
@@ -45,7 +45,7 @@ Everything for this course is on this page. One row per session: the Colab noteb
 :::
 
 ::: {.callout-note appearance="simple"}
-**Opening a notebook.** *Colab ↗* opens the session notebook directly in Google Colab. Once it is open, `File ▸ Save a copy in GitHub` into your own repository, path `week-NN/session.ipynb`. The *notebook* link is a read-only preview of the same file.
+**Opening a notebook.** *Colab ↗* opens the session notebook in Google Colab. Then `File ▸ Save a copy in Drive`, into your `ese-ai-fintech` folder. The *notebook* link is a read-only preview of the same file.
 :::
 
 <h2 class="module">How the course works <small>the contract, stated once</small></h2>
@@ -53,8 +53,8 @@ Everything for this course is on this page. One row per session: the Colab noteb
 - **This is a lab.** You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.
 - **The rule of the course:** anything an AI produced and you submit, you must be able to explain line by line. I will ask.
 - **Weekly rhythm:** Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week's homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.
-- **Assessment:** a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your repository. Details in the [syllabus](syllabus.qmd#assessment).
-- **Tools:** Google Colab, GitHub, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See [Setup](setup.qmd).
+- **Assessment:** a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the [syllabus](syllabus.qmd#assessment).
+- **Tools:** Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See [Setup](setup.qmd).
 - **Nothing confidential goes into an AI tool.** All market, crypto and DeFi activities are educational simulations, not investment advice.
 
 <h2 class="module">Tutor</h2>

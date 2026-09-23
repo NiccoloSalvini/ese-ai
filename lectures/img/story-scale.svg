@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">number of weights (parameters), log scale — each step right is ten times more</text>
+  <text x="30" y="90" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >our neuron</text>
+  <rect x="330" y="74" width="44" height="22" fill="#2471a3" fill-opacity=".85"/>
+  <text x="383.93235962721093" y="91" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >3</text>
+  <text x="383.93235962721093" y="108" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >the fraud neuron</text>
+  <text x="30" y="148" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >our small network, 1 → 2 → 1</text>
+  <rect x="330" y="132" width="55" height="22" fill="#2471a3" fill-opacity=".85"/>
+  <text x="394.6776049007663" y="149" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >7</text>
+  <text x="394.6776049007663" y="166" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >card testing</text>
+  <text x="30" y="206" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >GPT-2 small, 2019</text>
+  <rect x="330" y="190" width="266" height="22" fill="#AF1F25" fill-opacity=".85"/>
+  <text x="606.33502053603" y="207" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >124 million</text>
+  <text x="606.33502053603" y="224" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >small enough to train yourself</text>
+  <text x="30" y="264" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >gpt-oss-20b, 2025</text>
+  <rect x="330" y="248" width="331" height="22" fill="#AF1F25" fill-opacity=".85"/>
+  <text x="671.4178679792149" y="265" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >21 billion</text>
+  <text x="671.4178679792149" y="282" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >fits in 16 GB of memory</text>
+  <text x="30" y="322" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >gpt-oss-120b, 2025</text>
+  <rect x="330" y="306" width="353" height="22" fill="#AF1F25" fill-opacity=".85"/>
+  <text x="693.2007468149043" y="323" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >117 billion</text>
+  <text x="693.2007468149043" y="340" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >fits on one 80 GB GPU</text>
+  <line x1="30" y1="370" x2="930" y2="370" stroke="#e6e2d8"/>
+  <text x="30" y="396" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >Every bar is the same arithmetic — multiply, add, squash — and the same training loop.</text>
+</svg>

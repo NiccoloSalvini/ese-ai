@@ -74,144 +74,170 @@ print("Running in Colab:", IN_COLAB)
 md("""
 **Make it yours:** `File ▸ Save a copy in Drive`. From now on you work on your copy.
 
-**At home, once** (ten minutes, see the Setup page on the course site): create a private GitHub repository `ese-ai-fintech`, add the tutor as a collaborator, and from then on use `File ▸ Save a copy in GitHub`, path `week-NN/…`. The commit history is your evidence of work. Homework goes in `week-01/hw/`.
+**Once:** in Google Drive, create a folder `ese-ai-fintech`, share it with the tutor, and save every notebook and homework there, one sub-folder per week.
 
 **API key** (optional today, needed from week 4): create a free key at Google AI Studio, then in Colab open the 🔑 *Secrets* panel on the left, add `GEMINI_API_KEY`, and enable notebook access. Never paste a key into a cell.
 """),
 md("## Today — from one neuron to an LLM"),
 md("""
-### 1. One neuron
+One question from start to finish: **is this card payment fraud?** Each section adds one piece. The numbers are the same as on the slides.
 
-**Bet first.** A card payment: large, made abroad, from a new device. Three numbers in, one number out. Write down what you would do with each number before adding them up.
+### 1. Four past payments
 """),
 code("""
-import math
+import math, numpy as np, pandas as pd, matplotlib.pyplot as plt
 
-x = {"log amount (scaled)": 1.2, "paid abroad": 1, "new device": 1}   # the inputs
-w = {"log amount (scaled)": 0.6, "paid abroad": 1.1, "new device": 1.4}   # the weights: what it learns
-b = -2.0                                                                  # the bias
-
-z = sum(x[k] * w[k] for k in x) + b        # multiply, add
-p = 1 / (1 + math.exp(-z))                 # squash to 0-1 (sigmoid)
-print(f"sum = {z:.2f}   ->   chance of fraud = {p:.2f}")
+payments = pd.DataFrame({
+    "large":  [0, 1, 0, 1],      # over EUR 1,000?
+    "abroad": [0, 0, 1, 1],      # paid abroad?
+    "fraud":  [0, 0, 0, 1],
+}, index=["A", "B", "C", "D"])
+payments
 """),
 md("""
-**Try:** set `paid abroad` to 0. Then make `new device` weigh 3.0. What moves, and by how much?
-"""),
-md("### 2. The squash: activation functions"),
-code("""
-import numpy as np, matplotlib.pyplot as plt
+### 2. A first guess, as one neuron
 
-z = np.linspace(-4, 4, 200)
-fig, ax = plt.subplots(1, 3, figsize=(11, 3))
-for a, (name, f) in zip(ax, [("sigmoid", 1/(1+np.exp(-z))), ("tanh", np.tanh(z)), ("ReLU", np.maximum(0, z))]):
-    a.plot(z, f, lw=3); a.set_title(name); a.axhline(0, c="grey", lw=.5); a.axvline(0, c="grey", lw=.5)
-plt.tight_layout(); plt.show()
+**Bet first:** weight 1 on `large`, 0 on `abroad`, bias −1, block if the score is above 0. Which payments does it block?
+"""),
+code("""
+w_large, w_abroad, bias = 1.0, 0.0, -1.0
+
+payments["score"] = w_large * payments.large + w_abroad * payments.abroad + bias
+payments["block"] = (payments.score > 0).astype(int)
+payments
 """),
 md("""
-### 3. Training it by hand: the perceptron learns AND
+### 3. Learning from mistakes, by hand (the perceptron)
 
-Output 1 only when both inputs are 1. Start from weights `(0.3, -0.1)`, learning rate `0.1`, threshold `0.25`.
-The rule: **wrong → move each weight a little towards the right answer; right → leave it.**
+Wrong → move each weight a little towards the right answer. Right → leave it. The learning rate `eta` is how big each move is.
 """),
 code("""
-X = [(0, 0), (0, 1), (1, 0), (1, 1)]
-Y = [0, 0, 0, 1]
-w1, w2, eta, theta = 0.3, -0.1, 0.1, 0.25
+w_large, w_abroad, bias, eta = 1.0, 0.0, -1.0, 0.5
 
-for epoch in range(1, 10):
+for rnd in range(1, 6):
     mistakes = 0
-    for (x1, x2), y in zip(X, Y):
-        guess = 1 if w1*x1 + w2*x2 >= theta else 0      # 1. guess
-        error = y - guess                               # 2. how wrong?
-        if error:                                       # 3. who is to blame: the inputs that were on
-            w1 += eta * error * x1                      # 4. nudge
-            w2 += eta * error * x2
+    for name, row in payments.iterrows():
+        score = w_large * row.large + w_abroad * row.abroad + bias
+        decision = 1 if score > 0 else 0
+        error = row.fraud - decision                  # +1 missed fraud, -1 false alarm, 0 right
+        if error:
+            w_large  += eta * error * row.large
+            w_abroad += eta * error * row.abroad
+            bias     += eta * error
             mistakes += 1
-    print(f"epoch {epoch}: {mistakes} mistakes   w = ({w1:.1f}, {w2:.1f})")
+            print(f"round {rnd}  {name}: score {score:+.1f} -> {'block' if decision else 'no block'}  WRONG  "
+                  f"-> weights ({w_large:g}, {w_abroad:g}, {bias:g})")
     if mistakes == 0:
+        print(f"round {rnd}: no mistakes. Learned weights: ({w_large:g}, {w_abroad:g}, {bias:g})")
         break
 """),
 md("""
-### 4. The same loop, with a smooth nudge: gradient descent
+### 4. Yes or no is not enough: the sigmoid
 
-200 synthetic payments. One neuron. Watch the loss fall as the weights are nudged downhill, step after step.
-The step that works out *how much each weight is to blame* is called **backpropagation**.
+Same weights, but instead of a step we squash the score into a probability.
 """),
 code("""
-rng = np.random.default_rng(1)
-n = 200
-Xp = np.column_stack([rng.normal(0, 1, n), rng.integers(0, 2, n), rng.integers(0, 2, n)])   # amount, abroad, new device
-true_w, true_b = np.array([0.8, 1.2, 1.6]), -2.0
-yp = (rng.random(n) < 1/(1+np.exp(-(Xp @ true_w + true_b)))).astype(float)
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
 
-W, B, lr = np.zeros(3), 0.0, 0.5
-for step in range(301):
-    p = 1/(1+np.exp(-(Xp @ W + B)))                                   # 1. guess
-    loss = -np.mean(yp*np.log(p+1e-9) + (1-yp)*np.log(1-p+1e-9))      # 2. how wrong?
-    gW, gB = Xp.T @ (p - yp) / n, np.mean(p - yp)                     # 3. who is to blame (the gradient)
-    W, B = W - lr*gW, B - lr*gB                                       # 4. nudge
-    if step % 50 == 0:
-        print(f"step {step:3d}   loss {loss:.3f}   weights {np.round(W, 2)}   bias {B:.2f}")
-print("the weights that generated the data:", true_w, true_b)
+payments["score"] = w_large * payments.large + w_abroad * payments.abroad + bias
+payments["p_fraud"] = sigmoid(payments.score).round(2)
+payments[["large", "abroad", "fraud", "score", "p_fraud"]]
 """),
 md("""
-**🔍 CHECK.** The learned weights are close to the true ones but not equal. Why not? (Hint: 200 payments.)
+**🔍 CHECK.** B sits exactly on the line. What probability does it get, and why is that more honest than "don't block"?
 
-An LLM runs exactly this loop. The inputs are tokens, the right answer is the next token, and there are billions of weights instead of four.
+### 5. How wrong, as one number: the loss
+"""),
+code("""
+def loss(p, y):
+    return -math.log(p) if y == 1 else -math.log(1 - p)
+
+for name in ["D", "B"]:
+    p, y = sigmoid(payments.loc[name, "score"]), payments.loc[name, "fraud"]
+    print(f"{name}: p(fraud) = {p:.2f}, fraud = {y}  ->  loss = {loss(p, y):.2f}")
 """),
 md("""
-### 5. What the model reads: tokens
+### 6. The formula for every weight
 
-**Bet first:** `"Il margine è insostenibile"` — four words. How many tokens?
+`w <- w - eta * (p - y) * x`. One step on payment D, with `eta = 1`.
+"""),
+code("""
+x = {"large": 1, "abroad": 1, "bias": 1}                  # payment D (the bias always sees a 1)
+w = {"large": float(w_large), "abroad": float(w_abroad), "bias": float(bias)}
+y, eta = 1, 1.0
+
+p = sigmoid(sum(w[k] * x[k] for k in w))
+blame = {k: (p - y) * x[k] for k in w}                     # what backpropagation computes
+w_new = {k: w[k] - eta * blame[k] for k in w}
+p_new = sigmoid(sum(w_new[k] * x[k] for k in w))
+
+print("before ", {k: round(float(v), 2) for k, v in w.items()}, f"  p(fraud) for D = {p:.2f}")
+print("blame  ", {k: round(float(v), 2) for k, v in blame.items()})
+print("after  ", {k: round(float(v), 2) for k, v in w_new.items()}, f"  p(fraud) for D = {p_new:.2f}")
+"""),
+md("""
+### 7. The learning rate
+
+Real data is messier. Add payment E: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.
+"""),
+code("""
+X = np.array([[0, 0], [1, 0], [0, 1], [1, 1], [1, 1]])    # A B C D E
+Y = np.array([0, 0, 0, 1, 0])
+
+def train(eta, steps=30, w=(1.0, 0.5), b=-1.0):
+    w, b, hist = np.array(w, float), b, []
+    for _ in range(steps):
+        p = np.clip(sigmoid(X @ w + b), 1e-12, 1 - 1e-12)
+        hist.append(-np.mean(Y * np.log(p) + (1 - Y) * np.log(1 - p)))    # how wrong
+        w, b = w - eta * X.T @ (p - Y) / len(Y), b - eta * np.mean(p - Y)  # nudge
+    return hist
+
+for eta in (0.3, 3, 20):
+    plt.plot(train(eta), label=f"eta = {eta}", lw=2)
+plt.xlabel("training steps"); plt.ylabel("loss"); plt.ylim(0, 2.6); plt.legend(); plt.show()
+"""),
+md("""
+**Try:** `eta = 8`. Does it settle, or keep jumping?
+
+### 8. A pattern one neuron cannot draw: card testing
+
+A fraudster tries the card with €10, then spends €2,000. Fraud sits at both ends of the amount. Two hidden neurons each answer one question; the output combines them.
+"""),
+code("""
+amount = np.linspace(0, 3, 300)                             # thousands of euros
+small  = sigmoid(-10 * amount + 2)                          # hidden neuron 1: "small?"
+large  = sigmoid( 10 * amount - 19)                         # hidden neuron 2: "large?"
+fraud  = sigmoid(8 * small + 8 * large - 4)                 # output: "small OR large"
+
+fig, ax = plt.subplots(3, 1, figsize=(9, 6), sharex=True)
+for a, (name, curve) in zip(ax, [("small?", small), ("large?", large), ("fraud?", fraud)]):
+    a.plot(amount, curve, lw=2); a.set_ylabel(name); a.set_ylim(-0.05, 1.05)
+ax[-1].set_xlabel("amount, thousands of euros"); plt.show()
+print("parameters: 2 x 2 in the hidden layer + 3 in the output =", 2 * 2 + 3)
+"""),
+md("""
+**Try:** change `-19` to `-10`. What does the network now call fraud?
+
+### 9. What the model reads: tokens
+
+The same machine, with one difference: the input is text, cut into pieces called tokens.
 """),
 code("""
 import tiktoken
 enc = tiktoken.get_encoding("o200k_base")
-for s in ["Il margine è insostenibile",
-          "The margin is unsustainable",
-          "Маржа неустойчива",
-          "1,234,567.89",
-          "egg Egg  egg EGG"]:
+for s in ["Il margine è insostenibile", "The margin is unsustainable", "Маржа неустойчива"]:
     t = enc.encode(s)
     print(f"{len(t):2d} tokens | {s:30s} | {[enc.decode([i]) for i in t]}")
 """),
 md("""
-**Your turn:** your surname, a company you worked for, a sentence in Russian. Which one splits the most?
-
-### 6. How a tokenizer is learned: merge the most frequent pair
-"""),
-code("""
-from collections import Counter
-
-seq, new_symbols = list("aaabdaaabac"), iter("ZYXWV")
-print("start:", "".join(seq))
-while True:
-    pairs = Counter(zip(seq, seq[1:]))
-    (a, b), count = pairs.most_common(1)[0]
-    if count < 2:
-        break
-    s = next(new_symbols)
-    out, i = [], 0
-    while i < len(seq):
-        if i < len(seq) - 1 and (seq[i], seq[i+1]) == (a, b):
-            out.append(s); i += 2
-        else:
-            out.append(seq[i]); i += 1
-    seq = out
-    print(f"{s} = {a}{b}:  {''.join(seq)}")
-print(f"11 symbols -> {len(seq)}")
-"""),
-md("""
-Next week you train one of these on your own texts.
-
 ### Before you leave: three lines, in your words
 
 1. …
 2. …
 3. …
 
-Then `File ▸ Save a copy in Drive` (and, once your repository exists, in GitHub).
+Then `File ▸ Save a copy in Drive`, into your `ese-ai-fintech` folder.
 """),
 md("""
 ---

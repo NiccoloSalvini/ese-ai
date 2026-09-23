@@ -1,12 +1,12 @@
 # Homework 1 — Your starting point
-**Due: Tuesday 29 September 2026, 23:59 · folder `week-01/hw/` in your repo**
+**Due: Tuesday 29 September 2026, 23:59 · folder `week-01/` in your shared Drive folder `ese-ai-fintech`**
 
 ## Goal
 Write down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course's words into your own language.
 
 This is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.
 
-## Deliverables (in `week-01/hw/`)
+## Deliverables (in `week-01/`)
 1. `README.md` — **Starting point** (400–600 words), four short sections:
    - **Background.** Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.
    - **What I want to be able to do in December** that I cannot do today. Concrete verbs, not topics ("price a pilot's inference cost", not "learn about LLMs").
@@ -25,14 +25,13 @@ This is a lighter week on purpose. The three-asset notebook we would have starte
 ## Constraints
 - Use an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.
 - The README and the glossary are in **your** words. An assistant may correct the English; it may not write the content.
-- Commit at least twice (the history is part of the work).
 
 ## Scope
-3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.
+3–4 hours. If you are past 4 hours, stop, save what you have, and write down where you got stuck.
 
 ## Self-check before submitting
-- [ ] Repository `ese-ai-fintech` exists, is private, and I am a collaborator (follow the [Setup](../setup.qmd) page — ten minutes).
-- [ ] `week-01/session.ipynb` is saved there from Colab.
+- [ ] Drive folder `ese-ai-fintech` exists and is shared with me (see [Setup](../setup.qmd)).
+- [ ] Today's notebook is saved there, in `week-01/`.
 - [ ] `tokens.ipynb` runs with `Runtime ▸ Restart and run all`.
 - [ ] The question in the README names a user and a decision.
 - [ ] Three of the ten glossary terms are from Crypto and DeFi.

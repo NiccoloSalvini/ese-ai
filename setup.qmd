@@ -3,35 +3,23 @@ title: "Setup"
 subtitle: "Everything runs in the browser. Do this before session 1."
 ---
 
-Nothing is installed on your laptop. You need three accounts and one key. Bring the laptop to session 1 with the first three items done; we finish the rest together in the first twenty minutes.
+Nothing is installed on your laptop. You need a Google account, a chat assistant, and — from week 4 — one key.
 
 ## 1. Google account and Colab
 
 [Google Colab](https://colab.research.google.com/) is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.
 
-- Open [this notebook](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-01/session.ipynb) and press `Runtime ▸ Run all`. If the first cells run, Colab works.
-- `Runtime ▸ Restart and run all` is the self-check you will use before every submission: a notebook that runs top to bottom from a clean runtime, with no errors.
+Every session notebook opens from the course site with the *Colab ↗* link. Then `File ▸ Save a copy in Drive`: from that moment the copy is yours.
 
-## 2. GitHub account and your course repository
+## 2. Your course folder
 
-[GitHub](https://github.com/) holds your homework and, by the end, your capstone. It is the single source of truth for assessment.
+1. In Google Drive, create a folder named `ese-ai-fintech` and share it with the tutor.
+2. One sub-folder per week: `week-01/`, `week-02/`, …, and later `capstone/`.
+3. Your session notebooks and your homework go there. That folder is what gets read and assessed.
 
-1. Create a GitHub account if you do not have one.
-2. Create a **private** repository named `ese-ai-fintech`.
-3. Add the tutor (`NiccoloSalvini`) as a collaborator: `Settings ▸ Collaborators ▸ Add people`.
-4. Folder convention, one per week: `week-01/hw/`, `week-02/hw/`, …, `capstone/`.
+Before handing anything in: `Runtime ▸ Restart and run all`. A notebook that runs top to bottom from a clean start, with no errors, is the minimum.
 
-Commit often. The history is part of the work: I read it.
-
-## 3. Saving a Colab notebook to GitHub
-
-Each session notebook opens from this site with the *Colab ↗* link. Save your own copy once, then keep working on it:
-
-1. In Colab, `File ▸ Save a copy in GitHub`.
-2. Repository: `ese-ai-fintech`. File path: `week-01/session.ipynb` (change the week as you go).
-3. The first time, Colab asks you to authorise GitHub and to tick *Include private repos* under `File ▸ Open notebook ▸ GitHub`.
-
-## 4. An LLM API key — from week 4
+## 3. An LLM API key — from week 4
 
 From session 4 the notebooks call a language model from Python. The default is the **Google AI Studio** free tier, with OpenAI-compatible code so it ports to other providers.
 
@@ -41,7 +29,7 @@ From session 4 the notebooks call a language model from Python. The default is t
 
 An OpenAI or Anthropic key is optional, for comparison in weeks 4–5.
 
-## 5. A chat assistant
+## 4. A chat assistant
 
 Pick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.
 

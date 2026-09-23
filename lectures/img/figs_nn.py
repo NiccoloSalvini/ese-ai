@@ -101,7 +101,7 @@ def journey():
           f'  <text x="30" y="432" font-size="14" fill="{MUTED}">token ids and probabilities are illustrative; the shape of the pipeline is not</text>']
     svg("token-journey.svg", 960, 445, b, "follow one prediction through the machine")
 
-z, p = neuron(); small = scale(); journey()
+journey()
 print(f"neuron z={z:.2f} p={p:.2f}; small network weights={small}")
 
 # ------------------------------------------------------------------ activation functions
@@ -185,4 +185,3 @@ def loop():
           f'  <text x="480" y="340" font-size="14" text-anchor="middle" fill="{INK}">step 3 has a name: <tspan font-weight="700" fill="{NAVY}">backpropagation</tspan></text>']
     svg("training-loop.svg", 960, 355, b, "how every neural network learns, from four weights to a hundred billion")
 
-loop()
