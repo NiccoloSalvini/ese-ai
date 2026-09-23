@@ -13,10 +13,9 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 | **10:25** | what this course is for |
 | **10:43** | open your notebook |
 | **10:50** | break |
-| **11:00** | from one neuron to an LLM |
-| **11:30** | what the model reads |
-| **11:40** | a real model release, taken apart, word by word |
-| **11:55** | close |
+| **11:00** | a real model release — and the neuron that explains it |
+| **11:35** | what the model reads: tokens, attention, the box |
+| **11:50** | back to the release · close |
 
 ## [Part 1]{.section-kicker} Two people, one room {.section-slide background-color="#AF1F25"}
 
@@ -121,6 +120,19 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 ## [Part 3]{.section-kicker} From one neuron to an LLM {.section-slide background-color="#AF1F25"}
 
+## OpenAI, gpt-oss, August 2025
+
+::: {style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef"}
+"Each model is a **Transformer** which leverages **mixture-of-experts** to reduce the number of **active parameters** needed to process input. gpt-oss-120b activates **5.1B parameters per token** … The models have **117b** and 21b **total parameters** …
+
+We **tokenized** the data using … **o200k_harmony** … The models were **post-trained** … including a **supervised fine-tuning** stage and a high-compute **RL** stage. … The weights … are freely available … and come natively **quantized** in MXFP4. This allows for the gpt-oss-120B model to run within **80GB of memory** … Available under the flexible **Apache 2.0** license."
+
+[Spec table: **context length 128k**.]{style="color:#7a7f85"}
+:::
+
+**Circle every word you can explain today. By 11:55 you will circle them all.**
+
+
 ## Three ways to write the same decision
 
 ::: {.r-stack}
@@ -135,6 +147,8 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 ![](img/software-123-l4.svg){.fragment width="100%"}
 :::
 
+[**1.0** you write the rule yourself. **2.0** you give examples and the machine learns the rule — as numbers called weights. **3.0** you give an instruction in plain English to a model that has already learned from huge amounts of text. 2.0 and 3.0 are built from the same thing: neurons.]{.explain}
+
 ## One neuron
 
 ::: {.callout-important title="Bet"}
@@ -143,31 +157,45 @@ Large payment, abroad, new device. What do you do with each number before adding
 
 . . .
 
-![](img/neuron.svg){fig-align="center" width="95%"}
+![](img/neuron.svg){fig-align="center" width="70%"}
+
+[Each input is multiplied by a **weight** (how much it matters), the results are added up with a **bias** (how easily it fires), and the sum is squashed between 0 and 1. The weights are the only thing it learns. With this squash, one neuron is exactly a logistic regression.]{.explain}
 
 ## The squash: the activation function
 
-![](img/activations.svg){fig-align="center" width="90%"}
+![](img/activations.svg){fig-align="center" width="68%"}
+
+[After adding up, a neuron passes the sum through a curve. **Sigmoid** turns it into a probability; **tanh** into −1…1; **ReLU** keeps positives and zeroes negatives. Without this bend, stacking a thousand neurons still gives a straight line.]{.explain}
 
 ## Training it by hand {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_PerceptronByHand_poster.png"><source src="media/nn_PerceptronByHand.mp4" type="video/mp4"></video>
 
+[Four examples, one rule. Wrong answer → move each weight a little towards the right answer. Right answer → leave it alone. Repeat until nothing changes: the neuron has learned AND.]{.explain}
+
 ## How every network learns
 
-![](img/training-loop.svg){fig-align="center" width="95%"}
+![](img/training-loop.svg){fig-align="center" width="70%"}
+
+[The **loss** is one number that says how wrong the network is. **Backpropagation** works out, for every weight, whether nudging it up or down would lower the loss. Then every weight moves a little. That loop, repeated, is all of training.]{.explain}
 
 ## Downhill {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_GradientDescent_poster.png"><source src="media/nn_GradientDescent.mp4" type="video/mp4"></video>
 
+[Picture the loss as a landscape and the weights as your position. Training walks downhill. Step too big and you overshoot the valley; too small and it takes forever. The step size is the **learning rate**.]{.explain}
+
 ## More neurons: the line bends {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/nn_HiddenLayer_poster.png"><source src="media/nn_HiddenLayer.mp4" type="video/mp4"></video>
 
+[One neuron can only draw a straight boundary. Put several side by side in a **hidden layer** and blend them: the boundary bends to follow the data. Stack more layers and the network invents its own intermediate features.]{.explain}
+
 ## From 4 numbers to 117 billion
 
-![](img/nn-scale.svg){fig-align="center" width="95%"}
+![](img/nn-scale.svg){fig-align="center" width="70%"}
+
+[Every model on this chart is the same arithmetic — multiply, add, squash — repeated. The **parameters** are all the weights and biases. What changed from a neuron to an LLM is how many there are, and how much data they were trained on.]{.explain}
 
 ## An LLM is that network, with one job
 
@@ -193,9 +221,13 @@ the **parameters**, and a short program that runs them
 :::
 ::::
 
+[The only thing an LLM is trained to do is predict the next piece of text. To do that well across the whole internet it has to absorb grammar, facts and patterns of reasoning. Answering questions comes later, in post-training.]{.explain}
+
 ## Pre-training is compressing the internet
 
-![](img/compress-internet.svg){fig-align="center" width="95%"}
+![](img/compress-internet.svg){fig-align="center" width="70%"}
+
+[Training squeezes terabytes of text into a file of parameters about 70 times smaller. Like a lossy zip: the gist survives, exact facts do not always. That is one reason a model can sound right and be wrong.]{.explain}
 
 ## The same nudge, trillions of times
 
@@ -207,9 +239,31 @@ the **parameters**, and a short program that runs them
 | "steady" | 4% | 3.8% |
 | "at" | 2% | 1.9% |
 
+[Take a window of text from the training data; the next token is known because it is in the text. Nudge the weights so that token becomes slightly more likely and the others slightly less. Repeat for every token of the training set.]{.explain}
+
 ## One prediction, end to end
 
-![](img/token-journey.svg){fig-align="center" width="95%"}
+![](img/token-journey.svg){fig-align="center" width="70%"}
+
+[Text → tokens → numbers. Each token becomes a long vector, which goes through the same block many times: **attention** (tokens look at each other) and **neurons** (each token is processed). At the end, a probability for every token in the vocabulary; one is picked, appended, and the whole thing runs again.]{.explain}
+
+## Every word, taken apart — with our small network
+
+| in the release | in terms of the network we just built |
+|---|---|
+| **Transformer** | our neurons, plus attention, stacked in 36 layers |
+| **117B total parameters** | our neuron had 4 weights; this has 117 billion |
+| **mixture-of-experts** | 128 smaller networks inside; a router picks 4 for each token |
+| **5.1B active per token** | only those 4 run, so it costs like a 5-billion model |
+| **tokenized, o200k_harmony** | how text becomes numbers before the first neuron |
+| **post-trained** | more rounds of the same training loop, on new data |
+| **supervised fine-tuning** | the loop, where the right answers are good conversations |
+| **RL** | the loop, where the "right answer" is a reward score |
+| **context length 128k** | how many tokens go in at once — a few hundred pages |
+| **quantized, MXFP4, 80GB** | each weight stored in ~4 bits instead of 16: fits on one GPU |
+| **open-weight, Apache 2.0** | you download the weights themselves, and may use them commercially |
+
+[Nothing in this list is magic. Every line is a neuron, a weight, the training loop, or a way of making them cheaper to run.]{.explain}
 
 ## [Part 4]{.section-kicker} What the model reads {.section-slide background-color="#AF1F25"}
 
@@ -221,43 +275,13 @@ the **parameters**, and a short program that runs them
 
 . . .
 
-![](img/tokens-pipeline.svg){fig-align="center" width="95%"}
+![](img/tokens-pipeline.svg){fig-align="center" width="70%"}
 
-## Why pieces, and not letters?
-
-| the same 5,000 characters, as | length | alphabet |
-|---|---|---|
-| bits | 40,000 | 2 |
-| bytes | 5,000 | 256 |
-| tokens | **~1,300** | **~100,000** |
-
-## How a tokenizer is learned
-
-Merge the most frequent pair. Repeat.
-
-| step | text | new symbol |
-|---|---|---|
-| start | `aaabdaaabac` | |
-| 1 | `ZabdZabac` | Z = aa |
-| 2 | `YbdYbac` | Y = Za |
-| 3 | `XdXac` | X = Yb |
-
-. . .
-
-11 symbols → 5. Train it on English, and it learns English pieces.
+[Before the network sees anything, a **tokenizer** cuts the text into pieces and turns each piece into a number. You are billed, and limited, in these pieces — not in words.]{.explain}
 
 ## The same sentence, twice {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_tokens_poster.png"><source src="media/w01_tokens.mp4" type="video/mp4"></video>
-
-## Much of the weirdness is tokenization
-
-| it struggles with | because |
-|---|---|
-| spelling a word backwards | the word is one token, not letters |
-| Russian, Italian | more, smaller pieces |
-| arithmetic | `1,234,567.89` is 7 arbitrary pieces |
-| `egg` · `Egg` · `EGG` | the same word, different pieces |
 
 ## How the tokens talk to each other: **attention**
 
@@ -267,43 +291,21 @@ Merge the most frequent pair. Repeat.
 
 . . .
 
-![](img/attention.svg){fig-align="center" width="95%"}
+![](img/attention.svg){fig-align="center" width="70%"}
 
 [Vaswani et al., *Attention Is All You Need*, 2017 — the paper behind every model since.]{.muted}
 
+[To process each token, the model looks at every other token in the context and decides how much each one matters — here, most of the weight goes to "bank". Every token does this with every other one, which is why long contexts get expensive.]{.explain}
+
 ## Everything it knows, every time
 
-![](img/context-window.svg){fig-align="center" width="95%"}
+![](img/context-window.svg){fig-align="center" width="70%"}
 
-## [Part 5]{.section-kicker} A real release, taken apart {.section-slide background-color="#AF1F25"}
+[The **context window** is everything the model sees in one call: instructions, conversation so far, documents, its own answer. Nothing else exists for it. It has no memory between calls — any "memory" is text re-sent by the application.]{.explain}
 
-## OpenAI, gpt-oss, August 2025
+## Back to the release {.statement}
 
-::: {style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef"}
-"Each model is a **Transformer** which leverages **mixture-of-experts** to reduce the number of **active parameters** needed to process input. gpt-oss-120b activates **5.1B parameters per token** … The models have **117b** and 21b **total parameters** …
-
-We **tokenized** the data using … **o200k_harmony** … The models were **post-trained** … including a **supervised fine-tuning** stage and a high-compute **RL** stage. … The weights … are freely available … and come natively **quantized** in MXFP4. This allows for the gpt-oss-120B model to run within **80GB of memory** … Available under the flexible **Apache 2.0** license."
-
-[Spec table: **context length 128k**.]{style="color:#7a7f85"}
-:::
-
-**Circle every word you can now explain.**
-
-## Every word, taken apart
-
-| in the release | what it is |
-|---|---|
-| **Transformer** | attention + neurons, stacked — the block you just saw |
-| **117B total parameters** | the numbers learned in training |
-| **mixture-of-experts** | many specialist sub-networks; only a few run per token |
-| **5.1B active per token** | the cost of a small model, the capacity of a big one |
-| **tokenized, o200k_harmony** | the ~200,000-piece vocabulary |
-| **post-trained** | base model → assistant |
-| **supervised fine-tuning** | trained on example conversations |
-| **RL** | reinforcement learning: rewarded for good answers |
-| **context length 128k** | the size of the box |
-| **quantized, MXFP4, 80GB** | each number stored in 4 bits — fits on one GPU |
-| **open-weight, Apache 2.0** | download it, run it on your own servers, use it commercially |
+[Read it again. Which words are still dark?]{.muted}
 
 ## Close
 
@@ -346,3 +348,42 @@ A pool holds **10 ETH** and **30,000 USDC** — 3,000 per ETH on screen. You buy
 **ETH × USDC stays constant:** 10 × 30,000 = 300,000.
 
 9 ETH left → 300,000 ÷ 9 = 33,333 USDC → you paid **3,333**, 11% above the screen.
+
+## Why pieces, and not letters?
+
+| the same 5,000 characters, as | length | alphabet |
+|---|---|---|
+| bits | 40,000 | 2 |
+| bytes | 5,000 | 256 |
+| tokens | **~1,300** | **~100,000** |
+
+[The network reads a sequence, and longer sequences cost more to process. Letters would make every text very long; whole words would need an impossible vocabulary. Pieces are the compromise: about 1,300 of them for 5,000 characters.]{.explain}
+
+## How a tokenizer is learned
+
+Merge the most frequent pair. Repeat.
+
+| step | text | new symbol |
+|---|---|---|
+| start | `aaabdaaabac` | |
+| 1 | `ZabdZabac` | Z = aa |
+| 2 | `YbdYbac` | Y = Za |
+| 3 | `XdXac` | X = Yb |
+
+. . .
+
+11 symbols → 5. Train it on English, and it learns English pieces.
+
+[This is **byte-pair encoding**: find the pair of symbols that appears most often, give it a new name, repeat. On English text the frequent pairs are English, so English ends up with long pieces and other languages with short ones — more pieces, higher cost.]{.explain}
+
+## Much of the weirdness is tokenization
+
+| it struggles with | because |
+|---|---|
+| spelling a word backwards | the word is one token, not letters |
+| Russian, Italian | more, smaller pieces |
+| arithmetic | `1,234,567.89` is 7 arbitrary pieces |
+| `egg` · `Egg` · `EGG` | the same word, different pieces |
+
+[Many failures that look like stupidity come from the model seeing pieces, not letters or digits. When an answer involves spelling, counting characters or arithmetic, check it yourself.]{.explain}
+

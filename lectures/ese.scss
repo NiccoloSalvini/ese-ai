@@ -108,6 +108,9 @@ $presentation-block-margin: 14px;
 .reveal .statement p { font-size: 1em; margin-top: 0.3em; }
 
 .red { color: $red; } .muted { color: $muted; } .gold { color: $golddk; }
+// ---- .explain: the plain-language explanation under a figure (week 1 onwards)
+.reveal .explain { display: block; font-size: 0.6em; line-height: 1.4; color: $ink; margin-top: 0.4em; border-left: 3px solid $gold; padding-left: 0.7em; }
+.reveal .clip .explain { color: rgba(255,255,255,.9); border-left-color: $gold; font-size: 1.35em; max-width: 1000px; margin: 0.5em auto 0; }
 
 // ---- Emphasis on dark frames ----
 // $red on $navy is 1.6:1 and $red on $red is invisible. On any dark frame the
@@ -129,7 +132,7 @@ $presentation-block-margin: 14px;
 // The stack is a CSS grid whose children all sit in cell 1/1. Without an explicit
 // width the track sizes itself from the images and a percentage width has nothing
 // stable to resolve against, so the figure renders small.
-.reveal .r-stack { width: 100%; }
+.reveal .r-stack { width: 84%; margin: 0 auto; }
 .reveal .r-stack > p { width: 100%; margin: 0; }
 .reveal .r-stack img { width: 100%; height: auto; max-height: none; }
 
