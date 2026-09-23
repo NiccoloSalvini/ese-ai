@@ -5,6 +5,7 @@ project:
     - index.qmd
     - syllabus.qmd
     - setup.qmd
+    - glossary.qmd
     - "week-*/homework.md"
     - "week-*/session.ipynb"
     - "week-*/cards.md"
@@ -40,6 +41,8 @@ website:
         text: Syllabus
       - href: setup.qmd
         text: Setup
+      - href: glossary.qmd
+        text: Glossary
     right:
       - icon: github
         href: https://github.com/NiccoloSalvini/ese-ai

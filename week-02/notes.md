@@ -1,6 +1,15 @@
 # Week 2 — Data analysis with AI as pair programmer
 **Wednesday 30 September 2026, 10:00–13:00 · ESE Florence**
 
+> **Revised 23 Sep 2026.** Week 1 was slowed down, so this session now opens with two blocks
+> moved from week 1: **sampling + the verify habit** (week-01 notebook § B3, ~20') and **the
+> three-asset notebook with the two planted errors** (week-01 notebook § C, ~50'; scripts in
+> `week-01/notes.md`, blocks B3 and C). HW1 is now the "starting point" README, so the HW1 walkthrough
+> is a conversation about his capstone question, not a code review.
+> Deck order: where we are → A sampling/hallucination/verify → B four verbs + three assets + planted
+> errors → C calendars → D units → E reproducibility. **This is dense.** If behind: move "Join something
+> that is not a price" into HW2 (it already is, in effect), and do Block E in ten minutes.
+
 ## Learning objectives
 By the end of the session the student can:
 1. Perform the four core pandas operations (filter, derive, aggregate/resample, join) on real financial data with the assistant writing the code.

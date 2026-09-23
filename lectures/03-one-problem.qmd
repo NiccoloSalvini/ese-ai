@@ -9,11 +9,23 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 | | | |
 |---|---|---|
-| 1–2 | 23–30 Sep | the model, the data, the two silent errors ✓ |
+| 1–2 | 23–30 Sep | the model, the checking habit, the data, the silent errors ✓ |
 | **3** | **7 Oct** | **train something, and find out if it is any good** |
 | 4–5 | 14–21 Oct | an LLM application, then agents and evals |
 
 [Today you will build a model that scores 0.71 and is worthless, and one that scores 0.53 and is worth money. Telling them apart is the entire skill.]{.red}
+
+## Run all three, on the same transactions {.lab background-color="#2471a3"}
+
+[LAB · week-01/session.ipynb § A2 — one decision, three kinds of software]{.kicker}
+
+In week 1 you saw the 1.0 / 2.0 / 3.0 figure. Now twenty thousand card payments, one cost table:
+
+1. the rule blocks 240 of them. **Bet how much of the fraud it catches** before you run it.
+2. the model gets the **same budget** — 240 blocks, no more — and only chooses differently.
+3. then the fraud that is in the *words* and in neither of the first two.
+
+[Then the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged.]{.red}
 
 ## Three words, and the whole of supervised learning
 
@@ -38,6 +50,8 @@ You predict whether tomorrow is an up day. Your model gets **54%**. Good, bad, o
 **Unknowable.** If 54% of days are up days, predicting "up" every time also scores 54%, and it took no data and no model.
 
 The **base rate** is the number to beat. A model that does not beat it is a cost with a dashboard.
+
+[Which closes the third claim from week 1 — *"99.2% accuracy"*. On whose test set, of what size, against what base rate? Without those three, the number means nothing.]{.red}
 
 ## Two models, two splits {.lab background-color="#2471a3"}
 

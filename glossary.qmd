@@ -1,0 +1,127 @@
+---
+title: "Glossary"
+subtitle: "The words this course runs on, one line each, with the week where each one becomes a number you compute."
+toc: true
+toc-depth: 2
+---
+
+You will not learn these from this page. You will learn each one the first time it costs you a wrong number. This page is for when you forget which week that was.
+
+The **Wk** column says where the term is introduced properly.
+
+## Language models
+
+| Term | In one line | Wk |
+|---|---|---|
+| **LLM** (large language model) | A model trained to predict the next piece of text, given all the text before it. Everything else it does is built on that one operation. | 1 |
+| **Token** | The unit a model reads and writes: a chunk of characters, often part of a word. You are billed, limited and measured in tokens, not words. | 1 |
+| **Tokenizer** | The component that cuts text into tokens. It is trained on a corpus, so text unlike that corpus (other languages, numbers, new names) cuts into more pieces. | 1 |
+| **Context window** | Everything the model can see in one call: instructions, history, documents, and its own answer so far. Nothing outside it exists for the model. | 1 |
+| **Weights** | The numbers learned in training. They are frozen when you call the model; nothing you type changes them. | 1 |
+| **Prompt** | The text you send. In production it is code: versioned, tested, and stored next to what it produced. | 1–4 |
+| **Temperature** | How strictly the model follows its own probabilities when choosing the next token. `T = 0` for extraction and anything auditable; higher for ideas. | 2 |
+| **Hallucination** | A fluent output that is not supported by anything in the context — the model producing the shape of an answer where the facts are missing. | 2 |
+| **Embedding** | A list of numbers representing a piece of text, arranged so that similar meanings are close together. Turns "similar" into a distance. | 4 |
+| **RAG** (retrieval-augmented generation) | Find the relevant passages in your documents first, put them in the context, then ask the model to answer from them — and cite them. | 4 |
+| **Structured output** | Forcing the answer into a fixed shape (e.g. JSON with named fields). Guarantees the type, not the truth. | 4 |
+| **Fine-tuning** | Further training of a model on your examples. Changes style and format well; is a poor way to add facts you will need to update or cite. | 1, 4 |
+| **Tool call** | The model emits a structured request ("call `get_price('BTC')`"); your code runs it and returns the result into the context. | 5 |
+| **Agent** | A model calling tools in a loop until it decides it is done. Every agent failure is a failure of that loop. | 5 |
+| **Prompt injection** | Instructions hidden inside a document or web page that the model reads and then obeys. | 5, 9 |
+| **Eval** (evaluation) | A fixed set of questions with known answers, run on every change, so "it seems better" becomes a number. | 5 |
+| **LLM-as-judge** | Using one model to grade another's answers. Useful and cheap; biased, so it is itself checked against human grades. | 5 |
+| **Software 1.0 / 2.0 / 3.0** | The same decision written as a rule, as a model fitted to data, or as an instruction in plain language. Knowing which one a problem needs is most of the job. | 1, 3 |
+
+: {tbl-colwidths="[24,68,8]"}
+
+## Data and analysis
+
+| Term | In one line | Wk |
+|---|---|---|
+| **Notebook** | A document mixing code, its output and prose, run cell by cell. Ours run in Google Colab. | 1 |
+| **DataFrame** | A table in Python (`pandas`), with named columns and an index — usually dates, for us. | 2 |
+| **Return** (simple) | Percentage change from one price to the next: `P_t / P_{t-1} − 1`. | 2 |
+| **Log return** | `ln(P_t / P_{t-1})`. Unlike simple returns, log returns add up over time. | 2 |
+| **Cumulative return** | Total growth over a period. With simple returns it is a **product** of `(1 + r)`, not a sum. | 2 |
+| **Volatility** (annualised) | Standard deviation of daily returns, scaled to a year by `√(trading days)`: 252 for stock markets, 365 for crypto. | 2 |
+| **Drawdown** | The fall from the highest value reached so far. **Maximum drawdown** is the worst such fall in the period. | 2 |
+| **Join** | Putting two tables side by side on a shared key (for us, the date). The choice of which rows survive is a modelling decision. | 2 |
+| **Forward-fill** (`ffill`) | Filling a missing value with the last known one. It invents data — sometimes that is the right choice, always it must be said. | 2 |
+| **Units** | What a number measures: percent or decimal, dollars or thousands. Not in the data; always your responsibility. | 2 |
+| **Snapshot** | A dated copy of the data behind a result, so the number can be reproduced when the source changes. | 2 |
+| **Reproducibility** | Someone else, on another machine, gets your number. If it needs you in the room, it is not a result yet. | 2 |
+
+: {tbl-colwidths="[24,68,8]"}
+
+## Machine learning and evaluation
+
+| Term | In one line | Wk |
+|---|---|---|
+| **Feature** | What you know at time `t`, used as input. | 3 |
+| **Target** | What happens after `t` — the thing you are trying to predict. | 3 |
+| **Horizon** | How far after `t` the target is measured. | 3 |
+| **Base rate** | How often the outcome happens anyway. Predicting "always the most common outcome" scores the base rate with no model at all. | 3 |
+| **Baseline** | The simplest reasonable alternative your model must beat — the base rate, a rule, last week's value. | 3 |
+| **Train / test split** | Fit on one part of the data, measure on another the model never saw. | 3 |
+| **Leakage** | Information from the future (or from the test set) getting into what the model learns from. Produces results that look excellent and are worthless. | 3 |
+| **Walk-forward** | Repeatedly fit on the past and test on the next period, moving forward in time. The honest split for anything with a date on it. | 3, 7 |
+| **Accuracy** | Share of predictions that were right. Meaningless without the base rate. | 3 |
+| **Precision / recall** | Of what you flagged, how much was right / of what was there, how much you flagged. You trade one for the other with the threshold. | 3 |
+| **AUC** | How well a model ranks positives above negatives, across all thresholds. 0.5 is a coin. | 3 |
+| **Threshold** | The probability above which you act. Set it from the costs of the two kinds of error, not at 0.5 by habit. | 3 |
+| **Calibration** | Whether "70% likely" happens about 70% of the time. A model can rank well and be badly calibrated. | 3 |
+| **SHAP** | A method that splits a single prediction into contributions from each feature. Explains the model, not the world. | 9 |
+
+: {tbl-colwidths="[24,68,8]"}
+
+## Markets and backtesting
+
+| Term | In one line | Wk |
+|---|---|---|
+| **Backtest** | Running a trading rule on historical data as if you had traded it. The easiest result in finance to fool yourself with. | 7 |
+| **Transaction costs** | Fees, spread and price impact paid on every trade. Many strategies that work on paper do not survive them. | 7 |
+| **Survivorship bias** | Testing only on assets that still exist today, which quietly removes the ones that failed. | 7 |
+| **Multiple testing** | Try enough strategies and one will look good by chance. The more you tried, the less the best one means. | 7 |
+| **Regime change** | The market's behaviour shifts (rates, volatility, regulation), and a pattern that held stops holding. | 7 |
+| **Sharpe ratio** | Average excess return divided by its volatility — return per unit of risk. | 7 |
+| **Model risk** | The risk of loss from a model that is wrong, or used where it was not meant to be. Banks are required to manage it. | 7 |
+
+: {tbl-colwidths="[24,68,8]"}
+
+## Crypto and DeFi
+
+| Term | In one line | Wk |
+|---|---|---|
+| **Blockchain** | A shared ledger that many independent computers keep in agreement, where past entries are very hard to change. | 8 |
+| **On-chain data** | Everything recorded on the ledger — transfers, balances, contract calls — public, and readable by anyone. | 2, 8 |
+| **Wallet / address** | An address holds assets; a wallet holds the private key that can move them. Whoever has the key has the assets. | 8 |
+| **Smart contract** | A program deployed on a blockchain that runs exactly as written when called. Including its bugs. | 8 |
+| **Gas** | The fee paid to the network to execute a transaction or a contract call. | 8 |
+| **Stablecoin** | A token designed to hold a fixed value, usually one US dollar (USDC, USDT). Only as stable as what backs it. | 8 |
+| **DeFi** (decentralised finance) | Financial services — trading, lending, borrowing — run by smart contracts instead of intermediaries. | 8 |
+| **DEX** (decentralised exchange) | An exchange run by a smart contract. Most use a liquidity pool instead of an order book. | 8 |
+| **Liquidity pool** | Two tokens deposited in a contract that anyone can trade against. | 8 |
+| **AMM** (automated market maker) | The rule that prices a pool. The classic one: `x · y = k` — the product of the two balances stays constant, so every trade moves the price. | 1, 8 |
+| **Slippage / price impact** | The difference between the quoted price and what you actually pay, because your own trade moves the price. | 1, 8 |
+| **LP** (liquidity provider) | Someone who deposits tokens into a pool and earns a share of trading fees. | 8 |
+| **Impermanent loss** | What an LP gives up, compared with simply holding the two tokens, when their relative price moves. "Impermanent" only if the price comes back. | 8 |
+| **TVL** (total value locked) | The value of assets deposited in a protocol. A size measure, not a profit measure — and easy to inflate. | 8 |
+| **Lending protocol** | A contract that lends deposited assets to borrowers who post more collateral than they borrow. | 8 |
+| **Collateral ratio / liquidation** | How much collateral backs a loan. Fall below the threshold and the protocol sells your collateral automatically. | 8 |
+| **Staking** | Locking tokens to help secure a network (or a protocol) in exchange for a yield. | 8 |
+| **Oracle** | A service that brings off-chain data (e.g. a price) onto the chain. A wrong or manipulated oracle price is a classic DeFi failure. | 8 |
+
+: {tbl-colwidths="[24,68,8]"}
+
+## Regulation and responsible use
+
+| Term | In one line | Wk |
+|---|---|---|
+| **EU AI Act** | EU regulation that classifies AI **uses** by risk — prohibited, high-risk, limited, minimal — with obligations rising accordingly. Credit scoring is high-risk. | 4 |
+| **MiCA** | EU Markets in Crypto-Assets regulation: licensing and rules for crypto-asset service providers and stablecoin issuers. | 8 |
+| **ESMA** | The EU securities markets authority; issues guidance under MiCA and on AI in investment services. | 8 |
+| **GDPR** | EU data protection law. For us: personal data does not go into an AI tool without a legal basis — in this course, not at all. | 2, 9 |
+| **Human oversight** | A named person who can understand, question and override the system's output — and actually does. | 9 |
+| **Red-teaming** | Attacking your own system on purpose to find how it fails before someone else does. | 9 |
+
+: {tbl-colwidths="[24,68,8]"}

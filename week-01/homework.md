@@ -1,31 +1,34 @@
-# Homework 1 — Three assets, one honest table
+# Homework 1 — Your starting point
 **Due: Tuesday 29 September 2026, 23:59 · folder `week-01/hw/` in your repo**
 
 ## Goal
-Reproduce, on your own, the loop we practised in class: get data with the assistant's help, compute a few numbers, chart one thing that answers a question, and document one mistake the assistant made and how you caught it.
+Write down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course's words into your own language.
+
+This is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.
 
 ## Deliverables (in `week-01/hw/`)
-1. `hw1.ipynb` — a Colab notebook that, from a clean runtime, runs top to bottom without errors and produces:
-   - daily close prices since 1 January 2022 for **three assets of your choice: one equity, one cryptocurrency, one index or ETF** (not the three used in class);
-   - a table with, per asset: annualised volatility (with the correct day-count for each), cumulative return over the period, maximum drawdown, and the date of the worst single day;
-   - **one chart that answers a question you state in a markdown cell above it** (e.g. "Did asset X recover its 2022 drawdown?"). One chart, one question.
-2. `README.md` (150–250 words) with: the question, the answer in two sentences, and a section titled **"What the assistant got wrong"** describing one concrete error (a wrong constant, a wrong formula, a misread column, a hallucinated function) and the check that exposed it. If the assistant got nothing wrong, say which checks you ran to establish that.
-3. `data/` — the CSV snapshot your notebook saved (so the numbers are reproducible even if Yahoo changes).
+1. `README.md` — **Starting point** (400–600 words), four short sections:
+   - **Background.** Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.
+   - **What I want to be able to do in December** that I cannot do today. Concrete verbs, not topics ("price a pilot's inference cost", not "learn about LLMs").
+   - **A question I would like answered with data.** From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.
+   - **How I learn best**, and one thing that would make this course a waste of your time.
+2. `tokens.ipynb` — the tokenizer cell from the session notebook (§ B1), run on **five texts of your choice**: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: *which text surprised you, and what would that mean for the cost of a real project you know?*
+3. `glossary.md` — **ten terms** from the [course glossary](../glossary.qmd), at least three from *Crypto and DeFi*. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.
 
 ## Constraints
-- Use the assistant as much as you like, but every line in the notebook must be one you can explain. I will ask.
-- Verify at least one number a second way (e.g. cumulative return from first and last price vs from the returns series) and show the check in the notebook.
+- Use an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.
+- The README and the glossary are in **your** words. An assistant may correct the English; it may not write the content.
 - Commit at least twice (the history is part of the work).
 
 ## Scope
-4–6 hours. If you are past 6 hours, stop, commit what you have, and write in the README where you got stuck.
+3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.
 
 ## Self-check before submitting
-- [ ] `Runtime ▸ Restart and run all` works without errors.
-- [ ] Day-count convention is stated per asset and is right (365 for crypto).
-- [ ] The chart has a title that is a question, and the README answers it.
-- [ ] The "what the assistant got wrong" section describes a real, specific error and a real check.
-- [ ] Data snapshot saved and committed.
+- [ ] Repository `ese-ai-fintech` exists, is private, and I am a collaborator.
+- [ ] `week-01/session.ipynb` is saved there from Colab.
+- [ ] `tokens.ipynb` runs with `Runtime ▸ Restart and run all`.
+- [ ] The question in the README names a user and a decision.
+- [ ] Three of the ten glossary terms are from Crypto and DeFi.
 
 ## How this feeds the capstone
-`load_prices` and the summary table are the first reusable pieces of your pipeline. Every later week adds to this repo; by week 6 your capstone will already have data acquisition, cleaning and a verified summary layer.
+The question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change.

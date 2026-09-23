@@ -7,3 +7,7 @@ __pycache__/
 /_site/
 /.quarto/
 /_publish.yml.bak
+
+# tutor-only, never on GitHub (repo is public)
+week-*/speech.md
+week-*/intake-notes.md

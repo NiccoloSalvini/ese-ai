@@ -1,9 +1,82 @@
 ---
-title: "How LLMs work, and how we will work"
+title: "How we will work, and what the model actually reads"
 subtitle: "Week 1 · Wednesday 23 September 2026 · 10:00–13:00"
 author: "Niccolò Salvini, PhD"
 institute: "AI for Business and FinTech · European School of Economics, Florence"
 ---
+
+## Today, at a walking pace
+
+| | |
+|---|---|
+| **10:00** | who I am, and who you are |
+| **10:40** | what this course is for, and how we shape it around you |
+| **11:10** | break |
+| **11:20** | set up the workbench: Colab, GitHub, the notebook |
+| **11:50** | a first look inside the machine: tokens, and memory |
+| **12:40** | the words we will use, and a taste of week 8 |
+| **12:50** | homework, and three lines in your own words |
+
+[Thirty hours is a long time. Today we spend some of it on getting to know each other — it pays back in every session after this one.]{.muted}
+
+## [Part 1]{.section-kicker} Two people, one room {.section-slide background-color="#AF1F25"}
+
+## Who I am
+
+:::: {.columns}
+::: {.column width="30%"}
+![](../images/salvini.jpeg){width="100%"}
+:::
+::: {.column width="70%"}
+**Niccolò Salvini, PhD** · Adjunct Professor
+
+<!-- TODO Niccolò: three lines, your words — background, what you build, why this course. See week-01/speech.md -->
+
+- what I do when I am not teaching
+- the kind of systems I build, and where they broke
+- why I teach this as a lab and not as a survey
+:::
+::::
+
+## Who you are {.statement}
+
+## Tell me, and I will build the course around it.
+
+[No slides for this part. I will take notes.]{.muted}
+
+## The questions I would like to answer by 10:40
+
+:::: {.columns}
+::: {.column width="50%"}
+**Where you come from**
+
+- the last three projects you were proud of — and one that went badly
+- a decision at work that you made **without** the data you wanted
+- which tools you open every day, and which ones you avoid
+:::
+::: {.column width="50%"}
+**Where you want to go**
+
+- what you want to be able to **do** in December that you cannot do today
+- markets, crypto, DeFi: as a user, an investor, or a builder?
+- the one question you would like a model to answer for you
+:::
+::::
+
+[And one practical one: how do you learn best — trying first, or seeing it done first?]{.red}
+
+## [Part 2]{.section-kicker} What this course is for {.section-slide background-color="#AF1F25"}
+
+## What you leave with in December
+
+1. **Build** — a working pipeline in Python: data in, analysis, a model or an LLM application, a result you can reproduce.
+2. **Check** — the habit of testing what an assistant or a vendor tells you, with a number and not with a feeling.
+3. **Decide** — turn a model's output into a decision with a cost, and say when *not* to use AI at all.
+4. **Defend** — present it to people who will not read your notebook, including a regulator.
+
+. . .
+
+[Not "an overview of AI tools". You already have that from your work. This is the part underneath.]{.red}
 
 ## Ten weeks, one thing built each time
 
@@ -18,24 +91,58 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [Every artefact you build stays in your repository and becomes part of the next one. Nothing here is thrown away.]{.red}
 
+## Where your interests sit on that map
+
+| you said | where it lands | and before that |
+|---|---|---|
+| **product and project work** | 5 · the product lens · 10 · build/buy, cost at scale | it is the lens, every week |
+| **data and decisions** | 2 · analysis · 3 · a model, and a threshold that costs money | the whole first month |
+| **trading** | 7 · a backtest, and every way it lies | market data from week 2 |
+| **crypto and DeFi** | 8 · on-chain data, AMMs, lending, MiCA | on-chain series from week 2 |
+
+. . .
+
+[The map is a plan, not a contract. The **capstone is yours to choose** — and with one student, the order can move. Tell me by week 3 what you would pull forward.]{.red}
+
+## How we work, with only two of us
+
+- **A lab, not a lecture.** You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to **judge what the assistant produces**.
+- **Bets, not quizzes.** Before a cell runs I will ask you to write down a number. Being wrong is the point; it is how the result sticks.
+- **Your keyboard.** I will not touch it. When it breaks, read the error before asking me.
+- **Every Wednesday starts with you:** twenty minutes on your homework. I pick two lines at random and ask what they do.
+- **Feedback runs both ways.** Too fast, too slow, not relevant to you — say it that week, not in December.
+
 ## The deal, said once
 
-- **This is a lab.** You write code from today, with an assistant beside you. You do not need to know Python. You need to be able to **judge what the assistant produces**.
 - **The rule of the course:** anything an AI produced and you submit, you must be able to explain line by line. I will ask.
 - **Nothing confidential** goes into an AI tool. Ever.
 - Markets, crypto and DeFi here are **educational simulations**. Nothing in this course is investment advice.
 
-::: {.callout-tip title="What you actually leave with"}
-Not "an overview of AI tools". The ability to build a thing, test it, find where it is wrong, and defend it to people who will not read your appendix.
-:::
+| | weight | when | what |
+|---|---|---|---|
+| **Case brief** | 40% | due Sun 1 Nov, presented 4 Nov | the LLM application of weeks 4–5, treated as a product |
+| **Portfolio** | 60% | due Sun 6 Dec, presented 9 Dec | your capstone: pipeline, memo, risk canvas, roadmap |
 
-## Three sentences from three pitch decks {.statement}
+[Both are assessed on your repository — the commits, not a PDF. Weekly homework is formative, and completing it is a condition of the certificate.]{.muted}
 
-## Two of these are impossible. One is unanswerable as written.
+## Break — ten minutes, outside the room. {.statement}
 
-[Write down which is which. We come back to this at 12:55.]{.muted}
+## [Part 3]{.section-kicker} The workbench {.section-slide background-color="#AF1F25"}
 
-## The three claims
+## Set it up once, together {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § A — Setup]{.kicker}
+
+1. Open the week 1 notebook in **Colab**, and run the first two cells.
+2. Create a **private** GitHub repository, `ese-ai-fintech`, and add me as a collaborator.
+3. `File ▸ Save a copy in GitHub` → `week-01/session.ipynb`. That is your first commit.
+4. Optional today, needed from week 4: a Google AI Studio key in Colab's 🔑 *Secrets*, as `GEMINI_API_KEY`.
+
+[If something refuses to work, we fix it now — not at 23:50 on a Tuesday.]{.muted}
+
+## [Part 4]{.section-kicker} A first look inside the machine {.section-slide background-color="#AF1F25"}
+
+## Three sentences from three pitch decks
 
 ::: {.callout-important title="Bet before we start"}
 1. *"Our assistant **remembers** every conversation it has had with your customers."*
@@ -43,11 +150,7 @@ Not "an overview of AI tools". The ability to build a thing, test it, find where
 3. *"**99.2% accuracy** on invoice extraction."*
 :::
 
-. . .
-
-You will meet a version of all three in a data room. By the end of today you will know which part of the machine each one is lying about — and, more useful, **the one question that collapses each claim**.
-
-[This is the actual product of the course: not enthusiasm, and not scepticism. A short list of questions that separate a system from a demo.]{.red}
+You have heard a version of all three in your work. **Two are impossible as stated. One is unanswerable as written.** Write down which is which — we will close two of them today, and the third in week 3.
 
 ## Three ways to write the same decision
 
@@ -63,26 +166,9 @@ You will meet a version of all three in a data room. By the end of today you wil
 ![](img/software-123-l4.svg){.fragment width="100%"}
 :::
 
+## A rule you can write down beats a model that guesses it. {.statement}
 
-## And 3.0 does not replace the other two {.statement}
-
-## A rule you can write down beats a model that guesses it.
-
-[Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks.]{.muted}
-
-## Run all three, on the same transactions {.lab background-color="#2471a3"}
-
-[LAB · session.ipynb § A2]{.kicker}
-
-Twenty thousand card payments, one cost table, three kinds of software:
-
-1. the rule blocks 240 of them. **Bet how much of the fraud it catches** before you run it.
-2. the model gets the **same budget** — 240 blocks, no more — and only chooses differently.
-3. then the fraud that is in the *words* and in neither of the first two.
-
-[Then the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged.]{.red}
-
-## [Block A]{.section-kicker} The model does not read {.section-slide background-color="#AF1F25"}
+[Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Knowing which is which is worth more than anything else in these ten weeks. We run all three on the same transactions in week 3.]{.muted}
 
 ## It never sees a word
 
@@ -94,56 +180,23 @@ Twenty thousand card payments, one cost table, three kinds of software:
 
 ![](img/tokens-pipeline.svg){fig-align="center" width="95%"}
 
-## A **tokenizer** is trained, and it has a native language
-
-The vocabulary is learned from a corpus, by merging the pairs of characters that occur most often. A corpus that is mostly English learns mostly English pieces.
-
-Everything else gets spelled out in fragments: **Italian, Russian, a ticker, a surname, a number.**
-
-. . .
-
-[Which means the price of a document depends on a design decision taken before your document existed.]{.red}
-
 ## The same sentence, twice, one tokenizer apart {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_tokens_poster.png"><source src="media/w01_tokens.mp4" type="video/mp4"></video>
 
 Same model family, same sentence. 33 pieces became 18.
 
-## Read that clip as a line in a budget
-
-![](img/token-budget.svg){fig-align="center" width="95%"}
-
-[A pilot priced on one tokenizer and delivered on the other moves by **45% of its unit cost**. That is the sort of thing that decides whether it clears its business case.]{.red}
-
 ## Take it apart yourself {.lab background-color="#2471a3"}
 
 [LAB · session.ipynb § B1 — `tiktoken`]{.kicker}
 
-Type your own text and watch the count. Try, in this order:
+Type your own text and watch the count:
 
 1. the same sentence in **English**, then **Italian**, then **Russian**
 2. a **number**: `1,234,567.89` — count the pieces before you look
 3. **your own surname**, then a listed company, then a company founded last year
-4. a line of **Python**
 
-[Then answer, from what you saw: which of those four is the model **least** equipped to reason about, and why?]{.red}
-
-## What follows from it, in a business
-
-| what you saw | what it costs you |
-|---|---|
-| tokens, not words | you are billed per token, in **and** out |
-| non-English fragments more | the same document costs 1.4–2.8× depending on language **and** tokenizer |
-| `1,234,567.89` is **7 tokens**, not one number | arithmetic is weak by construction — never trust a total it computed |
-| a new company name shatters; an old one does not | the model is systematically more fluent about the past |
-| the window is counted in tokens | long conversations silently become expensive |
-
-::: {.callout-tip title="The sentence to remember"}
-The unit the system counts in is not the unit you think in, and the exchange rate between them is not stable.
-:::
-
-## [Block B]{.section-kicker} Its only memory is what you just sent {.section-slide background-color="#AF1F25"}
+[Then tell me: which of those is the model **least** equipped to reason about, and why?]{.red}
 
 ## Everything it knows, every time
 
@@ -155,33 +208,7 @@ The unit the system counts in is not the unit you think in, and the exchange rat
 
 [That something is a database, it has an owner, and every turn you pay to send it again. "It remembers" is not an AI capability. It is an infrastructure invoice.]{.muted}
 
-## And a longer window is not a free upgrade
-
-![](img/context-cost.svg){fig-align="center" width="95%"}
-
-::: {.callout-tip title="What this rules out"}
-"Just paste the whole thing in and ask" fails twice — on the bill, and on the answer. Retrieval is not a cost optimisation. It is what makes the answer **correct**. That is week 4.
-:::
-
-## So where do hallucinations come from?
-
-::: {.callout-important title="Bet before we look"}
-The model invents a plausible figure for a company's 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?
-:::
-
-. . .
-
-**Working as designed.** It completes patterns. When the pattern needs a number that was never in the box, it produces the *shape* of a number that would fit.
-
-It has no way to feel the difference between recalling and inventing. **That is your job**, and it is the habit this whole course builds.
-
-## "We will train it on your data" is three different products
-
-![](img/train-on-your-data.svg){fig-align="center" width="95%"}
-
-[A fact you fine-tuned in cannot be updated, cited, or withdrawn. Name the three, or you will not get a straight answer about which one you are buying.]{.red}
-
-## And it disposes of claim two
+## And claim two
 
 **"It learns from your corrections in real time."**
 
@@ -191,148 +218,42 @@ The weights are frozen when you call it. Nothing you type changes them.
 
 What can honestly be meant is one of two things: your correction was **written to a store and re-sent next time** (fast, cheap, and not learning), or it entered a **retraining queue** (real, and measured in weeks).
 
-[Ask which. The answer tells you whether you are buying a model or a database, and they have very different prices.]{.red}
+[Ask which. The answer tells you whether you are buying a model or a database.]{.red}
 
-## Watch a conversation get expensive {.lab background-color="#2471a3"}
+## [Part 5]{.section-kicker} The words, and a taste of week 8 {.section-slide background-color="#AF1F25"}
 
-[LAB · session.ipynb § B2 — the cost cell]{.kicker}
+## The words we will use
 
-1. Price one 10-K at today's rates. Then a thousand a day, for a year.
-2. Now the part nobody expects: a **twenty-turn conversation** re-sends the whole history every turn. Compute what turn twenty costs against turn one.
-3. Re-price the whole thing with the Russian multiplier from the clip.
+About sixty terms carry this course — from *token* to *walk-forward* to *impermanent loss*. They are on one page, each with the week where it becomes something you compute.
 
-[Three numbers, and you can argue about a pilot's unit economics with the people who sold it.]{.red}
-
-## [Block C]{.section-kicker} Why the same question gives different answers {.section-slide background-color="#AF1F25"}
-
-## It is choosing, not looking up
-
-![](img/next-token.svg){fig-align="center" width="95%"}
-
-[**Temperature** decides how much it respects those odds — and nothing else about the model changes.]{.red}
-
-## And write that into the procedure, not the folklore
-
-A process that an auditor will look at cannot say *"we asked the AI"*.
-
-- the **exact prompt**, versioned like code
-- `T = 0`, and the model **name and version** recorded with the output
-- the **input** stored next to the answer
-
-::: {.callout-tip title="Why this matters more here than anywhere else"}
-In a regulated process, "we cannot reproduce last quarter's output" is not an inconvenience. It is the finding.
-:::
-
-## The habit this course is really about {.lab background-color="#2471a3"}
-
-[LAB · session.ipynb § B3 — 🔍 CHECK]{.kicker}
-
-Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:
-
-:::: {.columns}
-::: {.column width="50%"}
-**Verifiable**
-a number you can look up, a date, a name, a claim with a source
-:::
-::: {.column width="50%"}
-**Plausible but unverifiable**
-fluent, confident, no way to check it, and quite possibly invented
-:::
-::::
-
-[Do this on every answer, all term, until it is automatic. It is the single habit that separates someone who uses these tools from someone who is used by them.]{.red}
-
-## [Block D]{.section-kicker} How a machine measures meaning {.section-slide background-color="#AF1F25"}
-
-## Words become directions
-
-An **embedding** turns text into a list of numbers, arranged so that **similar meanings land near each other**.
-
-$$\text{"the margin fell"} \;\longrightarrow\; [0.21,\, -0.04,\, 0.88,\, \ldots]$$
-
-Once meaning is a position, "similar" becomes a distance, and a computer can sort by it.
+**[→ Glossary](../glossary.qmd)**
 
 . . .
 
-That is the whole of how search over your own documents works — which is week 4.
+[You will not learn them from the page. You will learn them when one of them costs you a wrong number. The page is for when you forget which week that was.]{.muted}
 
-## Find out why word-matching is not enough {.lab background-color="#2471a3"}
+## A taste of DeFi, since you asked
 
-[LAB · session.ipynb § B4 — TF-IDF]{.kicker}
-
-Two sentences that mean the same thing, with **no words in common**:
-
-> "Revenue declined sharply in the third quarter."
-> "Q3 takings were well down."
-
-1. Score them by shared words. The answer will be about zero.
-2. Now say what a search box built that way would do to a user who phrased it differently.
-
-[That gap is exactly what neural embeddings close, and why week 4 works at all.]{.red}
-
-## [Block E]{.section-kicker} And then it can act {.section-slide background-color="#AF1F25"}
-
-## The loop behind every "agent"
-
-![](img/agent-loop.svg){fig-align="center" width="95%"}
-
-## Which is also where they fail {.statement}
-
-## Every agent failure is a failure of that loop.
-
-Wrong tool. Loop that never ends. Cost that runs away. A document that contains instructions and the model obeys them.
-
-[Weeks 4 and 5 are this loop, built and then broken on purpose.]{.muted}
-
-## [Block F]{.section-kicker} Your turn — the first notebook {.section-slide background-color="#AF1F25"}
-
-## Three assets, and one number that is wrong {.lab background-color="#2471a3"}
-
-[LAB · session.ipynb § C — 80 minutes, you drive]{.kicker}
-
-1. Pull daily prices for BTC, an equity and an index.
-2. Returns, summary statistics, one chart that answers a question.
-3. **🔍 CHECK** — the volatility cell was written by an assistant. It contains two errors. Find them.
-
-[I will not touch the keyboard. When it breaks, read the error before asking me.]{.muted}
-
-## The two planted errors, and why they matter
-
-:::: {.columns}
-::: {.column width="50%"}
-**√252 applied to crypto**
-Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.
+::: {.callout-important title="Bet before we compute"}
+A pool holds **10 ETH** and **30,000 USDC**, so the quoted price is 3,000 USDC per ETH. You buy **1 ETH** from it. What do you pay?
 :::
-::: {.column width="50%"}
-**Returns added up**
-Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.
-:::
-::::
-
-::: {.callout-tip title="The sentence to remember"}
-The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.
-:::
-
-## Back to the three claims
-
-| the claim | the one question |
-|---|---|
-| *"it remembers every conversation"* | **what stores it, and who pays to re-send it every turn?** |
-| *"it learns from corrections in real time"* | **does that change the weights, or write a row in a database?** |
-| *"99.2% accuracy"* | **on whose test set, of what size, against what baseline?** |
 
 . . .
 
-[The first two you can now answer yourself. The third you cannot — not because it is complicated, but because the number is meaningless without the base rate. That is week 3, and it is the one that costs people money.]{.red}
+The pool keeps one rule: **ETH × USDC stays constant.** 10 × 30,000 = 300,000.
+
+After your trade it holds 9 ETH, so it must hold 300,000 ÷ 9 = **33,333 USDC**. You paid **3,333** — 11% above the price on the screen.
+
+[Nobody charged you a fee. The price moved *because you traded*. That one line is an automated market maker, and in week 8 you simulate what it does to the people who fund the pool.]{.red}
 
 ## Close
 
-**Homework 1** — three assets of your own, an honest table, one chart that answers a stated question, and a section titled *"What the assistant got wrong"*.
+**Homework 1** — your starting point, written down: who you are as a learner, the question you want answered by December, your own tokenizer experiment, and ten words from the glossary in your own words.
 
 Due Tuesday 29 September, 23:59, in your repository.
 
 . . .
 
-**Before you leave:** Colab runs, GitHub repository created, and one notebook saved to it.
+**Before you leave:** three lines at the bottom of the notebook, in your words — then commit.
 
-[Next week: the same loop on real data, and the first thing you will show someone.]{.muted}
+[Next week: the assistant writes the code, you decide whether it is true. Three assets, and a number that is wrong.]{.muted}

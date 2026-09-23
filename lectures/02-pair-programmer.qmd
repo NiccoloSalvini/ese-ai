@@ -9,12 +9,61 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 | | | |
 |---|---|---|
-| 1 | 23 Sep | how the model works, and the checking habit ✓ |
-| **2** | **30 Sep** | **pandas, joins, and the two errors that hide** |
+| 1 | 23 Sep | who we are, the plan, how the model reads ✓ |
+| **2** | **30 Sep** | **the checking habit, three assets, joins, and the errors that hide** |
 | 3 | 7 Oct | a model, and an honest evaluation of it |
 | 4–5 | 14–21 Oct | an LLM application, then agents and evals |
 
-[Last week the assistant got a constant wrong and it looked fine. Today you meet the two mistakes it makes most, and neither of them raises an error.]{.red}
+[Last week you saw what the model reads. Today you see what it gets wrong — a constant that looks fine, then the two mistakes that never raise an error.]{.red}
+
+## [Block A]{.section-kicker} Why the same question gives different answers {.section-slide background-color="#AF1F25"}
+
+## It is choosing, not looking up
+
+![](img/next-token.svg){fig-align="center" width="95%"}
+
+[**Temperature** decides how much it respects those odds — and nothing else about the model changes.]{.red}
+
+## So where do hallucinations come from?
+
+::: {.callout-important title="Bet before we look"}
+The model invents a plausible figure for a company's 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?
+:::
+
+. . .
+
+**Working as designed.** It completes patterns. When the pattern needs a number that was never in the box, it produces the *shape* of a number that would fit.
+
+It has no way to feel the difference between recalling and inventing. **That is your job**, and it is the habit this whole course builds.
+
+## The habit this course is really about {.lab background-color="#2471a3"}
+
+[LAB · week-01/session.ipynb § B3 — 🔍 CHECK]{.kicker}
+
+Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:
+
+:::: {.columns}
+::: {.column width="50%"}
+**Verifiable**
+a number you can look up, a date, a name, a claim with a source
+:::
+::: {.column width="50%"}
+**Plausible but unverifiable**
+fluent, confident, no way to check it, and quite possibly invented
+:::
+::::
+
+[Do this on every answer, all term, until it is automatic.]{.red}
+
+## And write that into the procedure, not the folklore
+
+A process that an auditor will look at cannot say *"we asked the AI"*.
+
+- the **exact prompt**, versioned like code
+- `T = 0`, and the model **name and version** recorded with the output
+- the **input** stored next to the answer
+
+## [Block B]{.section-kicker} Four verbs, three assets {.section-slide background-color="#AF1F25"}
 
 ## Four verbs, and you can do most of data work
 
@@ -27,19 +76,34 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 [The assistant writes all four faster than you can. The job is not writing them. It is knowing what the result *should* look like before you see it.]{.red}
 
-## Ask for it, run it, then check it {.lab background-color="#2471a3"}
+## Three assets, and one number that is wrong {.lab background-color="#2471a3"}
 
-[LAB · session.ipynb § A]{.kicker}
+[LAB · week-01/session.ipynb § C — you drive]{.kicker}
 
-Get the assistant to write each of the four, then **before running anything**, say out loud:
+1. Pull daily prices for BTC, an equity and an index.
+2. Returns, summary statistics, one chart that answers a question. **Before each cell runs, say how many rows should come back.**
+3. **🔍 CHECK** — the volatility cell was written by an assistant. It contains two errors. Find them.
 
-1. how many rows should come back
-2. what the units of the new column are
-3. which rows would be dropped, and whether that matters
+[I will not touch the keyboard. When it breaks, read the error before asking me.]{.muted}
 
-Run it. Where your prediction and the result disagree, one of you is wrong — find out which.
+## The two planted errors, and why they matter
 
-## [Block B]{.section-kicker} The first error: two calendars that do not line up {.section-slide background-color="#AF1F25"}
+:::: {.columns}
+::: {.column width="50%"}
+**√252 applied to crypto**
+Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.
+:::
+::: {.column width="50%"}
+**Returns added up**
+Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.
+:::
+::::
+
+::: {.callout-tip title="The sentence to remember"}
+The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.
+:::
+
+## [Block C]{.section-kicker} The first error: two calendars that do not line up {.section-slide background-color="#AF1F25"}
 
 ## Bitcoin trades on Sunday. The stock exchange does not.
 
@@ -71,7 +135,7 @@ Drop the weekend, or invent it. There is no third option, and neither is free.
 
 Then answer: **which of the two numbers would you put in a report, and what sentence goes underneath it?**
 
-## [Block C]{.section-kicker} The second error: units {.section-slide background-color="#AF1F25"}
+## [Block D]{.section-kicker} The second error: units {.section-slide background-color="#AF1F25"}
 
 ## A correlation between mismatched units is still a number
 
@@ -107,7 +171,7 @@ Bring in one external series — a FRED interest rate, or on-chain active addres
 2. Join it. Say which calendar the result is in.
 3. Find one known event in the chart. If you cannot see it, the join is wrong.
 
-## [Block D]{.section-kicker} Making it repeatable, and safe {.section-slide background-color="#AF1F25"}
+## [Block E]{.section-kicker} Making it repeatable, and safe {.section-slide background-color="#AF1F25"}
 
 ## A number without a snapshot is an anecdote
 

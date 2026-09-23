@@ -1,6 +1,37 @@
 # Week 1 — How LLMs work, and how we will work
 **Wednesday 23 September 2026, 10:00–13:00 · ESE Florence**
 
+> **Revised 23 Sep 2026 — slower first session.** Week 1 is now introductions, the student's
+> starting point, the course map shaped on his interests, setup, and only tokens + context window.
+> What moved: sampling / the verify habit (B3) and the three-asset notebook with planted errors (C)
+> → **week 2**; the 1.0/2.0/3.0 lab (A2) and claim three → **week 3**; embeddings (B4) → **week 4**
+> (already there); agent loop (B5) → **week 5** (already there). HW1 is now "Your starting point".
+> The spoken draft for today is `speech.md`. The sections below the new plan are kept as the
+> script for the blocks that moved.
+
+## Session plan (revised)
+
+| Time | Block | Mode |
+|---|---|---|
+| 10:00–10:10 | **Who I am** | talk, photo slide |
+| 10:10–10:40 | **Who you are** — intake conversation | he talks, tutor takes notes |
+| 10:40–11:10 | **What the course is for**: outcomes, map, his interests on it, how we work, the deal, assessment | talk + discussion |
+| 11:10–11:20 | break | |
+| 11:20–11:50 | **Workbench**: Colab, GitHub repo, first save, optional API key | hands-on, notebook § A |
+| 11:50–12:40 | **Inside the machine**: three claims (bet), 1.0/2.0/3.0 figure, tokens (bet + clip + § B1), context window, claims 1 and 2 closed | talk + notebook § B1 |
+| 12:40–12:50 | **Glossary + DeFi taste** (x·y=k bet) | talk |
+| 12:50–13:00 | **Close**: HW1, three lines at the bottom of the notebook, commit | he writes |
+
+**Intake — what to get out of 10:10–10:40** (write it into `week-01/intake-notes.md`, keep it off the site):
+projects he is proud of / one that failed; a decision made without the data he wanted; tools he uses daily and
+avoids; what he wants to *do* in December; markets/crypto/DeFi as user, investor or builder; the question he
+wants a model to answer; trying-first vs seeing-first; anything that would make the course a waste of time.
+
+**If behind:** cut the 1.0/2.0/3.0 figure to one sentence (it comes back in week 3); the tokens lab can shrink
+to the Russian sentence only. Never cut the intake or the setup.
+
+---
+
 ## Learning objectives
 By the end of the session the student can:
 1. Explain, in operational terms, what tokens, context window, sampling and embeddings are, and derive from each one a practical consequence for business use.
@@ -8,7 +39,7 @@ By the end of the session the student can:
 3. Direct an AI assistant to write pandas code, run it, and verify the result by computing the same number a second way.
 4. Distinguish, in an AI-generated answer, the claims that can be verified from those that merely sound right.
 
-## Session plan
+## Session plan (original, before 23 Sep revision)
 
 | Time | Block | Mode |
 |---|---|---|
