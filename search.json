@@ -2125,7 +2125,14 @@
     "href": "lectures/01-how-llms-work.html#the-same-nudge-on-text",
     "title": "How we will work, and what is inside the machine",
     "section": "The same nudge, on text",
-    "text": "The same nudge, on text\nThe ECB left rates → ?\n\n\n\nnext token\nbefore\nafter one step\n\n\n\n\n“unchanged” ✓\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%\n\n\n\nExactly the step we took on payment E: raise the probability of the right answer, lower the others. Here the right answer is in the text itself."
+    "text": "The same nudge, on text\n\n\n\nThink of a mixer: one knob per possible next token. Each sentence turns the right knob up a little — exactly the step we took on payment E."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#where-the-knobs-end-up",
+    "href": "lectures/01-how-llms-work.html#where-the-knobs-end-up",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Where the knobs end up",
+    "text": "Where the knobs end up"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
