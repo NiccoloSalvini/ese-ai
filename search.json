@@ -1250,7 +1250,7 @@
     "href": "week-01/homework.html",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Due: Tuesday 29 September 2026, 23:59 · folder week-01/hw/ in your repo\n\n\nWrite down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.\n\n\n\n\nREADME.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\n\n\n\n\n\nUse an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\nCommit at least twice (the history is part of the work).\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.\n\n\n\n\nRepository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\n\n\n\n\nThe question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change."
+    "text": "Due: Tuesday 29 September 2026, 23:59 · folder week-01/hw/ in your repo\n\n\nWrite down where you are starting from, and where you want to be in December — so the course can be shaped around it. Then take the tokenizer apart on text of your own, and put ten of the course’s words into your own language.\nThis is a lighter week on purpose. The three-asset notebook we would have started today moves to session 2, where we build it together.\n\n\n\n\nREADME.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\npitch.md — three sentences from three pitch decks. You will meet a version of each in a data room:\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\nTwo are impossible as stated, one is unanswerable as written. For each: which is it, which part of the machine from today (weights, training, context window, tokens) it is really talking about, and the one question you would ask the vendor. Half a page in total.\n\n\n\n\n\nUse an assistant as much as you like for the notebook — but every line must be one you can explain. I will ask.\nThe README and the glossary are in your words. An assistant may correct the English; it may not write the content.\nCommit at least twice (the history is part of the work).\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, commit what you have, and write down where you got stuck.\n\n\n\n\nRepository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\npitch.md names one question per sentence.\n\n\n\n\nThe question in your README is the first draft of your capstone. We will come back to it in week 3 (can it be framed as a prediction?), week 6 (the one-page proposal), and week 10. It is fine — expected, even — for it to change."
   },
   {
     "objectID": "week-01/homework.html#goal",
@@ -1264,7 +1264,7 @@
     "href": "week-01/homework.html#deliverables-in-week-01hw",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "README.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so."
+    "text": "README.md — Starting point (400–600 words), four short sections:\n\nBackground. Two or three projects from your work where data, or its absence, decided something. One that went well, one that did not.\nWhat I want to be able to do in December that I cannot do today. Concrete verbs, not topics (“price a pilot’s inference cost”, not “learn about LLMs”).\nA question I would like answered with data. From your work, your trading, or crypto/DeFi. It does not have to be answerable yet — it is the first draft of your capstone. Say who would use the answer, and what they would decide with it.\nHow I learn best, and one thing that would make this course a waste of your time.\n\ntokens.ipynb — the tokenizer cell from the session notebook (§ B1), run on five texts of your choice: at least one in Russian, one with numbers, one company or product name. A table of word count vs token count for each, and a short markdown paragraph: which text surprised you, and what would that mean for the cost of a real project you know?\nglossary.md — ten terms from the course glossary, at least three from Crypto and DeFi. For each: your definition in one sentence, and one example from your own experience or from a product you know. Where you disagree with the glossary, say so.\npitch.md — three sentences from three pitch decks. You will meet a version of each in a data room:\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”\n\nTwo are impossible as stated, one is unanswerable as written. For each: which is it, which part of the machine from today (weights, training, context window, tokens) it is really talking about, and the one question you would ask the vendor. Half a page in total."
   },
   {
     "objectID": "week-01/homework.html#constraints",
@@ -1285,7 +1285,7 @@
     "href": "week-01/homework.html#self-check-before-submitting",
     "title": "Homework 1 — Your starting point",
     "section": "",
-    "text": "Repository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi."
+    "text": "Repository ese-ai-fintech exists, is private, and I am a collaborator (follow the Setup page — ten minutes).\nweek-01/session.ipynb is saved there from Colab.\ntokens.ipynb runs with Runtime ▸ Restart and run all.\nThe question in the README names a user and a decision.\nThree of the ten glossary terms are from Crypto and DeFi.\npitch.md names one question per sentence."
   },
   {
     "objectID": "week-01/homework.html#how-this-feeds-the-capstone",
@@ -1803,7 +1803,7 @@
     "href": "lectures/01-how-llms-work.html#today",
     "title": "How we will work, and what is inside the machine",
     "section": "Today",
-    "text": "Today\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:25\nwhat this course is for\n\n\n10:43\nopen your notebook\n\n\n10:50\nbreak\n\n\n11:00\nfrom one neuron to an LLM\n\n\n11:30\nwhat the model reads\n\n\n11:40\na real model release, taken apart\n\n\n11:50\nclose"
+    "text": "Today\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:25\nwhat this course is for\n\n\n10:43\nopen your notebook\n\n\n10:50\nbreak\n\n\n11:00\nfrom one neuron to an LLM\n\n\n11:30\nwhat the model reads\n\n\n11:40\na real model release, taken apart, word by word\n\n\n11:55\nclose"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-1-two-people-one-room",
@@ -2051,39 +2051,11 @@
     "text": "Every word, taken apart\n\n\n\n\n\n\n\nin the release\nwhat it is\n\n\n\n\nTransformer\nattention + neurons, stacked — the block you just saw\n\n\n117B total parameters\nthe numbers learned in training\n\n\nmixture-of-experts\nmany specialist sub-networks; only a few run per token\n\n\n5.1B active per token\nthe cost of a small model, the capacity of a big one\n\n\ntokenized, o200k_harmony\nthe ~200,000-piece vocabulary\n\n\npost-trained\nbase model → assistant\n\n\nsupervised fine-tuning\ntrained on example conversations\n\n\nRL\nreinforcement learning: rewarded for good answers\n\n\ncontext length 128k\nthe size of the box\n\n\nquantized, MXFP4, 80GB\neach number stored in 4 bits — fits on one GPU\n\n\nopen-weight, Apache 2.0\ndownload it, run it on your own servers, use it commercially"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#now-three-sentences-from-three-pitch-decks",
-    "href": "lectures/01-how-llms-work.html#now-three-sentences-from-three-pitch-decks",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Now, three sentences from three pitch decks",
-    "text": "Now, three sentences from three pitch decks\n\n\n\n\n\n\n\nWhich are impossible? Which is unanswerable?\n\n\n\n“Our assistant remembers every conversation it has had with your customers.”\n“It learns from your corrections in real time.”\n“99.2% accuracy on invoice extraction.”"
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#one-the-model-remembers-nothing",
-    "href": "lectures/01-how-llms-work.html#one-the-model-remembers-nothing",
-    "title": "How we will work, and what is inside the machine",
-    "section": "One: the model remembers nothing",
-    "text": "One: the model remembers nothing\nSomething else stores the history and re-sends it, every turn."
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#two-the-weights-are-frozen-when-you-call-it",
-    "href": "lectures/01-how-llms-work.html#two-the-weights-are-frozen-when-you-call-it",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Two: the weights are frozen when you call it",
-    "text": "Two: the weights are frozen when you call it\nA correction goes into a database, or into a retraining queue. Ask which."
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#three-accurate-compared-with-what",
-    "href": "lectures/01-how-llms-work.html#three-accurate-compared-with-what",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Three: accurate compared with what?",
-    "text": "Three: accurate compared with what?\nThat needs a base rate. Week 3."
-  },
-  {
     "objectID": "lectures/01-how-llms-work.html#close",
     "href": "lectures/01-how-llms-work.html#close",
     "title": "How we will work, and what is inside the machine",
     "section": "Close",
-    "text": "Close\n\n\nHomework 1, due Tue 29 Sep:\n\nyour starting point, in writing\nthe question you want answered by December\nthe tokenizer on five texts of yours\nten glossary words, in your words\nGitHub repo, via the setup page\n\nQuestions: WhatsApp or Telegram."
+    "text": "Close\n\n\nHomework 1, due Tue 29 Sep:\n\nyour starting point, in writing\nthe question you want answered by December\nthe tokenizer on five texts of yours\nten glossary words, in your words\nthree pitch-deck sentences to take apart\nGitHub repo, via the setup page\n\nQuestions: WhatsApp or Telegram."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#spare-if-there-is-time",
