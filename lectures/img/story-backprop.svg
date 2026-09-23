@@ -1,109 +1,135 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 436" width="960" height="436" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
-  <text x="30" y="34" font-size="13" fill="#7a7f85">backpropagation on payment D, one neuron — the chain rule, box by box</text>
-  <text x="30" y="62" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >each box:</text>
-  <text x="100" y="62" font-size="13" font-weight="700" fill="#363636" text-anchor="start" >name</text>
-  <text x="145" y="62" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >value (forward) →</text>
-  <text x="265" y="62" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start" >← blame (backward)</text>
-  <rect x="30" y="90" width="168" height="44" fill="#fff" stroke="#7a7f85" stroke-width="1.6"/>
-  <line x1="74" y1="90" x2="74" y2="134" stroke="#e6e2d8"/>
-  <line x1="136" y1="90" x2="136" y2="134" stroke="#e6e2d8"/>
-  <text x="52" y="117" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >x₁</text>
-  <text x="105" y="117" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
-  <text x="167" y="117" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >—</text>
-  <rect x="30" y="150" width="168" height="44" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
-  <line x1="74" y1="150" x2="74" y2="194" stroke="#e6e2d8"/>
-  <line x1="136" y1="150" x2="136" y2="194" stroke="#e6e2d8"/>
-  <text x="52" y="177" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >w₁</text>
-  <text x="105" y="177" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
-  <text x="167" y="177" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <rect x="30" y="240" width="168" height="44" fill="#fff" stroke="#7a7f85" stroke-width="1.6"/>
-  <line x1="74" y1="240" x2="74" y2="284" stroke="#e6e2d8"/>
-  <line x1="136" y1="240" x2="136" y2="284" stroke="#e6e2d8"/>
-  <text x="52" y="267" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >x₂</text>
-  <text x="105" y="267" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
-  <text x="167" y="267" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >—</text>
-  <rect x="30" y="300" width="168" height="44" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
-  <line x1="74" y1="300" x2="74" y2="344" stroke="#e6e2d8"/>
-  <line x1="136" y1="300" x2="136" y2="344" stroke="#e6e2d8"/>
-  <text x="52" y="327" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >w₂</text>
-  <text x="105" y="327" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.50</text>
-  <text x="167" y="327" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <circle cx="245" cy="148" r="17" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
-  <text x="245" y="154" font-size="18" font-weight="700" fill="#363636" text-anchor="middle" >×</text>
-  <circle cx="245" cy="298" r="17" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
-  <text x="245" y="304" font-size="18" font-weight="700" fill="#363636" text-anchor="middle" >×</text>
-  <line x1="198" y1="112" x2="228" y2="140" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="228,140 219.5,136.9 224.3,131.8" fill="#363636"/>
-  <line x1="198" y1="172" x2="228" y2="155" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="228,155 222.5,162.1 219.1,156.0" fill="#363636"/>
-  <line x1="198" y1="262" x2="228" y2="290" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="228,290 219.5,286.9 224.3,281.8" fill="#363636"/>
-  <line x1="198" y1="322" x2="228" y2="305" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="228,305 222.5,312.1 219.1,306.0" fill="#363636"/>
-  <rect x="275" y="126" width="168" height="44" fill="#fff" stroke="#363636" stroke-width="1.6"/>
-  <line x1="319" y1="126" x2="319" y2="170" stroke="#e6e2d8"/>
-  <line x1="381" y1="126" x2="381" y2="170" stroke="#e6e2d8"/>
-  <text x="297" y="153" font-size="13" font-weight="700" fill="#363636" text-anchor="middle" >x₁w₁</text>
-  <text x="350" y="153" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
-  <text x="412" y="153" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <rect x="275" y="276" width="168" height="44" fill="#fff" stroke="#363636" stroke-width="1.6"/>
-  <line x1="319" y1="276" x2="319" y2="320" stroke="#e6e2d8"/>
-  <line x1="381" y1="276" x2="381" y2="320" stroke="#e6e2d8"/>
-  <text x="297" y="303" font-size="13" font-weight="700" fill="#363636" text-anchor="middle" >x₂w₂</text>
-  <text x="350" y="303" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.50</text>
-  <text x="412" y="303" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <circle cx="490" cy="222" r="17" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
-  <text x="490" y="228" font-size="18" font-weight="700" fill="#363636" text-anchor="middle" >+</text>
-  <line x1="443" y1="148" x2="474" y2="212" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="474,212 467.2,206.1 473.5,203.0" fill="#363636"/>
-  <line x1="443" y1="298" x2="474" y2="232" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="474,232 473.6,241.0 467.3,238.0" fill="#363636"/>
-  <rect x="520" y="200" width="168" height="44" fill="#fff" stroke="#363636" stroke-width="1.6"/>
-  <line x1="564" y1="200" x2="564" y2="244" stroke="#e6e2d8"/>
-  <line x1="626" y1="200" x2="626" y2="244" stroke="#e6e2d8"/>
-  <text x="542" y="227" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >sum</text>
-  <text x="595" y="227" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.50</text>
-  <text x="657" y="227" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <rect x="520" y="300" width="168" height="44" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
-  <line x1="564" y1="300" x2="564" y2="344" stroke="#e6e2d8"/>
-  <line x1="626" y1="300" x2="626" y2="344" stroke="#e6e2d8"/>
-  <text x="542" y="327" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >b</text>
-  <text x="595" y="327" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >-1.00</text>
-  <text x="657" y="327" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <circle cx="725" cy="250" r="17" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
-  <text x="725" y="256" font-size="18" font-weight="700" fill="#363636" text-anchor="middle" >+</text>
-  <line x1="688" y1="222" x2="709" y2="240" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="709,240 700.4,237.3 705.0,231.9" fill="#363636"/>
-  <line x1="688" y1="322" x2="709" y2="262" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="709,262 709.6,271.0 703.0,268.7" fill="#363636"/>
-  <rect x="752" y="160" width="168" height="44" fill="#fff" stroke="#363636" stroke-width="1.6"/>
-  <line x1="796" y1="160" x2="796" y2="204" stroke="#e6e2d8"/>
-  <line x1="858" y1="160" x2="858" y2="204" stroke="#e6e2d8"/>
-  <text x="774" y="187" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >z</text>
-  <text x="827" y="187" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.50</text>
-  <text x="889" y="187" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
-  <line x1="735" y1="236" x2="790" y2="206" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="790,206 784.4,213.0 781.0,206.9" fill="#363636"/>
-  <circle cx="836" cy="260" r="17" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
-  <text x="836" y="266" font-size="18" font-weight="700" fill="#363636" text-anchor="middle" >σ</text>
-  <line x1="836" y1="204" x2="836" y2="243" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="836,243 832.5,234.7 839.5,234.7" fill="#363636"/>
-  <rect x="752" y="300" width="168" height="44" fill="#fff" stroke="#363636" stroke-width="1.6"/>
-  <line x1="796" y1="300" x2="796" y2="344" stroke="#e6e2d8"/>
-  <line x1="858" y1="300" x2="858" y2="344" stroke="#e6e2d8"/>
-  <text x="774" y="327" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >p</text>
-  <text x="827" y="327" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.62</text>
-  <text x="889" y="327" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-1.61</text>
-  <line x1="836" y1="277" x2="836" y2="300" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="836,300 832.5,291.7 839.5,291.7" fill="#363636"/>
-  <rect x="752" y="370" width="168" height="44" fill="#fff" stroke="#AF1F25" stroke-width="1.6"/>
-  <line x1="796" y1="370" x2="796" y2="414" stroke="#e6e2d8"/>
-  <line x1="858" y1="370" x2="858" y2="414" stroke="#e6e2d8"/>
-  <text x="774" y="397" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="middle" >loss</text>
-  <text x="827" y="397" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.47</text>
-  <text x="889" y="397" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >+1.00</text>
-  <line x1="836" y1="344" x2="836" y2="370" stroke="#363636" stroke-width="1.6"/>
-  <polygon points="836,370 832.5,361.7 839.5,361.7" fill="#363636"/>
-  <text x="30" y="400" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >Backward, right to left: each box’s blame = the blame of the box after it × how much it moved that box.</text>
-  <text x="30" y="422" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >Every weight’s blame comes out as (p − y) × its input:  (0.62 − 1) × 1 = -0.38.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 446" width="960" height="446" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">backpropagation on payment E, one neuron — the chain rule, box by box</text>
+  <text x="30" y="60" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >each box:</text>
+  <text x="100" y="60" font-size="13" font-weight="700" fill="#363636" text-anchor="start" >name</text>
+  <text x="145" y="60" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >value (forward) →</text>
+  <text x="265" y="60" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start" >← blame (backward)</text>
+  <rect x="30" y="78" width="168" height="40" fill="#fff" stroke="#7a7f85" stroke-width="1.6"/>
+  <line x1="74" y1="78" x2="74" y2="118" stroke="#e6e2d8"/>
+  <line x1="136" y1="78" x2="136" y2="118" stroke="#e6e2d8"/>
+  <text x="52" y="103" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >x₁</text>
+  <text x="105" y="103" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
+  <text x="167" y="103" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >—</text>
+  <rect x="30" y="126" width="168" height="40" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <line x1="74" y1="126" x2="74" y2="166" stroke="#e6e2d8"/>
+  <line x1="136" y1="126" x2="136" y2="166" stroke="#e6e2d8"/>
+  <text x="52" y="151" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >w₁</text>
+  <text x="105" y="151" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.50</text>
+  <text x="167" y="151" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <circle cx="240" cy="122" r="16" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
+  <text x="240" y="128" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >×</text>
+  <line x1="198" y1="98" x2="225" y2="114" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="225,114 216.1,112.8 219.7,106.8" fill="#363636"/>
+  <line x1="198" y1="146" x2="225" y2="130" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="225,130 219.7,137.2 216.1,131.2" fill="#363636"/>
+  <rect x="270" y="102" width="168" height="40" fill="#fff" stroke="#363636" stroke-width="1.6"/>
+  <line x1="314" y1="102" x2="314" y2="142" stroke="#e6e2d8"/>
+  <line x1="376" y1="102" x2="376" y2="142" stroke="#e6e2d8"/>
+  <text x="292" y="127" font-size="13" font-weight="700" fill="#363636" text-anchor="middle" >x₁w₁</text>
+  <text x="345" y="127" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.50</text>
+  <text x="407" y="127" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <line x1="438" y1="122" x2="505" y2="206" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="505,206 497.1,201.7 502.6,197.3" fill="#363636"/>
+  <rect x="30" y="188" width="168" height="40" fill="#fff" stroke="#7a7f85" stroke-width="1.6"/>
+  <line x1="74" y1="188" x2="74" y2="228" stroke="#e6e2d8"/>
+  <line x1="136" y1="188" x2="136" y2="228" stroke="#e6e2d8"/>
+  <text x="52" y="213" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >x₂</text>
+  <text x="105" y="213" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
+  <text x="167" y="213" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >—</text>
+  <rect x="30" y="236" width="168" height="40" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <line x1="74" y1="236" x2="74" y2="276" stroke="#e6e2d8"/>
+  <line x1="136" y1="236" x2="136" y2="276" stroke="#e6e2d8"/>
+  <text x="52" y="261" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >w₂</text>
+  <text x="105" y="261" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
+  <text x="167" y="261" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <circle cx="240" cy="232" r="16" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
+  <text x="240" y="238" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >×</text>
+  <line x1="198" y1="208" x2="225" y2="224" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="225,224 216.1,222.8 219.7,216.8" fill="#363636"/>
+  <line x1="198" y1="256" x2="225" y2="240" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="225,240 219.7,247.2 216.1,241.2" fill="#363636"/>
+  <rect x="270" y="212" width="168" height="40" fill="#fff" stroke="#363636" stroke-width="1.6"/>
+  <line x1="314" y1="212" x2="314" y2="252" stroke="#e6e2d8"/>
+  <line x1="376" y1="212" x2="376" y2="252" stroke="#e6e2d8"/>
+  <text x="292" y="237" font-size="13" font-weight="700" fill="#363636" text-anchor="middle" >x₂w₂</text>
+  <text x="345" y="237" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
+  <text x="407" y="237" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <line x1="438" y1="232" x2="505" y2="222" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="505,222 497.3,226.7 496.3,219.8" fill="#363636"/>
+  <rect x="30" y="298" width="168" height="40" fill="#fff" stroke="#7a7f85" stroke-width="1.6"/>
+  <line x1="74" y1="298" x2="74" y2="338" stroke="#e6e2d8"/>
+  <line x1="136" y1="298" x2="136" y2="338" stroke="#e6e2d8"/>
+  <text x="52" y="323" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >x₃</text>
+  <text x="105" y="323" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.00</text>
+  <text x="167" y="323" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="middle" >—</text>
+  <rect x="30" y="346" width="168" height="40" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <line x1="74" y1="346" x2="74" y2="386" stroke="#e6e2d8"/>
+  <line x1="136" y1="346" x2="136" y2="386" stroke="#e6e2d8"/>
+  <text x="52" y="371" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >w₃</text>
+  <text x="105" y="371" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.00</text>
+  <text x="167" y="371" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >0.00</text>
+  <circle cx="240" cy="342" r="16" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
+  <text x="240" y="348" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >×</text>
+  <line x1="198" y1="318" x2="225" y2="334" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="225,334 216.1,332.8 219.7,326.8" fill="#363636"/>
+  <line x1="198" y1="366" x2="225" y2="350" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="225,350 219.7,357.2 216.1,351.2" fill="#363636"/>
+  <rect x="270" y="322" width="168" height="40" fill="#fff" stroke="#363636" stroke-width="1.6"/>
+  <line x1="314" y1="322" x2="314" y2="362" stroke="#e6e2d8"/>
+  <line x1="376" y1="322" x2="376" y2="362" stroke="#e6e2d8"/>
+  <text x="292" y="347" font-size="13" font-weight="700" fill="#363636" text-anchor="middle" >x₃w₃</text>
+  <text x="345" y="347" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.00</text>
+  <text x="407" y="347" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <line x1="438" y1="342" x2="505" y2="238" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="505,238 503.5,246.9 497.6,243.1" fill="#363636"/>
+  <circle cx="520" cy="222" r="16" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
+  <text x="520" y="228" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >+</text>
+  <rect x="552" y="202" width="168" height="40" fill="#fff" stroke="#363636" stroke-width="1.6"/>
+  <line x1="596" y1="202" x2="596" y2="242" stroke="#e6e2d8"/>
+  <line x1="658" y1="202" x2="658" y2="242" stroke="#e6e2d8"/>
+  <text x="574" y="227" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >sum</text>
+  <text x="627" y="227" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >1.50</text>
+  <text x="689" y="227" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <rect x="552" y="300" width="168" height="40" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <line x1="596" y1="300" x2="596" y2="340" stroke="#e6e2d8"/>
+  <line x1="658" y1="300" x2="658" y2="340" stroke="#e6e2d8"/>
+  <text x="574" y="325" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle" >b</text>
+  <text x="627" y="325" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >-1.00</text>
+  <text x="689" y="325" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <circle cx="752" cy="262" r="16" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
+  <text x="752" y="268" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >+</text>
+  <line x1="720" y1="222" x2="738" y2="250" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="738,250 730.6,244.9 736.5,241.1" fill="#363636"/>
+  <line x1="720" y1="320" x2="738" y2="274" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="738,274 738.2,283.0 731.7,280.4" fill="#363636"/>
+  <rect x="778" y="150" width="168" height="40" fill="#fff" stroke="#363636" stroke-width="1.6"/>
+  <line x1="822" y1="150" x2="822" y2="190" stroke="#e6e2d8"/>
+  <line x1="884" y1="150" x2="884" y2="190" stroke="#e6e2d8"/>
+  <text x="800" y="175" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >z</text>
+  <text x="853" y="175" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.50</text>
+  <text x="915" y="175" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-0.38</text>
+  <line x1="762" y1="248" x2="800" y2="192" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="800,192 798.2,200.8 792.4,196.9" fill="#363636"/>
+  <circle cx="862" cy="228" r="16" fill="#f7f5ef" stroke="#363636" stroke-width="1.5"/>
+  <text x="862" y="234" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >σ</text>
+  <line x1="862" y1="190" x2="862" y2="212" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="862,212 858.5,203.7 865.5,203.7" fill="#363636"/>
+  <rect x="778" y="262" width="168" height="40" fill="#fff" stroke="#363636" stroke-width="1.6"/>
+  <line x1="822" y1="262" x2="822" y2="302" stroke="#e6e2d8"/>
+  <line x1="884" y1="262" x2="884" y2="302" stroke="#e6e2d8"/>
+  <text x="800" y="287" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >p</text>
+  <text x="853" y="287" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.62</text>
+  <text x="915" y="287" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >-1.61</text>
+  <line x1="862" y1="244" x2="862" y2="262" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="862,262 858.5,253.7 865.5,253.7" fill="#363636"/>
+  <rect x="778" y="340" width="168" height="40" fill="#fff" stroke="#AF1F25" stroke-width="1.6"/>
+  <line x1="822" y1="340" x2="822" y2="380" stroke="#e6e2d8"/>
+  <line x1="884" y1="340" x2="884" y2="380" stroke="#e6e2d8"/>
+  <text x="800" y="365" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="middle" >loss</text>
+  <text x="853" y="365" font-size="15" font-weight="400" fill="#363636" text-anchor="middle" >0.47</text>
+  <text x="915" y="365" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle" >+1.00</text>
+  <line x1="862" y1="302" x2="862" y2="340" stroke="#363636" stroke-width="1.6"/>
+  <polygon points="862,340 858.5,331.7 865.5,331.7" fill="#363636"/>
+  <text x="30" y="412" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >Backward, right to left: each box’s blame = the blame of the box after it × how much it moved that box.</text>
+  <text x="30" y="434" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >Each weight’s blame is (p − y) × its input: (0.62 − 1) × 1 = -0.38 — and w₃ gets none, because x₃ was 0.</text>
 </svg>

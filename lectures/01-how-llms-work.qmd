@@ -149,20 +149,24 @@ We **tokenized** the data using … **o200k_harmony** … The models were **post
 
 [**1.0** you write the rule yourself. **2.0** you give examples and the machine learns the rule — as numbers called weights. **3.0** you give an instruction in plain English to a model that has already learned from huge amounts of text. 2.0 and 3.0 are built from the same thing: neurons.]{.explain}
 
-## Four past payments
+## Eight past payments
 
-| payment | large? (over €1,000) | abroad? | fraud? |
-|---|---|---|---|
-| **A** | 0 | 0 | no |
-| **B** | 1 | 0 | no |
-| **C** | 0 | 1 | no |
-| **D** | 1 | 1 | **yes** |
+| payment | large? (over €1,000) | abroad? | new device? | fraud? |
+|---|---|---|---|---|
+| **A** | 0 | 0 | 0 | no |
+| **B** | 1 | 0 | 0 | no |
+| **C** | 0 | 1 | 0 | no |
+| **D** | 0 | 0 | 1 | no |
+| **E** | 1 | 1 | 0 | **yes** |
+| **F** | 1 | 0 | 1 | **yes** |
+| **G** | 0 | 1 | 1 | **yes** |
+| **H** | 1 | 1 | 1 | **yes** |
 
 ::: {.callout-important title="Bet"}
-A first guess: weight **1** on "large", **0** on "abroad", bias **−1**; block if the score is above zero. Which payments does it block?
+A first guess: weight **1** on "large", **0** on the others, bias **−1**; block if the score is above zero. Which payments does it block?
 :::
 
-[From here to the end of the lesson, one question: **is this payment fraud?** Every step makes the answer a little more capable.]{.explain}
+[Three red flags per payment. The hidden truth, which the model is not told: **fraud when at least two flags are on.**]{.explain}
 
 ## The first guess, as one neuron
 
@@ -175,16 +179,26 @@ A first guess: weight **1** on "large", **0** on "abroad", bias **−1**; block 
 
 [Wrong → move each weight a little towards the right answer; right → leave it. **η**, the learning rate, is how big each move is.]{.explain}
 
-## The rule it learned
+## The rule it learned, round by round
 
-$$w \;\leftarrow\; w + \eta \cdot (\text{fraud} - \text{decision}) \cdot x$$
+For every weight, after every mistake:
 
-| | w large | w abroad | bias |
-|---|---|---|---|
-| first guess | 1 | 0 | −1 |
-| after 2 mistakes | **1** | **0.5** | **−1** |
+$$w_{\text{large}} \leftarrow w_{\text{large}} + \eta\,(\text{fraud} - \text{decision})\cdot \text{large} \qquad \text{bias} \leftarrow \text{bias} + \eta\,(\text{fraud} - \text{decision})$$
 
-[Nobody wrote "large **and** abroad". The weights found it from four examples. This is Software 2.0 — and this neuron has a name: the **perceptron**, 1958.]{.explain}
+::: {style="font-size:0.72em"}
+| round | payment | score | decision | fraud | fraud − decision | w large | w abroad | w device | bias |
+|---|---|---|---|---|---|---|---|---|---|
+| start | | | | | | 1 | 0 | 0 | −1 |
+| 1 | E | 0 | pass | yes | +1 | 1.5 | 0.5 | 0 | −0.5 |
+| 1 | G | 0 | pass | yes | +1 | 1.5 | 1 | 0.5 | 0 |
+| 2 | B | 1.5 | block | no | −1 | 1 | 1 | 0.5 | −0.5 |
+| 2 | C | 0.5 | block | no | −1 | 1 | 0.5 | 0.5 | −1 |
+| 2 | G | 0 | pass | yes | +1 | 1 | 1 | 1 | −0.5 |
+| 3 | B | 0.5 | block | no | −1 | 0.5 | 1 | 1 | −1 |
+| 4 | all 8 right | | | | | **0.5** | **1** | **1** | **−1** |
+:::
+
+[Six corrections over three rounds; round 4 makes none. Nobody wrote "two red flags" — the weights found it. And they decided "large" counts half as much as the others. This neuron is the **perceptron**, 1958.]{.explain}
 
 ## Yes or no is not enough
 
@@ -193,28 +207,37 @@ $$w \;\leftarrow\; w + \eta \cdot (\text{fraud} - \text{decision}) \cdot x$$
 
 ## How wrong, as one number
 
-The **loss**: small when the model gave the right answer a high probability.
+The **loss** of one payment: small when the model gave the right answer a high probability. The loss of the model: the **average** over all payments.
 
-| payment | p(fraud) | right answer | loss = −log p(right answer) |
-|---|---|---|---|
-| **D** | 0.62 | fraud | −log 0.62 = **0.47** |
-| **B** | 0.50 | not fraud | −log 0.50 = **0.69** |
+::: {style="font-size:0.8em"}
+| payment | fraud? | p(fraud) | loss = −log p(right answer) | after training: p(fraud) |
+|---|---|---|---|---|
+| **A** | no | 0.27 | 0.31 | 0.00 |
+| **B** | no | 0.38 | 0.47 | 0.05 |
+| **C** | no | 0.50 | 0.69 | 0.05 |
+| **D** | no | 0.50 | 0.69 | 0.05 |
+| **E** | yes | 0.62 | 0.47 | 0.96 |
+| **F** | yes | 0.62 | 0.47 | 0.96 |
+| **G** | yes | 0.73 | 0.31 | 0.96 |
+| **H** | yes | 0.82 | 0.20 | 1.00 |
+| **average** | | | **0.45** | loss **0.03** |
+:::
 
-[Training means one thing: change the weights so this number goes down.]{.explain}
+[That average is the one number training pushes down: 0.45 at the perceptron's weights, 0.03 after 200 steps of the formula on the next slide.]{.explain}
 
 ## The formula for every weight
 
-$$w \;\leftarrow\; w - \eta \cdot (p - y) \cdot x$$
+$$w \;\leftarrow\; w - \eta \cdot (p - y) \cdot x \qquad\qquad \text{new weight} = \text{old weight} - \text{learning rate} \times \text{blame}$$
 
-One step on payment D, with η = 1:
+One step on payment E (large, abroad, fraud), with η = 1:
 
-| | w large | w abroad | bias | p(fraud) for D |
-|---|---|---|---|---|
-| before | 1 | 0.5 | −1 | 0.62 |
-| blame = (p − y)·x | −0.38 | −0.38 | −0.38 | |
-| after | **1.38** | **0.88** | **−0.62** | **0.84** |
+| | w large | w abroad | w device | bias | p(fraud) for E |
+|---|---|---|---|---|---|
+| before | 0.5 | 1 | 1 | −1 | 0.62 |
+| blame = (p − y)·answer | −0.38 | −0.38 | 0.00 | −0.38 | |
+| after (η = 1) | **0.88** | **1.38** | **1.00** | **−0.62** | **0.84** |
 
-[Same shape as the perceptron rule — with a probability in place of a yes/no. D is now 84% fraud instead of 62%.]{.explain}
+[Same shape as the perceptron rule, with a probability instead of a yes/no. "New device" gets no blame: it was off for E, so it could not have caused the mistake.]{.explain}
 
 ## Where the blame comes from: backpropagation
 
@@ -225,7 +248,7 @@ One step on payment D, with η = 1:
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_lr_poster.png"><source src="media/w01_lr.mp4" type="video/mp4"></video>
 
-[Add payment E — a customer on holiday, large, abroad, genuine — and there is no perfect rule. Too small a step crawls; too large jumps over the best answer.]{.explain}
+[Add payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect any more. Too small a step crawls; too large jumps over the best answer.]{.explain}
 
 ## How every network learns
 
@@ -241,7 +264,7 @@ One step on payment D, with η = 1:
 ![](img/activations.svg){fig-align="center" width="86%"}
 
 
-## From 3 weights to 117 billion
+## From 4 numbers to 117 billion
 
 ![](img/story-scale.svg){fig-align="center" width="78%"}
 
@@ -260,7 +283,7 @@ One step on payment D, with η = 1:
 | "steady" | 4% | 3.8% |
 | "at" | 2% | 1.9% |
 
-[Exactly the step we took on payment D: raise the probability of the right answer, lower the others. Here the right answer is in the text itself.]{.explain}
+[Exactly the step we took on payment E: raise the probability of the right answer, lower the others. Here the right answer is in the text itself.]{.explain}
 
 ## Pre-training is compressing the internet
 
@@ -295,7 +318,7 @@ internet text → a **base model** that continues documents
 | in the release | in terms of what we just built |
 |---|---|
 | **Transformer** | our neurons, plus attention, stacked in 36 layers |
-| **117B total parameters** | our neuron had 3 weights; this has 117 billion |
+| **117B total parameters** | our neuron had 4 numbers (3 weights and a bias); this has 117 billion |
 | **mixture-of-experts** | 128 smaller networks inside; a router picks 4 for each token |
 | **5.1B active per token** | only those 4 run, so it costs like a 5-billion model |
 | **tokenized, o200k_harmony** | how text becomes numbers before the first neuron |

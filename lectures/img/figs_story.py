@@ -42,94 +42,96 @@ def sig(z): return 1 / (1 + math.exp(-z))
 
 # ------------------------------------------------------------------ 1. the neuron with the old rule, on payment D
 def neuron():
-    w1, w2, b = S["start"]
-    x1, x2 = 1, 1
-    z = w1 * x1 + w2 * x2 + b
-    B = [box(30, 80, 190, 56), t(44, 104, "large? (over €1,000)"), t(44, 126, f"x = {x1}", 15, NAVY, "700"),
-         box(30, 200, 190, 56), t(44, 224, "abroad?"), t(44, 246, f"x = {x2}", 15, NAVY, "700"),
-         f'  <line x1="220" y1="108" x2="420" y2="170" stroke="{NAVY}" stroke-width="3"/>',
-         f'  <line x1="220" y1="228" x2="420" y2="178" stroke="{NAVY}" stroke-width="1.2" stroke-dasharray="4 4"/>',
-         t(300, 122, f"w = {w1:g}", 16, RED, "700"), t(300, 232, f"w = {w2:g}", 16, RED, "700"),
-         f'  <circle cx="465" cy="174" r="44" fill="#fff" stroke="{INK}" stroke-width="2"/>',
-         t(465, 170, "Σ", 26, INK, "400", "middle"), t(465, 194, f"bias {b:g}", 12, MUTED, "400", "middle"),
-         arrow(509, 174, 600, 174), t(555, 162, f"{z:g}", 16, INK, "700", "middle"),
-         box(600, 134, 110, 80, INK, "#fff", 2),
-         f'  <polyline points="615,196 655,196 655,152 695,152" fill="none" stroke="{GOLDDK}" stroke-width="3"/>',
-         t(655, 232, "block if &gt; 0", 12, MUTED, "400", "middle"),
-         arrow(710, 174, 770, 174),
-         t(780, 166, "don’t block", 22, INK, "700"), t(780, 192, "but D was fraud ✗", 15, RED, "700"),
-         f'  <line x1="30" y1="300" x2="930" y2="300" stroke="{RULE}"/>',
-         t(30, 330, f"score = {w1:g}·{x1} + {w2:g}·{x2} − {abs(b):g} = {z:g}", 18, INK, "700", extra=MONO),
-         t(30, 358, "multiply each answer by its weight, add them up with the bias, then decide", 15, MUTED)]
-    svg("story-neuron.svg", 960, 375, B, "a first guess, written as one neuron — payment D: large, abroad, fraud")
+    (w, b) = S["start"]
+    name, x, y = S["payments"][4]          # E: large, abroad, not a new device — fraud
+    z = sum(a * c for a, c in zip(w, x)) + b
+    labels = ["large? (over €1,000)", "abroad?", "new device?"]
+    B = []
+    for i, (lab, xi, wi) in enumerate(zip(labels, x, w)):
+        y0 = 70 + i * 90
+        B += [box(30, y0, 200, 54), t(44, y0 + 23, lab), t(44, y0 + 44, f"x = {xi}", 15, NAVY, "700"),
+              f'  <line x1="230" y1="{y0+27}" x2="420" y2="174" stroke="{NAVY}" stroke-width="{3 if wi else 1.2}"'
+              f'{"" if wi else " stroke-dasharray=\"4 4\""}/>',
+              t(250, y0 + 14 if i < 2 else y0 + 56, f"w = {wi:g}", 16, RED, "700")]
+    B += [f'  <circle cx="465" cy="174" r="44" fill="#fff" stroke="{INK}" stroke-width="2"/>',
+          t(465, 170, "Σ", 26, INK, "400", "middle"), t(465, 194, f"bias {b:g}", 12, MUTED, "400", "middle"),
+          arrow(509, 174, 600, 174), t(555, 162, f"{z:g}", 16, INK, "700", "middle"),
+          box(600, 134, 110, 80, INK, "#fff", 2),
+          f'  <polyline points="615,196 655,196 655,152 695,152" fill="none" stroke="{GOLDDK}" stroke-width="3"/>',
+          t(655, 232, "block if &gt; 0", 12, MUTED, "400", "middle"),
+          arrow(710, 174, 770, 174),
+          t(780, 166, "don’t block", 22, INK, "700"), t(780, 192, f"but {name} was fraud ✗", 15, RED, "700"),
+          f'  <line x1="30" y1="330" x2="930" y2="330" stroke="{RULE}"/>',
+          t(30, 360, "score = " + " + ".join(f"{wi:g}·{xi}" for wi, xi in zip(w, x)) + f" − {abs(b):g} = {z:g}", 18, INK, "700", extra=MONO)]
+    svg("story-neuron.svg", 960, 375, B, f"a first guess, written as one neuron — payment {name}: large, abroad, fraud")
 
 
 # ------------------------------------------------------------------ 2. step versus sigmoid, with our four payments
 def step_sigmoid():
-    fw1, fw2, fb = S["perceptron_final"]
-    pts = []
-    for name, x1, x2, y in S["payments"]:
-        pts.append((name, fw1 * x1 + fw2 * x2 + fb, y))
+    *w, b = S["perceptron_final"]
+    groups = {}
+    for name, x, y in S["payments"]:
+        z = round(sum(a * c for a, c in zip(w, x)) + b, 2)
+        groups.setdefault(z, []).append((name, y))
     B = []
     for k, (title, f, col) in enumerate([("step: yes or no", lambda z: 1.0 if z > 0 else 0.0, GOLDDK),
                                           ("sigmoid: how sure", sig, NAVY)]):
         x0, y0, W, H = 40 + k * 460, 70, 400, 230
         B += [box(x0, y0, W, H, RULE, PAPER, 1), t(x0, y0 - 10, title, 17, col, "700")]
-        X = lambda z: x0 + 20 + (z + 1.6) / 3.2 * (W - 40)
+        X = lambda z: x0 + 20 + (z + 1.8) / 3.6 * (W - 40)
         Y = lambda v: y0 + H - 20 - v * (H - 40)
         B += [f'  <line x1="{X(0)}" y1="{y0+10}" x2="{X(0)}" y2="{y0+H-10}" stroke="{RULE}"/>',
               t(x0 + W - 6, Y(0) + 16, "score →", 12, MUTED, "400", "end"),
               t(x0 + 6, Y(1) + 4, "1", 12, MUTED), t(x0 + 6, Y(0) + 4, "0", 12, MUTED)]
-        line = " ".join(f"{X(-1.6+3.2*i/200):.1f},{Y(f(-1.6+3.2*i/200)):.1f}" for i in range(201))
+        line = " ".join(f"{X(-1.8+3.6*i/200):.1f},{Y(f(-1.8+3.6*i/200)):.1f}" for i in range(201))
         B.append(f'  <polyline points="{line}" fill="none" stroke="{col}" stroke-width="3.5"/>')
-        for name, z, y in pts:
-            v = f(z)
-            dx, dy, anc = {"A": (0, 28, "middle"), "C": (0, 28, "middle"), "B": (-12, -12, "end"), "D": (-12, -12, "end")}[name]
-            if k == 0 and name == "B":
-                dx, dy, anc = (0, 28, "middle")
-            B += [f'  <circle cx="{X(z):.1f}" cy="{Y(v):.1f}" r="7" fill="{RED if y else "#fff"}" stroke="{RED if y else INK}" stroke-width="2"/>',
-                  t(X(z) + dx, Y(v) + dy, name + (f" {v:.2f}" if k else ""), 14, INK, "700", anc)]
+        for z, members in sorted(groups.items()):
+            v = f(z); fraud = members[0][1]
+            label = " ".join(n for n, _ in members) + (f"  {v:.2f}" if k else "")
+            below = (k == 0 and v == 0) or (k == 1 and z < 0.25)
+            B += [f'  <circle cx="{X(z):.1f}" cy="{Y(v):.1f}" r="7" fill="{RED if fraud else "#fff"}" stroke="{RED if fraud else INK}" stroke-width="2"/>',
+                  t(X(z) + (0 if below else -10), Y(v) + (28 if below else -12), label, 14, INK, "700", "middle" if below else "end")]
     B += [f'  <line x1="30" y1="345" x2="930" y2="345" stroke="{RULE}"/>',
           t(30, 372, "Step: nudging a weight changes nothing until the answer flips — no signal for which way to move.", 15, INK),
           t(30, 396, "Sigmoid: every nudge moves the output a little. Now “how wrong” is a number you can shrink.", 15, INK)]
     svg("story-step-sigmoid.svg", 960, 410, B,
-        f"the four payments at the learned weights ({fw1:g}, {fw2:g}, {fb:g}) — red = fraud")
+        "the eight payments at the learned weights (" + ", ".join(f"{v:g}" for v in S["perceptron_final"]) + ") — red = fraud")
 
 
 # ------------------------------------------------------------------ 3. backprop graph, Karpathy style: value and blame on every node
 def graph():
     g = S["graph"]
     def node(x, y, label, val, grad, col=INK, w=168):
-        return [box(x, y, w, 44, col, "#fff", 1.6),
-                f'  <line x1="{x+44}" y1="{y}" x2="{x+44}" y2="{y+44}" stroke="{RULE}"/>',
-                f'  <line x1="{x+106}" y1="{y}" x2="{x+106}" y2="{y+44}" stroke="{RULE}"/>',
-                t(x + 22, y + 27, label, 13 if len(label) > 3 else 15, col, "700", "middle"),
-                t(x + 75, y + 27, f"{val:.2f}", 15, INK, "400", "middle"),
-                t(x + 137, y + 27, "—" if grad is None else f"{grad:+.2f}", 15, MUTED if grad is None else RED, "700", "middle")]
+        return [box(x, y, w, 40, col, "#fff", 1.6),
+                f'  <line x1="{x+44}" y1="{y}" x2="{x+44}" y2="{y+40}" stroke="{RULE}"/>',
+                f'  <line x1="{x+106}" y1="{y}" x2="{x+106}" y2="{y+40}" stroke="{RULE}"/>',
+                t(x + 22, y + 25, label, 13 if len(label) > 3 else 15, col, "700", "middle"),
+                t(x + 75, y + 25, f"{val:.2f}", 15, INK, "400", "middle"),
+                t(x + 137, y + 25, "—" if grad is None else (f"{grad:+.2f}" if abs(grad) >= 0.005 else "0.00"), 15, MUTED if grad is None else RED, "700", "middle")]
     def op(x, y, s):
-        return [f'  <circle cx="{x}" cy="{y}" r="17" fill="{PAPER}" stroke="{INK}" stroke-width="1.5"/>', t(x, y + 6, s, 18, INK, "700", "middle")]
-    B = [t(30, 62, "each box:", 13, MUTED), t(100, 62, "name", 13, INK, "700"), t(145, 62, "value (forward) →", 13, INK),
-         t(265, 62, "← blame (backward)", 13, RED, "700")]
-    B += node(30, 90, "x₁", g["x1"], None, MUTED) + node(30, 150, "w₁", g["w1"], g["g_w1"], NAVY)
-    B += node(30, 240, "x₂", g["x2"], None, MUTED) + node(30, 300, "w₂", g["w2"], g["g_w2"], NAVY)
-    B += op(245, 148, "×") + op(245, 298, "×")
-    B += [arrow(198, 112, 228, 140), arrow(198, 172, 228, 155), arrow(198, 262, 228, 290), arrow(198, 322, 228, 305)]
-    B += node(275, 126, "x₁w₁", g["m1"], g["g_m1"]) + node(275, 276, "x₂w₂", g["m2"], g["g_m2"])
-    B += op(490, 222, "+") + [arrow(443, 148, 474, 212), arrow(443, 298, 474, 232)]
-    B += node(520, 200, "sum", g["s"], g["g_s"])
-    B += node(520, 300, "b", g["b"], g["g_b"], NAVY)
-    B += op(725, 250, "+") + [arrow(688, 222, 709, 240), arrow(688, 322, 709, 262)]
-    B += node(752, 160, "z", g["z"], g["g_z"])
-    B += [arrow(735, 236, 790, 206)]
-    B += op(836, 260 - 0, "σ")
-    B += [arrow(836, 204, 836, 243)]
-    B += node(752, 300, "p", g["p"], g["g_p"])
-    B += [arrow(836, 277, 836, 300)]
-    B += node(752, 370, "loss", g["L"], 1.0, RED)
-    B += [arrow(836, 344, 836, 370)]
-    B += [t(30, 400, "Backward, right to left: each box’s blame = the blame of the box after it × how much it moved that box.", 14, INK),
-          t(30, 422, f"Every weight’s blame comes out as (p − y) × its input:  ({g['p']:.2f} − 1) × 1 = {g['g_w1']:+.2f}.", 14, INK, "700")]
-    svg("story-backprop.svg", 960, 436, B, "backpropagation on payment D, one neuron — the chain rule, box by box")
+        return [f'  <circle cx="{x}" cy="{y}" r="16" fill="{PAPER}" stroke="{INK}" stroke-width="1.5"/>', t(x, y + 6, s, 17, INK, "700", "middle")]
+    B = [t(30, 60, "each box:", 13, MUTED), t(100, 60, "name", 13, INK, "700"), t(145, 60, "value (forward) →", 13, INK),
+         t(265, 60, "← blame (backward)", 13, RED, "700")]
+    subs = ["₁", "₂", "₃"]
+    ys = [78, 188, 298]
+    for i, y0 in enumerate(ys):
+        B += node(30, y0, "x" + subs[i], g["x"][i], None, MUTED) + node(30, y0 + 48, "w" + subs[i], g["w"][i], g["g_w"][i], NAVY)
+        B += op(240, y0 + 44) if False else op(240, y0 + 44, "×")
+        B += [arrow(198, y0 + 20, 225, y0 + 36), arrow(198, y0 + 68, 225, y0 + 52)]
+        B += node(270, y0 + 24, "x" + subs[i] + "w" + subs[i], g["m"][i], g["g_m"][i])
+        B += [arrow(438, y0 + 44, 505, 222 - (1 - i) * 16)]
+    B += op(520, 222, "+")
+    B += node(552, 202, "sum", g["s"], g["g_s"])
+    B += node(552, 300, "b", g["b"], g["g_b"], NAVY)
+    B += op(752, 262, "+") + [arrow(720, 222, 738, 250), arrow(720, 320, 738, 274)]
+    B += node(778, 150, "z", g["z"], g["g_z"])
+    B += [arrow(762, 248, 800, 192)]
+    B += op(862, 228, "σ") + [arrow(862, 190, 862, 212)]
+    B += node(778, 262, "p", g["p"], g["g_p"]) + [arrow(862, 244, 862, 262)]
+    B += node(778, 340, "loss", g["L"], 1.0, RED) + [arrow(862, 302, 862, 340)]
+    B += [t(30, 412, "Backward, right to left: each box’s blame = the blame of the box after it × how much it moved that box.", 14, INK),
+          t(30, 434, f"Each weight’s blame is (p − y) × its input: ({g['p']:.2f} − 1) × 1 = {g['g_w'][0]:+.2f} — and w₃ gets none, because x₃ was 0.", 14, INK, "700")]
+    svg("story-backprop.svg", 960, 446, B, "backpropagation on payment E, one neuron — the chain rule, box by box")
 
 
 # ------------------------------------------------------------------ 4. the training loop, with the formula
@@ -182,12 +184,12 @@ def card_testing():
 
 # ------------------------------------------------------------------ 6. same machine, bigger: fraud network vs LLM
 def same_machine():
-    rows = [("input", "2 answers: large? abroad?", "the text so far, as token vectors"),
+    rows = [("input", "3 answers: large? abroad? new device?", "the text so far, as token vectors"),
             ("output", "1 probability: fraud?", "~200,000 probabilities: which token next?"),
             ("loss", "−log p(right answer)", "−log p(right next token)"),
             ("update", "w ← w − η · blame", "w ← w − η · blame"),
-            ("weights", "3", "117,000,000,000"),
-            ("training data", "4 payments", "~15 trillion tokens of text")]
+            ("weights", "4", "117,000,000,000"),
+            ("training data", "8 payments", "~15 trillion tokens of text")]
     B = [t(300, 80, "our fraud neuron", 18, NAVY, "700", "middle"), t(700, 80, "an LLM", 18, RED, "700", "middle")]
     for i, (k, a, b) in enumerate(rows):
         y = 112 + i * 44
@@ -201,7 +203,7 @@ def same_machine():
 
 # ------------------------------------------------------------------ 7. from 3 to 117 billion
 def scale():
-    rows = [("our neuron", 3, "the fraud neuron"),
+    rows = [("our neuron", 4, "3 answers + a bias"),
             ("our small network, 1 → 2 → 1", 7, "card testing"),
             ("GPT-2 small, 2019", 124e6, "small enough to train yourself"),
             ("gpt-oss-20b, 2025", 21e9, "fits in 16 GB of memory"),

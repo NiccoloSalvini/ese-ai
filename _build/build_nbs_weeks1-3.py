@@ -82,27 +82,29 @@ md("## Today — from one neuron to an LLM"),
 md("""
 One question from start to finish: **is this card payment fraud?** Each section adds one piece. The numbers are the same as on the slides.
 
-### 1. Four past payments
+### 1. Eight past payments
 """),
 code("""
 import math, numpy as np, pandas as pd, matplotlib.pyplot as plt
 
 payments = pd.DataFrame({
-    "large":  [0, 1, 0, 1],      # over EUR 1,000?
-    "abroad": [0, 0, 1, 1],      # paid abroad?
-    "fraud":  [0, 0, 0, 1],
-}, index=["A", "B", "C", "D"])
+    "large":  [0, 1, 0, 0, 1, 1, 0, 1],      # over EUR 1,000?
+    "abroad": [0, 0, 1, 0, 1, 0, 1, 1],      # paid abroad?
+    "device": [0, 0, 0, 1, 0, 1, 1, 1],      # new device?
+    "fraud":  [0, 0, 0, 0, 1, 1, 1, 1],      # the hidden truth: at least two red flags
+}, index=list("ABCDEFGH"))
 payments
 """),
 md("""
 ### 2. A first guess, as one neuron
 
-**Bet first:** weight 1 on `large`, 0 on `abroad`, bias −1, block if the score is above 0. Which payments does it block?
+**Bet first:** weight 1 on `large`, 0 on the others, bias −1, block if the score is above 0. Which payments does it block?
 """),
 code("""
-w_large, w_abroad, bias = 1.0, 0.0, -1.0
+w = {"large": 1.0, "abroad": 0.0, "device": 0.0}
+bias = -1.0
 
-payments["score"] = w_large * payments.large + w_abroad * payments.abroad + bias
+payments["score"] = sum(w[f] * payments[f] for f in w) + bias
 payments["block"] = (payments.score > 0).astype(int)
 payments
 """),
@@ -112,23 +114,24 @@ md("""
 Wrong → move each weight a little towards the right answer. Right → leave it. The learning rate `eta` is how big each move is.
 """),
 code("""
-w_large, w_abroad, bias, eta = 1.0, 0.0, -1.0, 0.5
+w = {"large": 1.0, "abroad": 0.0, "device": 0.0}
+bias, eta = -1.0, 0.5
 
-for rnd in range(1, 6):
+for rnd in range(1, 10):
     mistakes = 0
     for name, row in payments.iterrows():
-        score = w_large * row.large + w_abroad * row.abroad + bias
+        score = sum(w[f] * row[f] for f in w) + bias
         decision = 1 if score > 0 else 0
         error = row.fraud - decision                  # +1 missed fraud, -1 false alarm, 0 right
         if error:
-            w_large  += eta * error * row.large
-            w_abroad += eta * error * row.abroad
-            bias     += eta * error
+            for f in w:
+                w[f] = float(w[f] + eta * error * row[f])   # weight <- weight + eta * (fraud - decision) * answer
+            bias = float(bias + eta * error)
             mistakes += 1
-            print(f"round {rnd}  {name}: score {score:+.1f} -> {'block' if decision else 'no block'}  WRONG  "
-                  f"-> weights ({w_large:g}, {w_abroad:g}, {bias:g})")
+            print(f"round {rnd}  {name}: score {score:+.1f} -> {'block' if decision else 'pass'}  WRONG  "
+                  f"-> {w}  bias {bias:g}")
     if mistakes == 0:
-        print(f"round {rnd}: no mistakes. Learned weights: ({w_large:g}, {w_abroad:g}, {bias:g})")
+        print(f"round {rnd}: no mistakes. Learned: {w}  bias {bias:g}")
         break
 """),
 md("""
@@ -140,12 +143,12 @@ code("""
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
-payments["score"] = w_large * payments.large + w_abroad * payments.abroad + bias
+payments["score"] = sum(w[f] * payments[f] for f in w) + bias
 payments["p_fraud"] = sigmoid(payments.score).round(2)
-payments[["large", "abroad", "fraud", "score", "p_fraud"]]
+payments[["large", "abroad", "device", "fraud", "score", "p_fraud"]]
 """),
 md("""
-**🔍 CHECK.** B sits exactly on the line. What probability does it get, and why is that more honest than "don't block"?
+**🔍 CHECK.** C and D sit exactly on the line. What probability do they get, and why is that more honest than "don't block"?
 
 ### 5. How wrong, as one number: the loss
 """),
@@ -153,18 +156,18 @@ code("""
 def loss(p, y):
     return -math.log(p) if y == 1 else -math.log(1 - p)
 
-for name in ["D", "B"]:
-    p, y = sigmoid(payments.loc[name, "score"]), payments.loc[name, "fraud"]
-    print(f"{name}: p(fraud) = {p:.2f}, fraud = {y}  ->  loss = {loss(p, y):.2f}")
+payments["loss"] = [loss(sigmoid(s), y) for s, y in zip(payments.score, payments.fraud)]
+print(payments[["fraud", "p_fraud", "loss"]].round(2))
+print(f"average loss: {payments.loss.mean():.2f}   <- the one number training pushes down")
 """),
 md("""
 ### 6. The formula for every weight
 
-`w <- w - eta * (p - y) * x`. One step on payment D, with `eta = 1`.
+`w <- w - eta * (p - y) * x`. One step on payment E (large, abroad, fraud), with `eta = 1`.
 """),
 code("""
-x = {"large": 1, "abroad": 1, "bias": 1}                  # payment D (the bias always sees a 1)
-w = {"large": float(w_large), "abroad": float(w_abroad), "bias": float(bias)}
+x = {"large": 1, "abroad": 1, "device": 0, "bias": 1}      # payment E (the bias always sees a 1)
+w = {**{f: float(v) for f, v in w.items()}, "bias": float(bias)}
 y, eta = 1, 1.0
 
 p = sigmoid(sum(w[k] * x[k] for k in w))
@@ -172,20 +175,20 @@ blame = {k: (p - y) * x[k] for k in w}                     # what backpropagatio
 w_new = {k: w[k] - eta * blame[k] for k in w}
 p_new = sigmoid(sum(w_new[k] * x[k] for k in w))
 
-print("before ", {k: round(float(v), 2) for k, v in w.items()}, f"  p(fraud) for D = {p:.2f}")
+print("before ", {k: round(float(v), 2) for k, v in w.items()}, f"  p(fraud) for E = {p:.2f}")
 print("blame  ", {k: round(float(v), 2) for k, v in blame.items()})
-print("after  ", {k: round(float(v), 2) for k, v in w_new.items()}, f"  p(fraud) for D = {p_new:.2f}")
+print("after  ", {k: round(float(v), 2) for k, v in w_new.items()}, f"  p(fraud) for E = {p_new:.2f}")
 """),
 md("""
 ### 7. The learning rate
 
-Real data is messier. Add payment E: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.
+Real data is messier. Add payment I: large, abroad — and genuine, a customer on holiday. Now no rule is perfect. Train with three learning rates.
 """),
 code("""
-X = np.array([[0, 0], [1, 0], [0, 1], [1, 1], [1, 1]])    # A B C D E
-Y = np.array([0, 0, 0, 1, 0])
+X = np.vstack([payments[["large", "abroad", "device"]].values, [1, 1, 0]])   # A..H, then I
+Y = np.append(payments.fraud.values, 0)
 
-def train(eta, steps=30, w=(1.0, 0.5), b=-1.0):
+def train(eta, steps=30, w=(0.5, 1.0, 1.0), b=-1.0):
     w, b, hist = np.array(w, float), b, []
     for _ in range(steps):
         p = np.clip(sigmoid(X @ w + b), 1e-12, 1 - 1e-12)
@@ -195,7 +198,7 @@ def train(eta, steps=30, w=(1.0, 0.5), b=-1.0):
 
 for eta in (0.3, 3, 20):
     plt.plot(train(eta), label=f"eta = {eta}", lw=2)
-plt.xlabel("training steps"); plt.ylabel("loss"); plt.ylim(0, 2.6); plt.legend(); plt.show()
+plt.xlabel("training steps"); plt.ylabel("loss"); plt.ylim(0, 5); plt.legend(); plt.show()
 """),
 md("""
 **Try:** `eta = 8`. Does it settle, or keep jumping?

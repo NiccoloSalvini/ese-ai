@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
   <text x="30" y="34" font-size="13" fill="#7a7f85">number of weights (parameters), log scale — each step right is ten times more</text>
   <text x="30" y="90" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >our neuron</text>
-  <rect x="330" y="74" width="44" height="22" fill="#2471a3" fill-opacity=".85"/>
-  <text x="383.93235962721093" y="91" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >3</text>
-  <text x="383.93235962721093" y="108" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >the fraud neuron</text>
+  <rect x="330" y="74" width="48" height="22" fill="#2471a3" fill-opacity=".85"/>
+  <text x="387.58068045253026" y="91" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >4</text>
+  <text x="387.58068045253026" y="108" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" >3 answers + a bias</text>
   <text x="30" y="148" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >our small network, 1 → 2 → 1</text>
   <rect x="330" y="132" width="55" height="22" fill="#2471a3" fill-opacity=".85"/>
   <text x="394.6776049007663" y="149" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >7</text>

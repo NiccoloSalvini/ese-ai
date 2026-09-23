@@ -22,91 +22,89 @@ def num(v):
 
 
 class PerceptronPayments(Scene):
-    """Learning from mistakes, by hand: the old rule meets four payments."""
+    """Learning from mistakes, by hand: a first guess meets eight payments."""
 
     def construct(self):
-        title = Text("Learning from mistakes, by hand", font_size=34, weight=BOLD).to_edge(UP, buff=0.35)
+        title = Text("Learning from mistakes, by hand", font_size=32, weight=BOLD).to_edge(UP, buff=0.3)
         self.add(title)
 
-        # the data table, left
-        head = ["", "large?", "abroad?", "fraud?"]
-        rows = [[n, str(a), str(b), "yes" if y else "no"] for n, a, b, y in S["payments"]]
-        xs = [-6.3, -5.2, -4.0, -2.8]
+        head = ["", "large", "abroad", "device", "fraud"]
+        rows = [[n] + [str(v) for v in x] + ["yes" if y else "no"] for n, x, y in S["payments"]]
+        xs = [-6.4, -5.5, -4.5, -3.5, -2.5]
         table = VGroup()
         for r, row in enumerate([head] + rows):
-            line = VGroup(*[Text(c, font_size=24, color=GREY if r == 0 else (RED if c == "yes" else WHITE),
-                                 weight=BOLD if (r > 0 and j == 0) else NORMAL)
-                            for j, c in enumerate(row)])
+            line = VGroup(*[Text(c, font_size=21, color=GREY if r == 0 else (RED if c == "yes" else WHITE),
+                                 weight=BOLD if (r > 0 and j == 0) else NORMAL) for j, c in enumerate(row)])
             for j, m in enumerate(line):
-                m.move_to([xs[j], 1.9 - r * 0.62, 0])
+                m.move_to([xs[j], 2.45 - r * 0.5, 0])
             table.add(line)
         self.play(FadeIn(table), run_time=0.8)
 
-        # the weights, top right
-        labels = ["w large", "w abroad", "bias"]
+        labels = ["w large", "w abroad", "w device", "bias"]
         def weights_group(w, colour=GOLD):
             g = VGroup()
             for i, (lab, v) in enumerate(zip(labels, w)):
-                t = VGroup(Text(lab, font_size=22, color=GREY), Text(num(v), font_size=34, color=colour, weight=BOLD))
-                t.arrange(DOWN, buff=0.12).move_to([0.6 + i * 2.0, 2.0, 0])
+                t = VGroup(Text(lab, font_size=20, color=GREY), Text(num(v), font_size=32, color=colour, weight=BOLD))
+                t.arrange(DOWN, buff=0.1).move_to([-0.6 + i * 1.75, 2.35, 0])
                 g.add(t)
             return g
-        wg = weights_group(S["start"])
-        eta = Text(f"learning rate η = {S['eta_p']:g}", font_size=22, color=GREY).move_to([2.6, 1.05, 0])
+        wg = weights_group(list(S["start"][0]) + [S["start"][1]])
+        eta = Text(f"learning rate η = {S['eta_p']:g}", font_size=20, color=GREY).move_to([2.0, 1.45, 0])
         self.play(FadeIn(wg), FadeIn(eta), run_time=0.8)
 
-        LEFT_X = -1.4
+        LEFT_X = -1.5
         def at(m, y):
             return m.move_to([LEFT_X, y, 0], aligned_edge=LEFT)
 
-        calc = verdict = rnd = None
-        pointer = None
-        for r in [r for r in S["perceptron"] if r["epoch"] <= 2]:
-            idx = "ABCD".index(r["name"]) + 1
+        calc = verdict = rnd = pointer = None
+        for r in S["perceptron"]:
+            if r["epoch"] > S["rounds"] - 1:
+                break
+            idx = "ABCDEFGH".index(r["name"]) + 1
             anims = []
             if rnd is None or r["name"] == "A":
-                new_rnd = Text(f"round {r['epoch']}", font_size=24, color=GOLD).move_to([-4.5, -1.35, 0])
-                anims += [FadeOut(rnd)] if rnd else []
-                anims += [FadeIn(new_rnd)]
+                new_rnd = Text(f"round {r['epoch']}", font_size=24, color=GOLD).move_to([-4.4, -2.35, 0])
+                anims += ([FadeOut(rnd)] if rnd else []) + [FadeIn(new_rnd)]
                 rnd = new_rnd
-            box = SurroundingRectangle(table[idx], color=GOLD, buff=0.1, stroke_width=3)
+            box = SurroundingRectangle(table[idx], color=GOLD, buff=0.07, stroke_width=3)
             anims += [ReplacementTransform(pointer, box)] if pointer else [Create(box)]
             pointer = box
-            b1, b2, bb = r["before"]
-            new_calc = at(Text(f"score = {b1:g}·{r['x1']} + {b2:g}·{r['x2']} {fmt(bb)} = {num(r['z'])}", font=MONO, font_size=22), 0.15)
-            anims += [FadeOut(calc)] if calc else []
-            anims += [FadeOut(verdict)] if verdict else []
-            anims += [FadeIn(new_calc)]
+            *w, b = r["before"]
+            terms = " + ".join(f"{num(wi)}·{xi}" for wi, xi in zip(w, r["x"]))
+            new_calc = at(Text(f"score = {terms} {fmt(b)} = {num(r['z'])}", font=MONO, font_size=19), 0.75)
+            anims += ([FadeOut(calc)] if calc else []) + ([FadeOut(verdict)] if verdict else []) + [FadeIn(new_calc)]
             calc = new_calc
-            self.play(*anims, run_time=0.55)
             ok = r["err"] == 0
+            self.play(*anims, run_time=0.3 if ok else 0.5)
             decision = "block" if r["yhat"] else "don’t block"
             verdict = at(Text(f"→ {decision}   " + ("✓" if ok else "✗ " + ("missed fraud" if r["y"] else "false alarm")),
-                              font_size=28, color=GREEN if ok else RED, weight=BOLD), -0.6)
-            self.play(FadeIn(verdict), run_time=0.35)
+                              font_size=24, color=GREEN if ok else RED, weight=BOLD), 0.1)
+            self.play(FadeIn(verdict), run_time=0.2 if ok else 0.35)
             if ok:
-                self.wait(0.5)
+                self.wait(0.15)
                 continue
-            a1, a2, ab = r["after"]
-            upd = VGroup(
-                Text(f"w ← w + η · (fraud − decision) · x", font=MONO, font_size=20, color=GOLD),
-                Text(f"  = w + {S['eta_p']:g} · ({r['err']:+d}) · ({r['x1']}, {r['x2']}, 1)", font=MONO, font_size=20, color=GOLD),
-                Text(f"  → ({num(a1)}, {num(a2)}, {num(ab)})", font=MONO, font_size=20, color=GOLD, weight=BOLD),
-            ).arrange(DOWN, aligned_edge=LEFT, buff=0.14)
-            at(upd, -1.9)
-            self.play(FadeIn(upd), run_time=0.5)
-            self.wait(0.6)
-            new_w = weights_group([a1, a2, ab], RED)
-            self.play(FadeOut(wg), FadeIn(new_w), run_time=0.6)
+            *a, ab = r["after"]
+            e = r["err"]
+            lines = [f"weight ← weight + η·(fraud − decision)·answer"]
+            for lab, wi, xi, ai in zip(["w large ", "w abroad", "w device"], w, r["x"], a):
+                lines.append(f"{lab} = {num(wi)} + {S['eta_p']:g}·({e:+d})·{xi} = {num(ai)}")
+            lines.append(f"bias     = {num(b)} + {S['eta_p']:g}·({e:+d})   = {num(ab)}")
+            upd = VGroup(*[Text(l, font=MONO, font_size=17, color=GOLD, weight=BOLD if k == 0 else NORMAL)
+                           for k, l in enumerate(lines)]).arrange(DOWN, aligned_edge=LEFT, buff=0.1)
+            at(upd, -1.45)
+            self.play(FadeIn(upd), run_time=0.45)
+            new_w = weights_group(a + [ab], RED)
+            self.play(FadeOut(wg), FadeIn(new_w), run_time=0.5)
             wg = new_w
-            self.wait(1.2)
-            calm = weights_group([a1, a2, ab])
-            self.play(FadeOut(upd), FadeOut(wg), FadeIn(calm), run_time=0.4)
+            self.wait(1.4)
+            calm = weights_group(a + [ab])
+            self.play(FadeOut(upd), FadeOut(wg), FadeIn(calm), run_time=0.35)
             wg = calm
 
-        done = Text("round 3: four payments, no mistakes — the rule is learned", font_size=26, color=GREEN, weight=BOLD).move_to([0, -3.1, 0])
+        done = Text(f"round {S['rounds']}: eight payments, no mistakes — the rule is learned",
+                    font_size=24, color=GREEN, weight=BOLD).move_to([0, -3.2, 0])
         self.play(FadeOut(calc), FadeOut(verdict), FadeOut(pointer), FadeIn(done), run_time=0.6)
-        self.wait(2.0)
+        self.wait(2.2)
 
 
 class LearningRate(Scene):
@@ -114,7 +112,7 @@ class LearningRate(Scene):
 
     def construct(self):
         title = Text("The learning rate: how big each nudge is", font_size=32, weight=BOLD).to_edge(UP, buff=0.35)
-        ax = Axes(x_range=[0, 29, 5], y_range=[0, 2.6, 0.5], x_length=10.5, y_length=4.6,
+        ax = Axes(x_range=[0, 29, 5], y_range=[0, 5, 1], x_length=10.5, y_length=4.6,
                   axis_config={"color": GREY, "include_tip": False}).shift(DOWN * 0.3)
         xl = Text("training steps", font_size=20, color=GREY).next_to(ax.x_axis, DOWN, buff=0.2)
         yl = Text("how wrong (loss)", font_size=20, color=GREY).rotate(PI / 2).next_to(ax.y_axis, LEFT, buff=0.25)
@@ -124,7 +122,7 @@ class LearningRate(Scene):
         legend = VGroup()
         for i, (k, (col, lab)) in enumerate(styles.items()):
             h = S["lr"][k]
-            pts = [ax.c2p(j, min(v, 2.6)) for j, v in enumerate(h)]
+            pts = [ax.c2p(j, min(v, 5)) for j, v in enumerate(h)]
             curve = VMobject(color=col, stroke_width=4).set_points_as_corners(pts)
             dot = Dot(pts[-1], color=col)
             lg = Text(lab, font_size=22, color=col).move_to([3.4, 2.3 - i * 0.45, 0])
