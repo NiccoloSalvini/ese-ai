@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">weekly Bitcoin return against the weekly change in the US 10-year yield, 245 weeks</text>
+  <text x="560" y="70" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="middle">correlation</text>
+  <text x="780" y="70" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="middle">slope</text>
+  <text x="30" y="120" font-size="16" font-weight="400" fill="#363636" text-anchor="start">yield change written in percentage points (0.25)</text>
+  <text x="560" y="120" font-size="20" font-weight="700" fill="#363636" text-anchor="middle">0.019</text>
+  <text x="780" y="120" font-size="20" font-weight="700" fill="#AF1F25" text-anchor="middle">0.01</text>
+  <line x1="30" y1="138" x2="930" y2="138" stroke="#e6e2d8"/>
+  <text x="30" y="180" font-size="16" font-weight="400" fill="#363636" text-anchor="start">the same change written as a decimal (0.0025)</text>
+  <text x="560" y="180" font-size="20" font-weight="700" fill="#363636" text-anchor="middle">0.019</text>
+  <text x="780" y="180" font-size="20" font-weight="700" fill="#AF1F25" text-anchor="middle">1.02</text>
+  <line x1="30" y1="198" x2="930" y2="198" stroke="#e6e2d8"/>
+  <text x="30" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start">Read literally: “a one-point rise in the 10-year yield moves Bitcoin by 1%” — or by 102%.</text>
+  <text x="30" y="286" font-size="15" font-weight="700" fill="#363636" text-anchor="start">Same data, same code. The correlation cannot tell you anything is wrong; the slope silently changes by 100.</text>
+</svg>

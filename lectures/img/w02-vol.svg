@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 372" width="960" height="372" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">annualised volatility of daily returns, 2022-01-01 to 2026-09-18</text>
+  <text x="30" y="102" font-size="16" font-weight="700" fill="#363636" text-anchor="start">Bitcoin, √365 — it trades every day</text>
+  <rect x="370" y="82" width="474" height="30" fill="#AF1F25" fill-opacity="0.9"/>
+  <text x="854.0418877244385" y="104" font-size="18" font-weight="700" fill="#AF1F25" text-anchor="start">50.8%</text>
+  <text x="30" y="180" font-size="16" font-weight="700" fill="#363636" text-anchor="start">Bitcoin, √252 — the assistant’s constant</text>
+  <rect x="370" y="160" width="394" height="30" fill="#a8955a" fill-opacity="0.45"/>
+  <text x="773.8860110887795" y="182" font-size="18" font-weight="700" fill="#a8955a" text-anchor="start">42.2%</text>
+  <text x="30" y="258" font-size="16" font-weight="700" fill="#363636" text-anchor="start">S&amp;P 500 (SPY), √252</text>
+  <rect x="370" y="238" width="162" height="30" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="542.1339278835209" y="260" font-size="18" font-weight="700" fill="#2471a3" text-anchor="start">17.4%</text>
+  <line x1="30" y1="330" x2="930" y2="330" stroke="#e6e2d8"/>
+  <text x="30" y="358" font-size="15" font-weight="400" fill="#363636" text-anchor="start">daily standard deviation × √(trading days in a year). Same formula; the wrong constant makes Bitcoin look 17% calmer.</text>
+</svg>

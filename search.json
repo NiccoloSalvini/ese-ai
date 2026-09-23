@@ -7,6 +7,13 @@
     "text": "The last session\n\n\n\n\n\n\n\n10:20–11:10\nprototype → production, as three decisions with numbers\n\n\n11:20–11:40\nreadiness, roles, roadmap\n\n\n11:40–12:40\nstudio — your repo on the screen, then rehearsal\n\n\n12:40–13:00\nthe portfolio, and three lines you write for yourself\n\n\n\nTen weeks ago you had not called an API. Today you cost one at volume and defend the number."
   },
   {
+    "objectID": "lectures/10-to-production.html#last-week-in-one-slide",
+    "href": "lectures/10-to-production.html#last-week-in-one-slide",
+    "title": "From a prototype to something a firm would run",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nAn explanation describes the model, not the world; compute it on the period you report.\nMeasure errors by group; every mitigation is paid for by somebody — name who.\n\nRed-team your own pipeline: a list of things that should break it, run as code, with a before-and-after log.\nThe risk and controls canvas: nine boxes, every one a specific noun."
+  },
+  {
     "objectID": "lectures/10-to-production.html#block-b-three-decisions-each-with-a-number",
     "href": "lectures/10-to-production.html#block-b-three-decisions-each-with-a-number",
     "title": "From a prototype to something a firm would run",
@@ -133,6 +140,13 @@
     "text": "Today, from the ledger up\n\n\n\n\n\n\n\n10:20–11:00\nwallet, transaction, block, fee, smart contract — what each actually is\n\n\n11:00–11:50\nx · y = k, and everything that follows from it\n\n\n12:00–12:30\nreal protocol data, and an LLM summary you check\n\n\n12:30–13:00\nprotocol risk, then MiCA\n\n\n\nNo enthusiasm and no dismissal today. It is a database with unusual properties, and the properties have consequences you can compute."
   },
   {
+    "objectID": "lectures/08-defi.html#last-week-in-one-slide",
+    "href": "lectures/08-defi.html#last-week-in-one-slide",
+    "title": "One equation runs a market",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nA backtest lies four ways: the position earns the return that produced it, survivors only, a hundred tries, one regime.\nA parameter search belongs inside walk-forward, and the number of attempts is reported with the result.\n\nAn LLM-derived signal is dated by when it was readable, not by what it is about.\nModel risk: an owner, a limit, and a kill-switch that has been tested."
+  },
+  {
     "objectID": "lectures/08-defi.html#five-words-defined-once",
     "href": "lectures/08-defi.html#five-words-defined-once",
     "title": "One equation runs a market",
@@ -245,6 +259,13 @@
     "text": "Today\n\n\n\n\n\n\n\n10:00–10:45\nyou present the case brief, then written feedback\n\n\n10:45–12:00\nwhere AI earns money in fintech — fraud, credit, and what a regulator wants\n\n\n12:10–12:50\ncapstone scoping: three candidates, one chosen, data checked\n\n\n\nBy 13:00 you will have a capstone topic whose data you have already loaded. Not a topic you like the sound of."
   },
   {
+    "objectID": "lectures/06-fintech-landscape.html#last-week-in-one-slide",
+    "href": "lectures/06-fintech-landscape.html#last-week-in-one-slide",
+    "title": "Where AI actually earns money in finance",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nAn agent is a model calling tools in a loop. It fails three ways: it retries for ever, it obeys a document, nobody counts the cost.\nThe defence is in your code, never in the prompt: the model is never the last check on its own output.\n\nAn evaluation is a fixed set of questions run on every change; an LLM judge is biased, and still useful.\nCost per query is arithmetic; value per query is judgement. The case brief is due Sunday."
+  },
+  {
     "objectID": "lectures/06-fintech-landscape.html#block-b-fraud-where-accuracy-stops-meaning-anything",
     "href": "lectures/06-fintech-landscape.html#block-b-fraud-where-accuracy-stops-meaning-anything",
     "title": "Where AI actually earns money in finance",
@@ -350,6 +371,13 @@
     "text": "Where we are\n\n\n\n\n\n\n\n\n1–3\n23 Sep – 7 Oct\ndata, a model, and an honest evaluation ✓\n\n\n4\n14 Oct\ncall a model from code; make it cite your documents\n\n\n5\n21 Oct\nagents, tools, evals · the product lens\n\n\n—\n1 Nov\ncase brief, 40% — on what you build today and next week\n\n\n\nFrom today you are building the thing you will be assessed on."
   },
   {
+    "objectID": "lectures/04-rag.html#last-week-in-one-slide",
+    "href": "lectures/04-rag.html#last-week-in-one-slide",
+    "title": "Making it answer from your documents",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nA feature is what you know at t; the target is what happens after. The base rate is the score to beat.\nA shuffled split let the future leak into training. Nothing to the right of the wall may fit what is on the left.\n\nA probability is not a decision: the threshold comes from the cost of each kind of error.\nCalibration: when the model says 70%, does it happen 70% of the time?"
+  },
+  {
     "objectID": "lectures/04-rag.html#block-a-four-knobs-and-they-are-the-whole-api",
     "href": "lectures/04-rag.html#block-a-four-knobs-and-they-are-the-whole-api",
     "title": "Making it answer from your documents",
@@ -448,172 +476,228 @@
     "text": "Close\nHomework 4 — extend the retrieval system with a corpus of your own, write ten test questions with expected answers, record hits and misses, and explain each miss as retrieval or generation.\nDue Tuesday 20 October, 23:59.\n\nNext week the model stops answering and starts acting — and everything that can go wrong, does.\n\n\n\nAI for Business & FinTech · ESE Florence"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#where-we-are",
-    "href": "lectures/02-pair-programmer.html#where-we-are",
+    "objectID": "lectures/02-pair-programmer.html#today",
+    "href": "lectures/02-pair-programmer.html#today",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Where we are",
-    "text": "Where we are\n\n\n\n\n\n\n\n\n1\n23 Sep\nwho we are, the plan, how the model reads ✓\n\n\n2\n30 Sep\nthe checking habit, three assets, joins, and the errors that hide\n\n\n3\n7 Oct\na model, and an honest evaluation of it\n\n\n4–5\n14–21 Oct\nan LLM application, then agents and evals\n\n\n\nLast week you saw what the model reads. Today you see what it gets wrong — a constant that looks fine, then the two mistakes that never raise an error."
+    "section": "Today",
+    "text": "Today\n\n\n\n\n\n\n\n10:00\nlast week in one slide · your starting point\n\n\n10:25\nthe model’s side: temperature, and why it invents\n\n\n10:55\nyour tiny LLM, piece 1: a tokenizer\n\n\n11:15\nbreak\n\n\n11:25\nis Bitcoin riskier than the stock market? — ten real days by hand\n\n\n12:05\ntwo calendars, one join\n\n\n12:30\nunits, snapshots, and what never goes into a chatbot\n\n\n12:50\nhomework · three lines"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#block-a-why-the-same-question-gives-different-answers",
-    "href": "lectures/02-pair-programmer.html#block-a-why-the-same-question-gives-different-answers",
+    "objectID": "lectures/02-pair-programmer.html#last-week-in-one-slide",
+    "href": "lectures/02-pair-programmer.html#last-week-in-one-slide",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Block A Why the same question gives different answers",
-    "text": "Block A Why the same question gives different answers"
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nA neuron multiplies each answer by a weight, adds a bias, and squashes.\nTraining is one loop: guess → how wrong (the loss) → blame each weight (backpropagation) → nudge it: w \\leftarrow w - \\eta\\,(p-y)\\,x.\n\nAn LLM is the same machine, answering “which of 200,000 tokens comes next?”.\nIt reads tokens, lets them attend to each other, and knows only what is in its context window.\n\nToday: what it does with those probabilities — and then data, where the assistant writes the code and you check it."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#it-is-choosing-not-looking-up",
-    "href": "lectures/02-pair-programmer.html#it-is-choosing-not-looking-up",
+    "objectID": "lectures/02-pair-programmer.html#your-starting-point",
+    "href": "lectures/02-pair-programmer.html#your-starting-point",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "It is choosing, not looking up",
-    "text": "It is choosing, not looking up\n\nTemperature decides how much it respects those odds — and nothing else about the model changes."
+    "section": "Your starting point",
+    "text": "Your starting point\nHomework 1: the question you want answered by December. Tell me in two minutes, as if to a manager."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#so-where-do-hallucinations-come-from",
-    "href": "lectures/02-pair-programmer.html#so-where-do-hallucinations-come-from",
+    "objectID": "lectures/02-pair-programmer.html#part-1-the-models-side",
+    "href": "lectures/02-pair-programmer.html#part-1-the-models-side",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "So where do hallucinations come from?",
-    "text": "So where do hallucinations come from?\n\n\n\n\n\n\n\nBet before we look\n\n\nThe model invents a plausible figure for a company’s 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?\n\n\n\n\n\nWorking as designed. It completes patterns. When the pattern needs a number that was never in the box, it produces the shape of a number that would fit.\nIt has no way to feel the difference between recalling and inventing. That is your job, and it is the habit this whole course builds."
+    "section": "Part 1 The model’s side",
+    "text": "Part 1 The model’s side"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-habit-this-course-is-really-about",
-    "href": "lectures/02-pair-programmer.html#the-habit-this-course-is-really-about",
+    "objectID": "lectures/02-pair-programmer.html#last-weeks-table-again",
+    "href": "lectures/02-pair-programmer.html#last-weeks-table-again",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "The habit this course is really about",
-    "text": "The habit this course is really about\nLAB · week-01/session.ipynb § B3 — 🔍 CHECK\nRun the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:\n\n\nVerifiable a number you can look up, a date, a name, a claim with a source\n\nPlausible but unverifiable fluent, confident, no way to check it, and quite possibly invented\n\nDo this on every answer, all term, until it is automatic."
+    "section": "Last week’s table, again",
+    "text": "Last week’s table, again\nThe ECB left rates → ?\n\n\n\n\nunchanged\nsteady\nat\non\nhigher\n\n\n\n\n0.62\n0.15\n0.10\n0.08\n0.05\n\n\n\n\n\n\n\n\n\n\n\nBet\n\n\nAsk the same question ten times. How many times does it answer “unchanged”?\n\n\n\n\nIt does not look the answer up. It picks from these odds — and the setting that decides how it picks is called temperature."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#and-write-that-into-the-procedure-not-the-folklore",
-    "href": "lectures/02-pair-programmer.html#and-write-that-into-the-procedure-not-the-folklore",
+    "objectID": "lectures/02-pair-programmer.html#temperature-reshapes-the-odds",
+    "href": "lectures/02-pair-programmer.html#temperature-reshapes-the-odds",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "And write that into the procedure, not the folklore",
-    "text": "And write that into the procedure, not the folklore\nA process that an auditor will look at cannot say “we asked the AI”.\n\nthe exact prompt, versioned like code\nT = 0, and the model name and version recorded with the output\nthe input stored next to the answer"
+    "section": "Temperature reshapes the odds",
+    "text": "Temperature reshapes the odds"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#block-b-four-verbs-three-assets",
-    "href": "lectures/02-pair-programmer.html#block-b-four-verbs-three-assets",
+    "objectID": "lectures/02-pair-programmer.html#the-same-five-tokens-four-temperatures",
+    "href": "lectures/02-pair-programmer.html#the-same-five-tokens-four-temperatures",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Block B Four verbs, three assets",
-    "text": "Block B Four verbs, three assets"
+    "section": "The same five tokens, four temperatures",
+    "text": "The same five tokens, four temperatures\n\n\n\n\nnext token\nT = 0\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n1.00\n0.90\n0.62\n0.39\n\n\nsteady\n0.00\n0.05\n0.15\n0.19\n\n\nat\n0.00\n0.02\n0.10\n0.16\n\n\non\n0.00\n0.01\n0.08\n0.14\n\n\nhigher\n0.00\n0.01\n0.05\n0.11\n\n\n\n\nT = 0: always the top token — the same answer every time. Use it for anything that must be reproducible: extraction, classification, anything an auditor will read. Higher T for ideas."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#four-verbs-and-you-can-do-most-of-data-work",
-    "href": "lectures/02-pair-programmer.html#four-verbs-and-you-can-do-most-of-data-work",
+    "objectID": "lectures/02-pair-programmer.html#so-where-do-invented-numbers-come-from",
+    "href": "lectures/02-pair-programmer.html#so-where-do-invented-numbers-come-from",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Four verbs, and you can do most of data work",
-    "text": "Four verbs, and you can do most of data work\n\n\n\n\n\nin pandas\n\n\n\n\nfilter\nkeep some rows\ndf[df.volume &gt; 0]\n\n\nderive\nmake a new column\ndf[\"ret\"] = df.close.pct_change()\n\n\naggregate\nmany rows into one number\ndf.groupby(...).mean()\n\n\njoin\nput two tables side by side\na.join(b)\n\n\n\nThe assistant writes all four faster than you can. The job is not writing them. It is knowing what the result should look like before you see it."
+    "section": "So where do invented numbers come from?",
+    "text": "So where do invented numbers come from?\n\n\n\n\n\n\n\nBet\n\n\nYou ask for a company’s 2025 revenue. The model gives a precise, wrong figure. Bug, lie, or working as designed?\n\n\n\n\n\nWorking as designed. There is always a most likely next token — even when the fact was never in the training data or the context. It produces the shape of a number that would fit, with the same confidence.\nIt cannot feel the difference between recalling and inventing. That is your job, all term."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#three-assets-and-one-number-that-is-wrong",
-    "href": "lectures/02-pair-programmer.html#three-assets-and-one-number-that-is-wrong",
+    "objectID": "lectures/02-pair-programmer.html#two-piles",
+    "href": "lectures/02-pair-programmer.html#two-piles",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Three assets, and one number that is wrong",
-    "text": "Three assets, and one number that is wrong\nLAB · week-01/session.ipynb § C — you drive\n\nPull daily prices for BTC, an equity and an index.\nReturns, summary statistics, one chart that answers a question. Before each cell runs, say how many rows should come back.\n🔍 CHECK — the volatility cell was written by an assistant. It contains two errors. Find them.\n\nI will not touch the keyboard. When it breaks, read the error before asking me."
+    "section": "Two piles",
+    "text": "Two piles\nLAB · session.ipynb § 2\nAsk your assistant about a real company. Split every sentence of the answer:\n\n\nVerifiable\na number, a date, a name, a source you can open\n\nPlausible\nfluent, confident — and nothing to check it against"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-two-planted-errors-and-why-they-matter",
-    "href": "lectures/02-pair-programmer.html#the-two-planted-errors-and-why-they-matter",
+    "objectID": "lectures/02-pair-programmer.html#write-it-into-the-procedure",
+    "href": "lectures/02-pair-programmer.html#write-it-into-the-procedure",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "The two planted errors, and why they matter",
-    "text": "The two planted errors, and why they matter\n\n\n√252 applied to crypto Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.\n\nReturns added up Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.\n\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nThe assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look."
+    "section": "Write it into the procedure",
+    "text": "Write it into the procedure\nA process an auditor will read cannot say “we asked the AI”. It records:\n\nthe exact prompt, versioned like code\nT = 0, and the model’s name and version\nthe input stored next to the answer"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#block-c-the-first-error-two-calendars-that-do-not-line-up",
-    "href": "lectures/02-pair-programmer.html#block-c-the-first-error-two-calendars-that-do-not-line-up",
+    "objectID": "lectures/02-pair-programmer.html#part-2-your-tiny-llm-piece-1-the-tokenizer",
+    "href": "lectures/02-pair-programmer.html#part-2-your-tiny-llm-piece-1-the-tokenizer",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Block C The first error: two calendars that do not line up",
-    "text": "Block C The first error: two calendars that do not line up"
+    "section": "Part 2 Your tiny LLM, piece 1: the tokenizer",
+    "text": "Part 2 Your tiny LLM, piece 1: the tokenizer"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#bitcoin-trades-on-sunday.-the-stock-exchange-does-not.",
-    "href": "lectures/02-pair-programmer.html#bitcoin-trades-on-sunday.-the-stock-exchange-does-not.",
+    "objectID": "lectures/02-pair-programmer.html#how-a-tokenizer-is-learned",
+    "href": "lectures/02-pair-programmer.html#how-a-tokenizer-is-learned",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Bitcoin trades on Sunday. The stock exchange does not.",
-    "text": "Bitcoin trades on Sunday. The stock exchange does not.\n\n\n\n\n\n\n\nBet before we compute\n\n\nYou join a year of BTC prices to a year of SPY prices and compute the correlation. What has already gone wrong, before any arithmetic?\n\n\n\n\n\nOne series has 365 rows a year, the other about 252. Something has to give, and whichever way you resolve it changes the answer."
+    "section": "How a tokenizer is learned",
+    "text": "How a tokenizer is learned\nFind the pair of symbols that appears most often. Give it a name. Repeat.\n\n\n\n\nmerge\nthe pair seen most often\ntimes\nnew piece\ntext length\n\n\n\n\nstart\n\n\n\n127\n\n\n1\na + n\n6\nan\n121\n\n\n2\ns + _\n5\ns_\n116\n\n\n3\ne + _\n4\ne_\n112\n\n\n4\nr + a\n4\nra\n108\n\n\n5\nra + t\n4\nrat\n104\n\n\n6\nrat + e\n4\nrate\n100\n\n\n7\nrate + s_\n4\nrates_\n96\n\n\n8\nt + h\n3\nth\n93\n\n\n\n\nTrained on a text about rates, it learns rates_ as one piece after seven merges. Trained mostly on English, it learns English pieces — and your Russian costs more."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#watch-what-the-join-does",
-    "href": "lectures/02-pair-programmer.html#watch-what-the-join-does",
+    "objectID": "lectures/02-pair-programmer.html#train-one-on-your-own-texts",
+    "href": "lectures/02-pair-programmer.html#train-one-on-your-own-texts",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Watch what the join does",
-    "text": "Watch what the join does\n\n\n\nDrop the weekend, or invent it. There is no third option, and neither is free."
+    "section": "Train one on your own texts",
+    "text": "Train one on your own texts\nLAB · session.ipynb § 3\n\nPaste a paragraph of your own — English, then Russian.\nRun the merges. Which pieces does it learn first?\nCount: how many symbols per word, in each language?\n\nNext week the pieces become the input of a model that guesses the next one."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#two-ways-to-resolve-it-and-what-each-costs",
-    "href": "lectures/02-pair-programmer.html#two-ways-to-resolve-it-and-what-each-costs",
+    "objectID": "lectures/02-pair-programmer.html#break-ten-minutes.",
+    "href": "lectures/02-pair-programmer.html#break-ten-minutes.",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Two ways to resolve it, and what each costs",
-    "text": "Two ways to resolve it, and what each costs"
+    "section": "Break — ten minutes.",
+    "text": "Break — ten minutes."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#break-it-yourself",
-    "href": "lectures/02-pair-programmer.html#break-it-yourself",
+    "objectID": "lectures/02-pair-programmer.html#part-3-is-bitcoin-riskier-than-the-stock-market",
+    "href": "lectures/02-pair-programmer.html#part-3-is-bitcoin-riskier-than-the-stock-market",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Break it yourself",
-    "text": "Break it yourself\nLAB · session.ipynb § B\n\nJoin BTC and SPY with dropna(). Count the rows you lost.\nJoin them with ffill(). Compute BTC’s annualised volatility both ways.\nPrint the mean Monday return for BTC under each.\n\nThen answer: which of the two numbers would you put in a report, and what sentence goes underneath it?"
+    "section": "Part 3 Is Bitcoin riskier than the stock market?",
+    "text": "Part 3 Is Bitcoin riskier than the stock market?"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#block-d-the-second-error-units",
-    "href": "lectures/02-pair-programmer.html#block-d-the-second-error-units",
+    "objectID": "lectures/02-pair-programmer.html#ten-real-days-january-2024",
+    "href": "lectures/02-pair-programmer.html#ten-real-days-january-2024",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Block D The second error: units",
-    "text": "Block D The second error: units"
+    "section": "Ten real days, January 2024",
+    "text": "Ten real days, January 2024\n\n\n\n\nday\nBitcoin, $\nS&P 500 (SPY), $\n\n\n\n\nFri 05 Jan\n44,163\n453.09\n\n\nSat 06 Jan\n43,989\n—\n\n\nSun 07 Jan\n43,943\n—\n\n\nMon 08 Jan\n46,971\n459.56\n\n\nTue 09 Jan\n46,140\n458.86\n\n\nWed 10 Jan\n46,628\n461.46\n\n\nThu 11 Jan\n46,369\n461.26\n\n\nFri 12 Jan\n42,853\n461.57\n\n\nSat 13 Jan\n42,842\n—\n\n\nSun 14 Jan\n41,796\n—\n\n\nMon 15 Jan\n42,512\n—\n\n\nTue 16 Jan\n43,155\n459.88\n\n\n\n\nThe week the US approved spot Bitcoin ETFs. Bitcoin: 12 prices. The stock market: 7 — weekends, and Monday 15 January was a US holiday."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#a-correlation-between-mismatched-units-is-still-a-number",
-    "href": "lectures/02-pair-programmer.html#a-correlation-between-mismatched-units-is-still-a-number",
+    "objectID": "lectures/02-pair-programmer.html#four-verbs-cover-most-of-data-work",
+    "href": "lectures/02-pair-programmer.html#four-verbs-cover-most-of-data-work",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "A correlation between mismatched units is still a number",
-    "text": "A correlation between mismatched units is still a number\nThat is the whole problem. Nothing breaks. Nothing warns you.\n\n\n\n\n\n\n\nwhat you joined\nwhat you got\n\n\n\n\nreturns as 0.012 against returns as 1.2\na coefficient off by a hundred\n\n\na rate in percent against a rate in decimal\na chart that looks fine and is wrong\n\n\ndollars against thousands of dollars\na ratio nobody notices until the Board does\n\n\n\n\nThe assistant cannot see units. They are not in the data; they are in the documentation, and often only in someone’s head."
+    "section": "Four verbs cover most of data work",
+    "text": "Four verbs cover most of data work\n\n\n\n\n\n\n\n\n\n\nverb\nin Excel\nin pandas\non our ten days\n\n\n\n\nfilter\nAutoFilter\ndf[df.SPY.notna()]\nkeep the days the stock market traded\n\n\nderive\na formula column\ndf.pct_change()\ndaily returns\n\n\naggregate\na pivot table\ndf.std()\none volatility number\n\n\njoin\nVLOOKUP\na.join(b)\nBitcoin next to the S&P 500\n\n\n\n\nThe assistant writes all four faster than you. Your job is to know what the result should look like before you see it."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#three-habits-that-catch-it",
-    "href": "lectures/02-pair-programmer.html#three-habits-that-catch-it",
+    "objectID": "lectures/02-pair-programmer.html#a-return-by-hand",
+    "href": "lectures/02-pair-programmer.html#a-return-by-hand",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Three habits that catch it",
-    "text": "Three habits that catch it\n\nPrint head() and read it. Not glance — read. Is that number plausible as a daily return?\nPlot before you model. A wrong unit is usually visible as a wrong axis.\nCompute one number a second way. Cumulative return from first and last price, against the same thing from the return series. If they disagree, stop.\n\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nThe assistant is fluent about code and blind about meaning. Units, calendars and conventions are exactly where it fails silently."
+    "section": "A return, by hand",
+    "text": "A return, by hand\n\\text{return} = \\frac{\\text{price today}}{\\text{price yesterday}} - 1\nMonday 8 January, Bitcoin: 46,971 / 43,943 − 1 = +6.9%"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#join-something-that-is-not-a-price",
-    "href": "lectures/02-pair-programmer.html#join-something-that-is-not-a-price",
+    "objectID": "lectures/02-pair-programmer.html#riskier-by-how-much",
+    "href": "lectures/02-pair-programmer.html#riskier-by-how-much",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Join something that is not a price",
-    "text": "Join something that is not a price\nLAB · session.ipynb § C\nBring in one external series — a FRED interest rate, or on-chain active addresses.\n\nState its frequency and its units before you join.\nJoin it. Say which calendar the result is in.\nFind one known event in the chart. If you cannot see it, the join is wrong."
+    "section": "Riskier by how much?",
+    "text": "Riskier by how much?\n\n\n\n\n\n\n\nBet\n\n\nBitcoin’s yearly volatility against the S&P 500’s: twice? three times?"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#block-e-making-it-repeatable-and-safe",
-    "href": "lectures/02-pair-programmer.html#block-e-making-it-repeatable-and-safe",
+    "objectID": "lectures/02-pair-programmer.html#up-50-then-down-50",
+    "href": "lectures/02-pair-programmer.html#up-50-then-down-50",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Block E Making it repeatable, and safe",
-    "text": "Block E Making it repeatable, and safe"
+    "section": "Up 50%, then down 50%",
+    "text": "Up 50%, then down 50%"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#the-same-mistake-on-a-whole-year",
+    "href": "lectures/02-pair-programmer.html#the-same-mistake-on-a-whole-year",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "The same mistake, on a whole year",
+    "text": "The same mistake, on a whole year"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#find-the-two-errors",
+    "href": "lectures/02-pair-programmer.html#find-the-two-errors",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "Find the two errors",
+    "text": "Find the two errors\nLAB · session.ipynb § 4 — 🔍 CHECK\nThe assistant wrote a cell that reports Bitcoin’s volatility and its return. It runs, and the numbers look reasonable. Two are wrong.\nTen minutes, alone. If you find one: there is another."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#part-4-two-calendars-one-join",
+    "href": "lectures/02-pair-programmer.html#part-4-two-calendars-one-join",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "Part 4 Two calendars, one join",
+    "text": "Part 4 Two calendars, one join"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#what-a-join-does-to-ten-days",
+    "href": "lectures/02-pair-programmer.html#what-a-join-does-to-ten-days",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "What a join does to ten days",
+    "text": "What a join does to ten days"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#the-same-choice-on-four-and-a-half-years",
+    "href": "lectures/02-pair-programmer.html#the-same-choice-on-four-and-a-half-years",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "The same choice, on four and a half years",
+    "text": "The same choice, on four and a half years\n\n\n\n\n\n\n\nBet\n\n\nFill the stock market’s weekends with Friday’s price. Does the S&P 500 look more volatile, or less?"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#after-every-join-three-checks",
+    "href": "lectures/02-pair-programmer.html#after-every-join-three-checks",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "After every join, three checks",
+    "text": "After every join, three checks\n\nrows before and after — len(a), len(b), len(joined)\nmissing values — joined.isna().sum()\none row from the middle — read it\n\nThe calendar is a modelling decision, not a cleaning step. The assistant always makes it — silently."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#part-5-units-snapshots-privacy",
+    "href": "lectures/02-pair-programmer.html#part-5-units-snapshots-privacy",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "Part 5 Units, snapshots, privacy",
+    "text": "Part 5 Units, snapshots, privacy"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#a-number-without-a-unit",
+    "href": "lectures/02-pair-programmer.html#a-number-without-a-unit",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "A number without a unit",
+    "text": "A number without a unit\nThree daily returns, written in percent: 1.2, −0.8, 0.5.\n\n\n\n\ncompounded as\ncalculation\nresult\n\n\n\n\npercent → decimals first\n1.012 × 0.992 × 1.005 − 1\n+0.89%\n\n\nread as decimals by mistake\n2.2 × 0.2 × 1.5 − 1\n−34%\n\n\n\n\nNo error, no warning. The code cannot see units; they live in the documentation, and in your head."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#same-correlation-a-slope-off-by-100",
+    "href": "lectures/02-pair-programmer.html#same-correlation-a-slope-off-by-100",
+    "title": "The assistant writes it. You decide whether it is true.",
+    "section": "Same correlation, a slope off by 100",
+    "text": "Same correlation, a slope off by 100"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#a-number-without-a-snapshot-is-an-anecdote",
     "href": "lectures/02-pair-programmer.html#a-number-without-a-snapshot-is-an-anecdote",
     "title": "The assistant writes it. You decide whether it is true.",
     "section": "A number without a snapshot is an anecdote",
-    "text": "A number without a snapshot is an anecdote\nData changes under you. Yahoo revises. An API returns something different tomorrow.\n\nSave the data behind every reported number, with the date you pulled it.\nPin your versions. pandas 2.2.1, not “latest”.\nSet the seed anywhere randomness enters.\n\nThe test: can someone else, on another machine, get your number? If the answer needs you in the room, it is not a result yet."
+    "text": "A number without a snapshot is an anecdote\nEvery number in today’s slides comes from one file:\nbtc_spy_2022-01-01_2026-09-18.csv — 1,722 rows, 2022-01-01 to 2026-09-18.\n\nsave the data behind every reported number, with the date in the name\npin the versions of your libraries\nset the seed wherever randomness enters\n\nThe test: can someone else, on another machine, get your number? If it needs you in the room, it is not a result yet."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#and-the-rule-that-has-no-exceptions",
-    "href": "lectures/02-pair-programmer.html#and-the-rule-that-has-no-exceptions",
+    "objectID": "lectures/02-pair-programmer.html#nothing-confidential-goes-into-an-ai-tool",
+    "href": "lectures/02-pair-programmer.html#nothing-confidential-goes-into-an-ai-tool",
     "title": "The assistant writes it. You decide whether it is true.",
-    "section": "And the rule that has no exceptions",
-    "text": "And the rule that has no exceptions"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#nothing-confidential-goes-into-an-ai-tool.",
-    "href": "lectures/02-pair-programmer.html#nothing-confidential-goes-into-an-ai-tool.",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Nothing confidential goes into an AI tool.",
-    "text": "Nothing confidential goes into an AI tool.\nNot client names, not unpublished figures, not personal data. Not “just to check the formatting”.\nIf you would not email it to a stranger, do not paste it into a chat box."
+    "section": "Nothing confidential goes into an AI tool",
+    "text": "Nothing confidential goes into an AI tool\nNot client names, not unpublished figures, not personal data — not even “just to check the formatting”."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#close",
     "href": "lectures/02-pair-programmer.html#close",
     "title": "The assistant writes it. You decide whether it is true.",
     "section": "Close",
-    "text": "Close\nHomework 2 — one question you actually want answered, a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.\nDue Tuesday 6 October, 23:59.\n\nThe memo is the part that matters. One question, one chart, one answer, for someone who will not open your notebook.\nNext week: a model, and how to tell whether it is any good.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 2, due Tue 6 Oct: one question, one join, one chart whose title is the question, a one-page memo — in your Drive folder, week-02/.\n\nBefore you leave: three lines at the bottom of the notebook, in your words.\nNext week: your tokens become the input of a model that guesses the next character — and we ask whether a model is any good.\n\n\n\nAI for Business & FinTech · ESE Florence"
   },
   {
     "objectID": "glossary.html",
@@ -905,35 +989,77 @@
   {
     "objectID": "week-02/session.html",
     "href": "week-02/session.html",
-    "title": "Week 2 — Data analysis with AI as pair programmer",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
     "section": "",
-    "text": "ESE · AI for Business and FinTech · 30 September 2026\nGoal of the session: acquire, clean, join and chart financial data with the assistant writing most of the code — while you catch its silent errors. By the end you will have a reproducible pipeline that joins market prices with an external macro series and an on-chain series.\n!pip -q install yfinance\n# --- course helper: price loader with fallbacks (run this cell once per session) ---\nimport warnings, numpy as np, pandas as pd\nwarnings.filterwarnings(\"ignore\")\n\ndef load_prices(tickers, start=\"2022-01-01\", end=None, cache_dir=\"data\"):\n    \"\"\"Daily close prices, one column per ticker.\n    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only).\"\"\"\n    import os\n    os.makedirs(cache_dir, exist_ok=True)\n    key = \"_\".join(t.replace(\"^\", \"\") for t in tickers)\n    snap = os.path.join(cache_dir, f\"prices_{key}.csv\")\n    try:\n        import yfinance as yf\n        raw = yf.download(tickers, start=start, end=end, auto_adjust=True, progress=False)\n        px = raw[\"Close\"] if isinstance(raw.columns, pd.MultiIndex) else raw[[\"Close\"]].rename(columns={\"Close\": tickers[0]})\n        px = px.dropna(how=\"all\")\n        if len(px) &lt; 50:\n            raise RuntimeError(\"empty download\")\n        px.to_csv(snap)\n        print(f\"[live] {px.shape[0]} rows from yfinance; snapshot saved to {snap}\")\n        return px\n    except Exception as e:\n        print(f\"[warn] yfinance failed ({type(e).__name__}); trying snapshot\")\n    if os.path.exists(snap):\n        px = pd.read_csv(snap, index_col=0, parse_dates=True)\n        print(f\"[snapshot] {px.shape[0]} rows from {snap}\")\n        return px\n    print(\"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real.\")\n    rng = np.random.default_rng(0)\n    idx = pd.bdate_range(start, end or pd.Timestamp.today().normalize())\n    px = pd.DataFrame({t: 100 * np.exp(np.cumsum(rng.normal(0.0004, 0.02 if \"USD\" in t else 0.011, len(idx))))\n                       for t in tickers}, index=idx)\n    return px"
+    "text": "ESE · AI for Business and FinTech · 30 September 2026\nThe sections follow the slides. Every number here is computed from the same dated snapshot as the slides, so you can check each one.\n!pip -q install tiktoken yfinance\nimport math, numpy as np, pandas as pd, matplotlib.pyplot as plt\nfrom collections import Counter\n\nSNAPSHOT = \"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/btc_spy_2022-01-01_2026-09-18.csv\"\nYIELDS   = \"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/dgs10_2022-01-01_2026-09-18.csv\"\npx  = pd.read_csv(SNAPSHOT, index_col=0, parse_dates=True)       # Bitcoin and the S&P 500 (SPY), dollars\ny10 = pd.read_csv(YIELDS, index_col=0, parse_dates=True)[\"DGS10\"] # US 10-year yield, in PERCENT\nprint(px.shape, px.index.min().date(), \"-&gt;\", px.index.max().date())"
   },
   {
-    "objectID": "week-02/session.html#block-a-pandas-by-doing",
-    "href": "week-02/session.html#block-a-pandas-by-doing",
-    "title": "Week 2 — Data analysis with AI as pair programmer",
-    "section": "Block A — pandas by doing",
-    "text": "Block A — pandas by doing\n\npx = load_prices([\"BTC-USD\", \"SPY\", \"AAPL\"], start=\"2022-01-01\")\nprint(px.index.min().date(), \"→\", px.index.max().date(), \"|\", px.shape)\npx.head(3)\n\nA DataFrame is a spreadsheet with an index. The four operations you will use 90% of the time:\n\n\n\n\n\n\n\n\nOperation\nExcel analogue\npandas\n\n\n\n\nfilter rows\nAutoFilter\ndf[df[\"col\"] &gt; 0]\n\n\nnew column\nformula column\ndf[\"ret\"] = df[\"px\"].pct_change()\n\n\naggregate\nPivotTable\ndf.groupby(...).agg(...) / df.resample(\"W\").last()\n\n\njoin\nVLOOKUP / Power Query merge\ndf.join(other) / pd.merge(...)\n\n\n\n\n# Missing values: BTC trades 7 days a week, SPY and AAPL 5. Look at a week that contains a weekend.\npx.loc[\"2024-01-05\":\"2024-01-09\"]\n\n🔍 CHECK. load_prices already dropped rows where all columns were missing, but weekend rows survive because BTC has a value. Before computing anything across assets you must decide: drop weekends (equity calendar), or fill equities forward (crypto calendar)? Neither is “right” — but choosing silently is wrong. Which one does pct_change() implicitly choose if you do nothing?\n\n# Two explicit choices, side by side\npx_eq = px.dropna()                       # equity calendar: only days where everything traded\npx_cr = px.ffill()                        # crypto calendar: carry equities over the weekend\nprint(\"equity calendar rows:\", len(px_eq), \"| crypto calendar rows:\", len(px_cr))\n\nrets_eq = px_eq.pct_change().dropna()\nrets_cr = px_cr.pct_change().dropna()\nprint(\"\\nBTC daily vol — equity calendar: %.4f | crypto calendar: %.4f\" % (rets_eq[\"BTC-USD\"].std(), rets_cr[\"BTC-USD\"].std()))\nprint(\"BTC mean Monday return on equity calendar (Fri→Mon, 3 days of moves): %.4f\" % rets_eq[\"BTC-USD\"][rets_eq.index.dayofweek == 0].mean())\n\n\n# Resampling: weekly prices (last obs of the week), and weekly returns\nwk = px_eq.resample(\"W-FRI\").last()\nwk_rets = wk.pct_change().dropna()\nwk_rets.tail()"
+    "objectID": "week-02/session.html#temperature-reshapes-the-odds",
+    "href": "week-02/session.html#temperature-reshapes-the-odds",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "1. Temperature reshapes the odds",
+    "text": "1. Temperature reshapes the odds\nLast week’s table. The model does not look the answer up: it picks from these odds. Temperature T decides how: raise every probability to 1/T, then divide by the new total.\n\ntokens = [\"unchanged\", \"steady\", \"at\", \"on\", \"higher\"]\np = np.array([0.62, 0.15, 0.10, 0.08, 0.05])\n\ndef at_temperature(p, T):\n    if T == 0:                                   # T = 0: always the top token\n        q = np.zeros_like(p); q[p.argmax()] = 1; return q\n    q = p ** (1 / T)\n    return q / q.sum()\n\npd.DataFrame({f\"T = {T}\": at_temperature(p, T).round(2) for T in [0, 0.5, 1, 2]}, index=tokens)\n\nBet first: at T = 1, ask ten times. How many times “unchanged”? Then run the cell below.\n\nrng = np.random.default_rng(0)\nfor T in [0, 1, 2]:\n    q = at_temperature(p, T)\n    picks = rng.choice(tokens, size=10, p=q)\n    print(f\"T = {T}:\", \" \".join(picks))"
+  },
+  {
+    "objectID": "week-02/session.html#two-piles",
+    "href": "week-02/session.html#two-piles",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "2. Two piles",
+    "text": "2. Two piles\nAsk your assistant: “Summarise the last annual results of [a company you know]: revenue, profit, number of employees, and the CEO’s name.”\nCopy the answer below. Then split every sentence into two piles.\n\n\n\n\n\n\n\nVerifiable — a number, date, name or source you can open\nPlausible — fluent, and nothing to check it against\n\n\n\n\n…\n…\n\n\n\nNow check two items from the left pile against the company’s own report. Were they right?"
+  },
+  {
+    "objectID": "week-02/session.html#your-tiny-llm-piece-1-a-tokenizer",
+    "href": "week-02/session.html#your-tiny-llm-piece-1-a-tokenizer",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "3. Your tiny LLM, piece 1: a tokenizer",
+    "text": "3. Your tiny LLM, piece 1: a tokenizer\nFind the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.\n\ndef learn_merges(text, merges=8):\n    seq = [c if c != \" \" else \"_\" for c in text]          # _ marks a space\n    for step in range(1, merges + 1):\n        pairs = Counter(zip(seq, seq[1:]))\n        (a, b), n = max(pairs.items(), key=lambda kv: (kv[1], -list(pairs).index(kv[0])))\n        if n &lt; 2:\n            break\n        out, i = [], 0\n        while i &lt; len(seq):\n            if i &lt; len(seq) - 1 and (seq[i], seq[i + 1]) == (a, b):\n                out.append(a + b); i += 2\n            else:\n                out.append(seq[i]); i += 1\n        seq = out\n        print(f\"merge {step}: {a!r} + {b!r} seen {n} times -&gt; {a+b!r:10}  text is now {len(seq)} symbols\")\n    return seq\n\ntext = (\"the bank left rates unchanged. the bank said rates will stay unchanged. \"\n        \"rates are high and the bank expects rates to stay high.\")\nprint(len(text), \"characters to start\")\npieces = learn_merges(text)\n\nYour turn. Paste a paragraph of your own in English, then the same in Russian. Run 30 merges on each. How many symbols per word does each language end up with — and why?\n\nmine_en = \"paste an English paragraph here\"\nmine_ru = \"вставьте сюда абзац на русском\"\nfor name, t in [(\"English\", mine_en), (\"Russian\", mine_ru)]:\n    seq = learn_merges(t, merges=30)\n    print(f\"{name}: {len(seq) / len(t.split()):.1f} symbols per word\\n\")"
+  },
+  {
+    "objectID": "week-02/session.html#is-bitcoin-riskier-than-the-stock-market-ten-real-days-first",
+    "href": "week-02/session.html#is-bitcoin-riskier-than-the-stock-market-ten-real-days-first",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "4. Is Bitcoin riskier than the stock market? Ten real days first",
+    "text": "4. Is Bitcoin riskier than the stock market? Ten real days first\nThe week the US approved spot Bitcoin ETFs. Note the gaps.\n\nten = px.loc[\"2024-01-05\":\"2024-01-16\"]\nprint(ten.round(2))\nprint(\"\\nBitcoin days:\", ten[\"BTC-USD\"].notna().sum(), \"| stock-market days:\", ten[\"SPY\"].notna().sum())\nprint(\"Monday 8 Jan, Bitcoin: %.0f / %.0f - 1 = %+.1f%%\" % (ten.loc[\"2024-01-08\", \"BTC-USD\"], ten.loc[\"2024-01-07\", \"BTC-USD\"],\n      100 * (ten.loc[\"2024-01-08\", \"BTC-USD\"] / ten.loc[\"2024-01-07\", \"BTC-USD\"] - 1)))\n\n\n🔍 CHECK — the assistant’s cell\nAsked for “Bitcoin’s annual volatility and its return in 2022”, the assistant wrote the cell below. It runs, and the numbers look reasonable. Two are wrong. Ten minutes, alone.\n\n# --- as produced by the assistant (do not trust) ---\nr = px[\"BTC-USD\"].pct_change().dropna()\nvol = r.std() * np.sqrt(252)\nr22 = px.loc[\"2022\", \"BTC-USD\"].pct_change().dropna()\ntotal_2022 = r22.sum()\nprint(f\"Bitcoin annual volatility: {vol:.1%}\")\nprint(f\"Bitcoin return in 2022:    {total_2022:.1%}\")\n\n\n\nWhat went wrong\n\n\n√252 is the number of days the stock market trades in a year. Bitcoin trades every day: √365. The formula is right, the constant is wrong, and Bitcoin looks 17% calmer than it is.\nReturns added up. A return compounds: +50% then −50% is not 0%, it is 1.5 × 0.5 − 1 = −25%. Adding the daily returns of 2022 says −85%; the true loss, from the first and last price, is −65%.\n\n\n\n# corrected: the right constant, and returns multiplied — then the same number a second way\nvol_btc = r.std() * np.sqrt(365)\nvol_spy = px[\"SPY\"].dropna().pct_change().std() * np.sqrt(252)\ns22 = px.loc[\"2022\", \"BTC-USD\"].dropna()\ntotal_2022 = (1 + s22.pct_change().dropna()).prod() - 1\ncheck_2022 = s22.iloc[-1] / s22.iloc[0] - 1                 # first and last price: must agree\nprint(f\"Bitcoin annual volatility {vol_btc:.1%}  vs S&P 500 {vol_spy:.1%}\")\nprint(f\"Bitcoin 2022: compounded {total_2022:.1%}, from first and last price {check_2022:.1%}\")"
+  },
+  {
+    "objectID": "week-02/session.html#two-calendars-one-join",
+    "href": "week-02/session.html#two-calendars-one-join",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "5. Two calendars, one join",
+    "text": "5. Two calendars, one join\nBet first: fill the stock market’s weekends with Friday’s price. Does the S&P 500 look more volatile, or less?\n\nequity = px.dropna()                   # equity calendar: only days both traded\ncrypto = px.ffill().dropna()           # crypto calendar: SPY carried over weekends and holidays\nfor name, df in [(\"equity calendar\", equity), (\"crypto calendar\", crypto)]:\n    r = df.pct_change().dropna()\n    print(f\"{name}: {len(df):,} rows | S&P 500 vol {r['SPY'].std() * np.sqrt(252):.1%} | \"\n          f\"corr BTC-S&P {r.corr().iloc[0, 1]:.2f} | days SPY 'returned' exactly 0: {(r['SPY'] == 0).sum()}\")\n\nAfter every join, three checks: rows before and after; isna().sum(); one row from the middle, read.\n\nbtc = px[[\"BTC-USD\"]].dropna()                   # 7 days a week\nspy = px[[\"SPY\"]].dropna()                       # trading days only\nfor how in [\"inner\", \"left\"]:\n    joined = btc.join(spy, how=how)\n    print(f\"{how:5} join: rows {len(btc):,} and {len(spy):,} -&gt; {len(joined):,} | missing SPY: {joined['SPY'].isna().sum()}\")\nprint(\"\\none row from the middle of the left join:\")\nprint(joined.iloc[len(joined) // 2])"
+  },
+  {
+    "objectID": "week-02/session.html#a-number-without-a-unit",
+    "href": "week-02/session.html#a-number-without-a-unit",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "6. A number without a unit",
+    "text": "6. A number without a unit\n\npct_returns = [1.2, -0.8, 0.5]                                   # written in percent\nright = np.prod([1 + r / 100 for r in pct_returns]) - 1          # convert first\nwrong = np.prod([1 + r for r in pct_returns]) - 1                # read as decimals by mistake\nprint(f\"right: {right:+.2%}   wrong: {wrong:+.0%}\")\n\nwk = equity.join(y10, how=\"left\").ffill().resample(\"W-FRI\").last().dropna()\nd_btc = wk[\"BTC-USD\"].pct_change()\nfor label, y in [(\"percentage points\", wk[\"DGS10\"]), (\"decimal\", wk[\"DGS10\"] / 100)]:\n    d_y = y.diff(); ok = d_btc.notna() & d_y.notna()\n    print(f\"yield in {label:17}: correlation {d_btc[ok].corr(d_y[ok]):.3f}   slope {np.polyfit(d_y[ok], d_btc[ok], 1)[0]:.2f}\")"
+  },
+  {
+    "objectID": "week-02/session.html#snapshots-and-what-never-goes-into-a-chatbot",
+    "href": "week-02/session.html#snapshots-and-what-never-goes-into-a-chatbot",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "section": "7. Snapshots, and what never goes into a chatbot",
+    "text": "7. Snapshots, and what never goes into a chatbot\nEvery number above came from one dated file. Save the data behind every number you report, with the date in the name; pin your library versions; set a seed wherever randomness enters.\nNothing confidential goes into an AI tool: no client names, no unpublished figures, no personal data.\n\nBefore you leave: three lines, in your words\n\n…\n…\n…"
   },
   {
     "objectID": "week-02/session.html#block-b-join-with-external-series-macro-on-chain",
     "href": "week-02/session.html#block-b-join-with-external-series-macro-on-chain",
-    "title": "Week 2 — Data analysis with AI as pair programmer",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
     "section": "Block B — Join with external series (macro + on-chain)",
     "text": "Block B — Join with external series (macro + on-chain)\nThis is where analysis becomes interesting: internal or market data alone rarely answers a business question. We add: - US 10-year Treasury yield (FRED series DGS10), a proxy for the risk-free rate / macro regime; - Bitcoin unique active addresses (blockchain.com public chart API), an on-chain adoption proxy.\nBoth are free and need no key. Both fetches have a fallback so the notebook still runs offline.\n\nimport requests, io, os\n\ndef load_fred(series=\"DGS10\", cache_dir=\"data\"):\n    os.makedirs(cache_dir, exist_ok=True); snap = f\"{cache_dir}/fred_{series}.csv\"\n    try:\n        url = f\"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}\"\n        s = pd.read_csv(io.StringIO(requests.get(url, timeout=20).text), index_col=0, parse_dates=True)[series]\n        s = pd.to_numeric(s, errors=\"coerce\").rename(series); s.to_csv(snap); print(\"[live] FRED\", series); return s\n    except Exception as e:\n        print(\"[warn] FRED failed:\", type(e).__name__)\n    if os.path.exists(snap):\n        print(\"[snapshot] FRED\"); return pd.read_csv(snap, index_col=0, parse_dates=True).iloc[:, 0].rename(series)\n    print(\"[SYNTHETIC] FRED\"); idx = pd.bdate_range(\"2022-01-01\", pd.Timestamp.today().normalize())\n    return pd.Series(3 + np.cumsum(np.random.default_rng(1).normal(0, 0.03, len(idx))), idx, name=series)\n\ndef load_btc_addresses(cache_dir=\"data\"):\n    os.makedirs(cache_dir, exist_ok=True); snap = f\"{cache_dir}/btc_active_addresses.csv\"\n    try:\n        url = \"https://api.blockchain.info/charts/n-unique-addresses?timespan=5years&format=json&sampled=false\"\n        js = requests.get(url, timeout=20).json()[\"values\"]\n        s = pd.Series({pd.to_datetime(v[\"x\"], unit=\"s\"): v[\"y\"] for v in js}, name=\"active_addresses\")\n        s.to_csv(snap); print(\"[live] blockchain.com\"); return s\n    except Exception as e:\n        print(\"[warn] blockchain.com failed:\", type(e).__name__)\n    if os.path.exists(snap):\n        print(\"[snapshot] blockchain.com\"); return pd.read_csv(snap, index_col=0, parse_dates=True).iloc[:, 0].rename(\"active_addresses\")\n    print(\"[SYNTHETIC] addresses\"); idx = pd.date_range(\"2022-01-01\", pd.Timestamp.today().normalize())\n    return pd.Series(7e5 + 1e5 * np.sin(np.arange(len(idx)) / 60) + np.random.default_rng(2).normal(0, 5e4, len(idx)), idx, name=\"active_addresses\")\n\ndgs10 = load_fred(\"DGS10\")\naddr = load_btc_addresses()\nprint(dgs10.tail(3)); print(addr.tail(3))\n\n\n🔍 CHECK — the assistant’s join\nAsked to “merge the price data with the yield and the on-chain series”, the assistant wrote the cell below. It runs. Look at the row count and the date range of the result before and after, then explain what was lost and why.\n\n# --- as produced by the assistant (do not trust) ---\nmerged_bad = pd.merge(px, dgs10, left_index=True, right_index=True).merge(addr, left_index=True, right_index=True)\nprint(\"rows before:\", len(px), \"| rows after:\", len(merged_bad))\nprint(merged_bad.index.min().date(), \"→\", merged_bad.index.max().date())\nmerged_bad.isna().sum()\n\n\n\nWhat went wrong\n\npd.merge defaults to an inner join: only dates present in all three series survive. FRED has no weekends and has NaN on US holidays (which survive as NaN — check the isna() output); the on-chain series is daily. The result silently dropped weekends and is on an equity calendar without anyone deciding that. Also: FRED yields are in percent (4.25 = 4.25%), prices in dollars, addresses in counts — the assistant will happily correlate them without saying so. Units are your job.\n\n\n# Explicit version: choose the calendar (equity days), left-join, forward-fill macro, state units.\nbase = px.dropna()                                    # equity calendar\ndf = base.join(dgs10.ffill(), how=\"left\").join(addr, how=\"left\")\ndf[\"DGS10\"] = df[\"DGS10\"] / 100                       # now a decimal rate\ndf = df.rename(columns={\"DGS10\": \"us10y\"})\ndf[\"active_addresses\"] = df[\"active_addresses\"].ffill()\nprint(len(base), len(df)); df.tail()"
   },
   {
     "objectID": "week-02/session.html#block-c-charts-that-answer-a-question-and-rolling-statistics",
     "href": "week-02/session.html#block-c-charts-that-answer-a-question-and-rolling-statistics",
-    "title": "Week 2 — Data analysis with AI as pair programmer",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
     "section": "Block C — Charts that answer a question, and rolling statistics",
     "text": "Block C — Charts that answer a question, and rolling statistics\n\nimport matplotlib.pyplot as plt\nrets = df[[\"BTC-USD\", \"SPY\", \"AAPL\"]].pct_change()\nroll_corr = rets[\"BTC-USD\"].rolling(60).corr(rets[\"SPY\"])\n\nfig, ax = plt.subplots(2, 1, figsize=(11, 6), sharex=True)\nroll_corr.plot(ax=ax[0], title=\"60-day rolling correlation, BTC vs SPY\")\nax[0].axhline(0, color=\"k\", lw=0.5)\ndf[\"us10y\"].plot(ax=ax[1], title=\"US 10y yield (decimal)\")\nevents = {\"2024-01-10\": \"spot ETF approval\", \"2024-04-19\": \"halving\"}\nfor d, label in events.items():\n    if pd.Timestamp(d) in df.index:\n        for a in ax: a.axvline(pd.Timestamp(d), color=\"grey\", ls=\"--\", lw=0.8)\n        ax[0].annotate(label, (pd.Timestamp(d), roll_corr.max() * 0.9), fontsize=8, rotation=90)\nplt.tight_layout(); plt.show()\n\n🔍 CHECK. Does the correlation chart answer a question, or only show a line? Write the question it answers in one sentence. If you cannot, the chart is not finished. (Sanity check the data too: you should see BTC’s correlation with equities fall after some events and rise in macro-stress periods. If the line looks like noise around zero everywhere, suspect an alignment problem.)\n\n# On-chain vs price: is address activity leading or lagging price? Cross-correlation at different lags (weekly data).\nw = df[[\"BTC-USD\", \"active_addresses\"]].resample(\"W-FRI\").last().pct_change().dropna()\nlags = range(-8, 9)\nxc = pd.Series({k: w[\"BTC-USD\"].corr(w[\"active_addresses\"].shift(k)) for k in lags})\nxc.plot(kind=\"bar\", figsize=(9, 3), title=\"corr(BTC weekly return, address growth shifted by k weeks)  — k&gt;0: addresses lead\")\nplt.show()\n\n🔍 CHECK. Positive k means address growth from k weeks ago vs return now. If the biggest bar is at negative k, price leads activity, not the reverse — the opposite of the story “adoption drives price”. Read the sign convention in shift() before you conclude anything. This is exactly the kind of check an assistant will not do for you."
   },
   {
     "objectID": "week-02/session.html#block-d-reproducibility-and-privacy",
     "href": "week-02/session.html#block-d-reproducibility-and-privacy",
-    "title": "Week 2 — Data analysis with AI as pair programmer",
+    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
     "section": "Block D — Reproducibility and privacy",
     "text": "Block D — Reproducibility and privacy\n\n# 1) Snapshot the exact data you analysed, with the date, so the memo can be re-run.\nimport datetime as dt, os\nos.makedirs(\"data\", exist_ok=True)\nstamp = dt.date.today().isoformat()\ndf.to_csv(f\"data/week02_merged_{stamp}.csv\")\nprint(\"saved\", f\"data/week02_merged_{stamp}.csv\", df.shape)\n\n# 2) Record the environment.\n!pip freeze 2&gt;/dev/null | grep -i -E \"^(pandas|numpy|yfinance|matplotlib)=\" &gt; data/requirements_week02.txt; cat data/requirements_week02.txt\n\nRules from here on: - every notebook that produces a number in a memo saves the data it used (data/…_YYYY-MM-DD.csv); - random operations set a seed (np.random.default_rng(0)); - nothing confidential goes into an AI tool: no client data, no personal data, no internal documents. Public market data is fine. If in doubt, anonymise or aggregate first.\nHomework brief → see week-02/homework.md."
   },
@@ -1194,7 +1320,7 @@
     "href": "week-02/homework.html",
     "title": "Homework 2 — One question, one dataset, one memo",
     "section": "",
-    "text": "Due: Tuesday 6 October 2026, 23:59 · folder week-02/hw/ in your repo\n\n\nAnswer one empirical question about a financial asset by joining market data with at least one external series, and write it up the way you would for a manager who has ten minutes.\n\n\n\n\nDoes Bitcoin’s correlation with US equities depend on the level or the change of US interest rates?\nDo on-chain active addresses lead or lag Bitcoin’s price, and at what horizon?\nHow did a specific asset behave around a specific event (ETF approval, halving, an earnings date, a rate decision), compared with its normal behaviour?\nIs the “weekend effect” in crypto real — are Saturday/Sunday returns and volatility different from weekdays?\n\n\n\n\n\nhw2.ipynb — runs top to bottom from a clean runtime. Must contain:\n\nthe data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);\nan explicit calendar decision and an explicit units statement, in markdown, before any computation across series;\nthe len() / isna().sum() check after every join;\nthe analysis, and one chart whose title is the question;\na date-stamped CSV snapshot saved to data/.\n\nmemo.md — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; AI-use disclosure (which assistant, for what, what you verified and how).\ndata/ — the snapshot(s).\n\n\n\n\n\nAt least one join. At least one rolling or resampled statistic.\nThe chart must be readable without the notebook: title, axis labels, units.\nDo not conclude causation from a correlation. If you are tempted, write the sentence and then write the alternative explanation next to it.\n\n\n\n\n4–6 hours.\n\n\n\n\nRestart and run all: no errors.\nCalendar and units stated in markdown before the analysis.\nJoin check printed (rows before/after, NaN count).\nChart title is a question; memo answers it.\nSnapshot saved and committed; AI-use disclosure present.\n\n\n\n\nThe join pattern (your calendar, left join, forward-fill context, convert units, check) is the backbone of any data pipeline you will build later, including the one in your portfolio. The memo format is the format of the decision memo in the final portfolio."
+    "text": "Due: Tuesday 6 October 2026, 23:59 · folder week-02/ in your shared Drive folder ese-ai-fintech\n\n\nAnswer one empirical question about a financial asset by joining market data with at least one external series, and write it up the way you would for a manager who has ten minutes.\n\n\n\n\nDoes Bitcoin’s correlation with US equities depend on the level or the change of US interest rates?\nDo on-chain active addresses lead or lag Bitcoin’s price, and at what horizon?\nHow did a specific asset behave around a specific event (ETF approval, halving, an earnings date, a rate decision), compared with its normal behaviour?\nIs the “weekend effect” in crypto real — are Saturday/Sunday returns and volatility different from weekdays?\n\n\n\n\n\nhw2.ipynb — runs top to bottom from a clean runtime. Must contain:\n\nthe data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);\nan explicit calendar decision and an explicit units statement, in markdown, before any computation across series;\nthe three checks after every join: rows before and after, isna().sum(), one row from the middle;\nthe analysis, and one chart whose title is the question;\na date-stamped CSV snapshot saved to data/.\n\nmemo.md — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; AI-use disclosure (which assistant, for what, what you verified and how).\ndata/ — the snapshot(s).\n\n\n\n\n\nAt least one join. At least one rolling or resampled statistic.\nThe chart must be readable without the notebook: title, axis labels, units.\nDo not conclude causation from a correlation. If you are tempted, write the sentence and then write the alternative explanation next to it.\n\n\n\n\n4–6 hours.\n\n\n\n\nRestart and run all: no errors.\nCalendar and units stated in markdown before the analysis.\nJoin check printed (rows before/after, NaN count).\nChart title is a question; memo answers it.\nSnapshot saved next to the notebook; AI-use disclosure present.\n\n\n\n\nThe join pattern (your calendar, left join, forward-fill context, convert units, check) is the backbone of any data pipeline you will build later, including the one in your portfolio. The memo format is the format of the decision memo in the final portfolio."
   },
   {
     "objectID": "week-02/homework.html#goal",
@@ -1211,11 +1337,11 @@
     "text": "Does Bitcoin’s correlation with US equities depend on the level or the change of US interest rates?\nDo on-chain active addresses lead or lag Bitcoin’s price, and at what horizon?\nHow did a specific asset behave around a specific event (ETF approval, halving, an earnings date, a rate decision), compared with its normal behaviour?\nIs the “weekend effect” in crypto real — are Saturday/Sunday returns and volatility different from weekdays?"
   },
   {
-    "objectID": "week-02/homework.html#deliverables-in-week-02hw",
-    "href": "week-02/homework.html#deliverables-in-week-02hw",
+    "objectID": "week-02/homework.html#deliverables-in-week-02",
+    "href": "week-02/homework.html#deliverables-in-week-02",
     "title": "Homework 2 — One question, one dataset, one memo",
     "section": "",
-    "text": "hw2.ipynb — runs top to bottom from a clean runtime. Must contain:\n\nthe data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);\nan explicit calendar decision and an explicit units statement, in markdown, before any computation across series;\nthe len() / isna().sum() check after every join;\nthe analysis, and one chart whose title is the question;\na date-stamped CSV snapshot saved to data/.\n\nmemo.md — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; AI-use disclosure (which assistant, for what, what you verified and how).\ndata/ — the snapshot(s)."
+    "text": "hw2.ipynb — runs top to bottom from a clean runtime. Must contain:\n\nthe data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);\nan explicit calendar decision and an explicit units statement, in markdown, before any computation across series;\nthe three checks after every join: rows before and after, isna().sum(), one row from the middle;\nthe analysis, and one chart whose title is the question;\na date-stamped CSV snapshot saved to data/.\n\nmemo.md — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; AI-use disclosure (which assistant, for what, what you verified and how).\ndata/ — the snapshot(s)."
   },
   {
     "objectID": "week-02/homework.html#constraints",
@@ -1236,7 +1362,7 @@
     "href": "week-02/homework.html#self-check",
     "title": "Homework 2 — One question, one dataset, one memo",
     "section": "",
-    "text": "Restart and run all: no errors.\nCalendar and units stated in markdown before the analysis.\nJoin check printed (rows before/after, NaN count).\nChart title is a question; memo answers it.\nSnapshot saved and committed; AI-use disclosure present."
+    "text": "Restart and run all: no errors.\nCalendar and units stated in markdown before the analysis.\nJoin check printed (rows before/after, NaN count).\nChart title is a question; memo answers it.\nSnapshot saved next to the notebook; AI-use disclosure present."
   },
   {
     "objectID": "week-02/homework.html#how-this-feeds-the-capstone",
@@ -1740,7 +1866,7 @@
     "href": "index.html",
     "title": "Artificial Intelligence for Business and FinTech",
     "section": "",
-    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nData analysis with AI as pair programmer\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
+    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nTemperature and the checking habit · a tokenizer · Bitcoin vs the stock market, by hand\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
   },
   {
     "objectID": "setup.html",
@@ -2128,6 +2254,13 @@
     "text": "Where we are\n\n\n\n\n\n\n\n\n1–2\n23–30 Sep\nthe model, the checking habit, the data, the silent errors ✓\n\n\n3\n7 Oct\ntrain something, and find out if it is any good\n\n\n4–5\n14–21 Oct\nan LLM application, then agents and evals\n\n\n\nToday you will build a model that scores 0.71 and is worthless, and one that scores 0.53 and is worth money. Telling them apart is the entire skill."
   },
   {
+    "objectID": "lectures/03-one-problem.html#last-week-in-one-slide",
+    "href": "lectures/03-one-problem.html#last-week-in-one-slide",
+    "title": "A model, and whether to believe it",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nThe model’s side: temperature decides how it picks from the odds; T = 0 always takes the top token. It invents by design — there is always a most likely next token.\nA tokenizer learns pieces by merging the most frequent pair.\n\nThe data side: Bitcoin is about three times as volatile as the S&P 500 — with √365, not √252. Returns compound: +50% then −50% is −25%.\nA join decides which days exist: filling the weekends invented 540 calm days. Units live in your head, not in the data."
+  },
+  {
     "objectID": "lectures/03-one-problem.html#three-ways-to-write-the-same-decision",
     "href": "lectures/03-one-problem.html#three-ways-to-write-the-same-decision",
     "title": "A model, and whether to believe it",
@@ -2245,6 +2378,13 @@
     "title": "When it stops answering and starts acting",
     "section": "Where we are",
     "text": "Where we are\n\n\n\n\n\n\n\n\n1–4\n23 Sep – 14 Oct\ndata, a model, retrieval with citations ✓\n\n\n5\n21 Oct\nagents, the three ways they fail, and evals\n\n\n—\n1 Nov\ncase brief, 40% — the system from weeks 4–5, as a product\n\n\n6\n4 Nov\nyou present it\n\n\n\nBy 13:00 today you will have everything the case brief needs. What is left after that is writing."
+  },
+  {
+    "objectID": "lectures/05-agents-and-evals.html#last-week-in-one-slide",
+    "href": "lectures/05-agents-and-evals.html#last-week-in-one-slide",
+    "title": "When it stops answering and starts acting",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nAn API call has four knobs: the system prompt, the prompt, temperature, and the schema of the answer. Structured output guarantees the type, not the truth.\nRetrieval: cut the documents into pieces, embed them, find the nearest to the question, answer only from those — and cite them.\n\nTen questions you already know the answer to are your first evaluation.\nThe EU AI Act regulates the use, not the technology."
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#the-loop-and-nothing-else",
@@ -2387,6 +2527,13 @@
     "text": "Today\nA backtest is the easiest thing in this course to build and the easiest to get wrong. You will build one in six steps, then break it four ways.\n\n\n\n\n\n\n\nBet before we start\n\n\nYou will see a strategy with a Sharpe ratio of 5. What is the single most likely explanation?\n\n\n\n\n\nA bug. Hold that thought for forty minutes."
   },
   {
+    "objectID": "lectures/07-backtesting.html#last-week-in-one-slide",
+    "href": "lectures/07-backtesting.html#last-week-in-one-slide",
+    "title": "Backtesting, done honestly",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nAccuracy on rare events is meaningless: 99.5% can catch nothing. Precision and recall trade off, and the threshold is a business decision.\nA rejection needs a reason, by law; removing the protected field does not remove the bias.\n\nTwo definitions of fair cannot both hold — someone chooses, and writes down why.\nYour capstone: a question whose data you have already loaded."
+  },
+  {
     "objectID": "lectures/07-backtesting.html#the-pipeline-and-the-one-line-that-matters",
     "href": "lectures/07-backtesting.html#the-pipeline-and-the-one-line-that-matters",
     "title": "Backtesting, done honestly",
@@ -2490,6 +2637,13 @@
     "title": "Attacking your own system before somebody else does",
     "section": "Today is about your capstone, not about ethics in general",
     "text": "Today is about your capstone, not about ethics in general\n\n\n\n\n\n\n\n10:20–11:10\nwhat your model relies on, and how it treats people\n\n\n11:20–12:20\nred-team your own pipeline, as code, with the results written down\n\n\n12:20–12:50\nthe risk and controls canvas — nine boxes, all of them specific\n\n\n\nEverything today produces an artefact that goes into the portfolio. Nothing today is a discussion."
+  },
+  {
+    "objectID": "lectures/09-responsible.html#last-week-in-one-slide",
+    "href": "lectures/09-responsible.html#last-week-in-one-slide",
+    "title": "Attacking your own system before somebody else does",
+    "section": "Last week, in one slide",
+    "text": "Last week, in one slide\n\n\nOn-chain, the code is the counterparty. A stablecoin is a claim; a governance token is not.\nAn AMM keeps x · y = k: every trade moves the price, and a liquidity provider carries impermanent loss.\n\nTVL measures size, not profit; fee yield ≈ fee × volume ÷ TVL × 365.\nMiCA asks one question: what is the holder owed, and by whom?"
   },
   {
     "objectID": "lectures/09-responsible.html#block-a-what-is-it-relying-on",

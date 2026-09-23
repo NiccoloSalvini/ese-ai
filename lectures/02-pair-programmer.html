@@ -32,6 +32,22 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -345,304 +361,586 @@ Niccolò Salvini, PhD
 </div>
 
 </section>
-<section id="where-we-are" class="slide level2">
-<h2>Where we are</h2>
+<section id="today" class="slide level2">
+<h2>Today</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>23 Sep</td>
-<td>who we are, the plan, how the model reads ✓</td>
+<td><strong>10:00</strong></td>
+<td>last week in one slide · your starting point</td>
 </tr>
 <tr class="even">
-<td><strong>2</strong></td>
-<td><strong>30 Sep</strong></td>
-<td><strong>the checking habit, three assets, joins, and the errors that hide</strong></td>
+<td><strong>10:25</strong></td>
+<td>the model’s side: temperature, and why it invents</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>7 Oct</td>
-<td>a model, and an honest evaluation of it</td>
+<td><strong>10:55</strong></td>
+<td>your tiny LLM, piece 1: a tokenizer</td>
 </tr>
 <tr class="even">
-<td>4–5</td>
-<td>14–21 Oct</td>
-<td>an LLM application, then agents and evals</td>
+<td><strong>11:15</strong></td>
+<td>break</td>
+</tr>
+<tr class="odd">
+<td><strong>11:25</strong></td>
+<td>is Bitcoin riskier than the stock market? — ten real days by hand</td>
+</tr>
+<tr class="even">
+<td><strong>12:05</strong></td>
+<td>two calendars, one join</td>
+</tr>
+<tr class="odd">
+<td><strong>12:30</strong></td>
+<td>units, snapshots, and what never goes into a chatbot</td>
+</tr>
+<tr class="even">
+<td><strong>12:50</strong></td>
+<td>homework · three lines</td>
 </tr>
 </tbody>
 </table>
-<p><span class="red">Last week you saw what the model reads. Today you see what it gets wrong — a constant that looks fine, then the two mistakes that never raise an error.</span></p>
 </section>
-<section id="block-a-why-the-same-question-gives-different-answers" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block A</span> Why the same question gives different answers</h2>
+<section id="last-week-in-one-slide" class="slide level2">
+<h2>Last week, in one slide</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>A neuron</strong> multiplies each answer by a weight, adds a bias, and squashes.</p>
+<p><strong>Training</strong> is one loop: guess → how wrong (the loss) → blame each weight (backpropagation) → nudge it: <span class="math inline">w \leftarrow w - \eta\,(p-y)\,x</span>.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>An LLM</strong> is the same machine, answering “which of 200,000 tokens comes next?”.</p>
+<p>It reads <strong>tokens</strong>, lets them <strong>attend</strong> to each other, and knows only what is in its <strong>context window</strong>.</p>
+</div></div>
+<p><span class="explain">Today: what it does with those probabilities — and then data, where the assistant writes the code and you check it.</span></p>
 </section>
-<section id="it-is-choosing-not-looking-up" class="slide level2">
-<h2>It is choosing, not looking up</h2>
-
-<img data-src="img/next-token.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="red"><strong>Temperature</strong> decides how much it respects those odds — and nothing else about the model changes.</span></p>
+<section id="your-starting-point" class="slide level2 statement">
+<h2>Your starting point</h2>
+<p><span class="muted">Homework 1: the question you want answered by December. Tell me in two minutes, as if to a manager.</span></p>
 </section>
-<section id="so-where-do-hallucinations-come-from" class="slide level2">
-<h2>So where do hallucinations come from?</h2>
-<div title="Bet before we look">
+<section id="part-1-the-models-side" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> The model’s side</h2>
+</section>
+<section id="last-weeks-table-again" class="slide level2">
+<h2>Last week’s table, again</h2>
+<p><code>The ECB left rates</code> → ?</p>
+<div class="bigtable">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>unchanged</th>
+<th>steady</th>
+<th>at</th>
+<th>on</th>
+<th>higher</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.62</td>
+<td>0.15</td>
+<td>0.10</td>
+<td>0.08</td>
+<td>0.05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we look</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>The model invents a plausible figure for a company’s 2025 revenue. Is that a bug, a lie, or the machine working exactly as designed?</p>
+<p>Ask the same question ten times. How many times does it answer “unchanged”?</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="explain">It does not look the answer up. It <strong>picks</strong> from these odds — and the setting that decides how it picks is called <strong>temperature</strong>.</span></p>
+</section>
+<section id="temperature-reshapes-the-odds" class="slide level2 clip" data-background-color="#000000">
+<h2>Temperature reshapes the odds</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_temperature_poster.png">
+<source src="media/w02_temperature.mp4" type="video/mp4">
+</video>
+</section>
+<section id="the-same-five-tokens-four-temperatures" class="slide level2">
+<h2>The same five tokens, four temperatures</h2>
+<div class="bigtable">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>next token</th>
+<th>T = 0</th>
+<th>T = 0.5</th>
+<th>T = 1</th>
+<th>T = 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>unchanged</strong></td>
+<td>1.00</td>
+<td>0.90</td>
+<td>0.62</td>
+<td>0.39</td>
+</tr>
+<tr class="even">
+<td><strong>steady</strong></td>
+<td>0.00</td>
+<td>0.05</td>
+<td>0.15</td>
+<td>0.19</td>
+</tr>
+<tr class="odd">
+<td><strong>at</strong></td>
+<td>0.00</td>
+<td>0.02</td>
+<td>0.10</td>
+<td>0.16</td>
+</tr>
+<tr class="even">
+<td><strong>on</strong></td>
+<td>0.00</td>
+<td>0.01</td>
+<td>0.08</td>
+<td>0.14</td>
+</tr>
+<tr class="odd">
+<td><strong>higher</strong></td>
+<td>0.00</td>
+<td>0.01</td>
+<td>0.05</td>
+<td>0.11</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="explain"><strong>T = 0</strong>: always the top token — the same answer every time. Use it for anything that must be reproducible: extraction, classification, anything an auditor will read. Higher T for ideas.</span></p>
+</section>
+<section id="so-where-do-invented-numbers-come-from" class="slide level2">
+<h2>So where do invented numbers come from?</h2>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>You ask for a company’s 2025 revenue. The model gives a precise, wrong figure. Bug, lie, or working as designed?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Working as designed.</strong> It completes patterns. When the pattern needs a number that was never in the box, it produces the <em>shape</em> of a number that would fit.</p>
-<p>It has no way to feel the difference between recalling and inventing. <strong>That is your job</strong>, and it is the habit this whole course builds.</p>
+<p><strong>Working as designed.</strong> There is always a most likely next token — even when the fact was never in the training data or the context. It produces the <em>shape</em> of a number that would fit, with the same confidence.</p>
+<p><span class="explain">It cannot feel the difference between recalling and inventing. That is your job, all term.</span></p>
 </div>
 </section>
-<section id="the-habit-this-course-is-really-about" class="slide level2 lab" data-background-color="#2471a3">
-<h2>The habit this course is really about</h2>
-<p><span class="kicker">LAB · week-01/session.ipynb § B3 — 🔍 CHECK</span></p>
-<p>Run the model on a question about a real firm. Then take its answer apart, sentence by sentence, into two piles:</p>
+<section id="two-piles" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Two piles</h2>
+<p><span class="kicker">LAB · session.ipynb § 2</span></p>
+<p>Ask your assistant about a real company. Split every sentence of the answer:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Verifiable</strong> a number you can look up, a date, a name, a claim with a source</p>
+<p><strong>Verifiable</strong></p>
+<p>a number, a date, a name, a source you can open</p>
 </div><div class="column" style="width:50%;">
-<p><strong>Plausible but unverifiable</strong> fluent, confident, no way to check it, and quite possibly invented</p>
+<p><strong>Plausible</strong></p>
+<p>fluent, confident — and nothing to check it against</p>
 </div></div>
-<p><span class="red">Do this on every answer, all term, until it is automatic.</span></p>
 </section>
-<section id="and-write-that-into-the-procedure-not-the-folklore" class="slide level2">
-<h2>And write that into the procedure, not the folklore</h2>
-<p>A process that an auditor will look at cannot say <em>“we asked the AI”</em>.</p>
+<section id="write-it-into-the-procedure" class="slide level2">
+<h2>Write it into the procedure</h2>
+<p>A process an auditor will read cannot say <em>“we asked the AI”</em>. It records:</p>
 <ul>
 <li>the <strong>exact prompt</strong>, versioned like code</li>
-<li><code>T = 0</code>, and the model <strong>name and version</strong> recorded with the output</li>
+<li><strong>T = 0</strong>, and the model’s <strong>name and version</strong></li>
 <li>the <strong>input</strong> stored next to the answer</li>
 </ul>
 </section>
-<section id="block-b-four-verbs-three-assets" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block B</span> Four verbs, three assets</h2>
+<section id="part-2-your-tiny-llm-piece-1-the-tokenizer" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2</span> Your tiny LLM, piece 1: the tokenizer</h2>
 </section>
-<section id="four-verbs-and-you-can-do-most-of-data-work" class="slide level2">
-<h2>Four verbs, and you can do most of data work</h2>
+<section id="how-a-tokenizer-is-learned" class="slide level2">
+<h2>How a tokenizer is learned</h2>
+<p>Find the pair of symbols that appears most often. Give it a name. Repeat.</p>
+<div class="plain">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th></th>
-<th></th>
+<th>merge</th>
+<th>the pair seen most often</th>
+<th>times</th>
+<th>new piece</th>
+<th>text length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>start</td>
+<td></td>
+<td></td>
+<td></td>
+<td>127</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td><code>a</code> + <code>n</code></td>
+<td>6</td>
+<td><code>an</code></td>
+<td>121</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td><code>s</code> + <code>_</code></td>
+<td>5</td>
+<td><code>s_</code></td>
+<td>116</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td><code>e</code> + <code>_</code></td>
+<td>4</td>
+<td><code>e_</code></td>
+<td>112</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td><code>r</code> + <code>a</code></td>
+<td>4</td>
+<td><code>ra</code></td>
+<td>108</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><code>ra</code> + <code>t</code></td>
+<td>4</td>
+<td><code>rat</code></td>
+<td>104</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td><code>rat</code> + <code>e</code></td>
+<td>4</td>
+<td><code>rate</code></td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td><code>rate</code> + <code>s_</code></td>
+<td>4</td>
+<td><code>rates_</code></td>
+<td>96</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td><code>t</code> + <code>h</code></td>
+<td>3</td>
+<td><code>th</code></td>
+<td>93</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="explain">Trained on a text about rates, it learns <code>rates_</code> as one piece after seven merges. Trained mostly on English, it learns English pieces — and your Russian costs more.</span></p>
+</section>
+<section id="train-one-on-your-own-texts" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Train one on your own texts</h2>
+<p><span class="kicker">LAB · session.ipynb § 3</span></p>
+<ol type="1">
+<li>Paste a paragraph of your own — English, then Russian.</li>
+<li>Run the merges. Which pieces does it learn first?</li>
+<li>Count: how many symbols per word, in each language?</li>
+</ol>
+<p><span class="muted">Next week the pieces become the input of a model that guesses the next one.</span></p>
+</section>
+<section id="break-ten-minutes." class="slide level2 statement">
+<h2>Break — ten minutes.</h2>
+</section>
+<section id="part-3-is-bitcoin-riskier-than-the-stock-market" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> Is Bitcoin riskier than the stock market?</h2>
+</section>
+<section id="ten-real-days-january-2024" class="slide level2">
+<h2>Ten real days, January 2024</h2>
+<div class="plain">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>day</th>
+<th>Bitcoin, $</th>
+<th>S&amp;P 500 (SPY), $</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fri 05 Jan</td>
+<td>44,163</td>
+<td>453.09</td>
+</tr>
+<tr class="even">
+<td>Sat 06 Jan</td>
+<td>43,989</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Sun 07 Jan</td>
+<td>43,943</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Mon 08 Jan</td>
+<td>46,971</td>
+<td>459.56</td>
+</tr>
+<tr class="odd">
+<td>Tue 09 Jan</td>
+<td>46,140</td>
+<td>458.86</td>
+</tr>
+<tr class="even">
+<td>Wed 10 Jan</td>
+<td>46,628</td>
+<td>461.46</td>
+</tr>
+<tr class="odd">
+<td>Thu 11 Jan</td>
+<td>46,369</td>
+<td>461.26</td>
+</tr>
+<tr class="even">
+<td>Fri 12 Jan</td>
+<td>42,853</td>
+<td>461.57</td>
+</tr>
+<tr class="odd">
+<td>Sat 13 Jan</td>
+<td>42,842</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Sun 14 Jan</td>
+<td>41,796</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td>Mon 15 Jan</td>
+<td>42,512</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>Tue 16 Jan</td>
+<td>43,155</td>
+<td>459.88</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="explain">The week the US approved spot Bitcoin ETFs. Bitcoin: 12 prices. The stock market: 7 — weekends, and Monday 15 January was a US holiday.</span></p>
+</section>
+<section id="four-verbs-cover-most-of-data-work" class="slide level2">
+<h2>Four verbs cover most of data work</h2>
+<div class="bigtable">
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>verb</th>
+<th>in Excel</th>
 <th>in pandas</th>
+<th>on our ten days</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>filter</strong></td>
-<td>keep some rows</td>
-<td><code>df[df.volume &gt; 0]</code></td>
+<td>AutoFilter</td>
+<td><code>df[df.SPY.notna()]</code></td>
+<td>keep the days the stock market traded</td>
 </tr>
 <tr class="even">
 <td><strong>derive</strong></td>
-<td>make a new column</td>
-<td><code>df["ret"] = df.close.pct_change()</code></td>
+<td>a formula column</td>
+<td><code>df.pct_change()</code></td>
+<td>daily returns</td>
 </tr>
 <tr class="odd">
 <td><strong>aggregate</strong></td>
-<td>many rows into one number</td>
-<td><code>df.groupby(...).mean()</code></td>
+<td>a pivot table</td>
+<td><code>df.std()</code></td>
+<td>one volatility number</td>
 </tr>
 <tr class="even">
 <td><strong>join</strong></td>
-<td>put two tables side by side</td>
+<td>VLOOKUP</td>
 <td><code>a.join(b)</code></td>
+<td>Bitcoin next to the S&amp;P 500</td>
 </tr>
 </tbody>
 </table>
-<p><span class="red">The assistant writes all four faster than you can. The job is not writing them. It is knowing what the result <em>should</em> look like before you see it.</span></p>
+</div>
+<p><span class="explain">The assistant writes all four faster than you. Your job is to know what the result should look like before you see it.</span></p>
 </section>
-<section id="three-assets-and-one-number-that-is-wrong" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Three assets, and one number that is wrong</h2>
-<p><span class="kicker">LAB · week-01/session.ipynb § C — you drive</span></p>
-<ol type="1">
-<li>Pull daily prices for BTC, an equity and an index.</li>
-<li>Returns, summary statistics, one chart that answers a question. <strong>Before each cell runs, say how many rows should come back.</strong></li>
-<li><strong>🔍 CHECK</strong> — the volatility cell was written by an assistant. It contains two errors. Find them.</li>
-</ol>
-<p><span class="muted">I will not touch the keyboard. When it breaks, read the error before asking me.</span></p>
+<section id="a-return-by-hand" class="slide level2">
+<h2>A return, by hand</h2>
+<p><span class="math display">\text{return} = \frac{\text{price today}}{\text{price yesterday}} - 1</span></p>
+<p>Monday 8 January, Bitcoin: 46,971 / 43,943 − 1 = <strong>+6.9%</strong></p>
 </section>
-<section id="the-two-planted-errors-and-why-they-matter" class="slide level2">
-<h2>The two planted errors, and why they matter</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>√252 applied to crypto</strong> Markets trade 252 days a year. Bitcoin trades 365. The formula is right, the constant is wrong, and the output looks perfectly reasonable.</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Returns added up</strong> Cumulative return is not the sum of daily returns. Compounding is a product. Close enough to look right, wrong enough to matter.</p>
-</div></div>
-<div title="The sentence to remember">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The sentence to remember</strong></p>
-</div>
-<div class="callout-content">
-<p>The assistant is fluent, not correct. It fails silently on constants and conventions — precisely where you would not think to look.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="block-c-the-first-error-two-calendars-that-do-not-line-up" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block C</span> The first error: two calendars that do not line up</h2>
-</section>
-<section id="bitcoin-trades-on-sunday.-the-stock-exchange-does-not." class="slide level2">
-<h2>Bitcoin trades on Sunday. The stock exchange does not.</h2>
-<div title="Bet before we compute">
+<section id="riskier-by-how-much" class="slide level2">
+<h2>Riskier by how much?</h2>
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we compute</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>You join a year of BTC prices to a year of SPY prices and compute the correlation. What has already gone wrong, before any arithmetic?</p>
+<p>Bitcoin’s yearly volatility against the S&amp;P 500’s: twice? three times?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>One series has 365 rows a year, the other about 252. <strong>Something has to give</strong>, and whichever way you resolve it changes the answer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/w02-vol.svg" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
+</figure>
+</div>
 </div>
 </section>
-<section id="watch-what-the-join-does" class="slide level2 clip" data-background-color="#000000">
-<h2>Watch what the join does</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_calendars_poster.png">
-<source src="media/w02_calendars.mp4" type="video/mp4">
+<section id="up-50-then-down-50" class="slide level2 clip" data-background-color="#000000">
+<h2>Up 50%, then down 50%</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_compounding_poster.png">
+<source src="media/w02_compounding.mp4" type="video/mp4">
 </video>
-<p>Drop the weekend, or invent it. There is no third option, and neither is free.</p>
 </section>
-<section id="two-ways-to-resolve-it-and-what-each-costs" class="slide level2">
-<h2>Two ways to resolve it, and what each costs</h2>
+<section id="the-same-mistake-on-a-whole-year" class="slide level2">
+<h2>The same mistake, on a whole year</h2>
 
-<img data-src="img/join-calendars.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="break-it-yourself" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Break it yourself</h2>
-<p><span class="kicker">LAB · session.ipynb § B</span></p>
-<ol type="1">
-<li>Join BTC and SPY with <code>dropna()</code>. Count the rows you lost.</li>
-<li>Join them with <code>ffill()</code>. Compute BTC’s annualised volatility both ways.</li>
-<li>Print the mean <strong>Monday</strong> return for BTC under each.</li>
-</ol>
-<p>Then answer: <strong>which of the two numbers would you put in a report, and what sentence goes underneath it?</strong></p>
+<img data-src="img/w02-compounding.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="find-the-two-errors" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Find the two errors</h2>
+<p><span class="kicker">LAB · session.ipynb § 4 — 🔍 CHECK</span></p>
+<p>The assistant wrote a cell that reports Bitcoin’s volatility and its return. It runs, and the numbers look reasonable. Two are wrong.</p>
+<p><span class="muted">Ten minutes, alone. If you find one: there is another.</span></p>
 </section>
-<section id="block-d-the-second-error-units" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block D</span> The second error: units</h2>
+<section id="part-4-two-calendars-one-join" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 4</span> Two calendars, one join</h2>
 </section>
-<section id="a-correlation-between-mismatched-units-is-still-a-number" class="slide level2">
-<h2>A correlation between mismatched units is still a number</h2>
-<p>That is the whole problem. Nothing breaks. Nothing warns you.</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>what you joined</th>
-<th>what you got</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>returns as <code>0.012</code> against returns as <code>1.2</code></td>
-<td>a coefficient off by a hundred</td>
-</tr>
-<tr class="even">
-<td>a rate in percent against a rate in decimal</td>
-<td>a chart that looks fine and is wrong</td>
-</tr>
-<tr class="odd">
-<td>dollars against thousands of dollars</td>
-<td>a ratio nobody notices until the Board does</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p><strong>The assistant cannot see units.</strong> They are not in the data; they are in the documentation, and often only in someone’s head.</p>
-</div>
+<section id="what-a-join-does-to-ten-days" class="slide level2 clip" data-background-color="#000000">
+<h2>What a join does to ten days</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_tendays_poster.png">
+<source src="media/w02_tendays.mp4" type="video/mp4">
+</video>
 </section>
-<section id="three-habits-that-catch-it" class="slide level2">
-<h2>Three habits that catch it</h2>
-<ol type="1">
-<li><strong>Print <code>head()</code> and read it.</strong> Not glance — read. Is that number plausible as a daily return?</li>
-<li><strong>Plot before you model.</strong> A wrong unit is usually visible as a wrong axis.</li>
-<li><strong>Compute one number a second way.</strong> Cumulative return from first and last price, against the same thing from the return series. If they disagree, stop.</li>
-</ol>
-<div title="The sentence to remember">
-<div class="callout callout-tip callout-titled callout-style-default">
+<section id="the-same-choice-on-four-and-a-half-years" class="slide level2">
+<h2>The same choice, on four and a half years</h2>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>The sentence to remember</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>The assistant is fluent about code and blind about meaning. Units, calendars and conventions are exactly where it fails silently.</p>
+<p>Fill the stock market’s weekends with Friday’s price. Does the S&amp;P 500 look more volatile, or less?</p>
 </div>
 </div>
+</div>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/w02-calendars.svg" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
+</figure>
 </div>
 </div>
 </section>
-<section id="join-something-that-is-not-a-price" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Join something that is not a price</h2>
-<p><span class="kicker">LAB · session.ipynb § C</span></p>
-<p>Bring in one external series — a FRED interest rate, or on-chain active addresses.</p>
+<section id="after-every-join-three-checks" class="slide level2">
+<h2>After every join, three checks</h2>
 <ol type="1">
-<li>State its <strong>frequency</strong> and its <strong>units</strong> before you join.</li>
-<li>Join it. Say which calendar the result is in.</li>
-<li>Find one known event in the chart. If you cannot see it, the join is wrong.</li>
+<li><strong>rows before and after</strong> — <code>len(a)</code>, <code>len(b)</code>, <code>len(joined)</code></li>
+<li><strong>missing values</strong> — <code>joined.isna().sum()</code></li>
+<li><strong>one row from the middle</strong> — read it</li>
 </ol>
+<p><span class="explain">The calendar is a modelling decision, not a cleaning step. The assistant always makes it — silently.</span></p>
 </section>
-<section id="block-e-making-it-repeatable-and-safe" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block E</span> Making it repeatable, and safe</h2>
+<section id="part-5-units-snapshots-privacy" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 5</span> Units, snapshots, privacy</h2>
 </section>
+<section id="a-number-without-a-unit" class="slide level2">
+<h2>A number without a unit</h2>
+<p>Three daily returns, written in percent: <strong>1.2, −0.8, 0.5</strong>.</p>
+<div class="bigtable">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>compounded as</th>
+<th>calculation</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>percent → decimals first</td>
+<td>1.012 × 0.992 × 1.005 − 1</td>
+<td><strong>+0.89%</strong></td>
+</tr>
+<tr class="even">
+<td>read as decimals by mistake</td>
+<td>2.2 × 0.2 × 1.5 − 1</td>
+<td><strong>−34%</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="explain">No error, no warning. The code cannot see units; they live in the documentation, and in your head.</span></p>
+</section>
+<section id="same-correlation-a-slope-off-by-100" class="slide level2">
+<h2>Same correlation, a slope off by 100</h2>
+
+<img data-src="img/w02-units.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
 <section id="a-number-without-a-snapshot-is-an-anecdote" class="slide level2">
 <h2>A number without a snapshot is an anecdote</h2>
-<p>Data changes under you. Yahoo revises. An API returns something different tomorrow.</p>
+<p>Every number in today’s slides comes from one file:</p>
+<p><code>btc_spy_2022-01-01_2026-09-18.csv</code> — 1,722 rows, 2022-01-01 to 2026-09-18.</p>
 <ul>
-<li><strong>Save the data behind every reported number</strong>, with the date you pulled it.</li>
-<li><strong>Pin your versions.</strong> <code>pandas 2.2.1</code>, not “latest”.</li>
-<li><strong>Set the seed</strong> anywhere randomness enters.</li>
+<li><strong>save the data</strong> behind every reported number, with the date in the name</li>
+<li><strong>pin the versions</strong> of your libraries</li>
+<li><strong>set the seed</strong> wherever randomness enters</li>
 </ul>
-<p><span class="red">The test: can someone else, on another machine, get your number? If the answer needs you in the room, it is not a result yet.</span></p>
+<p><span class="explain">The test: can someone else, on another machine, get your number? If it needs you in the room, it is not a result yet.</span></p>
 </section>
-<section id="and-the-rule-that-has-no-exceptions" class="slide level2 statement">
-<h2>And the rule that has no exceptions</h2>
-</section>
-<section id="nothing-confidential-goes-into-an-ai-tool." class="slide level2">
-<h2>Nothing confidential goes into an AI tool.</h2>
-<p>Not client names, not unpublished figures, not personal data. Not “just to check the formatting”.</p>
-<p><span class="muted">If you would not email it to a stranger, do not paste it into a chat box.</span></p>
+<section id="nothing-confidential-goes-into-an-ai-tool" class="slide level2 statement">
+<h2>Nothing confidential goes into an AI tool</h2>
+<p><span class="muted">Not client names, not unpublished figures, not personal data — not even “just to check the formatting”.</span></p>
 </section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>Homework 2</strong> — one question you actually want answered, a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.</p>
-<p>Due Tuesday 6 October, 23:59.</p>
+<p><strong>Homework 2</strong>, due Tue 6 Oct: one question, one join, one chart whose title is the question, a one-page memo — in your Drive folder, <code>week-02/</code>.</p>
 <div class="fragment">
-<p>The memo is the part that matters. <strong>One question, one chart, one answer</strong>, for someone who will not open your notebook.</p>
-<p><span class="muted">Next week: a model, and how to tell whether it is any good.</span></p>
+<p><strong>Before you leave:</strong> three lines at the bottom of the notebook, in your words.</p>
+<p><span class="muted">Next week: your tokens become the input of a model that guesses the next character — and we ask whether a model is any good.</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
