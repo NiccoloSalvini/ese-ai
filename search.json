@@ -1803,7 +1803,7 @@
     "href": "lectures/01-how-llms-work.html#today",
     "title": "How we will work, and what is inside the machine",
     "section": "Today",
-    "text": "Today\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:25\nwhat this course is for\n\n\n10:43\nopen your notebook\n\n\n10:50\nbreak\n\n\n11:00\nfrom one neuron to an LLM\n\n\n11:30\nwhat the model reads\n\n\n11:40\na real model release, taken apart, word by word\n\n\n11:55\nclose"
+    "text": "Today\n\n\n\n10:00\nwho I am, and who you are\n\n\n10:25\nwhat this course is for\n\n\n10:43\nopen your notebook\n\n\n10:50\nbreak\n\n\n11:00\na real model release — and the neuron that explains it\n\n\n11:35\nwhat the model reads: tokens, attention, the box\n\n\n11:50\nback to the release · close"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-1-two-people-one-room",
@@ -1890,88 +1890,102 @@
     "text": "Part 3 From one neuron to an LLM"
   },
   {
+    "objectID": "lectures/01-how-llms-work.html#openai-gpt-oss-august-2025",
+    "href": "lectures/01-how-llms-work.html#openai-gpt-oss-august-2025",
+    "title": "How we will work, and what is inside the machine",
+    "section": "OpenAI, gpt-oss, August 2025",
+    "text": "OpenAI, gpt-oss, August 2025\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nSpec table: context length 128k.\n\nCircle every word you can explain today. By 11:55 you will circle them all."
+  },
+  {
     "objectID": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
     "href": "lectures/01-how-llms-work.html#three-ways-to-write-the-same-decision",
     "title": "How we will work, and what is inside the machine",
     "section": "Three ways to write the same decision",
-    "text": "Three ways to write the same decision"
+    "text": "Three ways to write the same decision\n\n\n\n\n\n\n\n1.0 you write the rule yourself. 2.0 you give examples and the machine learns the rule — as numbers called weights. 3.0 you give an instruction in plain English to a model that has already learned from huge amounts of text. 2.0 and 3.0 are built from the same thing: neurons."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#one-neuron",
     "href": "lectures/01-how-llms-work.html#one-neuron",
     "title": "How we will work, and what is inside the machine",
     "section": "One neuron",
-    "text": "One neuron\n\n\n\n\n\n\n\nBet\n\n\nLarge payment, abroad, new device. What do you do with each number before adding them up?"
+    "text": "One neuron\n\n\n\n\n\n\n\nBet\n\n\nLarge payment, abroad, new device. What do you do with each number before adding them up?\n\n\n\n\n\n\n\n\n\n\nEach input is multiplied by a weight (how much it matters), the results are added up with a bias (how easily it fires), and the sum is squashed between 0 and 1. The weights are the only thing it learns. With this squash, one neuron is exactly a logistic regression."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#the-squash-the-activation-function",
     "href": "lectures/01-how-llms-work.html#the-squash-the-activation-function",
     "title": "How we will work, and what is inside the machine",
     "section": "The squash: the activation function",
-    "text": "The squash: the activation function"
+    "text": "The squash: the activation function\n\nAfter adding up, a neuron passes the sum through a curve. Sigmoid turns it into a probability; tanh into −1…1; ReLU keeps positives and zeroes negatives. Without this bend, stacking a thousand neurons still gives a straight line."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#training-it-by-hand",
     "href": "lectures/01-how-llms-work.html#training-it-by-hand",
     "title": "How we will work, and what is inside the machine",
     "section": "Training it by hand",
-    "text": "Training it by hand"
+    "text": "Training it by hand\n\n\n\nFour examples, one rule. Wrong answer → move each weight a little towards the right answer. Right answer → leave it alone. Repeat until nothing changes: the neuron has learned AND."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#how-every-network-learns",
     "href": "lectures/01-how-llms-work.html#how-every-network-learns",
     "title": "How we will work, and what is inside the machine",
     "section": "How every network learns",
-    "text": "How every network learns"
+    "text": "How every network learns\n\nThe loss is one number that says how wrong the network is. Backpropagation works out, for every weight, whether nudging it up or down would lower the loss. Then every weight moves a little. That loop, repeated, is all of training."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#downhill",
     "href": "lectures/01-how-llms-work.html#downhill",
     "title": "How we will work, and what is inside the machine",
     "section": "Downhill",
-    "text": "Downhill"
+    "text": "Downhill\n\n\n\nPicture the loss as a landscape and the weights as your position. Training walks downhill. Step too big and you overshoot the valley; too small and it takes forever. The step size is the learning rate."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#more-neurons-the-line-bends",
     "href": "lectures/01-how-llms-work.html#more-neurons-the-line-bends",
     "title": "How we will work, and what is inside the machine",
     "section": "More neurons: the line bends",
-    "text": "More neurons: the line bends"
+    "text": "More neurons: the line bends\n\n\n\nOne neuron can only draw a straight boundary. Put several side by side in a hidden layer and blend them: the boundary bends to follow the data. Stack more layers and the network invents its own intermediate features."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
     "href": "lectures/01-how-llms-work.html#from-4-numbers-to-117-billion",
     "title": "How we will work, and what is inside the machine",
     "section": "From 4 numbers to 117 billion",
-    "text": "From 4 numbers to 117 billion"
+    "text": "From 4 numbers to 117 billion\n\nEvery model on this chart is the same arithmetic — multiply, add, squash — repeated. The parameters are all the weights and biases. What changed from a neuron to an LLM is how many there are, and how much data they were trained on."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#an-llm-is-that-network-with-one-job",
     "href": "lectures/01-how-llms-work.html#an-llm-is-that-network-with-one-job",
     "title": "How we will work, and what is inside the machine",
     "section": "An LLM is that network, with one job",
-    "text": "An LLM is that network, with one job\n\n\n\n\n\n\nGuess the next piece of text. That is the whole job.\n\n\n\n\n\n1 · Pre-training\ntrillions of tokens of web text → a base model that continues documents\n\n2 · Post-training\n~100,000 example conversations, then feedback → an assistant\n\n3 · What you download\nthe parameters, and a short program that runs them"
+    "text": "An LLM is that network, with one job\n\n\n\n\n\n\nGuess the next piece of text. That is the whole job.\n\n\n\n\n\n1 · Pre-training\ntrillions of tokens of web text → a base model that continues documents\n\n2 · Post-training\n~100,000 example conversations, then feedback → an assistant\n\n3 · What you download\nthe parameters, and a short program that runs them\n\nThe only thing an LLM is trained to do is predict the next piece of text. To do that well across the whole internet it has to absorb grammar, facts and patterns of reasoning. Answering questions comes later, in post-training."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
     "href": "lectures/01-how-llms-work.html#pre-training-is-compressing-the-internet",
     "title": "How we will work, and what is inside the machine",
     "section": "Pre-training is compressing the internet",
-    "text": "Pre-training is compressing the internet"
+    "text": "Pre-training is compressing the internet\n\nTraining squeezes terabytes of text into a file of parameters about 70 times smaller. Like a lossy zip: the gist survives, exact facts do not always. That is one reason a model can sound right and be wrong."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#the-same-nudge-trillions-of-times",
     "href": "lectures/01-how-llms-work.html#the-same-nudge-trillions-of-times",
     "title": "How we will work, and what is inside the machine",
     "section": "The same nudge, trillions of times",
-    "text": "The same nudge, trillions of times\nThe ECB left rates → ?\n\n\n\nnext token\nbefore\nafter\n\n\n\n\n“unchanged” ✓\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%"
+    "text": "The same nudge, trillions of times\nThe ECB left rates → ?\n\n\n\nnext token\nbefore\nafter\n\n\n\n\n“unchanged” ✓\n3%\n4%\n\n\n“steady”\n4%\n3.8%\n\n\n“at”\n2%\n1.9%\n\n\n\nTake a window of text from the training data; the next token is known because it is in the text. Nudge the weights so that token becomes slightly more likely and the others slightly less. Repeat for every token of the training set."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#one-prediction-end-to-end",
     "href": "lectures/01-how-llms-work.html#one-prediction-end-to-end",
     "title": "How we will work, and what is inside the machine",
     "section": "One prediction, end to end",
-    "text": "One prediction, end to end"
+    "text": "One prediction, end to end\n\nText → tokens → numbers. Each token becomes a long vector, which goes through the same block many times: attention (tokens look at each other) and neurons (each token is processed). At the end, a probability for every token in the vocabulary; one is picked, appended, and the whole thing runs again."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#every-word-taken-apart-with-our-small-network",
+    "href": "lectures/01-how-llms-work.html#every-word-taken-apart-with-our-small-network",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Every word, taken apart — with our small network",
+    "text": "Every word, taken apart — with our small network\n\n\n\n\n\n\n\nin the release\nin terms of the network we just built\n\n\n\n\nTransformer\nour neurons, plus attention, stacked in 36 layers\n\n\n117B total parameters\nour neuron had 4 weights; this has 117 billion\n\n\nmixture-of-experts\n128 smaller networks inside; a router picks 4 for each token\n\n\n5.1B active per token\nonly those 4 run, so it costs like a 5-billion model\n\n\ntokenized, o200k_harmony\nhow text becomes numbers before the first neuron\n\n\npost-trained\nmore rounds of the same training loop, on new data\n\n\nsupervised fine-tuning\nthe loop, where the right answers are good conversations\n\n\nRL\nthe loop, where the “right answer” is a reward score\n\n\ncontext length 128k\nhow many tokens go in at once — a few hundred pages\n\n\nquantized, MXFP4, 80GB\neach weight stored in ~4 bits instead of 16: fits on one GPU\n\n\nopen-weight, Apache 2.0\nyou download the weights themselves, and may use them commercially\n\n\n\nNothing in this list is magic. Every line is a neuron, a weight, the training loop, or a way of making them cheaper to run."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-4-what-the-model-reads",
@@ -1985,21 +1999,7 @@
     "href": "lectures/01-how-llms-work.html#it-never-sees-a-word",
     "title": "How we will work, and what is inside the machine",
     "section": "It never sees a word",
-    "text": "It never sees a word\n\n\n\n\n\n\n\nBet\n\n\n\"Il margine è insostenibile\" — four words. How many pieces?"
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#why-pieces-and-not-letters",
-    "href": "lectures/01-how-llms-work.html#why-pieces-and-not-letters",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Why pieces, and not letters?",
-    "text": "Why pieces, and not letters?\n\n\n\nthe same 5,000 characters, as\nlength\nalphabet\n\n\n\n\nbits\n40,000\n2\n\n\nbytes\n5,000\n256\n\n\ntokens\n~1,300\n~100,000"
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#how-a-tokenizer-is-learned",
-    "href": "lectures/01-how-llms-work.html#how-a-tokenizer-is-learned",
-    "title": "How we will work, and what is inside the machine",
-    "section": "How a tokenizer is learned",
-    "text": "How a tokenizer is learned\nMerge the most frequent pair. Repeat.\n\n\n\nstep\ntext\nnew symbol\n\n\n\n\nstart\naaabdaaabac\n\n\n\n1\nZabdZabac\nZ = aa\n\n\n2\nYbdYbac\nY = Za\n\n\n3\nXdXac\nX = Yb\n\n\n\n\n11 symbols → 5. Train it on English, and it learns English pieces."
+    "text": "It never sees a word\n\n\n\n\n\n\n\nBet\n\n\n\"Il margine è insostenibile\" — four words. How many pieces?\n\n\n\n\n\n\n\n\n\n\nBefore the network sees anything, a tokenizer cuts the text into pieces and turns each piece into a number. You are billed, and limited, in these pieces — not in words."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#the-same-sentence-twice",
@@ -2009,46 +2009,25 @@
     "text": "The same sentence, twice"
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
-    "href": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Much of the weirdness is tokenization",
-    "text": "Much of the weirdness is tokenization\n\n\n\nit struggles with\nbecause\n\n\n\n\nspelling a word backwards\nthe word is one token, not letters\n\n\nRussian, Italian\nmore, smaller pieces\n\n\narithmetic\n1,234,567.89 is 7 arbitrary pieces\n\n\negg · Egg · EGG\nthe same word, different pieces"
-  },
-  {
     "objectID": "lectures/01-how-llms-work.html#how-the-tokens-talk-to-each-other-attention",
     "href": "lectures/01-how-llms-work.html#how-the-tokens-talk-to-each-other-attention",
     "title": "How we will work, and what is inside the machine",
     "section": "How the tokens talk to each other: attention",
-    "text": "How the tokens talk to each other: attention\n\n\n\n\n\n\n\nBet\n\n\n“The bank raised rates because it feared inflation.” — what is it?\n\n\n\n\n\n\n\n\n\n\nVaswani et al., Attention Is All You Need, 2017 — the paper behind every model since."
+    "text": "How the tokens talk to each other: attention\n\n\n\n\n\n\n\nBet\n\n\n“The bank raised rates because it feared inflation.” — what is it?\n\n\n\n\n\n\n\n\n\n\nVaswani et al., Attention Is All You Need, 2017 — the paper behind every model since.\nTo process each token, the model looks at every other token in the context and decides how much each one matters — here, most of the weight goes to “bank”. Every token does this with every other one, which is why long contexts get expensive."
   },
   {
     "objectID": "lectures/01-how-llms-work.html#everything-it-knows-every-time",
     "href": "lectures/01-how-llms-work.html#everything-it-knows-every-time",
     "title": "How we will work, and what is inside the machine",
     "section": "Everything it knows, every time",
-    "text": "Everything it knows, every time"
+    "text": "Everything it knows, every time\n\nThe context window is everything the model sees in one call: instructions, conversation so far, documents, its own answer. Nothing else exists for it. It has no memory between calls — any “memory” is text re-sent by the application."
   },
   {
-    "objectID": "lectures/01-how-llms-work.html#part-5-a-real-release-taken-apart",
-    "href": "lectures/01-how-llms-work.html#part-5-a-real-release-taken-apart",
+    "objectID": "lectures/01-how-llms-work.html#back-to-the-release",
+    "href": "lectures/01-how-llms-work.html#back-to-the-release",
     "title": "How we will work, and what is inside the machine",
-    "section": "Part 5 A real release, taken apart",
-    "text": "Part 5 A real release, taken apart"
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#openai-gpt-oss-august-2025",
-    "href": "lectures/01-how-llms-work.html#openai-gpt-oss-august-2025",
-    "title": "How we will work, and what is inside the machine",
-    "section": "OpenAI, gpt-oss, August 2025",
-    "text": "OpenAI, gpt-oss, August 2025\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nSpec table: context length 128k.\n\nCircle every word you can now explain."
-  },
-  {
-    "objectID": "lectures/01-how-llms-work.html#every-word-taken-apart",
-    "href": "lectures/01-how-llms-work.html#every-word-taken-apart",
-    "title": "How we will work, and what is inside the machine",
-    "section": "Every word, taken apart",
-    "text": "Every word, taken apart\n\n\n\n\n\n\n\nin the release\nwhat it is\n\n\n\n\nTransformer\nattention + neurons, stacked — the block you just saw\n\n\n117B total parameters\nthe numbers learned in training\n\n\nmixture-of-experts\nmany specialist sub-networks; only a few run per token\n\n\n5.1B active per token\nthe cost of a small model, the capacity of a big one\n\n\ntokenized, o200k_harmony\nthe ~200,000-piece vocabulary\n\n\npost-trained\nbase model → assistant\n\n\nsupervised fine-tuning\ntrained on example conversations\n\n\nRL\nreinforcement learning: rewarded for good answers\n\n\ncontext length 128k\nthe size of the box\n\n\nquantized, MXFP4, 80GB\neach number stored in 4 bits — fits on one GPU\n\n\nopen-weight, Apache 2.0\ndownload it, run it on your own servers, use it commercially"
+    "section": "Back to the release",
+    "text": "Back to the release\nRead it again. Which words are still dark?"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#close",
@@ -2076,7 +2055,28 @@
     "href": "lectures/01-how-llms-work.html#a-taste-of-defi",
     "title": "How we will work, and what is inside the machine",
     "section": "A taste of DeFi",
-    "text": "A taste of DeFi\n\n\n\n\n\n\n\nBet\n\n\nA pool holds 10 ETH and 30,000 USDC — 3,000 per ETH on screen. You buy 1 ETH. What do you pay?\n\n\n\n\n\nETH × USDC stays constant: 10 × 30,000 = 300,000.\n9 ETH left → 300,000 ÷ 9 = 33,333 USDC → you paid 3,333, 11% above the screen.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "A taste of DeFi\n\n\n\n\n\n\n\nBet\n\n\nA pool holds 10 ETH and 30,000 USDC — 3,000 per ETH on screen. You buy 1 ETH. What do you pay?\n\n\n\n\n\nETH × USDC stays constant: 10 × 30,000 = 300,000.\n9 ETH left → 300,000 ÷ 9 = 33,333 USDC → you paid 3,333, 11% above the screen."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#why-pieces-and-not-letters",
+    "href": "lectures/01-how-llms-work.html#why-pieces-and-not-letters",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Why pieces, and not letters?",
+    "text": "Why pieces, and not letters?\n\n\n\nthe same 5,000 characters, as\nlength\nalphabet\n\n\n\n\nbits\n40,000\n2\n\n\nbytes\n5,000\n256\n\n\ntokens\n~1,300\n~100,000\n\n\n\nThe network reads a sequence, and longer sequences cost more to process. Letters would make every text very long; whole words would need an impossible vocabulary. Pieces are the compromise: about 1,300 of them for 5,000 characters."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#how-a-tokenizer-is-learned",
+    "href": "lectures/01-how-llms-work.html#how-a-tokenizer-is-learned",
+    "title": "How we will work, and what is inside the machine",
+    "section": "How a tokenizer is learned",
+    "text": "How a tokenizer is learned\nMerge the most frequent pair. Repeat.\n\n\n\nstep\ntext\nnew symbol\n\n\n\n\nstart\naaabdaaabac\n\n\n\n1\nZabdZabac\nZ = aa\n\n\n2\nYbdYbac\nY = Za\n\n\n3\nXdXac\nX = Yb\n\n\n\n\n11 symbols → 5. Train it on English, and it learns English pieces.\nThis is byte-pair encoding: find the pair of symbols that appears most often, give it a new name, repeat. On English text the frequent pairs are English, so English ends up with long pieces and other languages with short ones — more pieces, higher cost."
+  },
+  {
+    "objectID": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
+    "href": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
+    "title": "How we will work, and what is inside the machine",
+    "section": "Much of the weirdness is tokenization",
+    "text": "Much of the weirdness is tokenization\n\n\n\nit struggles with\nbecause\n\n\n\n\nspelling a word backwards\nthe word is one token, not letters\n\n\nRussian, Italian\nmore, smaller pieces\n\n\narithmetic\n1,234,567.89 is 7 arbitrary pieces\n\n\negg · Egg · EGG\nthe same word, different pieces\n\n\n\nMany failures that look like stupidity come from the model seeing pieces, not letters or digits. When an answer involves spelling, counting characters or arithmetic, check it yourself.\n\n\n\nAI for Business & FinTech · ESE Florence"
   },
   {
     "objectID": "lectures/03-one-problem.html#where-we-are",
