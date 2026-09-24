@@ -10,22 +10,24 @@
 > errors → C calendars → D units → E reproducibility. **This is dense.** If behind: move "Join something
 > that is not a price" into HW2 (it already is, in effect), and do Block E in ten minutes.
 
-> **Rebuilt 23 Sep 2026 (v2).** The deck and the notebook follow one plan; the session plan below
-> supersedes the older one further down, kept only for the join/rolling material used in HW2.
+> **Rebuilt 24 Sep 2026 (v3): week 2 is now "Inside an LLM".** Week 1 stopped at backpropagation, and
+> the data half of the v2 plan did not belong with the LLM half. Decided with Niccolò: week 2 finishes and
+> deepens the LLM; week 3 is data analysis + ML on one real dataset (card fraud, OpenML 1597). The v2 data
+> material (BTC/SPY snapshot, calendars, units, compounding) is kept in `_build/drafts/` for week 3.
 >
 > | Time | Block | Slides / notebook |
 > |---|---|---|
-> | 10:00 | recap of week 1 · his HW1 question | "Last week, in one slide" · "Your starting point" |
-> | 10:25 | temperature (clip + table), invented numbers, two piles, procedure | § 1–2 |
-> | 10:55 | tiny LLM piece 1: a tokenizer by byte-pair merges, then on his own EN/RU text | § 3 |
-> | 11:15 | break | |
-> | 11:25 | ten real days (Jan 2024), four verbs, a return by hand, volatility (bet), compounding clip + BTC 2022, planted-error cell | § 4 |
-> | 12:05 | calendars: ten-days clip, four and a half years (bet: SPY vol 17.4% → 14.4% when weekends are filled), three checks after a join | § 5 |
-> | 12:30 | units (1.2/−0.8/0.5 → +0.89% vs −34%; slope 0.01 vs 1.02), snapshot, privacy | § 6–7 |
-> | 12:50 | HW2 brief · three lines | |
+> | 10:00 | recap (neuron → backprop) · his HW1 question | |
+> | 10:20 | finishing the network: learning rate clip, training loop, card testing, activations, 4 → 117B | |
+> | 10:45 | the same machine on text: same-machine table, faders clip, knobs figure, GPT-2's real knobs (bet: 37%) | |
+> | 11:05 | break | |
+> | 11:15 | inside: end-to-end (real ids), tokens (BPE, lab § 1), embeddings map, attention clip + table + real head (layer 5 head 4: 85% on "bank"), the block, temperature on real knobs, generations (T = 0 invents "0.5 percent in June"), lab § 2–4 | |
+> | 12:10 | training at scale (compress, three stages), context cost, MoE, quantization | |
+> | 12:30 | four limits, two piles (§ 6), the release decoded (circle again) | |
+> | 12:50 | HW2 · three lines | |
 >
-> Every number comes from `lectures/img/w02_story.py` on the snapshot in `week-02/data/`.
-> If behind: the units slope figure and the "four verbs" table can be shown, not discussed.
+> Numbers: `lectures/img/w02_llm_story.py` (runs GPT-2 once, writes JSON) → `figs_w02llm.py`; clip `anim/src/w02_llm.py`.
+> The v2 plan and the older text below are superseded.
 
 ## Learning objectives
 By the end of the session the student can:

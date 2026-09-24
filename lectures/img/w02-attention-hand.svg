@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 412" width="960" height="412" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">attention with two numbers per vector, by hand — values are (is an institution, is a price)</text>
+  <text x="30" y="66" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >“it” asks, with query (1.5, 0): who in this sentence is an actor that can fear?</text>
+  <text x="30" y="100" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1">TOKEN</text>
+  <text x="160" y="100" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1">ITS KEY</text>
+  <text x="300" y="100" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1">SCORE = QUERY · KEY</text>
+  <text x="520" y="100" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1">E^SCORE</text>
+  <text x="640" y="100" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1">ATTENTION</text>
+  <text x="800" y="100" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1">ITS VALUE</text>
+  <line x1="30" y1="108" x2="930" y2="108" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="134" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >The</text>
+  <text x="160" y="134" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 0.2)</text>
+  <text x="300" y="134" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5×0 + 0×0.2 = 0</text>
+  <text x="520" y="134" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >1.00</text>
+  <text x="640" y="134" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >4%</text>
+  <text x="800" y="134" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 0)</text>
+  <line x1="30" y1="144" x2="930" y2="144" stroke="#e6e2d8"/>
+  <text x="30" y="166" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >bank</text>
+  <text x="160" y="166" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(2, 0)</text>
+  <text x="300" y="166" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5×2 + 0×0 = 3</text>
+  <text x="520" y="166" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >20.09</text>
+  <text x="640" y="166" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >70%</text>
+  <text x="800" y="166" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(1, 0)</text>
+  <line x1="30" y1="176" x2="930" y2="176" stroke="#e6e2d8"/>
+  <text x="30" y="198" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >raised</text>
+  <text x="160" y="198" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 1)</text>
+  <text x="300" y="198" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5×0 + 0×1 = 0</text>
+  <text x="520" y="198" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >1.00</text>
+  <text x="640" y="198" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >4%</text>
+  <text x="800" y="198" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 0)</text>
+  <line x1="30" y1="208" x2="930" y2="208" stroke="#e6e2d8"/>
+  <text x="30" y="230" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >rates</text>
+  <text x="160" y="230" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(1, 0.5)</text>
+  <text x="300" y="230" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5×1 + 0×0.5 = 1.5</text>
+  <text x="520" y="230" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >4.48</text>
+  <text x="640" y="230" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >16%</text>
+  <text x="800" y="230" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 1)</text>
+  <line x1="30" y1="240" x2="930" y2="240" stroke="#e6e2d8"/>
+  <text x="30" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >because</text>
+  <text x="160" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 0.5)</text>
+  <text x="300" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5×0 + 0×0.5 = 0</text>
+  <text x="520" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >1.00</text>
+  <text x="640" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >4%</text>
+  <text x="800" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 0)</text>
+  <line x1="30" y1="272" x2="930" y2="272" stroke="#e6e2d8"/>
+  <text x="30" y="294" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >it</text>
+  <text x="160" y="294" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0.2, 0)</text>
+  <text x="300" y="294" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5×0.2 + 0×0 = 0.3</text>
+  <text x="520" y="294" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >1.35</text>
+  <text x="640" y="294" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >5%</text>
+  <text x="800" y="294" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">(0, 0)</text>
+  <line x1="30" y1="304" x2="930" y2="304" stroke="#e6e2d8"/>
+  <text x="520" y="326" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >total 28.92</text>
+  <text x="640" y="326" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >each ÷ total</text>
+  <text x="30" y="372" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >New meaning of “it” = the values mixed by attention = (0.69, 0.15): mostly “bank”, a little “rates”.</text>
+  <text x="30" y="398" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >Score: multiply and add — a neuron. Divide the exponentials by their total — the knobs. Nothing new, just arranged differently.</text>
+</svg>

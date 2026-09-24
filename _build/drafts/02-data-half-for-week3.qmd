@@ -1,0 +1,286 @@
+---
+title: "The assistant writes it. You decide whether it is true."
+subtitle: "Week 2 · Wednesday 30 September 2026 · 10:00–13:00"
+author: "Niccolò Salvini, PhD"
+institute: "AI for Business and FinTech · European School of Economics, Florence"
+---
+
+## Today
+
+| | |
+|---|---|
+| **10:00** | last week in one slide · your starting point |
+| **10:25** | the model's side: temperature, and why it invents |
+| **10:55** | your tiny LLM, piece 1: a tokenizer |
+| **11:15** | break |
+| **11:25** | is Bitcoin riskier than the stock market? — ten real days by hand |
+| **12:05** | two calendars, one join |
+| **12:30** | units, snapshots, and what never goes into a chatbot |
+| **12:50** | homework · three lines |
+
+## Last week, in one slide
+
+:::: {.columns}
+::: {.column width="50%"}
+**A neuron** multiplies each answer by a weight, adds a bias, and squashes.
+
+**Training** is one loop: guess → how wrong (the loss) → blame each weight (backpropagation) → nudge it: $w \leftarrow w - \eta\,(p-y)\,x$.
+:::
+::: {.column width="50%"}
+**An LLM** is the same machine, answering "which of 200,000 tokens comes next?".
+
+It reads **tokens**, lets them **attend** to each other, and knows only what is in its **context window**.
+:::
+::::
+
+[Today: what it does with those probabilities — and then data, where the assistant writes the code and you check it.]{.explain}
+
+## Your starting point {.statement}
+
+[Homework 1: the question you want answered by December. Tell me in two minutes, as if to a manager.]{.muted}
+
+## [Part 1]{.section-kicker} The model's side {.section-slide background-color="#AF1F25"}
+
+## Last week's table, again
+
+`The ECB left rates` → ?
+
+::: {.bigtable}
+| unchanged | steady | at | on | higher |
+|---|---|---|---|---|
+| 0.62 | 0.15 | 0.10 | 0.08 | 0.05 |
+:::
+
+::: {.callout-important title="Bet"}
+Ask the same question ten times. How many times does it answer "unchanged"?
+:::
+
+[It does not look the answer up. It **picks** from these odds — and the setting that decides how it picks is called **temperature**.]{.explain}
+
+## Temperature reshapes the odds {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_temperature_poster.png"><source src="media/w02_temperature.mp4" type="video/mp4"></video>
+
+## The same five tokens, four temperatures
+
+::: {.bigtable}
+| next token | T = 0 | T = 0.5 | T = 1 | T = 2 |
+|---|---|---|---|---|
+| **unchanged** | 1.00 | 0.90 | 0.62 | 0.39 |
+| **steady** | 0.00 | 0.05 | 0.15 | 0.19 |
+| **at** | 0.00 | 0.02 | 0.10 | 0.16 |
+| **on** | 0.00 | 0.01 | 0.08 | 0.14 |
+| **higher** | 0.00 | 0.01 | 0.05 | 0.11 |
+:::
+
+[**T = 0**: always the top token — the same answer every time. Use it for anything that must be reproducible: extraction, classification, anything an auditor will read. Higher T for ideas.]{.explain}
+
+## So where do invented numbers come from?
+
+::: {.callout-important title="Bet"}
+You ask for a company's 2025 revenue. The model gives a precise, wrong figure. Bug, lie, or working as designed?
+:::
+
+. . .
+
+**Working as designed.** There is always a most likely next token — even when the fact was never in the training data or the context. It produces the *shape* of a number that would fit, with the same confidence.
+
+[It cannot feel the difference between recalling and inventing. That is your job, all term.]{.explain}
+
+## Two piles {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § 2]{.kicker}
+
+Ask your assistant about a real company. Split every sentence of the answer:
+
+:::: {.columns}
+::: {.column width="50%"}
+**Verifiable**
+
+a number, a date, a name, a source you can open
+:::
+::: {.column width="50%"}
+**Plausible**
+
+fluent, confident — and nothing to check it against
+:::
+::::
+
+## Write it into the procedure
+
+A process an auditor will read cannot say *"we asked the AI"*. It records:
+
+- the **exact prompt**, versioned like code
+- **T = 0**, and the model's **name and version**
+- the **input** stored next to the answer
+
+## [Part 2]{.section-kicker} Your tiny LLM, piece 1: the tokenizer {.section-slide background-color="#AF1F25"}
+
+## How a tokenizer is learned
+
+Find the pair of symbols that appears most often. Give it a name. Repeat.
+
+::: {.plain}
+| merge | the pair seen most often | times | new piece | text length |
+|---|---|---|---|---|
+| start | | | | 127 |
+| 1 | `a` + `n` | 6 | `an` | 121 |
+| 2 | `s` + `_` | 5 | `s_` | 116 |
+| 3 | `e` + `_` | 4 | `e_` | 112 |
+| 4 | `r` + `a` | 4 | `ra` | 108 |
+| 5 | `ra` + `t` | 4 | `rat` | 104 |
+| 6 | `rat` + `e` | 4 | `rate` | 100 |
+| 7 | `rate` + `s_` | 4 | `rates_` | 96 |
+| 8 | `t` + `h` | 3 | `th` | 93 |
+:::
+
+[Trained on a text about rates, it learns `rates_` as one piece after seven merges. Trained mostly on English, it learns English pieces — and your Russian costs more.]{.explain}
+
+## Train one on your own texts {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § 3]{.kicker}
+
+1. Paste a paragraph of your own — English, then Russian.
+2. Run the merges. Which pieces does it learn first?
+3. Count: how many symbols per word, in each language?
+
+[Next week the pieces become the input of a model that guesses the next one.]{.muted}
+
+## Break — ten minutes. {.statement}
+
+## [Part 3]{.section-kicker} Is Bitcoin riskier than the stock market? {.section-slide background-color="#AF1F25"}
+
+## Ten real days, January 2024
+
+::: {.plain}
+| day | Bitcoin, $ | S&P 500 (SPY), $ |
+|---|---|---|
+| Fri 05 Jan | 44,163 | 453.09 |
+| Sat 06 Jan | 43,989 | — |
+| Sun 07 Jan | 43,943 | — |
+| Mon 08 Jan | 46,971 | 459.56 |
+| Tue 09 Jan | 46,140 | 458.86 |
+| Wed 10 Jan | 46,628 | 461.46 |
+| Thu 11 Jan | 46,369 | 461.26 |
+| Fri 12 Jan | 42,853 | 461.57 |
+| Sat 13 Jan | 42,842 | — |
+| Sun 14 Jan | 41,796 | — |
+| Mon 15 Jan | 42,512 | — |
+| Tue 16 Jan | 43,155 | 459.88 |
+:::
+
+[The week the US approved spot Bitcoin ETFs. Bitcoin: 12 prices. The stock market: 7 — weekends, and Monday 15 January was a US holiday.]{.explain}
+
+## Four verbs cover most of data work
+
+::: {.bigtable}
+| verb | in Excel | in pandas | on our ten days |
+|---|---|---|---|
+| **filter** | AutoFilter | `df[df.SPY.notna()]` | keep the days the stock market traded |
+| **derive** | a formula column | `df.pct_change()` | daily returns |
+| **aggregate** | a pivot table | `df.std()` | one volatility number |
+| **join** | VLOOKUP | `a.join(b)` | Bitcoin next to the S&P 500 |
+:::
+
+[The assistant writes all four faster than you. Your job is to know what the result should look like before you see it.]{.explain}
+
+## A return, by hand
+
+$$\text{return} = \frac{\text{price today}}{\text{price yesterday}} - 1$$
+
+Monday 8 January, Bitcoin: 46,971 / 43,943 − 1 = **+6.9%**
+
+## Riskier by how much?
+
+::: {.callout-important title="Bet"}
+Bitcoin's yearly volatility against the S&P 500's: twice? three times?
+:::
+
+. . .
+
+![](img/w02-vol.svg){fig-align="center" width="86%"}
+
+## Up 50%, then down 50% {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_compounding_poster.png"><source src="media/w02_compounding.mp4" type="video/mp4"></video>
+
+## The same mistake, on a whole year
+
+![](img/w02-compounding.svg){fig-align="center" width="86%"}
+
+## Find the two errors {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § 4 — 🔍 CHECK]{.kicker}
+
+The assistant wrote a cell that reports Bitcoin's volatility and its return. It runs, and the numbers look reasonable. Two are wrong.
+
+[Ten minutes, alone. If you find one: there is another.]{.muted}
+
+## [Part 4]{.section-kicker} Two calendars, one join {.section-slide background-color="#AF1F25"}
+
+## What a join does to ten days {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w02_tendays_poster.png"><source src="media/w02_tendays.mp4" type="video/mp4"></video>
+
+## The same choice, on four and a half years
+
+::: {.callout-important title="Bet"}
+Fill the stock market's weekends with Friday's price. Does the S&P 500 look more volatile, or less?
+:::
+
+. . .
+
+![](img/w02-calendars.svg){fig-align="center" width="86%"}
+
+## After every join, three checks
+
+1. **rows before and after** — `len(a)`, `len(b)`, `len(joined)`
+2. **missing values** — `joined.isna().sum()`
+3. **one row from the middle** — read it
+
+[The calendar is a modelling decision, not a cleaning step. The assistant always makes it — silently.]{.explain}
+
+## [Part 5]{.section-kicker} Units, snapshots, privacy {.section-slide background-color="#AF1F25"}
+
+## A number without a unit
+
+Three daily returns, written in percent: **1.2, −0.8, 0.5**.
+
+::: {.bigtable}
+| compounded as | calculation | result |
+|---|---|---|
+| percent → decimals first | 1.012 × 0.992 × 1.005 − 1 | **+0.89%** |
+| read as decimals by mistake | 2.2 × 0.2 × 1.5 − 1 | **−34%** |
+:::
+
+[No error, no warning. The code cannot see units; they live in the documentation, and in your head.]{.explain}
+
+## Same correlation, a slope off by 100
+
+![](img/w02-units.svg){fig-align="center" width="86%"}
+
+## A number without a snapshot is an anecdote
+
+Every number in today's slides comes from one file:
+
+`btc_spy_2022-01-01_2026-09-18.csv` — 1,722 rows, 2022-01-01 to 2026-09-18.
+
+- **save the data** behind every reported number, with the date in the name
+- **pin the versions** of your libraries
+- **set the seed** wherever randomness enters
+
+[The test: can someone else, on another machine, get your number? If it needs you in the room, it is not a result yet.]{.explain}
+
+## Nothing confidential goes into an AI tool {.statement}
+
+[Not client names, not unpublished figures, not personal data — not even "just to check the formatting".]{.muted}
+
+## Close
+
+**Homework 2**, due Tue 6 Oct: one question, one join, one chart whose title is the question, a one-page memo — in your Drive folder, `week-02/`.
+
+. . .
+
+**Before you leave:** three lines at the bottom of the notebook, in your words.
+
+[Next week: your tokens become the input of a model that guesses the next character — and we ask whether a model is any good.]{.muted}

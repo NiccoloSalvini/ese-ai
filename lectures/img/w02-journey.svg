@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 438" width="960" height="438" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">one prediction, through a real model</text>
+  <text x="30" y="78" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">TEXT</text>
+  <text x="120" y="78" font-size="16" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">“The ECB left rates”</text>
+  <text x="90" y="102" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start" >↓</text>
+  <text x="30" y="130" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">TOKENS</text>
+  <text x="120" y="130" font-size="16" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">The | ECB | left | rates</text>
+  <text x="90" y="154" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start" >↓</text>
+  <text x="30" y="182" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">IDS</text>
+  <text x="120" y="182" font-size="16" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">464 · 36285 · 1364 · 3965</text>
+  <text x="90" y="206" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start" >↓</text>
+  <text x="30" y="234" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">VECTORS</text>
+  <text x="120" y="234" font-size="16" font-weight="400" fill="#2471a3" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">each id → 768 numbers (+ its position)</text>
+  <rect x="30" y="270" width="520" height="110" fill="#f7f5ef" stroke="#2471a3" stroke-width="2"/>
+  <text x="46" y="296" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">ONE BLOCK — × 12 IN GPT-2 SMALL</text>
+  <text x="46" y="324" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >attention — every token looks at the others and takes what it needs</text>
+  <text x="46" y="350" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >neurons — each token’s numbers through a hidden layer</text>
+  <line x1="550" y1="330" x2="605" y2="330" stroke="#363636" stroke-width="1.8"/>
+  <polygon points="605,330 596.7,333.5 596.7,326.5" fill="#363636"/>
+  <text x="625" y="80" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">THE KNOBS: A SCORE FOR EVERY TOKEN</text>
+  <text x="625" y="116" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >unchanged</text>
+  <rect x="740" y="103" width="156" height="18" fill="#AF1F25"/>
+  <text x="903.8199999999999" y="117" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >37%</text>
+  <text x="625" y="150" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >at</text>
+  <rect x="740" y="137" width="55" height="18" fill="#CDBA80"/>
+  <text x="802.6" y="151" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >13%</text>
+  <text x="625" y="184" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >low</text>
+  <rect x="740" y="171" width="28" height="18" fill="#CDBA80"/>
+  <text x="776.14" y="185" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >7%</text>
+  <text x="625" y="218" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >in</text>
+  <rect x="740" y="205" width="17" height="18" fill="#CDBA80"/>
+  <text x="765.22" y="219" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >4%</text>
+  <text x="625" y="256" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start" >…50,253 more</text>
+  <text x="625" y="300" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >pick one — temperature decides how boldly</text>
+  <text x="625" y="326" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >append it, and run the whole thing again</text>
+  <line x1="30" y1="400" x2="930" y2="400" stroke="#e6e2d8"/>
+  <text x="30" y="424" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start" >Real numbers from GPT-2 small: its token ids, its width, its layers, its probabilities after this prompt.</text>
+</svg>

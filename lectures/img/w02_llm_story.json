@@ -1,0 +1,343 @@
+{
+ "toy_attention": {
+  "tokens": [
+   "The",
+   "bank",
+   "raised",
+   "rates",
+   "because",
+   "it"
+  ],
+  "query": [
+   1.5,
+   0.0
+  ],
+  "keys": [
+   [
+    0.0,
+    0.2
+   ],
+   [
+    2.0,
+    0.0
+   ],
+   [
+    0.0,
+    1.0
+   ],
+   [
+    1.0,
+    0.5
+   ],
+   [
+    0.0,
+    0.5
+   ],
+   [
+    0.2,
+    0.0
+   ]
+  ],
+  "values": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    1.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    1.0
+   ],
+   [
+    0.0,
+    0.0
+   ],
+   [
+    0.0,
+    0.0
+   ]
+  ],
+  "scores": [
+   0.0,
+   3.0,
+   0.0,
+   1.5,
+   0.0,
+   0.3
+  ],
+  "exp": [
+   1.0,
+   20.09,
+   1.0,
+   4.48,
+   1.0,
+   1.35
+  ],
+  "weights": [
+   0.035,
+   0.695,
+   0.035,
+   0.155,
+   0.035,
+   0.047
+  ],
+  "mixed": [
+   0.695,
+   0.155
+  ]
+ },
+ "gpt2": {
+  "params": 124439808,
+  "vocab": 50257,
+  "layers": 12,
+  "heads": 12,
+  "width": 768,
+  "context": 1024
+ },
+ "prompt": "The ECB left rates",
+ "prompt_tokens": [
+  "The",
+  " ECB",
+  " left",
+  " rates"
+ ],
+ "prompt_ids": [
+  464,
+  36285,
+  1364,
+  3965
+ ],
+ "knobs": [
+  {
+   "token": " unchanged",
+   "p": 0.371
+  },
+  {
+   "token": " at",
+   "p": 0.13
+  },
+  {
+   "token": " low",
+   "p": 0.067
+  },
+  {
+   "token": " in",
+   "p": 0.041
+  },
+  {
+   "token": " on",
+   "p": 0.035
+  },
+  {
+   "token": " lower",
+   "p": 0.023
+  },
+  {
+   "token": " below",
+   "p": 0.019
+  },
+  {
+   "token": " high",
+   "p": 0.015
+  }
+ ],
+ "knobs_rest": 0.299,
+ "temperature": {
+  "0.5": [
+   0.839,
+   0.102,
+   0.027,
+   0.01,
+   0.008
+  ],
+  "1.0": [
+   0.371,
+   0.13,
+   0.067,
+   0.041,
+   0.035
+  ],
+  "2.0": [
+   0.024,
+   0.014,
+   0.01,
+   0.008,
+   0.007
+  ]
+ },
+ "temperature_tokens": [
+  " unchanged",
+  " at",
+  " low",
+  " in",
+  " on"
+ ],
+ "greedy": " unchanged at 0.5 percent in June, but the ECB",
+ "samples_T1": [
+  " up to 32 per cent in London unchanged at 20 basis points",
+  " unchanged last week down between 8 and 12 basis points. This",
+  " at its previous entry level in 2005. Close to a three"
+ ],
+ "embed": [
+  {
+   "word": "bank",
+   "x": -1.095,
+   "y": 0.093
+  },
+  {
+   "word": "banks",
+   "x": -1.097,
+   "y": 0.138
+  },
+  {
+   "word": "lender",
+   "x": -1.58,
+   "y": 0.027
+  },
+  {
+   "word": "loan",
+   "x": -1.365,
+   "y": -0.355
+  },
+  {
+   "word": "credit",
+   "x": -1.112,
+   "y": -0.202
+  },
+  {
+   "word": "debt",
+   "x": -0.852,
+   "y": -0.231
+  },
+  {
+   "word": "mortgage",
+   "x": -1.213,
+   "y": 0.028
+  },
+  {
+   "word": "Bitcoin",
+   "x": 0.253,
+   "y": 1.644
+  },
+  {
+   "word": "crypto",
+   "x": 0.506,
+   "y": 1.819
+  },
+  {
+   "word": "blockchain",
+   "x": 0.234,
+   "y": 1.926
+  },
+  {
+   "word": "Ethereum",
+   "x": 0.444,
+   "y": 2.138
+  },
+  {
+   "word": "Paris",
+   "x": 1.634,
+   "y": -0.762
+  },
+  {
+   "word": "Rome",
+   "x": 1.679,
+   "y": -0.704
+  },
+  {
+   "word": "Berlin",
+   "x": 1.873,
+   "y": -0.4
+  },
+  {
+   "word": "London",
+   "x": 1.488,
+   "y": -0.466
+  },
+  {
+   "word": "euro",
+   "x": 0.726,
+   "y": 0.025
+  },
+  {
+   "word": "dollar",
+   "x": -0.118,
+   "y": -0.494
+  },
+  {
+   "word": "yen",
+   "x": 0.332,
+   "y": -0.405
+  },
+  {
+   "word": "inflation",
+   "x": -0.325,
+   "y": -0.463
+  },
+  {
+   "word": "rates",
+   "x": -0.027,
+   "y": -1.155
+  },
+  {
+   "word": "prices",
+   "x": -0.049,
+   "y": -1.066
+  },
+  {
+   "word": "wages",
+   "x": -0.335,
+   "y": -1.136
+  }
+ ],
+ "cosine": [
+  {
+   "a": "bank",
+   "b": "lender",
+   "c": 0.51
+  },
+  {
+   "a": "bank",
+   "b": "Paris",
+   "c": 0.24
+  },
+  {
+   "a": "Bitcoin",
+   "b": "crypto",
+   "c": 0.58
+  },
+  {
+   "a": "euro",
+   "b": "dollar",
+   "c": 0.5
+  }
+ ],
+ "real_attention": {
+  "sentence": "The bank raised rates because it feared inflation",
+  "tokens": [
+   "The",
+   "bank",
+   "raised",
+   "rates",
+   "because",
+   "it"
+  ],
+  "layer": 5,
+  "head": 4,
+  "weights": [
+   0.093,
+   0.851,
+   0.007,
+   0.009,
+   0.019,
+   0.02
+  ]
+ }
+}

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 424" width="960" height="424" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">GPT-2’s own vectors for 22 words — 768 numbers each, flattened onto a page</text>
+  <circle cx="215.0" cy="240.7" r="6" fill="#2471a3"/>
+  <text x="206.04349870679522" y="232.70896480863087" font-size="14" font-weight="700" fill="#2471a3" text-anchor="end" >bank</text>
+  <circle cx="214.6" cy="237.2" r="6" fill="#2471a3"/>
+  <text x="223.64848342346582" y="231.241202157719" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start" >banks</text>
+  <circle cx="119.3" cy="245.8" r="6" fill="#2471a3"/>
+  <text x="128.2522924994122" y="250.79501669663497" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start" >lender</text>
+  <circle cx="161.7" cy="275.2" r="6" fill="#2471a3"/>
+  <text x="152.71643545732428" y="280.2324685332648" font-size="14" font-weight="700" fill="#2471a3" text-anchor="end" >loan</text>
+  <circle cx="211.7" cy="263.4" r="6" fill="#2471a3"/>
+  <text x="211.68586879849516" y="285.4420755201644" font-size="14" font-weight="700" fill="#2471a3" text-anchor="middle" >credit</text>
+  <circle cx="263.0" cy="265.7" r="6" fill="#2471a3"/>
+  <text x="272.0378556313191" y="270.67685589519647" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start" >debt</text>
+  <circle cx="191.7" cy="245.7" r="6" fill="#2471a3"/>
+  <text x="200.73759699035975" y="259.7179553043925" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start" >mortgage</text>
+  <circle cx="481.3" cy="121.2" r="6" fill="#a8955a"/>
+  <text x="490.28379967082054" y="126.18674544053425" font-size="14" font-weight="700" fill="#a8955a" text-anchor="start" >Bitcoin</text>
+  <circle cx="531.3" cy="107.7" r="6" fill="#a8955a"/>
+  <text x="540.2532330119916" y="112.70100179809916" font-size="14" font-weight="700" fill="#a8955a" text-anchor="start" >crypto</text>
+  <circle cx="477.5" cy="99.5" r="6" fill="#a8955a"/>
+  <text x="486.5311544791912" y="104.45543282815305" font-size="14" font-weight="700" fill="#a8955a" text-anchor="start" >blockchain</text>
+  <circle cx="519.0" cy="83.1" r="6" fill="#a8955a"/>
+  <text x="528.0077592287797" y="88.11841767274592" font-size="14" font-weight="700" fill="#a8955a" text-anchor="start" >Ethereum</text>
+  <circle cx="754.0" cy="306.6" r="6" fill="#1e8449"/>
+  <text x="763.0418528097814" y="322.59645517595686" font-size="14" font-weight="700" fill="#1e8449" text-anchor="start" >Paris</text>
+  <circle cx="762.9" cy="302.1" r="6" fill="#1e8449"/>
+  <text x="771.9296966846931" y="296.1268944258926" font-size="14" font-weight="700" fill="#1e8449" text-anchor="start" >Rome</text>
+  <circle cx="801.2" cy="278.7" r="6" fill="#1e8449"/>
+  <text x="810.2461791676463" y="283.7002311841767" font-size="14" font-weight="700" fill="#1e8449" text-anchor="start" >Berlin</text>
+  <circle cx="725.2" cy="283.8" r="6" fill="#1e8449"/>
+  <text x="716.2057371267341" y="288.7862830721808" font-size="14" font-weight="700" fill="#1e8449" text-anchor="end" >London</text>
+  <circle cx="367.1" cy="283.6" r="6" fill="#AF1F25"/>
+  <text x="358.1243827886198" y="288.5550988954534" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="end" >inflation</text>
+  <circle cx="426.0" cy="336.9" r="6" fill="#AF1F25"/>
+  <text x="434.9816600047026" y="352.881582327254" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start" >rates</text>
+  <circle cx="421.6" cy="330.0" r="6" fill="#AF1F25"/>
+  <text x="430.63649188807904" y="324.0231184176727" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start" >prices</text>
+  <circle cx="365.1" cy="335.4" r="6" fill="#AF1F25"/>
+  <text x="356.1493063719727" y="340.4174158746468" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="end" >wages</text>
+  <circle cx="574.7" cy="245.9" r="6" fill="#7a7f85"/>
+  <text x="583.7049141782271" y="250.94913948111997" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >euro</text>
+  <circle cx="408.0" cy="285.9" r="6" fill="#7a7f85"/>
+  <text x="417.0084646132142" y="301.94400205497044" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >dollar</text>
+  <circle cx="496.9" cy="279.1" r="6" fill="#7a7f85"/>
+  <text x="505.8869033623325" y="284.08553814538914" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >yen</text>
+  <line x1="30" y1="385" x2="930" y2="385" stroke="#e6e2d8"/>
+  <text x="30" y="410" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >Nobody told the model these groups. Similarity (1 = same direction): bank–lender 0.51, bank–Paris 0.24, Bitcoin–crypto 0.58.</text>
+</svg>
