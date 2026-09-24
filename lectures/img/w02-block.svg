@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 424" width="960" height="424" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">a transformer, the architecture of every current LLM — nothing in it you have not already met</text>
+  <text x="100" y="72" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >The</text>
+  <line x1="100" y1="80" x2="100" y2="104" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="100,104 96.5,95.7 103.5,95.7" fill="#7a7f85"/>
+  <rect x="60" y="106" width="80" height="34" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <text x="100" y="128" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="210" y="72" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >ECB</text>
+  <line x1="210" y1="80" x2="210" y2="104" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="210,104 206.5,95.7 213.5,95.7" fill="#7a7f85"/>
+  <rect x="170" y="106" width="80" height="34" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <text x="210" y="128" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="320" y="72" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >left</text>
+  <line x1="320" y1="80" x2="320" y2="104" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="320,104 316.5,95.7 323.5,95.7" fill="#7a7f85"/>
+  <rect x="280" y="106" width="80" height="34" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <text x="320" y="128" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="430" y="72" font-size="15" font-weight="700" fill="#363636" text-anchor="middle" >rates</text>
+  <line x1="430" y1="80" x2="430" y2="104" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="430,104 426.5,95.7 433.5,95.7" fill="#7a7f85"/>
+  <rect x="390" y="106" width="80" height="34" fill="#fff" stroke="#2471a3" stroke-width="1.6"/>
+  <text x="430" y="128" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="520" y="128" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >+ position: each token also gets a vector for “where am I”</text>
+  <rect x="40" y="160" width="450" height="150" fill="#f7f5ef" stroke="#363636" stroke-width="2"/>
+  <text x="60" y="184" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.2">ONE BLOCK</text>
+  <rect x="60" y="196" width="410" height="44" fill="#fff" stroke="#AF1F25" stroke-width="2"/>
+  <text x="265" y="223" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle" >attention — tokens exchange information</text>
+  <rect x="60" y="252" width="410" height="44" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="265" y="279" font-size="14" font-weight="700" fill="#2471a3" text-anchor="middle" >neurons — each token thinks on its own</text>
+  <text x="520" y="223" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >the query · key · value step you just did by hand</text>
+  <text x="520" y="279" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >a hidden layer, like the card-testing network</text>
+  <text x="520" y="184" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >each part adds its result to the vector — it never replaces it</text>
+  <text x="265" y="336" font-size="16" font-weight="700" fill="#363636" text-anchor="middle" >× 12 in GPT-2 small · × 36 in gpt-oss-120b</text>
+  <line x1="265" y1="344" x2="265" y2="370" stroke="#363636" stroke-width="1.8"/>
+  <polygon points="265,370 261.5,361.7 268.5,361.7" fill="#363636"/>
+  <rect x="40" y="372" width="450" height="40" fill="#fff" stroke="#a8955a" stroke-width="2"/>
+  <text x="265" y="398" font-size="14" font-weight="700" fill="#363636" text-anchor="middle" >last vector → 50,257 scores → softmax → the knobs</text>
+</svg>

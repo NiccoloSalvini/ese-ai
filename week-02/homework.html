@@ -132,15 +132,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#homework-2-one-question-one-dataset-one-memo" id="toc-homework-2-one-question-one-dataset-one-memo" class="nav-link active" data-scroll-target="#homework-2-one-question-one-dataset-one-memo">Homework 2 — One question, one dataset, one memo</a>
+  <li><a href="#homework-2-poke-a-real-model" id="toc-homework-2-poke-a-real-model" class="nav-link active" data-scroll-target="#homework-2-poke-a-real-model">Homework 2 — Poke a real model</a>
   <ul class="collapse">
   <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
-  <li><a href="#pick-one-question-or-propose-your-own-message-me-first" id="toc-pick-one-question-or-propose-your-own-message-me-first" class="nav-link" data-scroll-target="#pick-one-question-or-propose-your-own-message-me-first">Pick one question (or propose your own; message me first)</a></li>
   <li><a href="#deliverables-in-week-02" id="toc-deliverables-in-week-02" class="nav-link" data-scroll-target="#deliverables-in-week-02">Deliverables (in <code>week-02/</code>)</a></li>
   <li><a href="#constraints" id="toc-constraints" class="nav-link" data-scroll-target="#constraints">Constraints</a></li>
   <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
   <li><a href="#self-check" id="toc-self-check" class="nav-link" data-scroll-target="#self-check">Self-check</a></li>
-  <li><a href="#how-this-feeds-the-capstone" id="toc-how-this-feeds-the-capstone" class="nav-link" data-scroll-target="#how-this-feeds-the-capstone">How this feeds the capstone</a></li>
+  <li><a href="#how-this-feeds-the-course" id="toc-how-this-feeds-the-course" class="nav-link" data-scroll-target="#how-this-feeds-the-course">How this feeds the course</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -151,62 +150,51 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="homework-2-one-question-one-dataset-one-memo" class="level1">
-<h1>Homework 2 — One question, one dataset, one memo</h1>
+<section id="homework-2-poke-a-real-model" class="level1">
+<h1>Homework 2 — Poke a real model</h1>
 <p><strong>Due: Tuesday 6 October 2026, 23:59 · folder <code>week-02/</code> in your shared Drive folder <code>ese-ai-fintech</code></strong></p>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Answer one empirical question about a financial asset by joining market data with at least one external series, and write it up the way you would for a manager who has ten minutes.</p>
-</section>
-<section id="pick-one-question-or-propose-your-own-message-me-first" class="level2">
-<h2 class="anchored" data-anchor-id="pick-one-question-or-propose-your-own-message-me-first">Pick one question (or propose your own; message me first)</h2>
-<ul>
-<li>Does Bitcoin’s correlation with US equities depend on the level or the change of US interest rates?</li>
-<li>Do on-chain active addresses lead or lag Bitcoin’s price, and at what horizon?</li>
-<li>How did a specific asset behave around a specific event (ETF approval, halving, an earnings date, a rate decision), compared with its normal behaviour?</li>
-<li>Is the “weekend effect” in crypto real — are Saturday/Sunday returns and volatility different from weekdays?</li>
-</ul>
+<p>Make last week and today concrete on a real language model: read its knobs, watch temperature change its answers, and decode a model release on your own. Then take a first look at next week’s data.</p>
 </section>
 <section id="deliverables-in-week-02" class="level2">
 <h2 class="anchored" data-anchor-id="deliverables-in-week-02">Deliverables (in <code>week-02/</code>)</h2>
 <ol type="1">
-<li><code>hw2.ipynb</code> — runs top to bottom from a clean runtime. Must contain:
+<li><code>gpt2.ipynb</code> — the session notebook, extended:
 <ul>
-<li>the data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);</li>
-<li>an explicit calendar decision and an explicit units statement, in markdown, before any computation across series;</li>
-<li>the three checks after every join: rows before and after, <code>isna().sum()</code>, one row from the middle;</li>
-<li>the analysis, and <strong>one chart whose title is the question</strong>;</li>
-<li>a date-stamped CSV snapshot saved to <code>data/</code>.</li>
+<li><strong>three prompts of your own</strong> (one from your work, one about markets, one about crypto): the top eight next tokens for each, with probabilities;</li>
+<li>for one of them, <strong>four generations</strong>: one at T = 0, three at T = 1 — and one at T = 2 if you are curious;</li>
+<li>under the generations, a markdown cell: which sentences contain a number or a name? Which of those are facts, and how did you check?</li>
 </ul></li>
-<li><code>memo.md</code> — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; <strong>AI-use disclosure</strong> (which assistant, for what, what you verified and how).</li>
-<li><code>data/</code> — the snapshot(s).</li>
+<li><strong>The tokenizer</strong> on one paragraph of your own, in English and in Russian: 30 merges each, symbols per word, and two sentences on what that means for the cost of a real project.</li>
+<li><code>release.md</code> — <strong>another model release, decoded</strong> (half a page to one page). Pick an open-weight release — Llama, Gemma, Qwen, Mistral or DeepSeek — and find its announcement or model card. For every technical term (parameters, context length, tokenizer, training stages, quantization, licence, anything else), one sentence in your words, linked to what we built in class (a weight, the training loop, the knobs, the box…). Mark the terms you could <strong>not</strong> explain: we start there next week.</li>
+<li><strong>Next week’s data, a first look.</strong> Download the card-fraud dataset (284,807 real European card payments, 2013, anonymised): <code>https://www.openml.org/data/v1/get_csv/1673544/creditcard.csv</code>. In a notebook: how many rows and columns, what the columns are, and <strong>what share of the payments are fraud</strong>. Write that share down. We start from it.</li>
 </ol>
 </section>
 <section id="constraints" class="level2">
 <h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
 <ul>
-<li>At least one join. At least one rolling or resampled statistic.</li>
-<li>The chart must be readable without the notebook: title, axis labels, units.</li>
-<li>Do not conclude causation from a correlation. If you are tempted, write the sentence and then write the alternative explanation next to it.</li>
+<li>Use an assistant as much as you like; every line must be one you can explain.</li>
+<li>The explanations in <code>release.md</code> are in your words. An assistant may correct the English, not write the content.</li>
 </ul>
 </section>
 <section id="scope" class="level2">
 <h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>4–6 hours.</p>
+<p>3–4 hours. If you are past 4 hours, stop, save what you have, and write where you got stuck.</p>
 </section>
 <section id="self-check" class="level2">
 <h2 class="anchored" data-anchor-id="self-check">Self-check</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">Restart and run all: no errors.</label></li>
-<li><label><input type="checkbox">Calendar and units stated in markdown before the analysis.</label></li>
-<li><label><input type="checkbox">Join check printed (rows before/after, NaN count).</label></li>
-<li><label><input type="checkbox">Chart title is a question; memo answers it.</label></li>
-<li><label><input type="checkbox">Snapshot saved next to the notebook; AI-use disclosure present.</label></li>
+<li><label><input type="checkbox"><code>Runtime ▸ Restart and run all</code> works (the GPT-2 download takes a minute the first time).</label></li>
+<li><label><input type="checkbox">Three prompts, each with its eight knobs.</label></li>
+<li><label><input type="checkbox">Every number in the generations is labelled fact / invented / cannot tell.</label></li>
+<li><label><input type="checkbox"><code>release.md</code> covers every technical term of the release, including the ones you could not explain.</label></li>
+<li><label><input type="checkbox">You know the fraud share of the dataset, as a percentage.</label></li>
 </ul>
 </section>
-<section id="how-this-feeds-the-capstone" class="level2">
-<h2 class="anchored" data-anchor-id="how-this-feeds-the-capstone">How this feeds the capstone</h2>
-<p>The join pattern (your calendar, left join, forward-fill context, convert units, check) is the backbone of any data pipeline you will build later, including the one in your portfolio. The memo format is the format of the decision memo in the final portfolio.</p>
+<section id="how-this-feeds-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="how-this-feeds-the-course">How this feeds the course</h2>
+<p>The knobs and temperature are what you will set on every API call from week 4. The release decoding is the skill of reading a vendor’s claims. The fraud share is the base rate — the number every model next week has to beat.</p>
 
 
 </section>

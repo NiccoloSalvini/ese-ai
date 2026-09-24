@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 2 — The assistant writes it. You decide whether it is true. – AI for Business &amp; FinTech</title>
+<title>Week 2 — Inside an LLM – AI for Business &amp; FinTech</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -166,19 +166,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#temperature-reshapes-the-odds" id="toc-temperature-reshapes-the-odds" class="nav-link active" data-scroll-target="#temperature-reshapes-the-odds">1. Temperature reshapes the odds</a></li>
-  <li><a href="#two-piles" id="toc-two-piles" class="nav-link" data-scroll-target="#two-piles">2. Two piles</a></li>
-  <li><a href="#your-tiny-llm-piece-1-a-tokenizer" id="toc-your-tiny-llm-piece-1-a-tokenizer" class="nav-link" data-scroll-target="#your-tiny-llm-piece-1-a-tokenizer">3. Your tiny LLM, piece 1: a tokenizer</a></li>
-  <li><a href="#is-bitcoin-riskier-than-the-stock-market-ten-real-days-first" id="toc-is-bitcoin-riskier-than-the-stock-market-ten-real-days-first" class="nav-link" data-scroll-target="#is-bitcoin-riskier-than-the-stock-market-ten-real-days-first">4. Is Bitcoin riskier than the stock market? Ten real days first</a></li>
-  <li><a href="#two-calendars-one-join" id="toc-two-calendars-one-join" class="nav-link" data-scroll-target="#two-calendars-one-join">5. Two calendars, one join</a></li>
-  <li><a href="#a-number-without-a-unit" id="toc-a-number-without-a-unit" class="nav-link" data-scroll-target="#a-number-without-a-unit">6. A number without a unit</a></li>
-  <li><a href="#snapshots-and-what-never-goes-into-a-chatbot" id="toc-snapshots-and-what-never-goes-into-a-chatbot" class="nav-link" data-scroll-target="#snapshots-and-what-never-goes-into-a-chatbot">7. Snapshots, and what never goes into a chatbot</a></li>
-  <li><a href="#for-the-homework-joining-an-external-series" id="toc-for-the-homework-joining-an-external-series" class="nav-link" data-scroll-target="#for-the-homework-joining-an-external-series">For the homework: joining an external series</a>
-  <ul class="collapse">
-  <li><a href="#block-b-join-with-external-series-macro-on-chain" id="toc-block-b-join-with-external-series-macro-on-chain" class="nav-link" data-scroll-target="#block-b-join-with-external-series-macro-on-chain">Block B — Join with external series (macro + on-chain)</a></li>
-  <li><a href="#block-c-charts-that-answer-a-question-and-rolling-statistics" id="toc-block-c-charts-that-answer-a-question-and-rolling-statistics" class="nav-link" data-scroll-target="#block-c-charts-that-answer-a-question-and-rolling-statistics">Block C — Charts that answer a question, and rolling statistics</a></li>
-  <li><a href="#block-d-reproducibility-and-privacy" id="toc-block-d-reproducibility-and-privacy" class="nav-link" data-scroll-target="#block-d-reproducibility-and-privacy">Block D — Reproducibility and privacy</a></li>
-  </ul></li>
+  <li><a href="#your-tiny-llm-piece-1-a-tokenizer" id="toc-your-tiny-llm-piece-1-a-tokenizer" class="nav-link active" data-scroll-target="#your-tiny-llm-piece-1-a-tokenizer">1. Your tiny LLM, piece 1: a tokenizer</a></li>
+  <li><a href="#attention-by-hand" id="toc-attention-by-hand" class="nav-link" data-scroll-target="#attention-by-hand">2. Attention, by hand</a></li>
+  <li><a href="#a-real-models-knobs" id="toc-a-real-models-knobs" class="nav-link" data-scroll-target="#a-real-models-knobs">3. A real model’s knobs</a></li>
+  <li><a href="#temperature-and-one-token-at-a-time" id="toc-temperature-and-one-token-at-a-time" class="nav-link" data-scroll-target="#temperature-and-one-token-at-a-time">4. Temperature, and one token at a time</a></li>
+  <li><a href="#meaning-as-a-place" id="toc-meaning-as-a-place" class="nav-link" data-scroll-target="#meaning-as-a-place">5. Meaning as a place</a></li>
+  <li><a href="#two-piles" id="toc-two-piles" class="nav-link" data-scroll-target="#two-piles">6. Two piles</a></li>
   </ul>
 </nav>
     </div>
@@ -187,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 2 — The assistant writes it. You decide whether it is true.</h1>
+<h1 class="title">Week 2 — Inside an LLM</h1>
 </div>
 
 
@@ -205,48 +198,124 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><strong>ESE · AI for Business and FinTech · 30 September 2026</strong></p>
-<p>The sections follow the slides. Every number here is computed from the same dated snapshot as the slides, so you can check each one.</p>
-<div id="c303177e" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install tiktoken yfinance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The sections follow the slides. From section 3 you run a real language model, GPT-2 small (124 million weights), in this notebook.</p>
+<div id="ca654acf" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install transformers tiktoken</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f9291355" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>SNAPSHOT <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/btc_spy_2022-01-01_2026-09-18.csv"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>YIELDS   <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/dgs10_2022-01-01_2026-09-18.csv"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>px  <span class="op">=</span> pd.read_csv(SNAPSHOT, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)       <span class="co"># Bitcoin and the S&amp;P 500 (SPY), dollars</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>y10 <span class="op">=</span> pd.read_csv(YIELDS, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)[<span class="st">"DGS10"</span>] <span class="co"># US 10-year yield, in PERCENT</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.shape, px.index.<span class="bu">min</span>().date(), <span class="st">"-&gt;"</span>, px.index.<span class="bu">max</span>().date())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="your-tiny-llm-piece-1-a-tokenizer" class="level2">
+<h2 class="anchored" data-anchor-id="your-tiny-llm-piece-1-a-tokenizer">1. Your tiny LLM, piece 1: a tokenizer</h2>
+<p>Find the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.</p>
+<div id="3bf06255" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> learn_merges(text, merges<span class="op">=</span><span class="dv">8</span>, show<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> [c <span class="cf">if</span> c <span class="op">!=</span> <span class="st">" "</span> <span class="cf">else</span> <span class="st">"_"</span> <span class="cf">for</span> c <span class="kw">in</span> text]          <span class="co"># _ marks a space</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, merges <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        pairs <span class="op">=</span> Counter(<span class="bu">zip</span>(seq, seq[<span class="dv">1</span>:]))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        (a, b), n <span class="op">=</span> <span class="bu">max</span>(pairs.items(), key<span class="op">=</span><span class="kw">lambda</span> kv: (kv[<span class="dv">1</span>], <span class="op">-</span><span class="bu">list</span>(pairs).index(kv[<span class="dv">0</span>])))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">2</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        out, i <span class="op">=</span> [], <span class="dv">0</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(seq):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">&lt;</span> <span class="bu">len</span>(seq) <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> (seq[i], seq[i <span class="op">+</span> <span class="dv">1</span>]) <span class="op">==</span> (a, b):</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                out.append(a <span class="op">+</span> b)<span class="op">;</span> i <span class="op">+=</span> <span class="dv">2</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                out.append(seq[i])<span class="op">;</span> i <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        seq <span class="op">=</span> out</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"merge </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>a<span class="sc">!r}</span><span class="ss"> + </span><span class="sc">{</span>b<span class="sc">!r}</span><span class="ss"> seen </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> times -&gt; </span><span class="sc">{</span>a<span class="op">+</span>b<span class="sc">!r:10}</span><span class="ss">  text is now </span><span class="sc">{</span><span class="bu">len</span>(seq)<span class="sc">}</span><span class="ss"> symbols"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> seq</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> (<span class="st">"the bank left rates unchanged. the bank said rates will stay unchanged. "</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"rates are high and the bank expects rates to stay high."</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(text), <span class="st">"characters to start"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>pieces <span class="op">=</span> learn_merges(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="temperature-reshapes-the-odds" class="level2">
-<h2 class="anchored" data-anchor-id="temperature-reshapes-the-odds">1. Temperature reshapes the odds</h2>
-<p>Last week’s table. The model does not look the answer up: it picks from these odds. Temperature <code>T</code> decides how: raise every probability to <code>1/T</code>, then divide by the new total.</p>
-<div id="a26b6cc6" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> [<span class="st">"unchanged"</span>, <span class="st">"steady"</span>, <span class="st">"at"</span>, <span class="st">"on"</span>, <span class="st">"higher"</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.array([<span class="fl">0.62</span>, <span class="fl">0.15</span>, <span class="fl">0.10</span>, <span class="fl">0.08</span>, <span class="fl">0.05</span>])</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> at_temperature(p, T):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> T <span class="op">==</span> <span class="dv">0</span>:                                   <span class="co"># T = 0: always the top token</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        q <span class="op">=</span> np.zeros_like(p)<span class="op">;</span> q[p.argmax()] <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> <span class="cf">return</span> q</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> p <span class="op">**</span> (<span class="dv">1</span> <span class="op">/</span> T)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> q <span class="op">/</span> q.<span class="bu">sum</span>()</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="ss">f"T = </span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">"</span>: at_temperature(p, T).<span class="bu">round</span>(<span class="dv">2</span>) <span class="cf">for</span> T <span class="kw">in</span> [<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>]}, index<span class="op">=</span>tokens)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Your turn.</strong> A paragraph of your own in English, then the same in Russian. 30 merges each. Symbols per word?</p>
+<div id="8324e79d" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mine_en <span class="op">=</span> <span class="st">"paste an English paragraph here"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mine_ru <span class="op">=</span> <span class="st">"вставьте сюда абзац на русском"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, t <span class="kw">in</span> [(<span class="st">"English"</span>, mine_en), (<span class="st">"Russian"</span>, mine_ru)]:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> learn_merges(t, merges<span class="op">=</span><span class="dv">30</span>, show<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(seq) <span class="op">/</span> <span class="bu">len</span>(t.split())<span class="sc">:.1f}</span><span class="ss"> symbols per word"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Bet first:</strong> at <code>T = 1</code>, ask ten times. How many times “unchanged”? Then run the cell below.</p>
-<div id="b6d7a124" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> T <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    q <span class="op">=</span> at_temperature(p, T)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    picks <span class="op">=</span> rng.choice(tokens, size<span class="op">=</span><span class="dv">10</span>, p<span class="op">=</span>q)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"T = </span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">:"</span>, <span class="st">" "</span>.join(picks))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="attention-by-hand" class="level2">
+<h2 class="anchored" data-anchor-id="attention-by-hand">2. Attention, by hand</h2>
+<p>“The bank raised rates because <strong>it</strong>” — <code>it</code> asks a question (query); every token shows a label (key) and carries a content (value). Two numbers per vector, so you can check every step.</p>
+<div id="ebf665e3" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>tokens <span class="op">=</span> [<span class="st">"The"</span>, <span class="st">"bank"</span>, <span class="st">"raised"</span>, <span class="st">"rates"</span>, <span class="st">"because"</span>, <span class="st">"it"</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>query  <span class="op">=</span> np.array([<span class="fl">1.5</span>, <span class="fl">0.0</span>])                                    <span class="co"># "it": who is an actor that can fear?</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>keys   <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="fl">.2</span>], [<span class="dv">2</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">1</span>, <span class="fl">.5</span>], [<span class="dv">0</span>, <span class="fl">.5</span>], [<span class="fl">.2</span>, <span class="dv">0</span>]])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">1</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">0</span>], [<span class="dv">0</span>, <span class="dv">0</span>]])   <span class="co"># (is an institution, is a price)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>scores  <span class="op">=</span> keys <span class="op">@</span> query                       <span class="co"># multiply and add: a neuron</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> np.exp(scores) <span class="op">/</span> np.exp(scores).<span class="bu">sum</span>()   <span class="co"># the knobs</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.DataFrame({<span class="st">"score"</span>: scores, <span class="st">"e^score"</span>: np.exp(scores).<span class="bu">round</span>(<span class="dv">2</span>), <span class="st">"attention"</span>: weights.<span class="bu">round</span>(<span class="dv">3</span>)}, index<span class="op">=</span>tokens))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">new meaning of 'it' ="</span>, (weights <span class="op">@</span> values).<span class="bu">round</span>(<span class="dv">2</span>), <span class="st">" (institution, price)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Try:</strong> give <code>rates</code> the key <code>(2, 0)</code> too. Where does <code>it</code> look now — and what would a real model need to tell them apart?</p>
+</section>
+<section id="a-real-models-knobs" class="level2">
+<h2 class="anchored" data-anchor-id="a-real-models-knobs">3. A real model’s knobs</h2>
+<p>GPT-2 small: 124 million weights, 50,257 tokens, 12 blocks. The first run downloads it (about half a gigabyte).</p>
+<div id="3d93768b" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> GPT2LMHeadModel, GPT2TokenizerFast</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tok <span class="op">=</span> GPT2TokenizerFast.from_pretrained(<span class="st">"gpt2"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> GPT2LMHeadModel.from_pretrained(<span class="st">"gpt2"</span>, attn_implementation<span class="op">=</span><span class="st">"eager"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>model.train(<span class="va">False</span>)                                   <span class="co"># inference mode</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">sum</span>(p.numel() <span class="cf">for</span> p <span class="kw">in</span> model.parameters())<span class="sc">:,}</span><span class="ss"> weights"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> knobs(prompt, k<span class="op">=</span><span class="dv">8</span>):</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ids <span class="op">=</span> tok(prompt, return_tensors<span class="op">=</span><span class="st">"pt"</span>).input_ids</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> torch.softmax(model(ids).logits[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> torch.topk(p, k)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(prompt, <span class="st">"-&gt;"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v, i <span class="kw">in</span> <span class="bu">zip</span>(top.values, top.indices):</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"   </span><span class="sc">{</span>tok<span class="sc">.</span>decode([<span class="bu">int</span>(i)])<span class="sc">!r:14}</span><span class="ss"> </span><span class="sc">{</span><span class="bu">float</span>(v)<span class="sc">:6.1%}</span><span class="ss">"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>knobs(<span class="st">"The ECB left rates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Bet first, then run:</strong> three prompts of your own — one from your work, one about markets, one about crypto. How sure is the model about the next word?</p>
+<div id="d5471907" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knobs(<span class="st">"Bitcoin fell sharply after"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="temperature-and-one-token-at-a-time" class="level2">
+<h2 class="anchored" data-anchor-id="temperature-and-one-token-at-a-time">4. Temperature, and one token at a time</h2>
+<div id="7da7ccf8" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"The ECB left rates"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ids <span class="op">=</span> tok(prompt, return_tensors<span class="op">=</span><span class="st">"pt"</span>).input_ids</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> model.generate(ids, max_new_tokens<span class="op">=</span><span class="dv">12</span>, do_sample<span class="op">=</span><span class="va">False</span>, pad_token_id<span class="op">=</span>tok.eos_token_id)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"T = 0  :"</span>, prompt <span class="op">+</span> tok.decode(out[<span class="dv">0</span>][ids.shape[<span class="dv">1</span>]:]))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> T <span class="kw">in</span> [<span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>]:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> model.generate(ids, max_new_tokens<span class="op">=</span><span class="dv">12</span>, do_sample<span class="op">=</span><span class="va">True</span>, temperature<span class="op">=</span>T, top_k<span class="op">=</span><span class="dv">0</span>, pad_token_id<span class="op">=</span>tok.eos_token_id)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"T = </span><span class="sc">{</span>T<span class="sc">}</span><span class="ss">:"</span>, prompt <span class="op">+</span> tok.decode(out[<span class="dv">0</span>][ids.shape[<span class="dv">1</span>]:]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Which of these sentences contain a number? Is any of those numbers a fact? How would you find out?</p>
+</section>
+<section id="meaning-as-a-place" class="level2">
+<h2 class="anchored" data-anchor-id="meaning-as-a-place">5. Meaning as a place</h2>
+<p>Every token is a row of 768 numbers. Cosine similarity: 1 means the same direction, 0 unrelated.</p>
+<div id="d0bdaf33" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>E <span class="op">=</span> model.transformer.wte.weight.detach()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> similarity(a, b):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    va, vb <span class="op">=</span> E[tok.encode(<span class="st">" "</span> <span class="op">+</span> a)[<span class="dv">0</span>]], E[tok.encode(<span class="st">" "</span> <span class="op">+</span> b)[<span class="dv">0</span>]]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(torch.nn.functional.cosine_similarity(va, vb, dim<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, b <span class="kw">in</span> [(<span class="st">"bank"</span>, <span class="st">"lender"</span>), (<span class="st">"bank"</span>, <span class="st">"Paris"</span>), (<span class="st">"Bitcoin"</span>, <span class="st">"crypto"</span>), (<span class="st">"euro"</span>, <span class="st">"dollar"</span>)]:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>a<span class="sc">:8}</span><span class="ss"> – </span><span class="sc">{</span>b<span class="sc">:8}</span><span class="ss"> </span><span class="sc">{</span>similarity(a, b)<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="two-piles" class="level2">
-<h2 class="anchored" data-anchor-id="two-piles">2. Two piles</h2>
-<p>Ask your assistant: <em>“Summarise the last annual results of [a company you know]: revenue, profit, number of employees, and the CEO’s name.”</em></p>
-<p>Copy the answer below. Then split every sentence into two piles.</p>
+<h2 class="anchored" data-anchor-id="two-piles">6. Two piles</h2>
+<p>Ask your assistant: <em>“Summarise the last annual results of [a company you know]: revenue, profit, employees, the CEO’s name.”</em> Split every sentence of the answer:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -265,127 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Now check two items from the left pile against the company’s own report. Were they right?</p>
-</section>
-<section id="your-tiny-llm-piece-1-a-tokenizer" class="level2">
-<h2 class="anchored" data-anchor-id="your-tiny-llm-piece-1-a-tokenizer">3. Your tiny LLM, piece 1: a tokenizer</h2>
-<p>Find the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.</p>
-<div id="170579a4" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> learn_merges(text, merges<span class="op">=</span><span class="dv">8</span>):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> [c <span class="cf">if</span> c <span class="op">!=</span> <span class="st">" "</span> <span class="cf">else</span> <span class="st">"_"</span> <span class="cf">for</span> c <span class="kw">in</span> text]          <span class="co"># _ marks a space</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, merges <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        pairs <span class="op">=</span> Counter(<span class="bu">zip</span>(seq, seq[<span class="dv">1</span>:]))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        (a, b), n <span class="op">=</span> <span class="bu">max</span>(pairs.items(), key<span class="op">=</span><span class="kw">lambda</span> kv: (kv[<span class="dv">1</span>], <span class="op">-</span><span class="bu">list</span>(pairs).index(kv[<span class="dv">0</span>])))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">2</span>:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        out, i <span class="op">=</span> [], <span class="dv">0</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> i <span class="op">&lt;</span> <span class="bu">len</span>(seq):</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">&lt;</span> <span class="bu">len</span>(seq) <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> (seq[i], seq[i <span class="op">+</span> <span class="dv">1</span>]) <span class="op">==</span> (a, b):</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                out.append(a <span class="op">+</span> b)<span class="op">;</span> i <span class="op">+=</span> <span class="dv">2</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                out.append(seq[i])<span class="op">;</span> i <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        seq <span class="op">=</span> out</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"merge </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>a<span class="sc">!r}</span><span class="ss"> + </span><span class="sc">{</span>b<span class="sc">!r}</span><span class="ss"> seen </span><span class="sc">{</span>n<span class="sc">}</span><span class="ss"> times -&gt; </span><span class="sc">{</span>a<span class="op">+</span>b<span class="sc">!r:10}</span><span class="ss">  text is now </span><span class="sc">{</span><span class="bu">len</span>(seq)<span class="sc">}</span><span class="ss"> symbols"</span>)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> seq</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> (<span class="st">"the bank left rates unchanged. the bank said rates will stay unchanged. "</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"rates are high and the bank expects rates to stay high."</span>)</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(text), <span class="st">"characters to start"</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>pieces <span class="op">=</span> learn_merges(text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Your turn.</strong> Paste a paragraph of your own in English, then the same in Russian. Run 30 merges on each. How many symbols per word does each language end up with — and why?</p>
-<div id="68ff5dc3" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mine_en <span class="op">=</span> <span class="st">"paste an English paragraph here"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mine_ru <span class="op">=</span> <span class="st">"вставьте сюда абзац на русском"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, t <span class="kw">in</span> [(<span class="st">"English"</span>, mine_en), (<span class="st">"Russian"</span>, mine_ru)]:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    seq <span class="op">=</span> learn_merges(t, merges<span class="op">=</span><span class="dv">30</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(seq) <span class="op">/</span> <span class="bu">len</span>(t.split())<span class="sc">:.1f}</span><span class="ss"> symbols per word</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="is-bitcoin-riskier-than-the-stock-market-ten-real-days-first" class="level2">
-<h2 class="anchored" data-anchor-id="is-bitcoin-riskier-than-the-stock-market-ten-real-days-first">4. Is Bitcoin riskier than the stock market? Ten real days first</h2>
-<p>The week the US approved spot Bitcoin ETFs. Note the gaps.</p>
-<div id="4e63e689" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ten <span class="op">=</span> px.loc[<span class="st">"2024-01-05"</span>:<span class="st">"2024-01-16"</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ten.<span class="bu">round</span>(<span class="dv">2</span>))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Bitcoin days:"</span>, ten[<span class="st">"BTC-USD"</span>].notna().<span class="bu">sum</span>(), <span class="st">"| stock-market days:"</span>, ten[<span class="st">"SPY"</span>].notna().<span class="bu">sum</span>())</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Monday 8 Jan, Bitcoin: %.0f / %.0f - 1 = </span><span class="sc">%+.1f%%</span><span class="st">"</span> <span class="op">%</span> (ten.loc[<span class="st">"2024-01-08"</span>, <span class="st">"BTC-USD"</span>], ten.loc[<span class="st">"2024-01-07"</span>, <span class="st">"BTC-USD"</span>],</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="dv">100</span> <span class="op">*</span> (ten.loc[<span class="st">"2024-01-08"</span>, <span class="st">"BTC-USD"</span>] <span class="op">/</span> ten.loc[<span class="st">"2024-01-07"</span>, <span class="st">"BTC-USD"</span>] <span class="op">-</span> <span class="dv">1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="check-the-assistants-cell" class="level3">
-<h3 class="anchored" data-anchor-id="check-the-assistants-cell">🔍 CHECK — the assistant’s cell</h3>
-<p>Asked for “Bitcoin’s annual volatility and its return in 2022”, the assistant wrote the cell below. It runs, and the numbers look reasonable. <strong>Two are wrong.</strong> Ten minutes, alone.</p>
-<div id="ff30401e" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> px[<span class="st">"BTC-USD"</span>].pct_change().dropna()</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>vol <span class="op">=</span> r.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>r22 <span class="op">=</span> px.loc[<span class="st">"2022"</span>, <span class="st">"BTC-USD"</span>].pct_change().dropna()</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>total_2022 <span class="op">=</span> r22.<span class="bu">sum</span>()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bitcoin annual volatility: </span><span class="sc">{</span>vol<span class="sc">:.1%}</span><span class="ss">"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bitcoin return in 2022:    </span><span class="sc">{</span>total_2022<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<details>
-<summary>
-What went wrong
-</summary>
-<ol type="1">
-<li><strong>√252</strong> is the number of days the <em>stock market</em> trades in a year. Bitcoin trades every day: √365. The formula is right, the constant is wrong, and Bitcoin looks 17% calmer than it is.</li>
-<li><strong>Returns added up.</strong> A return compounds: +50% then −50% is not 0%, it is 1.5 × 0.5 − 1 = −25%. Adding the daily returns of 2022 says −85%; the true loss, from the first and last price, is −65%.</li>
-</ol>
-</details>
-<div id="93b0d72c" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># corrected: the right constant, and returns multiplied — then the same number a second way</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>vol_btc <span class="op">=</span> r.std() <span class="op">*</span> np.sqrt(<span class="dv">365</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>vol_spy <span class="op">=</span> px[<span class="st">"SPY"</span>].dropna().pct_change().std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>s22 <span class="op">=</span> px.loc[<span class="st">"2022"</span>, <span class="st">"BTC-USD"</span>].dropna()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>total_2022 <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> s22.pct_change().dropna()).prod() <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>check_2022 <span class="op">=</span> s22.iloc[<span class="op">-</span><span class="dv">1</span>] <span class="op">/</span> s22.iloc[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>                 <span class="co"># first and last price: must agree</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bitcoin annual volatility </span><span class="sc">{</span>vol_btc<span class="sc">:.1%}</span><span class="ss">  vs S&amp;P 500 </span><span class="sc">{</span>vol_spy<span class="sc">:.1%}</span><span class="ss">"</span>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bitcoin 2022: compounded </span><span class="sc">{</span>total_2022<span class="sc">:.1%}</span><span class="ss">, from first and last price </span><span class="sc">{</span>check_2022<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="two-calendars-one-join" class="level2">
-<h2 class="anchored" data-anchor-id="two-calendars-one-join">5. Two calendars, one join</h2>
-<p><strong>Bet first:</strong> fill the stock market’s weekends with Friday’s price. Does the S&amp;P 500 look more volatile, or less?</p>
-<div id="57c38f2f" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>equity <span class="op">=</span> px.dropna()                   <span class="co"># equity calendar: only days both traded</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>crypto <span class="op">=</span> px.ffill().dropna()           <span class="co"># crypto calendar: SPY carried over weekends and holidays</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, df <span class="kw">in</span> [(<span class="st">"equity calendar"</span>, equity), (<span class="st">"crypto calendar"</span>, crypto)]:</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> df.pct_change().dropna()</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">:,}</span><span class="ss"> rows | S&amp;P 500 vol </span><span class="sc">{</span>r[<span class="st">'SPY'</span>]<span class="sc">.</span>std() <span class="op">*</span> np<span class="sc">.</span>sqrt(<span class="dv">252</span>)<span class="sc">:.1%}</span><span class="ss"> | "</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"corr BTC-S&amp;P </span><span class="sc">{</span>r<span class="sc">.</span>corr()<span class="sc">.</span>iloc[<span class="dv">0</span>, <span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss"> | days SPY 'returned' exactly 0: </span><span class="sc">{</span>(r[<span class="st">'SPY'</span>] <span class="op">==</span> <span class="dv">0</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>After every join, three checks:</strong> rows before and after; <code>isna().sum()</code>; one row from the middle, read.</p>
-<div id="48f57b16" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>btc <span class="op">=</span> px[[<span class="st">"BTC-USD"</span>]].dropna()                   <span class="co"># 7 days a week</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>spy <span class="op">=</span> px[[<span class="st">"SPY"</span>]].dropna()                       <span class="co"># trading days only</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> how <span class="kw">in</span> [<span class="st">"inner"</span>, <span class="st">"left"</span>]:</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    joined <span class="op">=</span> btc.join(spy, how<span class="op">=</span>how)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>how<span class="sc">:5}</span><span class="ss"> join: rows </span><span class="sc">{</span><span class="bu">len</span>(btc)<span class="sc">:,}</span><span class="ss"> and </span><span class="sc">{</span><span class="bu">len</span>(spy)<span class="sc">:,}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">len</span>(joined)<span class="sc">:,}</span><span class="ss"> | missing SPY: </span><span class="sc">{</span>joined[<span class="st">'SPY'</span>]<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">one row from the middle of the left join:"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(joined.iloc[<span class="bu">len</span>(joined) <span class="op">//</span> <span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="a-number-without-a-unit" class="level2">
-<h2 class="anchored" data-anchor-id="a-number-without-a-unit">6. A number without a unit</h2>
-<div id="b51300c5" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pct_returns <span class="op">=</span> [<span class="fl">1.2</span>, <span class="op">-</span><span class="fl">0.8</span>, <span class="fl">0.5</span>]                                   <span class="co"># written in percent</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> np.prod([<span class="dv">1</span> <span class="op">+</span> r <span class="op">/</span> <span class="dv">100</span> <span class="cf">for</span> r <span class="kw">in</span> pct_returns]) <span class="op">-</span> <span class="dv">1</span>          <span class="co"># convert first</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>wrong <span class="op">=</span> np.prod([<span class="dv">1</span> <span class="op">+</span> r <span class="cf">for</span> r <span class="kw">in</span> pct_returns]) <span class="op">-</span> <span class="dv">1</span>                <span class="co"># read as decimals by mistake</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"right: </span><span class="sc">{</span>right<span class="sc">:+.2%}</span><span class="ss">   wrong: </span><span class="sc">{</span>wrong<span class="sc">:+.0%}</span><span class="ss">"</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>wk <span class="op">=</span> equity.join(y10, how<span class="op">=</span><span class="st">"left"</span>).ffill().resample(<span class="st">"W-FRI"</span>).last().dropna()</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>d_btc <span class="op">=</span> wk[<span class="st">"BTC-USD"</span>].pct_change()</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label, y <span class="kw">in</span> [(<span class="st">"percentage points"</span>, wk[<span class="st">"DGS10"</span>]), (<span class="st">"decimal"</span>, wk[<span class="st">"DGS10"</span>] <span class="op">/</span> <span class="dv">100</span>)]:</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    d_y <span class="op">=</span> y.diff()<span class="op">;</span> ok <span class="op">=</span> d_btc.notna() <span class="op">&amp;</span> d_y.notna()</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"yield in </span><span class="sc">{</span>label<span class="sc">:17}</span><span class="ss">: correlation </span><span class="sc">{</span>d_btc[ok]<span class="sc">.</span>corr(d_y[ok])<span class="sc">:.3f}</span><span class="ss">   slope </span><span class="sc">{</span>np<span class="sc">.</span>polyfit(d_y[ok], d_btc[ok], <span class="dv">1</span>)[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="snapshots-and-what-never-goes-into-a-chatbot" class="level2">
-<h2 class="anchored" data-anchor-id="snapshots-and-what-never-goes-into-a-chatbot">7. Snapshots, and what never goes into a chatbot</h2>
-<p>Every number above came from one dated file. Save the data behind every number you report, with the date in the name; pin your library versions; set a seed wherever randomness enters.</p>
-<p>Nothing confidential goes into an AI tool: no client names, no unpublished figures, no personal data.</p>
+<p>Check two items from the left pile against the company’s own report.</p>
 <section id="before-you-leave-three-lines-in-your-words" class="level3">
 <h3 class="anchored" data-anchor-id="before-you-leave-three-lines-in-your-words">Before you leave: three lines, in your words</h3>
 <ol type="1">
@@ -393,160 +342,7 @@ What went wrong
 <li>…</li>
 <li>…</li>
 </ol>
-<hr>
-</section>
-</section>
-<section id="for-the-homework-joining-an-external-series" class="level1">
-<h1>For the homework: joining an external series</h1>
-<p>The sections below show the full pattern on live data — a macro series (FRED) and an on-chain series — for Homework 2.</p>
-<div id="84762e15" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="b6b03f63" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>, <span class="st">"AAPL"</span>], start<span class="op">=</span><span class="st">"2022-01-01"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.index.<span class="bu">min</span>().date(), <span class="st">"-&gt;"</span>, px.index.<span class="bu">max</span>().date(), <span class="st">"|"</span>, px.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="block-b-join-with-external-series-macro-on-chain" class="level2">
-<h2 class="anchored" data-anchor-id="block-b-join-with-external-series-macro-on-chain">Block B — Join with external series (macro + on-chain)</h2>
-<p>This is where analysis becomes interesting: internal or market data alone rarely answers a business question. We add: - <strong>US 10-year Treasury yield</strong> (FRED series <code>DGS10</code>), a proxy for the risk-free rate / macro regime; - <strong>Bitcoin unique active addresses</strong> (blockchain.com public chart API), an on-chain adoption proxy.</p>
-<p>Both are free and need no key. Both fetches have a fallback so the notebook still runs offline.</p>
-<div id="8ac73528" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests, io, os</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_fred(series<span class="op">=</span><span class="st">"DGS10"</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> snap <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/fred_</span><span class="sc">{</span>series<span class="sc">}</span><span class="ss">.csv"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> <span class="ss">f"https://fred.stlouisfed.org/graph/fredgraph.csv?id=</span><span class="sc">{</span>series<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> pd.read_csv(io.StringIO(requests.get(url, timeout<span class="op">=</span><span class="dv">20</span>).text), index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)[series]</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> pd.to_numeric(s, errors<span class="op">=</span><span class="st">"coerce"</span>).rename(series)<span class="op">;</span> s.to_csv(snap)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"[live] FRED"</span>, series)<span class="op">;</span> <span class="cf">return</span> s</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[warn] FRED failed:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[snapshot] FRED"</span>)<span class="op">;</span> <span class="cf">return</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>).iloc[:, <span class="dv">0</span>].rename(series)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] FRED"</span>)<span class="op">;</span> idx <span class="op">=</span> pd.bdate_range(<span class="st">"2022-01-01"</span>, pd.Timestamp.today().normalize())</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series(<span class="dv">3</span> <span class="op">+</span> np.cumsum(np.random.default_rng(<span class="dv">1</span>).normal(<span class="dv">0</span>, <span class="fl">0.03</span>, <span class="bu">len</span>(idx))), idx, name<span class="op">=</span>series)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_btc_addresses(cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> snap <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/btc_active_addresses.csv"</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        url <span class="op">=</span> <span class="st">"https://api.blockchain.info/charts/n-unique-addresses?timespan=5years&amp;format=json&amp;sampled=false"</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        js <span class="op">=</span> requests.get(url, timeout<span class="op">=</span><span class="dv">20</span>).json()[<span class="st">"values"</span>]</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        s <span class="op">=</span> pd.Series({pd.to_datetime(v[<span class="st">"x"</span>], unit<span class="op">=</span><span class="st">"s"</span>): v[<span class="st">"y"</span>] <span class="cf">for</span> v <span class="kw">in</span> js}, name<span class="op">=</span><span class="st">"active_addresses"</span>)</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        s.to_csv(snap)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"[live] blockchain.com"</span>)<span class="op">;</span> <span class="cf">return</span> s</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[warn] blockchain.com failed:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[snapshot] blockchain.com"</span>)<span class="op">;</span> <span class="cf">return</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>).iloc[:, <span class="dv">0</span>].rename(<span class="st">"active_addresses"</span>)</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] addresses"</span>)<span class="op">;</span> idx <span class="op">=</span> pd.date_range(<span class="st">"2022-01-01"</span>, pd.Timestamp.today().normalize())</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series(<span class="fl">7e5</span> <span class="op">+</span> <span class="fl">1e5</span> <span class="op">*</span> np.sin(np.arange(<span class="bu">len</span>(idx)) <span class="op">/</span> <span class="dv">60</span>) <span class="op">+</span> np.random.default_rng(<span class="dv">2</span>).normal(<span class="dv">0</span>, <span class="fl">5e4</span>, <span class="bu">len</span>(idx)), idx, name<span class="op">=</span><span class="st">"active_addresses"</span>)</span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>dgs10 <span class="op">=</span> load_fred(<span class="st">"DGS10"</span>)</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>addr <span class="op">=</span> load_btc_addresses()</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dgs10.tail(<span class="dv">3</span>))<span class="op">;</span> <span class="bu">print</span>(addr.tail(<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="check-the-assistants-join" class="level3">
-<h3 class="anchored" data-anchor-id="check-the-assistants-join">🔍 CHECK — the assistant’s join</h3>
-<p>Asked to “merge the price data with the yield and the on-chain series”, the assistant wrote the cell below. It runs. Look at the row count and the date range of the result before and after, then explain what was lost and why.</p>
-<div id="9fa001f8" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>merged_bad <span class="op">=</span> pd.merge(px, dgs10, left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>).merge(addr, left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"rows before:"</span>, <span class="bu">len</span>(px), <span class="st">"| rows after:"</span>, <span class="bu">len</span>(merged_bad))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(merged_bad.index.<span class="bu">min</span>().date(), <span class="st">"→"</span>, merged_bad.index.<span class="bu">max</span>().date())</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>merged_bad.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<details>
-<summary>
-What went wrong
-</summary>
-<code>pd.merge</code> defaults to an <strong>inner join</strong>: only dates present in <em>all three</em> series survive. FRED has no weekends and has <code>NaN</code> on US holidays (which survive as NaN — check the <code>isna()</code> output); the on-chain series is daily. The result silently dropped weekends and is on an equity calendar without anyone deciding that. Also: FRED yields are in <strong>percent</strong> (4.25 = 4.25%), prices in dollars, addresses in counts — the assistant will happily correlate them without saying so. Units are your job.
-</details>
-<div id="112238b4" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicit version: choose the calendar (equity days), left-join, forward-fill macro, state units.</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>base <span class="op">=</span> px.dropna()                                    <span class="co"># equity calendar</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> base.join(dgs10.ffill(), how<span class="op">=</span><span class="st">"left"</span>).join(addr, how<span class="op">=</span><span class="st">"left"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"DGS10"</span>] <span class="op">=</span> df[<span class="st">"DGS10"</span>] <span class="op">/</span> <span class="dv">100</span>                       <span class="co"># now a decimal rate</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.rename(columns<span class="op">=</span>{<span class="st">"DGS10"</span>: <span class="st">"us10y"</span>})</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"active_addresses"</span>] <span class="op">=</span> df[<span class="st">"active_addresses"</span>].ffill()</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(base), <span class="bu">len</span>(df))<span class="op">;</span> df.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="block-c-charts-that-answer-a-question-and-rolling-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="block-c-charts-that-answer-a-question-and-rolling-statistics">Block C — Charts that answer a question, and rolling statistics</h2>
-<div id="c213201b" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>rets <span class="op">=</span> df[[<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>, <span class="st">"AAPL"</span>]].pct_change()</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>roll_corr <span class="op">=</span> rets[<span class="st">"BTC-USD"</span>].rolling(<span class="dv">60</span>).corr(rets[<span class="st">"SPY"</span>])</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">6</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>roll_corr.plot(ax<span class="op">=</span>ax[<span class="dv">0</span>], title<span class="op">=</span><span class="st">"60-day rolling correlation, BTC vs SPY"</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"us10y"</span>].plot(ax<span class="op">=</span>ax[<span class="dv">1</span>], title<span class="op">=</span><span class="st">"US 10y yield (decimal)"</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>events <span class="op">=</span> {<span class="st">"2024-01-10"</span>: <span class="st">"spot ETF approval"</span>, <span class="st">"2024-04-19"</span>: <span class="st">"halving"</span>}</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> d, label <span class="kw">in</span> events.items():</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.Timestamp(d) <span class="kw">in</span> df.index:</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> a <span class="kw">in</span> ax: a.axvline(pd.Timestamp(d), color<span class="op">=</span><span class="st">"grey"</span>, ls<span class="op">=</span><span class="st">"--"</span>, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">0</span>].annotate(label, (pd.Timestamp(d), roll_corr.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">0.9</span>), fontsize<span class="op">=</span><span class="dv">8</span>, rotation<span class="op">=</span><span class="dv">90</span>)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>🔍 CHECK.</strong> Does the correlation chart <em>answer a question</em>, or only show a line? Write the question it answers in one sentence. If you cannot, the chart is not finished. (Sanity check the data too: you should see BTC’s correlation with equities fall after some events and rise in macro-stress periods. If the line looks like noise around zero everywhere, suspect an alignment problem.)</p>
-<div id="5763559f" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># On-chain vs price: is address activity leading or lagging price? Cross-correlation at different lags (weekly data).</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> df[[<span class="st">"BTC-USD"</span>, <span class="st">"active_addresses"</span>]].resample(<span class="st">"W-FRI"</span>).last().pct_change().dropna()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> <span class="bu">range</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">9</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>xc <span class="op">=</span> pd.Series({k: w[<span class="st">"BTC-USD"</span>].corr(w[<span class="st">"active_addresses"</span>].shift(k)) <span class="cf">for</span> k <span class="kw">in</span> lags})</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>xc.plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">3</span>), title<span class="op">=</span><span class="st">"corr(BTC weekly return, address growth shifted by k weeks)  — k&gt;0: addresses lead"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>🔍 CHECK.</strong> Positive <code>k</code> means address growth from <code>k</code> weeks <em>ago</em> vs return <em>now</em>. If the biggest bar is at negative <code>k</code>, price leads activity, not the reverse — the opposite of the story “adoption drives price”. Read the sign convention in <code>shift()</code> before you conclude anything. This is exactly the kind of check an assistant will not do for you.</p>
-</section>
-<section id="block-d-reproducibility-and-privacy" class="level2">
-<h2 class="anchored" data-anchor-id="block-d-reproducibility-and-privacy">Block D — Reproducibility and privacy</h2>
-<div id="56e26072" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Snapshot the exact data you analysed, with the date, so the memo can be re-run.</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt, os</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">"data"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>stamp <span class="op">=</span> dt.date.today().isoformat()</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="ss">f"data/week02_merged_</span><span class="sc">{</span>stamp<span class="sc">}</span><span class="ss">.csv"</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"saved"</span>, <span class="ss">f"data/week02_merged_</span><span class="sc">{</span>stamp<span class="sc">}</span><span class="ss">.csv"</span>, df.shape)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Record the environment.</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip freeze <span class="dv">2</span><span class="op">&gt;/</span>dev<span class="op">/</span>null <span class="op">|</span> grep <span class="op">-</span>i <span class="op">-</span>E <span class="st">"^(pandas|numpy|yfinance|matplotlib)="</span> <span class="op">&gt;</span> data<span class="op">/</span>requirements_week02.txt<span class="op">;</span> cat data<span class="op">/</span>requirements_week02.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Rules from here on:</strong> - every notebook that produces a number in a memo saves the data it used (<code>data/…_YYYY-MM-DD.csv</code>); - random operations set a seed (<code>np.random.default_rng(0)</code>); - nothing confidential goes into an AI tool: no client data, no personal data, no internal documents. Public market data is fine. If in doubt, anonymise or aggregate first.</p>
-<p><strong>Homework brief</strong> → see <code>week-02/homework.md</code>.</p>
+<p>Then <code>File ▸ Save a copy in Drive</code>, into your <code>ese-ai-fintech</code> folder.</p>
 
 
 </section>

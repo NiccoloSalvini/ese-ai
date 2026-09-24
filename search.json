@@ -478,226 +478,268 @@
   {
     "objectID": "lectures/02-pair-programmer.html#today",
     "href": "lectures/02-pair-programmer.html#today",
-    "title": "The assistant writes it. You decide whether it is true.",
+    "title": "Inside an LLM",
     "section": "Today",
-    "text": "Today\n\n\n\n\n\n\n\n10:00\nlast week in one slide · your starting point\n\n\n10:25\nthe model’s side: temperature, and why it invents\n\n\n10:55\nyour tiny LLM, piece 1: a tokenizer\n\n\n11:15\nbreak\n\n\n11:25\nis Bitcoin riskier than the stock market? — ten real days by hand\n\n\n12:05\ntwo calendars, one join\n\n\n12:30\nunits, snapshots, and what never goes into a chatbot\n\n\n12:50\nhomework · three lines"
+    "text": "Today\n\n\n\n\n\n\n\n10:00\nlast week in one slide · your starting point\n\n\n10:20\nfinishing the network: learning rate, hidden layers, scale\n\n\n10:45\nthe same machine, on text — and a real model’s knobs\n\n\n11:05\nbreak\n\n\n11:15\ninside: tokens, embeddings, attention, the transformer, temperature\n\n\n12:10\ntraining at scale, and running it\n\n\n12:30\nwhat it cannot do · the release, decoded\n\n\n12:50\nhomework · three lines"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#last-week-in-one-slide",
     "href": "lectures/02-pair-programmer.html#last-week-in-one-slide",
-    "title": "The assistant writes it. You decide whether it is true.",
+    "title": "Inside an LLM",
     "section": "Last week, in one slide",
-    "text": "Last week, in one slide\n\n\nA neuron multiplies each answer by a weight, adds a bias, and squashes.\nTraining is one loop: guess → how wrong (the loss) → blame each weight (backpropagation) → nudge it: w \\leftarrow w - \\eta\\,(p-y)\\,x.\n\nAn LLM is the same machine, answering “which of 200,000 tokens comes next?”.\nIt reads tokens, lets them attend to each other, and knows only what is in its context window.\n\nToday: what it does with those probabilities — and then data, where the assistant writes the code and you check it."
+    "text": "Last week, in one slide\n\n\nA neuron: multiply each answer by a weight, add a bias, squash. Eight payments taught it “two red flags” in three rounds.\nThe loss is one number for how wrong it is — the average over all payments.\n\nThe formula: w \\leftarrow w - \\eta\\,(p-y)\\,x — for every weight, after every example.\nBackpropagation finds each weight’s share of the blame, box by box, right to left."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#your-starting-point",
     "href": "lectures/02-pair-programmer.html#your-starting-point",
-    "title": "The assistant writes it. You decide whether it is true.",
+    "title": "Inside an LLM",
     "section": "Your starting point",
-    "text": "Your starting point\nHomework 1: the question you want answered by December. Tell me in two minutes, as if to a manager."
+    "text": "Your starting point\nHomework 1: the question you want answered by December — in two minutes, as if to a manager."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-1-the-models-side",
-    "href": "lectures/02-pair-programmer.html#part-1-the-models-side",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Part 1 The model’s side",
-    "text": "Part 1 The model’s side"
+    "objectID": "lectures/02-pair-programmer.html#part-1-finishing-the-network",
+    "href": "lectures/02-pair-programmer.html#part-1-finishing-the-network",
+    "title": "Inside an LLM",
+    "section": "Part 1 Finishing the network",
+    "text": "Part 1 Finishing the network"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#last-weeks-table-again",
-    "href": "lectures/02-pair-programmer.html#last-weeks-table-again",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Last week’s table, again",
-    "text": "Last week’s table, again\nThe ECB left rates → ?\n\n\n\n\nunchanged\nsteady\nat\non\nhigher\n\n\n\n\n0.62\n0.15\n0.10\n0.08\n0.05\n\n\n\n\n\n\n\n\n\n\n\nBet\n\n\nAsk the same question ten times. How many times does it answer “unchanged”?\n\n\n\n\nIt does not look the answer up. It picks from these odds — and the setting that decides how it picks is called temperature."
+    "objectID": "lectures/02-pair-programmer.html#the-learning-rate",
+    "href": "lectures/02-pair-programmer.html#the-learning-rate",
+    "title": "Inside an LLM",
+    "section": "The learning rate",
+    "text": "The learning rate\n\n\n\nAdd payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect. Too small a step crawls; too large jumps over the best answer."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#temperature-reshapes-the-odds",
-    "href": "lectures/02-pair-programmer.html#temperature-reshapes-the-odds",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Temperature reshapes the odds",
-    "text": "Temperature reshapes the odds"
+    "objectID": "lectures/02-pair-programmer.html#how-every-network-learns",
+    "href": "lectures/02-pair-programmer.html#how-every-network-learns",
+    "title": "Inside an LLM",
+    "section": "How every network learns",
+    "text": "How every network learns"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-same-five-tokens-four-temperatures",
-    "href": "lectures/02-pair-programmer.html#the-same-five-tokens-four-temperatures",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "The same five tokens, four temperatures",
-    "text": "The same five tokens, four temperatures\n\n\n\n\nnext token\nT = 0\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n1.00\n0.90\n0.62\n0.39\n\n\nsteady\n0.00\n0.05\n0.15\n0.19\n\n\nat\n0.00\n0.02\n0.10\n0.16\n\n\non\n0.00\n0.01\n0.08\n0.14\n\n\nhigher\n0.00\n0.01\n0.05\n0.11\n\n\n\n\nT = 0: always the top token — the same answer every time. Use it for anything that must be reproducible: extraction, classification, anything an auditor will read. Higher T for ideas."
+    "objectID": "lectures/02-pair-programmer.html#a-pattern-one-neuron-cannot-draw",
+    "href": "lectures/02-pair-programmer.html#a-pattern-one-neuron-cannot-draw",
+    "title": "Inside an LLM",
+    "section": "A pattern one neuron cannot draw",
+    "text": "A pattern one neuron cannot draw"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#so-where-do-invented-numbers-come-from",
-    "href": "lectures/02-pair-programmer.html#so-where-do-invented-numbers-come-from",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "So where do invented numbers come from?",
-    "text": "So where do invented numbers come from?\n\n\n\n\n\n\n\nBet\n\n\nYou ask for a company’s 2025 revenue. The model gives a precise, wrong figure. Bug, lie, or working as designed?\n\n\n\n\n\nWorking as designed. There is always a most likely next token — even when the fact was never in the training data or the context. It produces the shape of a number that would fit, with the same confidence.\nIt cannot feel the difference between recalling and inventing. That is your job, all term."
+    "objectID": "lectures/02-pair-programmer.html#more-activation-functions",
+    "href": "lectures/02-pair-programmer.html#more-activation-functions",
+    "title": "Inside an LLM",
+    "section": "More activation functions",
+    "text": "More activation functions"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#two-piles",
-    "href": "lectures/02-pair-programmer.html#two-piles",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Two piles",
-    "text": "Two piles\nLAB · session.ipynb § 2\nAsk your assistant about a real company. Split every sentence of the answer:\n\n\nVerifiable\na number, a date, a name, a source you can open\n\nPlausible\nfluent, confident — and nothing to check it against"
+    "objectID": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
+    "href": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
+    "title": "Inside an LLM",
+    "section": "From 4 numbers to 117 billion",
+    "text": "From 4 numbers to 117 billion"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#write-it-into-the-procedure",
-    "href": "lectures/02-pair-programmer.html#write-it-into-the-procedure",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Write it into the procedure",
-    "text": "Write it into the procedure\nA process an auditor will read cannot say “we asked the AI”. It records:\n\nthe exact prompt, versioned like code\nT = 0, and the model’s name and version\nthe input stored next to the answer"
+    "objectID": "lectures/02-pair-programmer.html#part-2-the-same-machine-on-text",
+    "href": "lectures/02-pair-programmer.html#part-2-the-same-machine-on-text",
+    "title": "Inside an LLM",
+    "section": "Part 2 The same machine, on text",
+    "text": "Part 2 The same machine, on text"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-2-your-tiny-llm-piece-1-the-tokenizer",
-    "href": "lectures/02-pair-programmer.html#part-2-your-tiny-llm-piece-1-the-tokenizer",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Part 2 Your tiny LLM, piece 1: the tokenizer",
-    "text": "Part 2 Your tiny LLM, piece 1: the tokenizer"
+    "objectID": "lectures/02-pair-programmer.html#an-llm-is-the-same-machine",
+    "href": "lectures/02-pair-programmer.html#an-llm-is-the-same-machine",
+    "title": "Inside an LLM",
+    "section": "An LLM is the same machine",
+    "text": "An LLM is the same machine"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#how-a-tokenizer-is-learned",
-    "href": "lectures/02-pair-programmer.html#how-a-tokenizer-is-learned",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "How a tokenizer is learned",
-    "text": "How a tokenizer is learned\nFind the pair of symbols that appears most often. Give it a name. Repeat.\n\n\n\n\nmerge\nthe pair seen most often\ntimes\nnew piece\ntext length\n\n\n\n\nstart\n\n\n\n127\n\n\n1\na + n\n6\nan\n121\n\n\n2\ns + _\n5\ns_\n116\n\n\n3\ne + _\n4\ne_\n112\n\n\n4\nr + a\n4\nra\n108\n\n\n5\nra + t\n4\nrat\n104\n\n\n6\nrat + e\n4\nrate\n100\n\n\n7\nrate + s_\n4\nrates_\n96\n\n\n8\nt + h\n3\nth\n93\n\n\n\n\nTrained on a text about rates, it learns rates_ as one piece after seven merges. Trained mostly on English, it learns English pieces — and your Russian costs more."
+    "objectID": "lectures/02-pair-programmer.html#the-same-nudge-on-text",
+    "href": "lectures/02-pair-programmer.html#the-same-nudge-on-text",
+    "title": "Inside an LLM",
+    "section": "The same nudge, on text",
+    "text": "The same nudge, on text\n\n\n\nA mixer: one knob per possible next token. Each sentence turns the right knob up a little — the step we took on payment E."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#train-one-on-your-own-texts",
-    "href": "lectures/02-pair-programmer.html#train-one-on-your-own-texts",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Train one on your own texts",
-    "text": "Train one on your own texts\nLAB · session.ipynb § 3\n\nPaste a paragraph of your own — English, then Russian.\nRun the merges. Which pieces does it learn first?\nCount: how many symbols per word, in each language?\n\nNext week the pieces become the input of a model that guesses the next one."
+    "objectID": "lectures/02-pair-programmer.html#where-the-knobs-end-up",
+    "href": "lectures/02-pair-programmer.html#where-the-knobs-end-up",
+    "title": "Inside an LLM",
+    "section": "Where the knobs end up",
+    "text": "Where the knobs end up"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#a-real-models-knobs",
+    "href": "lectures/02-pair-programmer.html#a-real-models-knobs",
+    "title": "Inside an LLM",
+    "section": "A real model’s knobs",
+    "text": "A real model’s knobs\n\n\n\n\n\n\n\nBet\n\n\nAfter “The ECB left rates”, how sure is a real model that the next word is “unchanged”?"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#break-ten-minutes.",
     "href": "lectures/02-pair-programmer.html#break-ten-minutes.",
-    "title": "The assistant writes it. You decide whether it is true.",
+    "title": "Inside an LLM",
     "section": "Break — ten minutes.",
     "text": "Break — ten minutes."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-3-is-bitcoin-riskier-than-the-stock-market",
-    "href": "lectures/02-pair-programmer.html#part-3-is-bitcoin-riskier-than-the-stock-market",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Part 3 Is Bitcoin riskier than the stock market?",
-    "text": "Part 3 Is Bitcoin riskier than the stock market?"
+    "objectID": "lectures/02-pair-programmer.html#part-3-inside",
+    "href": "lectures/02-pair-programmer.html#part-3-inside",
+    "title": "Inside an LLM",
+    "section": "Part 3 Inside",
+    "text": "Part 3 Inside"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#ten-real-days-january-2024",
-    "href": "lectures/02-pair-programmer.html#ten-real-days-january-2024",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Ten real days, January 2024",
-    "text": "Ten real days, January 2024\n\n\n\n\nday\nBitcoin, $\nS&P 500 (SPY), $\n\n\n\n\nFri 05 Jan\n44,163\n453.09\n\n\nSat 06 Jan\n43,989\n—\n\n\nSun 07 Jan\n43,943\n—\n\n\nMon 08 Jan\n46,971\n459.56\n\n\nTue 09 Jan\n46,140\n458.86\n\n\nWed 10 Jan\n46,628\n461.46\n\n\nThu 11 Jan\n46,369\n461.26\n\n\nFri 12 Jan\n42,853\n461.57\n\n\nSat 13 Jan\n42,842\n—\n\n\nSun 14 Jan\n41,796\n—\n\n\nMon 15 Jan\n42,512\n—\n\n\nTue 16 Jan\n43,155\n459.88\n\n\n\n\nThe week the US approved spot Bitcoin ETFs. Bitcoin: 12 prices. The stock market: 7 — weekends, and Monday 15 January was a US holiday."
+    "objectID": "lectures/02-pair-programmer.html#one-prediction-end-to-end",
+    "href": "lectures/02-pair-programmer.html#one-prediction-end-to-end",
+    "title": "Inside an LLM",
+    "section": "One prediction, end to end",
+    "text": "One prediction, end to end\n\nFive steps, one at a time for the rest of the morning: tokens → vectors → attention → the block, stacked → the knobs."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#four-verbs-cover-most-of-data-work",
-    "href": "lectures/02-pair-programmer.html#four-verbs-cover-most-of-data-work",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Four verbs cover most of data work",
-    "text": "Four verbs cover most of data work\n\n\n\n\n\n\n\n\n\n\nverb\nin Excel\nin pandas\non our ten days\n\n\n\n\nfilter\nAutoFilter\ndf[df.SPY.notna()]\nkeep the days the stock market traded\n\n\nderive\na formula column\ndf.pct_change()\ndaily returns\n\n\naggregate\na pivot table\ndf.std()\none volatility number\n\n\njoin\nVLOOKUP\na.join(b)\nBitcoin next to the S&P 500\n\n\n\n\nThe assistant writes all four faster than you. Your job is to know what the result should look like before you see it."
+    "objectID": "lectures/02-pair-programmer.html#tokens-how-a-tokenizer-is-learned",
+    "href": "lectures/02-pair-programmer.html#tokens-how-a-tokenizer-is-learned",
+    "title": "Inside an LLM",
+    "section": "1 · Tokens: how a tokenizer is learned",
+    "text": "1 · Tokens: how a tokenizer is learned\nFind the pair of symbols that appears most often; give it a name; repeat.\n\n\n\nmerge\npair seen most often\ntimes\nnew piece\ntext length\n\n\n\n\nstart\n\n\n\n127\n\n\n1\na + n\n6\nan\n121\n\n\n2\ns + _\n5\ns_\n116\n\n\n3\ne + _\n4\ne_\n112\n\n\n4\nr + a\n4\nra\n108\n\n\n5\nra + t\n4\nrat\n104\n\n\n6\nrat + e\n4\nrate\n100\n\n\n7\nrate + s_\n4\nrates_\n96\n\n\n8\nt + h\n3\nth\n93\n\n\n\nOn a text about rates, rates_ becomes one piece after seven merges. Trained mostly on English, a tokenizer learns English pieces — so Russian costs more."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#a-return-by-hand",
-    "href": "lectures/02-pair-programmer.html#a-return-by-hand",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "A return, by hand",
-    "text": "A return, by hand\n\\text{return} = \\frac{\\text{price today}}{\\text{price yesterday}} - 1\nMonday 8 January, Bitcoin: 46,971 / 43,943 − 1 = +6.9%"
+    "objectID": "lectures/02-pair-programmer.html#your-tiny-llm-piece-1",
+    "href": "lectures/02-pair-programmer.html#your-tiny-llm-piece-1",
+    "title": "Inside an LLM",
+    "section": "Your tiny LLM, piece 1",
+    "text": "Your tiny LLM, piece 1\nLAB · session.ipynb § 1\n\nRun the merges on the text about rates. Check the table.\nPaste a paragraph of your own — English, then Russian. 30 merges each.\nHow many symbols per word, in each language?"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#riskier-by-how-much",
-    "href": "lectures/02-pair-programmer.html#riskier-by-how-much",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Riskier by how much?",
-    "text": "Riskier by how much?\n\n\n\n\n\n\n\nBet\n\n\nBitcoin’s yearly volatility against the S&P 500’s: twice? three times?"
+    "objectID": "lectures/02-pair-programmer.html#vectors-meaning-becomes-a-place",
+    "href": "lectures/02-pair-programmer.html#vectors-meaning-becomes-a-place",
+    "title": "Inside an LLM",
+    "section": "2 · Vectors: meaning becomes a place",
+    "text": "2 · Vectors: meaning becomes a place\nEach token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#up-50-then-down-50",
-    "href": "lectures/02-pair-programmer.html#up-50-then-down-50",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Up 50%, then down 50%",
-    "text": "Up 50%, then down 50%"
+    "objectID": "lectures/02-pair-programmer.html#attention-the-tokens-talk-to-each-other",
+    "href": "lectures/02-pair-programmer.html#attention-the-tokens-talk-to-each-other",
+    "title": "Inside an LLM",
+    "section": "3 · Attention: the tokens talk to each other",
+    "text": "3 · Attention: the tokens talk to each other\n\n\n\nEach token asks a question (query), each token shows a label (key), and gives what it carries (value). Good match → more of it."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-same-mistake-on-a-whole-year",
-    "href": "lectures/02-pair-programmer.html#the-same-mistake-on-a-whole-year",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "The same mistake, on a whole year",
-    "text": "The same mistake, on a whole year"
+    "objectID": "lectures/02-pair-programmer.html#the-same-as-a-table",
+    "href": "lectures/02-pair-programmer.html#the-same-as-a-table",
+    "title": "Inside an LLM",
+    "section": "The same, as a table",
+    "text": "The same, as a table"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#find-the-two-errors",
-    "href": "lectures/02-pair-programmer.html#find-the-two-errors",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Find the two errors",
-    "text": "Find the two errors\nLAB · session.ipynb § 4 — 🔍 CHECK\nThe assistant wrote a cell that reports Bitcoin’s volatility and its return. It runs, and the numbers look reasonable. Two are wrong.\nTen minutes, alone. If you find one: there is another."
+    "objectID": "lectures/02-pair-programmer.html#and-inside-a-real-model",
+    "href": "lectures/02-pair-programmer.html#and-inside-a-real-model",
+    "title": "Inside an LLM",
+    "section": "And inside a real model",
+    "text": "And inside a real model\n\nVaswani et al., Attention Is All You Need, 2017 — the paper behind every model since."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-4-two-calendars-one-join",
-    "href": "lectures/02-pair-programmer.html#part-4-two-calendars-one-join",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Part 4 Two calendars, one join",
-    "text": "Part 4 Two calendars, one join"
+    "objectID": "lectures/02-pair-programmer.html#the-transformer-one-block-stacked",
+    "href": "lectures/02-pair-programmer.html#the-transformer-one-block-stacked",
+    "title": "Inside an LLM",
+    "section": "4 · The transformer: one block, stacked",
+    "text": "4 · The transformer: one block, stacked"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#what-a-join-does-to-ten-days",
-    "href": "lectures/02-pair-programmer.html#what-a-join-does-to-ten-days",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "What a join does to ten days",
-    "text": "What a join does to ten days"
+    "objectID": "lectures/02-pair-programmer.html#the-knobs-and-how-boldly-it-picks",
+    "href": "lectures/02-pair-programmer.html#the-knobs-and-how-boldly-it-picks",
+    "title": "Inside an LLM",
+    "section": "5 · The knobs, and how boldly it picks",
+    "text": "5 · The knobs, and how boldly it picks\nTemperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:\n\n\n\n\nnext token\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n83.9%\n37.1%\n2.4%\n\n\nat\n10.2%\n13.0%\n1.4%\n\n\nlow\n2.7%\n6.7%\n1.0%\n\n\nin\n1.0%\n4.1%\n0.8%\n\n\non\n0.8%\n3.5%\n0.7%\n\n\n\n\nAt T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token: the same answer every time."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-same-choice-on-four-and-a-half-years",
-    "href": "lectures/02-pair-programmer.html#the-same-choice-on-four-and-a-half-years",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "The same choice, on four and a half years",
-    "text": "The same choice, on four and a half years\n\n\n\n\n\n\n\nBet\n\n\nFill the stock market’s weekends with Friday’s price. Does the S&P 500 look more volatile, or less?"
+    "objectID": "lectures/02-pair-programmer.html#one-token-at-a-time",
+    "href": "lectures/02-pair-programmer.html#one-token-at-a-time",
+    "title": "Inside an LLM",
+    "section": "One token at a time",
+    "text": "One token at a time\nT = 0 (always the top knob): The ECB left rates unchanged at 0.5 percent in June, but the ECB\nT = 1, three runs:\n\nThe ECB left rates up to 32 per cent in London unchanged at 20 basis points\nThe ECB left rates unchanged last week down between 8 and 12 basis points. This\nThe ECB left rates at its previous entry level in 2005. Close to a three\n\nEach word is picked, appended, and the whole machine runs again. Nothing is looked up: “0.5 percent in June” is a number that fits, not a fact."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#after-every-join-three-checks",
-    "href": "lectures/02-pair-programmer.html#after-every-join-three-checks",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "After every join, three checks",
-    "text": "After every join, three checks\n\nrows before and after — len(a), len(b), len(joined)\nmissing values — joined.isna().sum()\none row from the middle — read it\n\nThe calendar is a modelling decision, not a cleaning step. The assistant always makes it — silently."
+    "objectID": "lectures/02-pair-programmer.html#look-inside-a-real-one",
+    "href": "lectures/02-pair-programmer.html#look-inside-a-real-one",
+    "title": "Inside an LLM",
+    "section": "Look inside a real one",
+    "text": "Look inside a real one\nLAB · session.ipynb § 2–4\n\nAttention by hand, in numpy — the table you just saw.\nLoad GPT-2 in Colab. Your own prompt: read its top eight knobs.\nGenerate at T = 0, then three times at T = 1. Which sentences are facts?"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-5-units-snapshots-privacy",
-    "href": "lectures/02-pair-programmer.html#part-5-units-snapshots-privacy",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Part 5 Units, snapshots, privacy",
-    "text": "Part 5 Units, snapshots, privacy"
+    "objectID": "lectures/02-pair-programmer.html#part-4-training-at-scale-and-running-it",
+    "href": "lectures/02-pair-programmer.html#part-4-training-at-scale-and-running-it",
+    "title": "Inside an LLM",
+    "section": "Part 4 Training at scale, and running it",
+    "text": "Part 4 Training at scale, and running it"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#a-number-without-a-unit",
-    "href": "lectures/02-pair-programmer.html#a-number-without-a-unit",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "A number without a unit",
-    "text": "A number without a unit\nThree daily returns, written in percent: 1.2, −0.8, 0.5.\n\n\n\n\ncompounded as\ncalculation\nresult\n\n\n\n\npercent → decimals first\n1.012 × 0.992 × 1.005 − 1\n+0.89%\n\n\nread as decimals by mistake\n2.2 × 0.2 × 1.5 − 1\n−34%\n\n\n\n\nNo error, no warning. The code cannot see units; they live in the documentation, and in your head."
+    "objectID": "lectures/02-pair-programmer.html#pre-training-is-compressing-the-internet",
+    "href": "lectures/02-pair-programmer.html#pre-training-is-compressing-the-internet",
+    "title": "Inside an LLM",
+    "section": "Pre-training is compressing the internet",
+    "text": "Pre-training is compressing the internet"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#same-correlation-a-slope-off-by-100",
-    "href": "lectures/02-pair-programmer.html#same-correlation-a-slope-off-by-100",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Same correlation, a slope off by 100",
-    "text": "Same correlation, a slope off by 100"
+    "objectID": "lectures/02-pair-programmer.html#three-stages-the-same-loop",
+    "href": "lectures/02-pair-programmer.html#three-stages-the-same-loop",
+    "title": "Inside an LLM",
+    "section": "Three stages, the same loop",
+    "text": "Three stages, the same loop\n\n\n\n\n\n\n\n\nstage\nthe “right answer” in the loop\nwhat comes out\n\n\n\n\npre-training\nthe next token of internet text\na base model: it continues documents\n\n\nsupervised fine-tuning\nthe next token of good example conversations\nan assistant\n\n\nreinforcement learning\nwhatever earns a higher reward score\nan assistant that works problems through — “reasoning”\n\n\n\nThe formula never changes: w \\leftarrow w - \\eta \\cdot blame. Only what counts as right does."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#a-number-without-a-snapshot-is-an-anecdote",
-    "href": "lectures/02-pair-programmer.html#a-number-without-a-snapshot-is-an-anecdote",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "A number without a snapshot is an anecdote",
-    "text": "A number without a snapshot is an anecdote\nEvery number in today’s slides comes from one file:\nbtc_spy_2022-01-01_2026-09-18.csv — 1,722 rows, 2022-01-01 to 2026-09-18.\n\nsave the data behind every reported number, with the date in the name\npin the versions of your libraries\nset the seed wherever randomness enters\n\nThe test: can someone else, on another machine, get your number? If it needs you in the room, it is not a result yet."
+    "objectID": "lectures/02-pair-programmer.html#the-box-has-a-size-and-a-price",
+    "href": "lectures/02-pair-programmer.html#the-box-has-a-size-and-a-price",
+    "title": "Inside an LLM",
+    "section": "The box has a size, and a price",
+    "text": "The box has a size, and a price\n\nEvery token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#nothing-confidential-goes-into-an-ai-tool",
-    "href": "lectures/02-pair-programmer.html#nothing-confidential-goes-into-an-ai-tool",
-    "title": "The assistant writes it. You decide whether it is true.",
-    "section": "Nothing confidential goes into an AI tool",
-    "text": "Nothing confidential goes into an AI tool\nNot client names, not unpublished figures, not personal data — not even “just to check the formatting”."
+    "objectID": "lectures/02-pair-programmer.html#big-but-cheap-to-run",
+    "href": "lectures/02-pair-programmer.html#big-but-cheap-to-run",
+    "title": "Inside an LLM",
+    "section": "Big, but cheap to run",
+    "text": "Big, but cheap to run"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#fitting-it-on-one-machine",
+    "href": "lectures/02-pair-programmer.html#fitting-it-on-one-machine",
+    "title": "Inside an LLM",
+    "section": "Fitting it on one machine",
+    "text": "Fitting it on one machine\n\n\n\n\neach of 117 billion weights stored in\nmemory needed\n\n\n\n\n16 bits (2 bytes)\n≈ 234 GB — several GPUs\n\n\n~4 bits (MXFP4)\n≈ 62 GB — one 80 GB GPU\n\n\n\n\nQuantization: store each number with less precision. A little accuracy for a lot of memory."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#part-5-what-it-cannot-do",
+    "href": "lectures/02-pair-programmer.html#part-5-what-it-cannot-do",
+    "title": "Inside an LLM",
+    "section": "Part 5 What it cannot do",
+    "text": "Part 5 What it cannot do"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#four-limits-that-follow-from-the-machine",
+    "href": "lectures/02-pair-programmer.html#four-limits-that-follow-from-the-machine",
+    "title": "Inside an LLM",
+    "section": "Four limits that follow from the machine",
+    "text": "Four limits that follow from the machine\n\n\n\n\n\n\n\nwhat you see\nwhy, from what we built\n\n\n\n\na confident, invented number\nthere is always a top knob — even when the fact was never in the data\n\n\nno knowledge after a date\nthe weights are frozen at the end of training\n\n\nknows A → B, not B → A\nit learned to continue text in one direction\n\n\nbad at spelling and arithmetic\nit sees tokens, not letters or digits\n\n\n\nEvery one of these is why, from week 4, we give it documents to read and tools to call."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#two-piles",
+    "href": "lectures/02-pair-programmer.html#two-piles",
+    "title": "Inside an LLM",
+    "section": "Two piles",
+    "text": "Two piles\nLAB · session.ipynb § 5\nAsk your assistant about a real company. Split every sentence:\n\n\nVerifiable — a number, a date, a name, a source you can open\n\nPlausible — fluent, confident, and nothing to check it against\n\nThen check two from the left pile against the company’s own report."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#the-release-decoded",
+    "href": "lectures/02-pair-programmer.html#the-release-decoded",
+    "title": "Inside an LLM",
+    "section": "The release, decoded",
+    "text": "The release, decoded\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nSpec table: context length 128k.\n\nCircle again. Which words are still dark?"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#close",
     "href": "lectures/02-pair-programmer.html#close",
-    "title": "The assistant writes it. You decide whether it is true.",
+    "title": "Inside an LLM",
     "section": "Close",
-    "text": "Close\nHomework 2, due Tue 6 Oct: one question, one join, one chart whose title is the question, a one-page memo — in your Drive folder, week-02/.\n\nBefore you leave: three lines at the bottom of the notebook, in your words.\nNext week: your tokens become the input of a model that guesses the next character — and we ask whether a model is any good.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 2, due Tue 6 Oct, in your Drive folder week-02/:\n\nGPT-2 on three prompts of yours: the knobs, and four generations\nyour tokenizer on English and Russian\nanother model release, decoded word by word\na first look at next week’s data: 284,807 real card payments\n\n\nBefore you leave: three lines at the bottom of the notebook, in your words.\nNext week: real fraud data, from the raw file to a model — and whether the model is any good.\n\n\n\nAI for Business & FinTech · ESE Florence"
   },
   {
     "objectID": "glossary.html",
@@ -989,79 +1031,51 @@
   {
     "objectID": "week-02/session.html",
     "href": "week-02/session.html",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
+    "title": "Week 2 — Inside an LLM",
     "section": "",
-    "text": "ESE · AI for Business and FinTech · 30 September 2026\nThe sections follow the slides. Every number here is computed from the same dated snapshot as the slides, so you can check each one.\n!pip -q install tiktoken yfinance\nimport math, numpy as np, pandas as pd, matplotlib.pyplot as plt\nfrom collections import Counter\n\nSNAPSHOT = \"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/btc_spy_2022-01-01_2026-09-18.csv\"\nYIELDS   = \"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-02/data/dgs10_2022-01-01_2026-09-18.csv\"\npx  = pd.read_csv(SNAPSHOT, index_col=0, parse_dates=True)       # Bitcoin and the S&P 500 (SPY), dollars\ny10 = pd.read_csv(YIELDS, index_col=0, parse_dates=True)[\"DGS10\"] # US 10-year yield, in PERCENT\nprint(px.shape, px.index.min().date(), \"-&gt;\", px.index.max().date())"
-  },
-  {
-    "objectID": "week-02/session.html#temperature-reshapes-the-odds",
-    "href": "week-02/session.html#temperature-reshapes-the-odds",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "1. Temperature reshapes the odds",
-    "text": "1. Temperature reshapes the odds\nLast week’s table. The model does not look the answer up: it picks from these odds. Temperature T decides how: raise every probability to 1/T, then divide by the new total.\n\ntokens = [\"unchanged\", \"steady\", \"at\", \"on\", \"higher\"]\np = np.array([0.62, 0.15, 0.10, 0.08, 0.05])\n\ndef at_temperature(p, T):\n    if T == 0:                                   # T = 0: always the top token\n        q = np.zeros_like(p); q[p.argmax()] = 1; return q\n    q = p ** (1 / T)\n    return q / q.sum()\n\npd.DataFrame({f\"T = {T}\": at_temperature(p, T).round(2) for T in [0, 0.5, 1, 2]}, index=tokens)\n\nBet first: at T = 1, ask ten times. How many times “unchanged”? Then run the cell below.\n\nrng = np.random.default_rng(0)\nfor T in [0, 1, 2]:\n    q = at_temperature(p, T)\n    picks = rng.choice(tokens, size=10, p=q)\n    print(f\"T = {T}:\", \" \".join(picks))"
-  },
-  {
-    "objectID": "week-02/session.html#two-piles",
-    "href": "week-02/session.html#two-piles",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "2. Two piles",
-    "text": "2. Two piles\nAsk your assistant: “Summarise the last annual results of [a company you know]: revenue, profit, number of employees, and the CEO’s name.”\nCopy the answer below. Then split every sentence into two piles.\n\n\n\n\n\n\n\nVerifiable — a number, date, name or source you can open\nPlausible — fluent, and nothing to check it against\n\n\n\n\n…\n…\n\n\n\nNow check two items from the left pile against the company’s own report. Were they right?"
+    "text": "ESE · AI for Business and FinTech · 30 September 2026\nThe sections follow the slides. From section 3 you run a real language model, GPT-2 small (124 million weights), in this notebook.\n!pip -q install transformers tiktoken"
   },
   {
     "objectID": "week-02/session.html#your-tiny-llm-piece-1-a-tokenizer",
     "href": "week-02/session.html#your-tiny-llm-piece-1-a-tokenizer",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "3. Your tiny LLM, piece 1: a tokenizer",
-    "text": "3. Your tiny LLM, piece 1: a tokenizer\nFind the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.\n\ndef learn_merges(text, merges=8):\n    seq = [c if c != \" \" else \"_\" for c in text]          # _ marks a space\n    for step in range(1, merges + 1):\n        pairs = Counter(zip(seq, seq[1:]))\n        (a, b), n = max(pairs.items(), key=lambda kv: (kv[1], -list(pairs).index(kv[0])))\n        if n &lt; 2:\n            break\n        out, i = [], 0\n        while i &lt; len(seq):\n            if i &lt; len(seq) - 1 and (seq[i], seq[i + 1]) == (a, b):\n                out.append(a + b); i += 2\n            else:\n                out.append(seq[i]); i += 1\n        seq = out\n        print(f\"merge {step}: {a!r} + {b!r} seen {n} times -&gt; {a+b!r:10}  text is now {len(seq)} symbols\")\n    return seq\n\ntext = (\"the bank left rates unchanged. the bank said rates will stay unchanged. \"\n        \"rates are high and the bank expects rates to stay high.\")\nprint(len(text), \"characters to start\")\npieces = learn_merges(text)\n\nYour turn. Paste a paragraph of your own in English, then the same in Russian. Run 30 merges on each. How many symbols per word does each language end up with — and why?\n\nmine_en = \"paste an English paragraph here\"\nmine_ru = \"вставьте сюда абзац на русском\"\nfor name, t in [(\"English\", mine_en), (\"Russian\", mine_ru)]:\n    seq = learn_merges(t, merges=30)\n    print(f\"{name}: {len(seq) / len(t.split()):.1f} symbols per word\\n\")"
+    "title": "Week 2 — Inside an LLM",
+    "section": "1. Your tiny LLM, piece 1: a tokenizer",
+    "text": "1. Your tiny LLM, piece 1: a tokenizer\nFind the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.\n\nfrom collections import Counter\n\ndef learn_merges(text, merges=8, show=True):\n    seq = [c if c != \" \" else \"_\" for c in text]          # _ marks a space\n    for step in range(1, merges + 1):\n        pairs = Counter(zip(seq, seq[1:]))\n        (a, b), n = max(pairs.items(), key=lambda kv: (kv[1], -list(pairs).index(kv[0])))\n        if n &lt; 2:\n            break\n        out, i = [], 0\n        while i &lt; len(seq):\n            if i &lt; len(seq) - 1 and (seq[i], seq[i + 1]) == (a, b):\n                out.append(a + b); i += 2\n            else:\n                out.append(seq[i]); i += 1\n        seq = out\n        if show:\n            print(f\"merge {step}: {a!r} + {b!r} seen {n} times -&gt; {a+b!r:10}  text is now {len(seq)} symbols\")\n    return seq\n\ntext = (\"the bank left rates unchanged. the bank said rates will stay unchanged. \"\n        \"rates are high and the bank expects rates to stay high.\")\nprint(len(text), \"characters to start\")\npieces = learn_merges(text)\n\nYour turn. A paragraph of your own in English, then the same in Russian. 30 merges each. Symbols per word?\n\nmine_en = \"paste an English paragraph here\"\nmine_ru = \"вставьте сюда абзац на русском\"\nfor name, t in [(\"English\", mine_en), (\"Russian\", mine_ru)]:\n    seq = learn_merges(t, merges=30, show=False)\n    print(f\"{name}: {len(seq) / len(t.split()):.1f} symbols per word\")"
   },
   {
-    "objectID": "week-02/session.html#is-bitcoin-riskier-than-the-stock-market-ten-real-days-first",
-    "href": "week-02/session.html#is-bitcoin-riskier-than-the-stock-market-ten-real-days-first",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "4. Is Bitcoin riskier than the stock market? Ten real days first",
-    "text": "4. Is Bitcoin riskier than the stock market? Ten real days first\nThe week the US approved spot Bitcoin ETFs. Note the gaps.\n\nten = px.loc[\"2024-01-05\":\"2024-01-16\"]\nprint(ten.round(2))\nprint(\"\\nBitcoin days:\", ten[\"BTC-USD\"].notna().sum(), \"| stock-market days:\", ten[\"SPY\"].notna().sum())\nprint(\"Monday 8 Jan, Bitcoin: %.0f / %.0f - 1 = %+.1f%%\" % (ten.loc[\"2024-01-08\", \"BTC-USD\"], ten.loc[\"2024-01-07\", \"BTC-USD\"],\n      100 * (ten.loc[\"2024-01-08\", \"BTC-USD\"] / ten.loc[\"2024-01-07\", \"BTC-USD\"] - 1)))\n\n\n🔍 CHECK — the assistant’s cell\nAsked for “Bitcoin’s annual volatility and its return in 2022”, the assistant wrote the cell below. It runs, and the numbers look reasonable. Two are wrong. Ten minutes, alone.\n\n# --- as produced by the assistant (do not trust) ---\nr = px[\"BTC-USD\"].pct_change().dropna()\nvol = r.std() * np.sqrt(252)\nr22 = px.loc[\"2022\", \"BTC-USD\"].pct_change().dropna()\ntotal_2022 = r22.sum()\nprint(f\"Bitcoin annual volatility: {vol:.1%}\")\nprint(f\"Bitcoin return in 2022:    {total_2022:.1%}\")\n\n\n\nWhat went wrong\n\n\n√252 is the number of days the stock market trades in a year. Bitcoin trades every day: √365. The formula is right, the constant is wrong, and Bitcoin looks 17% calmer than it is.\nReturns added up. A return compounds: +50% then −50% is not 0%, it is 1.5 × 0.5 − 1 = −25%. Adding the daily returns of 2022 says −85%; the true loss, from the first and last price, is −65%.\n\n\n\n# corrected: the right constant, and returns multiplied — then the same number a second way\nvol_btc = r.std() * np.sqrt(365)\nvol_spy = px[\"SPY\"].dropna().pct_change().std() * np.sqrt(252)\ns22 = px.loc[\"2022\", \"BTC-USD\"].dropna()\ntotal_2022 = (1 + s22.pct_change().dropna()).prod() - 1\ncheck_2022 = s22.iloc[-1] / s22.iloc[0] - 1                 # first and last price: must agree\nprint(f\"Bitcoin annual volatility {vol_btc:.1%}  vs S&P 500 {vol_spy:.1%}\")\nprint(f\"Bitcoin 2022: compounded {total_2022:.1%}, from first and last price {check_2022:.1%}\")"
+    "objectID": "week-02/session.html#attention-by-hand",
+    "href": "week-02/session.html#attention-by-hand",
+    "title": "Week 2 — Inside an LLM",
+    "section": "2. Attention, by hand",
+    "text": "2. Attention, by hand\n“The bank raised rates because it” — it asks a question (query); every token shows a label (key) and carries a content (value). Two numbers per vector, so you can check every step.\n\nimport numpy as np, pandas as pd\n\ntokens = [\"The\", \"bank\", \"raised\", \"rates\", \"because\", \"it\"]\nquery  = np.array([1.5, 0.0])                                    # \"it\": who is an actor that can fear?\nkeys   = np.array([[0, .2], [2, 0], [0, 1], [1, .5], [0, .5], [.2, 0]])\nvalues = np.array([[0, 0], [1, 0], [0, 0], [0, 1], [0, 0], [0, 0]])   # (is an institution, is a price)\n\nscores  = keys @ query                       # multiply and add: a neuron\nweights = np.exp(scores) / np.exp(scores).sum()   # the knobs\nprint(pd.DataFrame({\"score\": scores, \"e^score\": np.exp(scores).round(2), \"attention\": weights.round(3)}, index=tokens))\nprint(\"\\nnew meaning of 'it' =\", (weights @ values).round(2), \" (institution, price)\")\n\nTry: give rates the key (2, 0) too. Where does it look now — and what would a real model need to tell them apart?"
   },
   {
-    "objectID": "week-02/session.html#two-calendars-one-join",
-    "href": "week-02/session.html#two-calendars-one-join",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "5. Two calendars, one join",
-    "text": "5. Two calendars, one join\nBet first: fill the stock market’s weekends with Friday’s price. Does the S&P 500 look more volatile, or less?\n\nequity = px.dropna()                   # equity calendar: only days both traded\ncrypto = px.ffill().dropna()           # crypto calendar: SPY carried over weekends and holidays\nfor name, df in [(\"equity calendar\", equity), (\"crypto calendar\", crypto)]:\n    r = df.pct_change().dropna()\n    print(f\"{name}: {len(df):,} rows | S&P 500 vol {r['SPY'].std() * np.sqrt(252):.1%} | \"\n          f\"corr BTC-S&P {r.corr().iloc[0, 1]:.2f} | days SPY 'returned' exactly 0: {(r['SPY'] == 0).sum()}\")\n\nAfter every join, three checks: rows before and after; isna().sum(); one row from the middle, read.\n\nbtc = px[[\"BTC-USD\"]].dropna()                   # 7 days a week\nspy = px[[\"SPY\"]].dropna()                       # trading days only\nfor how in [\"inner\", \"left\"]:\n    joined = btc.join(spy, how=how)\n    print(f\"{how:5} join: rows {len(btc):,} and {len(spy):,} -&gt; {len(joined):,} | missing SPY: {joined['SPY'].isna().sum()}\")\nprint(\"\\none row from the middle of the left join:\")\nprint(joined.iloc[len(joined) // 2])"
+    "objectID": "week-02/session.html#a-real-models-knobs",
+    "href": "week-02/session.html#a-real-models-knobs",
+    "title": "Week 2 — Inside an LLM",
+    "section": "3. A real model’s knobs",
+    "text": "3. A real model’s knobs\nGPT-2 small: 124 million weights, 50,257 tokens, 12 blocks. The first run downloads it (about half a gigabyte).\n\nimport torch\nfrom transformers import GPT2LMHeadModel, GPT2TokenizerFast\ntok = GPT2TokenizerFast.from_pretrained(\"gpt2\")\nmodel = GPT2LMHeadModel.from_pretrained(\"gpt2\", attn_implementation=\"eager\")\nmodel.train(False)                                   # inference mode\nprint(f\"{sum(p.numel() for p in model.parameters()):,} weights\")\n\ndef knobs(prompt, k=8):\n    ids = tok(prompt, return_tensors=\"pt\").input_ids\n    with torch.no_grad():\n        p = torch.softmax(model(ids).logits[0, -1], -1)\n    top = torch.topk(p, k)\n    print(prompt, \"-&gt;\")\n    for v, i in zip(top.values, top.indices):\n        print(f\"   {tok.decode([int(i)])!r:14} {float(v):6.1%}\")\n\nknobs(\"The ECB left rates\")\n\nBet first, then run: three prompts of your own — one from your work, one about markets, one about crypto. How sure is the model about the next word?\n\nknobs(\"Bitcoin fell sharply after\")"
   },
   {
-    "objectID": "week-02/session.html#a-number-without-a-unit",
-    "href": "week-02/session.html#a-number-without-a-unit",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "6. A number without a unit",
-    "text": "6. A number without a unit\n\npct_returns = [1.2, -0.8, 0.5]                                   # written in percent\nright = np.prod([1 + r / 100 for r in pct_returns]) - 1          # convert first\nwrong = np.prod([1 + r for r in pct_returns]) - 1                # read as decimals by mistake\nprint(f\"right: {right:+.2%}   wrong: {wrong:+.0%}\")\n\nwk = equity.join(y10, how=\"left\").ffill().resample(\"W-FRI\").last().dropna()\nd_btc = wk[\"BTC-USD\"].pct_change()\nfor label, y in [(\"percentage points\", wk[\"DGS10\"]), (\"decimal\", wk[\"DGS10\"] / 100)]:\n    d_y = y.diff(); ok = d_btc.notna() & d_y.notna()\n    print(f\"yield in {label:17}: correlation {d_btc[ok].corr(d_y[ok]):.3f}   slope {np.polyfit(d_y[ok], d_btc[ok], 1)[0]:.2f}\")"
+    "objectID": "week-02/session.html#temperature-and-one-token-at-a-time",
+    "href": "week-02/session.html#temperature-and-one-token-at-a-time",
+    "title": "Week 2 — Inside an LLM",
+    "section": "4. Temperature, and one token at a time",
+    "text": "4. Temperature, and one token at a time\n\nprompt = \"The ECB left rates\"\nids = tok(prompt, return_tensors=\"pt\").input_ids\n\nout = model.generate(ids, max_new_tokens=12, do_sample=False, pad_token_id=tok.eos_token_id)\nprint(\"T = 0  :\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nfor T in [1.0, 1.0, 1.0, 2.0]:\n    out = model.generate(ids, max_new_tokens=12, do_sample=True, temperature=T, top_k=0, pad_token_id=tok.eos_token_id)\n    print(f\"T = {T}:\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\n🔍 CHECK. Which of these sentences contain a number? Is any of those numbers a fact? How would you find out?"
   },
   {
-    "objectID": "week-02/session.html#snapshots-and-what-never-goes-into-a-chatbot",
-    "href": "week-02/session.html#snapshots-and-what-never-goes-into-a-chatbot",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "7. Snapshots, and what never goes into a chatbot",
-    "text": "7. Snapshots, and what never goes into a chatbot\nEvery number above came from one dated file. Save the data behind every number you report, with the date in the name; pin your library versions; set a seed wherever randomness enters.\nNothing confidential goes into an AI tool: no client names, no unpublished figures, no personal data.\n\nBefore you leave: three lines, in your words\n\n…\n…\n…"
+    "objectID": "week-02/session.html#meaning-as-a-place",
+    "href": "week-02/session.html#meaning-as-a-place",
+    "title": "Week 2 — Inside an LLM",
+    "section": "5. Meaning as a place",
+    "text": "5. Meaning as a place\nEvery token is a row of 768 numbers. Cosine similarity: 1 means the same direction, 0 unrelated.\n\nE = model.transformer.wte.weight.detach()\ndef similarity(a, b):\n    va, vb = E[tok.encode(\" \" + a)[0]], E[tok.encode(\" \" + b)[0]]\n    return float(torch.nn.functional.cosine_similarity(va, vb, dim=0))\n\nfor a, b in [(\"bank\", \"lender\"), (\"bank\", \"Paris\"), (\"Bitcoin\", \"crypto\"), (\"euro\", \"dollar\")]:\n    print(f\"{a:8} – {b:8} {similarity(a, b):.2f}\")"
   },
   {
-    "objectID": "week-02/session.html#block-b-join-with-external-series-macro-on-chain",
-    "href": "week-02/session.html#block-b-join-with-external-series-macro-on-chain",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "Block B — Join with external series (macro + on-chain)",
-    "text": "Block B — Join with external series (macro + on-chain)\nThis is where analysis becomes interesting: internal or market data alone rarely answers a business question. We add: - US 10-year Treasury yield (FRED series DGS10), a proxy for the risk-free rate / macro regime; - Bitcoin unique active addresses (blockchain.com public chart API), an on-chain adoption proxy.\nBoth are free and need no key. Both fetches have a fallback so the notebook still runs offline.\n\nimport requests, io, os\n\ndef load_fred(series=\"DGS10\", cache_dir=\"data\"):\n    os.makedirs(cache_dir, exist_ok=True); snap = f\"{cache_dir}/fred_{series}.csv\"\n    try:\n        url = f\"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}\"\n        s = pd.read_csv(io.StringIO(requests.get(url, timeout=20).text), index_col=0, parse_dates=True)[series]\n        s = pd.to_numeric(s, errors=\"coerce\").rename(series); s.to_csv(snap); print(\"[live] FRED\", series); return s\n    except Exception as e:\n        print(\"[warn] FRED failed:\", type(e).__name__)\n    if os.path.exists(snap):\n        print(\"[snapshot] FRED\"); return pd.read_csv(snap, index_col=0, parse_dates=True).iloc[:, 0].rename(series)\n    print(\"[SYNTHETIC] FRED\"); idx = pd.bdate_range(\"2022-01-01\", pd.Timestamp.today().normalize())\n    return pd.Series(3 + np.cumsum(np.random.default_rng(1).normal(0, 0.03, len(idx))), idx, name=series)\n\ndef load_btc_addresses(cache_dir=\"data\"):\n    os.makedirs(cache_dir, exist_ok=True); snap = f\"{cache_dir}/btc_active_addresses.csv\"\n    try:\n        url = \"https://api.blockchain.info/charts/n-unique-addresses?timespan=5years&format=json&sampled=false\"\n        js = requests.get(url, timeout=20).json()[\"values\"]\n        s = pd.Series({pd.to_datetime(v[\"x\"], unit=\"s\"): v[\"y\"] for v in js}, name=\"active_addresses\")\n        s.to_csv(snap); print(\"[live] blockchain.com\"); return s\n    except Exception as e:\n        print(\"[warn] blockchain.com failed:\", type(e).__name__)\n    if os.path.exists(snap):\n        print(\"[snapshot] blockchain.com\"); return pd.read_csv(snap, index_col=0, parse_dates=True).iloc[:, 0].rename(\"active_addresses\")\n    print(\"[SYNTHETIC] addresses\"); idx = pd.date_range(\"2022-01-01\", pd.Timestamp.today().normalize())\n    return pd.Series(7e5 + 1e5 * np.sin(np.arange(len(idx)) / 60) + np.random.default_rng(2).normal(0, 5e4, len(idx)), idx, name=\"active_addresses\")\n\ndgs10 = load_fred(\"DGS10\")\naddr = load_btc_addresses()\nprint(dgs10.tail(3)); print(addr.tail(3))\n\n\n🔍 CHECK — the assistant’s join\nAsked to “merge the price data with the yield and the on-chain series”, the assistant wrote the cell below. It runs. Look at the row count and the date range of the result before and after, then explain what was lost and why.\n\n# --- as produced by the assistant (do not trust) ---\nmerged_bad = pd.merge(px, dgs10, left_index=True, right_index=True).merge(addr, left_index=True, right_index=True)\nprint(\"rows before:\", len(px), \"| rows after:\", len(merged_bad))\nprint(merged_bad.index.min().date(), \"→\", merged_bad.index.max().date())\nmerged_bad.isna().sum()\n\n\n\nWhat went wrong\n\npd.merge defaults to an inner join: only dates present in all three series survive. FRED has no weekends and has NaN on US holidays (which survive as NaN — check the isna() output); the on-chain series is daily. The result silently dropped weekends and is on an equity calendar without anyone deciding that. Also: FRED yields are in percent (4.25 = 4.25%), prices in dollars, addresses in counts — the assistant will happily correlate them without saying so. Units are your job.\n\n\n# Explicit version: choose the calendar (equity days), left-join, forward-fill macro, state units.\nbase = px.dropna()                                    # equity calendar\ndf = base.join(dgs10.ffill(), how=\"left\").join(addr, how=\"left\")\ndf[\"DGS10\"] = df[\"DGS10\"] / 100                       # now a decimal rate\ndf = df.rename(columns={\"DGS10\": \"us10y\"})\ndf[\"active_addresses\"] = df[\"active_addresses\"].ffill()\nprint(len(base), len(df)); df.tail()"
-  },
-  {
-    "objectID": "week-02/session.html#block-c-charts-that-answer-a-question-and-rolling-statistics",
-    "href": "week-02/session.html#block-c-charts-that-answer-a-question-and-rolling-statistics",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "Block C — Charts that answer a question, and rolling statistics",
-    "text": "Block C — Charts that answer a question, and rolling statistics\n\nimport matplotlib.pyplot as plt\nrets = df[[\"BTC-USD\", \"SPY\", \"AAPL\"]].pct_change()\nroll_corr = rets[\"BTC-USD\"].rolling(60).corr(rets[\"SPY\"])\n\nfig, ax = plt.subplots(2, 1, figsize=(11, 6), sharex=True)\nroll_corr.plot(ax=ax[0], title=\"60-day rolling correlation, BTC vs SPY\")\nax[0].axhline(0, color=\"k\", lw=0.5)\ndf[\"us10y\"].plot(ax=ax[1], title=\"US 10y yield (decimal)\")\nevents = {\"2024-01-10\": \"spot ETF approval\", \"2024-04-19\": \"halving\"}\nfor d, label in events.items():\n    if pd.Timestamp(d) in df.index:\n        for a in ax: a.axvline(pd.Timestamp(d), color=\"grey\", ls=\"--\", lw=0.8)\n        ax[0].annotate(label, (pd.Timestamp(d), roll_corr.max() * 0.9), fontsize=8, rotation=90)\nplt.tight_layout(); plt.show()\n\n🔍 CHECK. Does the correlation chart answer a question, or only show a line? Write the question it answers in one sentence. If you cannot, the chart is not finished. (Sanity check the data too: you should see BTC’s correlation with equities fall after some events and rise in macro-stress periods. If the line looks like noise around zero everywhere, suspect an alignment problem.)\n\n# On-chain vs price: is address activity leading or lagging price? Cross-correlation at different lags (weekly data).\nw = df[[\"BTC-USD\", \"active_addresses\"]].resample(\"W-FRI\").last().pct_change().dropna()\nlags = range(-8, 9)\nxc = pd.Series({k: w[\"BTC-USD\"].corr(w[\"active_addresses\"].shift(k)) for k in lags})\nxc.plot(kind=\"bar\", figsize=(9, 3), title=\"corr(BTC weekly return, address growth shifted by k weeks)  — k&gt;0: addresses lead\")\nplt.show()\n\n🔍 CHECK. Positive k means address growth from k weeks ago vs return now. If the biggest bar is at negative k, price leads activity, not the reverse — the opposite of the story “adoption drives price”. Read the sign convention in shift() before you conclude anything. This is exactly the kind of check an assistant will not do for you."
-  },
-  {
-    "objectID": "week-02/session.html#block-d-reproducibility-and-privacy",
-    "href": "week-02/session.html#block-d-reproducibility-and-privacy",
-    "title": "Week 2 — The assistant writes it. You decide whether it is true.",
-    "section": "Block D — Reproducibility and privacy",
-    "text": "Block D — Reproducibility and privacy\n\n# 1) Snapshot the exact data you analysed, with the date, so the memo can be re-run.\nimport datetime as dt, os\nos.makedirs(\"data\", exist_ok=True)\nstamp = dt.date.today().isoformat()\ndf.to_csv(f\"data/week02_merged_{stamp}.csv\")\nprint(\"saved\", f\"data/week02_merged_{stamp}.csv\", df.shape)\n\n# 2) Record the environment.\n!pip freeze 2&gt;/dev/null | grep -i -E \"^(pandas|numpy|yfinance|matplotlib)=\" &gt; data/requirements_week02.txt; cat data/requirements_week02.txt\n\nRules from here on: - every notebook that produces a number in a memo saves the data it used (data/…_YYYY-MM-DD.csv); - random operations set a seed (np.random.default_rng(0)); - nothing confidential goes into an AI tool: no client data, no personal data, no internal documents. Public market data is fine. If in doubt, anonymise or aggregate first.\nHomework brief → see week-02/homework.md."
+    "objectID": "week-02/session.html#two-piles",
+    "href": "week-02/session.html#two-piles",
+    "title": "Week 2 — Inside an LLM",
+    "section": "6. Two piles",
+    "text": "6. Two piles\nAsk your assistant: “Summarise the last annual results of [a company you know]: revenue, profit, employees, the CEO’s name.” Split every sentence of the answer:\n\n\n\n\n\n\n\nVerifiable — a number, date, name or source you can open\nPlausible — fluent, and nothing to check it against\n\n\n\n\n…\n…\n\n\n\nCheck two items from the left pile against the company’s own report.\n\nBefore you leave: three lines, in your words\n\n…\n…\n…\n\nThen File ▸ Save a copy in Drive, into your ese-ai-fintech folder."
   },
   {
     "objectID": "week-10/homework.html",
@@ -1318,58 +1332,51 @@
   {
     "objectID": "week-02/homework.html",
     "href": "week-02/homework.html",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "Due: Tuesday 6 October 2026, 23:59 · folder week-02/ in your shared Drive folder ese-ai-fintech\n\n\nAnswer one empirical question about a financial asset by joining market data with at least one external series, and write it up the way you would for a manager who has ten minutes.\n\n\n\n\nDoes Bitcoin’s correlation with US equities depend on the level or the change of US interest rates?\nDo on-chain active addresses lead or lag Bitcoin’s price, and at what horizon?\nHow did a specific asset behave around a specific event (ETF approval, halving, an earnings date, a rate decision), compared with its normal behaviour?\nIs the “weekend effect” in crypto real — are Saturday/Sunday returns and volatility different from weekdays?\n\n\n\n\n\nhw2.ipynb — runs top to bottom from a clean runtime. Must contain:\n\nthe data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);\nan explicit calendar decision and an explicit units statement, in markdown, before any computation across series;\nthe three checks after every join: rows before and after, isna().sum(), one row from the middle;\nthe analysis, and one chart whose title is the question;\na date-stamped CSV snapshot saved to data/.\n\nmemo.md — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; AI-use disclosure (which assistant, for what, what you verified and how).\ndata/ — the snapshot(s).\n\n\n\n\n\nAt least one join. At least one rolling or resampled statistic.\nThe chart must be readable without the notebook: title, axis labels, units.\nDo not conclude causation from a correlation. If you are tempted, write the sentence and then write the alternative explanation next to it.\n\n\n\n\n4–6 hours.\n\n\n\n\nRestart and run all: no errors.\nCalendar and units stated in markdown before the analysis.\nJoin check printed (rows before/after, NaN count).\nChart title is a question; memo answers it.\nSnapshot saved next to the notebook; AI-use disclosure present.\n\n\n\n\nThe join pattern (your calendar, left join, forward-fill context, convert units, check) is the backbone of any data pipeline you will build later, including the one in your portfolio. The memo format is the format of the decision memo in the final portfolio."
+    "text": "Due: Tuesday 6 October 2026, 23:59 · folder week-02/ in your shared Drive folder ese-ai-fintech\n\n\nMake last week and today concrete on a real language model: read its knobs, watch temperature change its answers, and decode a model release on your own. Then take a first look at next week’s data.\n\n\n\n\ngpt2.ipynb — the session notebook, extended:\n\nthree prompts of your own (one from your work, one about markets, one about crypto): the top eight next tokens for each, with probabilities;\nfor one of them, four generations: one at T = 0, three at T = 1 — and one at T = 2 if you are curious;\nunder the generations, a markdown cell: which sentences contain a number or a name? Which of those are facts, and how did you check?\n\nThe tokenizer on one paragraph of your own, in English and in Russian: 30 merges each, symbols per word, and two sentences on what that means for the cost of a real project.\nrelease.md — another model release, decoded (half a page to one page). Pick an open-weight release — Llama, Gemma, Qwen, Mistral or DeepSeek — and find its announcement or model card. For every technical term (parameters, context length, tokenizer, training stages, quantization, licence, anything else), one sentence in your words, linked to what we built in class (a weight, the training loop, the knobs, the box…). Mark the terms you could not explain: we start there next week.\nNext week’s data, a first look. Download the card-fraud dataset (284,807 real European card payments, 2013, anonymised): https://www.openml.org/data/v1/get_csv/1673544/creditcard.csv. In a notebook: how many rows and columns, what the columns are, and what share of the payments are fraud. Write that share down. We start from it.\n\n\n\n\n\nUse an assistant as much as you like; every line must be one you can explain.\nThe explanations in release.md are in your words. An assistant may correct the English, not write the content.\n\n\n\n\n3–4 hours. If you are past 4 hours, stop, save what you have, and write where you got stuck.\n\n\n\n\nRuntime ▸ Restart and run all works (the GPT-2 download takes a minute the first time).\nThree prompts, each with its eight knobs.\nEvery number in the generations is labelled fact / invented / cannot tell.\nrelease.md covers every technical term of the release, including the ones you could not explain.\nYou know the fraud share of the dataset, as a percentage.\n\n\n\n\nThe knobs and temperature are what you will set on every API call from week 4. The release decoding is the skill of reading a vendor’s claims. The fraud share is the base rate — the number every model next week has to beat."
   },
   {
     "objectID": "week-02/homework.html#goal",
     "href": "week-02/homework.html#goal",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "Answer one empirical question about a financial asset by joining market data with at least one external series, and write it up the way you would for a manager who has ten minutes."
-  },
-  {
-    "objectID": "week-02/homework.html#pick-one-question-or-propose-your-own-message-me-first",
-    "href": "week-02/homework.html#pick-one-question-or-propose-your-own-message-me-first",
-    "title": "Homework 2 — One question, one dataset, one memo",
-    "section": "",
-    "text": "Does Bitcoin’s correlation with US equities depend on the level or the change of US interest rates?\nDo on-chain active addresses lead or lag Bitcoin’s price, and at what horizon?\nHow did a specific asset behave around a specific event (ETF approval, halving, an earnings date, a rate decision), compared with its normal behaviour?\nIs the “weekend effect” in crypto real — are Saturday/Sunday returns and volatility different from weekdays?"
+    "text": "Make last week and today concrete on a real language model: read its knobs, watch temperature change its answers, and decode a model release on your own. Then take a first look at next week’s data."
   },
   {
     "objectID": "week-02/homework.html#deliverables-in-week-02",
     "href": "week-02/homework.html#deliverables-in-week-02",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "hw2.ipynb — runs top to bottom from a clean runtime. Must contain:\n\nthe data acquisition (at least one market series + at least one external series: FRED, blockchain.com, DefiLlama, CoinGecko, or another public source);\nan explicit calendar decision and an explicit units statement, in markdown, before any computation across series;\nthe three checks after every join: rows before and after, isna().sum(), one row from the middle;\nthe analysis, and one chart whose title is the question;\na date-stamped CSV snapshot saved to data/.\n\nmemo.md — one page (300–450 words): question; data and its limits; answer in two sentences with the chart; what would change your mind; AI-use disclosure (which assistant, for what, what you verified and how).\ndata/ — the snapshot(s)."
+    "text": "gpt2.ipynb — the session notebook, extended:\n\nthree prompts of your own (one from your work, one about markets, one about crypto): the top eight next tokens for each, with probabilities;\nfor one of them, four generations: one at T = 0, three at T = 1 — and one at T = 2 if you are curious;\nunder the generations, a markdown cell: which sentences contain a number or a name? Which of those are facts, and how did you check?\n\nThe tokenizer on one paragraph of your own, in English and in Russian: 30 merges each, symbols per word, and two sentences on what that means for the cost of a real project.\nrelease.md — another model release, decoded (half a page to one page). Pick an open-weight release — Llama, Gemma, Qwen, Mistral or DeepSeek — and find its announcement or model card. For every technical term (parameters, context length, tokenizer, training stages, quantization, licence, anything else), one sentence in your words, linked to what we built in class (a weight, the training loop, the knobs, the box…). Mark the terms you could not explain: we start there next week.\nNext week’s data, a first look. Download the card-fraud dataset (284,807 real European card payments, 2013, anonymised): https://www.openml.org/data/v1/get_csv/1673544/creditcard.csv. In a notebook: how many rows and columns, what the columns are, and what share of the payments are fraud. Write that share down. We start from it."
   },
   {
     "objectID": "week-02/homework.html#constraints",
     "href": "week-02/homework.html#constraints",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "At least one join. At least one rolling or resampled statistic.\nThe chart must be readable without the notebook: title, axis labels, units.\nDo not conclude causation from a correlation. If you are tempted, write the sentence and then write the alternative explanation next to it."
+    "text": "Use an assistant as much as you like; every line must be one you can explain.\nThe explanations in release.md are in your words. An assistant may correct the English, not write the content."
   },
   {
     "objectID": "week-02/homework.html#scope",
     "href": "week-02/homework.html#scope",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "4–6 hours."
+    "text": "3–4 hours. If you are past 4 hours, stop, save what you have, and write where you got stuck."
   },
   {
     "objectID": "week-02/homework.html#self-check",
     "href": "week-02/homework.html#self-check",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "Restart and run all: no errors.\nCalendar and units stated in markdown before the analysis.\nJoin check printed (rows before/after, NaN count).\nChart title is a question; memo answers it.\nSnapshot saved next to the notebook; AI-use disclosure present."
+    "text": "Runtime ▸ Restart and run all works (the GPT-2 download takes a minute the first time).\nThree prompts, each with its eight knobs.\nEvery number in the generations is labelled fact / invented / cannot tell.\nrelease.md covers every technical term of the release, including the ones you could not explain.\nYou know the fraud share of the dataset, as a percentage."
   },
   {
-    "objectID": "week-02/homework.html#how-this-feeds-the-capstone",
-    "href": "week-02/homework.html#how-this-feeds-the-capstone",
-    "title": "Homework 2 — One question, one dataset, one memo",
+    "objectID": "week-02/homework.html#how-this-feeds-the-course",
+    "href": "week-02/homework.html#how-this-feeds-the-course",
+    "title": "Homework 2 — Poke a real model",
     "section": "",
-    "text": "The join pattern (your calendar, left join, forward-fill context, convert units, check) is the backbone of any data pipeline you will build later, including the one in your portfolio. The memo format is the format of the decision memo in the final portfolio."
+    "text": "The knobs and temperature are what you will set on every API call from week 4. The release decoding is the skill of reading a vendor’s claims. The fraud share is the base rate — the number every model next week has to beat."
   },
   {
     "objectID": "week-01/homework.html",
@@ -1866,7 +1873,7 @@
     "href": "index.html",
     "title": "Artificial Intelligence for Business and FinTech",
     "section": "",
-    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nTemperature and the checking habit · a tokenizer · Bitcoin vs the stock market, by hand\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
+    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nInside an LLM — tokens, embeddings, attention, the transformer, temperature · a real model in Colab\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
   },
   {
     "objectID": "setup.html",
@@ -2265,7 +2272,7 @@
     "href": "lectures/03-one-problem.html#last-week-in-one-slide",
     "title": "A model, and whether to believe it",
     "section": "Last week, in one slide",
-    "text": "Last week, in one slide\n\n\nThe model’s side: temperature decides how it picks from the odds; T = 0 always takes the top token. It invents by design — there is always a most likely next token.\nA tokenizer learns pieces by merging the most frequent pair.\n\nThe data side: Bitcoin is about three times as volatile as the S&P 500 — with √365, not √252. Returns compound: +50% then −50% is −25%.\nA join decides which days exist: filling the weekends invented 540 calm days. Units live in your head, not in the data."
+    "text": "Last week, in one slide\n\n\nAn LLM is our neuron’s training loop at scale: tokens become vectors; attention lets each token take what it needs from the others; the block is stacked dozens of times.\nAt the end, one knob per token — and temperature decides how boldly it picks.\n\nPre-training, fine-tuning and RL are the same loop with different right answers.\nIt invents by design: there is always a top knob, even when the fact was never in the data."
   },
   {
     "objectID": "lectures/03-one-problem.html#three-ways-to-write-the-same-decision",

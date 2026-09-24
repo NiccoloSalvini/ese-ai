@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the same mixer as last week — now a real model</text>
+  <text x="30" y="70" font-size="20" font-weight="700" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">“The ECB left rates” →</text>
+  <line x1="70" y1="110" x2="70" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="70" y1="125.2" x2="70" y2="320" stroke="#AF1F25" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="56" y="118.2" width="28" height="14" rx="2" fill="#AF1F25"/>
+  <text x="90" y="130.225" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start" >37%</text>
+  <text x="70" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >unchanged</text>
+  <line x1="162" y1="110" x2="162" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="162" y1="251.8" x2="162" y2="320" stroke="#2471a3" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="148" y="244.8" width="28" height="14" rx="2" fill="#2471a3"/>
+  <text x="182" y="256.75" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start" >13%</text>
+  <text x="162" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >at</text>
+  <line x1="254" y1="110" x2="254" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="254" y1="284.8" x2="254" y2="320" stroke="#2471a3" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="240" y="277.8" width="28" height="14" rx="2" fill="#2471a3"/>
+  <text x="274" y="289.825" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start" >7%</text>
+  <text x="254" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >low</text>
+  <line x1="346" y1="110" x2="346" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="346" y1="298.5" x2="346" y2="320" stroke="#7a7f85" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="332" y="291.5" width="28" height="14" rx="2" fill="#7a7f85"/>
+  <text x="366" y="303.475" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >4%</text>
+  <text x="346" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >in</text>
+  <line x1="438" y1="110" x2="438" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="438" y1="301.6" x2="438" y2="320" stroke="#7a7f85" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="424" y="294.6" width="28" height="14" rx="2" fill="#7a7f85"/>
+  <text x="458" y="306.625" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >4%</text>
+  <text x="438" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >on</text>
+  <line x1="530" y1="110" x2="530" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="530" y1="307.9" x2="530" y2="320" stroke="#7a7f85" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="516" y="300.9" width="28" height="14" rx="2" fill="#7a7f85"/>
+  <text x="550" y="312.925" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >2%</text>
+  <text x="530" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >lower</text>
+  <line x1="622" y1="110" x2="622" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="622" y1="310.0" x2="622" y2="320" stroke="#7a7f85" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="608" y="303.0" width="28" height="14" rx="2" fill="#7a7f85"/>
+  <text x="642" y="315.025" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >2%</text>
+  <text x="622" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >below</text>
+  <line x1="714" y1="110" x2="714" y2="320" stroke="#e6e2d8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="714" y1="312.1" x2="714" y2="320" stroke="#7a7f85" stroke-width="5" stroke-opacity=".55"/>
+  <rect x="700" y="305.1" width="28" height="14" rx="2" fill="#7a7f85"/>
+  <text x="734" y="317.125" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="start" >2%</text>
+  <text x="714" y="344" font-size="14" font-weight="400" fill="#363636" text-anchor="middle" >high</text>
+  <text x="830" y="215" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle" >…the other</text>
+  <text x="830" y="235" font-size="14" font-weight="700" fill="#7a7f85" text-anchor="middle" >50,249 tokens</text>
+  <text x="830" y="255" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle" >share 30%</text>
+  <line x1="30" y1="370" x2="930" y2="370" stroke="#e6e2d8"/>
+  <text x="30" y="396" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >GPT-2 small, 124 million weights: one knob for each of its 50,257 tokens. These are its real settings after this prompt.</text>
+</svg>

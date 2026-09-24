@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.56">
 
   <meta name="author" content="Niccolò Salvini, PhD">
-  <title>AI for Business &amp; FinTech – The assistant writes it. You decide whether it is true.</title>
+  <title>AI for Business &amp; FinTech – Inside an LLM</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -346,7 +346,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#AF1F25" data-background-image="../images/ese-logo-white.svg" data-background-position="top 7% right 4%" data-background-size="14%" class="quarto-title-block">
-  <h1 class="title">The assistant writes it. You decide whether it is true.</h1>
+  <h1 class="title">Inside an LLM</h1>
   <p class="subtitle">Week 2 · Wednesday 30 September 2026 · 10:00–13:00</p>
 
 <div class="quarto-title-authors">
@@ -374,28 +374,28 @@ Niccolò Salvini, PhD
 <td>last week in one slide · your starting point</td>
 </tr>
 <tr class="even">
-<td><strong>10:25</strong></td>
-<td>the model’s side: temperature, and why it invents</td>
+<td><strong>10:20</strong></td>
+<td>finishing the network: learning rate, hidden layers, scale</td>
 </tr>
 <tr class="odd">
-<td><strong>10:55</strong></td>
-<td>your tiny LLM, piece 1: a tokenizer</td>
+<td><strong>10:45</strong></td>
+<td>the same machine, on text — and a real model’s knobs</td>
 </tr>
 <tr class="even">
-<td><strong>11:15</strong></td>
+<td><strong>11:05</strong></td>
 <td>break</td>
 </tr>
 <tr class="odd">
-<td><strong>11:25</strong></td>
-<td>is Bitcoin riskier than the stock market? — ten real days by hand</td>
+<td><strong>11:15</strong></td>
+<td>inside: tokens, embeddings, attention, the transformer, temperature</td>
 </tr>
 <tr class="even">
-<td><strong>12:05</strong></td>
-<td>two calendars, one join</td>
+<td><strong>12:10</strong></td>
+<td>training at scale, and running it</td>
 </tr>
 <tr class="odd">
 <td><strong>12:30</strong></td>
-<td>units, snapshots, and what never goes into a chatbot</td>
+<td>what it cannot do · the release, decoded</td>
 </tr>
 <tr class="even">
 <td><strong>12:50</strong></td>
@@ -408,125 +408,63 @@ Niccolò Salvini, PhD
 <h2>Last week, in one slide</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>A neuron</strong> multiplies each answer by a weight, adds a bias, and squashes.</p>
-<p><strong>Training</strong> is one loop: guess → how wrong (the loss) → blame each weight (backpropagation) → nudge it: <span class="math inline">w \leftarrow w - \eta\,(p-y)\,x</span>.</p>
+<p><strong>A neuron</strong>: multiply each answer by a weight, add a bias, squash. Eight payments taught it “two red flags” in three rounds.</p>
+<p><strong>The loss</strong> is one number for how wrong it is — the average over all payments.</p>
 </div><div class="column" style="width:50%;">
-<p><strong>An LLM</strong> is the same machine, answering “which of 200,000 tokens comes next?”.</p>
-<p>It reads <strong>tokens</strong>, lets them <strong>attend</strong> to each other, and knows only what is in its <strong>context window</strong>.</p>
+<p><strong>The formula</strong>: <span class="math inline">w \leftarrow w - \eta\,(p-y)\,x</span> — for every weight, after every example.</p>
+<p><strong>Backpropagation</strong> finds each weight’s share of the blame, box by box, right to left.</p>
 </div></div>
-<p><span class="explain">Today: what it does with those probabilities — and then data, where the assistant writes the code and you check it.</span></p>
 </section>
 <section id="your-starting-point" class="slide level2 statement">
 <h2>Your starting point</h2>
-<p><span class="muted">Homework 1: the question you want answered by December. Tell me in two minutes, as if to a manager.</span></p>
+<p><span class="muted">Homework 1: the question you want answered by December — in two minutes, as if to a manager.</span></p>
 </section>
-<section id="part-1-the-models-side" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 1</span> The model’s side</h2>
+<section id="part-1-finishing-the-network" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> Finishing the network</h2>
 </section>
-<section id="last-weeks-table-again" class="slide level2">
-<h2>Last week’s table, again</h2>
-<p><code>The ECB left rates</code> → ?</p>
-<div class="bigtable">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>unchanged</th>
-<th>steady</th>
-<th>at</th>
-<th>on</th>
-<th>higher</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0.62</td>
-<td>0.15</td>
-<td>0.10</td>
-<td>0.08</td>
-<td>0.05</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>Ask the same question ten times. How many times does it answer “unchanged”?</p>
-</div>
-</div>
-</div>
-</div>
-<p><span class="explain">It does not look the answer up. It <strong>picks</strong> from these odds — and the setting that decides how it picks is called <strong>temperature</strong>.</span></p>
-</section>
-<section id="temperature-reshapes-the-odds" class="slide level2 clip" data-background-color="#000000">
-<h2>Temperature reshapes the odds</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_temperature_poster.png">
-<source src="media/w02_temperature.mp4" type="video/mp4">
+<section id="the-learning-rate" class="slide level2 clip" data-background-color="#000000">
+<h2>The learning rate</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_lr_poster.png">
+<source src="media/w01_lr.mp4" type="video/mp4">
 </video>
+<p><span class="explain">Add payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect. Too small a step crawls; too large jumps over the best answer.</span></p>
 </section>
-<section id="the-same-five-tokens-four-temperatures" class="slide level2">
-<h2>The same five tokens, four temperatures</h2>
-<div class="bigtable">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>next token</th>
-<th>T = 0</th>
-<th>T = 0.5</th>
-<th>T = 1</th>
-<th>T = 2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>unchanged</strong></td>
-<td>1.00</td>
-<td>0.90</td>
-<td>0.62</td>
-<td>0.39</td>
-</tr>
-<tr class="even">
-<td><strong>steady</strong></td>
-<td>0.00</td>
-<td>0.05</td>
-<td>0.15</td>
-<td>0.19</td>
-</tr>
-<tr class="odd">
-<td><strong>at</strong></td>
-<td>0.00</td>
-<td>0.02</td>
-<td>0.10</td>
-<td>0.16</td>
-</tr>
-<tr class="even">
-<td><strong>on</strong></td>
-<td>0.00</td>
-<td>0.01</td>
-<td>0.08</td>
-<td>0.14</td>
-</tr>
-<tr class="odd">
-<td><strong>higher</strong></td>
-<td>0.00</td>
-<td>0.01</td>
-<td>0.05</td>
-<td>0.11</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><span class="explain"><strong>T = 0</strong>: always the top token — the same answer every time. Use it for anything that must be reproducible: extraction, classification, anything an auditor will read. Higher T for ideas.</span></p>
+<section id="how-every-network-learns" class="slide level2">
+<h2>How every network learns</h2>
+
+<img data-src="img/story-loop.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="a-pattern-one-neuron-cannot-draw" class="slide level2">
+<h2>A pattern one neuron cannot draw</h2>
+
+<img data-src="img/story-card-testing.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="more-activation-functions" class="slide level2">
+<h2>More activation functions</h2>
+
+<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="from-4-numbers-to-117-billion" class="slide level2">
+<h2>From 4 numbers to 117 billion</h2>
+
+<img data-src="img/story-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="part-2-the-same-machine-on-text" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2</span> The same machine, on text</h2>
 </section>
-<section id="so-where-do-invented-numbers-come-from" class="slide level2">
-<h2>So where do invented numbers come from?</h2>
+<section id="an-llm-is-the-same-machine" class="slide level2">
+<h2>An LLM is the same machine</h2>
+
+<img data-src="img/story-same-machine.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="the-same-nudge-on-text" class="slide level2 clip" data-background-color="#000000">
+<h2>The same nudge, on text</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w01_faders_poster.png">
+<source src="media/w01_faders.mp4" type="video/mp4">
+</video>
+<p><span class="explain">A mixer: one knob per possible next token. Each sentence turns the right knob up a little — the step we took on payment E.</span></p>
+</section>
+<section id="where-the-knobs-end-up" class="slide level2">
+<h2>Where the knobs end up</h2>
+
+<img data-src="img/story-faders.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"></section>
+<section id="a-real-models-knobs" class="slide level2">
+<h2>A real model’s knobs</h2>
 <div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -537,50 +475,38 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>You ask for a company’s 2025 revenue. The model gives a precise, wrong figure. Bug, lie, or working as designed?</p>
+<p>After “The ECB left rates”, how sure is a real model that the next word is “unchanged”?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Working as designed.</strong> There is always a most likely next token — even when the fact was never in the training data or the context. It produces the <em>shape</em> of a number that would fit, with the same confidence.</p>
-<p><span class="explain">It cannot feel the difference between recalling and inventing. That is your job, all term.</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/w02-knobs.svg" class="quarto-figure quarto-figure-center" style="width:84.0%"></p>
+</figure>
+</div>
 </div>
 </section>
-<section id="two-piles" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Two piles</h2>
-<p><span class="kicker">LAB · session.ipynb § 2</span></p>
-<p>Ask your assistant about a real company. Split every sentence of the answer:</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Verifiable</strong></p>
-<p>a number, a date, a name, a source you can open</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Plausible</strong></p>
-<p>fluent, confident — and nothing to check it against</p>
-</div></div>
+<section id="break-ten-minutes." class="slide level2 statement">
+<h2>Break — ten minutes.</h2>
 </section>
-<section id="write-it-into-the-procedure" class="slide level2">
-<h2>Write it into the procedure</h2>
-<p>A process an auditor will read cannot say <em>“we asked the AI”</em>. It records:</p>
-<ul>
-<li>the <strong>exact prompt</strong>, versioned like code</li>
-<li><strong>T = 0</strong>, and the model’s <strong>name and version</strong></li>
-<li>the <strong>input</strong> stored next to the answer</li>
-</ul>
+<section id="part-3-inside" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> Inside</h2>
 </section>
-<section id="part-2-your-tiny-llm-piece-1-the-tokenizer" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 2</span> Your tiny LLM, piece 1: the tokenizer</h2>
+<section id="one-prediction-end-to-end" class="slide level2">
+<h2>One prediction, end to end</h2>
+
+<img data-src="img/w02-journey.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="explain">Five steps, one at a time for the rest of the morning: tokens → vectors → attention → the block, stacked → the knobs.</span></p>
 </section>
-<section id="how-a-tokenizer-is-learned" class="slide level2">
-<h2>How a tokenizer is learned</h2>
-<p>Find the pair of symbols that appears most often. Give it a name. Repeat.</p>
-<div class="plain">
+<section id="tokens-how-a-tokenizer-is-learned" class="slide level2">
+<h2>1 · Tokens: how a tokenizer is learned</h2>
+<p>Find the pair of symbols that appears most often; give it a name; repeat.</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th>merge</th>
-<th>the pair seen most often</th>
+<th>pair seen most often</th>
 <th>times</th>
 <th>new piece</th>
 <th>text length</th>
@@ -652,295 +578,256 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-</div>
-<p><span class="explain">Trained on a text about rates, it learns <code>rates_</code> as one piece after seven merges. Trained mostly on English, it learns English pieces — and your Russian costs more.</span></p>
+<p><span class="explain">On a text about rates, <code>rates_</code> becomes one piece after seven merges. Trained mostly on English, a tokenizer learns English pieces — so Russian costs more.</span></p>
 </section>
-<section id="train-one-on-your-own-texts" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Train one on your own texts</h2>
-<p><span class="kicker">LAB · session.ipynb § 3</span></p>
+<section id="your-tiny-llm-piece-1" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Your tiny LLM, piece 1</h2>
+<p><span class="kicker">LAB · session.ipynb § 1</span></p>
 <ol type="1">
-<li>Paste a paragraph of your own — English, then Russian.</li>
-<li>Run the merges. Which pieces does it learn first?</li>
-<li>Count: how many symbols per word, in each language?</li>
+<li>Run the merges on the text about rates. Check the table.</li>
+<li>Paste a paragraph of your own — English, then Russian. 30 merges each.</li>
+<li>How many symbols per word, in each language?</li>
 </ol>
-<p><span class="muted">Next week the pieces become the input of a model that guesses the next one.</span></p>
 </section>
-<section id="break-ten-minutes." class="slide level2 statement">
-<h2>Break — ten minutes.</h2>
+<section id="vectors-meaning-becomes-a-place" class="slide level2">
+<h2>2 · Vectors: meaning becomes a place</h2>
+<p>Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight.</p>
+
+<img data-src="img/w02-embed.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="attention-the-tokens-talk-to-each-other" class="slide level2 clip" data-background-color="#000000">
+<h2>3 · Attention: the tokens talk to each other</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_attention_poster.png">
+<source src="media/w02_attention.mp4" type="video/mp4">
+</video>
+<p><span class="explain">Each token asks a question (query), each token shows a label (key), and gives what it carries (value). Good match → more of it.</span></p>
 </section>
-<section id="part-3-is-bitcoin-riskier-than-the-stock-market" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 3</span> Is Bitcoin riskier than the stock market?</h2>
+<section id="the-same-as-a-table" class="slide level2">
+<h2>The same, as a table</h2>
+
+<img data-src="img/w02-attention-hand.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="and-inside-a-real-model" class="slide level2">
+<h2>And inside a real model</h2>
+
+<img data-src="img/w02-attention-real.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:84.0%"><p><span class="muted">Vaswani et al., <em>Attention Is All You Need</em>, 2017 — the paper behind every model since.</span></p>
 </section>
-<section id="ten-real-days-january-2024" class="slide level2">
-<h2>Ten real days, January 2024</h2>
-<div class="plain">
+<section id="the-transformer-one-block-stacked" class="slide level2">
+<h2>4 · The transformer: one block, stacked</h2>
+
+<img data-src="img/w02-block.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
+<section id="the-knobs-and-how-boldly-it-picks" class="slide level2">
+<h2>5 · The knobs, and how boldly it picks</h2>
+<p>Temperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:</p>
+<div class="bigtable">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>day</th>
-<th>Bitcoin, $</th>
-<th>S&amp;P 500 (SPY), $</th>
+<th>next token</th>
+<th>T = 0.5</th>
+<th>T = 1</th>
+<th>T = 2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Fri 05 Jan</td>
-<td>44,163</td>
-<td>453.09</td>
+<td><strong>unchanged</strong></td>
+<td>83.9%</td>
+<td>37.1%</td>
+<td>2.4%</td>
 </tr>
 <tr class="even">
-<td>Sat 06 Jan</td>
-<td>43,989</td>
-<td>—</td>
+<td><strong>at</strong></td>
+<td>10.2%</td>
+<td>13.0%</td>
+<td>1.4%</td>
 </tr>
 <tr class="odd">
-<td>Sun 07 Jan</td>
-<td>43,943</td>
-<td>—</td>
+<td><strong>low</strong></td>
+<td>2.7%</td>
+<td>6.7%</td>
+<td>1.0%</td>
 </tr>
 <tr class="even">
-<td>Mon 08 Jan</td>
-<td>46,971</td>
-<td>459.56</td>
+<td><strong>in</strong></td>
+<td>1.0%</td>
+<td>4.1%</td>
+<td>0.8%</td>
 </tr>
 <tr class="odd">
-<td>Tue 09 Jan</td>
-<td>46,140</td>
-<td>458.86</td>
-</tr>
-<tr class="even">
-<td>Wed 10 Jan</td>
-<td>46,628</td>
-<td>461.46</td>
-</tr>
-<tr class="odd">
-<td>Thu 11 Jan</td>
-<td>46,369</td>
-<td>461.26</td>
-</tr>
-<tr class="even">
-<td>Fri 12 Jan</td>
-<td>42,853</td>
-<td>461.57</td>
-</tr>
-<tr class="odd">
-<td>Sat 13 Jan</td>
-<td>42,842</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>Sun 14 Jan</td>
-<td>41,796</td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td>Mon 15 Jan</td>
-<td>42,512</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>Tue 16 Jan</td>
-<td>43,155</td>
-<td>459.88</td>
+<td><strong>on</strong></td>
+<td>0.8%</td>
+<td>3.5%</td>
+<td>0.7%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><span class="explain">The week the US approved spot Bitcoin ETFs. Bitcoin: 12 prices. The stock market: 7 — weekends, and Monday 15 January was a US holiday.</span></p>
+<p><span class="explain">At T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token: the same answer every time.</span></p>
 </section>
-<section id="four-verbs-cover-most-of-data-work" class="slide level2">
-<h2>Four verbs cover most of data work</h2>
-<div class="bigtable">
+<section id="one-token-at-a-time" class="slide level2">
+<h2>One token at a time</h2>
+<p><strong>T = 0 (always the top knob):</strong> <em>The ECB left rates</em> unchanged at 0.5 percent in June, but the ECB</p>
+<p><strong>T = 1, three runs:</strong></p>
+<ul>
+<li><em>The ECB left rates</em> up to 32 per cent in London unchanged at 20 basis points</li>
+<li><em>The ECB left rates</em> unchanged last week down between 8 and 12 basis points. This</li>
+<li><em>The ECB left rates</em> at its previous entry level in 2005. Close to a three</li>
+</ul>
+<p><span class="explain">Each word is picked, appended, and the whole machine runs again. Nothing is looked up: “0.5 percent in June” is a number that fits, not a fact.</span></p>
+</section>
+<section id="look-inside-a-real-one" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Look inside a real one</h2>
+<p><span class="kicker">LAB · session.ipynb § 2–4</span></p>
+<ol type="1">
+<li>Attention by hand, in numpy — the table you just saw.</li>
+<li>Load GPT-2 in Colab. Your own prompt: read its top eight knobs.</li>
+<li>Generate at T = 0, then three times at T = 1. Which sentences are facts?</li>
+</ol>
+</section>
+<section id="part-4-training-at-scale-and-running-it" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 4</span> Training at scale, and running it</h2>
+</section>
+<section id="pre-training-is-compressing-the-internet" class="slide level2">
+<h2>Pre-training is compressing the internet</h2>
+
+<img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="three-stages-the-same-loop" class="slide level2">
+<h2>Three stages, the same loop</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>verb</th>
-<th>in Excel</th>
-<th>in pandas</th>
-<th>on our ten days</th>
+<th>stage</th>
+<th>the “right answer” in the loop</th>
+<th>what comes out</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>filter</strong></td>
-<td>AutoFilter</td>
-<td><code>df[df.SPY.notna()]</code></td>
-<td>keep the days the stock market traded</td>
+<td><strong>pre-training</strong></td>
+<td>the next token of internet text</td>
+<td>a base model: it continues documents</td>
 </tr>
 <tr class="even">
-<td><strong>derive</strong></td>
-<td>a formula column</td>
-<td><code>df.pct_change()</code></td>
-<td>daily returns</td>
+<td><strong>supervised fine-tuning</strong></td>
+<td>the next token of good example conversations</td>
+<td>an assistant</td>
 </tr>
 <tr class="odd">
-<td><strong>aggregate</strong></td>
-<td>a pivot table</td>
-<td><code>df.std()</code></td>
-<td>one volatility number</td>
-</tr>
-<tr class="even">
-<td><strong>join</strong></td>
-<td>VLOOKUP</td>
-<td><code>a.join(b)</code></td>
-<td>Bitcoin next to the S&amp;P 500</td>
+<td><strong>reinforcement learning</strong></td>
+<td>whatever earns a higher reward score</td>
+<td>an assistant that works problems through — “reasoning”</td>
 </tr>
 </tbody>
 </table>
-</div>
-<p><span class="explain">The assistant writes all four faster than you. Your job is to know what the result should look like before you see it.</span></p>
+<p><span class="explain">The formula never changes: <span class="math inline">w \leftarrow w - \eta \cdot</span> blame. Only what counts as right does.</span></p>
 </section>
-<section id="a-return-by-hand" class="slide level2">
-<h2>A return, by hand</h2>
-<p><span class="math display">\text{return} = \frac{\text{price today}}{\text{price yesterday}} - 1</span></p>
-<p>Monday 8 January, Bitcoin: 46,971 / 43,943 − 1 = <strong>+6.9%</strong></p>
-</section>
-<section id="riskier-by-how-much" class="slide level2">
-<h2>Riskier by how much?</h2>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>Bitcoin’s yearly volatility against the S&amp;P 500’s: twice? three times?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/w02-vol.svg" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
-</figure>
-</div>
-</div>
-</section>
-<section id="up-50-then-down-50" class="slide level2 clip" data-background-color="#000000">
-<h2>Up 50%, then down 50%</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_compounding_poster.png">
-<source src="media/w02_compounding.mp4" type="video/mp4">
-</video>
-</section>
-<section id="the-same-mistake-on-a-whole-year" class="slide level2">
-<h2>The same mistake, on a whole year</h2>
+<section id="the-box-has-a-size-and-a-price" class="slide level2">
+<h2>The box has a size, and a price</h2>
 
-<img data-src="img/w02-compounding.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
-<section id="find-the-two-errors" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Find the two errors</h2>
-<p><span class="kicker">LAB · session.ipynb § 4 — 🔍 CHECK</span></p>
-<p>The assistant wrote a cell that reports Bitcoin’s volatility and its return. It runs, and the numbers look reasonable. Two are wrong.</p>
-<p><span class="muted">Ten minutes, alone. If you find one: there is another.</span></p>
+<img data-src="img/context-window.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><span class="explain">Every token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look.</span></p>
 </section>
-<section id="part-4-two-calendars-one-join" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 4</span> Two calendars, one join</h2>
-</section>
-<section id="what-a-join-does-to-ten-days" class="slide level2 clip" data-background-color="#000000">
-<h2>What a join does to ten days</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_tendays_poster.png">
-<source src="media/w02_tendays.mp4" type="video/mp4">
-</video>
-</section>
-<section id="the-same-choice-on-four-and-a-half-years" class="slide level2">
-<h2>The same choice, on four and a half years</h2>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>Fill the stock market’s weekends with Friday’s price. Does the S&amp;P 500 look more volatile, or less?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/w02-calendars.svg" class="quarto-figure quarto-figure-center" style="width:86.0%"></p>
-</figure>
-</div>
-</div>
-</section>
-<section id="after-every-join-three-checks" class="slide level2">
-<h2>After every join, three checks</h2>
-<ol type="1">
-<li><strong>rows before and after</strong> — <code>len(a)</code>, <code>len(b)</code>, <code>len(joined)</code></li>
-<li><strong>missing values</strong> — <code>joined.isna().sum()</code></li>
-<li><strong>one row from the middle</strong> — read it</li>
-</ol>
-<p><span class="explain">The calendar is a modelling decision, not a cleaning step. The assistant always makes it — silently.</span></p>
-</section>
-<section id="part-5-units-snapshots-privacy" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 5</span> Units, snapshots, privacy</h2>
-</section>
-<section id="a-number-without-a-unit" class="slide level2">
-<h2>A number without a unit</h2>
-<p>Three daily returns, written in percent: <strong>1.2, −0.8, 0.5</strong>.</p>
+<section id="big-but-cheap-to-run" class="slide level2">
+<h2>Big, but cheap to run</h2>
+
+<img data-src="img/w02-moe.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:84.0%"></section>
+<section id="fitting-it-on-one-machine" class="slide level2">
+<h2>Fitting it on one machine</h2>
 <div class="bigtable">
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>compounded as</th>
-<th>calculation</th>
-<th>result</th>
+<th>each of 117 billion weights stored in</th>
+<th>memory needed</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>percent → decimals first</td>
-<td>1.012 × 0.992 × 1.005 − 1</td>
-<td><strong>+0.89%</strong></td>
+<td>16 bits (2 bytes)</td>
+<td>≈ 234 GB — several GPUs</td>
 </tr>
 <tr class="even">
-<td>read as decimals by mistake</td>
-<td>2.2 × 0.2 × 1.5 − 1</td>
-<td><strong>−34%</strong></td>
+<td>~4 bits (MXFP4)</td>
+<td>≈ 62 GB — one 80 GB GPU</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><span class="explain">No error, no warning. The code cannot see units; they live in the documentation, and in your head.</span></p>
+<p><span class="explain"><strong>Quantization</strong>: store each number with less precision. A little accuracy for a lot of memory.</span></p>
 </section>
-<section id="same-correlation-a-slope-off-by-100" class="slide level2">
-<h2>Same correlation, a slope off by 100</h2>
-
-<img data-src="img/w02-units.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
-<section id="a-number-without-a-snapshot-is-an-anecdote" class="slide level2">
-<h2>A number without a snapshot is an anecdote</h2>
-<p>Every number in today’s slides comes from one file:</p>
-<p><code>btc_spy_2022-01-01_2026-09-18.csv</code> — 1,722 rows, 2022-01-01 to 2026-09-18.</p>
-<ul>
-<li><strong>save the data</strong> behind every reported number, with the date in the name</li>
-<li><strong>pin the versions</strong> of your libraries</li>
-<li><strong>set the seed</strong> wherever randomness enters</li>
-</ul>
-<p><span class="explain">The test: can someone else, on another machine, get your number? If it needs you in the room, it is not a result yet.</span></p>
+<section id="part-5-what-it-cannot-do" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 5</span> What it cannot do</h2>
 </section>
-<section id="nothing-confidential-goes-into-an-ai-tool" class="slide level2 statement">
-<h2>Nothing confidential goes into an AI tool</h2>
-<p><span class="muted">Not client names, not unpublished figures, not personal data — not even “just to check the formatting”.</span></p>
+<section id="four-limits-that-follow-from-the-machine" class="slide level2">
+<h2>Four limits that follow from the machine</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>what you see</th>
+<th>why, from what we built</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a confident, invented number</td>
+<td>there is always a top knob — even when the fact was never in the data</td>
+</tr>
+<tr class="even">
+<td>no knowledge after a date</td>
+<td>the weights are frozen at the end of training</td>
+</tr>
+<tr class="odd">
+<td>knows A → B, not B → A</td>
+<td>it learned to continue text in one direction</td>
+</tr>
+<tr class="even">
+<td>bad at spelling and arithmetic</td>
+<td>it sees tokens, not letters or digits</td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Every one of these is why, from week 4, we give it documents to read and tools to call.</span></p>
+</section>
+<section id="two-piles" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Two piles</h2>
+<p><span class="kicker">LAB · session.ipynb § 5</span></p>
+<p>Ask your assistant about a real company. Split every sentence:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Verifiable</strong> — a number, a date, a name, a source you can open</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Plausible</strong> — fluent, confident, and nothing to check it against</p>
+</div></div>
+<p><span class="muted">Then check two from the left pile against the company’s own report.</span></p>
+</section>
+<section id="the-release-decoded" class="slide level2">
+<h2>The release, decoded</h2>
+<div style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef">
+<p>“Each model is a <strong>Transformer</strong> which leverages <strong>mixture-of-experts</strong> to reduce the number of <strong>active parameters</strong> needed to process input. gpt-oss-120b activates <strong>5.1B parameters per token</strong> … The models have <strong>117b</strong> and 21b <strong>total parameters</strong> …</p>
+<p>We <strong>tokenized</strong> the data using … <strong>o200k_harmony</strong> … The models were <strong>post-trained</strong> … including a <strong>supervised fine-tuning</strong> stage and a high-compute <strong>RL</strong> stage. … The weights … are freely available … and come natively <strong>quantized</strong> in MXFP4. This allows for the gpt-oss-120B model to run within <strong>80GB of memory</strong> … Available under the flexible <strong>Apache 2.0</strong> license.”</p>
+<p><span style="color:#7a7f85">Spec table: <strong>context length 128k</strong>.</span></p>
+</div>
+<p><strong>Circle again. Which words are still dark?</strong></p>
 </section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>Homework 2</strong>, due Tue 6 Oct: one question, one join, one chart whose title is the question, a one-page memo — in your Drive folder, <code>week-02/</code>.</p>
+<p><strong>Homework 2</strong>, due Tue 6 Oct, in your Drive folder <code>week-02/</code>:</p>
+<ul>
+<li>GPT-2 on three prompts of yours: the knobs, and four generations</li>
+<li>your tokenizer on English and Russian</li>
+<li>another model release, decoded word by word</li>
+<li>a first look at next week’s data: 284,807 real card payments</li>
+</ul>
 <div class="fragment">
 <p><strong>Before you leave:</strong> three lines at the bottom of the notebook, in your words.</p>
-<p><span class="muted">Next week: your tokens become the input of a model that guesses the next character — and we ask whether a model is any good.</span></p>
+<p><span class="muted">Next week: real fraud data, from the raw file to a model — and whether the model is any good.</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">

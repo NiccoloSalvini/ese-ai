@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 408" width="960" height="408" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">“The bank raised rates because it feared inflation” — measured inside the model, not drawn</text>
+  <text x="30" y="70" font-size="16" font-weight="700" fill="#363636" text-anchor="start" >GPT-2, layer 5, head 4: where “it” looks</text>
+  <text x="150" y="114" font-size="16" font-weight="700" fill="#363636" text-anchor="end" >The</text>
+  <rect x="165" y="98" width="56" height="24" fill="#2471a3" fill-opacity="0.5"/>
+  <text x="230.8" y="116" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >9%</text>
+  <text x="150" y="154" font-size="16" font-weight="700" fill="#363636" text-anchor="end" >bank</text>
+  <rect x="165" y="138" width="511" height="24" fill="#AF1F25" fill-opacity="0.9"/>
+  <text x="685.5999999999999" y="156" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >85%</text>
+  <text x="150" y="194" font-size="16" font-weight="700" fill="#363636" text-anchor="end" >raised</text>
+  <rect x="165" y="178" width="4" height="24" fill="#2471a3" fill-opacity="0.5"/>
+  <text x="179.2" y="196" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >1%</text>
+  <text x="150" y="234" font-size="16" font-weight="700" fill="#363636" text-anchor="end" >rates</text>
+  <rect x="165" y="218" width="5" height="24" fill="#2471a3" fill-opacity="0.5"/>
+  <text x="180.4" y="236" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >1%</text>
+  <text x="150" y="274" font-size="16" font-weight="700" fill="#363636" text-anchor="end" >because</text>
+  <rect x="165" y="258" width="11" height="24" fill="#2471a3" fill-opacity="0.5"/>
+  <text x="186.4" y="276" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >2%</text>
+  <text x="150" y="314" font-size="16" font-weight="700" fill="#363636" text-anchor="end" >it</text>
+  <rect x="165" y="298" width="12" height="24" fill="#2471a3" fill-opacity="0.5"/>
+  <text x="187.0" y="316" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start" >2%</text>
+  <line x1="30" y1="345" x2="930" y2="345" stroke="#e6e2d8"/>
+  <text x="30" y="372" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >A real model has 12 layers × 12 heads = 144 of these, each looking for something different. Nobody programmed this one:</text>
+  <text x="30" y="394" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >it was learned, by the same nudge, because resolving “it” helps guess the next token.</text>
+</svg>
