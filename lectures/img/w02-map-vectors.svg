@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">a GPT, the architecture of every current LLM — a network from last week, plus attention</text>
+  <text x="110" y="70" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >The</text>
+  <rect x="70" y="82" width="80" height="30" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="110" y="102" font-size="13" font-weight="700" fill="#b9b4a8" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">464</text>
+  <line x1="110" y1="114" x2="110" y2="132" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="110,132 106.5,123.7 113.5,123.7" fill="#7a7f85"/>
+  <rect x="70" y="134" width="80" height="30" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="110" y="154" font-size="13" font-weight="700" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="215" y="70" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >ECB</text>
+  <rect x="175" y="82" width="80" height="30" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="215" y="102" font-size="13" font-weight="700" fill="#b9b4a8" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">36285</text>
+  <line x1="215" y1="114" x2="215" y2="132" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="215,132 211.5,123.7 218.5,123.7" fill="#7a7f85"/>
+  <rect x="175" y="134" width="80" height="30" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="215" y="154" font-size="13" font-weight="700" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="320" y="70" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >left</text>
+  <rect x="280" y="82" width="80" height="30" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="320" y="102" font-size="13" font-weight="700" fill="#b9b4a8" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">1364</text>
+  <line x1="320" y1="114" x2="320" y2="132" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="320,132 316.5,123.7 323.5,123.7" fill="#7a7f85"/>
+  <rect x="280" y="134" width="80" height="30" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="320" y="154" font-size="13" font-weight="700" fill="#2471a3" text-anchor="middle" >vector</text>
+  <text x="425" y="70" font-size="17" font-weight="700" fill="#363636" text-anchor="middle" >rates</text>
+  <rect x="385" y="82" width="80" height="30" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="425" y="102" font-size="13" font-weight="700" fill="#b9b4a8" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">3965</text>
+  <line x1="425" y1="114" x2="425" y2="132" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="425,132 421.5,123.7 428.5,123.7" fill="#7a7f85"/>
+  <rect x="385" y="134" width="80" height="30" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="425" y="154" font-size="13" font-weight="700" fill="#2471a3" text-anchor="middle" >vector</text>
+  <rect x="50" y="184" width="440" height="124" fill="#f7f5ef" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="66" y="204" font-size="11" font-weight="700" fill="#b9b4a8" text-anchor="start" letter-spacing="1.2">ONE BLOCK</text>
+  <rect x="66" y="214" width="408" height="38" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="270" y="238" font-size="15" font-weight="700" fill="#b9b4a8" text-anchor="middle" >attention — tokens read each other</text>
+  <rect x="66" y="260" width="408" height="38" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="270" y="284" font-size="15" font-weight="700" fill="#b9b4a8" text-anchor="middle" >neurons — each token thinks on its own</text>
+  <text x="270" y="330" font-size="15" font-weight="700" fill="#b9b4a8" text-anchor="middle" >× 12 in GPT-2 · × 36 in gpt-oss</text>
+  <line x1="270" y1="338" x2="270" y2="360" stroke="#d9d4c7" stroke-width="1.8"/>
+  <polygon points="270,360 266.5,351.7 273.5,351.7" fill="#d9d4c7"/>
+  <rect x="50" y="362" width="440" height="38" fill="#fff" stroke="#d9d4c7" stroke-width="2"/>
+  <text x="270" y="386" font-size="15" font-weight="700" fill="#b9b4a8" text-anchor="middle" >the knobs — a score for each of 50,257 pieces</text>
+  <text x="530" y="102" font-size="15" font-weight="400" fill="#b9b4a8" text-anchor="start" >① tokens</text>
+  <text x="530" y="120" font-size="13" font-weight="400" fill="#b9b4a8" text-anchor="start" font-style="italic">“tokenized … o200k”</text>
+  <text x="530" y="154" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >② vectors: a place on the map</text>
+  <text x="530" y="238" font-size="15" font-weight="400" fill="#b9b4a8" text-anchor="start" >③ attention</text>
+  <text x="530" y="256" font-size="13" font-weight="400" fill="#b9b4a8" text-anchor="start" font-style="italic">“Transformer”</text>
+  <text x="530" y="284" font-size="15" font-weight="400" fill="#b9b4a8" text-anchor="start" >④ neurons: most of the parameters live here</text>
+  <text x="530" y="302" font-size="13" font-weight="400" fill="#b9b4a8" text-anchor="start" font-style="italic">“117b” · “MoE”</text>
+  <text x="530" y="386" font-size="15" font-weight="400" fill="#b9b4a8" text-anchor="start" >⑤ knobs: pick one, append, repeat</text>
+  <text x="530" y="404" font-size="13" font-weight="400" fill="#b9b4a8" text-anchor="start" font-style="italic">“temperature”</text>
+</svg>

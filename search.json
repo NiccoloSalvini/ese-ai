@@ -480,7 +480,7 @@
     "href": "lectures/02-pair-programmer.html#today",
     "title": "Inside an LLM",
     "section": "Today",
-    "text": "Today\n\n\n\n\n\n\n\n10:00\nlast week · your homework: the question, and the three pitch sentences\n\n\n10:20\nthe release again — today, one bold word at a time\n\n\n10:30\n“117b parameters”: finishing the network\n\n\n10:50\n“Transformer”: the same machine, on text · tokens · meaning as a place\n\n\n11:05\nbreak\n\n\n11:15\n“Transformer”, inside: attention, the block, the knobs, temperature\n\n\n12:00\n“post-trained, SFT, RL”: how a model is made\n\n\n12:25\n“MoE · quantized · 128k · Apache 2.0”: what it costs to run, and who owns it\n\n\n12:40\nwhat it cannot do · the release, decoded · homework"
+    "text": "Today\n\n\n\n\n\n\n\n10:00\nlast week · your homework\n\n\n10:20\nthe question changes: from “fraud?” to “which word next?”\n\n\n10:40\nopen the box: the architecture of a GPT · tokens · vectors\n\n\n11:05\nbreak\n\n\n11:15\nattention · neurons · the knobs\n\n\n12:00\nwhere the 117 billion numbers live — and what they cost\n\n\n12:15\nhow the numbers get their values: three stages of training\n\n\n12:40\nwho owns it · what it cannot do · the release, decoded"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#last-week-in-one-slide",
@@ -508,56 +508,14 @@
     "href": "lectures/02-pair-programmer.html#back-to-the-release",
     "title": "Inside an LLM",
     "section": "Back to the release",
-    "text": "Back to the release\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nSpec table: context length 128k.\n\nLast week we named every bold word. Today we open each one — in the order the machine needs them."
+    "text": "Back to the release\n\n“Each model is a Transformer which leverages mixture-of-experts to reduce the number of active parameters needed to process input. gpt-oss-120b activates 5.1B parameters per token … The models have 117b and 21b total parameters …\nWe tokenized the data using … o200k_harmony … The models were post-trained … including a supervised fine-tuning stage and a high-compute RL stage. … The weights … are freely available … and come natively quantized in MXFP4. This allows for the gpt-oss-120B model to run within 80GB of memory … Available under the flexible Apache 2.0 license.”\nSpec table: context length 128k.\n\nLast week we named every bold word. Today we build the machine they describe — a network from last week, plus one new idea — and each word will find its place in it."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#todays-map",
-    "href": "lectures/02-pair-programmer.html#todays-map",
+    "objectID": "lectures/02-pair-programmer.html#part-1-an-llm-is-last-weeks-network-the-question-changes",
+    "href": "lectures/02-pair-programmer.html#part-1-an-llm-is-last-weeks-network-the-question-changes",
     "title": "Inside an LLM",
-    "section": "Today’s map",
-    "text": "Today’s map\n\n\n\n\n\n\n\n\nin the release\nwhat it answers for you\ntoday\n\n\n\n\n117b total parameters\nhow big is it — and what is a parameter?\nPart 1\n\n\nTransformer · tokenized\nwhat happens between your prompt and its answer?\nParts 2–3\n\n\npost-trained · SFT · RL\nhow did it become an assistant — and what does “reasoning” mean?\nPart 4\n\n\nMoE · 5.1B active · quantized · 80GB\nwhat does it cost to run?\nPart 5\n\n\ncontext 128k\nhow much can it read at once — and at what price?\nPart 5\n\n\nApache 2.0\nwho owns it, and what may you do with it?\nPart 5\n\n\n\nEach of these is also a question you can ask a vendor."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#part-1-117b-total-parameters-finishing-the-network",
-    "href": "lectures/02-pair-programmer.html#part-1-117b-total-parameters-finishing-the-network",
-    "title": "Inside an LLM",
-    "section": "Part 1 · “117b total parameters” Finishing the network",
-    "text": "Part 1 · “117b total parameters” Finishing the network"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#the-learning-rate",
-    "href": "lectures/02-pair-programmer.html#the-learning-rate",
-    "title": "Inside an LLM",
-    "section": "The learning rate",
-    "text": "The learning rate\n\n\n\nAdd payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect. Too small a step crawls; too large jumps over the best answer."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#how-every-network-learns",
-    "href": "lectures/02-pair-programmer.html#how-every-network-learns",
-    "title": "Inside an LLM",
-    "section": "How every network learns",
-    "text": "How every network learns"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#a-pattern-one-neuron-cannot-draw",
-    "href": "lectures/02-pair-programmer.html#a-pattern-one-neuron-cannot-draw",
-    "title": "Inside an LLM",
-    "section": "A pattern one neuron cannot draw",
-    "text": "A pattern one neuron cannot draw"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
-    "href": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
-    "title": "Inside an LLM",
-    "section": "From 4 numbers to 117 billion",
-    "text": "From 4 numbers to 117 billion"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#part-2-transformer-the-same-machine-on-text",
-    "href": "lectures/02-pair-programmer.html#part-2-transformer-the-same-machine-on-text",
-    "title": "Inside an LLM",
-    "section": "Part 2 · “Transformer” The same machine, on text",
-    "text": "Part 2 · “Transformer” The same machine, on text"
+    "section": "Part 1 · an LLM is last week’s network The question changes",
+    "text": "Part 1 · an LLM is last week’s network The question changes"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#an-llm-is-the-same-machine",
@@ -567,25 +525,74 @@
     "text": "An LLM is the same machine"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-same-nudge-on-text",
-    "href": "lectures/02-pair-programmer.html#the-same-nudge-on-text",
-    "title": "Inside an LLM",
-    "section": "The same nudge, on text",
-    "text": "The same nudge, on text\n\n\n\nA mixer: one knob per possible next token. Each sentence turns the right knob up a little — the step we took on payment E."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#where-the-knobs-end-up",
-    "href": "lectures/02-pair-programmer.html#where-the-knobs-end-up",
-    "title": "Inside an LLM",
-    "section": "Where the knobs end up",
-    "text": "Where the knobs end up"
-  },
-  {
     "objectID": "lectures/02-pair-programmer.html#a-real-models-knobs",
     "href": "lectures/02-pair-programmer.html#a-real-models-knobs",
     "title": "Inside an LLM",
     "section": "A real model’s knobs",
     "text": "A real model’s knobs\n\n\n\n\n\n\n\nBet\n\n\nAfter “The ECB left rates”, how sure is a real model that the next word is “unchanged”?"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#writing-is-picking-again-and-again",
+    "href": "lectures/02-pair-programmer.html#writing-is-picking-again-and-again",
+    "title": "Inside an LLM",
+    "section": "Writing is picking, again and again",
+    "text": "Writing is picking, again and again"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#part-2-transformer-open-the-box",
+    "href": "lectures/02-pair-programmer.html#part-2-transformer-open-the-box",
+    "title": "Inside an LLM",
+    "section": "Part 2 · “Transformer” Open the box",
+    "text": "Part 2 · “Transformer” Open the box"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#a-sentence-through-a-gpt",
+    "href": "lectures/02-pair-programmer.html#a-sentence-through-a-gpt",
+    "title": "Inside an LLM",
+    "section": "A sentence, through a GPT",
+    "text": "A sentence, through a GPT"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#the-map-for-the-rest-of-the-morning",
+    "href": "lectures/02-pair-programmer.html#the-map-for-the-rest-of-the-morning",
+    "title": "Inside an LLM",
+    "section": "The map for the rest of the morning",
+    "text": "The map for the rest of the morning\n\nFive boxes. The neurons you know from last week; attention is the one new idea. Each box is a word of the release."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#tokens",
+    "href": "lectures/02-pair-programmer.html#tokens",
+    "title": "Inside an LLM",
+    "section": "① Tokens",
+    "text": "① Tokens\n\nThe text is cut into pieces, and each piece becomes a number. The model never sees a word."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for",
+    "href": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for",
+    "title": "Inside an LLM",
+    "section": "Tokens are what you pay for",
+    "text": "Tokens are what you pay for\n\n\n\n\nsame sentence\nwords\ntokens\n\n\n\n\nThe ECB left rates unchanged at 2%.\n7\n9\n\n\nЕЦБ оставил ставки без изменений на уровне 2%.\n8\n13\n\n\n\n\nThe pieces are learned from mostly English text, so English is cheap. Same meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. How the pieces are learned, and your own texts: session.ipynb § 1."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#vectors",
+    "href": "lectures/02-pair-programmer.html#vectors",
+    "title": "Inside an LLM",
+    "section": "② Vectors",
+    "text": "② Vectors\n\nEach token becomes a list of numbers — 768 in GPT-2. Read them as coordinates: a place on a map of meaning."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#meaning-becomes-a-place",
+    "href": "lectures/02-pair-programmer.html#meaning-becomes-a-place",
+    "title": "Inside an LLM",
+    "section": "Meaning becomes a place",
+    "text": "Meaning becomes a place\nEach token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#one-place-per-word-is-not-enough",
+    "href": "lectures/02-pair-programmer.html#one-place-per-word-is-not-enough",
+    "title": "Inside an LLM",
+    "section": "One place per word is not enough",
+    "text": "One place per word is not enough\n\n\n“She sat on the river bank.”\n\n“The bank raised rates because it feared inflation.”\n\nOn the map, “bank” has one place — the same in both sentences. And “it” has a place that means nothing at all. A word’s meaning depends on its neighbours: the vectors must be allowed to move once they see the sentence. That is the next box."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#break-ten-minutes.",
@@ -595,53 +602,18 @@
     "text": "Break — ten minutes."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-3-transformer-tokenized-inside",
-    "href": "lectures/02-pair-programmer.html#part-3-transformer-tokenized-inside",
+    "objectID": "lectures/02-pair-programmer.html#attention",
+    "href": "lectures/02-pair-programmer.html#attention",
     "title": "Inside an LLM",
-    "section": "Part 3 · “Transformer”, “tokenized” Inside",
-    "text": "Part 3 · “Transformer”, “tokenized” Inside"
+    "section": "③ Attention",
+    "text": "③ Attention\n\nEvery vector looks at the others and moves towards the ones that matter to it. The one new idea since last week."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#one-prediction-end-to-end",
-    "href": "lectures/02-pair-programmer.html#one-prediction-end-to-end",
+    "objectID": "lectures/02-pair-programmer.html#a-word-reads-the-room",
+    "href": "lectures/02-pair-programmer.html#a-word-reads-the-room",
     "title": "Inside an LLM",
-    "section": "One prediction, end to end",
-    "text": "One prediction, end to end\n\nFive steps, one at a time for the rest of the morning: tokens → vectors → attention → the block, stacked → the knobs."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#tokens-how-a-tokenizer-is-learned",
-    "href": "lectures/02-pair-programmer.html#tokens-how-a-tokenizer-is-learned",
-    "title": "Inside an LLM",
-    "section": "1 · Tokens: how a tokenizer is learned",
-    "text": "1 · Tokens: how a tokenizer is learned\nFind the pair of symbols that appears most often; give it a name; repeat.\n\n\n\nmerge\npair seen most often\ntimes\nnew piece\ntext length\n\n\n\n\nstart\n\n\n\n127\n\n\n1\na + n\n6\nan\n121\n\n\n2\ns + _\n5\ns_\n116\n\n\n3\ne + _\n4\ne_\n112\n\n\n4\nr + a\n4\nra\n108\n\n\n5\nra + t\n4\nrat\n104\n\n\n6\nrat + e\n4\nrate\n100\n\n\n7\nrate + s_\n4\nrates_\n96\n\n\n8\nt + h\n3\nth\n93\n\n\n\nOn a text about rates, rates_ becomes one piece after seven merges. Trained mostly on English, a tokenizer learns English pieces — so Russian costs more."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#your-tiny-llm-piece-1",
-    "href": "lectures/02-pair-programmer.html#your-tiny-llm-piece-1",
-    "title": "Inside an LLM",
-    "section": "Your tiny LLM, piece 1",
-    "text": "Your tiny LLM, piece 1\nLAB · session.ipynb § 1\n\nRun the merges on the text about rates. Check the table.\nPaste a paragraph of your own — English, then Russian. 30 merges each.\nHow many symbols per word, in each language?"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for",
-    "href": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for",
-    "title": "Inside an LLM",
-    "section": "Tokens are what you pay for",
-    "text": "Tokens are what you pay for\n\n\n\n\nsame sentence\nwords\ntokens\n\n\n\n\nThe ECB left rates unchanged at 2%.\n7\n9\n\n\nЕЦБ оставил ставки без изменений на уровне 2%.\n8\n13\n\n\n\n\nSame meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. Price lists are per million tokens, never per word. Try it: session.ipynb § 1."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#vectors-meaning-becomes-a-place",
-    "href": "lectures/02-pair-programmer.html#vectors-meaning-becomes-a-place",
-    "title": "Inside an LLM",
-    "section": "2 · Vectors: meaning becomes a place",
-    "text": "2 · Vectors: meaning becomes a place\nEach token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#attention-a-word-reads-the-room",
-    "href": "lectures/02-pair-programmer.html#attention-a-word-reads-the-room",
-    "title": "Inside an LLM",
-    "section": "3 · Attention: a word reads the room",
-    "text": "3 · Attention: a word reads the room\nOn the last slide, “bank” has one place on the map — the same in “the river bank” and “the bank raised rates”. Half the time, that is wrong.\nAttention fixes it. Before going on, every word looks at the other words in the sentence and borrows meaning from the ones that matter to it.\nAs you do in a meeting: someone says “it”, you glance round the table at who “it” could be, and listen most to them.\n\n\n\n\n\n\n\nBet\n\n\n“The bank raised rates because it …” — of everything “it” borrows, what share comes from “bank”?"
+    "section": "A word reads the room",
+    "text": "A word reads the room\nBefore going on, every word looks at the other words in the sentence and borrows meaning from the ones that matter to it — its vector moves on the map.\nAs you do in a meeting: someone says “it”, you glance round the table at who “it” could be, and listen most to them.\n\n\n\n\n\n\n\nBet\n\n\n“The bank raised rates because it …” — of everything “it” borrows, what share comes from “bank”?"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#attention-slowly",
@@ -655,7 +627,7 @@
     "href": "lectures/02-pair-programmer.html#the-same-as-a-table",
     "title": "Inside an LLM",
     "section": "The same, as a table",
-    "text": "The same, as a table\n\nNothing new: relevance is multiply-and-add, a neuron; share is the same squash as the knobs. Run it: session.ipynb § 2."
+    "text": "The same, as a table\n\nRead it left to right. Score: how well “it”’s question matches each word — multiply and add, a neuron. Attention: scores turned into shares of 100%, the same squash as the knobs. Value: what each word hands over. “It” ends up with 70% of “bank”. Run it: session.ipynb § 2."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#and-inside-a-real-model",
@@ -665,18 +637,39 @@
     "text": "And inside a real model\n\nNobody told GPT-2 to link “it” to “bank”: the weights found it, like the red flags. GPT-2 asks 12 such questions at once, in each of 12 layers.\nVaswani et al., Attention Is All You Need, 2017 — the paper behind every model since."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-transformer-one-block-stacked",
-    "href": "lectures/02-pair-programmer.html#the-transformer-one-block-stacked",
+    "objectID": "lectures/02-pair-programmer.html#neurons",
+    "href": "lectures/02-pair-programmer.html#neurons",
     "title": "Inside an LLM",
-    "section": "4 · The transformer: one block, stacked",
-    "text": "4 · The transformer: one block, stacked"
+    "section": "④ Neurons",
+    "text": "④ Neurons\n\nAfter attention, each token goes through an ordinary network — last week’s, on its own. Most of the 117 billion numbers live here."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-knobs-and-how-boldly-it-picks",
-    "href": "lectures/02-pair-programmer.html#the-knobs-and-how-boldly-it-picks",
+    "objectID": "lectures/02-pair-programmer.html#what-the-neurons-add-questions-nobody-wrote",
+    "href": "lectures/02-pair-programmer.html#what-the-neurons-add-questions-nobody-wrote",
     "title": "Inside an LLM",
-    "section": "5 · The knobs, and how boldly it picks",
-    "text": "5 · The knobs, and how boldly it picks\nTemperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:\n\n\n\n\nnext token\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n83.9%\n37.1%\n2.4%\n\n\nat\n10.2%\n13.0%\n1.4%\n\n\nlow\n2.7%\n6.7%\n1.0%\n\n\nin\n1.0%\n4.1%\n0.8%\n\n\non\n0.8%\n3.5%\n0.7%\n\n\n\n\nAt T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token: the same answer every time."
+    "section": "What the neurons add: questions nobody wrote",
+    "text": "What the neurons add: questions nobody wrote\n\nIn an LLM the neurons invent questions too — about grammar, meaning, facts."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#one-block-stacked",
+    "href": "lectures/02-pair-programmer.html#one-block-stacked",
+    "title": "Inside an LLM",
+    "section": "One block, stacked",
+    "text": "One block, stacked\n\nAttention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a Transformer."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#the-knobs",
+    "href": "lectures/02-pair-programmer.html#the-knobs",
+    "title": "Inside an LLM",
+    "section": "⑤ The knobs",
+    "text": "⑤ The knobs\n\nThe last token’s vector becomes a score for every possible next piece. Pick one, append it, run the whole stack again."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#how-boldly-it-picks-temperature",
+    "href": "lectures/02-pair-programmer.html#how-boldly-it-picks-temperature",
+    "title": "Inside an LLM",
+    "section": "How boldly it picks: temperature",
+    "text": "How boldly it picks: temperature\nTemperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:\n\n\n\n\nnext token\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n83.9%\n37.1%\n2.4%\n\n\nat\n10.2%\n13.0%\n1.4%\n\n\nlow\n2.7%\n6.7%\n1.0%\n\n\nin\n1.0%\n4.1%\n0.8%\n\n\non\n0.8%\n3.5%\n0.7%\n\n\n\n\nAt T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token: the same answer every time."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#one-token-at-a-time",
@@ -693,11 +686,60 @@
     "text": "Look inside a real one\nLAB · session.ipynb § 2–4\n\nAttention by hand, in numpy — the table you just saw.\nLoad GPT-2 in Colab. Your own prompt: read its top eight knobs.\nGenerate at T = 0, then three times at T = 1. Which sentences are facts?"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-4-post-trained-sft-rl-how-a-model-is-made",
-    "href": "lectures/02-pair-programmer.html#part-4-post-trained-sft-rl-how-a-model-is-made",
+    "objectID": "lectures/02-pair-programmer.html#part-3-117b-moe-5.1b-active-quantized-where-the-117-billion-numbers-live",
+    "href": "lectures/02-pair-programmer.html#part-3-117b-moe-5.1b-active-quantized-where-the-117-billion-numbers-live",
     "title": "Inside an LLM",
-    "section": "Part 4 · “post-trained”, “SFT”, “RL” How a model is made",
-    "text": "Part 4 · “post-trained”, “SFT”, “RL” How a model is made"
+    "section": "Part 3 · “117b”, “MoE”, “5.1B active”, “quantized” Where the 117 billion numbers live",
+    "text": "Part 3 · “117b”, “MoE”, “5.1B active”, “quantized” Where the 117 billion numbers live"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
+    "href": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
+    "title": "Inside an LLM",
+    "section": "From 4 numbers to 117 billion",
+    "text": "From 4 numbers to 117 billion"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#big-but-cheap-to-run",
+    "href": "lectures/02-pair-programmer.html#big-but-cheap-to-run",
+    "title": "Inside an LLM",
+    "section": "Big, but cheap to run",
+    "text": "Big, but cheap to run"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#fitting-it-on-one-machine",
+    "href": "lectures/02-pair-programmer.html#fitting-it-on-one-machine",
+    "title": "Inside an LLM",
+    "section": "Fitting it on one machine",
+    "text": "Fitting it on one machine\n\n\n\n\neach of 117 billion weights stored in\nmemory needed\n\n\n\n\n16 bits (2 bytes)\n≈ 234 GB — several GPUs\n\n\n~4 bits (MXFP4)\n≈ 62 GB — one 80 GB GPU\n\n\n\n\nQuantization: store each number with less precision. A little accuracy for a lot of memory."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#part-4-post-trained-sft-rl-how-the-numbers-get-their-values",
+    "href": "lectures/02-pair-programmer.html#part-4-post-trained-sft-rl-how-the-numbers-get-their-values",
+    "title": "Inside an LLM",
+    "section": "Part 4 · “post-trained”, “SFT”, “RL” How the numbers get their values",
+    "text": "Part 4 · “post-trained”, “SFT”, “RL” How the numbers get their values"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#how-every-network-learns",
+    "href": "lectures/02-pair-programmer.html#how-every-network-learns",
+    "title": "Inside an LLM",
+    "section": "How every network learns",
+    "text": "How every network learns"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#the-learning-rate",
+    "href": "lectures/02-pair-programmer.html#the-learning-rate",
+    "title": "Inside an LLM",
+    "section": "The learning rate",
+    "text": "The learning rate\n\n\n\nAdd payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect. Too small a step crawls; too large jumps over the best answer."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#training-turns-counts-into-knobs",
+    "href": "lectures/02-pair-programmer.html#training-turns-counts-into-knobs",
+    "title": "Inside an LLM",
+    "section": "Training turns counts into knobs",
+    "text": "Training turns counts into knobs\nFive sentences in the training text, all ending “… left rates”, then:\n\n\n\n\nnext word\ntimes in the text\nshare\nthe knob, after 40 passes\n\n\n\n\nunchanged\n3 of 5\n60%\n61%\n\n\nat\n1 of 5\n20%\n21%\n\n\nsteady\n1 of 5\n20%\n17%\n\n\nhigher, lower\nnever\n0%\n1%\n\n\n\n\nNobody set the knobs: the loop nudged them until they matched how often each word follows this context. On trillions of tokens, that is pre-training."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#pre-training-is-compressing-the-internet",
@@ -711,14 +753,14 @@
     "href": "lectures/02-pair-programmer.html#stage-1-pre-training-read-guess-nudge",
     "title": "Inside an LLM",
     "section": "Stage 1 · Pre-training: read, guess, nudge",
-    "text": "Stage 1 · Pre-training: read, guess, nudge\n\n\nThe loop: take a piece of text, hide the next token, guess, nudge every weight. Repeat.\nThe data: “a text-only dataset with trillions of tokens, with a focus on STEM, coding, and general knowledge. Knowledge cutoff: June 2024.”\nThe bill: 2.1 million H100-hours — about a thousand top GPUs for three months.\n\n\n\n\n\n\n\n\nBet\n\n\nWhat comes out is a base model. Ask it “What is the capital of France?” Does it answer?\n\n\n\n\n\nQuotes and numbers: the gpt-oss model card, OpenAI, August 2025."
+    "text": "Stage 1 · Pre-training: read, guess, nudge\n\n\nThe loop: take a piece of text, hide the next token, guess, nudge every weight. Repeat.\nThe data: “a text-only dataset with trillions of tokens, with a focus on STEM, coding, and general knowledge. Knowledge cutoff: June 2024.”\nThe bill: 2.1 million H100-hours — about a thousand top GPUs for three months.\n\n\n\n\n\n\n\n\nBet\n\n\nWhat comes out is a base model. Ask it “Should I buy Bitcoin today?” What does it write?\n\n\n\n\n\nQuotes and numbers: the gpt-oss model card, OpenAI, August 2025."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#a-base-model-is-not-an-assistant",
-    "href": "lectures/02-pair-programmer.html#a-base-model-is-not-an-assistant",
+    "objectID": "lectures/02-pair-programmer.html#same-model-before-and-after-post-training",
+    "href": "lectures/02-pair-programmer.html#same-model-before-and-after-post-training",
     "title": "Inside an LLM",
-    "section": "A base model is not an assistant",
-    "text": "A base model is not an assistant\nLAB · session.ipynb § 4\nGPT-2 is only pre-trained: a base model. Before you run the cell, write down: does it answer “What is the capital of France?”\nIt does not answer — it continues a document. On the internet a question is often followed by more questions: a quiz, a forum, an exam paper. That is what it writes."
+    "section": "Same model, before and after post-training",
+    "text": "Same model, before and after post-training\n\n\n\nTry it yourself, both models: session.ipynb § 4."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#stage-2-supervised-fine-tuning-imitate-good-conversations",
@@ -742,11 +784,11 @@
     "text": "Three stages, the same loop\n\n\n\n\n\n\n\n\nstage\nthe “right answer” in the loop\nwhat comes out\n\n\n\n\npre-training\nthe next token of internet text\na base model: it continues documents\n\n\nsupervised fine-tuning\nthe next token of good example conversations\nan assistant\n\n\nreinforcement learning\nwhatever earns a higher reward score\nan assistant that works problems through — “reasoning”\n\n\n\nThe formula never changes: w \\leftarrow w - \\eta \\cdot blame. Only what counts as right does."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#part-5-moe-quantized-128k-apache-2.0-what-it-costs-to-run-and-who-owns-it",
-    "href": "lectures/02-pair-programmer.html#part-5-moe-quantized-128k-apache-2.0-what-it-costs-to-run-and-who-owns-it",
+    "objectID": "lectures/02-pair-programmer.html#part-5-128k-apache-2.0-running-it-and-owning-it",
+    "href": "lectures/02-pair-programmer.html#part-5-128k-apache-2.0-running-it-and-owning-it",
     "title": "Inside an LLM",
-    "section": "Part 5 · “MoE”, “quantized”, “128k”, “Apache 2.0” What it costs to run, and who owns it",
-    "text": "Part 5 · “MoE”, “quantized”, “128k”, “Apache 2.0” What it costs to run, and who owns it"
+    "section": "Part 5 · “128k”, “Apache 2.0” Running it, and owning it",
+    "text": "Part 5 · “128k”, “Apache 2.0” Running it, and owning it"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#the-box-has-a-size-and-a-price",
@@ -754,20 +796,6 @@
     "title": "Inside an LLM",
     "section": "The box has a size, and a price",
     "text": "The box has a size, and a price\n\nEvery token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look."
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#big-but-cheap-to-run",
-    "href": "lectures/02-pair-programmer.html#big-but-cheap-to-run",
-    "title": "Inside an LLM",
-    "section": "Big, but cheap to run",
-    "text": "Big, but cheap to run"
-  },
-  {
-    "objectID": "lectures/02-pair-programmer.html#fitting-it-on-one-machine",
-    "href": "lectures/02-pair-programmer.html#fitting-it-on-one-machine",
-    "title": "Inside an LLM",
-    "section": "Fitting it on one machine",
-    "text": "Fitting it on one machine\n\n\n\n\neach of 117 billion weights stored in\nmemory needed\n\n\n\n\n16 bits (2 bytes)\n≈ 234 GB — several GPUs\n\n\n~4 bits (MXFP4)\n≈ 62 GB — one 80 GB GPU\n\n\n\n\nQuantization: store each number with less precision. A little accuracy for a lot of memory."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#open-weights-apache-2.0-who-owns-it",
@@ -1138,7 +1166,7 @@
     "href": "week-02/session.html#temperature-and-one-token-at-a-time",
     "title": "Week 2 — Inside an LLM",
     "section": "4. Temperature, and one token at a time",
-    "text": "4. Temperature, and one token at a time\n\nprompt = \"The ECB left rates\"\nids = tok(prompt, return_tensors=\"pt\").input_ids\n\nout = model.generate(ids, max_new_tokens=12, do_sample=False, pad_token_id=tok.eos_token_id)\nprint(\"T = 0  :\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nfor T in [1.0, 1.0, 1.0, 2.0]:\n    out = model.generate(ids, max_new_tokens=12, do_sample=True, temperature=T, top_k=0, pad_token_id=tok.eos_token_id)\n    print(f\"T = {T}:\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nA base model is not an assistant. GPT-2 was only pre-trained. Bet first: does it answer?\n\nq = \"What is the capital of France?\"ids_q = tok(q, return_tensors=\"pt\").input_idsout = model.generate(ids_q, max_new_tokens=30, do_sample=False, pad_token_id=tok.eos_token_id)print(q + tok.decode(out[0][ids_q.shape[1]:]))\n\n🔍 CHECK. Which of these sentences contain a number? Is any of those numbers a fact? How would you find out?"
+    "text": "4. Temperature, and one token at a time\n\nprompt = \"The ECB left rates\"\nids = tok(prompt, return_tensors=\"pt\").input_ids\n\nout = model.generate(ids, max_new_tokens=12, do_sample=False, pad_token_id=tok.eos_token_id)\nprint(\"T = 0  :\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nfor T in [1.0, 1.0, 1.0, 2.0]:\n    out = model.generate(ids, max_new_tokens=12, do_sample=True, temperature=T, top_k=0, pad_token_id=tok.eos_token_id)\n    print(f\"T = {T}:\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nA base model is not an assistant. GPT-2 was only pre-trained. Bet first: does it answer?\n\nq = \"What is the capital of France?\"ids_q = tok(q, return_tensors=\"pt\").input_idsout = model.generate(ids_q, max_new_tokens=30, do_sample=False, pad_token_id=tok.eos_token_id)print(q + tok.decode(out[0][ids_q.shape[1]:]))\n\nSame model, before and after post-training. Qwen2.5-0.5B and its Instruct version: bet first — what will each write?\n\nfrom transformers import AutoModelForCausalLM, AutoTokenizerquestion = \"Should I buy Bitcoin today?\"    # try \"What is the capital of France?\" toofor name in [\"Qwen/Qwen2.5-0.5B\", \"Qwen/Qwen2.5-0.5B-Instruct\"]:    # about 1 GB each, first run only    t = AutoTokenizer.from_pretrained(name)    m = AutoModelForCausalLM.from_pretrained(name)    if \"Instruct\" in name:                  # the assistant expects a conversation        text = t.apply_chat_template([{\"role\": \"user\", \"content\": question}], tokenize=False, add_generation_prompt=True)    else:                                   # the base model just continues the text        text = question    ids = t(text, return_tensors=\"pt\").input_ids    out = m.generate(ids, max_new_tokens=40, do_sample=False, pad_token_id=t.eos_token_id)    print(f\"--- {name}\\n{t.decode(out[0][ids.shape[1]:], skip_special_tokens=True)}\\n\")\n\n🔍 CHECK. Which of these sentences contain a number? Is any of those numbers a fact? How would you find out?"
   },
   {
     "objectID": "week-02/session.html#meaning-as-a-place",
