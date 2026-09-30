@@ -524,6 +524,10 @@ Niccolò Salvini, PhD
 
 <img data-src="img/w02-map.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"><p><span class="explain">Five boxes. The neurons you know from last week; attention is the one new idea. Each box is a word of the release.</span></p>
 </section>
+<section id="the-real-thing-gpt-2-every-layer" class="slide level2">
+<h2>The real thing: GPT-2, every layer</h2>
+
+<img data-src="img/w02-gpt2.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="tokens" class="slide level2">
 <h2>① Tokens</h2>
 
@@ -550,20 +554,34 @@ Niccolò Salvini, PhD
 
 <img data-src="img/w02-map-vectors.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"><p><span class="explain">Each token becomes a list of numbers — 768 in GPT-2. Read them as coordinates: a place on a map of meaning.</span></p>
 </section>
-<section id="meaning-becomes-a-place" class="slide level2">
-<h2>Meaning becomes a place</h2>
+<section id="how-the-map-is-built" class="slide level2">
+<h2>How the map is built</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" playsinline="" preload="auto" poster="media/w02_embed_white_poster.png">
+<source src="media/w02_embed_white.mp4" type="video/mp4">
+</video>
+</section>
+<section id="the-recipe" class="slide level2">
+<h2>The recipe</h2>
+<ol type="1">
+<li>Every word starts at a random place.</li>
+<li>Guess which words appear near it; see how wrong; nudge its place — last week’s loop.</li>
+<li>Repeat on the whole text.</li>
+</ol>
+<p><span class="explain">Words that keep the same company end up close. That list of numbers — its place — is the word’s <strong>embedding</strong>. Nobody draws the map; the text does.</span></p>
+</section>
+<section id="a-real-map-gpt-2s-own" class="slide level2">
+<h2>A real map: GPT-2’s own</h2>
 <p>Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight.</p>
 
 <img data-src="img/w02-embed.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="step-②-for-real" class="slide level2">
+<h2>Step ② for real</h2>
+
+<img data-src="img/w02-calc-embed.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="one-place-per-word-is-not-enough" class="slide level2">
 <h2>One place per word is not enough</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><em>“She sat on the river <strong>bank</strong>.”</em></p>
-</div><div class="column" style="width:50%;">
-<p><em>“The <strong>bank</strong> raised rates because <strong>it</strong> feared inflation.”</em></p>
-</div></div>
-<p><span class="explain">On the map, “bank” has one place — the same in both sentences. And “it” has a place that means nothing at all. A word’s meaning depends on its neighbours: the vectors must be allowed to <strong>move</strong> once they see the sentence. That is the next box.</span></p>
+<p><em>“The <strong>bank</strong> raised rates.”</em> · <em>“The river flooded the <strong>bank</strong>.”</em></p>
+<p><span class="explain">On the map, “bank” has one place — in between money and rivers, right for neither sentence. A word’s meaning depends on its neighbours: the places must be allowed to <strong>move</strong> once the model sees the sentence. That is the next box.</span></p>
 </section>
 <section id="break-ten-minutes." class="slide level2 statement">
 <h2>Break — ten minutes.</h2>
@@ -573,10 +591,19 @@ Niccolò Salvini, PhD
 
 <img data-src="img/w02-map-attention.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"><p><span class="explain">Every vector looks at the others and moves towards the ones that matter to it. The one new idea since last week.</span></p>
 </section>
-<section id="a-word-reads-the-room" class="slide level2">
-<h2>A word reads the room</h2>
-<p>Before going on, every word looks at the other words in the sentence and <strong>borrows meaning from the ones that matter to it</strong> — its vector moves on the map.</p>
-<p><span class="explain">As you do in a meeting: someone says “it”, you glance round the table at who “it” could be, and listen most to them.</span></p>
+<section id="the-context-moves-the-word" class="slide level2">
+<h2>The context moves the word</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" playsinline="" preload="auto" poster="media/w02_context_white_poster.png">
+<source src="media/w02_context_white.mp4" type="video/mp4">
+</video>
+</section>
+<section id="step-③-for-real" class="slide level2">
+<h2>Step ③ for real</h2>
+
+<img data-src="img/w02-calc-attn.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="explain">The clip’s three steps, with GPT-2’s own numbers: a score for each earlier token, shares of 100%, add the mix to the vector.</span></p>
+</section>
+<section id="your-turn-where-does-it-go" class="slide level2">
+<h2>Your turn: where does “it” go?</h2>
 <div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -587,28 +614,23 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p><em>“The bank raised rates because <strong>it</strong> …”</em> — of everything “it” borrows, what share comes from “bank”?</p>
+<p><em>“The bank raised rates because <strong>it</strong> …”</em> — “it” has no meaning of its own. Which neighbour will it move towards, and with what share?</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="attention-slowly" class="slide level2">
-<h2>Attention, slowly</h2>
+<section id="it-slowly" class="slide level2">
+<h2>“It”, slowly</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" playsinline="" preload="auto" poster="media/w02_attention_white_poster.png">
 <source src="media/w02_attention_white.mp4" type="video/mp4">
 </video>
-</section>
-<section id="the-same-as-a-table" class="slide level2">
-<h2>The same, as a table</h2>
-
-<img data-src="img/w02-attention-hand.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="explain">Read it left to right. <strong>Score</strong>: how well “it”’s question matches each word — multiply and add, a neuron. <strong>Attention</strong>: scores turned into shares of 100%, the same squash as the knobs. <strong>Value</strong>: what each word hands over. “It” ends up with 70% of “bank”. Run it: session.ipynb § 2.</span></p>
+<p><span class="muted">The same three steps: bank 70%, rates 16%. The numbers by hand: session.ipynb § 2.</span></p>
 </section>
 <section id="and-inside-a-real-model" class="slide level2">
 <h2>And inside a real model</h2>
 
-<img data-src="img/w02-attention-real.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:84.0%"><p><span class="explain">Nobody told GPT-2 to link “it” to “bank”: the weights found it, like the red flags. GPT-2 asks 12 such questions at once, in each of 12 layers.</span></p>
-<p><span class="muted">Vaswani et al., <em>Attention Is All You Need</em>, 2017 — the paper behind every model since.</span></p>
+<img data-src="img/w02-attention-real.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:84.0%"><p><span class="muted">Vaswani et al., <em>Attention Is All You Need</em>, 2017 — the paper behind every model since.</span></p>
 </section>
 <section id="neurons" class="slide level2">
 <h2>④ Neurons</h2>
@@ -625,11 +647,24 @@ Niccolò Salvini, PhD
 
 <img data-src="img/w02-block.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="explain">Attention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a <strong>Transformer</strong>.</span></p>
 </section>
+<section id="step-④-for-real" class="slide level2">
+<h2>Step ④ for real</h2>
+
+<img data-src="img/w02-calc-mlp.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="what-the-stack-adds" class="slide level2">
+<h2>What the stack adds</h2>
+
+<img data-src="img/w02-calc-lens.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><span class="explain">Block by block the guess sharpens: “rate”, then “fluct” (the start of <em>fluctuate</em>), then “unchanged” at 92% after block 9. The last blocks spread it back to 37%.</span></p>
+</section>
 <section id="the-knobs" class="slide level2">
 <h2>⑤ The knobs</h2>
 
 <img data-src="img/w02-map-knobs.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"><p><span class="explain">The last token’s vector becomes a score for every possible next piece. Pick one, append it, run the whole stack again.</span></p>
 </section>
+<section id="step-⑤-for-real" class="slide level2">
+<h2>Step ⑤ for real</h2>
+
+<img data-src="img/w02-calc-final.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="how-boldly-it-picks-temperature" class="slide level2">
 <h2>How boldly it picks: temperature</h2>
 <p>Temperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:</p>
@@ -732,8 +767,16 @@ Niccolò Salvini, PhD
 </tbody>
 </table>
 </div>
-<p><span class="explain"><strong>Quantization</strong>: store each number with less precision. A little accuracy for a lot of memory.</span></p>
+<p><span class="explain"><strong>Quantization</strong>: store each number with less precision. How, and what it costs — for real, on GPT-2.</span></p>
 </section>
+<section id="quantization-by-hand" class="slide level2">
+<h2>Quantization, by hand</h2>
+
+<img data-src="img/w02-calc-quant.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="does-it-still-work" class="slide level2">
+<h2>Does it still work?</h2>
+
+<img data-src="img/w02-calc-quant2.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="part-4-post-trained-sft-rl-how-the-numbers-get-their-values" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 4 · “post-trained”, “SFT”, “RL”</span> How the numbers get their values</h2>
 </section>

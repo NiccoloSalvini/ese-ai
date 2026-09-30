@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 386" width="960" height="386" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">quantization by hand — 8 real weights of GPT-2 (block 1, MLP), squeezed into MXFP4</text>
+  <text x="30" y="64" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <text x="150" y="64" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">stored in 16 bits</text>
+  <text x="340" y="64" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">÷ the block's scale 0.0625</text>
+  <text x="570" y="64" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">nearest of 16 values</text>
+  <text x="780" y="64" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">what is kept</text>
+  <line x1="30" y1="74" x2="970" y2="74" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="102" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 1</text>
+  <text x="150" y="102" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0942</text>
+  <text x="340" y="102" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.51</text>
+  <text x="570" y="102" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.5</text>
+  <text x="780" y="102" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0938</text>
+  <line x1="30" y1="114" x2="970" y2="114" stroke="#e6e2d8"/>
+  <text x="30" y="129" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 2</text>
+  <text x="150" y="129" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.1265</text>
+  <text x="340" y="129" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−2.02</text>
+  <text x="570" y="129" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−2</text>
+  <text x="780" y="129" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.1250</text>
+  <line x1="30" y1="141" x2="970" y2="141" stroke="#e6e2d8"/>
+  <text x="30" y="156" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 3</text>
+  <text x="150" y="156" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0496</text>
+  <text x="340" y="156" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.79</text>
+  <text x="570" y="156" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1</text>
+  <text x="780" y="156" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0625</text>
+  <line x1="30" y1="168" x2="970" y2="168" stroke="#e6e2d8"/>
+  <text x="30" y="183" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 4</text>
+  <text x="150" y="183" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.0116</text>
+  <text x="340" y="183" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.19</text>
+  <text x="570" y="183" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0</text>
+  <text x="780" y="183" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0000</text>
+  <line x1="30" y1="195" x2="970" y2="195" stroke="#e6e2d8"/>
+  <text x="30" y="210" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 5</text>
+  <text x="150" y="210" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.0395</text>
+  <text x="340" y="210" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.63</text>
+  <text x="570" y="210" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.5</text>
+  <text x="780" y="210" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">−0.0312</text>
+  <line x1="30" y1="222" x2="970" y2="222" stroke="#e6e2d8"/>
+  <text x="30" y="237" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 6</text>
+  <text x="150" y="237" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0513</text>
+  <text x="340" y="237" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.82</text>
+  <text x="570" y="237" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1</text>
+  <text x="780" y="237" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0625</text>
+  <line x1="30" y1="249" x2="970" y2="249" stroke="#e6e2d8"/>
+  <text x="30" y="264" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 7</text>
+  <text x="150" y="264" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.3680</text>
+  <text x="340" y="264" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">5.89</text>
+  <text x="570" y="264" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">6</text>
+  <text x="780" y="264" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.3750</text>
+  <line x1="30" y1="276" x2="970" y2="276" stroke="#e6e2d8"/>
+  <text x="30" y="291" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >weight 8</text>
+  <text x="150" y="291" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0098</text>
+  <text x="340" y="291" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.16</text>
+  <text x="570" y="291" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0</text>
+  <text x="780" y="291" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.0000</text>
+  <line x1="30" y1="303" x2="970" y2="303" stroke="#e6e2d8"/>
+  <text x="30" y="332" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >Allowed values: 0, ±0.5, ±1, ±1.5, ±2, ±3, ±4, ±6 — 16 of them, so 4 bits. Every 32 weights share one scale (8 bits).</text>
+  <text x="30" y="356" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >4 + 8/32 = 4.25 bits instead of 16. For 117 billion weights: 234 GB → 62.2 GB.</text>
+</svg>

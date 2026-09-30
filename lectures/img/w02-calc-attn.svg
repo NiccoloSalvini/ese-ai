@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 336" width="960" height="336" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">step ③ for real — block 2, head 7 of 12: what “rates” reads</text>
+  <text x="30" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">token</text>
+  <text x="110" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">its key (4 of 64)</text>
+  <text x="360" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">query · key</text>
+  <text x="490" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">÷ √64 = 8</text>
+  <text x="610" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">e^(score − max)</text>
+  <text x="780" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">share</text>
+  <line x1="30" y1="80" x2="870" y2="80" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="108" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >The</text>
+  <text x="110" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−1.70 −0.51 −0.63  0.02 …]</text>
+  <text x="360" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">8.79</text>
+  <text x="490" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.10</text>
+  <text x="610" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.346</text>
+  <text x="780" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">23%</text>
+  <line x1="30" y1="120" x2="870" y2="120" stroke="#e6e2d8"/>
+  <text x="30" y="142" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >ECB</text>
+  <text x="110" y="142" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.02 −1.18 −2.98  0.50 …]</text>
+  <text x="360" y="142" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">17.29</text>
+  <text x="490" y="142" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">2.16</text>
+  <text x="610" y="142" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.000</text>
+  <text x="780" y="142" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">66%</text>
+  <line x1="30" y1="154" x2="870" y2="154" stroke="#e6e2d8"/>
+  <text x="30" y="176" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >left</text>
+  <text x="110" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.06  0.53 −1.27  0.43 …]</text>
+  <text x="360" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">-11.17</text>
+  <text x="490" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">-1.40</text>
+  <text x="610" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.029</text>
+  <text x="780" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">2%</text>
+  <line x1="30" y1="188" x2="870" y2="188" stroke="#e6e2d8"/>
+  <text x="30" y="210" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >rates</text>
+  <text x="110" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−1.70  1.32 −2.76  0.81 …]</text>
+  <text x="360" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1.46</text>
+  <text x="490" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.18</text>
+  <text x="610" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0.138</text>
+  <text x="780" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">9%</text>
+  <line x1="30" y1="222" x2="870" y2="222" stroke="#e6e2d8"/>
+  <text x="30" y="258" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >“rates” asks with its query [−1.03 −0.82 −2.29 −0.79 …] — multiply by each key, 64 pairs, and add: a neuron.</text>
+  <text x="30" y="282" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >Into shares: e^ each score, divide by the total (1.513). 66% of what “rates” reads here comes from “ECB”.</text>
+  <text x="30" y="306" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >Masked: “left” could not read “rates” — a token only sees the ones before it. 12 heads do this at once, in each of 12 blocks.</text>
+</svg>
