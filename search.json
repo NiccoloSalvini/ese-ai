@@ -490,11 +490,11 @@
     "text": "Last week, in one slide\nThe question: is payment E (large, abroad, same device) fraud? Nobody writes the rule — the machine learns it from eight past payments.\n\n\n\n\n\n\n\n\n\nstep\nin words\non payment E\n\n\n\n\n1 · guess\na neuron weighs each red flag, adds them up, and squashes the total into a probability\n0.5 × large + 1 × abroad − 1 → p(fraud) = 0.62\n\n\n2 · how wrong\nthe loss: one number, small when the right answer got a high probability\nit was fraud; 0.62 is not sure enough\n\n\n3 · blame\neach weight gets its share of the mistake; in a bigger network, backpropagation passes the blame back, layer by layer\n“large” and “abroad” were on: blamed · “device” was off: not blamed\n\n\n4 · nudge\nnew weight = old weight − learning rate × blame\n0.5 → 0.88 · 1 → 1.38 → p = 0.84\n\n\nrepeat\nevery payment, many rounds\naverage loss 0.45 → 0.03\n\n\n\n\nThat loop — guess, how wrong, blame, nudge — is all of training. An LLM runs it on 117 billion weights instead of 4."
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#last-week-in-five-lines-of-code",
-    "href": "lectures/02-pair-programmer.html#last-week-in-five-lines-of-code",
+    "objectID": "lectures/02-pair-programmer.html#last-week-in-your-notebook",
+    "href": "lectures/02-pair-programmer.html#last-week-in-your-notebook",
     "title": "Inside an LLM",
-    "section": "Last week, in five lines of code",
-    "text": "Last week, in five lines of code\nimport numpy as np\nx = np.array([1, 1, 0])            # payment E: large, abroad, same device\nw, b, lr = np.array([0.5, 1, 1]), -1, 1.0\np = 1 / (1 + np.exp(-(w @ x + b)))  # the neuron: weigh, add, squash  -&gt; 0.62\nw, b = w - lr * (p - 1) * x, b - lr * (p - 1)   # the formula: it was fraud (y = 1)\nThe same four steps, as they run: line 4 is the guess (0.62), line 5 is blame and nudge. Run line 4 again: 0.84."
+    "section": "Last week, in your notebook",
+    "text": "Last week, in your notebook\nLAB · session.ipynb § 0\n\nRun the first cell: the four steps on payment E. Find 0.62 and 0.84.\nRun the second: all eight payments, 200 rounds. Watch the loss fall to 0.03."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#your-homework",
@@ -623,11 +623,11 @@
     "text": "Your tiny LLM, piece 1\nLAB · session.ipynb § 1\n\nRun the merges on the text about rates. Check the table.\nPaste a paragraph of your own — English, then Russian. 30 merges each.\nHow many symbols per word, in each language?"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for-in-code",
-    "href": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for-in-code",
+    "objectID": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for",
+    "href": "lectures/02-pair-programmer.html#tokens-are-what-you-pay-for",
     "title": "Inside an LLM",
-    "section": "Tokens are what you pay for — in code",
-    "text": "Tokens are what you pay for — in code\nimport tiktoken\nenc = tiktoken.get_encoding(\"o200k_base\")   # gpt-oss's tokenizer family\nlen(enc.encode(\"The ECB left rates unchanged at 2%.\"))\n# 7 words -&gt; 9 tokens\nlen(enc.encode(\"ЕЦБ оставил ставки без изменений на уровне 2%.\"))\n# 8 words -&gt; 13 tokens\nSame sentence, 44% more tokens in Russian: 44% more on the bill, and 44% less text in the same context window. Price lists are per million tokens, never per word."
+    "section": "Tokens are what you pay for",
+    "text": "Tokens are what you pay for\n\n\n\n\nsame sentence\nwords\ntokens\n\n\n\n\nThe ECB left rates unchanged at 2%.\n7\n9\n\n\nЕЦБ оставил ставки без изменений на уровне 2%.\n8\n13\n\n\n\n\nSame meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. Price lists are per million tokens, never per word. Try it: session.ipynb § 1."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#vectors-meaning-becomes-a-place",
@@ -651,18 +651,11 @@
     "text": "Attention, slowly"
   },
   {
-    "objectID": "lectures/02-pair-programmer.html#the-same-in-three-lines-of-code",
-    "href": "lectures/02-pair-programmer.html#the-same-in-three-lines-of-code",
-    "title": "Inside an LLM",
-    "section": "The same, in three lines of code",
-    "text": "The same, in three lines of code\n# how relevant is each word to \"it\"?        -&gt; bank 3.0, rates 1.5\nrelevance = keys @ query\n# into shares that add up to 100%          -&gt; bank 70%, rates 16%\nshare = np.exp(relevance) / np.exp(relevance).sum()\n# the new meaning of \"it\": a mix of the others -&gt; 70% bank\nnew_it = share @ values\nNothing new: relevance is multiply-and-add, a neuron; share is the same squash as the knobs. Attention is the old machinery, used to let words read each other."
-  },
-  {
     "objectID": "lectures/02-pair-programmer.html#the-same-as-a-table",
     "href": "lectures/02-pair-programmer.html#the-same-as-a-table",
     "title": "Inside an LLM",
     "section": "The same, as a table",
-    "text": "The same, as a table"
+    "text": "The same, as a table\n\nNothing new: relevance is multiply-and-add, a neuron; share is the same squash as the knobs. Run it: session.ipynb § 2."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#and-inside-a-real-model",
@@ -725,7 +718,7 @@
     "href": "lectures/02-pair-programmer.html#a-base-model-is-not-an-assistant",
     "title": "Inside an LLM",
     "section": "A base model is not an assistant",
-    "text": "A base model is not an assistant\nLAB · session.ipynb § 4\nGPT-2 is a base model. In the generation cell, set the prompt to a question:\nprompt = \"What is the capital of France?\"\nIt does not answer — it continues a document. On the internet a question is often followed by more questions: a quiz, a forum, an exam paper. That is what it writes."
+    "text": "A base model is not an assistant\nLAB · session.ipynb § 4\nGPT-2 is only pre-trained: a base model. Before you run the cell, write down: does it answer “What is the capital of France?”\nIt does not answer — it continues a document. On the internet a question is often followed by more questions: a quiz, a forum, an exam paper. That is what it writes."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#stage-2-supervised-fine-tuning-imitate-good-conversations",
@@ -1113,11 +1106,18 @@
     "text": "ESE · AI for Business and FinTech · 30 September 2026\nThe sections follow the slides. From section 3 you run a real language model, GPT-2 small (124 million weights), in this notebook.\n!pip -q install transformers tiktoken"
   },
   {
+    "objectID": "week-02/session.html#last-week-runningpayment-e-large-abroad-same-device-and-it-was-fraud.-the-four-steps-from-the-slide-guess-how-wrong-blame-nudge.-read-each-lines-comment-the-numbers-are-the-ones-on-the-slide.",
+    "href": "week-02/session.html#last-week-runningpayment-e-large-abroad-same-device-and-it-was-fraud.-the-four-steps-from-the-slide-guess-how-wrong-blame-nudge.-read-each-lines-comment-the-numbers-are-the-ones-on-the-slide.",
+    "title": "Week 2 — Inside an LLM",
+    "section": "0. Last week, runningPayment E: large, abroad, same device — and it was fraud. The four steps from the slide: guess, how wrong, blame, nudge. Read each line’s comment; the numbers are the ones on the slide.",
+    "text": "0. Last week, runningPayment E: large, abroad, same device — and it was fraud. The four steps from the slide: guess, how wrong, blame, nudge. Read each line’s comment; the numbers are the ones on the slide.\n\nimport numpy as npx = np.array([1, 1, 0])      # payment E: large = 1, abroad = 1, new device = 0y = 1                        # it was fraudw = np.array([0.5, 1.0, 1.0]); b = -1.0   # the weights the perceptron found last weeklr = 1.0                     # learning rate: how big each nudge isdef guess(w, b, x):    score = w @ x + b                   # weigh each flag, add them up (@ = multiply and add)    return 1 / (1 + np.exp(-score))     # squash the score into a probabilityp = guess(w, b, x)print(\"1 guess       p(fraud) =\", round(p, 2))print(\"2 how wrong   loss     =\", round(-np.log(p), 2))blame = (p - y) * xprint(\"3 blame       per flag =\", blame.round(2), \" bias:\", round(p - y, 2))w, b = w - lr * blame, b - lr * (p - y)print(\"4 nudge       weights  =\", w.round(2), \" bias:\", round(b, 2))print(\"  guess again p(fraud) =\", round(guess(w, b, x), 2))\n\nRepeat — the same four steps on all eight payments, 200 times. Watch the average loss fall.\n\nX = np.array([[0,0,0],[1,0,0],[0,1,0],[0,0,1],[1,1,0],[1,0,1],[0,1,1],[1,1,1]])   # payments A–HY = np.array([0, 0, 0, 0, 1, 1, 1, 1])                                            # fraud = two flags or morew, b, lr = np.array([0.5, 1.0, 1.0]), -1.0, 3.0def avg_loss(w, b):    p = 1 / (1 + np.exp(-(X @ w + b)))    return np.mean(-np.log(np.where(Y == 1, p, 1 - p)))for step in range(201):    if step in (0, 10, 50, 200):        print(f\"step {step:3}   average loss {avg_loss(w, b):.2f}\")    p = 1 / (1 + np.exp(-(X @ w + b)))    w, b = w - lr * (p - Y) @ X / 8, b - lr * np.mean(p - Y)"
+  },
+  {
     "objectID": "week-02/session.html#your-tiny-llm-piece-1-a-tokenizer",
     "href": "week-02/session.html#your-tiny-llm-piece-1-a-tokenizer",
     "title": "Week 2 — Inside an LLM",
     "section": "1. Your tiny LLM, piece 1: a tokenizer",
-    "text": "1. Your tiny LLM, piece 1: a tokenizer\nFind the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.\n\nfrom collections import Counter\n\ndef learn_merges(text, merges=8, show=True):\n    seq = [c if c != \" \" else \"_\" for c in text]          # _ marks a space\n    for step in range(1, merges + 1):\n        pairs = Counter(zip(seq, seq[1:]))\n        (a, b), n = max(pairs.items(), key=lambda kv: (kv[1], -list(pairs).index(kv[0])))\n        if n &lt; 2:\n            break\n        out, i = [], 0\n        while i &lt; len(seq):\n            if i &lt; len(seq) - 1 and (seq[i], seq[i + 1]) == (a, b):\n                out.append(a + b); i += 2\n            else:\n                out.append(seq[i]); i += 1\n        seq = out\n        if show:\n            print(f\"merge {step}: {a!r} + {b!r} seen {n} times -&gt; {a+b!r:10}  text is now {len(seq)} symbols\")\n    return seq\n\ntext = (\"the bank left rates unchanged. the bank said rates will stay unchanged. \"\n        \"rates are high and the bank expects rates to stay high.\")\nprint(len(text), \"characters to start\")\npieces = learn_merges(text)\n\nYour turn. A paragraph of your own in English, then the same in Russian. 30 merges each. Symbols per word?\n\nmine_en = \"paste an English paragraph here\"\nmine_ru = \"вставьте сюда абзац на русском\"\nfor name, t in [(\"English\", mine_en), (\"Russian\", mine_ru)]:\n    seq = learn_merges(t, merges=30, show=False)\n    print(f\"{name}: {len(seq) / len(t.split()):.1f} symbols per word\")"
+    "text": "1. Your tiny LLM, piece 1: a tokenizer\nFind the pair of symbols that appears most often; give it a new name; repeat. This is byte-pair encoding, the method real tokenizers use.\n\nfrom collections import Counter\n\ndef learn_merges(text, merges=8, show=True):\n    seq = [c if c != \" \" else \"_\" for c in text]          # _ marks a space\n    for step in range(1, merges + 1):\n        pairs = Counter(zip(seq, seq[1:]))\n        (a, b), n = max(pairs.items(), key=lambda kv: (kv[1], -list(pairs).index(kv[0])))\n        if n &lt; 2:\n            break\n        out, i = [], 0\n        while i &lt; len(seq):\n            if i &lt; len(seq) - 1 and (seq[i], seq[i + 1]) == (a, b):\n                out.append(a + b); i += 2\n            else:\n                out.append(seq[i]); i += 1\n        seq = out\n        if show:\n            print(f\"merge {step}: {a!r} + {b!r} seen {n} times -&gt; {a+b!r:10}  text is now {len(seq)} symbols\")\n    return seq\n\ntext = (\"the bank left rates unchanged. the bank said rates will stay unchanged. \"\n        \"rates are high and the bank expects rates to stay high.\")\nprint(len(text), \"characters to start\")\npieces = learn_merges(text)\n\nYour turn. A paragraph of your own in English, then the same in Russian. 30 merges each. Symbols per word?\n\nmine_en = \"paste an English paragraph here\"\nmine_ru = \"вставьте сюда абзац на русском\"\nfor name, t in [(\"English\", mine_en), (\"Russian\", mine_ru)]:\n    seq = learn_merges(t, merges=30, show=False)\n    print(f\"{name}: {len(seq) / len(t.split()):.1f} symbols per word\")\n\nWhat you pay for. The real tokenizer family of gpt-oss (o200k). Same sentence, two languages.\n\nimport tiktokenenc = tiktoken.get_encoding(\"o200k_base\")for text in [\"The ECB left rates unchanged at 2%.\",             \"ЕЦБ оставил ставки без изменений на уровне 2%.\"]:    ids = enc.encode(text)    print(f\"{len(text.split())} words -&gt; {len(ids)} tokens:\", [enc.decode([t]) for t in ids])"
   },
   {
     "objectID": "week-02/session.html#attention-by-hand",
@@ -1138,7 +1138,7 @@
     "href": "week-02/session.html#temperature-and-one-token-at-a-time",
     "title": "Week 2 — Inside an LLM",
     "section": "4. Temperature, and one token at a time",
-    "text": "4. Temperature, and one token at a time\n\nprompt = \"The ECB left rates\"\nids = tok(prompt, return_tensors=\"pt\").input_ids\n\nout = model.generate(ids, max_new_tokens=12, do_sample=False, pad_token_id=tok.eos_token_id)\nprint(\"T = 0  :\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nfor T in [1.0, 1.0, 1.0, 2.0]:\n    out = model.generate(ids, max_new_tokens=12, do_sample=True, temperature=T, top_k=0, pad_token_id=tok.eos_token_id)\n    print(f\"T = {T}:\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\n🔍 CHECK. Which of these sentences contain a number? Is any of those numbers a fact? How would you find out?"
+    "text": "4. Temperature, and one token at a time\n\nprompt = \"The ECB left rates\"\nids = tok(prompt, return_tensors=\"pt\").input_ids\n\nout = model.generate(ids, max_new_tokens=12, do_sample=False, pad_token_id=tok.eos_token_id)\nprint(\"T = 0  :\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nfor T in [1.0, 1.0, 1.0, 2.0]:\n    out = model.generate(ids, max_new_tokens=12, do_sample=True, temperature=T, top_k=0, pad_token_id=tok.eos_token_id)\n    print(f\"T = {T}:\", prompt + tok.decode(out[0][ids.shape[1]:]))\n\nA base model is not an assistant. GPT-2 was only pre-trained. Bet first: does it answer?\n\nq = \"What is the capital of France?\"ids_q = tok(q, return_tensors=\"pt\").input_idsout = model.generate(ids_q, max_new_tokens=30, do_sample=False, pad_token_id=tok.eos_token_id)print(q + tok.decode(out[0][ids_q.shape[1]:]))\n\n🔍 CHECK. Which of these sentences contain a number? Is any of those numbers a fact? How would you find out?"
   },
   {
     "objectID": "week-02/session.html#meaning-as-a-place",
