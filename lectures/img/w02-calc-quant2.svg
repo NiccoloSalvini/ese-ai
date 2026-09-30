@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 346" width="960" height="346" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">all 84,934,656 weights inside GPT-2's 12 blocks squeezed to 4 bits — then the same prompt</text>
+  <text x="30" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <text x="90" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">16 bits: next token</text>
+  <text x="320" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <text x="470" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">4 bits: next token</text>
+  <text x="700" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <line x1="30" y1="80" x2="850" y2="80" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="108" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >1</text>
+  <text x="90" y="108" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >unchanged</text>
+  <text x="320" y="108" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">37.1%</text>
+  <text x="470" y="108" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >unchanged</text>
+  <text x="700" y="108" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">48.1%</text>
+  <line x1="30" y1="120" x2="850" y2="120" stroke="#e6e2d8"/>
+  <text x="30" y="142" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >2</text>
+  <text x="90" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >at</text>
+  <text x="320" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">13.0%</text>
+  <text x="470" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >at</text>
+  <text x="700" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">14.9%</text>
+  <line x1="30" y1="154" x2="850" y2="154" stroke="#e6e2d8"/>
+  <text x="30" y="176" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >3</text>
+  <text x="90" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >low</text>
+  <text x="320" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">6.7%</text>
+  <text x="470" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >in</text>
+  <text x="700" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">4.4%</text>
+  <line x1="30" y1="188" x2="850" y2="188" stroke="#e6e2d8"/>
+  <text x="30" y="210" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >4</text>
+  <text x="90" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >in</text>
+  <text x="320" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">4.1%</text>
+  <text x="470" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >on</text>
+  <text x="700" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">2.3%</text>
+  <line x1="30" y1="222" x2="850" y2="222" stroke="#e6e2d8"/>
+  <text x="30" y="244" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >5</text>
+  <text x="90" y="244" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >on</text>
+  <text x="320" y="244" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">3.5%</text>
+  <text x="470" y="244" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >low</text>
+  <text x="700" y="244" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">2.1%</text>
+  <line x1="30" y1="256" x2="850" y2="256" stroke="#e6e2d8"/>
+  <text x="30" y="292" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >Each weight moved by 11% on average — and the answer is the same: “unchanged” still on top.</text>
+  <text x="30" y="316" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >The knobs shift a little. gpt-oss ships “natively” in 4 bits — tuned for them — so it loses even less.</text>
+</svg>

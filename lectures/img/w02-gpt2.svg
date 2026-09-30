@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">GPT-2 small, every layer, with its real sizes — gpt-oss has the same shape: 36 blocks, 128 experts in the MLP</text>
+  <rect x="112" y="48" width="300" height="28" fill="#fff" stroke="#a8955a" stroke-width="2"/>
+  <text x="262" y="67.0" font-size="14" font-weight="700" fill="#a8955a" text-anchor="middle" >softmax → 50,257 probabilities</text>
+  <line x1="262" y1="90" x2="262" y2="78" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,78 265.5,86.3 258.5,86.3" fill="#7a7f85"/>
+  <rect x="112" y="90" width="300" height="34" fill="#fff" stroke="#a8955a" stroke-width="2"/>
+  <text x="262" y="106.0" font-size="14" font-weight="700" fill="#a8955a" text-anchor="middle" >unembedding: 768 → 50,257 scores</text>
+  <text x="262" y="120.0" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle" >the token-embedding table, reused</text>
+  <line x1="262" y1="136" x2="262" y2="126" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,126 265.5,134.3 258.5,134.3" fill="#7a7f85"/>
+  <rect x="112" y="136" width="300" height="22" fill="#fff" stroke="#7a7f85" stroke-width="2"/>
+  <text x="262" y="152.0" font-size="13" font-weight="700" fill="#7a7f85" text-anchor="middle" >final LayerNorm</text>
+  <rect x="68" y="170" width="364" height="178" fill="#f7f5ef" stroke="#363636" stroke-width="2.2"/>
+  <text x="440" y="266.0" font-size="20" font-weight="700" fill="#363636" text-anchor="start" >× 12</text>
+  <text x="426" y="186" font-size="11" font-weight="700" fill="#a8955a" text-anchor="end" letter-spacing="1.2">ONE BLOCK</text>
+  <line x1="262" y1="172" x2="262" y2="160" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,160 265.5,168.3 258.5,168.3" fill="#7a7f85"/>
+  <line x1="86" y1="362" x2="86" y2="164" stroke="#1e8449" stroke-width="3"/>
+  <line x1="86" y1="164" x2="262" y2="164" stroke="#1e8449" stroke-width="3"/>
+  <rect x="112" y="324" width="300" height="20" fill="#fff" stroke="#7a7f85" stroke-width="2"/>
+  <text x="262" y="339.0" font-size="12" font-weight="700" fill="#7a7f85" text-anchor="middle" >LayerNorm</text>
+  <rect x="112" y="284" width="300" height="32" fill="#fff" stroke="#AF1F25" stroke-width="2"/>
+  <text x="262" y="299.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle" >masked attention: 12 heads × 64</text>
+  <text x="262" y="313.0" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle" >tokens read earlier tokens · 2.36M</text>
+  <line x1="86" y1="352" x2="262" y2="352" stroke="#1e8449" stroke-width="1.6"/>
+  <line x1="262" y1="352" x2="262" y2="346" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,346 265.5,354.3 258.5,354.3" fill="#7a7f85"/>
+  <line x1="262" y1="324" x2="262" y2="318" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,318 265.5,326.3 258.5,326.3" fill="#7a7f85"/>
+  <line x1="112" y1="294" x2="95" y2="294" stroke="#1e8449" stroke-width="1.6"/>
+  <circle cx="86" cy="294" r="9" fill="#fff" stroke="#1e8449" stroke-width="2"/>
+  <text x="86" y="299" font-size="15" font-weight="700" fill="#1e8449" text-anchor="middle" >+</text>
+  <rect x="112" y="238" width="300" height="20" fill="#fff" stroke="#7a7f85" stroke-width="2"/>
+  <text x="262" y="253.0" font-size="12" font-weight="700" fill="#7a7f85" text-anchor="middle" >LayerNorm</text>
+  <rect x="112" y="198" width="300" height="32" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="262" y="213.0" font-size="14" font-weight="700" fill="#2471a3" text-anchor="middle" >MLP: 768 → 3,072 → 768 (GELU)</text>
+  <text x="262" y="227.0" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle" >each token on its own · 4.72M</text>
+  <line x1="86" y1="266" x2="262" y2="266" stroke="#1e8449" stroke-width="1.6"/>
+  <line x1="262" y1="266" x2="262" y2="260" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,260 265.5,268.3 258.5,268.3" fill="#7a7f85"/>
+  <line x1="262" y1="238" x2="262" y2="232" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,232 265.5,240.3 258.5,240.3" fill="#7a7f85"/>
+  <line x1="112" y1="208" x2="95" y2="208" stroke="#1e8449" stroke-width="1.6"/>
+  <circle cx="86" cy="208" r="9" fill="#fff" stroke="#1e8449" stroke-width="2"/>
+  <text x="86" y="213" font-size="15" font-weight="700" fill="#1e8449" text-anchor="middle" >+</text>
+  <rect x="112" y="364" width="142" height="36" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="183" y="380" font-size="13" font-weight="700" fill="#2471a3" text-anchor="middle" >token embedding</text>
+  <text x="183" y="394" font-size="10.5" font-weight="400" fill="#7a7f85" text-anchor="middle" >50,257 × 768 · 38.60M</text>
+  <rect x="270" y="364" width="142" height="36" fill="#fff" stroke="#2471a3" stroke-width="2"/>
+  <text x="341" y="380" font-size="13" font-weight="700" fill="#2471a3" text-anchor="middle" >+ position embedding</text>
+  <text x="341" y="394" font-size="10.5" font-weight="400" fill="#7a7f85" text-anchor="middle" >1,024 × 768 · 786k</text>
+  <line x1="112" y1="362" x2="86" y2="362" stroke="#1e8449" stroke-width="1.6"/>
+  <line x1="86" y1="362" x2="86" y2="362" stroke="#1e8449" stroke-width="3"/>
+  <text x="262" y="422" font-size="13" font-weight="700" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">“The ECB left rates” → 464 36285 1364 3965</text>
+  <line x1="262" y1="408" x2="262" y2="402" stroke="#7a7f85" stroke-width="1.8"/>
+  <polygon points="262,402 265.5,410.3 258.5,410.3" fill="#7a7f85"/>
+  <text x="520" y="70" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">READ IT BOTTOM TO TOP</text>
+  <text x="520" y="98" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >the text → token ids → one vector of 768 numbers per token</text>
+  <text x="520" y="124" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >each block: attention, then MLP; each adds to the vector</text>
+  <text x="520" y="146" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >— the green line, the residual stream — never replaces it</text>
+  <text x="520" y="172" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >LayerNorm: rescale the 768 numbers to mean 0, spread 1</text>
+  <text x="520" y="198" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >masked: a token only reads the tokens before it</text>
+  <text x="520" y="224" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >the last token's vector becomes 50,257 scores → the knobs</text>
+  <text x="520" y="268" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHERE THE 124,439,808 NUMBERS ARE</text>
+  <text x="520" y="304" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >token + position embeddings</text>
+  <rect x="710" y="292" width="53.8" height="16" fill="#2471a3" opacity="0.85"/>
+  <text x="769.8030994069036" y="305" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >39.38M · 32%</text>
+  <text x="520" y="334" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >attention × 12</text>
+  <rect x="710" y="322" width="38.7" height="16" fill="#AF1F25" opacity="0.85"/>
+  <text x="754.7274040152811" y="335" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >28.35M · 23%</text>
+  <text x="520" y="364" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >MLP × 12</text>
+  <rect x="710" y="352" width="77.4" height="16" fill="#2471a3" opacity="0.85"/>
+  <text x="793.4170374804821" y="365" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >56.67M · 46%</text>
+  <text x="520" y="394" font-size="14" font-weight="400" fill="#363636" text-anchor="start" >LayerNorms</text>
+  <rect x="710" y="382" width="0.1" height="16" fill="#7a7f85" opacity="0.85"/>
+  <text x="716.0524590973332" y="395" font-size="13" font-weight="400" fill="#363636" text-anchor="start" >38k · 0%</text>
+  <text x="520" y="424" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start" >total 124,439,808 — checked against the library</text>
+</svg>

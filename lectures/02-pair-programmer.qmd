@@ -87,6 +87,10 @@ After "The ECB left rates", how sure is a real model that the next word is "unch
 
 [Five boxes. The neurons you know from last week; attention is the one new idea. Each box is a word of the release.]{.explain}
 
+## The real thing: GPT-2, every layer
+
+![](img/w02-gpt2.svg){fig-align="center" width="95%"}
+
 ## ① Tokens
 
 ![](img/w02-map-tokens.svg){fig-align="center" width="92%"}
@@ -112,24 +116,33 @@ After "The ECB left rates", how sure is a real model that the next word is "unch
 
 [Each token becomes a list of numbers — 768 in GPT-2. Read them as coordinates: a place on a map of meaning.]{.explain}
 
-## Meaning becomes a place
+## How the map is built
+
+<video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_embed_white_poster.png"><source src="media/w02_embed_white.mp4" type="video/mp4"></video>
+
+## The recipe
+
+1. Every word starts at a random place.
+2. Guess which words appear near it; see how wrong; nudge its place — last week's loop.
+3. Repeat on the whole text.
+
+[Words that keep the same company end up close. That list of numbers — its place — is the word's **embedding**. Nobody draws the map; the text does.]{.explain}
+
+## A real map: GPT-2's own
 
 Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight.
 
 ![](img/w02-embed.svg){fig-align="center" width="80%"}
 
+## Step ② for real
+
+![](img/w02-calc-embed.svg){fig-align="center" width="95%"}
+
 ## One place per word is not enough
 
-:::: {.columns}
-::: {.column width="50%"}
-*"She sat on the river **bank**."*
-:::
-::: {.column width="50%"}
-*"The **bank** raised rates because **it** feared inflation."*
-:::
-::::
+*"The **bank** raised rates."* · *"The river flooded the **bank**."*
 
-[On the map, "bank" has one place — the same in both sentences. And "it" has a place that means nothing at all. A word's meaning depends on its neighbours: the vectors must be allowed to **move** once they see the sentence. That is the next box.]{.explain}
+[On the map, "bank" has one place — in between money and rivers, right for neither sentence. A word's meaning depends on its neighbours: the places must be allowed to **move** once the model sees the sentence. That is the next box.]{.explain}
 
 ## Break — ten minutes. {.statement}
 
@@ -139,31 +152,31 @@ Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nu
 
 [Every vector looks at the others and moves towards the ones that matter to it. The one new idea since last week.]{.explain}
 
-## A word reads the room
+## The context moves the word
 
-Before going on, every word looks at the other words in the sentence and **borrows meaning from the ones that matter to it** — its vector moves on the map.
+<video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_context_white_poster.png"><source src="media/w02_context_white.mp4" type="video/mp4"></video>
 
-[As you do in a meeting: someone says "it", you glance round the table at who "it" could be, and listen most to them.]{.explain}
+## Step ③ for real
+
+![](img/w02-calc-attn.svg){fig-align="center" width="95%"}
+
+[The clip's three steps, with GPT-2's own numbers: a score for each earlier token, shares of 100%, add the mix to the vector.]{.explain}
+
+## Your turn: where does "it" go?
 
 ::: {.callout-important title="Bet"}
-*"The bank raised rates because **it** …"* — of everything "it" borrows, what share comes from "bank"?
+*"The bank raised rates because **it** …"* — "it" has no meaning of its own. Which neighbour will it move towards, and with what share?
 :::
 
-## Attention, slowly
+## "It", slowly
 
 <video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_attention_white_poster.png"><source src="media/w02_attention_white.mp4" type="video/mp4"></video>
 
-## The same, as a table
-
-![](img/w02-attention-hand.svg){fig-align="center" width="86%"}
-
-[Read it left to right. **Score**: how well "it"'s question matches each word — multiply and add, a neuron. **Attention**: scores turned into shares of 100%, the same squash as the knobs. **Value**: what each word hands over. "It" ends up with 70% of "bank". Run it: session.ipynb § 2.]{.explain}
+[The same three steps: bank 70%, rates 16%. The numbers by hand: session.ipynb § 2.]{.muted}
 
 ## And inside a real model
 
 ![](img/w02-attention-real.svg){fig-align="center" width="84%"}
-
-[Nobody told GPT-2 to link "it" to "bank": the weights found it, like the red flags. GPT-2 asks 12 such questions at once, in each of 12 layers.]{.explain}
 
 [Vaswani et al., *Attention Is All You Need*, 2017 — the paper behind every model since.]{.muted}
 
@@ -185,11 +198,25 @@ Before going on, every word looks at the other words in the sentence and **borro
 
 [Attention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a **Transformer**.]{.explain}
 
+## Step ④ for real
+
+![](img/w02-calc-mlp.svg){fig-align="center" width="95%"}
+
+## What the stack adds
+
+![](img/w02-calc-lens.svg){fig-align="center" width="80%"}
+
+[Block by block the guess sharpens: "rate", then "fluct" (the start of *fluctuate*), then "unchanged" at 92% after block 9. The last blocks spread it back to 37%.]{.explain}
+
 ## ⑤ The knobs
 
 ![](img/w02-map-knobs.svg){fig-align="center" width="92%"}
 
 [The last token's vector becomes a score for every possible next piece. Pick one, append it, run the whole stack again.]{.explain}
+
+## Step ⑤ for real
+
+![](img/w02-calc-final.svg){fig-align="center" width="95%"}
 
 ## How boldly it picks: temperature
 
@@ -246,7 +273,15 @@ Temperature divides every score before the softmax. On GPT-2’s real knobs, aft
 | ~4 bits (MXFP4) | ≈ 62 GB — one 80 GB GPU |
 :::
 
-[**Quantization**: store each number with less precision. A little accuracy for a lot of memory.]{.explain}
+[**Quantization**: store each number with less precision. How, and what it costs — for real, on GPT-2.]{.explain}
+
+## Quantization, by hand
+
+![](img/w02-calc-quant.svg){fig-align="center" width="95%"}
+
+## Does it still work?
+
+![](img/w02-calc-quant2.svg){fig-align="center" width="95%"}
 
 ## [Part 4 · “post-trained”, “SFT”, “RL”]{.section-kicker} How the numbers get their values {.section-slide background-color="#AF1F25"}
 

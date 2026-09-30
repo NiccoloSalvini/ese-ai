@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 312" width="960" height="312" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">step ② for real — GPT-2's own numbers, the first 4 of 768 shown</text>
+  <text x="30" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">token</text>
+  <text x="110" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">id</text>
+  <text x="200" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">its row in the token table</text>
+  <text x="460" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">+ row for its position</text>
+  <text x="720" y="70" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">= what enters block 1</text>
+  <line x1="30" y1="80" x2="970" y2="80" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="108" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >The</text>
+  <text x="110" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">464</text>
+  <text x="200" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.07 −0.02  0.06 −0.06 …]</text>
+  <text x="460" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.02 −0.20  0.00  0.01 …]</text>
+  <text x="720" y="108" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.09 −0.22  0.07 −0.05 …]</text>
+  <line x1="30" y1="120" x2="970" y2="120" stroke="#e6e2d8"/>
+  <text x="30" y="142" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >ECB</text>
+  <text x="110" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">36285</text>
+  <text x="200" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.20 −0.14  0.17 −0.01 …]</text>
+  <text x="460" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[ 0.02 −0.05 −0.10 −0.01 …]</text>
+  <text x="720" y="142" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.18 −0.20  0.07 −0.03 …]</text>
+  <line x1="30" y1="154" x2="970" y2="154" stroke="#e6e2d8"/>
+  <text x="30" y="176" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >left</text>
+  <text x="110" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">1364</text>
+  <text x="200" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.02 −0.05  0.07 −0.04 …]</text>
+  <text x="460" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[ 0.00 −0.09  0.06 −0.01 …]</text>
+  <text x="720" y="176" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.02 −0.14  0.13 −0.05 …]</text>
+  <line x1="30" y1="188" x2="970" y2="188" stroke="#e6e2d8"/>
+  <text x="30" y="210" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >rates</text>
+  <text x="110" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">3965</text>
+  <text x="200" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.08 −0.09  0.05  0.01 …]</text>
+  <text x="460" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.00 −0.07  0.11  0.00 …]</text>
+  <text x="720" y="210" font-size="15" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">[−0.08 −0.17  0.15  0.02 …]</text>
+  <line x1="30" y1="222" x2="970" y2="222" stroke="#e6e2d8"/>
+  <text x="30" y="258" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >Two lookups and one sum. Nothing is computed yet: the table rows were learned by the loop.</text>
+  <text x="30" y="282" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >The position row is how the model knows “ECB” is 2nd — attention alone would not know the order.</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 468" width="960" height="468" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">stop after each block and read the knobs — what the stack adds, on GPT-2 for real</text>
+  <text x="30" y="62" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <text x="190" y="62" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">top 3 next tokens if we stopped here</text>
+  <line x1="30" y1="72" x2="890" y2="72" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="100" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 1</text>
+  <text x="190" y="100" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">rates 54%  rate 40%  ratios 1%</text>
+  <line x1="30" y1="112" x2="890" y2="112" stroke="#e6e2d8"/>
+  <text x="30" y="129" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 2</text>
+  <text x="190" y="129" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">rate 84%  rates 15%  sharply 0%</text>
+  <line x1="30" y1="141" x2="890" y2="141" stroke="#e6e2d8"/>
+  <text x="30" y="158" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 3</text>
+  <text x="190" y="158" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">rate 64%  rates 34%  charged 0%</text>
+  <line x1="30" y1="170" x2="890" y2="170" stroke="#e6e2d8"/>
+  <text x="30" y="187" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 4</text>
+  <text x="190" y="187" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">rates 50%  rate 30%  payments 8%</text>
+  <line x1="30" y1="199" x2="890" y2="199" stroke="#e6e2d8"/>
+  <text x="30" y="216" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 5</text>
+  <text x="190" y="216" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">rates 31%  rate 28%  payments 8%</text>
+  <line x1="30" y1="228" x2="890" y2="228" stroke="#e6e2d8"/>
+  <text x="30" y="245" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 6</text>
+  <text x="190" y="245" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">fluct 22%  unchanged 10%  rate 10%</text>
+  <line x1="30" y1="257" x2="890" y2="257" stroke="#e6e2d8"/>
+  <text x="30" y="274" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 7</text>
+  <text x="190" y="274" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">fluct 23%  unchanged 22%  pegged 12%</text>
+  <line x1="30" y1="286" x2="890" y2="286" stroke="#e6e2d8"/>
+  <text x="30" y="303" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 8</text>
+  <text x="190" y="303" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">fluct 46%  unchanged 22%  pegged 11%</text>
+  <line x1="30" y1="315" x2="890" y2="315" stroke="#e6e2d8"/>
+  <text x="30" y="332" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start" >after block 9</text>
+  <text x="190" y="332" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">unchanged 92%  fluct 4%  pegged 2%</text>
+  <line x1="30" y1="344" x2="890" y2="344" stroke="#e6e2d8"/>
+  <text x="30" y="361" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 10</text>
+  <text x="190" y="361" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">unchanged 100%  pegged 0%  stable 0%</text>
+  <line x1="30" y1="373" x2="890" y2="373" stroke="#e6e2d8"/>
+  <text x="30" y="390" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 11</text>
+  <text x="190" y="390" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">unchanged 100%  steady 0%  pegged 0%</text>
+  <line x1="30" y1="402" x2="890" y2="402" stroke="#e6e2d8"/>
+  <text x="30" y="419" font-size="14" font-weight="700" fill="#363636" text-anchor="start" >after block 12</text>
+  <text x="190" y="419" font-size="14" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">unchanged 37%  at 13%  low 7%</text>
+  <line x1="30" y1="431" x2="890" y2="431" stroke="#e6e2d8"/>
+</svg>
