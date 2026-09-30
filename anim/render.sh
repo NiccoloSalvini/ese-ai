@@ -29,4 +29,7 @@ only="${1:-all}"
 [ "$only" = all ] || [ "$only" = w08 ] && render w08_amm        ConstantProduct w08_amm
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_llm        AttentionByHand w02_attention
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_llm        AttentionForHumans w02_attention_white
+[ "$only" = all ] || [ "$only" = w02 ] && render w02_arch       Architecture    w02_arch_white
+[ "$only" = all ] || [ "$only" = w02 ] && render w02_generate   Generate        w02_generate_white
+[ "$only" = all ] || [ "$only" = w02 ] && render w02_basechat   BaseVsChat      w02_basechat_white
 echo done

@@ -9,15 +9,14 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 
 | | |
 |---|---|
-| **10:00** | last week · your homework: the question, and the three pitch sentences |
-| **10:20** | the release again — today, one bold word at a time |
-| **10:30** | "117b parameters": finishing the network |
-| **10:50** | "Transformer": the same machine, on text · tokens · meaning as a place |
+| **10:00** | last week · your homework |
+| **10:20** | the question changes: from "fraud?" to "which word next?" |
+| **10:40** | open the box: the architecture of a GPT · tokens · vectors |
 | **11:05** | break |
-| **11:15** | "Transformer", inside: attention, the block, the knobs, temperature |
-| **12:00** | "post-trained, SFT, RL": how a model is made |
-| **12:25** | "MoE · quantized · 128k · Apache 2.0": what it costs to run, and who owns it |
-| **12:40** | what it cannot do · the release, decoded · homework |
+| **11:15** | attention · neurons · the knobs |
+| **12:00** | where the 117 billion numbers live — and what they cost |
+| **12:15** | how the numbers get their values: three stages of training |
+| **12:40** | who owns it · what it cannot do · the release, decoded |
 
 ## Last week, in one slide
 
@@ -56,56 +55,13 @@ We **tokenized** the data using … **o200k_harmony** … The models were **post
 [Spec table: **context length 128k**.]{style="color:#7a7f85"}
 :::
 
-**Last week we named every bold word. Today we open each one — in the order the machine needs them.**
+**Last week we named every bold word. Today we build the machine they describe — a network from last week, plus one new idea — and each word will find its place in it.**
 
-## Today’s map
-
-| in the release | what it answers for you | today |
-|---|---|---|
-| **117b total parameters** | how big is it — and what is a parameter? | Part 1 |
-| **Transformer · tokenized** | what happens between your prompt and its answer? | Parts 2–3 |
-| **post-trained · SFT · RL** | how did it become an assistant — and what does "reasoning" mean? | Part 4 |
-| **MoE · 5.1B active · quantized · 80GB** | what does it cost to run? | Part 5 |
-| **context 128k** | how much can it read at once — and at what price? | Part 5 |
-| **Apache 2.0** | who owns it, and what may you do with it? | Part 5 |
-
-[Each of these is also a question you can ask a vendor.]{.explain}
-
-## [Part 1 · “117b total parameters”]{.section-kicker} Finishing the network {.section-slide background-color="#AF1F25"}
-
-## The learning rate {.clip background-color="#000000"}
-
-<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_lr_poster.png"><source src="media/w01_lr.mp4" type="video/mp4"></video>
-
-[Add payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect. Too small a step crawls; too large jumps over the best answer.]{.explain}
-
-## How every network learns
-
-![](img/story-loop.svg){fig-align="center" width="86%"}
-
-## A pattern one neuron cannot draw
-
-![](img/story-card-testing.svg){fig-align="center" width="86%"}
-
-## From 4 numbers to 117 billion
-
-![](img/story-scale.svg){fig-align="center" width="80%"}
-
-## [Part 2 · “Transformer”]{.section-kicker} The same machine, on text {.section-slide background-color="#AF1F25"}
+## [Part 1 · an LLM is last week’s network]{.section-kicker} The question changes {.section-slide background-color="#AF1F25"}
 
 ## An LLM is the same machine
 
 ![](img/story-same-machine.svg){fig-align="center" width="86%"}
-
-## The same nudge, on text {.clip background-color="#000000"}
-
-<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_faders_poster.png"><source src="media/w01_faders.mp4" type="video/mp4"></video>
-
-[A mixer: one knob per possible next token. Each sentence turns the right knob up a little — the step we took on payment E.]{.explain}
-
-## Where the knobs end up
-
-![](img/story-faders.svg){fig-align="center" width="88%"}
 
 ## A real model’s knobs
 
@@ -117,41 +73,27 @@ After "The ECB left rates", how sure is a real model that the next word is "unch
 
 ![](img/w02-knobs.svg){fig-align="center" width="84%"}
 
-## Break — ten minutes. {.statement}
+## Writing is picking, again and again
 
-## [Part 3 · “Transformer”, “tokenized”]{.section-kicker} Inside {.section-slide background-color="#AF1F25"}
+<video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_generate_white_poster.png"><source src="media/w02_generate_white.mp4" type="video/mp4"></video>
 
-## One prediction, end to end
+## [Part 2 · “Transformer”]{.section-kicker} Open the box {.section-slide background-color="#AF1F25"}
 
-![](img/w02-journey.svg){fig-align="center" width="86%"}
+## A sentence, through a GPT
 
-[Five steps, one at a time for the rest of the morning: tokens → vectors → attention → the block, stacked → the knobs.]{.explain}
+<video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_arch_white_poster.png"><source src="media/w02_arch_white.mp4" type="video/mp4"></video>
 
-## 1 · Tokens: how a tokenizer is learned
+## The map for the rest of the morning
 
-Find the pair of symbols that appears most often; give it a name; repeat.
+![](img/w02-map.svg){fig-align="center" width="92%"}
 
-| merge | pair seen most often | times | new piece | text length |
-|---|---|---|---|---|
-| start | | | | 127 |
-| 1 | `a` + `n` | 6 | `an` | 121 |
-| 2 | `s` + `_` | 5 | `s_` | 116 |
-| 3 | `e` + `_` | 4 | `e_` | 112 |
-| 4 | `r` + `a` | 4 | `ra` | 108 |
-| 5 | `ra` + `t` | 4 | `rat` | 104 |
-| 6 | `rat` + `e` | 4 | `rate` | 100 |
-| 7 | `rate` + `s_` | 4 | `rates_` | 96 |
-| 8 | `t` + `h` | 3 | `th` | 93 |
+[Five boxes. The neurons you know from last week; attention is the one new idea. Each box is a word of the release.]{.explain}
 
-[On a text about rates, `rates_` becomes one piece after seven merges. Trained mostly on English, a tokenizer learns English pieces — so Russian costs more.]{.explain}
+## ① Tokens
 
-## Your tiny LLM, piece 1 {.lab background-color="#2471a3"}
+![](img/w02-map-tokens.svg){fig-align="center" width="92%"}
 
-[LAB · session.ipynb § 1]{.kicker}
-
-1. Run the merges on the text about rates. Check the table.
-2. Paste a paragraph of your own — English, then Russian. 30 merges each.
-3. How many symbols per word, in each language?
+[The text is cut into pieces, and each piece becomes a number. The model never sees a word.]{.explain}
 
 ## Tokens are what you pay for
 
@@ -162,19 +104,44 @@ Find the pair of symbols that appears most often; give it a name; repeat.
 | ЕЦБ оставил ставки без изменений на уровне 2%. | 8 | 13 |
 :::
 
-[Same meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. Price lists are per million tokens, never per word. Try it: session.ipynb § 1.]{.explain}
+[The pieces are learned from mostly English text, so English is cheap. Same meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. How the pieces are learned, and your own texts: session.ipynb § 1.]{.explain}
 
-## 2 · Vectors: meaning becomes a place
+## ② Vectors
+
+![](img/w02-map-vectors.svg){fig-align="center" width="92%"}
+
+[Each token becomes a list of numbers — 768 in GPT-2. Read them as coordinates: a place on a map of meaning.]{.explain}
+
+## Meaning becomes a place
 
 Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight.
 
 ![](img/w02-embed.svg){fig-align="center" width="80%"}
 
-## 3 · Attention: a word reads the room
+## One place per word is not enough
 
-On the last slide, **"bank" has one place on the map** — the same in *"the river bank"* and *"the bank raised rates"*. Half the time, that is wrong.
+:::: {.columns}
+::: {.column width="50%"}
+*"She sat on the river **bank**."*
+:::
+::: {.column width="50%"}
+*"The **bank** raised rates because **it** feared inflation."*
+:::
+::::
 
-**Attention** fixes it. Before going on, every word looks at the other words in the sentence and **borrows meaning from the ones that matter to it**.
+[On the map, "bank" has one place — the same in both sentences. And "it" has a place that means nothing at all. A word's meaning depends on its neighbours: the vectors must be allowed to **move** once they see the sentence. That is the next box.]{.explain}
+
+## Break — ten minutes. {.statement}
+
+## ③ Attention
+
+![](img/w02-map-attention.svg){fig-align="center" width="92%"}
+
+[Every vector looks at the others and moves towards the ones that matter to it. The one new idea since last week.]{.explain}
+
+## A word reads the room
+
+Before going on, every word looks at the other words in the sentence and **borrows meaning from the ones that matter to it** — its vector moves on the map.
 
 [As you do in a meeting: someone says "it", you glance round the table at who "it" could be, and listen most to them.]{.explain}
 
@@ -190,7 +157,7 @@ On the last slide, **"bank" has one place on the map** — the same in *"the riv
 
 ![](img/w02-attention-hand.svg){fig-align="center" width="86%"}
 
-[Nothing new: *relevance* is multiply-and-add, a neuron; *share* is the same squash as the knobs. Run it: session.ipynb § 2.]{.explain}
+[Read it left to right. **Score**: how well "it"'s question matches each word — multiply and add, a neuron. **Attention**: scores turned into shares of 100%, the same squash as the knobs. **Value**: what each word hands over. "It" ends up with 70% of "bank". Run it: session.ipynb § 2.]{.explain}
 
 ## And inside a real model
 
@@ -200,11 +167,31 @@ On the last slide, **"bank" has one place on the map** — the same in *"the riv
 
 [Vaswani et al., *Attention Is All You Need*, 2017 — the paper behind every model since.]{.muted}
 
-## 4 · The transformer: one block, stacked
+## ④ Neurons
+
+![](img/w02-map-neurons.svg){fig-align="center" width="92%"}
+
+[After attention, each token goes through an ordinary network — last week’s, on its own. Most of the 117 billion numbers live here.]{.explain}
+
+## What the neurons add: questions nobody wrote
+
+![](img/story-card-testing.svg){fig-align="center" width="86%"}
+
+[In an LLM the neurons invent questions too — about grammar, meaning, facts.]{.explain}
+
+## One block, stacked
 
 ![](img/w02-block.svg){fig-align="center" width="86%"}
 
-## 5 · The knobs, and how boldly it picks
+[Attention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a **Transformer**.]{.explain}
+
+## ⑤ The knobs
+
+![](img/w02-map-knobs.svg){fig-align="center" width="92%"}
+
+[The last token's vector becomes a score for every possible next piece. Pick one, append it, run the whole stack again.]{.explain}
+
+## How boldly it picks: temperature
 
 Temperature divides every score before the softmax. On GPT-2’s real knobs, after "The ECB left rates":
 
@@ -240,7 +227,53 @@ Temperature divides every score before the softmax. On GPT-2’s real knobs, aft
 2. Load GPT-2 in Colab. Your own prompt: read its top eight knobs.
 3. Generate at T = 0, then three times at T = 1. Which sentences are facts?
 
-## [Part 4 · “post-trained”, “SFT”, “RL”]{.section-kicker} How a model is made {.section-slide background-color="#AF1F25"}
+## [Part 3 · “117b”, “MoE”, “5.1B active”, “quantized”]{.section-kicker} Where the 117 billion numbers live {.section-slide background-color="#AF1F25"}
+
+## From 4 numbers to 117 billion
+
+![](img/story-scale.svg){fig-align="center" width="80%"}
+
+## Big, but cheap to run
+
+![](img/w02-moe.svg){fig-align="center" width="84%"}
+
+## Fitting it on one machine
+
+::: {.bigtable}
+| each of 117 billion weights stored in | memory needed |
+|---|---|
+| 16 bits (2 bytes) | ≈ 234 GB — several GPUs |
+| ~4 bits (MXFP4) | ≈ 62 GB — one 80 GB GPU |
+:::
+
+[**Quantization**: store each number with less precision. A little accuracy for a lot of memory.]{.explain}
+
+## [Part 4 · “post-trained”, “SFT”, “RL”]{.section-kicker} How the numbers get their values {.section-slide background-color="#AF1F25"}
+
+## How every network learns
+
+![](img/story-loop.svg){fig-align="center" width="86%"}
+
+## The learning rate {.clip background-color="#000000"}
+
+<video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w01_lr_poster.png"><source src="media/w01_lr.mp4" type="video/mp4"></video>
+
+[Add payment I — a customer on holiday: large, abroad, genuine — and no rule is perfect. Too small a step crawls; too large jumps over the best answer.]{.explain}
+
+## Training turns counts into knobs
+
+Five sentences in the training text, all ending "… left rates", then:
+
+::: {.bigtable}
+| next word | times in the text | share | the knob, after 40 passes |
+|---|---|---|---|
+| **unchanged** | 3 of 5 | 60% | 61% |
+| **at** | 1 of 5 | 20% | 21% |
+| **steady** | 1 of 5 | 20% | 17% |
+| **higher**, **lower** | never | 0% | 1% |
+:::
+
+[Nobody set the knobs: the loop nudged them until they matched how often each word follows this context. On trillions of tokens, that is pre-training.]{.explain}
 
 ## Pre-training is compressing the internet
 
@@ -258,20 +291,18 @@ Temperature divides every score before the softmax. On GPT-2’s real knobs, aft
 :::
 ::: {.column width="45%"}
 ::: {.callout-important title="Bet"}
-What comes out is a **base model**. Ask it *"What is the capital of France?"* Does it answer?
+What comes out is a **base model**. Ask it *"Should I buy Bitcoin today?"* What does it write?
 :::
 :::
 ::::
 
 [Quotes and numbers: the gpt-oss model card, OpenAI, August 2025.]{.muted}
 
-## A base model is not an assistant {.lab background-color="#2471a3"}
+## Same model, before and after post-training
 
-[LAB · session.ipynb § 4]{.kicker}
+<video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_basechat_white_poster.png"><source src="media/w02_basechat_white.mp4" type="video/mp4"></video>
 
-GPT-2 is only pre-trained: a base model. Before you run the cell, write down: does it answer *"What is the capital of France?"*
-
-[It does not answer — it **continues a document**. On the internet a question is often followed by more questions: a quiz, a forum, an exam paper. That is what it writes.]{.explain}
+[Try it yourself, both models: session.ipynb § 4.]{.muted}
 
 ## Stage 2 · Supervised fine-tuning: imitate good conversations
 
@@ -320,28 +351,13 @@ Nobody writes the steps. The model discovers that **writing its reasoning out fi
 
 [The formula never changes: $w \leftarrow w - \eta \cdot$ blame. Only what counts as right does.]{.explain}
 
-## [Part 5 · “MoE”, “quantized”, “128k”, “Apache 2.0”]{.section-kicker} What it costs to run, and who owns it {.section-slide background-color="#AF1F25"}
+## [Part 5 · “128k”, “Apache 2.0”]{.section-kicker} Running it, and owning it {.section-slide background-color="#AF1F25"}
 
 ## The box has a size, and a price
 
 ![](img/context-window.svg){fig-align="center" width="80%"}
 
 [Every token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look.]{.explain}
-
-## Big, but cheap to run
-
-![](img/w02-moe.svg){fig-align="center" width="84%"}
-
-## Fitting it on one machine
-
-::: {.bigtable}
-| each of 117 billion weights stored in | memory needed |
-|---|---|
-| 16 bits (2 bytes) | ≈ 234 GB — several GPUs |
-| ~4 bits (MXFP4) | ≈ 62 GB — one 80 GB GPU |
-:::
-
-[**Quantization**: store each number with less precision. A little accuracy for a lot of memory.]{.explain}
 
 ## Open weights, Apache 2.0: who owns it
 

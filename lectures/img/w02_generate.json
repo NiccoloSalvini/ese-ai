@@ -1,0 +1,106 @@
+{
+ "prompt": "The ECB left rates",
+ "steps": [
+  {
+   "text": "The ECB left rates",
+   "knobs": [
+    {
+     "token": " unchanged",
+     "p": 0.371
+    },
+    {
+     "token": " at",
+     "p": 0.13
+    },
+    {
+     "token": " low",
+     "p": 0.067
+    },
+    {
+     "token": " in",
+     "p": 0.041
+    },
+    {
+     "token": " on",
+     "p": 0.035
+    }
+   ]
+  },
+  {
+   "text": "The ECB left rates unchanged",
+   "knobs": [
+    {
+     "token": " at",
+     "p": 0.687
+    },
+    {
+     "token": " in",
+     "p": 0.043
+    },
+    {
+     "token": ",",
+     "p": 0.036
+    },
+    {
+     "token": " on",
+     "p": 0.034
+    },
+    {
+     "token": " for",
+     "p": 0.033
+    }
+   ]
+  },
+  {
+   "text": "The ECB left rates unchanged at",
+   "knobs": [
+    {
+     "token": " 0",
+     "p": 0.147
+    },
+    {
+     "token": " 1",
+     "p": 0.103
+    },
+    {
+     "token": " 2",
+     "p": 0.08
+    },
+    {
+     "token": " 3",
+     "p": 0.049
+    },
+    {
+     "token": " the",
+     "p": 0.047
+    }
+   ]
+  },
+  {
+   "text": "The ECB left rates unchanged at 0",
+   "knobs": [
+    {
+     "token": ".",
+     "p": 0.991
+    },
+    {
+     "token": "%",
+     "p": 0.004
+    },
+    {
+     "token": " percent",
+     "p": 0.001
+    },
+    {
+     "token": ",",
+     "p": 0.001
+    },
+    {
+     "token": " per",
+     "p": 0.001
+    }
+   ]
+  }
+ ],
+ "greedy": " unchanged at 0.5 percent in June, but the ECB"
+}

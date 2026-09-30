@@ -1,0 +1,21 @@
+{
+ "base_model": "Qwen/Qwen2.5-0.5B",
+ "chat_model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "max_new_tokens": 40,
+ "decoding": "greedy",
+ "date": "2026-09-30",
+ "transformers": "5.17.0",
+ "torch": "2.14.0",
+ "rows": [
+  {
+   "question": "What is the capital of France?",
+   "base": " The capital of France is Paris.",
+   "chat": "The capital of France is Paris."
+  },
+  {
+   "question": "Should I buy Bitcoin today?",
+   "base": " I have a lot of money to invest in Bitcoin. I have a lot of money to invest in Bitcoin. I have a lot of money to invest in Bitcoin. I have a lot of money to",
+   "chat": "As an AI language model, I don't have personal preferences or emotions like humans do. However, I can provide you with some information that might help you make an informed decision.\n\nBitcoin is a digital"
+  }
+ ]
+}

@@ -196,5 +196,45 @@ def journey():
     svg("w02-journey.svg", 960, 438, B, "one prediction, through a real model")
 
 
+# ------------------------------------------------------------------ the map: one GPT, one box lit per section
+def archmap(focus=None, name="w02-map.svg"):
+    """The architecture used as the lesson's map. focus: tokens | vectors | attention | neurons | knobs | None (all lit)."""
+    g = S["gpt2"]
+    OFF, OFFT = "#d9d4c7", "#b9b4a8"
+    def c(part, col):
+        return col if focus in (None, part) else OFF
+    def ct(part, col=INK):
+        return col if focus in (None, part) else OFFT
+    toks = ["The", "ECB", "left", "rates"]
+    B = []
+    for i, tk in enumerate(toks):
+        x = 70 + i * 105
+        B += [t(x + 40, 70, tk, 17, INK, "700", "middle"),
+              box(x, 82, 80, 30, c("tokens", GOLDDK), "#fff", 2), t(x + 40, 102, f"{S['prompt_ids'][i]}" if i < len(S["prompt_ids"]) else "id", 13, ct("tokens", GOLDDK), "700", "middle", MONO),
+              arrow(x + 40, 114, x + 40, 132, c("vectors", MUTED)),
+              box(x, 134, 80, 30, c("vectors", NAVY), "#fff", 2), t(x + 40, 154, "vector", 13, ct("vectors", NAVY), "700", "middle")]
+    B += [box(50, 184, 440, 124, c("attention", INK) if focus in (None, "attention", "neurons") else OFF, PAPER, 2),
+          t(66, 204, "ONE BLOCK", 11, GOLDDK if focus in (None, "attention", "neurons") else OFFT, "700", extra='letter-spacing="1.2"'),
+          box(66, 214, 408, 38, c("attention", RED), "#fff", 2), t(270, 238, "attention — tokens read each other", 15, ct("attention", RED), "700", "middle"),
+          box(66, 260, 408, 38, c("neurons", NAVY), "#fff", 2), t(270, 284, "neurons — each token thinks on its own", 15, ct("neurons", NAVY), "700", "middle"),
+          t(270, 330, f"× {g['layers']} in GPT-2 · × 36 in gpt-oss", 15, INK if focus in (None, "attention", "neurons") else OFFT, "700", "middle"),
+          arrow(270, 338, 270, 360, c("knobs", MUTED)),
+          box(50, 362, 440, 38, c("knobs", GOLDDK), "#fff", 2), t(270, 386, f"the knobs — a score for each of {g['vocab']:,} pieces", 15, ct("knobs", INK), "700", "middle")]
+    tags = [("tokens", 102, "① tokens", "“tokenized … o200k”"),
+            ("vectors", 154, "② vectors: a place on the map", ""),
+            ("attention", 238, "③ attention", "“Transformer”"),
+            ("neurons", 284, "④ neurons: most of the parameters live here", "“117b” · “MoE”"),
+            ("knobs", 386, "⑤ knobs: pick one, append, repeat", "“temperature”")]
+    for part, y, label, word in tags:
+        on = focus in (None, part)
+        B.append(t(530, y, label, 15, INK if on else OFFT, "700" if focus == part else "400"))
+        if word:
+            B.append(t(530, y + 18, word, 13, RED if on else OFFT, "400", extra='font-style="italic"'))
+    svg(name, 960, 420, B, "a GPT, the architecture of every current LLM — a network from last week, plus attention")
+
+
 if __name__ == "__main__":
     knobs(); embed(); attention_hand(); attention_real(); block(); moe(); journey()
+    archmap()
+    for f in ["tokens", "vectors", "attention", "neurons", "knobs"]:
+        archmap(f, f"w02-map-{f}.svg")
