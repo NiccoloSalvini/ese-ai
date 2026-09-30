@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
@@ -371,35 +436,39 @@ Niccolò Salvini, PhD
 <tbody>
 <tr class="odd">
 <td><strong>10:00</strong></td>
-<td>last week in one slide · your starting point</td>
+<td>last week · your homework: the question, and the three pitch sentences</td>
 </tr>
 <tr class="even">
 <td><strong>10:20</strong></td>
-<td>finishing the network: learning rate, hidden layers, scale</td>
+<td>the release again — today, one bold word at a time</td>
 </tr>
 <tr class="odd">
-<td><strong>10:45</strong></td>
-<td>the same machine, on text — and a real model’s knobs</td>
+<td><strong>10:30</strong></td>
+<td>“117b parameters”: finishing the network</td>
 </tr>
 <tr class="even">
+<td><strong>10:50</strong></td>
+<td>“Transformer”: the same machine, on text · tokens · meaning as a place</td>
+</tr>
+<tr class="odd">
 <td><strong>11:05</strong></td>
 <td>break</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>11:15</strong></td>
-<td>inside: tokens, embeddings, attention, the transformer, temperature</td>
-</tr>
-<tr class="even">
-<td><strong>12:10</strong></td>
-<td>training at scale, and running it</td>
+<td>“Transformer”, inside: attention, the block, the knobs, temperature</td>
 </tr>
 <tr class="odd">
-<td><strong>12:30</strong></td>
-<td>what it cannot do · the release, decoded</td>
+<td><strong>12:00</strong></td>
+<td>“post-trained, SFT, RL”: how a model is made</td>
 </tr>
 <tr class="even">
-<td><strong>12:50</strong></td>
-<td>homework · three lines</td>
+<td><strong>12:25</strong></td>
+<td>“MoE · quantized · 128k · Apache 2.0”: what it costs to run, and who owns it</td>
+</tr>
+<tr class="odd">
+<td><strong>12:40</strong></td>
+<td>what it cannot do · the release, decoded · homework</td>
 </tr>
 </tbody>
 </table>
@@ -408,19 +477,89 @@ Niccolò Salvini, PhD
 <h2>Last week, in one slide</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>A neuron</strong>: multiply each answer by a weight, add a bias, squash. Eight payments taught it “two red flags” in three rounds.</p>
-<p><strong>The loss</strong> is one number for how wrong it is — the average over all payments.</p>
+<p><strong>Three ways to write a decision</strong>: 1.0 you write the rule; 2.0 the machine learns it from examples, as weights; 3.0 you ask a model in plain English. 2.0 and 3.0 are made of neurons.</p>
+<p><strong>A neuron</strong>: multiply each answer by a weight, add a bias, decide. Eight payments taught it “two red flags” in three rounds, by hand — nobody wrote the rule.</p>
+<p><strong>Yes/no is not enough</strong>: squash the score into a probability, so the model can say <em>how</em> sure it is.</p>
 </div><div class="column" style="width:50%;">
-<p><strong>The formula</strong>: <span class="math inline">w \leftarrow w - \eta\,(p-y)\,x</span> — for every weight, after every example.</p>
+<p><strong>The loss</strong> is one number for how wrong it is — the average over all payments. Training pushes it down: 0.45 → 0.03.</p>
+<p><strong>The formula</strong>: <span class="math inline">w \leftarrow w - \eta\,(p-y)\,x</span> — new weight = old weight − learning rate × blame, for every weight, after every example.</p>
 <p><strong>Backpropagation</strong> finds each weight’s share of the blame, box by box, right to left.</p>
 </div></div>
 </section>
-<section id="your-starting-point" class="slide level2 statement">
-<h2>Your starting point</h2>
-<p><span class="muted">Homework 1: the question you want answered by December — in two minutes, as if to a manager.</span></p>
+<section id="last-week-in-five-lines-of-code" class="slide level2">
+<h2>Last week, in five lines of code</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>])            <span class="co"># payment E: large, abroad, same device</span></span>
+<span id="cb1-3"><a></a>w, b, lr <span class="op">=</span> np.array([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">1</span>]), <span class="op">-</span><span class="dv">1</span>, <span class="fl">1.0</span></span>
+<span id="cb1-4"><a></a>p <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>(w <span class="op">@</span> x <span class="op">+</span> b)))  <span class="co"># the neuron: weigh, add, squash  -&gt; 0.62</span></span>
+<span id="cb1-5"><a></a>w, b <span class="op">=</span> w <span class="op">-</span> lr <span class="op">*</span> (p <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> x, b <span class="op">-</span> lr <span class="op">*</span> (p <span class="op">-</span> <span class="dv">1</span>)   <span class="co"># the formula: it was fraud (y = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="explain">Everything on the last slide, as it runs. After the step, p(fraud) for E goes from 0.62 to 0.84. An LLM runs this same loop — on 117 billion weights instead of 4.</span></p>
 </section>
-<section id="part-1-finishing-the-network" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 1</span> Finishing the network</h2>
+<section id="your-homework" class="slide level2 statement">
+<h2>Your homework</h2>
+<p><span class="muted">The question you want answered by December — in two minutes, as if to a manager. Then the three pitch sentences: which is impossible, and what did you ask the vendor?</span></p>
+</section>
+<section id="back-to-the-release" class="slide level2">
+<h2>Back to the release</h2>
+<div style="font-size:0.78em; line-height:1.45; border-left:4px solid #CDBA80; padding:0.4em 0 0.4em 0.9em; background:#f7f5ef">
+<p>“Each model is a <strong>Transformer</strong> which leverages <strong>mixture-of-experts</strong> to reduce the number of <strong>active parameters</strong> needed to process input. gpt-oss-120b activates <strong>5.1B parameters per token</strong> … The models have <strong>117b</strong> and 21b <strong>total parameters</strong> …</p>
+<p>We <strong>tokenized</strong> the data using … <strong>o200k_harmony</strong> … The models were <strong>post-trained</strong> … including a <strong>supervised fine-tuning</strong> stage and a high-compute <strong>RL</strong> stage. … The weights … are freely available … and come natively <strong>quantized</strong> in MXFP4. This allows for the gpt-oss-120B model to run within <strong>80GB of memory</strong> … Available under the flexible <strong>Apache 2.0</strong> license.”</p>
+<p><span style="color:#7a7f85">Spec table: <strong>context length 128k</strong>.</span></p>
+</div>
+<p><strong>Last week we named every bold word. Today we open each one — in the order the machine needs them.</strong></p>
+</section>
+<section id="todays-map" class="slide level2">
+<h2>Today’s map</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>in the release</th>
+<th>what it answers for you</th>
+<th>today</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>117b total parameters</strong></td>
+<td>how big is it — and what is a parameter?</td>
+<td>Part 1</td>
+</tr>
+<tr class="even">
+<td><strong>Transformer · tokenized</strong></td>
+<td>what happens between your prompt and its answer?</td>
+<td>Parts 2–3</td>
+</tr>
+<tr class="odd">
+<td><strong>post-trained · SFT · RL</strong></td>
+<td>how did it become an assistant — and what does “reasoning” mean?</td>
+<td>Part 4</td>
+</tr>
+<tr class="even">
+<td><strong>MoE · 5.1B active · quantized · 80GB</strong></td>
+<td>what does it cost to run?</td>
+<td>Part 5</td>
+</tr>
+<tr class="odd">
+<td><strong>context 128k</strong></td>
+<td>how much can it read at once — and at what price?</td>
+<td>Part 5</td>
+</tr>
+<tr class="even">
+<td><strong>Apache 2.0</strong></td>
+<td>who owns it, and what may you do with it?</td>
+<td>Part 5</td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Each of these is also a question you can ask a vendor.</span></p>
+</section>
+<section id="part-1-117b-total-parameters-finishing-the-network" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1 · “117b total parameters”</span> Finishing the network</h2>
 </section>
 <section id="the-learning-rate" class="slide level2 clip" data-background-color="#000000">
 <h2>The learning rate</h2>
@@ -437,16 +576,12 @@ Niccolò Salvini, PhD
 <h2>A pattern one neuron cannot draw</h2>
 
 <img data-src="img/story-card-testing.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
-<section id="more-activation-functions" class="slide level2">
-<h2>More activation functions</h2>
-
-<img data-src="img/activations.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"></section>
 <section id="from-4-numbers-to-117-billion" class="slide level2">
 <h2>From 4 numbers to 117 billion</h2>
 
 <img data-src="img/story-scale.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="part-2-the-same-machine-on-text" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 2</span> The same machine, on text</h2>
+<section id="part-2-transformer-the-same-machine-on-text" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2 · “Transformer”</span> The same machine, on text</h2>
 </section>
 <section id="an-llm-is-the-same-machine" class="slide level2">
 <h2>An LLM is the same machine</h2>
@@ -491,8 +626,8 @@ Niccolò Salvini, PhD
 <section id="break-ten-minutes." class="slide level2 statement">
 <h2>Break — ten minutes.</h2>
 </section>
-<section id="part-3-inside" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 3</span> Inside</h2>
+<section id="part-3-transformer-tokenized-inside" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3 · “Transformer”, “tokenized”</span> Inside</h2>
 </section>
 <section id="one-prediction-end-to-end" class="slide level2">
 <h2>One prediction, end to end</h2>
@@ -589,17 +724,57 @@ Niccolò Salvini, PhD
 <li>How many symbols per word, in each language?</li>
 </ol>
 </section>
+<section id="tokens-are-what-you-pay-for-in-code" class="slide level2">
+<h2>Tokens are what you pay for — in code</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> tiktoken</span>
+<span id="cb2-2"><a></a>enc <span class="op">=</span> tiktoken.get_encoding(<span class="st">"o200k_base"</span>)   <span class="co"># gpt-oss's tokenizer family</span></span>
+<span id="cb2-3"><a></a><span class="bu">len</span>(enc.encode(<span class="st">"The ECB left rates unchanged at 2%."</span>))</span>
+<span id="cb2-4"><a></a><span class="co"># 7 words -&gt; 9 tokens</span></span>
+<span id="cb2-5"><a></a><span class="bu">len</span>(enc.encode(<span class="st">"ЕЦБ оставил ставки без изменений на уровне 2%."</span>))</span>
+<span id="cb2-6"><a></a><span class="co"># 8 words -&gt; 13 tokens</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="explain">Same sentence, 44% more tokens in Russian: 44% more on the bill, and 44% less text in the same context window. Price lists are per million tokens, never per word.</span></p>
+</section>
 <section id="vectors-meaning-becomes-a-place" class="slide level2">
 <h2>2 · Vectors: meaning becomes a place</h2>
 <p>Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nudge as every other weight.</p>
 
 <img data-src="img/w02-embed.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
-<section id="attention-the-tokens-talk-to-each-other" class="slide level2 clip" data-background-color="#000000">
-<h2>3 · Attention: the tokens talk to each other</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w02_attention_poster.png">
-<source src="media/w02_attention.mp4" type="video/mp4">
+<section id="attention-a-word-reads-the-room" class="slide level2">
+<h2>3 · Attention: a word reads the room</h2>
+<p>On the last slide, <strong>“bank” has one place on the map</strong> — the same in <em>“the river bank”</em> and <em>“the bank raised rates”</em>. Half the time, that is wrong.</p>
+<p><strong>Attention</strong> fixes it. Before going on, every word looks at the other words in the sentence and <strong>borrows meaning from the ones that matter to it</strong>.</p>
+<p><span class="explain">As you do in a meeting: someone says “it”, you glance round the table at who “it” could be, and listen most to them.</span></p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p><em>“The bank raised rates because <strong>it</strong> …”</em> — of everything “it” borrows, what share comes from “bank”?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="attention-slowly" class="slide level2">
+<h2>Attention, slowly</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" playsinline="" preload="auto" poster="media/w02_attention_white_poster.png">
+<source src="media/w02_attention_white.mp4" type="video/mp4">
 </video>
-<p><span class="explain">Each token asks a question (query), each token shows a label (key), and gives what it carries (value). Good match → more of it.</span></p>
+</section>
+<section id="the-same-in-three-lines-of-code" class="slide level2">
+<h2>The same, in three lines of code</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># how relevant is each word to "it"?        -&gt; bank 3.0, rates 1.5</span></span>
+<span id="cb3-2"><a></a>relevance <span class="op">=</span> keys <span class="op">@</span> query</span>
+<span id="cb3-3"><a></a><span class="co"># into shares that add up to 100%          -&gt; bank 70%, rates 16%</span></span>
+<span id="cb3-4"><a></a>share <span class="op">=</span> np.exp(relevance) <span class="op">/</span> np.exp(relevance).<span class="bu">sum</span>()</span>
+<span id="cb3-5"><a></a><span class="co"># the new meaning of "it": a mix of the others -&gt; 70% bank</span></span>
+<span id="cb3-6"><a></a>new_it <span class="op">=</span> share <span class="op">@</span> values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="explain">Nothing new: <em>relevance</em> is multiply-and-add, a neuron; <em>share</em> is the same squash as the knobs. Attention is the old machinery, used to let words read each other.</span></p>
 </section>
 <section id="the-same-as-a-table" class="slide level2">
 <h2>The same, as a table</h2>
@@ -608,7 +783,8 @@ Niccolò Salvini, PhD
 <section id="and-inside-a-real-model" class="slide level2">
 <h2>And inside a real model</h2>
 
-<img data-src="img/w02-attention-real.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:84.0%"><p><span class="muted">Vaswani et al., <em>Attention Is All You Need</em>, 2017 — the paper behind every model since.</span></p>
+<img data-src="img/w02-attention-real.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:84.0%"><p><span class="explain">Nobody told GPT-2 to link “it” to “bank”: the weights found it, like the red flags. GPT-2 asks 12 such questions at once, in each of 12 layers.</span></p>
+<p><span class="muted">Vaswani et al., <em>Attention Is All You Need</em>, 2017 — the paper behind every model since.</span></p>
 </section>
 <section id="the-transformer-one-block-stacked" class="slide level2">
 <h2>4 · The transformer: one block, stacked</h2>
@@ -683,13 +859,73 @@ Niccolò Salvini, PhD
 <li>Generate at T = 0, then three times at T = 1. Which sentences are facts?</li>
 </ol>
 </section>
-<section id="part-4-training-at-scale-and-running-it" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 4</span> Training at scale, and running it</h2>
+<section id="part-4-post-trained-sft-rl-how-a-model-is-made" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 4 · “post-trained”, “SFT”, “RL”</span> How a model is made</h2>
 </section>
 <section id="pre-training-is-compressing-the-internet" class="slide level2">
 <h2>Pre-training is compressing the internet</h2>
 
 <img data-src="img/compress-internet.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="stage-1-pre-training-read-guess-nudge" class="slide level2">
+<h2>Stage 1 · Pre-training: read, guess, nudge</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>The loop</strong>: take a piece of text, hide the next token, guess, nudge every weight. Repeat.</p>
+<p><strong>The data</strong>: “a text-only dataset with <strong>trillions of tokens</strong>, with a focus on STEM, coding, and general knowledge. Knowledge cutoff: <strong>June 2024</strong>.”</p>
+<p><strong>The bill</strong>: <strong>2.1 million H100-hours</strong> — about a thousand top GPUs for three months.</p>
+</div><div class="column" style="width:45%;">
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>What comes out is a <strong>base model</strong>. Ask it <em>“What is the capital of France?”</em> Does it answer?</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<p><span class="muted">Quotes and numbers: the gpt-oss model card, OpenAI, August 2025.</span></p>
+</section>
+<section id="a-base-model-is-not-an-assistant" class="slide level2 lab" data-background-color="#2471a3">
+<h2>A base model is not an assistant</h2>
+<p><span class="kicker">LAB · session.ipynb § 4</span></p>
+<p>GPT-2 is a base model. In the generation cell, set the prompt to a question:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>prompt <span class="op">=</span> <span class="st">"What is the capital of France?"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="explain">It does not answer — it <strong>continues a document</strong>. On the internet a question is often followed by more questions: a quiz, a forum, an exam paper. That is what it writes.</span></p>
+</section>
+<section id="stage-2-supervised-fine-tuning-imitate-good-conversations" class="slide level2">
+<h2>Stage 2 · Supervised fine-tuning: imitate good conversations</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>People write tens of thousands of example conversations:</p>
+<blockquote>
+<p><strong>User:</strong> Summarise this contract in three points. <strong>Assistant:</strong> 1. … 2. … 3. …</p>
+</blockquote>
+<p>The same loop again — now the “next token” to guess is the ideal assistant’s reply.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>What it learns</strong>: the format, the tone, when to refuse. A persona.</p>
+<p><strong>What it does not learn</strong>: new facts. The knowledge is still the compressed internet from stage 1.</p>
+</div></div>
+<p><span class="explain">When you talk to an assistant, you talk to a statistical imitation of the people who wrote those examples.</span></p>
+</section>
+<section id="stage-3-reinforcement-learning-try-score-reinforce" class="slide level2">
+<h2>Stage 3 · Reinforcement learning: try, score, reinforce</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Problems with a checkable answer</strong> — maths, code, logic. The model tries each one many times; the attempts that reach the right answer are nudged up.</p>
+<p>Nobody writes the steps. The model discovers that <strong>writing its reasoning out first</strong> gets more answers right.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Where no answer can be checked</strong> — tone, helpfulness — a second model, trained on human preferences (“A or B?”), gives the score.</p>
+<p>“A <strong>high-compute RL</strong> stage” = they spent heavily here. That is what “reasoning model” means.</p>
+</div></div>
+<p><span class="explain">For you: the “thinking” is tokens. You wait for them, and you pay for them.</span></p>
+</section>
 <section id="three-stages-the-same-loop" class="slide level2">
 <h2>Three stages, the same loop</h2>
 <table class="caption-top">
@@ -725,6 +961,9 @@ Niccolò Salvini, PhD
 </table>
 <p><span class="explain">The formula never changes: <span class="math inline">w \leftarrow w - \eta \cdot</span> blame. Only what counts as right does.</span></p>
 </section>
+<section id="part-5-moe-quantized-128k-apache-2.0-what-it-costs-to-run-and-who-owns-it" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 5 · “MoE”, “quantized”, “128k”, “Apache 2.0”</span> What it costs to run, and who owns it</h2>
+</section>
 <section id="the-box-has-a-size-and-a-price" class="slide level2">
 <h2>The box has a size, and a price</h2>
 
@@ -758,8 +997,48 @@ Niccolò Salvini, PhD
 </div>
 <p><span class="explain"><strong>Quantization</strong>: store each number with less precision. A little accuracy for a lot of memory.</span></p>
 </section>
-<section id="part-5-what-it-cannot-do" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 5</span> What it cannot do</h2>
+<section id="open-weights-apache-2.0-who-owns-it" class="slide level2">
+<h2>Open weights, Apache 2.0: who owns it</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>a closed model, through an API</th>
+<th>an open-weight model (gpt-oss)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>you get</strong></td>
+<td>an answer per call</td>
+<td>the 117 billion numbers themselves</td>
+</tr>
+<tr class="even">
+<td><strong>you pay</strong></td>
+<td>per token, forever</td>
+<td>the hardware to run it</td>
+</tr>
+<tr class="odd">
+<td><strong>your data</strong></td>
+<td>goes to the vendor</td>
+<td>stays on your machine</td>
+</tr>
+<tr class="even">
+<td><strong>it changes</strong></td>
+<td>when the vendor decides</td>
+<td>never, unless you change it</td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Apache 2.0: you may use it commercially, modify it, sell what you build. <strong>Open weights is not open source</strong>: the training data and code stay private.</span></p>
+</section>
+<section id="part-6-what-it-cannot-do" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 6</span> What it cannot do</h2>
 </section>
 <section id="four-limits-that-follow-from-the-machine" class="slide level2">
 <h2>Four limits that follow from the machine</h2>
