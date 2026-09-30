@@ -450,7 +450,6 @@ Niccolò Salvini, PhD
 </tbody>
 </table>
 </div>
-<p><span class="explain">That loop — guess, how wrong, blame, nudge — is all of training. An LLM runs it on 117 billion weights instead of 4.</span></p>
 </section>
 <section id="last-week-in-your-notebook" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Last week, in your notebook</h2>
@@ -530,32 +529,21 @@ Niccolò Salvini, PhD
 
 <img data-src="img/w02-map-tokens.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"><p><span class="explain">The text is cut into pieces, and each piece becomes a number. The model never sees a word.</span></p>
 </section>
-<section id="tokens-are-what-you-pay-for" class="slide level2">
-<h2>Tokens are what you pay for</h2>
-<div class="bigtable">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>same sentence</th>
-<th>words</th>
-<th>tokens</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>The ECB left rates unchanged at 2%.</td>
-<td>7</td>
-<td>9</td>
-</tr>
-<tr class="even">
-<td>ЕЦБ оставил ставки без изменений на уровне 2%.</td>
-<td>8</td>
-<td>13</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><span class="explain">The pieces are learned from mostly English text, so English is cheap. Same meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. How the pieces are learned, and your own texts: session.ipynb § 1.</span></p>
+<section id="how-a-tokenizer-is-built" class="slide level2">
+<h2>How a tokenizer is built</h2>
+<video class="clipvideo" width="1000" height="562" controls="" muted="" playsinline="" preload="auto" poster="media/w02_bpe_white_poster.png">
+<source src="media/w02_bpe_white.mp4" type="video/mp4">
+</video>
+</section>
+<section id="the-recipe-in-four-lines" class="slide level2">
+<h2>The recipe, in four lines</h2>
+<ol type="1">
+<li>Start from single letters.</li>
+<li>Count which pair of neighbours appears most often.</li>
+<li>Glue it into one new piece; add it to the vocabulary.</li>
+<li>Repeat — until the vocabulary has the size you want: about <strong>200,000</strong> pieces for gpt-oss.</li>
+</ol>
+<p><span class="explain">Frequent words end up as one piece; rare ones stay in fragments. The text it learned from was mostly English — so Russian is cut finer: the same sentence costs 9 tokens in English, 13 in Russian. You pay per token. Your own texts: session.ipynb § 1.</span></p>
 </section>
 <section id="vectors" class="slide level2">
 <h2>② Vectors</h2>
