@@ -28,4 +28,5 @@ only="${1:-all}"
 [ "$only" = all ] || [ "$only" = w07 ] && render w07_lookahead  LookAhead       w07_lookahead
 [ "$only" = all ] || [ "$only" = w08 ] && render w08_amm        ConstantProduct w08_amm
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_llm        AttentionByHand w02_attention
+[ "$only" = all ] || [ "$only" = w02 ] && render w02_llm        AttentionForHumans w02_attention_white
 echo done
