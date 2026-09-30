@@ -8,6 +8,7 @@ from pathlib import Path
 from manim import *
 
 S = json.loads((Path(__file__).resolve().parents[2] / "lectures/img/w02_llm_story.json").read_text())
+V = json.loads((Path(__file__).resolve().parents[2] / "lectures/img/w02_vectors.json").read_text())
 INK, RED, NAVY, GOLD, MUTED, PAPER = "#363636", "#AF1F25", "#2471a3", "#CDBA80", "#7a7f85", "#f7f5ef"
 GOLDDK = "#a8955a"
 SANS = "Helvetica Neue"
@@ -38,23 +39,24 @@ class Architecture(Scene):
             cap = new
 
         # 1 · tokens and ids
-        wd = VGroup(*[T(w, 34, INK, BOLD).move_to([x, 3.5, 0]) for w, x in zip(words, xs)])
-        idt = VGroup(*[T(str(i), 24, MUTED, font=MONO).move_to([x, 3.05, 0]) for i, x in zip(ids, xs)])
+        wd = VGroup(*[T(w, 34, INK, BOLD).move_to([x, 3.68, 0]) for w, x in zip(words, xs)])
+        idt = VGroup(*[T(str(i), 24, MUTED, font=MONO).move_to([x, 3.2, 0]) for i, x in zip(ids, xs)])
         self.play(FadeIn(wd), run_time=1.8)
         caption("1 · The text is cut into pieces — tokens — and each gets a number.")
         self.play(LaggedStart(*[FadeIn(i, shift=DOWN * 0.2) for i in idt], lag_ratio=0.3), run_time=2.2)
         self.wait(2.5)
 
         # 2 · vectors
-        shades = ["#2471a3", "#5b95c2", "#9dc0dc", "#1a5580", "#7fb0d6", "#3d84b8"]
         vecs = VGroup()
-        for k, x in enumerate(xs):
-            col = VGroup(*[Rectangle(width=0.42, height=0.14, stroke_width=0.8, stroke_color=WHITE,
-                                     fill_color=shades[(k * 2 + j * 3) % 6], fill_opacity=1) for j in range(6)])
-            col.arrange(DOWN, buff=0).move_to([x, 2.47, 0])
-            vecs.add(col)
-        more = T("… 768 numbers each", 24, NAVY).move_to([4.6, 2.45, 0])
-        pos = T("+ one for “where am I”", 24, MUTED).move_to([4.6, 2.0, 0])
+        for tk, x in zip(V["tokens"], xs):
+            rows = VGroup(*[T(f"{v:.2f}".replace("-", "−"), 22, NAVY, font=MONO) for v in tk["first4"]],
+                          T("…", 22, NAVY, font=MONO))
+            rows.arrange(DOWN, buff=0.08)
+            box = SurroundingRectangle(rows, color=NAVY, stroke_width=1.5, buff=0.08)
+            vecs.add(VGroup(box, rows).move_to([x, 2.52, 0]))
+        more = VGroup(T(f"{V['width']} numbers each —", 22, NAVY), T("the first four shown", 22, NAVY)).arrange(DOWN, buff=0.08, aligned_edge=LEFT)
+        more.move_to([4.7, 2.7, 0])
+        pos = T("+ one for “where am I”", 22, MUTED).move_to([4.7, 2.05, 0])
         caption("2 · Each token becomes a list of numbers: its place on the map of meaning.")
         self.play(*[ReplacementTransform(i, v) for i, v in zip(idt, vecs)], run_time=2.2)
         self.play(FadeIn(more), run_time=1.2)
@@ -72,7 +74,7 @@ class Architecture(Scene):
         self.play(Create(att), run_time=1.4)
         caption("3 · Attention: every token looks at the others and borrows meaning from them.")
         dots = VGroup(*[Dot([x, 1.28, 0], radius=0.07, color=NAVY) for x in xs])
-        drops = VGroup(*[Line([x, 2.02, 0], [x, 1.36, 0], color=MUTED, stroke_width=2) for x in xs])
+        drops = VGroup(*[Line([x, vecs[0].get_bottom()[1], 0], [x, 1.36, 0], color=MUTED, stroke_width=2) for x in xs])
         self.play(Create(drops), FadeIn(dots), run_time=1.2)
         arcs = VGroup()
         for a in range(4):
@@ -84,15 +86,15 @@ class Architecture(Scene):
         self.wait(2.5)
 
         # 4 · neurons, one token at a time
-        neu = Rectangle(width=7.5, height=0.9, stroke_color=NAVY, stroke_width=2.5, fill_color=WHITE,
-                        fill_opacity=1).move_to([-2.0, -0.2, 0])
-        neul = T("neurons — each token thinks on its own", 24, NAVY, BOLD).move_to([-2.0, -0.47, 0])
+        neu = Rectangle(width=7.5, height=1.0, stroke_color=NAVY, stroke_width=2.5, fill_color=WHITE,
+                        fill_opacity=1).move_to([-2.0, -0.26, 0])
+        neul = T("neurons — each token thinks on its own", 22, NAVY, BOLD).move_to([-2.0, -0.56, 0])
         self.play(Create(neu), run_time=1.4)
         caption("4 · Neurons — the network from last week — each token thinks on its own.")
         nets = VGroup()
         for x in xs:
-            a, b, c = Dot([x - 0.3, 0.1, 0], radius=0.06, color=NAVY), Dot([x - 0.3, -0.2, 0], radius=0.06, color=NAVY), \
-                Dot([x + 0.3, -0.05, 0], radius=0.07, color=NAVY)
+            a, b, c = Dot([x - 0.3, 0.12, 0], radius=0.055, color=NAVY), Dot([x - 0.3, -0.12, 0], radius=0.055, color=NAVY), \
+                Dot([x + 0.3, 0.0, 0], radius=0.065, color=NAVY)
             nets.add(VGroup(Line(a.get_center(), c.get_center(), color=NAVY, stroke_width=2),
                             Line(b.get_center(), c.get_center(), color=NAVY, stroke_width=2), a, b, c))
         self.play(FadeIn(nets), run_time=1.2)

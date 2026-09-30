@@ -32,4 +32,5 @@ only="${1:-all}"
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_arch       Architecture    w02_arch_white
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_generate   Generate        w02_generate_white
 [ "$only" = all ] || [ "$only" = w02 ] && render w02_basechat   BaseVsChat      w02_basechat_white
+[ "$only" = all ] || [ "$only" = w02 ] && render w02_bpe        BuildTokenizer w02_bpe_white
 echo done

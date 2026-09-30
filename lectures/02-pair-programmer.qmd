@@ -32,8 +32,6 @@ institute: "AI for Business and FinTech · European School of Economics, Florenc
 | **repeat** | every payment, many rounds | average loss **0.45 → 0.03** |
 :::
 
-[That loop — guess, how wrong, blame, nudge — is all of training. An LLM runs it on 117 billion weights instead of 4.]{.explain}
-
 ## Last week, in your notebook {.lab background-color="#2471a3"}
 
 [LAB · session.ipynb § 0]{.kicker}
@@ -95,16 +93,18 @@ After "The ECB left rates", how sure is a real model that the next word is "unch
 
 [The text is cut into pieces, and each piece becomes a number. The model never sees a word.]{.explain}
 
-## Tokens are what you pay for
+## How a tokenizer is built
 
-::: {.bigtable}
-| same sentence | words | tokens |
-|---|---|---|
-| The ECB left rates unchanged at 2%. | 7 | 9 |
-| ЕЦБ оставил ставки без изменений на уровне 2%. | 8 | 13 |
-:::
+<video class="clipvideo" width="1000" height="562" controls muted playsinline preload="auto" poster="media/w02_bpe_white_poster.png"><source src="media/w02_bpe_white.mp4" type="video/mp4"></video>
 
-[The pieces are learned from mostly English text, so English is cheap. Same meaning, 44% more tokens in Russian: 44% more on the bill, 44% less text in the same window. How the pieces are learned, and your own texts: session.ipynb § 1.]{.explain}
+## The recipe, in four lines
+
+1. Start from single letters.
+2. Count which pair of neighbours appears most often.
+3. Glue it into one new piece; add it to the vocabulary.
+4. Repeat — until the vocabulary has the size you want: about **200,000** pieces for gpt-oss.
+
+[Frequent words end up as one piece; rare ones stay in fragments. The text it learned from was mostly English — so Russian is cut finer: the same sentence costs 9 tokens in English, 13 in Russian. You pay per token. Your own texts: session.ipynb § 1.]{.explain}
 
 ## ② Vectors
 
