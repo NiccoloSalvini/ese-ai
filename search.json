@@ -487,14 +487,14 @@
     "href": "lectures/02-pair-programmer.html#last-week-in-one-slide",
     "title": "Inside an LLM",
     "section": "Last week, in one slide",
-    "text": "Last week, in one slide\n\n\nThree ways to write a decision: 1.0 you write the rule; 2.0 the machine learns it from examples, as weights; 3.0 you ask a model in plain English. 2.0 and 3.0 are made of neurons.\nA neuron: multiply each answer by a weight, add a bias, decide. Eight payments taught it “two red flags” in three rounds, by hand — nobody wrote the rule.\nYes/no is not enough: squash the score into a probability, so the model can say how sure it is.\n\nThe loss is one number for how wrong it is — the average over all payments. Training pushes it down: 0.45 → 0.03.\nThe formula: w \\leftarrow w - \\eta\\,(p-y)\\,x — new weight = old weight − learning rate × blame, for every weight, after every example.\nBackpropagation finds each weight’s share of the blame, box by box, right to left."
+    "text": "Last week, in one slide\nThe question: is payment E (large, abroad, same device) fraud? Nobody writes the rule — the machine learns it from eight past payments.\n\n\n\n\n\n\n\n\n\nstep\nin words\non payment E\n\n\n\n\n1 · guess\na neuron weighs each red flag, adds them up, and squashes the total into a probability\n0.5 × large + 1 × abroad − 1 → p(fraud) = 0.62\n\n\n2 · how wrong\nthe loss: one number, small when the right answer got a high probability\nit was fraud; 0.62 is not sure enough\n\n\n3 · blame\neach weight gets its share of the mistake; in a bigger network, backpropagation passes the blame back, layer by layer\n“large” and “abroad” were on: blamed · “device” was off: not blamed\n\n\n4 · nudge\nnew weight = old weight − learning rate × blame\n0.5 → 0.88 · 1 → 1.38 → p = 0.84\n\n\nrepeat\nevery payment, many rounds\naverage loss 0.45 → 0.03\n\n\n\n\nThat loop — guess, how wrong, blame, nudge — is all of training. An LLM runs it on 117 billion weights instead of 4."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#last-week-in-five-lines-of-code",
     "href": "lectures/02-pair-programmer.html#last-week-in-five-lines-of-code",
     "title": "Inside an LLM",
     "section": "Last week, in five lines of code",
-    "text": "Last week, in five lines of code\nimport numpy as np\nx = np.array([1, 1, 0])            # payment E: large, abroad, same device\nw, b, lr = np.array([0.5, 1, 1]), -1, 1.0\np = 1 / (1 + np.exp(-(w @ x + b)))  # the neuron: weigh, add, squash  -&gt; 0.62\nw, b = w - lr * (p - 1) * x, b - lr * (p - 1)   # the formula: it was fraud (y = 1)\nEverything on the last slide, as it runs. After the step, p(fraud) for E goes from 0.62 to 0.84. An LLM runs this same loop — on 117 billion weights instead of 4."
+    "text": "Last week, in five lines of code\nimport numpy as np\nx = np.array([1, 1, 0])            # payment E: large, abroad, same device\nw, b, lr = np.array([0.5, 1, 1]), -1, 1.0\np = 1 / (1 + np.exp(-(w @ x + b)))  # the neuron: weigh, add, squash  -&gt; 0.62\nw, b = w - lr * (p - 1) * x, b - lr * (p - 1)   # the formula: it was fraud (y = 1)\nThe same four steps, as they run: line 4 is the guess (0.62), line 5 is blame and nudge. Run line 4 again: 0.84."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#your-homework",

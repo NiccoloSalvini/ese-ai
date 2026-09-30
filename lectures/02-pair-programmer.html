@@ -475,16 +475,51 @@ Niccolò Salvini, PhD
 </section>
 <section id="last-week-in-one-slide" class="slide level2">
 <h2>Last week, in one slide</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Three ways to write a decision</strong>: 1.0 you write the rule; 2.0 the machine learns it from examples, as weights; 3.0 you ask a model in plain English. 2.0 and 3.0 are made of neurons.</p>
-<p><strong>A neuron</strong>: multiply each answer by a weight, add a bias, decide. Eight payments taught it “two red flags” in three rounds, by hand — nobody wrote the rule.</p>
-<p><strong>Yes/no is not enough</strong>: squash the score into a probability, so the model can say <em>how</em> sure it is.</p>
-</div><div class="column" style="width:50%;">
-<p><strong>The loss</strong> is one number for how wrong it is — the average over all payments. Training pushes it down: 0.45 → 0.03.</p>
-<p><strong>The formula</strong>: <span class="math inline">w \leftarrow w - \eta\,(p-y)\,x</span> — new weight = old weight − learning rate × blame, for every weight, after every example.</p>
-<p><strong>Backpropagation</strong> finds each weight’s share of the blame, box by box, right to left.</p>
-</div></div>
+<p><strong>The question:</strong> is payment E (large, abroad, same device) fraud? Nobody writes the rule — the machine learns it from eight past payments.</p>
+<div style="font-size:1.05em">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>step</th>
+<th>in words</th>
+<th>on payment E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1 · guess</strong></td>
+<td>a neuron weighs each red flag, adds them up, and squashes the total into a probability</td>
+<td>0.5 × large + 1 × abroad − 1 → <strong>p(fraud) = 0.62</strong></td>
+</tr>
+<tr class="even">
+<td><strong>2 · how wrong</strong></td>
+<td>the <strong>loss</strong>: one number, small when the right answer got a high probability</td>
+<td>it <em>was</em> fraud; 0.62 is not sure enough</td>
+</tr>
+<tr class="odd">
+<td><strong>3 · blame</strong></td>
+<td>each weight gets its share of the mistake; in a bigger network, <strong>backpropagation</strong> passes the blame back, layer by layer</td>
+<td>“large” and “abroad” were on: blamed · “device” was off: not blamed</td>
+</tr>
+<tr class="even">
+<td><strong>4 · nudge</strong></td>
+<td>new weight = old weight − learning rate × blame</td>
+<td>0.5 → 0.88 · 1 → 1.38 → <strong>p = 0.84</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>repeat</strong></td>
+<td>every payment, many rounds</td>
+<td>average loss <strong>0.45 → 0.03</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="explain">That loop — guess, how wrong, blame, nudge — is all of training. An LLM runs it on 117 billion weights instead of 4.</span></p>
 </section>
 <section id="last-week-in-five-lines-of-code" class="slide level2">
 <h2>Last week, in five lines of code</h2>
@@ -493,7 +528,7 @@ Niccolò Salvini, PhD
 <span id="cb1-3"><a></a>w, b, lr <span class="op">=</span> np.array([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">1</span>]), <span class="op">-</span><span class="dv">1</span>, <span class="fl">1.0</span></span>
 <span id="cb1-4"><a></a>p <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>(w <span class="op">@</span> x <span class="op">+</span> b)))  <span class="co"># the neuron: weigh, add, squash  -&gt; 0.62</span></span>
 <span id="cb1-5"><a></a>w, b <span class="op">=</span> w <span class="op">-</span> lr <span class="op">*</span> (p <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> x, b <span class="op">-</span> lr <span class="op">*</span> (p <span class="op">-</span> <span class="dv">1</span>)   <span class="co"># the formula: it was fraud (y = 1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><span class="explain">Everything on the last slide, as it runs. After the step, p(fraud) for E goes from 0.62 to 0.84. An LLM runs this same loop — on 117 billion weights instead of 4.</span></p>
+<p><span class="explain">The same four steps, as they run: line 4 is the guess (0.62), line 5 is blame and nudge. Run line 4 again: 0.84.</span></p>
 </section>
 <section id="your-homework" class="slide level2 statement">
 <h2>Your homework</h2>
