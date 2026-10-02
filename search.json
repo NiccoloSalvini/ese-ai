@@ -697,7 +697,7 @@
     "href": "lectures/02-pair-programmer.html#one-block-stacked",
     "title": "Inside an LLM",
     "section": "One block, stacked",
-    "text": "One block, stacked\n\nAttention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a Transformer."
+    "text": "One block, stacked\n\nAttention moves information between tokens; the neurons transform it, token by token — and hold much of what the model knows. Stack the block 36 times: that is a Transformer."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#step-④-for-real",
@@ -732,7 +732,7 @@
     "href": "lectures/02-pair-programmer.html#how-boldly-it-picks-temperature",
     "title": "Inside an LLM",
     "section": "How boldly it picks: temperature",
-    "text": "How boldly it picks: temperature\nTemperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:\n\n\n\n\nnext token\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n83.9%\n37.1%\n2.4%\n\n\nat\n10.2%\n13.0%\n1.4%\n\n\nlow\n2.7%\n6.7%\n1.0%\n\n\nin\n1.0%\n4.1%\n0.8%\n\n\non\n0.8%\n3.5%\n0.7%\n\n\n\n\nAt T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token: the same answer every time."
+    "text": "How boldly it picks: temperature\nTemperature divides every score before the softmax. On GPT-2’s real knobs, after “The ECB left rates”:\n\n\n\n\nnext token\nT = 0.5\nT = 1\nT = 2\n\n\n\n\nunchanged\n83.9%\n37.1%\n2.4%\n\n\nat\n10.2%\n13.0%\n1.4%\n\n\nlow\n2.7%\n6.7%\n1.0%\n\n\nin\n1.0%\n4.1%\n0.8%\n\n\non\n0.8%\n3.5%\n0.7%\n\n\n\n\nAt T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token. APIs add one more dial, top-p: draw only among the top tokens that together make p (say 90%) — the long tail is cut off."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#one-token-at-a-time",
@@ -754,6 +754,13 @@
     "title": "Inside an LLM",
     "section": "Part 3 · “117b”, “MoE”, “5.1B active”, “quantized” Where the 117 billion numbers live",
     "text": "Part 3 · “117b”, “MoE”, “5.1B active”, “quantized” Where the 117 billion numbers live"
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#from-gpt-2-to-gpt-oss-what-changed",
+    "href": "lectures/02-pair-programmer.html#from-gpt-2-to-gpt-oss-what-changed",
+    "title": "Inside an LLM",
+    "section": "From GPT-2 to gpt-oss: what changed",
+    "text": "From GPT-2 to gpt-oss: what changed"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#from-4-numbers-to-117-billion",
@@ -873,6 +880,13 @@
     "title": "Inside an LLM",
     "section": "The box has a size, and a price",
     "text": "The box has a size, and a price\n\nEvery token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look."
+  },
+  {
+    "objectID": "lectures/02-pair-programmer.html#reading-is-fast-writing-is-slow",
+    "href": "lectures/02-pair-programmer.html#reading-is-fast-writing-is-slow",
+    "title": "Inside an LLM",
+    "section": "Reading is fast, writing is slow",
+    "text": "Reading is fast, writing is slow"
   },
   {
     "objectID": "lectures/02-pair-programmer.html#open-weights-apache-2.0-who-owns-it",

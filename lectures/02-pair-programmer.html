@@ -645,7 +645,7 @@ Niccolò Salvini, PhD
 <section id="one-block-stacked" class="slide level2">
 <h2>One block, stacked</h2>
 
-<img data-src="img/w02-block.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="explain">Attention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a <strong>Transformer</strong>.</span></p>
+<img data-src="img/w02-block.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:76.0%"><p><span class="explain">Attention <strong>moves</strong> information between tokens; the neurons <strong>transform</strong> it, token by token — and hold much of what the model knows. Stack the block 36 times: that is a <strong>Transformer</strong>.</span></p>
 </section>
 <section id="step-④-for-real" class="slide level2">
 <h2>Step ④ for real</h2>
@@ -712,7 +712,7 @@ Niccolò Salvini, PhD
 </tbody>
 </table>
 </div>
-<p><span class="explain">At T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token: the same answer every time.</span></p>
+<p><span class="explain">At T = 2 the 50,257 tokens are spread so flat that “unchanged” drops to 2%. T = 0 always picks the top token. APIs add one more dial, <strong>top-p</strong>: draw only among the top tokens that together make p (say 90%) — the long tail is cut off.</span></p>
 </section>
 <section id="one-token-at-a-time" class="slide level2">
 <h2>One token at a time</h2>
@@ -737,6 +737,10 @@ Niccolò Salvini, PhD
 <section id="part-3-117b-moe-5.1b-active-quantized-where-the-117-billion-numbers-live" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 3 · “117b”, “MoE”, “5.1B active”, “quantized”</span> Where the 117 billion numbers live</h2>
 </section>
+<section id="from-gpt-2-to-gpt-oss-what-changed" class="slide level2">
+<h2>From GPT-2 to gpt-oss: what changed</h2>
+
+<img data-src="img/w02-oss-vs-gpt2.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="from-4-numbers-to-117-billion" class="slide level2">
 <h2>From 4 numbers to 117 billion</h2>
 
@@ -941,6 +945,10 @@ Niccolò Salvini, PhD
 
 <img data-src="img/context-window.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><span class="explain">Every token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look.</span></p>
 </section>
+<section id="reading-is-fast-writing-is-slow" class="slide level2">
+<h2>Reading is fast, writing is slow</h2>
+
+<img data-src="img/w02-calc-kv.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="open-weights-apache-2.0-who-owns-it" class="slide level2">
 <h2>Open weights, Apache 2.0: who owns it</h2>
 <table class="caption-top">

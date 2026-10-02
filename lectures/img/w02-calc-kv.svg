@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="960" height="320" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">GPT-2 timed on a laptop — reading is parallel, writing is one token at a time</text>
+  <text x="30" y="62" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <text x="310" y="62" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1"></text>
+  <text x="630" y="62" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">time</text>
+  <text x="770" y="62" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">speed</text>
+  <line x1="30" y1="72" x2="970" y2="72" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="30" y="100" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >read the prompt (prefill)</text>
+  <text x="310" y="100" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >512 tokens in one pass</text>
+  <text x="630" y="100" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >0.16 s</text>
+  <text x="770" y="100" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >3,209 tokens/s</text>
+  <line x1="30" y1="112" x2="970" y2="112" stroke="#e6e2d8"/>
+  <text x="30" y="132" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >write the answer (decode)</text>
+  <text x="310" y="132" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >512 tokens, one at a time</text>
+  <text x="630" y="132" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >12.5 s</text>
+  <text x="770" y="132" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start" >41 tokens/s</text>
+  <line x1="30" y1="144" x2="970" y2="144" stroke="#e6e2d8"/>
+  <text x="30" y="164" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >write 128 tokens, no cache</text>
+  <text x="310" y="164" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >re-read everything each step</text>
+  <text x="630" y="164" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >7.1 s</text>
+  <text x="770" y="164" font-size="15" font-weight="400" fill="#363636" text-anchor="start" ></text>
+  <line x1="30" y1="176" x2="970" y2="176" stroke="#e6e2d8"/>
+  <text x="30" y="196" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >write 128 tokens, with cache</text>
+  <text x="310" y="196" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >keep each token's keys and values</text>
+  <text x="630" y="196" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >3.4 s</text>
+  <text x="770" y="196" font-size="15" font-weight="400" fill="#363636" text-anchor="start" ></text>
+  <line x1="30" y1="208" x2="970" y2="208" stroke="#e6e2d8"/>
+  <text x="30" y="242" font-size="15" font-weight="700" fill="#363636" text-anchor="start" >Reading is 79× faster than writing. One reason output tokens cost more than input tokens.</text>
+  <text x="30" y="266" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >The cache: each token's keys and values, kept. gpt-oss at full context: 4.84 GB per conversation,</text>
+  <text x="30" y="290" font-size="15" font-weight="400" fill="#363636" text-anchor="start" >thanks to 8 shared key/value sets and the 128-token windows. Without them: 77.3 GB — more than the GPU.</text>
+</svg>
