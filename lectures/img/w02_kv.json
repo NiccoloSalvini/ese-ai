@@ -1,0 +1,25 @@
+{
+ "machine": "laptop CPU, 4 threads, GPT-2 small",
+ "N": 512,
+ "prefill_s": 0.16,
+ "decode_cached_s": 12.518,
+ "prefill_tokens_per_s": 3209,
+ "decode_tokens_per_s": 40.8,
+ "M": 128,
+ "decode_nocache_s": 7.1,
+ "decode_cached_M_s": 3.39,
+ "gpt2_kv_bytes_per_token": 36864,
+ "gpt2_kv_full_context_MB": 37.7,
+ "oss": {
+  "layers": 36,
+  "dense_layers": 18,
+  "window_layers": 18,
+  "window": 128,
+  "kv_heads": 8,
+  "q_heads": 64,
+  "d_head": 64,
+  "context": 131072
+ },
+ "oss_kv_GB_full_context": 4.84,
+ "oss_kv_GB_if_no_gqa_no_window": 77.3
+}

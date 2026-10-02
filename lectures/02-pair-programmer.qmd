@@ -194,9 +194,9 @@ Each token becomes a list of numbers — 768 in GPT-2 — learned by the same nu
 
 ## One block, stacked
 
-![](img/w02-block.svg){fig-align="center" width="86%"}
+![](img/w02-block.svg){fig-align="center" width="76%"}
 
-[Attention, then neurons: one block. Stack it 36 times and each layer builds questions on the last. That stack is what the release calls a **Transformer**.]{.explain}
+[Attention **moves** information between tokens; the neurons **transform** it, token by token — and hold much of what the model knows. Stack the block 36 times: that is a **Transformer**.]{.explain}
 
 ## Step ④ for real
 
@@ -232,7 +232,7 @@ Temperature divides every score before the softmax. On GPT-2’s real knobs, aft
 | **on** | 0.8% | 3.5% | 0.7% |
 :::
 
-[At T = 2 the 50,257 tokens are spread so flat that "unchanged" drops to 2%. T = 0 always picks the top token: the same answer every time.]{.explain}
+[At T = 2 the 50,257 tokens are spread so flat that "unchanged" drops to 2%. T = 0 always picks the top token. APIs add one more dial, **top-p**: draw only among the top tokens that together make p (say 90%) — the long tail is cut off.]{.explain}
 
 ## One token at a time
 
@@ -255,6 +255,10 @@ Temperature divides every score before the softmax. On GPT-2’s real knobs, aft
 3. Generate at T = 0, then three times at T = 1. Which sentences are facts?
 
 ## [Part 3 · “117b”, “MoE”, “5.1B active”, “quantized”]{.section-kicker} Where the 117 billion numbers live {.section-slide background-color="#AF1F25"}
+
+## From GPT-2 to gpt-oss: what changed
+
+![](img/w02-oss-vs-gpt2.svg){fig-align="center" width="95%"}
 
 ## From 4 numbers to 117 billion
 
@@ -393,6 +397,10 @@ Nobody writes the steps. The model discovers that **writing its reasoning out fi
 ![](img/context-window.svg){fig-align="center" width="80%"}
 
 [Every token attends to every other: twice the context, four times the attention work. That is why long prompts cost more than they look.]{.explain}
+
+## Reading is fast, writing is slow
+
+![](img/w02-calc-kv.svg){fig-align="center" width="95%"}
 
 ## Open weights, Apache 2.0: who owns it
 

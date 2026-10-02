@@ -82,8 +82,8 @@ def arch():
     svg("w02-gpt2.svg", 960, 460, B, "GPT-2 small, every layer, with its real sizes — gpt-oss has the same shape: 36 blocks, 128 experts in the MLP")
 
 
-def table(name, sub, head, rows, widths, hl=None, foot=None, h=None, x=30, y0=70, size=15, rh=34):
-    B, xs = [], [x]
+def table(name, sub, head, rows, widths, hl=None, foot=None, h=None, x=30, y0=70, size=15, rh=34, mono=True):
+    B, xs, mono_ok = [], [x], mono
     for wd in widths[:-1]:
         xs.append(xs[-1] + wd)
     for xi, hd in zip(xs, head):
@@ -93,7 +93,7 @@ def table(name, sub, head, rows, widths, hl=None, foot=None, h=None, x=30, y0=70
         y = y0 + 38 + i * rh
         col = RED if hl is not None and i == hl else INK
         for j, (xi, cell) in enumerate(zip(xs, row)):
-            mono = j > 0 and any(ch.isdigit() for ch in str(cell))
+            mono = mono_ok and j > 0 and any(ch.isdigit() for ch in str(cell))
             B.append(t(xi, y, cell, size, col, "700" if (hl is not None and i == hl) or j == 0 else "400", extra=MONO if mono else ""))
         B.append(f'  <line x1="{x}" y1="{y + 12}" x2="{x + sum(widths)}" y2="{y + 12}" stroke="{RULE}"/>')
     yb = y0 + 38 + len(rows) * rh
@@ -180,5 +180,39 @@ def calc_quant():
                 "The knobs shift a little. gpt-oss ships “natively” in 4 bits — tuned for them — so it loses even less."])
 
 
+def oss_vs_gpt2():
+    """GPT-2 (our walk) next to gpt-oss-120b (model card, OpenAI, Aug 2025): same skeleton, newer parts."""
+    O = {"layers": 36, "d": 2880, "vocab": 201088, "context": 131072, "q_heads": 64, "kv_heads": 8,
+         "experts": 128, "active_experts": 4, "mlp": 114.71e9, "attn": 0.96e9, "embed": 1.16e9, "total": 116.83e9,
+         "active": 5.13e9, "ckpt_gib": 60.8}
+    pm = P["mlp_per_block"] * W["layers"]
+    rows = [["blocks", f"{W['layers']}", f"{O['layers']}"],
+            ["numbers per token vector", f"{W['d_model']}", f"{O['d']:,}"],
+            ["vocabulary", f"{W['vocab']:,}", f"{O['vocab']:,} (o200k_harmony)"],
+            ["where am I?", f"a learned row per position, max {W['context']:,}", f"RoPE: rotate q and k by position → {O['context']:,}"],
+            ["rescaling", "LayerNorm", "RMSNorm (the same idea, cheaper)"],
+            ["attention heads", f"{W['heads']}, each with its own keys and values", f"{O['q_heads']} questions sharing {O['kv_heads']} key/value sets (GQA)"],
+            ["which tokens it reads", "all earlier ones", "all earlier, or only the last 128 — alternating"],
+            ["MLP", f"one: 768 → {W['d_mlp']:,} → 768, GELU", f"{O['experts']} experts, {O['active_experts']} picked per token, SwiGLU"],
+            ["share of numbers in the MLP", f"{pm / P['total']:.0%}", f"{O['mlp'] / O['total']:.0%}"],
+            ["total numbers", f"{P['total'] / 1e6:.0f} million", f"{O['total'] / 1e9:.2f} billion, {O['active'] / 1e9:.2f}B used per token"]]
+    table("w02-oss-vs-gpt2.svg", "the same skeleton, newer parts — gpt-oss numbers from its model card (OpenAI, August 2025)",
+          ["", "GPT-2 small (2019)", "gpt-oss-120b (2025)"], rows, [240, 300, 400], size=15, rh=30, y0=62, mono=False,
+          foot=["Every new part saves memory or reaches further back. None changes the loop or the block."])
+
+
+def calc_kv():
+    K = json.loads((HERE / "w02_kv.json").read_text())
+    rows = [["read the prompt (prefill)", f"{K['N']} tokens in one pass", f"{K['prefill_s']:.2f} s", f"{K['prefill_tokens_per_s']:,} tokens/s"],
+            ["write the answer (decode)", f"{K['N']} tokens, one at a time", f"{K['decode_cached_s']:.1f} s", f"{K['decode_tokens_per_s']:.0f} tokens/s"],
+            ["write 128 tokens, no cache", "re-read everything each step", f"{K['decode_nocache_s']:.1f} s", ""],
+            ["write 128 tokens, with cache", "keep each token's keys and values", f"{K['decode_cached_M_s']:.1f} s", ""]]
+    table("w02-calc-kv.svg", f"GPT-2 timed on a laptop — reading is parallel, writing is one token at a time",
+          ["", "", "time", "speed"], rows, [280, 320, 140, 200], hl=1, size=15, rh=32, y0=62, mono=False,
+          foot=[f"Reading is {K['prefill_tokens_per_s'] / K['decode_tokens_per_s']:.0f}× faster than writing. One reason output tokens cost more than input tokens.",
+                f"The cache: each token's keys and values, kept. gpt-oss at full context: {K['oss_kv_GB_full_context']} GB per conversation,",
+                f"thanks to 8 shared key/value sets and the 128-token windows. Without them: {K['oss_kv_GB_if_no_gqa_no_window']} GB — more than the GPU."])
+
+
 if __name__ == "__main__":
-    arch(); calc_embed(); calc_attn(); calc_mlp(); calc_lens(); calc_final(); calc_quant()
+    arch(); calc_embed(); calc_attn(); calc_mlp(); calc_lens(); calc_final(); calc_quant(); oss_vs_gpt2(); calc_kv()
