@@ -234,34 +234,6 @@ Niccolò Salvini, PhD
 </div>
 
 </section>
-<section id="where-we-are" class="slide level2">
-<h2>Where we are</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>1–2</td>
-<td>23–30 Sep</td>
-<td>the network, the LLM, the checking habit ✓</td>
-</tr>
-<tr class="even">
-<td><strong>3</strong></td>
-<td><strong>7 Oct</strong></td>
-<td><strong>explore a real dataset, then train a model and find out if it is any good</strong></td>
-</tr>
-<tr class="odd">
-<td>4–5</td>
-<td>14–21 Oct</td>
-<td>an LLM application, then agents and evals</td>
-</tr>
-</tbody>
-</table>
-<p><span class="red">Today a model will score 0.74 and be worthless, and a one-line rule will beat it. Telling the two apart is the entire skill.</span></p>
-</section>
 <section id="last-week-in-one-slide" class="slide level2">
 <h2>Last week, in one slide</h2>
 <div class="columns">
@@ -283,111 +255,54 @@ Niccolò Salvini, PhD
 <tbody>
 <tr class="odd">
 <td><strong>10:00</strong></td>
-<td>your homework: the fraud share, and the release you decoded</td>
+<td>your homework: the fraud share, the release you decoded</td>
 </tr>
 <tr class="even">
-<td><strong>10:20</strong></td>
-<td><strong>Part 1 — explore</strong>: eight years of BTC, ETH and the S&amp;P 500</td>
+<td><strong>10:15</strong></td>
+<td><strong>look</strong> — eight years of Bitcoin, Ether and the S&amp;P 500</td>
 </tr>
 <tr class="odd">
-<td><strong>11:20</strong></td>
+<td><strong>11:00</strong></td>
 <td>break</td>
 </tr>
 <tr class="even">
-<td><strong>11:30</strong></td>
-<td><strong>Part 2 — predict</strong>: features, the wall, a random forest, two splits</td>
+<td><strong>11:10</strong></td>
+<td><strong>predict</strong> — a model we do not open, judged from the outside</td>
 </tr>
 <tr class="odd">
-<td><strong>12:30</strong></td>
-<td>from a probability to a decision</td>
+<td><strong>12:00</strong></td>
+<td><strong>an LLM, called from code</strong> — the same question, the same test</td>
 </tr>
 <tr class="even">
-<td><strong>12:50</strong></td>
-<td>homework · three lines</td>
+<td><strong>12:40</strong></td>
+<td>from a probability to a decision · homework · three lines</td>
 </tr>
 </tbody>
 </table>
 <p><span class="muted">One notebook all morning: <strong>week-03/session.ipynb</strong>. You drive; I don’t touch the keyboard.</span></p>
 </section>
-<section id="how-the-notebook-works" class="slide level2">
-<h2>How the notebook works</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>grey cell</strong></td>
-<td>a worked example — run it, read it, ask</td>
-</tr>
-<tr class="even">
-<td><strong>✍️ BET</strong></td>
-<td>write a number <em>before</em> the next cell runs</td>
-</tr>
-<tr class="odd">
-<td><strong>▶ YOUR TURN</strong></td>
-<td>the next piece of the analysis is yours, with the assistant if you like. Solution folded underneath</td>
-</tr>
-<tr class="even">
-<td><strong>🔍 CHECK</strong></td>
-<td>a cell an assistant really wrote. It runs. It is wrong</td>
-</tr>
-</tbody>
-</table>
-</section>
 <section id="of-card-payments-are-fraud." class="slide level2 statement">
 <h2>0.17% of card payments are fraud.</h2>
-<p><span class="muted">Your number from homework 2. A model that says “never fraud” is 99.83% accurate and catches nothing. Keep that number in mind all morning: it is called the <strong>base rate</strong>, and every score today gets one next to it.</span></p>
+<p><span class="muted">Your number from homework 2. A model that says “never fraud” is 99.83% accurate and catches nothing. That number is the <strong>base rate</strong>, and today every score gets one next to it.</span></p>
 </section>
-<section id="part-1-explore" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 1</span> Explore</h2>
+<section id="part-1-look" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> Look</h2>
 </section>
 <section id="the-question-for-the-morning" class="slide level2">
 <h2>The question for the morning</h2>
 <h3 id="is-crypto-risk-predictable-and-which-part-of-it">Is crypto risk predictable — and which part of it?</h3>
-<p>Exploration is not “make charts”. It is asking the data small questions, <strong>in an order</strong>, until you know which question is worth a model.</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>order</th>
-<th>small question</th>
-<th>what it decides</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1</td>
-<td>what is in the table?</td>
-<td>how to join crypto and stocks</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>how big are the moves?</td>
-<td>which scale, which units</td>
-</tr>
-<tr class="odd">
-<td>3</td>
-<td>how often is “impossible”?</td>
-<td>whether the bell curve is allowed</td>
-</tr>
-<tr class="even">
-<td>4</td>
-<td>does yesterday tell us about today?</td>
-<td><strong>what is worth predicting</strong></td>
-</tr>
-</tbody>
-</table>
+<p>We will not answer it with a model. We answer it with four small questions, asked in order:</p>
+<ol type="1">
+<li>what is in the table?</li>
+<li>how big are the moves?</li>
+<li>how often does the “impossible” happen?</li>
+<li><strong>does yesterday tell us anything about today?</strong></li>
+</ol>
+<p><span class="explain">Exploration is not “make charts”. It is asking the data small questions until you know which question is worth a model.</span></p>
 </section>
-<section id="what-is-in-the-table" class="slide level2 lab" data-background-color="#2471a3">
-<h2>What is in the table</h2>
-<p><span class="kicker">LAB · session.ipynb § E1</span></p>
-<p>3,200 days of BTC, ETH and SPY since January 2018.</p>
+<section id="the-table-and-the-worst-day" class="slide level2 lab" data-background-color="#2471a3">
+<h2>The table, and the worst day</h2>
+<p><span class="kicker">LAB · session.ipynb § E1–E2</span></p>
 <div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -398,16 +313,11 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>SPY has missing values, BTC has none. Out of every 7 days, how many is SPY missing?</p>
+<p>SPY has empty days, Bitcoin has none. Out of every seven days, how many is SPY missing?</p>
 </div>
 </div>
 </div>
 </div>
-<p><span class="red">Crypto trades 7 days a week, stocks 5. <strong>Every join between the two is a decision</strong> — drop the weekends, or carry Friday forward. Neither is wrong; not deciding is.</span></p>
-</section>
-<section id="how-big-are-the-moves" class="slide level2 lab" data-background-color="#2471a3">
-<h2>How big are the moves</h2>
-<p><span class="kicker">LAB · session.ipynb § E2–E3</span></p>
 <div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -418,33 +328,36 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>BTC’s worst single day since 2018: how much did it lose, and roughly when?</p>
+<p>Bitcoin’s worst single day since 2018: how much did it lose, and when?</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="red">▶ <strong>Your turn</strong> — twice: the stock-market holidays of 2025, then Ether’s worst and best days.</span></p>
+</section>
+<section id="how-often-is-impossible" class="slide level2">
+<h2>How often is “impossible”?</h2>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>In eight and a half years, how many days did Bitcoin move more than 4 standard deviations? The bell curve says 0.2.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div class="bigtable">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>days beyond 4 standard deviations</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>if returns were normal</td>
-<td><strong>0.2</strong></td>
-</tr>
-<tr class="even">
-<td>BTC, 2018–2026</td>
-<td><strong>17</strong></td>
-</tr>
-</tbody>
-</table>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/w03-tails.svg" class="quarto-figure quarto-figure-center" style="width:88.0%"></p>
+</figure>
 </div>
-<p><span class="explain"><strong>Fat tails.</strong> Big days are rare, but eighty-five times less rare than the textbook bell curve says. A “99% VaR” built on that curve underestimates exactly the days that matter.</span></p>
 </div>
 </section>
 <section id="two-questions-that-sound-alike" class="slide level2">
@@ -452,11 +365,11 @@ Niccolò Salvini, PhD
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="direction">Direction</h3>
-<p>BTC went <strong>up</strong> today.</p>
+<p>Bitcoin went <strong>up</strong> today.</p>
 <p>Is it more likely to go up tomorrow?</p>
 </div><div class="column" style="width:50%;">
 <h3 id="size">Size</h3>
-<p>BTC moved <strong>a lot</strong> today, either way.</p>
+<p>Bitcoin moved <strong>a lot</strong> today, either way.</p>
 <p>Is it more likely to move a lot tomorrow?</p>
 </div></div>
 <div title="Bet">
@@ -474,103 +387,25 @@ Niccolò Salvini, PhD
 </div>
 </div>
 </div>
-<p><span class="muted">We measure memory with the <strong>autocorrelation</strong>: the correlation of a series with itself, <em>k</em> days earlier. 0 means no memory.</span></p>
 </section>
-<section id="the-answer-on-eight-years-of-btc" class="slide level2">
-<h2>The answer, on eight years of BTC</h2>
-<div class="bigtable">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>lag</th>
-<th>direction (return)</th>
-<th>size (absolute return)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1 day</td>
-<td>−0.05</td>
-<td><strong>0.17</strong></td>
-</tr>
-<tr class="even">
-<td>2 days</td>
-<td>0.04</td>
-<td><strong>0.13</strong></td>
-</tr>
-<tr class="odd">
-<td>3 days</td>
-<td>0.01</td>
-<td><strong>0.11</strong></td>
-</tr>
-<tr class="even">
-<td>4 days</td>
-<td>0.03</td>
-<td><strong>0.17</strong></td>
-</tr>
-<tr class="odd">
-<td>5 days</td>
-<td>0.02</td>
-<td><strong>0.14</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><span class="muted">Computed in the notebook, 7 Oct 2026. The size column stays positive for weeks.</span></p>
+<section id="the-answer" class="slide level2">
+<h2>The answer</h2>
+
+<img data-src="img/w03-memory.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="explain">The <strong>autocorrelation</strong> compares a series with itself, <em>k</em> days earlier.</span></p>
 </section>
 <section id="calm-follows-calm.-storms-follow-storms." class="slide level2 statement">
 <h2>Calm follows calm. Storms follow storms.</h2>
-<p><span class="muted">The <strong>direction</strong> of tomorrow has no memory. Its <strong>size</strong> does. This is called <em>volatility clustering</em> — and we found it before training anything.</span></p>
+<p><span class="muted">It is called <strong>volatility clustering</strong>, and we found it before training anything. It already tells us which question a model can help with — and which one it cannot.</span></p>
 </section>
-<section id="not-a-constant-btc-and-the-stock-market" class="slide level2">
-<h2>Not a constant: BTC and the stock market</h2>
-<div class="bigtable">
-<table class="caption-top" style="width:100%;">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 10%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>year</th>
-<th>2018</th>
-<th>2019</th>
-<th>2020</th>
-<th>2021</th>
-<th>2022</th>
-<th>2023</th>
-<th>2024</th>
-<th>2025</th>
-<th>2026</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>BTC–SPY correlation</td>
-<td>0.05</td>
-<td>0.06</td>
-<td>0.36</td>
-<td>0.28</td>
-<td><strong>0.57</strong></td>
-<td>0.34</td>
-<td>0.28</td>
-<td>0.48</td>
-<td>0.47</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>“Digital gold, uncorrelated with stocks” was roughly true before 2020 and has not been true since.</p>
-<p><span class="explain">A correlation is a series, not a number. It has regimes too — and a portfolio built on the 2019 number learned that in 2022.</span></p>
+<section id="what-clustering-looks-like" class="slide level2">
+<h2>What clustering looks like</h2>
+
+<img data-src="img/w03-vol.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:86.0%"><p><span class="red">▶ <strong>Your turn</strong> — does the S&amp;P 500 cluster too? Same table, one line changed. Bet first: more or less than Bitcoin?</span></p>
 </section>
+<section id="not-a-constant-bitcoin-and-the-stock-market" class="slide level2">
+<h2>Not a constant: Bitcoin and the stock market</h2>
+
+<img data-src="img/w03-corr.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
 <section id="the-assistants-summary-table" class="slide level2 lab" data-background-color="#2471a3">
 <h2>🔍 The assistant’s summary table</h2>
 <p><span class="kicker">LAB · session.ipynb § CHECK</span></p>
@@ -580,8 +415,12 @@ Niccolò Salvini, PhD
 <span id="cb1-3"><a aria-label="3"></a>    <span class="st">"annual vol"</span>:   simple.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>),</span>
 <span id="cb1-4"><a aria-label="4"></a>    <span class="st">"total return"</span>: simple.<span class="bu">sum</span>(),</span>
 <span id="cb1-5"><a aria-label="5"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It runs. It looks professional. <strong>Two errors.</strong> Ten minutes, one hint after five.</p>
+<p>It runs. It looks professional. <strong>Two errors.</strong> Ten minutes; one hint after five.</p>
 </section>
+<section id="what-the-two-errors-cost" class="slide level2">
+<h2>What the two errors cost</h2>
+
+<img data-src="img/w03-check.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"></section>
 <section id="part-2-predict" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 2</span> Predict</h2>
 </section>
@@ -594,32 +433,20 @@ Niccolò Salvini, PhD
 <p><img data-src="img/software-123-l3.svg" class="fragment" style="width:100.0%"></p>
 <p><img data-src="img/software-123-l4.svg" class="fragment" style="width:100.0%"></p>
 </div>
+<p><span class="explain">Today all three on one question: a one-line <strong>rule</strong>, a <strong>model</strong> trained on data, and an <strong>LLM</strong>. Same test for all three.</span></p>
 </section>
-<section id="three-words-and-the-whole-of-supervised-learning" class="slide level2">
-<h2>Three words, and the whole of supervised learning</h2>
-<table class="caption-top">
-<tbody>
-<tr class="odd">
-<td><strong>feature</strong></td>
-<td>what you know <strong>at</strong> day <code>t</code></td>
-</tr>
-<tr class="even">
-<td><strong>target</strong></td>
-<td>what happens <strong>after</strong> <code>t</code></td>
-</tr>
-<tr class="odd">
-<td><strong>horizon</strong></td>
-<td>how long after — today, <strong>7 days</strong></td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\text{features at } t \;\longrightarrow\; \text{model} \;\longrightarrow\; \text{target over } (t, t+7]</span></p>
-<p>Two targets, the same nine features:</p>
-<ul>
-<li><code>y_dir</code> — will BTC be <strong>up</strong> over the next 7 days?</li>
-<li><code>y_vol</code> — will the next 7 days be <strong>more volatile than usual</strong>?</li>
-</ul>
-<p><span class="red">After Part 1 you can already guess how this ends. Write your guess down.</span></p>
+<section id="two-targets-nine-features" class="slide level2">
+<h2>Two targets, nine features</h2>
+<p><span class="math display">\text{features at day } t \;\longrightarrow\; \text{model} \;\longrightarrow\; \text{what happens over } (t,\ t+7]</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Will Bitcoin be up next week?</strong></p>
+<p><code>y_dir</code></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Will next week be more volatile than usual?</strong></p>
+<p><code>y_vol</code> — “usual” is the median of the past year</p>
+</div></div>
+<p><span class="red">After Part 1 you can already guess how this ends. Write your guess down before the model runs.</span></p>
 </section>
 <section id="the-wall" class="slide level2">
 <h2>The wall</h2>
@@ -638,58 +465,36 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>Share of 7-day windows in which BTC went up?</p>
+<p>In what share of weeks did Bitcoin go up?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div class="bigtable">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>target</th>
-<th>share of 1s</th>
-<th>“always say the majority”</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>up next week</td>
-<td>53%</td>
-<td><strong>53%</strong></td>
-</tr>
-<tr class="even">
-<td>high-vol next week</td>
-<td>46%</td>
-<td><strong>54%</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><span class="explain">That is the <strong>base rate</strong> — the number to beat. A model that does not beat it is a cost with a dashboard.</span></p>
+<p><strong>53%.</strong> “Always say up” is right 53% of the time, with no data and no model.</p>
+<p><span class="explain">That is the <strong>base rate</strong>. And for volatility there is a smarter baseline anyone can write: <strong>“next week will be like this week.”</strong> A model has to beat both.</span></p>
 </div>
 </section>
 <section id="the-black-box-a-random-forest" class="slide level2">
 <h2>The black box: a random forest</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
-<p><strong>Hundreds of decision trees.</strong> Each is a flowchart of yes/no questions on the features — <em>“is this week’s vol above 1.3× usual?”</em> — grown on a slightly different sample of the past.</p>
+<p><strong>Hundreds of decision trees.</strong> Each is a flowchart of yes/no questions on the features — <em>“is this week’s volatility above 1.3 × usual?”</em> — grown on a slightly different sample of the past.</p>
 <p>They <strong>vote</strong>. The share of votes is the probability.</p>
 </div><div class="column" style="width:45%;">
-<p>It finds interactions and curves on its own, which a regression does not.</p>
+<p>It finds curves and interactions on its own.</p>
 <p><strong>What it cannot do is tell you whether it is right.</strong></p>
 <p>That is the split’s job — and ours.</p>
 </div></div>
-<p><span class="muted">We open it in week 9. Today we only judge it from the outside — which is exactly what you will do with every vendor model.</span></p>
+<p><span class="muted">We open it in week 9. Today we judge it from the outside — which is what you will do with every vendor’s model.</span></p>
 </section>
-<section id="two-models-two-splits" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Two models, two splits</h2>
+<section id="two-splits" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Two splits</h2>
 <p><span class="kicker">LAB · session.ipynb § M3</span></p>
-<p>Same features, same target, same forest. Only the split changes.</p>
+<p>Same features, same targets, same forest. Only the split changes.</p>
 <ol type="1">
-<li><strong>Honest</strong>: learn on 2019–2023, judge on 2024 → today.</li>
-<li><strong>The assistant’s default</strong>: <code>train_test_split</code> — shuffle the days, keep 30% for testing.</li>
+<li><strong>Honest:</strong> learn on 2019–2023, judge on 2024 → today.</li>
+<li><strong>The assistant’s default:</strong> <code>train_test_split</code> — shuffle the days, keep 30% aside.</li>
 </ol>
 <div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -701,119 +506,150 @@ Niccolò Salvini, PhD
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>Write both AUCs for direction and for volatility before you run.</p>
+<p>Four numbers: AUC for direction and for volatility, honest and shuffled.</p>
 </div>
 </div>
 </div>
 </div>
+<p><span class="muted">AUC: does the model rank the 1s above the 0s? 0.5 is a coin, 1.0 is perfect.</span></p>
 </section>
 <section id="why-the-shuffled-number-lies" class="slide level2 clip" data-background-color="#000000">
 <h2>Why the shuffled number lies</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w03_splits_poster.png">
 <source src="media/w03_splits.mp4" type="video/mp4">
 </video>
-<p>Shuffle a time series and the model trains on Wednesday and Friday, then is tested on Thursday. It is not predicting — it is remembering its neighbours.</p>
+<p>Shuffled, the model trains on Wednesday and Friday and is tested on Thursday. It is not predicting — it is remembering its neighbours.</p>
 </section>
 <section id="what-came-out" class="slide level2">
 <h2>What came out</h2>
-<div class="bigtable">
-<table class="caption-top">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>base rate</th>
-<th>AUC, shuffled</th>
-<th>AUC, honest</th>
-<th>the rule “next week like this week”</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>direction</strong></td>
-<td>53%</td>
-<td>0.70</td>
-<td><strong>0.55</strong></td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td><strong>volatility</strong></td>
-<td>54%</td>
-<td>0.74</td>
-<td><strong>0.60</strong></td>
-<td><strong>0.64</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><span class="muted">Computed in the notebook, 7 Oct 2026; your live run may differ in the second decimal. AUC: 0.5 is a coin, 1.0 is perfect.</span></p>
-</section>
-<section id="read-it-in-this-order" class="slide level2">
-<h2>Read it in this order</h2>
-<ol type="1">
-<li><strong>Shuffled &gt; honest, on both.</strong> The gap is leakage, not skill. On direction it turns a coin into a “signal”.</li>
-<li><strong>Direction ≈ a coin.</strong> Hundreds of trees, nine features, nothing to say about next week’s direction — what Part 1 told us for free.</li>
-<li><strong>Volatility is predictable</strong> — and <strong>the one-line rule beats the forest.</strong></li>
-</ol>
-<p><span class="red">You only know the rule wins because you built the rule first. Most AI pitches never do.</span></p>
+
+<img data-src="img/w03-results.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"><p><span class="explain">Shuffled beats honest on both: that gap is leakage, not skill. Direction is a coin, as Part 1 said. Volatility is predictable — and the one-line rule beats the forest.</span></p>
 </section>
 <section id="same-data-same-model.-the-question-decides." class="slide level2 statement">
 <h2>Same data, same model. The question decides.</h2>
-<p><span class="muted">Whether ML has anything to offer depends on the question you ask it. Choosing the question is the manager’s job — and the exploration is how you choose.</span></p>
+<p><span class="muted">Whether ML has anything to offer depends on the question you ask it. Choosing the question is the manager’s job — and looking first is how you choose.</span></p>
 </section>
 <section id="what-did-the-black-box-look-at" class="slide level2">
 <h2>What did the black box look at?</h2>
-<p>We cannot read 300 trees. We can ask: <strong>if I scramble one feature, how much worse does it get?</strong></p>
-<p>That is <em>permutation importance</em>, measured on the test years.</p>
-<ul>
-<li>the volatility features dominate (<code>vol_30</code>, <code>vol_7</code>), with the size of last week’s move (<code>ret_7</code>) behind them — Part 1 again;</li>
-<li>a black box that agrees with what you saw by eye is one you can start to trust;</li>
-<li>one that leans on <code>weekday</code> is one you should not.</li>
-</ul>
+
+<img data-src="img/w03-importance.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"><p><span class="explain">A black box that agrees with what you saw by eye is one you can start to trust.</span></p>
 </section>
-<section id="and-leakage-that-no-split-can-catch" class="slide level2 lab" data-background-color="#2471a3">
-<h2>And leakage that no split can catch</h2>
-<p><span class="kicker">LAB · session.ipynb § YOUR TURN after M4</span></p>
-<p>The assistant offers to <em>“smooth”</em> the volatility feature: <code>rolling(7, center=True)</code>.</p>
+<section id="leak-it-on-purpose" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Leak it on purpose</h2>
+<p><span class="kicker">LAB · session.ipynb § your turn after M4</span></p>
+<p>The assistant offers to <em>“smooth”</em> the volatility: <code>rolling(7, center=True)</code>.</p>
 <ol type="1">
-<li>Add it. Keep the <strong>honest</strong> split.</li>
-<li>Watch the score jump.</li>
+<li>Add it as a feature. Keep the <strong>honest</strong> split.</li>
+<li>Watch the AUC go from 0.60 to 0.69.</li>
 <li>One sentence: why did the honest split not protect you?</li>
 </ol>
 <p><span class="red">A leak looks exactly like success. This is the only safe place to learn what that feels like.</span></p>
 </section>
-<section id="block-d-a-probability-is-not-a-decision" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block D</span> A probability is not a decision</h2>
+<section id="part-3-an-llm-called-from-code" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> An LLM, called from code</h2>
 </section>
-<section id="the-model-says-0.61.-now-what" class="slide level2">
-<h2>The model says 0.61. Now what?</h2>
-<p>A prediction becomes a decision only when you add two things the model does not contain: <strong>what each mistake costs</strong>, and <strong>the probability above which you act</strong>.</p>
+<section id="from-tool-to-component" class="slide level2">
+<h2>From tool to component</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="until-now-a-tool">Until now: a tool</h3>
+<p>You type into a chat. It answers. You copy.</p>
+<p>Nothing is measured; every answer is a one-off.</p>
+</div><div class="column" style="width:50%;">
+<h3 id="from-today-a-component">From today: a component</h3>
+<p>Your code calls it, with arguments <strong>you</strong> set:</p>
+<ul>
+<li>the <strong>prompt</strong> — what you ask</li>
+<li>the <strong>system</strong> message — who it is, what it may not do</li>
+<li>the <strong>temperature</strong> — last week’s knob</li>
+<li>the <strong>model</strong></li>
+</ul>
+</div></div>
+<p><span class="explain">A component can be run 40 times, scored, compared with a rule — and priced. That is weeks 4 and 5, in miniature.</span></p>
+</section>
+<section id="the-key-is-a-password-to-a-bank-account" class="slide level2 statement">
+<h2>The key is a password to a bank account</h2>
+<p><span class="muted">Never in a cell, a screenshot or a chat. In Colab it lives in 🔑 <strong>Secrets</strong>. Today I type mine into a hidden box: it stays in this runtime’s memory and is gone when you close it.</span></p>
+</section>
+<section id="same-question-five-answers" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Same question, five answers</h2>
+<p><span class="kicker">LAB · session.ipynb § L0–L1</span></p>
+<p><em>“Will Bitcoin go up or down next week? Commit to a direction.”</em> — once at temperature 0, four times at 1.</p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>At temperature 1, will the five answers agree on the direction?</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="red">▶ <strong>Your turn</strong> — rewrite the <strong>system</strong> message until it behaves like the analyst you would hire: base rate first, no direction. Then try to make it break its own rule.</span></p>
+</section>
+<section id="the-llm-writes-the-note-to-the-cfo" class="slide level2 lab" data-background-color="#2471a3">
+<h2>The LLM writes the note to the CFO</h2>
+<p><span class="kicker">LAB · session.ipynb § L2</span></p>
+<p>We hand it our results table and ask: <em>is this model worth deploying?</em></p>
+<p>🔍 Read the note with the table next to it:</p>
+<ul>
+<li>does it quote the <strong>shuffled</strong> numbers as performance?</li>
+<li>does it call 0.55 on direction “predictive”?</li>
+<li>does it notice the <strong>rule beats the forest</strong>?</li>
+</ul>
+<p><span class="red">Then change one number in the table and run again. A note that does not move when the numbers move was not written from the numbers.</span></p>
+</section>
+<section id="the-llm-as-a-forecaster" class="slide level2 lab" data-background-color="#2471a3">
+<h2>The LLM as a forecaster</h2>
+<p><span class="kicker">LAB · session.ipynb § L3</span></p>
+<p>On <strong>40 dates</strong> of the test years: the last 30 daily returns, <strong>no name, no dates</strong> — <em>“probability that next week is more volatile than usual?”</em></p>
+<p>Scored with the same AUC, on the same 40 dates, as the rule and the forest.</p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>The LLM: below the forest, between the two, or above the rule?</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="muted">Forty dates is a small test: ±0.1 of AUC can be luck. And the bill — calls, tokens, dollars — is printed under the score. The rule costs nothing.</span></p>
+</section>
+<section id="the-wall-seen-from-an-llm" class="slide level2">
+<h2>The wall, seen from an LLM</h2>
 
-<img data-src="img/threshold-ev.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="hedge-or-not" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Hedge or not</h2>
-<p><span class="kicker">LAB · session.ipynb § M5</span></p>
-<p>A treasury desk holds BTC. Hedging next week costs <strong>1</strong>; an unhedged high-vol week costs <strong>2</strong>.</p>
-<ol type="1">
-<li><strong>Bet</strong> the threshold, then sweep it.</li>
-<li>The model must beat <strong>both</strong> “never hedge” and “always hedge” — not just look clever.</li>
-<li>Now make a miss cost <strong>4</strong>. Run again.</li>
-</ol>
-<p><span class="red">The model did not change. The business did — and with it, whether the model is worth running at all.</span></p>
+<img data-src="img/w03-llm-wall.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"><p><span class="red">▶ <strong>Your turn</strong> — tell it “Bitcoin” and the date, and run the 40 forecasts again. If the score jumps, ask what it already knows about those weeks.</span></p>
 </section>
+<section id="three-black-boxes-one-discipline" class="slide level2 statement">
+<h2>Three black boxes, one discipline</h2>
+<p><span class="muted">A rule, a forest, an LLM: base rate, honest test, same dates, same score, and the price of each answer. The discipline does not change with the model.</span></p>
+</section>
+<section id="if-there-is-time-a-probability-is-not-a-decision" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">If there is time</span> A probability is not a decision</h2>
+</section>
+<section id="hedge-or-not" class="slide level2">
+<h2>Hedge or not</h2>
+<p>A treasury desk holds Bitcoin. Hedging next week costs <strong>1</strong>. An unhedged high-volatility week costs <strong>2</strong> — or <strong>4</strong>.</p>
+
+<img data-src="img/w03-hedge.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"></section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>Homework 3</strong> — your own asset, explored first, then a model against a baseline and a one-line rule, evaluated on the future, plus a section titled <strong>“What would have to be true for this to be useful”</strong>.</p>
-<p>Due Tuesday 13 October, 23:59.</p>
+<p><strong>Homework 3</strong> — your own asset: look first, then a random forest against the base rate and a one-line rule, on the future. Then a section titled <strong>“What would have to be true for this to be useful”</strong>.</p>
+<p>Due Tuesday 13 October, 23:59 · Drive, <code>ese-ai-fintech/week-03/</code>.</p>
 <div class="fragment">
-<p><strong>Three lines</strong> at the bottom of the notebook: one on exploration, one on the split, one on the black box.</p>
-<p><span class="muted">Next week: the same honesty, applied to language models.</span></p>
+<p><strong>Three lines</strong> at the bottom of the notebook: one on looking, one on the split, one on the black boxes.</p>
+<p><span class="muted">Next week: the LLM as a component, properly — structured answers, documents, retrieval.</span></p>
 
 
 </div>

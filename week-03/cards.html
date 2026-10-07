@@ -263,6 +263,38 @@
 <p><span class="math display">\[\text{cost}(\theta) = c_{hedge}\cdot\#\{p&gt;\theta\} \;+\; c_{miss}\cdot\#\{p\le\theta,\ y=1\}\]</span></p>
 <p>Threshold from costs, never from 0.5. Beat both “never hedge” and “always hedge”.</p>
 <p>KPI candidates: cost per week vs always-hedge · recall at θ · calibration (when it says 70%, does it happen 70%?). Accuracy is not on the list: it does not price errors.</p>
+</section>
+<section class="slide level0">
+
+<!-- card 7 -->
+<h1>Three black boxes, one discipline</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>what it is</th>
+<th>cost per answer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>rule</td>
+<td>“next week like this week”</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>forest</td>
+<td>300 trees voting on 9 features</td>
+<td>≈ 0</td>
+</tr>
+<tr class="odd">
+<td>LLM</td>
+<td>a prompt, a system message, a temperature</td>
+<td>tokens × price</td>
+</tr>
+</tbody>
+</table>
+<p>Same base rate, same honest dates, same AUC. For an LLM, every date before its cut-off may already be in its memory: hide the name and the date.</p>
 
 
 </section>

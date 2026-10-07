@@ -191,7 +191,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#m3-the-black-box-a-random-forest" id="toc-m3-the-black-box-a-random-forest" class="nav-link" data-scroll-target="#m3-the-black-box-a-random-forest">M3 — The black box: a random forest</a></li>
   <li><a href="#check-the-assistants-validation" id="toc-check-the-assistants-validation" class="nav-link" data-scroll-target="#check-the-assistants-validation">🔍 CHECK — the assistant’s validation</a></li>
   <li><a href="#m4-what-did-the-black-box-look-at" id="toc-m4-what-did-the-black-box-look-at" class="nav-link" data-scroll-target="#m4-what-did-the-black-box-look-at">M4 — What did the black box look at?</a></li>
-  <li><a href="#m5-from-probability-to-decision-if-time-otherwise-homework" id="toc-m5-from-probability-to-decision-if-time-otherwise-homework" class="nav-link" data-scroll-target="#m5-from-probability-to-decision-if-time-otherwise-homework">M5 — From probability to decision <em>(if time; otherwise homework)</em></a></li>
+  </ul></li>
+  <li><a href="#part-3-an-llm-called-from-code" id="toc-part-3-an-llm-called-from-code" class="nav-link" data-scroll-target="#part-3-an-llm-called-from-code">Part 3 — An LLM, called from code</a>
+  <ul class="collapse">
+  <li><a href="#l0-the-key" id="toc-l0-the-key" class="nav-link" data-scroll-target="#l0-the-key">L0 — The key</a></li>
+  <li><a href="#l1-same-question-five-answers" id="toc-l1-same-question-five-answers" class="nav-link" data-scroll-target="#l1-same-question-five-answers">L1 — Same question, five answers</a></li>
+  <li><a href="#l2-the-llm-reads-our-results" id="toc-l2-the-llm-reads-our-results" class="nav-link" data-scroll-target="#l2-the-llm-reads-our-results">L2 — The LLM reads our results</a></li>
+  <li><a href="#l3-the-llm-as-a-forecaster-judged-like-the-forest" id="toc-l3-the-llm-as-a-forecaster-judged-like-the-forest" class="nav-link" data-scroll-target="#l3-the-llm-as-a-forecaster-judged-like-the-forest">L3 — The LLM as a forecaster, judged like the forest</a></li>
+  </ul></li>
+  <li><a href="#if-there-is-time-from-probability-to-decision" id="toc-if-there-is-time-from-probability-to-decision" class="nav-link" data-scroll-target="#if-there-is-time-from-probability-to-decision">If there is time — from probability to decision</a>
+  <ul class="collapse">
   <li><a href="#three-lines-to-take-home" id="toc-three-lines-to-take-home" class="nav-link" data-scroll-target="#three-lines-to-take-home">Three lines to take home</a></li>
   </ul></li>
   </ul>
@@ -226,11 +235,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Predict</strong> — a model we do not open today (a <em>random forest</em>) on the question the exploration tells us is worth asking.</li>
 </ol>
 <p>How this notebook works: - grey cells are <strong>worked examples</strong>: run them, read them, ask; - <strong>✍️ BET</strong> cells: write a number <em>before</em> you run the next cell; - <strong>▶ YOUR TURN</strong> cells are pieces of the analysis you write — with your assistant if you like. The solution is folded underneath; open it only after trying.</p>
-<div id="f157251b" class="cell">
+<div id="3fee5eae" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance scikit<span class="op">-</span>learn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Run once. Live data from Yahoo Finance; if the network blocks it, a dated snapshot from the course repo (6 Oct 2026).</p>
-<div id="de70e521" class="cell">
+<div id="a54b6a9b" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.precision"</span>, <span class="dv">4</span>)</span>
@@ -268,13 +277,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Exploration is not “make charts”. It is asking the data small questions, in an order, until you know what question is worth a model.</p>
 <section id="e1-what-is-in-the-table" class="level2">
 <h2 class="anchored" data-anchor-id="e1-what-is-in-the-table">E1 — What is in the table?</h2>
-<div id="51ca3895" class="cell">
+<div id="3ebe0963" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.shape)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.isna().<span class="bu">sum</span>())</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>px.head(<span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>✍️ BET.</strong> SPY has missing values and BTC does not. Before running the next cell: out of every 7 days, how many is SPY missing? Write it: <code>____</code></p>
-<div id="726b262e" class="cell">
+<div id="2de41ed7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> px[<span class="st">"SPY"</span>].isna()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SPY missing on </span><span class="sc">{</span>missing<span class="sc">.</span>mean()<span class="sc">:.1%}</span><span class="ss"> of days"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>px.index[missing].day_name().value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -290,7 +299,7 @@ solution (open only after trying)
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> px[<span class="st">"SPY"</span>].isna() <span class="op">&amp;</span> (px.index.dayofweek <span class="op">&lt;</span> <span class="dv">5</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>px.index[m <span class="op">&amp;</span> (px.index.year <span class="op">==</span> <span class="dv">2025</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="c015fa47" class="cell">
+<div id="312b85af" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -298,13 +307,13 @@ solution (open only after trying)
 <section id="e2-from-prices-to-returns" class="level2">
 <h2 class="anchored" data-anchor-id="e2-from-prices-to-returns">E2 — From prices to returns</h2>
 <p>Prices are not comparable across assets (BTC ≈ 85,000, ETH ≈ 2,700). Returns are. We use <strong>log returns</strong>: they add up over time, so a week is the sum of seven days.</p>
-<div id="84c5ea87" class="cell">
+<div id="3e40ed28" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> np.log(px <span class="op">/</span> px.shift(<span class="dv">1</span>))          <span class="co"># daily log return, per asset</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>btc <span class="op">=</span> ret[<span class="st">"BTC-USD"</span>].dropna()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>btc.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>✍️ BET.</strong> BTC’s worst single day since 2018: how much did it lose? <code>____ %</code> And on which date (roughly)? <code>____</code></p>
-<div id="6186bd70" class="cell">
+<div id="72e1f593" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>worst <span class="op">=</span> btc.nsmallest(<span class="dv">5</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(np.exp(worst) <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>)       <span class="co"># back to simple % moves, which is what people quote</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -319,7 +328,7 @@ solution (open only after trying)
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((np.exp(eth.nsmallest(<span class="dv">5</span>)) <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((np.exp(eth.nlargest(<span class="dv">5</span>)) <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="4d3b0608" class="cell">
+<div id="65b13ce0" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -328,7 +337,7 @@ solution (open only after trying)
 <h2 class="anchored" data-anchor-id="e3-how-often-does-the-impossible-happen">E3 — How often does the ‘impossible’ happen?</h2>
 <p>If daily returns were <em>normal</em> (the bell curve of every textbook), a move beyond 4 standard deviations would happen about <strong>once every 43 years</strong> of daily data.</p>
 <p><strong>✍️ BET.</strong> In ~8.5 years of BTC, how many days beyond 4 standard deviations? <code>____</code></p>
-<div id="830560c5" class="cell">
+<div id="175f3c36" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> (btc <span class="op">-</span> btc.mean()) <span class="op">/</span> btc.std()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> erf, sqrt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>p_normal <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> erf(<span class="dv">4</span> <span class="op">/</span> sqrt(<span class="dv">2</span>))                  <span class="co"># two-sided probability beyond 4σ under a normal</span></span>
@@ -343,7 +352,7 @@ solution (open only after trying)
 <p>Two questions that sound alike: - <strong>direction</strong>: if BTC went up today, is it more likely to go up tomorrow? - <strong>size</strong>: if BTC moved <em>a lot</em> today (either way), is it more likely to move a lot tomorrow?</p>
 <p>We measure both with the <strong>autocorrelation</strong>: the correlation between a series and itself, <em>k</em> days earlier. 0 = no memory.</p>
 <p><strong>✍️ BET.</strong> Which one has memory — direction, size, both, neither? <code>____</code></p>
-<div id="f7fe9b93" class="cell">
+<div id="617acbaf" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">31</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ac <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"direction  (return)"</span>:          [btc.autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> lags],</span>
@@ -357,7 +366,7 @@ solution (open only after trying)
 <p><strong>This is the sentence of the morning.</strong> The <em>direction</em> of tomorrow has essentially no memory; the <em>size</em> of tomorrow does — for weeks. Calm follows calm, storms follow storms: <strong>volatility clustering</strong>.</p>
 <p>So before training anything we already know which question a model can help with, and which one it cannot.</p>
 <p>Seen as a picture: 30-day rolling volatility, annualised. Crypto trades 365 days a year, so annualise with √365.</p>
-<div id="2c30a644" class="cell">
+<div id="980335ca" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vol30 <span class="op">=</span> ret.rolling(<span class="dv">30</span>).std() <span class="op">*</span> np.sqrt(<span class="dv">365</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>vol30[[<span class="st">"BTC-USD"</span>, <span class="st">"ETH-USD"</span>]].plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"30-day volatility, annualised"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -373,14 +382,14 @@ solution (open only after trying)
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"direction"</span>: [spy.autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">"size"</span>: [spy.<span class="bu">abs</span>().autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]}, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="e833dce3" class="cell">
+<div id="0f285472" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
 <section id="e5-does-crypto-move-with-the-stock-market" class="level2">
 <h2 class="anchored" data-anchor-id="e5-does-crypto-move-with-the-stock-market">E5 — Does crypto move with the stock market?</h2>
-<div id="1468cb05" class="cell">
+<div id="7a33f5a5" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> ret[[<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>]].dropna()            <span class="co"># stock-market days only: a decision, see E1</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>rc <span class="op">=</span> both[<span class="st">"BTC-USD"</span>].rolling(<span class="dv">90</span>).corr(both[<span class="st">"SPY"</span>])</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rc.plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>), title<span class="op">=</span><span class="st">"BTC vs S&amp;P 500: 90-trading-day correlation"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
@@ -392,7 +401,7 @@ solution (open only after trying)
 <section id="check-the-assistants-summary-table" class="level2">
 <h2 class="anchored" data-anchor-id="check-the-assistants-summary-table">🔍 CHECK — the assistant’s summary table</h2>
 <p>Asked for <em>“annualised volatility and total return of BTC and ETH since 2018”</em>, an assistant wrote the cell below. It runs, and it looks professional. <strong>There are two errors.</strong> Ten minutes; a hint after five.</p>
-<div id="6320534a" class="cell">
+<div id="19d3841a" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>simple <span class="op">=</span> px[[<span class="st">"BTC-USD"</span>, <span class="st">"ETH-USD"</span>]].pct_change().dropna()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"annual vol"</span>:   simple.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>),</span>
@@ -415,7 +424,7 @@ solution
 <li><strong>Simple returns do not add up.</strong> +50% then −50% sums to 0, but you have lost 25%. Total return is the product of (1 + r), minus 1 — or the sum of <em>log</em> returns, exponentiated.</li>
 </ol>
 </details>
-<div id="564bfe77" class="cell">
+<div id="c8017b29" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>summary_ok <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"annual vol"</span>:   simple.std() <span class="op">*</span> np.sqrt(<span class="dv">365</span>),</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total return"</span>: (<span class="dv">1</span> <span class="op">+</span> simple).prod() <span class="op">-</span> <span class="dv">1</span>,</span>
@@ -440,7 +449,7 @@ solution
 <section id="m1-features-and-target-the-wall" class="level2">
 <h2 class="anchored" data-anchor-id="m1-features-and-target-the-wall">M1 — Features and target: the wall</h2>
 <p><strong>Feature</strong> = something known <em>at</em> day <em>t</em>. <strong>Target</strong> = something that happens <em>after</em> <em>t</em>. Nothing on the right of the wall may leak into the left.</p>
-<div id="152b4799" class="cell">
+<div id="efcbcb0d" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="dv">7</span>                                                   <span class="co"># horizon: 7 calendar days</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>btc.index)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"ret"</span>] <span class="op">=</span> btc</span>
@@ -469,7 +478,7 @@ solution
 <span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.shape)<span class="op">;</span> data.tail(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK — the target, by hand.</strong> Pick a date. <code>fwd_ret</code> must be the sum of the <em>next</em> 7 daily returns, not including today.</p>
-<div id="0965cd0c" class="cell">
+<div id="98c344f3" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> data.index[<span class="dv">1500</span>]</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>by_hand <span class="op">=</span> d[<span class="st">"ret"</span>].loc[t:].iloc[<span class="dv">1</span>:H <span class="op">+</span> <span class="dv">1</span>].<span class="bu">sum</span>()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t.date(), <span class="st">"| in the table:"</span>, <span class="bu">round</span>(data.loc[t, <span class="st">"fwd_ret"</span>], <span class="dv">6</span>), <span class="st">"| by hand:"</span>, <span class="bu">round</span>(by_hand, <span class="dv">6</span>))</span>
@@ -485,7 +494,7 @@ solution (open only after trying)
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ret_1 … t | ret_7 … t | ret_30 … t | vol_7 … t | vol_30 … t | vol_ratio … t</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># eth_ret_7 … t | spy_ret_5 … last trading day ≤ t (Friday on a Sunday: honest, just stale) | weekday … t</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="d0018957" class="cell">
+<div id="48a81f29" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
@@ -493,7 +502,7 @@ solution (open only after trying)
 <section id="m2-before-any-model-what-does-doing-nothing-score" class="level2">
 <h2 class="anchored" data-anchor-id="m2-before-any-model-what-does-doing-nothing-score">M2 — Before any model: what does doing nothing score?</h2>
 <p><strong>✍️ BET.</strong> Share of 7-day windows in which BTC went up: <code>____ %</code></p>
-<div id="b9f616f6" class="cell">
+<div id="66d8368c" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> data[col].mean()</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: share of 1s = </span><span class="sc">{</span>p<span class="sc">:.1%}</span><span class="ss">  →  'always say the majority' scores </span><span class="sc">{</span><span class="bu">max</span>(p, <span class="dv">1</span> <span class="op">-</span> p)<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -505,7 +514,7 @@ solution (open only after trying)
 <h2 class="anchored" data-anchor-id="m3-the-black-box-a-random-forest">M3 — The black box: a random forest</h2>
 <p>Today we do not open it. What you need to know: - it is <strong>hundreds of decision trees</strong>, each a flowchart of yes/no questions on the features (“is <code>vol_7</code> above 0.03?”), each grown on a slightly different sample of the data; - they <strong>vote</strong>; the share of votes is the probability; - it finds interactions and non-linear effects by itself, which a regression does not.</p>
 <p>What it does <em>not</em> do is tell you whether it is right. That is our job: <strong>an honest split</strong>. Train on the past, test on the future.</p>
-<div id="e06d56eb" class="cell">
+<div id="e14762c5" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, roc_auc_score</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -523,7 +532,7 @@ solution (open only after trying)
 </div>
 <p>Two scores: - <strong>accuracy</strong> — share of weeks called right (at a 0.5 threshold); - <strong>AUC</strong> — does the model rank the high-vol weeks above the calm ones? 0.5 = coin, 1.0 = perfect. It does not depend on a threshold.</p>
 <p><strong>✍️ BET.</strong> Fill the table before running: forest accuracy on <em>direction</em> <code>____</code>, on <em>volatility</em> <code>____</code>.</p>
-<div id="96f35b32" class="cell">
+<div id="3815a0e5" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> target <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> forest().fit(train[features], train[target])</span>
@@ -535,7 +544,8 @@ solution (open only after trying)
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>rows[<span class="dv">1</span>][<span class="st">"rule accuracy"</span>] <span class="op">=</span> accuracy_score(test[<span class="st">"y_vol"</span>], test[<span class="st">"vol_7"</span>] <span class="op">&gt;</span> <span class="dv">1</span>)     <span class="co"># 'next week like this week': no model</span></span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>rows[<span class="dv">1</span>][<span class="st">"rule AUC"</span>]      <span class="op">=</span> roc_auc_score(test[<span class="st">"y_vol"</span>], test[<span class="st">"vol_7"</span>])             <span class="co"># one feature, used as the score</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(rows).set_index(<span class="st">"target"</span>).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.DataFrame(rows).set_index(<span class="st">"target"</span>).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Read the table in this order: 1. <strong>direction ≈ base rate.</strong> The forest — hundreds of trees, nine features — has nothing to say about next week’s direction. Exactly what E4 told us for free. 2. <strong>volatility is somewhat predictable.</strong> AUC clearly above 0.5: clustering, again. 3. <strong>the rule beats the forest.</strong> “Next week like this week” is one line and one feature, and on 2024–2026 it does as well as hundreds of trees, or better. <em>A rule you can write down beats a model that guesses it</em> — and you only know that because you built the rule first.</p>
 <blockquote class="blockquote">
@@ -546,7 +556,7 @@ solution (open only after trying)
 <h2 class="anchored" data-anchor-id="check-the-assistants-validation">🔍 CHECK — the assistant’s validation</h2>
 <p>Asked to <em>“evaluate the model with a train/test split”</em>, every assistant writes <code>train_test_split</code> — which <strong>shuffles</strong> the days.</p>
 <p><strong>✍️ BET.</strong> Volatility AUC with the shuffled split: higher, lower or the same as the honest one? <code>____</code></p>
-<div id="1c01a1a9" class="cell">
+<div id="7da4dd14" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>tr, te <span class="op">=</span> train_test_split(data, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">0</span>)          <span class="co"># the assistant's default: shuffled</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> target <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
@@ -563,7 +573,7 @@ With a shuffle, Thursday is in the test set while Wednesday and Friday are in th
 <section id="m4-what-did-the-black-box-look-at" class="level2">
 <h2 class="anchored" data-anchor-id="m4-what-did-the-black-box-look-at">M4 — What did the black box look at?</h2>
 <p>We can’t read 300 trees, but we can ask a simpler question: <strong>if I scramble one feature, how much worse does the model get?</strong> That is <em>permutation importance</em>. Measured on the test period.</p>
-<div id="0ffdedf0" class="cell">
+<div id="2f283db9" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> permutation_importance</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rf_vol <span class="op">=</span> forest().fit(train[features], train[<span class="st">"y_vol"</span>])</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>imp <span class="op">=</span> permutation_importance(rf_vol, test[features], test[<span class="st">"y_vol"</span>], scoring<span class="op">=</span><span class="st">"roc_auc"</span>, n_repeats<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -586,37 +596,249 @@ solution (open only after trying)
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC with the centred feature:"</span>, <span class="bu">round</span>(roc_auc_score(yl.loc[<span class="st">"2024"</span>:], m.predict_proba(X_leak.loc[<span class="st">"2024"</span>:])[:, <span class="dv">1</span>]), <span class="dv">3</span>))</span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># a centred window at t uses t+1 … t+3: the future is inside the feature, and no split can see that</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div id="bf6518fc" class="cell">
+<div id="567efef8" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
-<section id="m5-from-probability-to-decision-if-time-otherwise-homework" class="level2">
-<h2 class="anchored" data-anchor-id="m5-from-probability-to-decision-if-time-otherwise-homework">M5 — From probability to decision <em>(if time; otherwise homework)</em></h2>
-<p>A treasury desk holds BTC. Hedging next week costs <strong>1</strong>; an unhedged high-vol week costs <strong>2</strong>. Hedge when the forest’s probability is above a threshold. Which threshold?</p>
+</section>
+<section id="part-3-an-llm-called-from-code" class="level1">
+<h1>Part 3 — An LLM, called from code</h1>
+<p>Until now the language model was a <strong>tool</strong>: you typed into a chat, it wrote code. Now it becomes a <strong>component</strong>: a function your code calls, with arguments you set, whose answers you can measure like any other model’s.</p>
+<p>Three experiments, all on the same question as this morning. In each one you <strong>change the code</strong> — the prompt, the temperature, the model — and run it again. That is the whole skill of week 4 and 5, in miniature.</p>
+<section id="l0-the-key" class="level2">
+<h2 class="anchored" data-anchor-id="l0-the-key">L0 — The key</h2>
+<p>The key is the password to a paid account. It never goes into a notebook cell, a screenshot or a chat.</p>
+<ul>
+<li><strong>Your own key:</strong> Colab ▸ 🔑 <em>Secrets</em> (left sidebar) ▸ add <code>GEMINI_API_KEY</code> (or <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code>), tick <em>notebook access</em>.</li>
+<li><strong>Today, the tutor’s key:</strong> run the cell; if no secret is found it asks for the key in a hidden box. The tutor types it; it lives only in this runtime’s memory and is gone when the runtime is closed.</li>
+</ul>
+<p>No key at all? The cell switches to <strong>MOCK MODE</strong> — canned answers, clearly labelled, so every cell still runs.</p>
+<div id="83987898" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install openai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0391cea0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, re, time</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> getpass <span class="im">import</span> getpass</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>PROVIDER <span class="op">=</span> <span class="st">"gemini"</span>          <span class="co"># "gemini" | "openai" | "anthropic"  ← change me</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>ENDPOINT <span class="op">=</span> {                 <span class="co"># all three speak the same (OpenAI-style) protocol: one client, three providers</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gemini"</span>:    (<span class="st">"GEMINI_API_KEY"</span>,    <span class="st">"https://generativelanguage.googleapis.com/v1beta/openai/"</span>, <span class="st">"gemini-2.5-flash"</span>),  <span class="co"># model names change: see the list below</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"openai"</span>:    (<span class="st">"OPENAI_API_KEY"</span>,    <span class="va">None</span>,                                                        <span class="st">"gpt-4.1-mini"</span>),</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"anthropic"</span>: (<span class="st">"ANTHROPIC_API_KEY"</span>, <span class="st">"https://api.anthropic.com/v1/"</span>,                             <span class="st">"claude-haiku-4-5"</span>),</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>KEY_NAME, BASE_URL, MODEL <span class="op">=</span> ENDPOINT[PROVIDER]</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> userdata.get(KEY_NAME)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> os.environ.get(KEY_NAME)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> key:</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> getpass(<span class="ss">f"</span><span class="sc">{</span>KEY_NAME<span class="sc">}</span><span class="ss"> (Enter for mock mode): "</span>).strip() <span class="kw">or</span> <span class="va">None</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>MOCK <span class="op">=</span> key <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> MOCK:</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> OpenAI(api_key<span class="op">=</span>key, base_url<span class="op">=</span>BASE_URL)</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> key                       <span class="co"># the client keeps it; the notebook does not</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MOCK MODE — answers below are NOT from a model"</span> <span class="cf">if</span> MOCK <span class="cf">else</span> <span class="ss">f"live: </span><span class="sc">{</span>PROVIDER<span class="sc">}</span><span class="ss"> · </span><span class="sc">{</span>MODEL<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Which models does this key open? The names change every few months; this is how you find the current ones instead of trusting a tutorial (or an assistant).</p>
+<div id="dec6dc04" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> MOCK:</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        names <span class="op">=</span> <span class="bu">sorted</span>(m.<span class="bu">id</span> <span class="cf">for</span> m <span class="kw">in</span> client.models.<span class="bu">list</span>())</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">len</span>(names), <span class="st">"models, e.g.:"</span>, [n <span class="cf">for</span> n <span class="kw">in</span> names <span class="cf">if</span> <span class="st">"flash"</span> <span class="kw">in</span> n <span class="kw">or</span> <span class="st">"mini"</span> <span class="kw">in</span> n <span class="kw">or</span> <span class="st">"haiku"</span> <span class="kw">in</span> n][:<span class="dv">12</span>])</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"this provider does not list models through this endpoint:"</span>, <span class="bu">type</span>(e).<span class="va">__name__</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Everything goes through one small function. Read it: the <strong>prompt</strong> (what you ask), the <strong>system</strong> message (who the model is, what it may not do), the <strong>temperature</strong> (last week’s knob). It also counts the tokens you pay for.</p>
+<div id="fbe4f9b1" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>USAGE <span class="op">=</span> {<span class="st">"calls"</span>: <span class="dv">0</span>, <span class="st">"tokens_in"</span>: <span class="dv">0</span>, <span class="st">"tokens_out"</span>: <span class="dv">0</span>}</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ask(prompt, system<span class="op">=</span><span class="st">"You are a careful financial analyst."</span>, temperature<span class="op">=</span><span class="fl">0.0</span>, model<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""One call to the model; returns its text."""</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> MOCK:</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> _mock(prompt)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> attempt <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):                      <span class="co"># free tiers rate-limit: wait and retry</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>            r <span class="op">=</span> client.chat.completions.create(</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                model<span class="op">=</span>model <span class="kw">or</span> MODEL, temperature<span class="op">=</span>temperature,</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                messages<span class="op">=</span>[{<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: system}, {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}])</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">"429"</span> <span class="kw">in</span> <span class="bu">str</span>(e) <span class="kw">or</span> <span class="st">"rate"</span> <span class="kw">in</span> <span class="bu">str</span>(e).lower():</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>                time.sleep(<span class="dv">10</span> <span class="op">*</span> (attempt <span class="op">+</span> <span class="dv">1</span>))<span class="op">;</span> <span class="cf">continue</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    USAGE[<span class="st">"calls"</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r.usage:</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>        USAGE[<span class="st">"tokens_in"</span>] <span class="op">+=</span> r.usage.prompt_tokens<span class="op">;</span> USAGE[<span class="st">"tokens_out"</span>] <span class="op">+=</span> r.usage.completion_tokens</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r.choices[<span class="dv">0</span>].message.content.strip()</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _mock(prompt):</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Stand-in when there is no key. For the forecast prompt it answers with a crude vol rule, so L3 still runs."""</span></span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    nums <span class="op">=</span> [<span class="bu">float</span>(x) <span class="cf">for</span> x <span class="kw">in</span> re.findall(<span class="vs">r"-</span><span class="op">?</span><span class="dv">\d</span><span class="op">+</span><span class="ch">\.</span><span class="dv">\d</span><span class="op">+</span><span class="vs">"</span>, prompt)]</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"probability"</span> <span class="kw">in</span> prompt <span class="kw">and</span> <span class="bu">len</span>(nums) <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>        recent, usual <span class="op">=</span> np.std(nums[<span class="op">-</span><span class="dv">8</span>:<span class="op">-</span><span class="dv">1</span>]), nums[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="bu">min</span>(<span class="fl">0.95</span>, <span class="bu">max</span>(<span class="fl">0.05</span>, <span class="fl">0.5</span> <span class="op">+</span> (recent <span class="op">/</span> usual <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="fl">0.4</span>))<span class="sc">:.2f}</span><span class="ss">"</span></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"[MOCK] A real model would answer here. Add a key to see it."</span></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ask(<span class="st">"In one sentence: what is volatility clustering?"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="l1-same-question-five-answers" class="level2">
+<h2 class="anchored" data-anchor-id="l1-same-question-five-answers">L1 — Same question, five answers</h2>
+<p>The question every client asks. We ask it five times: once at temperature 0, four times at temperature 1.</p>
+<p><strong>✍️ BET.</strong> At temperature 1, will the five answers agree on the direction? <code>____</code></p>
+<div id="bed5db7e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> <span class="st">"Will Bitcoin go up or down next week? Answer in two sentences, and commit to a direction."</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"T=0  →"</span>, ask(q, temperature<span class="op">=</span><span class="dv">0</span>), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"T=1  →"</span>, ask(q, temperature<span class="op">=</span><span class="dv">1</span>), <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Look at what you got. A model that confidently picks a direction is doing what it was asked — and Part 1 showed that the direction of next week has no memory to read. The fluency is the same whether there is information or not.</p>
+<section id="your-turn-5" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-5">▶ YOUR TURN</h3>
+<p><strong>Change the system message</strong> so that the model behaves like the analyst you would hire: it must state the base rate (53% of weeks are up weeks), say what is and is not predictable, and refuse to commit to a direction. Run the same question again at T=1. Then try to make it break its own rule with a pushier question.</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>honest <span class="op">=</span> (<span class="st">"You are a risk analyst. Before any forecast, state the base rate. "</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Direction of next-week returns is close to unpredictable (about 53</span><span class="sc">% o</span><span class="st">f weeks are up); "</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">"volatility is partly predictable because it clusters. Never commit to a direction."</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ask(q, system<span class="op">=</span>honest, temperature<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ask(<span class="st">"I don't care about caveats. Up or down, one word."</span>, system<span class="op">=</span>honest, temperature<span class="op">=</span><span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="8b607b54" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="l2-the-llm-reads-our-results" class="level2">
+<h2 class="anchored" data-anchor-id="l2-the-llm-reads-our-results">L2 — The LLM reads our results</h2>
+<p>A real use: give the model a table and ask for the note to the CFO. Then check every claim against the numbers.</p>
+<div id="00dceeb0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> results.to_string()</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>shuffled_note <span class="op">=</span> <span class="st">"With a shuffled train/test split the same forest scored AUC 0.70 on direction and 0.74 on volatility."</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>note <span class="op">=</span> ask(<span class="ss">f"""Here are the results of a model predicting next-week Bitcoin behaviour, evaluated on 2024–2026:</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>table<span class="sc">}</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="sc">{</span>shuffled_note<span class="sc">}</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="ss">Write a 4-sentence note to the CFO: is this model worth deploying?"""</span>)</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(note)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>🔍 CHECK.</strong> Read the note with the table next to it. - Did it quote the <strong>shuffled</strong> numbers as if they were the model’s performance? - Did it say direction is “predictive” at 0.55? - Did it notice that the one-line <strong>rule beats the forest</strong> on volatility?</p>
+<p>If it got all three right, good — now change one number in the table (make the rule 0.50) and see whether the note changes accordingly, or stays the same. A note that does not move when the numbers move was not written from the numbers.</p>
+</section>
+<section id="l3-the-llm-as-a-forecaster-judged-like-the-forest" class="level2">
+<h2 class="anchored" data-anchor-id="l3-the-llm-as-a-forecaster-judged-like-the-forest">L3 — The LLM as a forecaster, judged like the forest</h2>
+<p>Now the LLM becomes a third black box. On 40 dates from the test period we show it the <strong>last 30 daily returns</strong> — no asset name, no dates — and ask for the probability that next week is more volatile than usual. Then we score it with the same AUC, against the rule and the forest <strong>on the same 40 dates</strong>.</p>
+<div id="93fc986d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>p_forest <span class="op">=</span> pd.Series(rf.predict_proba(test[features])[:, <span class="dv">1</span>], index<span class="op">=</span>test.index)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">40</span>                                                       <span class="co"># ← fewer if your key is rate-limited</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> test.index[np.linspace(<span class="dv">0</span>, <span class="bu">len</span>(test) <span class="op">-</span> <span class="dv">1</span>, N).astype(<span class="bu">int</span>)]</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forecast_prompt(t, reveal<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    last30 <span class="op">=</span> (d[<span class="st">"ret"</span>].loc[:t].iloc[<span class="op">-</span><span class="dv">30</span>:] <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>).tolist()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    head <span class="op">=</span> (<span class="ss">f"These are the last 30 daily returns of Bitcoin, in percent, up to </span><span class="sc">{</span>t<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">, oldest first:</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> reveal <span class="cf">else</span> <span class="st">"These are the last 30 daily returns of an asset, in percent, oldest first:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    usual_pct <span class="op">=</span> <span class="bu">float</span>(usual.loc[t] <span class="op">*</span> <span class="dv">100</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (head <span class="op">+</span> <span class="st">", "</span>.join(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:.2f}</span><span class="ss">"</span> <span class="cf">for</span> x <span class="kw">in</span> last30) <span class="op">+</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f"</span><span class="ch">\n</span><span class="ss">Its usual daily volatility (median of the past year) is </span><span class="sc">{</span>usual_pct<span class="sc">:.2f}</span><span class="ss">%.</span><span class="ch">\n</span><span class="ss">"</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"What is the probability that the daily volatility over the NEXT 7 days will be above that usual level? "</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Reply with the probability only, a number between 0 and 1."</span>)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(forecast_prompt(dates[<span class="dv">0</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>✍️ BET.</strong> The LLM’s AUC on these 40 dates: below the forest, between, or above the rule? <code>____</code></p>
+<div id="8762489d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> to_prob(text):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> re.search(<span class="vs">r"</span><span class="dv">\d</span><span class="op">*</span><span class="ch">\.</span><span class="op">?</span><span class="dv">\d</span><span class="op">+</span><span class="vs">"</span>, text)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(<span class="fl">1.0</span>, <span class="bu">max</span>(<span class="fl">0.0</span>, <span class="bu">float</span>(m.group()))) <span class="cf">if</span> m <span class="cf">else</span> np.nan</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>p_llm <span class="op">=</span> pd.Series({t: to_prob(ask(forecast_prompt(t), temperature<span class="op">=</span><span class="dv">0</span>)) <span class="cf">for</span> t <span class="kw">in</span> dates})</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>y40 <span class="op">=</span> test.loc[dates, <span class="st">"y_vol"</span>]</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> pd.Series({</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"rule 'like this week'"</span>: roc_auc_score(y40, test.loc[dates, <span class="st">"vol_7"</span>]),</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"random forest"</span>:         roc_auc_score(y40, p_forest.loc[dates]),</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"LLM (</span><span class="sc">{</span><span class="st">'mock'</span> <span class="cf">if</span> MOCK <span class="cf">else</span> MODEL<span class="sc">}</span><span class="ss">)"</span>: roc_auc_score(y40[p_llm.notna()], p_llm.dropna()),</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>}).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>y40<span class="sc">.</span>mean()<span class="sc">:.0%}</span><span class="ss"> of these 40 weeks were high-vol · unanswered: </span><span class="sc">{</span>p_llm<span class="sc">.</span>isna()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>scores</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Forty dates is a small test: differences of ±0.1 in AUC can be luck. Run it with <code>N = 80</code> if the key allows, and see which differences survive. <em>That</em> instinct — “is this difference bigger than the noise?” — is what separates a pilot report from a sales deck.</p>
+<div id="a164524f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>cost_in, cost_out <span class="op">=</span> <span class="fl">0.30</span>, <span class="fl">2.50</span>          <span class="co"># USD per million tokens — illustrative; check the provider's price page</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>usd <span class="op">=</span> USAGE[<span class="st">"tokens_in"</span>] <span class="op">/</span> <span class="fl">1e6</span> <span class="op">*</span> cost_in <span class="op">+</span> USAGE[<span class="st">"tokens_out"</span>] <span class="op">/</span> <span class="fl">1e6</span> <span class="op">*</span> cost_out</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>USAGE[<span class="st">'calls'</span>]<span class="sc">}</span><span class="ss"> calls · </span><span class="sc">{</span>USAGE[<span class="st">'tokens_in'</span>]<span class="sc">:,}</span><span class="ss"> tokens in · </span><span class="sc">{</span>USAGE[<span class="st">'tokens_out'</span>]<span class="sc">:,}</span><span class="ss"> out · ≈ $</span><span class="sc">{</span>usd<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"one forecast ≈ $</span><span class="sc">{</span>usd <span class="op">/</span> <span class="bu">max</span>(USAGE[<span class="st">'calls'</span>], <span class="dv">1</span>)<span class="sc">:.5f}</span><span class="ss">  ·  the forest and the rule: ≈ $0"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="your-turn-6" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-6">▶ YOUR TURN</h3>
+<p><strong>The leak you cannot see.</strong> Call <code>forecast_prompt(t, reveal=True)</code>: now the model is told it is Bitcoin and the date. Re-run the 40 forecasts and the AUC. If the score jumps, ask yourself what the model may already <em>know</em> about August 2024 or April 2025. Write one sentence: on which side of the wall is the model’s training data?</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>p_llm_r <span class="op">=</span> pd.Series({t: to_prob(ask(forecast_prompt(t, reveal<span class="op">=</span><span class="va">True</span>), temperature<span class="op">=</span><span class="dv">0</span>)) <span class="cf">for</span> t <span class="kw">in</span> dates})</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"anonymous:"</span>, <span class="bu">round</span>(roc_auc_score(y40[p_llm.notna()], p_llm.dropna()), <span class="dv">3</span>),</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>      <span class="st">"| with name and date:"</span>, <span class="bu">round</span>(roc_auc_score(y40[p_llm_r.notna()], p_llm_r.dropna()), <span class="dv">3</span>))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># any date before the model's training cut-off may be in its memory: for an LLM, the past is not out of sample</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="d60f762d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="your-turn-7" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-7">▶ YOUR TURN</h3>
+<p><strong>Change one thing and re-run L3</strong>: another model (<code>MODEL = ...</code>, from the list above), temperature 1 instead of 0, 60 days of history instead of 30, or a system message that explains volatility clustering. One change at a time; write each result in a small table.</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>results_llm <span class="op">=</span> {}</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, kw <span class="kw">in</span> {<span class="st">"T=0"</span>: <span class="bu">dict</span>(temperature<span class="op">=</span><span class="dv">0</span>), <span class="st">"T=1"</span>: <span class="bu">dict</span>(temperature<span class="op">=</span><span class="dv">1</span>)}.items():</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    pp <span class="op">=</span> pd.Series({t: to_prob(ask(forecast_prompt(t), <span class="op">**</span>kw)) <span class="cf">for</span> t <span class="kw">in</span> dates})</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    results_llm[name] <span class="op">=</span> <span class="bu">round</span>(roc_auc_score(y40[pp.notna()], pp.dropna()), <span class="dv">3</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>results_llm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="c108b0e4" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>What to take from Part 3: - the same discipline judges every model — a forest, a rule, an LLM: base rate, honest test, same dates, same score; - an LLM’s training data sits <strong>on the far side of the wall</strong> for any date before its cut-off; - it is slower and costs money per answer; the rule costs nothing. Use it where only words carry the signal — that is week 4.</p>
+</section>
+</section>
+</section>
+<section id="if-there-is-time-from-probability-to-decision" class="level1">
+<h1>If there is time — from probability to decision</h1>
+<p><em>Otherwise this is part of the homework.</em> A treasury desk holds BTC. Hedging next week costs <strong>1</strong>; an unhedged high-vol week costs <strong>2</strong>. Hedge when the forest’s probability is above a threshold. Which threshold?</p>
 <p><strong>✍️ BET.</strong> Threshold: <code>____</code></p>
-<div id="1f4dbae0" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>c_hedge, c_miss <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>yv <span class="op">=</span> test[<span class="st">"y_vol"</span>].values</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> th <span class="kw">in</span> [<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>]:</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    hedge <span class="op">=</span> p <span class="op">&gt;</span> th</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    rows.append({<span class="st">"threshold"</span>: th, <span class="st">"hedged weeks"</span>: hedge.mean(),</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"cost per week"</span>: (c_hedge <span class="op">*</span> hedge <span class="op">+</span> c_miss <span class="op">*</span> (<span class="op">~</span>hedge <span class="op">&amp;</span> (yv <span class="op">==</span> <span class="dv">1</span>))).mean()})</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>rows <span class="op">+=</span> [{<span class="st">"threshold"</span>: <span class="st">"never hedge"</span>,  <span class="st">"hedged weeks"</span>: <span class="dv">0</span>, <span class="st">"cost per week"</span>: c_miss <span class="op">*</span> yv.mean()},</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>         {<span class="st">"threshold"</span>: <span class="st">"always hedge"</span>, <span class="st">"hedged weeks"</span>: <span class="dv">1</span>, <span class="st">"cost per week"</span>: c_hedge}]</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(rows).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0c6b44f5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>c_hedge, c_miss <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>yv <span class="op">=</span> test[<span class="st">"y_vol"</span>].values</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> th <span class="kw">in</span> [<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>]:</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    hedge <span class="op">=</span> p <span class="op">&gt;</span> th</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>    rows.append({<span class="st">"threshold"</span>: th, <span class="st">"hedged weeks"</span>: hedge.mean(),</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"cost per week"</span>: (c_hedge <span class="op">*</span> hedge <span class="op">+</span> c_miss <span class="op">*</span> (<span class="op">~</span>hedge <span class="op">&amp;</span> (yv <span class="op">==</span> <span class="dv">1</span>))).mean()})</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>rows <span class="op">+=</span> [{<span class="st">"threshold"</span>: <span class="st">"never hedge"</span>,  <span class="st">"hedged weeks"</span>: <span class="dv">0</span>, <span class="st">"cost per week"</span>: c_miss <span class="op">*</span> yv.mean()},</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>         {<span class="st">"threshold"</span>: <span class="st">"always hedge"</span>, <span class="st">"hedged weeks"</span>: <span class="dv">1</span>, <span class="st">"cost per week"</span>: c_hedge}]</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(rows).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Find the cheapest row, and check it beats <strong>both</strong> trivial policies — a model has to beat “never” and “always”, not just look clever.</p>
 <p>Now set <code>c_miss = 4</code> and run again. The best threshold drops, and “always hedge” may win outright: when misses are expensive enough, the model is not worth running. <strong>The model did not change — the business did.</strong></p>
-</section>
 <section id="three-lines-to-take-home" class="level2">
 <h2 class="anchored" data-anchor-id="three-lines-to-take-home">Three lines to take home</h2>
 <p>Write them here, in your words, then <strong>File ▸ Save a copy in Drive</strong> into <code>ese-ai-fintech/week-03/</code>.</p>
 <ol type="1">
 <li>On exploration:</li>
 <li>On the honest split:</li>
-<li>On the black box:</li>
+<li>On the black box — forest or LLM:</li>
 </ol>
 
 

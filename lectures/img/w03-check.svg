@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the assistant’s summary table, and the corrected one</text>
+  <text x="30.0" y="80.0" font-size="17" font-weight="700" fill="#363636" text-anchor="start">annual volatility</text>
+  <text x="30.0" y="118.0" font-size="15" font-weight="400" fill="#a8955a" text-anchor="start">√252 — the assistant</text>
+  <rect x="320.0" y="100.0" width="252.5" height="28.0" fill="#a8955a" fill-opacity="0.5"/>
+  <text x="582.5" y="121.0" font-size="18" font-weight="700" fill="#a8955a" text-anchor="start">53%</text>
+  <text x="30.0" y="164.0" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start">√365 — crypto trades every day</text>
+  <rect x="320.0" y="146.0" width="303.9" height="28.0" fill="#AF1F25" fill-opacity="0.9"/>
+  <text x="633.9" y="167.0" font-size="18" font-weight="700" fill="#AF1F25" text-anchor="start">63%</text>
+  <text x="30.0" y="240.0" font-size="17" font-weight="700" fill="#363636" text-anchor="start">total return since 2018</text>
+  <text x="30.0" y="278.0" font-size="15" font-weight="400" fill="#a8955a" text-anchor="start">simple returns added up</text>
+  <rect x="320.0" y="260.0" width="289.1" height="28.0" fill="#a8955a" fill-opacity="0.5"/>
+  <text x="619.1" y="281.0" font-size="18" font-weight="700" fill="#a8955a" text-anchor="start">361%</text>
+  <text x="30.0" y="324.0" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start">compounded — what really happened</text>
+  <rect x="320.0" y="306.0" width="421.2" height="28.0" fill="#AF1F25" fill-opacity="0.9"/>
+  <text x="751.2" y="327.0" font-size="18" font-weight="700" fill="#AF1F25" text-anchor="start">526%</text>
+  <text x="30.0" y="410.0" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Bitcoin, 2018-01-01 to 2026-10-06. Two lines of code that run and look right; one makes it calmer, the other poorer, than it was.</text>
+</svg>

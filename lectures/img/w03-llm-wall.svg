@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the same wall, seen from a language model (cut-off date illustrative)</text>
+  <line x1="60.0" y1="300.0" x2="60.0" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="60.0" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2018</text>
+  <line x1="153.3" y1="300.0" x2="153.3" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="153.3" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2019</text>
+  <line x1="246.7" y1="300.0" x2="246.7" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="246.7" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2020</text>
+  <line x1="340.0" y1="300.0" x2="340.0" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="340.0" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2021</text>
+  <line x1="433.3" y1="300.0" x2="433.3" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="433.3" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2022</text>
+  <line x1="526.7" y1="300.0" x2="526.7" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="526.7" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2023</text>
+  <line x1="620.0" y1="300.0" x2="620.0" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="620.0" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2024</text>
+  <line x1="713.3" y1="300.0" x2="713.3" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="713.3" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2025</text>
+  <line x1="806.7" y1="300.0" x2="806.7" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="806.7" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2026</text>
+  <line x1="900.0" y1="300.0" x2="900.0" y2="306.0" stroke="#7a7f85" stroke-width="1"/>
+  <text x="900.0" y="324.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">2027</text>
+  <line x1="60.0" y1="300.0" x2="900.0" y2="300.0" stroke="#363636" stroke-width="1"/>
+  <rect x="153.3" y="90.0" width="466.7" height="44.0" fill="#2471a3" fill-opacity="0.85"/>
+  <text x="386.7" y="117.0" font-size="15" font-weight="700" fill="white" text-anchor="middle">forest learns: 2019–2023</text>
+  <rect x="620.0" y="90.0" width="256.7" height="44.0" fill="#CDBA80" fill-opacity="0.9"/>
+  <text x="748.3" y="117.0" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">test: 2024 → today</text>
+  <line x1="620.0" y1="70.0" x2="620.0" y2="290.0" stroke="#AF1F25" stroke-width="3"/>
+  <text x="620.0" y="62.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">the wall</text>
+  <rect x="60.0" y="180.0" width="700.0" height="44.0" fill="#AF1F25" fill-opacity="0.18"/>
+  <text x="72.0" y="207.0" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start">what an LLM read in training: the web, news, prices…</text>
+  <line x1="760.0" y1="170.0" x2="760.0" y2="290.0" stroke="#AF1F25" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="768.0" y="246.0" font-size="13" font-weight="400" fill="#AF1F25" text-anchor="start">its cut-off</text>
+  <rect x="620.0" y="180.0" width="140.0" height="44.0" fill="#AF1F25" fill-opacity="0.45"/>
+  <text x="30.0" y="380.0" font-size="14" font-weight="400" fill="#363636" text-anchor="start">For the forest the wall holds by construction. For an LLM, every test date before its cut-off may already be in its memory:</text>
+  <text x="30.0" y="402.0" font-size="14" font-weight="400" fill="#363636" text-anchor="start">tell it “Bitcoin, August 2024” and it may remember the week instead of forecasting it. Hide the name and the date.</text>
+</svg>
