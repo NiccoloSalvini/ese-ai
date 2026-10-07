@@ -7,22 +7,27 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.56">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Niccolò Salvini, PhD">
-  <title>AI for Business &amp; FinTech – A model, and whether to believe it</title>
+  <title>AI for Business &amp; FinTech – Look first, then predict</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -30,8 +35,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-73fd24817fa7ce32d23ce1f82e36be9b.css">
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
@@ -52,204 +123,6 @@
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -346,13 +219,13 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#AF1F25" data-background-image="../images/ese-logo-white.svg" data-background-position="top 7% right 4%" data-background-size="14%" class="quarto-title-block">
-  <h1 class="title">A model, and whether to believe it</h1>
+  <h1 class="title">Look first, then predict</h1>
   <p class="subtitle">Week 3 · Wednesday 7 October 2026 · 10:00–13:00</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Niccolò Salvini, PhD 
+Niccolò Salvini, PhD
 </div>
         <p class="quarto-title-affiliation">
             AI for Business and FinTech · European School of Economics, Florence
@@ -373,12 +246,12 @@ Niccolò Salvini, PhD
 <tr class="odd">
 <td>1–2</td>
 <td>23–30 Sep</td>
-<td>the model, the checking habit, the data, the silent errors ✓</td>
+<td>the network, the LLM, the checking habit ✓</td>
 </tr>
 <tr class="even">
 <td><strong>3</strong></td>
 <td><strong>7 Oct</strong></td>
-<td><strong>train something, and find out if it is any good</strong></td>
+<td><strong>explore a real dataset, then train a model and find out if it is any good</strong></td>
 </tr>
 <tr class="odd">
 <td>4–5</td>
@@ -387,7 +260,7 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="red">Today you will build a model that scores 0.71 and is worthless, and one that scores 0.53 and is worth money. Telling them apart is the entire skill.</span></p>
+<p><span class="red">Today a model will score 0.74 and be worthless, and a one-line rule will beat it. Telling the two apart is the entire skill.</span></p>
 </section>
 <section id="last-week-in-one-slide" class="slide level2">
 <h2>Last week, in one slide</h2>
@@ -400,6 +273,318 @@ Niccolò Salvini, PhD
 <p>It invents by design: there is always a top knob, even when the fact was never in the data.</p>
 </div></div>
 </section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>10:00</strong></td>
+<td>your homework: the fraud share, and the release you decoded</td>
+</tr>
+<tr class="even">
+<td><strong>10:20</strong></td>
+<td><strong>Part 1 — explore</strong>: eight years of BTC, ETH and the S&amp;P 500</td>
+</tr>
+<tr class="odd">
+<td><strong>11:20</strong></td>
+<td>break</td>
+</tr>
+<tr class="even">
+<td><strong>11:30</strong></td>
+<td><strong>Part 2 — predict</strong>: features, the wall, a random forest, two splits</td>
+</tr>
+<tr class="odd">
+<td><strong>12:30</strong></td>
+<td>from a probability to a decision</td>
+</tr>
+<tr class="even">
+<td><strong>12:50</strong></td>
+<td>homework · three lines</td>
+</tr>
+</tbody>
+</table>
+<p><span class="muted">One notebook all morning: <strong>week-03/session.ipynb</strong>. You drive; I don’t touch the keyboard.</span></p>
+</section>
+<section id="how-the-notebook-works" class="slide level2">
+<h2>How the notebook works</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>grey cell</strong></td>
+<td>a worked example — run it, read it, ask</td>
+</tr>
+<tr class="even">
+<td><strong>✍️ BET</strong></td>
+<td>write a number <em>before</em> the next cell runs</td>
+</tr>
+<tr class="odd">
+<td><strong>▶ YOUR TURN</strong></td>
+<td>the next piece of the analysis is yours, with the assistant if you like. Solution folded underneath</td>
+</tr>
+<tr class="even">
+<td><strong>🔍 CHECK</strong></td>
+<td>a cell an assistant really wrote. It runs. It is wrong</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="of-card-payments-are-fraud." class="slide level2 statement">
+<h2>0.17% of card payments are fraud.</h2>
+<p><span class="muted">Your number from homework 2. A model that says “never fraud” is 99.83% accurate and catches nothing. Keep that number in mind all morning: it is called the <strong>base rate</strong>, and every score today gets one next to it.</span></p>
+</section>
+<section id="part-1-explore" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> Explore</h2>
+</section>
+<section id="the-question-for-the-morning" class="slide level2">
+<h2>The question for the morning</h2>
+<h3 id="is-crypto-risk-predictable-and-which-part-of-it">Is crypto risk predictable — and which part of it?</h3>
+<p>Exploration is not “make charts”. It is asking the data small questions, <strong>in an order</strong>, until you know which question is worth a model.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>order</th>
+<th>small question</th>
+<th>what it decides</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>what is in the table?</td>
+<td>how to join crypto and stocks</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>how big are the moves?</td>
+<td>which scale, which units</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>how often is “impossible”?</td>
+<td>whether the bell curve is allowed</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>does yesterday tell us about today?</td>
+<td><strong>what is worth predicting</strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-is-in-the-table" class="slide level2 lab" data-background-color="#2471a3">
+<h2>What is in the table</h2>
+<p><span class="kicker">LAB · session.ipynb § E1</span></p>
+<p>3,200 days of BTC, ETH and SPY since January 2018.</p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>SPY has missing values, BTC has none. Out of every 7 days, how many is SPY missing?</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="red">Crypto trades 7 days a week, stocks 5. <strong>Every join between the two is a decision</strong> — drop the weekends, or carry Friday forward. Neither is wrong; not deciding is.</span></p>
+</section>
+<section id="how-big-are-the-moves" class="slide level2 lab" data-background-color="#2471a3">
+<h2>How big are the moves</h2>
+<p><span class="kicker">LAB · session.ipynb § E2–E3</span></p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>BTC’s worst single day since 2018: how much did it lose, and roughly when?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="bigtable">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>days beyond 4 standard deviations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>if returns were normal</td>
+<td><strong>0.2</strong></td>
+</tr>
+<tr class="even">
+<td>BTC, 2018–2026</td>
+<td><strong>17</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="explain"><strong>Fat tails.</strong> Big days are rare, but eighty-five times less rare than the textbook bell curve says. A “99% VaR” built on that curve underestimates exactly the days that matter.</span></p>
+</div>
+</section>
+<section id="two-questions-that-sound-alike" class="slide level2">
+<h2>Two questions that sound alike</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="direction">Direction</h3>
+<p>BTC went <strong>up</strong> today.</p>
+<p>Is it more likely to go up tomorrow?</p>
+</div><div class="column" style="width:50%;">
+<h3 id="size">Size</h3>
+<p>BTC moved <strong>a lot</strong> today, either way.</p>
+<p>Is it more likely to move a lot tomorrow?</p>
+</div></div>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>Which one has memory — direction, size, both, neither?</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="muted">We measure memory with the <strong>autocorrelation</strong>: the correlation of a series with itself, <em>k</em> days earlier. 0 means no memory.</span></p>
+</section>
+<section id="the-answer-on-eight-years-of-btc" class="slide level2">
+<h2>The answer, on eight years of BTC</h2>
+<div class="bigtable">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>lag</th>
+<th>direction (return)</th>
+<th>size (absolute return)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 day</td>
+<td>−0.05</td>
+<td><strong>0.17</strong></td>
+</tr>
+<tr class="even">
+<td>2 days</td>
+<td>0.04</td>
+<td><strong>0.13</strong></td>
+</tr>
+<tr class="odd">
+<td>3 days</td>
+<td>0.01</td>
+<td><strong>0.11</strong></td>
+</tr>
+<tr class="even">
+<td>4 days</td>
+<td>0.03</td>
+<td><strong>0.17</strong></td>
+</tr>
+<tr class="odd">
+<td>5 days</td>
+<td>0.02</td>
+<td><strong>0.14</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="muted">Computed in the notebook, 7 Oct 2026. The size column stays positive for weeks.</span></p>
+</section>
+<section id="calm-follows-calm.-storms-follow-storms." class="slide level2 statement">
+<h2>Calm follows calm. Storms follow storms.</h2>
+<p><span class="muted">The <strong>direction</strong> of tomorrow has no memory. Its <strong>size</strong> does. This is called <em>volatility clustering</em> — and we found it before training anything.</span></p>
+</section>
+<section id="not-a-constant-btc-and-the-stock-market" class="slide level2">
+<h2>Not a constant: BTC and the stock market</h2>
+<div class="bigtable">
+<table class="caption-top" style="width:100%;">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>year</th>
+<th>2018</th>
+<th>2019</th>
+<th>2020</th>
+<th>2021</th>
+<th>2022</th>
+<th>2023</th>
+<th>2024</th>
+<th>2025</th>
+<th>2026</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BTC–SPY correlation</td>
+<td>0.05</td>
+<td>0.06</td>
+<td>0.36</td>
+<td>0.28</td>
+<td><strong>0.57</strong></td>
+<td>0.34</td>
+<td>0.28</td>
+<td>0.48</td>
+<td>0.47</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>“Digital gold, uncorrelated with stocks” was roughly true before 2020 and has not been true since.</p>
+<p><span class="explain">A correlation is a series, not a number. It has regimes too — and a portfolio built on the 2019 number learned that in 2022.</span></p>
+</section>
+<section id="the-assistants-summary-table" class="slide level2 lab" data-background-color="#2471a3">
+<h2>🔍 The assistant’s summary table</h2>
+<p><span class="kicker">LAB · session.ipynb § CHECK</span></p>
+<p>Asked for <em>“annualised volatility and total return of BTC and ETH since 2018”</em>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a aria-label="1"></a>simple <span class="op">=</span> px[[<span class="st">"BTC-USD"</span>, <span class="st">"ETH-USD"</span>]].pct_change().dropna()</span>
+<span id="cb1-2"><a aria-label="2"></a>summary <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-3"><a aria-label="3"></a>    <span class="st">"annual vol"</span>:   simple.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>),</span>
+<span id="cb1-4"><a aria-label="4"></a>    <span class="st">"total return"</span>: simple.<span class="bu">sum</span>(),</span>
+<span id="cb1-5"><a aria-label="5"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It runs. It looks professional. <strong>Two errors.</strong> Ten minutes, one hint after five.</p>
+</section>
+<section id="part-2-predict" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2</span> Predict</h2>
+</section>
 <section id="three-ways-to-write-the-same-decision" class="slide level2">
 <h2>Three ways to write the same decision</h2>
 <div class="r-stack">
@@ -410,28 +595,13 @@ Niccolò Salvini, PhD
 <p><img data-src="img/software-123-l4.svg" class="fragment" style="width:100.0%"></p>
 </div>
 </section>
-<section id="a-rule-you-can-write-down-beats-a-model-that-guesses-it." class="slide level2 statement">
-<h2>A rule you can write down beats a model that guesses it.</h2>
-<p><span class="muted">Most of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Today you find out which is which, in euros.</span></p>
-</section>
-<section id="run-all-three-on-the-same-transactions" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Run all three, on the same transactions</h2>
-<p><span class="kicker">LAB · week-01/session.ipynb § A2 — one decision, three kinds of software</span></p>
-<p>Twenty thousand card payments, one cost table, the three columns of that figure:</p>
-<ol type="1">
-<li>the rule blocks 240 of them. <strong>Bet how much of the fraud it catches</strong> before you run it.</li>
-<li>the model gets the <strong>same budget</strong> — 240 blocks, no more — and only chooses differently.</li>
-<li>then the fraud that is in the <em>words</em> and in neither of the first two.</li>
-</ol>
-<p><span class="red">Then the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged.</span></p>
-</section>
 <section id="three-words-and-the-whole-of-supervised-learning" class="slide level2">
 <h2>Three words, and the whole of supervised learning</h2>
 <table class="caption-top">
 <tbody>
 <tr class="odd">
 <td><strong>feature</strong></td>
-<td>what you know <strong>at</strong> time <code>t</code></td>
+<td>what you know <strong>at</strong> day <code>t</code></td>
 </tr>
 <tr class="even">
 <td><strong>target</strong></td>
@@ -439,74 +609,184 @@ Niccolò Salvini, PhD
 </tr>
 <tr class="odd">
 <td><strong>horizon</strong></td>
-<td>how long after</td>
+<td>how long after — today, <strong>7 days</strong></td>
 </tr>
 </tbody>
 </table>
-<p><span class="math display">\text{features at } t \;\longrightarrow\; \text{model} \;\longrightarrow\; \text{target over } (t, t+h]</span></p>
-<p><span class="red">If a feature contains anything from after <code>t</code>, everything downstream is theatre. That is the failure this session is built around.</span></p>
+<p><span class="math display">\text{features at } t \;\longrightarrow\; \text{model} \;\longrightarrow\; \text{target over } (t, t+7]</span></p>
+<p>Two targets, the same nine features:</p>
+<ul>
+<li><code>y_dir</code> — will BTC be <strong>up</strong> over the next 7 days?</li>
+<li><code>y_vol</code> — will the next 7 days be <strong>more volatile than usual</strong>?</li>
+</ul>
+<p><span class="red">After Part 1 you can already guess how this ends. Write your guess down.</span></p>
+</section>
+<section id="the-wall" class="slide level2">
+<h2>The wall</h2>
+
+<img data-src="img/the-wall.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="explain">For every feature, write the latest day it uses. For the target, recompute one date by hand. One minute each, every time.</span></p>
 </section>
 <section id="before-the-model-what-does-nothing-score" class="slide level2">
 <h2>Before the model: what does nothing score?</h2>
-<div title="Bet before we compute">
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we compute</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>You predict whether tomorrow is an up day. Your model gets <strong>54%</strong>. Good, bad, or unknowable from that number alone?</p>
+<p>Share of 7-day windows in which BTC went up?</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Unknowable.</strong> If 54% of days are up days, predicting “up” every time also scores 54%, and it took no data and no model.</p>
-<p>The <strong>base rate</strong> is the number to beat. A model that does not beat it is a cost with a dashboard.</p>
-<p><span class="red">Which closes the third claim from week 1 — <em>“99.2% accuracy”</em>. On whose test set, of what size, against what base rate? Without those three, the number means nothing.</span></p>
+<div class="bigtable">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>target</th>
+<th>share of 1s</th>
+<th>“always say the majority”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>up next week</td>
+<td>53%</td>
+<td><strong>53%</strong></td>
+</tr>
+<tr class="even">
+<td>high-vol next week</td>
+<td>46%</td>
+<td><strong>54%</strong></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p><span class="explain">That is the <strong>base rate</strong> — the number to beat. A model that does not beat it is a cost with a dashboard.</span></p>
+</div>
+</section>
+<section id="the-black-box-a-random-forest" class="slide level2">
+<h2>The black box: a random forest</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Hundreds of decision trees.</strong> Each is a flowchart of yes/no questions on the features — <em>“is this week’s vol above 1.3× usual?”</em> — grown on a slightly different sample of the past.</p>
+<p>They <strong>vote</strong>. The share of votes is the probability.</p>
+</div><div class="column" style="width:45%;">
+<p>It finds interactions and curves on its own, which a regression does not.</p>
+<p><strong>What it cannot do is tell you whether it is right.</strong></p>
+<p>That is the split’s job — and ours.</p>
+</div></div>
+<p><span class="muted">We open it in week 9. Today we only judge it from the outside — which is exactly what you will do with every vendor model.</span></p>
 </section>
 <section id="two-models-two-splits" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Two models, two splits</h2>
-<p><span class="kicker">LAB · session.ipynb § B</span></p>
-<p>Same features, same target, same model. Only the split changes.</p>
+<p><span class="kicker">LAB · session.ipynb § M3</span></p>
+<p>Same features, same target, same forest. Only the split changes.</p>
 <ol type="1">
-<li>Fit with a <strong>random</strong> split. Write the score down.</li>
-<li>Fit with a <strong>time-ordered</strong> split. Write that one down too.</li>
-<li>Stare at the gap before I explain it.</li>
+<li><strong>Honest</strong>: learn on 2019–2023, judge on 2024 → today.</li>
+<li><strong>The assistant’s default</strong>: <code>train_test_split</code> — shuffle the days, keep 30% for testing.</li>
 </ol>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>Write both AUCs for direction and for volatility before you run.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="why-the-first-number-lied" class="slide level2 clip" data-background-color="#000000">
-<h2>Why the first number lied</h2>
+<section id="why-the-shuffled-number-lies" class="slide level2 clip" data-background-color="#000000">
+<h2>Why the shuffled number lies</h2>
 <video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w03_splits_poster.png">
 <source src="media/w03_splits.mp4" type="video/mp4">
 </video>
-<p>Shuffle a time series and the model trains on days that come <em>after</em> the day it is tested on.</p>
+<p>Shuffle a time series and the model trains on Wednesday and Friday, then is tested on Thursday. It is not predicting — it is remembering its neighbours.</p>
 </section>
-<section id="the-wall" class="slide level2 statement">
-<h2>The wall</h2>
+<section id="what-came-out" class="slide level2">
+<h2>What came out</h2>
+<div class="bigtable">
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>base rate</th>
+<th>AUC, shuffled</th>
+<th>AUC, honest</th>
+<th>the rule “next week like this week”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>direction</strong></td>
+<td>53%</td>
+<td>0.70</td>
+<td><strong>0.55</strong></td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><strong>volatility</strong></td>
+<td>54%</td>
+<td>0.74</td>
+<td><strong>0.60</strong></td>
+<td><strong>0.64</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="muted">Computed in the notebook, 7 Oct 2026; your live run may differ in the second decimal. AUC: 0.5 is a coin, 1.0 is perfect.</span></p>
 </section>
-<section id="nothing-to-the-right-of-the-wall-may-be-used-to-fit-what-is-on-the-left." class="slide level2">
-<h2>Nothing to the right of the wall may be used to fit what is on the left.</h2>
-<p><span class="muted">Everything else in evaluation is a detail. This is the rule.</span></p>
-</section>
-<section id="and-leakage-that-no-split-can-catch" class="slide level2">
-<h2>And leakage that no split can catch</h2>
-
-<img data-src="img/the-wall.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="do-it-on-purpose" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Do it on purpose</h2>
-<p><span class="kicker">LAB · session.ipynb § C</span></p>
-<p>Add one leaked feature deliberately — a rolling statistic computed over everything.</p>
+<section id="read-it-in-this-order" class="slide level2">
+<h2>Read it in this order</h2>
 <ol type="1">
-<li>Watch the score jump.</li>
-<li>Fix the feature so it uses only the past.</li>
-<li>Watch it fall back.</li>
+<li><strong>Shuffled &gt; honest, on both.</strong> The gap is leakage, not skill. On direction it turns a coin into a “signal”.</li>
+<li><strong>Direction ≈ a coin.</strong> Hundreds of trees, nine features, nothing to say about next week’s direction — what Part 1 told us for free.</li>
+<li><strong>Volatility is predictable</strong> — and <strong>the one-line rule beats the forest.</strong></li>
 </ol>
-<p><span class="red">The point is the feeling. A leak looks exactly like success, and this is the only safe place to learn what that feels like.</span></p>
+<p><span class="red">You only know the rule wins because you built the rule first. Most AI pitches never do.</span></p>
+</section>
+<section id="same-data-same-model.-the-question-decides." class="slide level2 statement">
+<h2>Same data, same model. The question decides.</h2>
+<p><span class="muted">Whether ML has anything to offer depends on the question you ask it. Choosing the question is the manager’s job — and the exploration is how you choose.</span></p>
+</section>
+<section id="what-did-the-black-box-look-at" class="slide level2">
+<h2>What did the black box look at?</h2>
+<p>We cannot read 300 trees. We can ask: <strong>if I scramble one feature, how much worse does it get?</strong></p>
+<p>That is <em>permutation importance</em>, measured on the test years.</p>
+<ul>
+<li>the volatility features dominate (<code>vol_30</code>, <code>vol_7</code>), with the size of last week’s move (<code>ret_7</code>) behind them — Part 1 again;</li>
+<li>a black box that agrees with what you saw by eye is one you can start to trust;</li>
+<li>one that leans on <code>weekday</code> is one you should not.</li>
+</ul>
+</section>
+<section id="and-leakage-that-no-split-can-catch" class="slide level2 lab" data-background-color="#2471a3">
+<h2>And leakage that no split can catch</h2>
+<p><span class="kicker">LAB · session.ipynb § YOUR TURN after M4</span></p>
+<p>The assistant offers to <em>“smooth”</em> the volatility feature: <code>rolling(7, center=True)</code>.</p>
+<ol type="1">
+<li>Add it. Keep the <strong>honest</strong> split.</li>
+<li>Watch the score jump.</li>
+<li>One sentence: why did the honest split not protect you?</li>
+</ol>
+<p><span class="red">A leak looks exactly like success. This is the only safe place to learn what that feels like.</span></p>
 </section>
 <section id="block-d-a-probability-is-not-a-decision" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Block D</span> A probability is not a decision</h2>
@@ -516,52 +796,34 @@ Niccolò Salvini, PhD
 <p>A prediction becomes a decision only when you add two things the model does not contain: <strong>what each mistake costs</strong>, and <strong>the probability above which you act</strong>.</p>
 
 <img data-src="img/threshold-ev.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="and-one-more-question-which-the-model-cannot-answer" class="slide level2">
-<h2>And one more question, which the model cannot answer</h2>
-<p><strong>Is 0.61 actually 61%?</strong></p>
-<p>Take every day the model said “about 0.6”. Did roughly six in ten of them happen? If yes it is <strong>calibrated</strong> and you can do arithmetic with it. If not, the number is a ranking, not a probability, and the expected-value calculation above is meaningless.</p>
-<div title="The sentence to remember">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>The sentence to remember</strong></p>
-</div>
-<div class="callout-content">
-<p>Accuracy tells you how often it is right. Calibration tells you whether its confidence means anything. You need both, and only one of them is on the dashboard by default.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="turn-it-into-a-decision" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Turn it into a decision</h2>
-<p><span class="kicker">LAB · session.ipynb § D</span></p>
+<section id="hedge-or-not" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Hedge or not</h2>
+<p><span class="kicker">LAB · session.ipynb § M5</span></p>
+<p>A treasury desk holds BTC. Hedging next week costs <strong>1</strong>; an unhedged high-vol week costs <strong>2</strong>.</p>
 <ol type="1">
-<li>Put costs on the two errors — your numbers, defended out loud.</li>
-<li>Sweep the threshold and plot expected value against it.</li>
-<li>Read off the threshold that maximises it, and say how far you could be wrong about the costs before the answer changes.</li>
+<li><strong>Bet</strong> the threshold, then sweep it.</li>
+<li>The model must beat <strong>both</strong> “never hedge” and “always hedge” — not just look clever.</li>
+<li>Now make a miss cost <strong>4</strong>. Run again.</li>
 </ol>
+<p><span class="red">The model did not change. The business did — and with it, whether the model is worth running at all.</span></p>
 </section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>Homework 3</strong> — a model against a baseline, evaluated time-aware, plus a section titled <strong>“What would have to be true for this to be useful”</strong>: the decision rule, the KPI, and what each error costs.</p>
+<p><strong>Homework 3</strong> — your own asset, explored first, then a model against a baseline and a one-line rule, evaluated on the future, plus a section titled <strong>“What would have to be true for this to be useful”</strong>.</p>
 <p>Due Tuesday 13 October, 23:59.</p>
 <div class="fragment">
-<p><span class="red">That section is worth more than the model. Anyone can fit a classifier; almost nobody writes down what would make it worth running.</span></p>
+<p><strong>Three lines</strong> at the bottom of the notebook: one on exploration, one on the split, one on the black box.</p>
 <p><span class="muted">Next week: the same honesty, applied to language models.</span></p>
 
-<div class="quarto-auto-generated-content">
-<div class="footer footer-default">
-<p>AI for Business &amp; FinTech · ESE Florence</p>
-</div>
-</div>
+
 </div>
 </section>
     </div>
-  </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>AI for Business &amp; FinTech · ESE Florence</p>
+</div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="../site_libs/revealjs/dist/reveal.js"></script>
@@ -589,7 +851,8 @@ Niccolò Salvini, PhD
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -752,192 +1015,173 @@ Niccolò Salvini, PhD
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

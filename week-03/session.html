@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 3 — Machine learning through one problem – AI for Business &amp; FinTech</title>
+<title>Week 3 — Look first, then predict – AI for Business &amp; FinTech</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -21,8 +27,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +40,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +72,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../images/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-39c5bf676fe5f74c3e2352cc4d0198db.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-32b6a1ef7e9ba52d09e917c9077d60f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -115,7 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
-    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo light-content">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
     <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
@@ -166,10 +175,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#block-a-features-targets-baselines" id="toc-block-a-features-targets-baselines" class="nav-link active" data-scroll-target="#block-a-features-targets-baselines">Block A — Features, targets, baselines</a></li>
-  <li><a href="#block-b-two-models-two-ways-of-splitting" id="toc-block-b-two-models-two-ways-of-splitting" class="nav-link" data-scroll-target="#block-b-two-models-two-ways-of-splitting">Block B — Two models, two ways of splitting</a></li>
-  <li><a href="#block-c-leakage-on-purpose" id="toc-block-c-leakage-on-purpose" class="nav-link" data-scroll-target="#block-c-leakage-on-purpose">Block C — Leakage on purpose</a></li>
-  <li><a href="#block-d-from-prediction-to-decision" id="toc-block-d-from-prediction-to-decision" class="nav-link" data-scroll-target="#block-d-from-prediction-to-decision">Block D — From prediction to decision</a></li>
+  <li><a href="#part-1-exploration" id="toc-part-1-exploration" class="nav-link active" data-scroll-target="#part-1-exploration">Part 1 — Exploration</a>
+  <ul class="collapse">
+  <li><a href="#e1-what-is-in-the-table" id="toc-e1-what-is-in-the-table" class="nav-link" data-scroll-target="#e1-what-is-in-the-table">E1 — What is in the table?</a></li>
+  <li><a href="#e2-from-prices-to-returns" id="toc-e2-from-prices-to-returns" class="nav-link" data-scroll-target="#e2-from-prices-to-returns">E2 — From prices to returns</a></li>
+  <li><a href="#e3-how-often-does-the-impossible-happen" id="toc-e3-how-often-does-the-impossible-happen" class="nav-link" data-scroll-target="#e3-how-often-does-the-impossible-happen">E3 — How often does the ‘impossible’ happen?</a></li>
+  <li><a href="#e4-the-central-discovery-direction-vs-size" id="toc-e4-the-central-discovery-direction-vs-size" class="nav-link" data-scroll-target="#e4-the-central-discovery-direction-vs-size">E4 — The central discovery: direction vs size</a></li>
+  <li><a href="#e5-does-crypto-move-with-the-stock-market" id="toc-e5-does-crypto-move-with-the-stock-market" class="nav-link" data-scroll-target="#e5-does-crypto-move-with-the-stock-market">E5 — Does crypto move with the stock market?</a></li>
+  <li><a href="#check-the-assistants-summary-table" id="toc-check-the-assistants-summary-table" class="nav-link" data-scroll-target="#check-the-assistants-summary-table">🔍 CHECK — the assistant’s summary table</a></li>
+  </ul></li>
+  <li><a href="#part-2-machine-learning-with-a-black-box" id="toc-part-2-machine-learning-with-a-black-box" class="nav-link" data-scroll-target="#part-2-machine-learning-with-a-black-box">Part 2 — Machine learning, with a black box</a>
+  <ul class="collapse">
+  <li><a href="#m1-features-and-target-the-wall" id="toc-m1-features-and-target-the-wall" class="nav-link" data-scroll-target="#m1-features-and-target-the-wall">M1 — Features and target: the wall</a></li>
+  <li><a href="#m2-before-any-model-what-does-doing-nothing-score" id="toc-m2-before-any-model-what-does-doing-nothing-score" class="nav-link" data-scroll-target="#m2-before-any-model-what-does-doing-nothing-score">M2 — Before any model: what does doing nothing score?</a></li>
+  <li><a href="#m3-the-black-box-a-random-forest" id="toc-m3-the-black-box-a-random-forest" class="nav-link" data-scroll-target="#m3-the-black-box-a-random-forest">M3 — The black box: a random forest</a></li>
+  <li><a href="#check-the-assistants-validation" id="toc-check-the-assistants-validation" class="nav-link" data-scroll-target="#check-the-assistants-validation">🔍 CHECK — the assistant’s validation</a></li>
+  <li><a href="#m4-what-did-the-black-box-look-at" id="toc-m4-what-did-the-black-box-look-at" class="nav-link" data-scroll-target="#m4-what-did-the-black-box-look-at">M4 — What did the black box look at?</a></li>
+  <li><a href="#m5-from-probability-to-decision-if-time-otherwise-homework" id="toc-m5-from-probability-to-decision-if-time-otherwise-homework" class="nav-link" data-scroll-target="#m5-from-probability-to-decision-if-time-otherwise-homework">M5 — From probability to decision <em>(if time; otherwise homework)</em></a></li>
+  <li><a href="#three-lines-to-take-home" id="toc-three-lines-to-take-home" class="nav-link" data-scroll-target="#three-lines-to-take-home">Three lines to take home</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -178,7 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week 3 — Machine learning through one problem</h1>
+<h1 class="title">Week 3 — Look first, then predict</h1>
 </div>
 
 
@@ -195,439 +219,654 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>ESE · AI for Business and FinTech · 7 October 2026</strong></p>
-<p>One problem, done properly, teaches more than a tour of algorithms. Today: <em>can we predict anything about next week’s BTC from what we know today?</em> We build features, train two models against a trivial baseline, and — most importantly — evaluate them in the only way that means anything for time series. Then we turn a prediction into a decision.</p>
-<div id="5f345f37" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="bf8dfae3" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers, start<span class="op">=</span><span class="st">"2022-01-01"</span>, end<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices, one column per ticker.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only)."""</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> os</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> <span class="st">"_"</span>.join(t.replace(<span class="st">"^"</span>, <span class="st">""</span>) <span class="cf">for</span> t <span class="kw">in</span> tickers)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    snap <span class="op">=</span> os.path.join(cache_dir, <span class="ss">f"prices_</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">.csv"</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        raw <span class="op">=</span> yf.download(tickers, start<span class="op">=</span>start, end<span class="op">=</span>end, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> raw[<span class="st">"Close"</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(raw.columns, pd.MultiIndex) <span class="cf">else</span> raw[[<span class="st">"Close"</span>]].rename(columns<span class="op">=</span>{<span class="st">"Close"</span>: tickers[<span class="dv">0</span>]})</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> px.dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">50</span>:</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"empty download"</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        px.to_csv(snap)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from yfinance; snapshot saved to </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] yfinance failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); trying snapshot"</span>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.exists(snap):</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(snap, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span>px<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows from </span><span class="sc">{</span>snap<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real."</span>)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="1c68280f" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>], start<span class="op">=</span><span class="st">"2018-01-01"</span>).ffill().dropna()</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>px.index)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"ret"</span>] <span class="op">=</span> px[<span class="st">"BTC-USD"</span>].pct_change()</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"spy_ret"</span>] <span class="op">=</span> px[<span class="st">"SPY"</span>].pct_change()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> d.dropna()</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(d.shape)<span class="op">;</span> d.tail(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="block-a-features-targets-baselines" class="level2">
-<h2 class="anchored" data-anchor-id="block-a-features-targets-baselines">Block A — Features, targets, baselines</h2>
-<p><strong>Feature</strong> = something known <em>at the time of prediction</em>. <strong>Target</strong> = the thing we want to know, which happens <em>after</em>. The entire discipline of ML on time series is keeping the wall between them intact.</p>
-<p>We define two targets for the same features, because they behave very differently: - <strong>Direction</strong>: is the return over the next 5 trading days positive? - <strong>Volatility regime</strong>: will realised volatility over the next 5 days be above its trailing median?</p>
-<div id="c305c8fa" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="dv">5</span>   <span class="co"># horizon in trading days</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Features: everything uses only past information (note the .shift(1) is NOT needed because rolling windows end at t inclusive, and the target starts at t+1)</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>d.index)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"ret_1"</span>]   <span class="op">=</span> d[<span class="st">"ret"</span>]</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"ret_5"</span>]   <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">5</span>).<span class="bu">sum</span>()</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"ret_21"</span>]  <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">21</span>).<span class="bu">sum</span>()</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"vol_5"</span>]   <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">5</span>).std()</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"vol_21"</span>]  <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">21</span>).std()</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"vol_ratio"</span>] <span class="op">=</span> f[<span class="st">"vol_5"</span>] <span class="op">/</span> f[<span class="st">"vol_21"</span>]</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"spy_ret_5"</span>] <span class="op">=</span> d[<span class="st">"spy_ret"</span>].rolling(<span class="dv">5</span>).<span class="bu">sum</span>()</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>f[<span class="st">"dow"</span>]     <span class="op">=</span> d.index.dayofweek</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Targets: strictly in the future (t+1 … t+H)</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>fwd_ret <span class="op">=</span> d[<span class="st">"ret"</span>][::<span class="op">-</span><span class="dv">1</span>].rolling(H).<span class="bu">sum</span>()[::<span class="op">-</span><span class="dv">1</span>].shift(<span class="op">-</span><span class="dv">1</span>)   <span class="co"># sum of returns t+1..t+H (reverse-rolling, then shift) — verified by hand below</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>fwd_vol <span class="op">=</span> d[<span class="st">"ret"</span>][::<span class="op">-</span><span class="dv">1</span>].rolling(H).std()[::<span class="op">-</span><span class="dv">1</span>].shift(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>y_dir <span class="op">=</span> (fwd_ret <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>).rename(<span class="st">"y_dir"</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>y_vol <span class="op">=</span> (fwd_vol <span class="op">&gt;</span> f[<span class="st">"vol_21"</span>].expanding().median()).astype(<span class="bu">int</span>).rename(<span class="st">"y_vol"</span>)   <span class="co"># vs trailing (expanding) median: no future info</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> f.join([y_dir, y_vol, fwd_ret.rename(<span class="st">"fwd_ret"</span>)]).dropna()</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.shape)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>data.tail(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>🔍 CHECK — verify the target by hand.</strong> Pick a date, and confirm that <code>fwd_ret</code> on that date equals the sum of <code>ret</code> over the <em>following</em> 5 rows. If it includes the current day, the target leaks. Do this every single time you build a forward-looking target; it takes one minute and it is the most common bug in trading ML.</p>
-<div id="c7478e5a" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> data.index[i]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>manual <span class="op">=</span> d[<span class="st">"ret"</span>].loc[t:].iloc[<span class="dv">1</span>:H<span class="op">+</span><span class="dv">1</span>].<span class="bu">sum</span>()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t.date(), <span class="st">"| fwd_ret in table:"</span>, <span class="bu">round</span>(data.loc[t, <span class="st">"fwd_ret"</span>], <span class="dv">6</span>), <span class="st">"| recomputed by hand:"</span>, <span class="bu">round</span>(manual, <span class="dv">6</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">abs</span>(manual <span class="op">-</span> data.loc[t, <span class="st">"fwd_ret"</span>]) <span class="op">&lt;</span> <span class="fl">1e-12</span>, <span class="st">"target leaks or is misaligned"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"OK — target uses only future rows"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="7c676612" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base rates: what does 'doing nothing clever' score?</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: share of 1s = </span><span class="sc">{</span>data[col]<span class="sc">.</span>mean()<span class="sc">:.3f}</span><span class="ss">  -&gt; majority-class accuracy = </span><span class="sc">{</span><span class="bu">max</span>(data[col].mean(), <span class="dv">1</span><span class="op">-</span>data[col].mean())<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The <strong>baseline</strong> is the number a model must beat. For direction, “always predict up” already scores ~55% because BTC drifted up over the sample. A model with 56% accuracy has learned almost nothing. Any assistant that reports “our model achieves 58% accuracy” without the base rate next to it has reported nothing.</p>
-</section>
-<section id="block-b-two-models-two-ways-of-splitting" class="level2">
-<h2 class="anchored" data-anchor-id="block-b-two-models-two-ways-of-splitting">Block B — Two models, two ways of splitting</h2>
-<div id="54b75285" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> HistGradientBoostingClassifier</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split, TimeSeriesSplit</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, roc_auc_score, precision_score, recall_score</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> [<span class="st">"ret_1"</span>, <span class="st">"ret_5"</span>, <span class="st">"ret_21"</span>, <span class="st">"vol_5"</span>, <span class="st">"vol_21"</span>, <span class="st">"vol_ratio"</span>, <span class="st">"spy_ret_5"</span>, <span class="st">"dow"</span>]</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> data[features]</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>models <span class="op">=</span> {</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"logistic"</span>: make_pipeline(StandardScaler(), LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"gradient boosting"</span>: HistGradientBoostingClassifier(max_depth<span class="op">=</span><span class="dv">3</span>, learning_rate<span class="op">=</span><span class="fl">0.05</span>, max_iter<span class="op">=</span><span class="dv">200</span>, random_state<span class="op">=</span><span class="dv">0</span>),</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> evaluate(model, X, y, splits):</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    accs, aucs <span class="op">=</span> [], []</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tr, te <span class="kw">in</span> splits:</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        model.fit(X.iloc[tr], y.iloc[tr])</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        p <span class="op">=</span> model.predict_proba(X.iloc[te])[:, <span class="dv">1</span>]</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        accs.append(accuracy_score(y.iloc[te], p <span class="op">&gt;</span> <span class="fl">0.5</span>))<span class="op">;</span> aucs.append(roc_auc_score(y.iloc[te], p))</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.mean(accs), np.mean(aucs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="check-the-assistants-split" class="level3">
-<h3 class="anchored" data-anchor-id="check-the-assistants-split">🔍 CHECK — the assistant’s split</h3>
-<p>Asked to “evaluate the model with cross-validation”, the assistant used the sklearn default: a <strong>random shuffle</strong>. For time series this is a leak: the model trains on Wednesday and Friday and is tested on Thursday, with overlapping 21-day windows on both sides. Compare with a <strong>time-ordered</strong> split where the test set is always in the future of the training set.</p>
-<div id="af70536e" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(X)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>shuffled <span class="op">=</span> [(tr, te) <span class="cf">for</span> tr, te <span class="kw">in</span> [train_test_split(np.arange(n), test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span>s) <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ordered  <span class="op">=</span> <span class="bu">list</span>(TimeSeriesSplit(n_splits<span class="op">=</span><span class="dv">5</span>, test_size<span class="op">=</span><span class="dv">250</span>).split(X))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> target <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> data[target]</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> name, m <span class="kw">in</span> models.items():</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        a_s, u_s <span class="op">=</span> evaluate(m, X, y, shuffled)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        a_o, u_o <span class="op">=</span> evaluate(m, X, y, ordered)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        rows.append([target, name, a_s, u_s, a_o, u_o])</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> pd.DataFrame(rows, columns<span class="op">=</span>[<span class="st">"target"</span>, <span class="st">"model"</span>, <span class="st">"acc (shuffled)"</span>, <span class="st">"auc (shuffled)"</span>, <span class="st">"acc (time-ordered)"</span>, <span class="st">"auc (time-ordered)"</span>]).<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>res[<span class="st">"base rate"</span>] <span class="op">=</span> res[<span class="st">"target"</span>].<span class="bu">map</span>(<span class="kw">lambda</span> c: <span class="bu">round</span>(<span class="bu">max</span>(data[c].mean(), <span class="dv">1</span> <span class="op">-</span> data[c].mean()), <span class="dv">3</span>))</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Read the table slowly. Three things should be visible:</p>
+<p><strong>ESE · AI for Business and FinTech · Wednesday 7 October 2026</strong></p>
+<p>One dataset, one question, two halves.</p>
 <ol type="1">
-<li><strong>Shuffled scores are higher than time-ordered ones.</strong> The difference is leakage, not skill.</li>
-<li><strong>Direction is close to the base rate under an honest split.</strong> With these features, 5-day direction of BTC is essentially unpredictable — which is what finance theory predicts and what an assistant will rarely tell you.</li>
-<li><strong>Volatility regime is predictable</strong> (AUC well above 0.5): volatility clusters. Same data, same models — the <em>question</em> decides whether ML has anything to offer. Choosing the question is the manager’s job.</li>
+<li><strong>Explore</strong> — eight years of daily Bitcoin, Ether and S&amp;P 500 prices. What does crypto risk actually look like?</li>
+<li><strong>Predict</strong> — a model we do not open today (a <em>random forest</em>) on the question the exploration tells us is worth asking.</li>
 </ol>
+<p>How this notebook works: - grey cells are <strong>worked examples</strong>: run them, read them, ask; - <strong>✍️ BET</strong> cells: write a number <em>before</em> you run the next cell; - <strong>▶ YOUR TURN</strong> cells are pieces of the analysis you write — with your assistant if you like. The solution is folded underneath; open it only after trying.</p>
+<div id="f157251b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance scikit<span class="op">-</span>learn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Run once. Live data from Yahoo Finance; if the network blocks it, a dated snapshot from the course repo (6 Oct 2026).</p>
+<div id="de70e521" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd, matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.precision"</span>, <span class="dv">4</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">"axes.prop_cycle"</span>: plt.cycler(color<span class="op">=</span>[<span class="st">"#2471a3"</span>, <span class="st">"#AF1F25"</span>, <span class="st">"#a8955a"</span>, <span class="st">"#1e8449"</span>, <span class="st">"#7a7f85"</span>]),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"axes.spines.top"</span>: <span class="va">False</span>, <span class="st">"axes.spines.right"</span>: <span class="va">False</span>})</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>SNAPSHOT <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-03/data/prices_BTC-USD_ETH-USD_SPY.csv"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_prices(tickers<span class="op">=</span>(<span class="st">"BTC-USD"</span>, <span class="st">"ETH-USD"</span>, <span class="st">"SPY"</span>), start<span class="op">=</span><span class="st">"2018-01-01"</span>):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Daily close prices. 1) yfinance live  2) course snapshot  3) synthetic (pipeline test only)."""</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> yf.download(<span class="bu">list</span>(tickers), start<span class="op">=</span>start, auto_adjust<span class="op">=</span><span class="va">True</span>, progress<span class="op">=</span><span class="va">False</span>)[<span class="st">"Close"</span>].dropna(how<span class="op">=</span><span class="st">"all"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(px) <span class="op">&lt;</span> <span class="dv">1000</span>: <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"short download"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[live] </span><span class="sc">{</span><span class="bu">len</span>(px)<span class="sc">}</span><span class="ss"> rows, </span><span class="sc">{</span>px<span class="sc">.</span>index[<span class="dv">0</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>px<span class="sc">.</span>index[<span class="op">-</span><span class="dv">1</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px[<span class="bu">list</span>(tickers)]</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[warn] live download failed (</span><span class="sc">{</span><span class="bu">type</span>(e)<span class="sc">.</span><span class="va">__name__</span><span class="sc">}</span><span class="ss">); using the snapshot"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        px <span class="op">=</span> pd.read_csv(SNAPSHOT, index_col<span class="op">=</span><span class="dv">0</span>, parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"[snapshot] </span><span class="sc">{</span><span class="bu">len</span>(px)<span class="sc">}</span><span class="ss"> rows, </span><span class="sc">{</span>px<span class="sc">.</span>index[<span class="dv">0</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>px<span class="sc">.</span>index[<span class="op">-</span><span class="dv">1</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> px[<span class="bu">list</span>(tickers)]</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"[SYNTHETIC] no network: random walk. Numbers below are NOT real."</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)<span class="op">;</span> idx <span class="op">=</span> pd.date_range(start, pd.Timestamp.today().normalize())</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> pd.DataFrame({t: <span class="dv">100</span><span class="op">*</span>np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.035</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                             <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices()</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>px.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="part-1-exploration" class="level1">
+<h1>Part 1 — Exploration</h1>
+<p>The question for the whole morning: <strong>is crypto risk predictable — and which part of it?</strong></p>
+<p>Exploration is not “make charts”. It is asking the data small questions, in an order, until you know what question is worth a model.</p>
+<section id="e1-what-is-in-the-table" class="level2">
+<h2 class="anchored" data-anchor-id="e1-what-is-in-the-table">E1 — What is in the table?</h2>
+<div id="51ca3895" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.shape)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(px.isna().<span class="bu">sum</span>())</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>px.head(<span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>✍️ BET.</strong> SPY has missing values and BTC does not. Before running the next cell: out of every 7 days, how many is SPY missing? Write it: <code>____</code></p>
+<div id="726b262e" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> px[<span class="st">"SPY"</span>].isna()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SPY missing on </span><span class="sc">{</span>missing<span class="sc">.</span>mean()<span class="sc">:.1%}</span><span class="ss"> of days"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>px.index[missing].day_name().value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Crypto trades 7 days a week, the stock market 5 (minus holidays). <strong>Every join between the two is a decision</strong>: drop the weekends (lose 2/7 of crypto) or carry Friday’s SPY price forward (pretend nothing happened). Neither is wrong; not deciding is.</p>
+<section id="your-turn" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn">▶ YOUR TURN</h3>
+<p>Which <strong>holidays</strong> is SPY closed on that are <em>not</em> weekends? List the weekday dates where SPY is missing, for 2025 only.</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> px[<span class="st">"SPY"</span>].isna() <span class="op">&amp;</span> (px.index.dayofweek <span class="op">&lt;</span> <span class="dv">5</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>px.index[m <span class="op">&amp;</span> (px.index.year <span class="op">==</span> <span class="dv">2025</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="c015fa47" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 </section>
-<section id="block-c-leakage-on-purpose" class="level2">
-<h2 class="anchored" data-anchor-id="block-c-leakage-on-purpose">Block C — Leakage on purpose</h2>
-<p>To recognise leakage you must see it once. We add a feature that is <em>almost</em> legitimate: a 5-day rolling volatility computed with a <strong>centred</strong> window (<code>center=True</code>), which is what an assistant may write when asked to “smooth” a series. Centred windows use future rows.</p>
-<div id="3e3737dc" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X_leak <span class="op">=</span> X.copy()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_leak[<span class="st">"vol_5_centred"</span>] <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">5</span>, center<span class="op">=</span><span class="va">True</span>).std().reindex(X.index)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X_leak <span class="op">=</span> X_leak.dropna()<span class="op">;</span> y <span class="op">=</span> data.loc[X_leak.index, <span class="st">"y_vol"</span>]</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ordered_l <span class="op">=</span> <span class="bu">list</span>(TimeSeriesSplit(n_splits<span class="op">=</span><span class="dv">5</span>, test_size<span class="op">=</span><span class="dv">250</span>).split(X_leak))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>a, u <span class="op">=</span> evaluate(models[<span class="st">"gradient boosting"</span>], X_leak, y, ordered_l)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"with the 'smoothed' feature — time-ordered acc </span><span class="sc">{</span>a<span class="sc">:.3f}</span><span class="ss">, auc </span><span class="sc">{</span>u<span class="sc">:.3f}</span><span class="ss">   (compare with the honest row above)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="e2-from-prices-to-returns" class="level2">
+<h2 class="anchored" data-anchor-id="e2-from-prices-to-returns">E2 — From prices to returns</h2>
+<p>Prices are not comparable across assets (BTC ≈ 85,000, ETH ≈ 2,700). Returns are. We use <strong>log returns</strong>: they add up over time, so a week is the sum of seven days.</p>
+<div id="84c5ea87" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> np.log(px <span class="op">/</span> px.shift(<span class="dv">1</span>))          <span class="co"># daily log return, per asset</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>btc <span class="op">=</span> ret[<span class="st">"BTC-USD"</span>].dropna()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>btc.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>🔍 CHECK.</strong> The score jumped with a time-ordered split — so the split did not protect you. Leakage through <em>features</em> is invisible to any validation scheme. The only defence is reading every feature and asking: <em>at time t, could I have computed this?</em> Write down, for each of the eight honest features, the latest row it uses.</p>
+<p><strong>✍️ BET.</strong> BTC’s worst single day since 2018: how much did it lose? <code>____ %</code> And on which date (roughly)? <code>____</code></p>
+<div id="6186bd70" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>worst <span class="op">=</span> btc.nsmallest(<span class="dv">5</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(np.exp(worst) <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>)       <span class="co"># back to simple % moves, which is what people quote</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="your-turn-1" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-1">▶ YOUR TURN</h3>
+<p>Same question for <strong>ETH</strong>: the five worst and the five best days, as simple % moves. Are they on the same dates as BTC?</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>eth <span class="op">=</span> ret[<span class="st">"ETH-USD"</span>].dropna()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((np.exp(eth.nsmallest(<span class="dv">5</span>)) <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((np.exp(eth.nlargest(<span class="dv">5</span>)) <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="4d3b0608" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
-<section id="block-d-from-prediction-to-decision" class="level2">
-<h2 class="anchored" data-anchor-id="block-d-from-prediction-to-decision">Block D — From prediction to decision</h2>
-<p>A probability is not a decision. To act you need a <strong>decision rule</strong> (a threshold) and the <strong>cost of each error</strong>. Example: a treasury desk that wants to hedge BTC exposure when a high-volatility week is coming. Hedging costs money (<code>c_hedge</code>); an unhedged high-vol week costs more (<code>c_miss</code>). The best threshold depends on that ratio, not on accuracy.</p>
-<div id="29b4df0b" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Walk-forward probabilities for the volatility target (out-of-sample only)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> data[<span class="st">"y_vol"</span>]<span class="op">;</span> m <span class="op">=</span> models[<span class="st">"gradient boosting"</span>]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>oos <span class="op">=</span> pd.Series(index<span class="op">=</span>X.index, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tr, te <span class="kw">in</span> TimeSeriesSplit(n_splits<span class="op">=</span><span class="dv">8</span>, test_size<span class="op">=</span><span class="dv">200</span>).split(X):</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    m.fit(X.iloc[tr], y.iloc[tr])<span class="op">;</span> oos.iloc[te] <span class="op">=</span> m.predict_proba(X.iloc[te])[:, <span class="dv">1</span>]</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>oos <span class="op">=</span> oos.dropna()<span class="op">;</span> y_oos <span class="op">=</span> y.loc[oos.index]</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>c_hedge, c_miss <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">4.0</span>     <span class="co"># relative costs: hedge costs 1, missing a high-vol week costs 4</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> thr <span class="kw">in</span> np.arange(<span class="fl">0.2</span>, <span class="fl">0.81</span>, <span class="fl">0.05</span>):</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    hedge <span class="op">=</span> oos <span class="op">&gt;</span> thr</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    cost <span class="op">=</span> (hedge <span class="op">*</span> c_hedge <span class="op">+</span> (<span class="op">~</span>hedge <span class="op">&amp;</span> (y_oos <span class="op">==</span> <span class="dv">1</span>)) <span class="op">*</span> c_miss).<span class="bu">sum</span>()</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    rows.append([thr, hedge.mean(), recall_score(y_oos, hedge), precision_score(y_oos, hedge, zero_division<span class="op">=</span><span class="dv">0</span>), cost])</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>dec <span class="op">=</span> pd.DataFrame(rows, columns<span class="op">=</span>[<span class="st">"threshold"</span>, <span class="st">"share hedged"</span>, <span class="st">"recall (high-vol caught)"</span>, <span class="st">"precision"</span>, <span class="st">"total cost"</span>]).<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"cost of never hedging:"</span>, (y_oos <span class="op">==</span> <span class="dv">1</span>).<span class="bu">sum</span>() <span class="op">*</span> c_miss, <span class="st">"| cost of always hedging:"</span>, <span class="bu">len</span>(y_oos) <span class="op">*</span> c_hedge)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>dec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="e3-how-often-does-the-impossible-happen" class="level2">
+<h2 class="anchored" data-anchor-id="e3-how-often-does-the-impossible-happen">E3 — How often does the ‘impossible’ happen?</h2>
+<p>If daily returns were <em>normal</em> (the bell curve of every textbook), a move beyond 4 standard deviations would happen about <strong>once every 43 years</strong> of daily data.</p>
+<p><strong>✍️ BET.</strong> In ~8.5 years of BTC, how many days beyond 4 standard deviations? <code>____</code></p>
+<div id="830560c5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> (btc <span class="op">-</span> btc.mean()) <span class="op">/</span> btc.std()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> erf, sqrt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>p_normal <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> erf(<span class="dv">4</span> <span class="op">/</span> sqrt(<span class="dv">2</span>))                  <span class="co"># two-sided probability beyond 4σ under a normal</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"days beyond 4σ: </span><span class="sc">{</span>(z.<span class="bu">abs</span>() <span class="op">&gt;</span> <span class="dv">4</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">   |  a normal distribution would give </span><span class="sc">{</span>p_normal <span class="op">*</span> <span class="bu">len</span>(z)<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>z.hist(bins<span class="op">=</span><span class="dv">120</span>, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">3</span>))<span class="op">;</span> plt.title(<span class="st">"BTC daily returns, in standard deviations"</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>🔍 CHECK.</strong> Which threshold minimises cost? Does it change if <code>c_miss</code> is 2 instead of 4? Now the important question: <em>what KPI would you report to management for this system in production?</em> Accuracy is wrong (it does not price errors). Candidates: cost per week vs the always-hedge policy; recall at the chosen threshold; calibration (when the model says 70%, does it happen 70% of the time?). Pick one and defend it.</p>
-<div id="668dbfac" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calibration: does p=0.7 mean 70%?</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> pd.cut(oos, [<span class="dv">0</span>, <span class="fl">.3</span>, <span class="fl">.4</span>, <span class="fl">.5</span>, <span class="fl">.6</span>, <span class="fl">.7</span>, <span class="fl">1.0</span>])</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cal <span class="op">=</span> pd.DataFrame({<span class="st">"predicted"</span>: oos.groupby(bins).mean(), <span class="st">"observed"</span>: y_oos.groupby(bins).mean(), <span class="st">"n"</span>: oos.groupby(bins).size()}).<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>cal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Fat tails.</strong> Big days are rare, but far less rare than the bell curve says. Any risk model that assumes normality underestimates the days that matter. Remember this when someone shows you a “99% VaR”.</p>
+</section>
+<section id="e4-the-central-discovery-direction-vs-size" class="level2">
+<h2 class="anchored" data-anchor-id="e4-the-central-discovery-direction-vs-size">E4 — The central discovery: direction vs size</h2>
+<p>Two questions that sound alike: - <strong>direction</strong>: if BTC went up today, is it more likely to go up tomorrow? - <strong>size</strong>: if BTC moved <em>a lot</em> today (either way), is it more likely to move a lot tomorrow?</p>
+<p>We measure both with the <strong>autocorrelation</strong>: the correlation between a series and itself, <em>k</em> days earlier. 0 = no memory.</p>
+<p><strong>✍️ BET.</strong> Which one has memory — direction, size, both, neither? <code>____</code></p>
+<div id="f7fe9b93" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">31</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ac <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"direction  (return)"</span>:          [btc.autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> lags],</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"size  (absolute return)"</span>:      [btc.<span class="bu">abs</span>().autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> lags],</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>}, index<span class="op">=</span>lags)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> ac.plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.5</span>), width<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span> ax.set_xlabel(<span class="st">"lag (days)"</span>)<span class="op">;</span> ax.set_title(<span class="st">"BTC: does yesterday tell you about today?"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ac.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Homework brief</strong> → see <code>week-03/homework.md</code>.</p>
-<p><strong>Vocabulary you now own:</strong> feature, target, horizon, base rate, baseline, train/test, time-ordered split, walk-forward, leakage (through split and through features), accuracy vs AUC vs precision/recall, threshold, calibration, cost-weighted decision.</p>
+<p><strong>This is the sentence of the morning.</strong> The <em>direction</em> of tomorrow has essentially no memory; the <em>size</em> of tomorrow does — for weeks. Calm follows calm, storms follow storms: <strong>volatility clustering</strong>.</p>
+<p>So before training anything we already know which question a model can help with, and which one it cannot.</p>
+<p>Seen as a picture: 30-day rolling volatility, annualised. Crypto trades 365 days a year, so annualise with √365.</p>
+<div id="2c30a644" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>vol30 <span class="op">=</span> ret.rolling(<span class="dv">30</span>).std() <span class="op">*</span> np.sqrt(<span class="dv">365</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>vol30[[<span class="st">"BTC-USD"</span>, <span class="st">"ETH-USD"</span>]].plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"30-day volatility, annualised"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="your-turn-2" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-2">▶ YOUR TURN</h3>
+<p>Does the S&amp;P 500 cluster too? Make the same autocorrelation table for <strong>SPY</strong> (drop its missing days first). Is the size-memory stronger or weaker than BTC’s?</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>spy <span class="op">=</span> ret[<span class="st">"SPY"</span>].dropna()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame({<span class="st">"direction"</span>: [spy.autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)],</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">"size"</span>: [spy.<span class="bu">abs</span>().autocorr(k) <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]}, index<span class="op">=</span><span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="e833dce3" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="e5-does-crypto-move-with-the-stock-market" class="level2">
+<h2 class="anchored" data-anchor-id="e5-does-crypto-move-with-the-stock-market">E5 — Does crypto move with the stock market?</h2>
+<div id="1468cb05" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>both <span class="op">=</span> ret[[<span class="st">"BTC-USD"</span>, <span class="st">"SPY"</span>]].dropna()            <span class="co"># stock-market days only: a decision, see E1</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>rc <span class="op">=</span> both[<span class="st">"BTC-USD"</span>].rolling(<span class="dv">90</span>).corr(both[<span class="st">"SPY"</span>])</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>rc.plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>), title<span class="op">=</span><span class="st">"BTC vs S&amp;P 500: 90-trading-day correlation"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>rc.resample(<span class="st">"YE"</span>).mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>“Digital gold, uncorrelated with stocks” was roughly true before 2020 and has not been true since. A correlation is not a constant: it is a series, and it has regimes too.</p>
+</section>
+<section id="check-the-assistants-summary-table" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-assistants-summary-table">🔍 CHECK — the assistant’s summary table</h2>
+<p>Asked for <em>“annualised volatility and total return of BTC and ETH since 2018”</em>, an assistant wrote the cell below. It runs, and it looks professional. <strong>There are two errors.</strong> Ten minutes; a hint after five.</p>
+<div id="6320534a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>simple <span class="op">=</span> px[[<span class="st">"BTC-USD"</span>, <span class="st">"ETH-USD"</span>]].pct_change().dropna()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"annual vol"</span>:   simple.std() <span class="op">*</span> np.sqrt(<span class="dv">252</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total return"</span>: simple.<span class="bu">sum</span>(),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>summary.style.<span class="bu">format</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<details>
+<summary>
+hint
+</summary>
+How many days a year does crypto trade? And what happens if you add +50% and −50%?
+</details>
+<details>
+<summary>
+solution
+</summary>
+<ol type="1">
+<li><code>np.sqrt(252)</code> is the stock-market convention. Crypto trades 365 days: vol is understated by √(365/252) ≈ 20%.</li>
+<li><strong>Simple returns do not add up.</strong> +50% then −50% sums to 0, but you have lost 25%. Total return is the product of (1 + r), minus 1 — or the sum of <em>log</em> returns, exponentiated.</li>
+</ol>
+</details>
+<div id="564bfe77" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>summary_ok <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"annual vol"</span>:   simple.std() <span class="op">*</span> np.sqrt(<span class="dv">365</span>),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"total return"</span>: (<span class="dv">1</span> <span class="op">+</span> simple).prod() <span class="op">-</span> <span class="dv">1</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>summary_ok.style.<span class="bu">format</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="what-the-exploration-told-us" class="level3">
+<h3 class="anchored" data-anchor-id="what-the-exploration-told-us">What the exploration told us</h3>
+<p>Write three lines before we go on. Direction? Size? Correlation with stocks?</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="part-2-machine-learning-with-a-black-box" class="level1">
+<h1>Part 2 — Machine learning, with a black box</h1>
+<p>We now ask a model to predict <strong>next week</strong>. Two targets, the same inputs: - <code>y_dir</code> — will BTC be <strong>up</strong> over the next 7 days? - <code>y_vol</code> — will the next 7 days be <strong>more volatile than usual</strong>?</p>
+<p>The exploration already predicts the outcome. Let’s see whether the model agrees.</p>
+<section id="m1-features-and-target-the-wall" class="level2">
+<h2 class="anchored" data-anchor-id="m1-features-and-target-the-wall">M1 — Features and target: the wall</h2>
+<p><strong>Feature</strong> = something known <em>at</em> day <em>t</em>. <strong>Target</strong> = something that happens <em>after</em> <em>t</em>. Nothing on the right of the wall may leak into the left.</p>
+<div id="152b4799" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="dv">7</span>                                                   <span class="co"># horizon: 7 calendar days</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>btc.index)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>d[<span class="st">"ret"</span>] <span class="op">=</span> btc</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># features — every one uses rows up to and including t, never after</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.DataFrame(index<span class="op">=</span>d.index)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"ret_1"</span>]     <span class="op">=</span> d[<span class="st">"ret"</span>]</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"ret_7"</span>]     <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">7</span>).<span class="bu">sum</span>()</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"ret_30"</span>]    <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">30</span>).<span class="bu">sum</span>()</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>vol_7, vol_30 <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">7</span>).std(), d[<span class="st">"ret"</span>].rolling(<span class="dv">30</span>).std()</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>usual <span class="op">=</span> vol_7.rolling(<span class="dv">365</span>).median()                      <span class="co"># 'usual' weekly vol = median of the past year, known at t</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"vol_7"</span>]     <span class="op">=</span> vol_7 <span class="op">/</span> usual                           <span class="co"># this week's vol, relative to usual (1 = normal)</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"vol_30"</span>]    <span class="op">=</span> vol_30 <span class="op">/</span> usual</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"vol_ratio"</span>] <span class="op">=</span> vol_7 <span class="op">/</span> vol_30</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"eth_ret_7"</span>] <span class="op">=</span> ret[<span class="st">"ETH-USD"</span>].rolling(<span class="dv">7</span>).<span class="bu">sum</span>().reindex(d.index)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"spy_ret_5"</span>] <span class="op">=</span> ret[<span class="st">"SPY"</span>].ffill().rolling(<span class="dv">5</span>).<span class="bu">sum</span>().reindex(d.index)   <span class="co"># weekends: Friday's value carried</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>X[<span class="st">"weekday"</span>]   <span class="op">=</span> d.index.dayofweek</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># target — the next H days, t+1 … t+H</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>fwd_ret <span class="op">=</span> d[<span class="st">"ret"</span>][::<span class="op">-</span><span class="dv">1</span>].rolling(H).<span class="bu">sum</span>()[::<span class="op">-</span><span class="dv">1</span>].shift(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>fwd_vol <span class="op">=</span> d[<span class="st">"ret"</span>][::<span class="op">-</span><span class="dv">1</span>].rolling(H).std()[::<span class="op">-</span><span class="dv">1</span>].shift(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> pd.DataFrame({<span class="st">"y_dir"</span>: (fwd_ret <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>),</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"y_vol"</span>: (fwd_vol <span class="op">&gt;</span> usual).astype(<span class="bu">int</span>)}, index<span class="op">=</span>d.index)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.concat([X, y, fwd_ret.rename(<span class="st">"fwd_ret"</span>)], axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data.shape)<span class="op">;</span> data.tail(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>🔍 CHECK — the target, by hand.</strong> Pick a date. <code>fwd_ret</code> must be the sum of the <em>next</em> 7 daily returns, not including today.</p>
+<div id="0965cd0c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> data.index[<span class="dv">1500</span>]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>by_hand <span class="op">=</span> d[<span class="st">"ret"</span>].loc[t:].iloc[<span class="dv">1</span>:H <span class="op">+</span> <span class="dv">1</span>].<span class="bu">sum</span>()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t.date(), <span class="st">"| in the table:"</span>, <span class="bu">round</span>(data.loc[t, <span class="st">"fwd_ret"</span>], <span class="dv">6</span>), <span class="st">"| by hand:"</span>, <span class="bu">round</span>(by_hand, <span class="dv">6</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">abs</span>(by_hand <span class="op">-</span> data.loc[t, <span class="st">"fwd_ret"</span>]) <span class="op">&lt;</span> <span class="fl">1e-12</span>, <span class="st">"the target leaks or is misaligned"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="your-turn-3" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-3">▶ YOUR TURN</h3>
+<p>Fill this table in a markdown cell: for each of the 9 features, the <strong>latest day it uses</strong> (t, t−1, …). Then answer: is <code>spy_ret_5</code> on a Sunday honest?</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ret_1 … t | ret_7 … t | ret_30 … t | vol_7 … t | vol_30 … t | vol_ratio … t</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># eth_ret_7 … t | spy_ret_5 … last trading day ≤ t (Friday on a Sunday: honest, just stale) | weekday … t</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="d0018957" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="m2-before-any-model-what-does-doing-nothing-score" class="level2">
+<h2 class="anchored" data-anchor-id="m2-before-any-model-what-does-doing-nothing-score">M2 — Before any model: what does doing nothing score?</h2>
+<p><strong>✍️ BET.</strong> Share of 7-day windows in which BTC went up: <code>____ %</code></p>
+<div id="b9f616f6" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> data[col].mean()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">: share of 1s = </span><span class="sc">{</span>p<span class="sc">:.1%}</span><span class="ss">  →  'always say the majority' scores </span><span class="sc">{</span><span class="bu">max</span>(p, <span class="dv">1</span> <span class="op">-</span> p)<span class="sc">:.1%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>That is the <strong>base rate</strong>. A model at 54% on direction has learned nothing if 54% of weeks are up weeks. An accuracy without its base rate next to it is not a number.</p>
+<p>And for volatility we have a smarter baseline, a rule anyone can write: <strong>“next week will be like this week”</strong> — predict high-vol if this week’s vol is above the usual.</p>
+</section>
+<section id="m3-the-black-box-a-random-forest" class="level2">
+<h2 class="anchored" data-anchor-id="m3-the-black-box-a-random-forest">M3 — The black box: a random forest</h2>
+<p>Today we do not open it. What you need to know: - it is <strong>hundreds of decision trees</strong>, each a flowchart of yes/no questions on the features (“is <code>vol_7</code> above 0.03?”), each grown on a slightly different sample of the data; - they <strong>vote</strong>; the share of votes is the probability; - it finds interactions and non-linear effects by itself, which a regression does not.</p>
+<p>What it does <em>not</em> do is tell you whether it is right. That is our job: <strong>an honest split</strong>. Train on the past, test on the future.</p>
+<div id="e06d56eb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, roc_auc_score</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> <span class="bu">list</span>(X.columns)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>train <span class="op">=</span> data.loc[:<span class="st">"2023-12-31"</span>]          <span class="co"># learn on 2019–2023</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>test  <span class="op">=</span> data.loc[<span class="st">"2024-01-01"</span>:]           <span class="co"># judge on 2024 → today: data the model has never seen</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"train </span><span class="sc">{</span>train<span class="sc">.</span>index[<span class="dv">0</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>train<span class="sc">.</span>index[<span class="op">-</span><span class="dv">1</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(train)<span class="sc">}</span><span class="ss">)   test </span><span class="sc">{</span>test<span class="sc">.</span>index[<span class="dv">0</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> → </span><span class="sc">{</span>test<span class="sc">.</span>index[<span class="op">-</span><span class="dv">1</span>]<span class="sc">.</span>date()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="bu">len</span>(test)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> forest():</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">300</span>, min_samples_leaf<span class="op">=</span><span class="dv">20</span>, random_state<span class="op">=</span><span class="dv">0</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> forest().fit(train[features], train[<span class="st">"y_vol"</span>])</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> rf.predict_proba(test[features])[:, <span class="dv">1</span>]       <span class="co"># the forest's probability of a high-vol week</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>pd.Series(p, index<span class="op">=</span>test.index).plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>), title<span class="op">=</span><span class="st">"P(high-vol week), out of sample"</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Two scores: - <strong>accuracy</strong> — share of weeks called right (at a 0.5 threshold); - <strong>AUC</strong> — does the model rank the high-vol weeks above the calm ones? 0.5 = coin, 1.0 = perfect. It does not depend on a threshold.</p>
+<p><strong>✍️ BET.</strong> Fill the table before running: forest accuracy on <em>direction</em> <code>____</code>, on <em>volatility</em> <code>____</code>.</p>
+<div id="96f35b32" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> target <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> forest().fit(train[features], train[target])</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    prob <span class="op">=</span> m.predict_proba(test[features])[:, <span class="dv">1</span>]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    base <span class="op">=</span> <span class="bu">max</span>(test[target].mean(), <span class="dv">1</span> <span class="op">-</span> test[target].mean())</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    rows.append({<span class="st">"target"</span>: target, <span class="st">"base rate"</span>: base,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"forest accuracy"</span>: accuracy_score(test[target], prob <span class="op">&gt;</span> <span class="fl">0.5</span>),</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"forest AUC"</span>: roc_auc_score(test[target], prob)})</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>rows[<span class="dv">1</span>][<span class="st">"rule accuracy"</span>] <span class="op">=</span> accuracy_score(test[<span class="st">"y_vol"</span>], test[<span class="st">"vol_7"</span>] <span class="op">&gt;</span> <span class="dv">1</span>)     <span class="co"># 'next week like this week': no model</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>rows[<span class="dv">1</span>][<span class="st">"rule AUC"</span>]      <span class="op">=</span> roc_auc_score(test[<span class="st">"y_vol"</span>], test[<span class="st">"vol_7"</span>])             <span class="co"># one feature, used as the score</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(rows).set_index(<span class="st">"target"</span>).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Read the table in this order: 1. <strong>direction ≈ base rate.</strong> The forest — hundreds of trees, nine features — has nothing to say about next week’s direction. Exactly what E4 told us for free. 2. <strong>volatility is somewhat predictable.</strong> AUC clearly above 0.5: clustering, again. 3. <strong>the rule beats the forest.</strong> “Next week like this week” is one line and one feature, and on 2024–2026 it does as well as hundreds of trees, or better. <em>A rule you can write down beats a model that guesses it</em> — and you only know that because you built the rule first.</p>
+<blockquote class="blockquote">
+<p>Same data, same model. <strong>The question decides whether ML has anything to offer</strong> — and choosing the question is the manager’s job.</p>
+</blockquote>
+</section>
+<section id="check-the-assistants-validation" class="level2">
+<h2 class="anchored" data-anchor-id="check-the-assistants-validation">🔍 CHECK — the assistant’s validation</h2>
+<p>Asked to <em>“evaluate the model with a train/test split”</em>, every assistant writes <code>train_test_split</code> — which <strong>shuffles</strong> the days.</p>
+<p><strong>✍️ BET.</strong> Volatility AUC with the shuffled split: higher, lower or the same as the honest one? <code>____</code></p>
+<div id="1c01a1a9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>tr, te <span class="op">=</span> train_test_split(data, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">0</span>)          <span class="co"># the assistant's default: shuffled</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> target <span class="kw">in</span> [<span class="st">"y_dir"</span>, <span class="st">"y_vol"</span>]:</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> forest().fit(tr[features], tr[target])</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>target<span class="sc">}</span><span class="ss">: shuffled AUC = </span><span class="sc">{</span>roc_auc_score(te[target], m.predict_proba(te[features])[:, <span class="dv">1</span>])<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<details>
+<summary>
+why
+</summary>
+With a shuffle, Thursday is in the test set while Wednesday and Friday are in the training set. Their 7-day and 30-day windows overlap almost entirely, and so do their targets. The model is not predicting Thursday: it is <strong>remembering its neighbours</strong>. The gap between the two scores is leakage, not skill — and on direction it can make a coin look like a signal.
+</details>
+</section>
+<section id="m4-what-did-the-black-box-look-at" class="level2">
+<h2 class="anchored" data-anchor-id="m4-what-did-the-black-box-look-at">M4 — What did the black box look at?</h2>
+<p>We can’t read 300 trees, but we can ask a simpler question: <strong>if I scramble one feature, how much worse does the model get?</strong> That is <em>permutation importance</em>. Measured on the test period.</p>
+<div id="0ffdedf0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.inspection <span class="im">import</span> permutation_importance</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>rf_vol <span class="op">=</span> forest().fit(train[features], train[<span class="st">"y_vol"</span>])</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>imp <span class="op">=</span> permutation_importance(rf_vol, test[features], test[<span class="st">"y_vol"</span>], scoring<span class="op">=</span><span class="st">"roc_auc"</span>, n_repeats<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>pd.Series(imp.importances_mean, index<span class="op">=</span>features).sort_values().plot.barh(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.5</span>),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"how much AUC drops when the feature is scrambled"</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If the exploration was right, the volatility features dominate. <code>ret_7</code> helps too — a week with a big move <em>is</em> a volatile week, seen from another angle. Bars below zero mean the feature is noise the model would be better without.</p>
+<p>A black box that agrees with what you saw by eye is one you can start to trust; one that leans on <code>weekday</code> is one you should not.</p>
+<section id="your-turn-4" class="level3">
+<h3 class="anchored" data-anchor-id="your-turn-4">▶ YOUR TURN</h3>
+<p><strong>Leak it on purpose.</strong> An assistant asked to “smooth” the volatility adds <code>d["ret"].rolling(7, center=True).std()</code> as a feature. Add it, retrain on the <em>honest</em> split, and compare the volatility AUC. Then write one sentence: why did the honest split not protect you?</p>
+<details>
+<summary>
+solution (open only after trying)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X_leak <span class="op">=</span> data[features].copy()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X_leak[<span class="st">"vol_7_centred"</span>] <span class="op">=</span> d[<span class="st">"ret"</span>].rolling(<span class="dv">7</span>, center<span class="op">=</span><span class="va">True</span>).std().reindex(data.index)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>X_leak <span class="op">=</span> X_leak.dropna()<span class="op">;</span> yl <span class="op">=</span> data.loc[X_leak.index, <span class="st">"y_vol"</span>]</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> forest().fit(X_leak.loc[:<span class="st">"2023-12-31"</span>], yl.loc[:<span class="st">"2023-12-31"</span>])</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC with the centred feature:"</span>, <span class="bu">round</span>(roc_auc_score(yl.loc[<span class="st">"2024"</span>:], m.predict_proba(X_leak.loc[<span class="st">"2024"</span>:])[:, <span class="dv">1</span>]), <span class="dv">3</span>))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># a centred window at t uses t+1 … t+3: the future is inside the feature, and no split can see that</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="bf6518fc" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="m5-from-probability-to-decision-if-time-otherwise-homework" class="level2">
+<h2 class="anchored" data-anchor-id="m5-from-probability-to-decision-if-time-otherwise-homework">M5 — From probability to decision <em>(if time; otherwise homework)</em></h2>
+<p>A treasury desk holds BTC. Hedging next week costs <strong>1</strong>; an unhedged high-vol week costs <strong>2</strong>. Hedge when the forest’s probability is above a threshold. Which threshold?</p>
+<p><strong>✍️ BET.</strong> Threshold: <code>____</code></p>
+<div id="1f4dbae0" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>c_hedge, c_miss <span class="op">=</span> <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>yv <span class="op">=</span> test[<span class="st">"y_vol"</span>].values</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> th <span class="kw">in</span> [<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>]:</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    hedge <span class="op">=</span> p <span class="op">&gt;</span> th</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    rows.append({<span class="st">"threshold"</span>: th, <span class="st">"hedged weeks"</span>: hedge.mean(),</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"cost per week"</span>: (c_hedge <span class="op">*</span> hedge <span class="op">+</span> c_miss <span class="op">*</span> (<span class="op">~</span>hedge <span class="op">&amp;</span> (yv <span class="op">==</span> <span class="dv">1</span>))).mean()})</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>rows <span class="op">+=</span> [{<span class="st">"threshold"</span>: <span class="st">"never hedge"</span>,  <span class="st">"hedged weeks"</span>: <span class="dv">0</span>, <span class="st">"cost per week"</span>: c_miss <span class="op">*</span> yv.mean()},</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>         {<span class="st">"threshold"</span>: <span class="st">"always hedge"</span>, <span class="st">"hedged weeks"</span>: <span class="dv">1</span>, <span class="st">"cost per week"</span>: c_hedge}]</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(rows).<span class="bu">round</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Find the cheapest row, and check it beats <strong>both</strong> trivial policies — a model has to beat “never” and “always”, not just look clever.</p>
+<p>Now set <code>c_miss = 4</code> and run again. The best threshold drops, and “always hedge” may win outright: when misses are expensive enough, the model is not worth running. <strong>The model did not change — the business did.</strong></p>
+</section>
+<section id="three-lines-to-take-home" class="level2">
+<h2 class="anchored" data-anchor-id="three-lines-to-take-home">Three lines to take home</h2>
+<p>Write them here, in your words, then <strong>File ▸ Save a copy in Drive</strong> into <code>ese-ai-fintech/week-03/</code>.</p>
+<ol type="1">
+<li>On exploration:</li>
+<li>On the honest split:</li>
+<li>On the black box:</li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -635,185 +874,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

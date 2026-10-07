@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Week 8 — Digital assets, on-chain data and DeFi – AI for Business &amp; FinTech</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -21,8 +27,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +40,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +72,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../images/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-39c5bf676fe5f74c3e2352cc4d0198db.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-32b6a1ef7e9ba52d09e917c9077d60f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -118,7 +126,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -136,7 +144,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,7 +152,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
-    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo light-content">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
     <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
@@ -229,10 +238,10 @@ window.Quarto = {
 <p>Today the working object is a <em>protocol</em>: a program that holds money and follows rules anyone can read. We simulate the most important one (a constant-product market maker) from its one equation, then read real protocol data through public APIs, then look at a protocol through a risk canvas and through MiCA.</p>
 <p>Every number on the whiteboard today gets recomputed here. Cells marked <strong>🔍 CHECK</strong> contain assistant-style code with a planted error: find it before opening the solution.</p>
 <div id="cd5035e4" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance google<span class="op">-</span>genai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance google<span class="op">-</span>genai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="86f99187" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -264,10 +273,10 @@ window.Quarto = {
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="c7fe03f4" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: one LLM wrapper, guarded. If no key -&gt; deterministic MOCK so the notebook runs end-to-end. ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: one LLM wrapper, guarded. If no key -&gt; deterministic MOCK so the notebook runs end-to-end. ---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, json, re</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
@@ -311,14 +320,14 @@ window.Quarto = {
 <span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>                                       config<span class="op">=</span>types.GenerateContentConfig(<span class="op">**</span>cfg))</span>
 <span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(r.text) <span class="cf">if</span> json_schema <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> r.text.strip()</span>
 <span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"llm() ready —"</span>, <span class="st">"MOCK"</span> <span class="cf">if</span> MOCK_MODE <span class="cf">else</span> <span class="st">"live Gemini"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"llm() ready —"</span>, <span class="st">"MOCK"</span> <span class="cf">if</span> MOCK_MODE <span class="cf">else</span> <span class="st">"live Gemini"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="block-b-lab-1-a-constant-product-pool-from-one-equation" class="level2">
 <h2 class="anchored" data-anchor-id="block-b-lab-1-a-constant-product-pool-from-one-equation">Block B — Lab 1: a constant-product pool from one equation</h2>
 <p>A pool holds two reserves, <code>x</code> (say ETH) and <code>y</code> (say USDC). The rule is that a swap must leave the product <strong>x · y = k</strong> unchanged (before fees). Everything else — price, slippage, LP returns — follows from that one line.</p>
 <p>Spot price of x in units of y: <strong>p = y / x</strong>. A trader who puts in <code>dx</code> gets out <code>dy = y − k / (x + dx)</code>. The fee (0.3% on Uniswap v2-style pools) is taken on the way in and stays in the pool, which is how LPs earn.</p>
 <div id="3e2b55c6" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Pool:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Pool:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Constant-product AMM (x*y = k) with a fee on input, Uniswap-v2 style."""</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x, y, fee<span class="op">=</span><span class="fl">0.003</span>):</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x, <span class="va">self</span>.y, <span class="va">self</span>.fee <span class="op">=</span> <span class="bu">float</span>(x), <span class="bu">float</span>(y), fee</span>
@@ -338,20 +347,20 @@ window.Quarto = {
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> dy</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>pool <span class="op">=</span> Pool(x<span class="op">=</span><span class="dv">1_000</span>, y<span class="op">=</span><span class="dv">3_000_000</span>)           <span class="co"># 1,000 ETH and 3,000,000 USDC -&gt; spot 3,000 USDC/ETH</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"spot price:"</span>, pool.price, <span class="st">"| k:"</span>, <span class="ss">f"</span><span class="sc">{</span>pool<span class="sc">.</span>k<span class="sc">:.3e}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"spot price:"</span>, pool.price, <span class="st">"| k:"</span>, <span class="ss">f"</span><span class="sc">{</span>pool<span class="sc">.</span>k<span class="sc">:.3e}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK (bet 1).</strong> You sell <strong>100 ETH</strong> (10% of the pool’s ETH reserve). Before running: what price per ETH do you actually receive versus the spot 3,000, and where is the pool price <em>after</em> the trade? Write both numbers down.</p>
 <div id="bd114d6d" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> <span class="dv">100</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dy <span class="op">=</span> pool.quote_x_for_y(dx)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>exec_price <span class="op">=</span> dy <span class="op">/</span> dx</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_after <span class="op">=</span> (pool.y <span class="op">-</span> dy) <span class="op">/</span> (pool.x <span class="op">+</span> dx)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"received </span><span class="sc">{</span>dy<span class="sc">:,.0f}</span><span class="ss"> USDC for </span><span class="sc">{</span>dx<span class="sc">}</span><span class="ss"> ETH -&gt; execution price </span><span class="sc">{</span>exec_price<span class="sc">:,.1f}</span><span class="ss">  (</span><span class="sc">{</span>exec_price<span class="op">/</span>pool<span class="sc">.</span>price<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss"> vs spot)"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"pool price after the trade: </span><span class="sc">{</span>p_after<span class="sc">:,.1f}</span><span class="ss">  (</span><span class="sc">{</span>p_after<span class="op">/</span>pool<span class="sc">.</span>price<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss"> vs spot)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"pool price after the trade: </span><span class="sc">{</span>p_after<span class="sc">:,.1f}</span><span class="ss">  (</span><span class="sc">{</span>p_after<span class="op">/</span>pool<span class="sc">.</span>price<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss"> vs spot)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Two different numbers, both called “price impact” in conversation. Execution price ≈ p·x/(x+dx) → about −9% for a 10% trade; pool price after ≈ p·x²/(x+dx)² → about −17%. Neither is a fee: the pool simply <em>has</em> fewer USDC per ETH left. The curve is the market maker.</p>
 <div id="38b82cad" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sizes <span class="op">=</span> np.array([<span class="fl">0.001</span>, <span class="fl">0.005</span>, <span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.20</span>, <span class="fl">0.50</span>])</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s <span class="kw">in</span> sizes:</span>
@@ -361,13 +370,13 @@ window.Quarto = {
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>display(impact.<span class="bu">round</span>(<span class="dv">4</span>))</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>impact.set_index(<span class="st">"trade / reserve"</span>)[[<span class="st">"exec vs spot"</span>, <span class="st">"pool price after vs spot"</span>]].plot(</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), logx<span class="op">=</span><span class="va">True</span>, marker<span class="op">=</span><span class="st">"o"</span>, title<span class="op">=</span><span class="st">"Price impact vs trade size (share of the x reserve)"</span>)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.ylabel(<span class="st">"vs spot"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.ylabel(<span class="st">"vs spot"</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="check-the-assistants-swap-function" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-swap-function">🔍 CHECK — the assistant’s swap function</h3>
 <p>Asked to “write a function that swaps ETH for USDC in a constant-product pool with a 0.3% fee”, the assistant produced the cell below. It runs and prints numbers. <strong>It contains two errors.</strong> Compare its answers with the <code>Pool</code> class above for the same 100 ETH trade before opening the solution.</p>
 <div id="4caa9f97" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> swap_assistant(x, y, dx, fee<span class="op">=</span><span class="fl">0.3</span>):</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    price <span class="op">=</span> y <span class="op">/</span> x</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    dy <span class="op">=</span> dx <span class="op">*</span> price <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> fee)        <span class="co"># output at the current price, minus the fee</span></span>
@@ -375,7 +384,7 @@ window.Quarto = {
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dx <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">500</span>]:</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    dy, p_new <span class="op">=</span> swap_assistant(<span class="dv">1_000</span>, <span class="dv">3_000_000</span>, dx)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"sell </span><span class="sc">{</span>dx<span class="sc">:&gt;3}</span><span class="ss"> ETH -&gt; </span><span class="sc">{</span>dy<span class="sc">:,.0f}</span><span class="ss"> USDC | execution </span><span class="sc">{</span>dy<span class="op">/</span>dx<span class="sc">:,.1f}</span><span class="ss"> | pool price after </span><span class="sc">{</span>p_new<span class="sc">:,.1f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"sell </span><span class="sc">{</span>dx<span class="sc">:&gt;3}</span><span class="ss"> ETH -&gt; </span><span class="sc">{</span>dy<span class="sc">:,.0f}</span><span class="ss"> USDC | execution </span><span class="sc">{</span>dy<span class="op">/</span>dx<span class="sc">:,.1f}</span><span class="ss"> | pool price after </span><span class="sc">{</span>p_new<span class="sc">:,.1f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary>
@@ -388,7 +397,7 @@ Solution (open after you have tried)
 Rule: whenever a function returns money, test it on a trade of size 0 (must return 0) and on a trade the size of the whole reserve (must not drain the pool).
 </details>
 <div id="200b4d2e" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected version — same signature, curve respected, fee as a decimal</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected version — same signature, curve respected, fee as a decimal</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> swap(x, y, dx, fee<span class="op">=</span><span class="fl">0.003</span>):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> x <span class="op">*</span> y</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    dx_net <span class="op">=</span> dx <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> fee)</span>
@@ -397,7 +406,7 @@ Rule: whenever a function returns money, test it on a trade of size 0 (must retu
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dx <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">100_000</span>]:</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    dy, p_new <span class="op">=</span> swap(<span class="dv">1_000</span>, <span class="dv">3_000_000</span>, dx)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"sell </span><span class="sc">{</span>dx<span class="sc">:&gt;7,}</span><span class="ss"> ETH -&gt; </span><span class="sc">{</span>dy<span class="sc">:&gt;12,.0f}</span><span class="ss"> USDC | pool price after </span><span class="sc">{</span>p_new<span class="sc">:,.1f}</span><span class="ss"> | pool never below 0 USDC: </span><span class="sc">{</span><span class="dv">3_000_000</span> <span class="op">-</span> dy <span class="op">&gt;</span> <span class="dv">0</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"sell </span><span class="sc">{</span>dx<span class="sc">:&gt;7,}</span><span class="ss"> ETH -&gt; </span><span class="sc">{</span>dy<span class="sc">:&gt;12,.0f}</span><span class="ss"> USDC | pool price after </span><span class="sc">{</span>p_new<span class="sc">:,.1f}</span><span class="ss"> | pool never below 0 USDC: </span><span class="sc">{</span><span class="dv">3_000_000</span> <span class="op">-</span> dy <span class="op">&gt;</span> <span class="dv">0</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lp-value-vs-holding" class="level3">
@@ -407,7 +416,7 @@ Rule: whenever a function returns money, test it on a trade of size 0 (must retu
 <p>That gap is called <em>impermanent loss</em> (a bad name: it is a real loss unless the price returns). Fees are what the LP is paid to bear it.</p>
 <p><strong>🔍 CHECK (bet 2).</strong> ETH doubles (<code>r = 2</code>). Before running: by what percentage is the LP position worth less than just holding? Write the number.</p>
 <div id="b6b9c43f" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lp_vs_hold(r):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lp_vs_hold(r):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Value of a constant-product LP position divided by the value of holding the deposited coins, for price ratio r."""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">2</span> <span class="op">*</span> np.sqrt(r) <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> r)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -418,14 +427,14 @@ Rule: whenever a function returns money, test it on a trade of size 0 (must retu
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>lp_value <span class="op">=</span> y1 <span class="op">+</span> x1 <span class="op">*</span> p1                            <span class="co"># in USDC</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>hold_value <span class="op">=</span> y0 <span class="op">+</span> x0 <span class="op">*</span> p1</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"price 2x: LP value </span><span class="sc">{</span>lp_value<span class="sc">:,.0f}</span><span class="ss"> | hold value </span><span class="sc">{</span>hold_value<span class="sc">:,.0f}</span><span class="ss"> | LP/hold </span><span class="sc">{</span>lp_value<span class="op">/</span>hold_value<span class="sc">:.4f}</span><span class="ss"> | formula </span><span class="sc">{</span>lp_vs_hold(r)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"impermanent loss at 2x: </span><span class="sc">{</span>lp_vs_hold(r)<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"impermanent loss at 2x: </span><span class="sc">{</span>lp_vs_hold(r)<span class="op">-</span><span class="dv">1</span><span class="sc">:+.2%}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="check-the-assistants-impermanent-loss-curve" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-impermanent-loss-curve">🔍 CHECK — the assistant’s impermanent-loss curve</h3>
 <p>Asked to “plot impermanent loss as a function of the price ratio”, the assistant wrote the cell below. It plots a smooth curve. Compare the value at <code>r = 2</code> with the number you just computed.</p>
 <div id="f7ebb9b9" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ratios <span class="op">=</span> np.linspace(<span class="fl">0.2</span>, <span class="dv">5</span>, <span class="dv">200</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>x0, y0 <span class="op">=</span> <span class="dv">1_000</span>, <span class="dv">3_000_000</span><span class="op">;</span> k <span class="op">=</span> x0 <span class="op">*</span> y0<span class="op">;</span> p0 <span class="op">=</span> y0 <span class="op">/</span> x0</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>initial_value <span class="op">=</span> y0 <span class="op">+</span> x0 <span class="op">*</span> p0</span>
@@ -436,7 +445,7 @@ Rule: whenever a function returns money, test it on a trade of size 0 (must retu
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    il_assistant.append(lp_value <span class="op">/</span> initial_value <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>il_assistant <span class="op">=</span> pd.Series(il_assistant, index<span class="op">=</span>ratios)</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"assistant's 'impermanent loss' at r=2:"</span>, <span class="ss">f"</span><span class="sc">{</span>il_assistant<span class="sc">.</span>loc[<span class="fl">2.0</span>] <span class="cf">if</span> <span class="fl">2.0</span> <span class="kw">in</span> il_assistant<span class="sc">.</span>index <span class="cf">else</span> np<span class="sc">.</span>interp(<span class="fl">2.0</span>, ratios, il_assistant.values)<span class="sc">:+.2%}</span><span class="ss">"</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>il_assistant.plot(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"Impermanent loss vs price ratio (assistant version)"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>il_assistant.plot(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"Impermanent loss vs price ratio (assistant version)"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary>
@@ -446,13 +455,13 @@ Solution (open after you have tried)
 This is the general form of the bug: a return is always <em>relative to something</em>; the assistant picks the denominator that is easiest to code. Ask “compared to what?” for every percentage a model or a person gives you.
 </details>
 <div id="edc75d84" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: benchmark = holding the deposited coins at the new price</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: benchmark = holding the deposited coins at the new price</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>il <span class="op">=</span> pd.Series([lp_vs_hold(r) <span class="op">-</span> <span class="dv">1</span> <span class="cf">for</span> r <span class="kw">in</span> ratios], index<span class="op">=</span>ratios)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>table <span class="op">=</span> pd.DataFrame({<span class="st">"price ratio r"</span>: [<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">1.0</span>, <span class="fl">1.25</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]})</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>table[<span class="st">"LP / hold"</span>] <span class="op">=</span> lp_vs_hold(table[<span class="st">"price ratio r"</span>]).<span class="bu">round</span>(<span class="dv">4</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>table[<span class="st">"impermanent loss"</span>] <span class="op">=</span> (table[<span class="st">"LP / hold"</span>] <span class="op">-</span> <span class="dv">1</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:+.2%}</span><span class="st">"</span>.<span class="bu">format</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>display(table)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>il.plot(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"Impermanent loss vs price ratio (vs holding)"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.ylabel(<span class="st">"LP/hold − 1"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>il.plot(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">3.5</span>), title<span class="op">=</span><span class="st">"Impermanent loss vs price ratio (vs holding)"</span>)<span class="op">;</span> plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"k"</span>, lw<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span> plt.ylabel(<span class="st">"LP/hold − 1"</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="fee-income-vs-impermanent-loss" class="level3">
@@ -460,21 +469,21 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <p>Fees are the other side of the ledger. If the pool turns over a fraction <code>v</code> of its reserves every day at fee <code>f</code>, the LP earns roughly <code>f · v · 365</code> per year on the pool’s value. Whether providing liquidity beats holding is then a race between that yield and the impermanent loss the price path produces.</p>
 <p><strong>🔍 CHECK (bet 3, sign only).</strong> Daily volume equal to 20% of pool value, 0.3% fee, held for one year, and ETH ends the year at 2×. Before running: does the LP finish ahead of or behind holding? Write <strong>+</strong> or <strong>−</strong>.</p>
 <div id="5bfa5986" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fee, days <span class="op">=</span> <span class="fl">0.003</span>, <span class="dv">365</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fee, days <span class="op">=</span> <span class="fl">0.003</span>, <span class="dv">365</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>vol_over_tvl <span class="op">=</span> np.array([<span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.10</span>, <span class="fl">0.20</span>, <span class="fl">0.50</span>, <span class="fl">1.00</span>])     <span class="co"># daily volume as a share of pool value</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fee_yield <span class="op">=</span> fee <span class="op">*</span> vol_over_tvl <span class="op">*</span> days                              <span class="co"># annual fee income as share of pool value</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fees <span class="op">=</span> pd.DataFrame({<span class="st">"daily volume / TVL"</span>: vol_over_tvl, <span class="st">"annual fee yield"</span>: fee_yield})</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> [<span class="fl">1.25</span>, <span class="dv">2</span>, <span class="dv">3</span>]:</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    fees[<span class="ss">f"net vs hold @ </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">x"</span>] <span class="op">=</span> fee_yield <span class="op">+</span> (lp_vs_hold(r) <span class="op">-</span> <span class="dv">1</span>)</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>display(fees.set_index(<span class="st">"daily volume / TVL"</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> col: col.<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:+.1%}</span><span class="st">"</span>.<span class="bu">format</span>)))</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"break-even daily volume/TVL to cover IL at 2x:"</span>, <span class="ss">f"</span><span class="sc">{</span><span class="op">-</span>(lp_vs_hold(<span class="dv">2</span>)<span class="op">-</span><span class="dv">1</span>) <span class="op">/</span> (fee <span class="op">*</span> days)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"break-even daily volume/TVL to cover IL at 2x:"</span>, <span class="ss">f"</span><span class="sc">{</span><span class="op">-</span>(lp_vs_hold(<span class="dv">2</span>)<span class="op">-</span><span class="dv">1</span>) <span class="op">/</span> (fee <span class="op">*</span> days)<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lp-on-a-real-price-path" class="level3">
 <h3 class="anchored" data-anchor-id="lp-on-a-real-price-path">LP on a real price path</h3>
 <p>The curve above assumes a single jump. On a real path the LP position is marked every day: <code>Pool</code> reserves follow the price, fees accrue with assumed volume. We use ETH-USD from the course loader (live → snapshot → synthetic). <em>If the loader printed <code>[SYNTHETIC]</code>, the path below is a random walk and the numbers are only a pipeline test.</em></p>
 <div id="fbe34339" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"ETH-USD"</span>], start<span class="op">=</span><span class="st">"2022-01-01"</span>).ffill().dropna()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"ETH-USD"</span>], start<span class="op">=</span><span class="st">"2022-01-01"</span>).ffill().dropna()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>eth <span class="op">=</span> px[<span class="st">"ETH-USD"</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>p0 <span class="op">=</span> eth.iloc[<span class="dv">0</span>]</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">1.0</span><span class="op">;</span> y0 <span class="op">=</span> x0 <span class="op">*</span> p0                     <span class="co"># deposit 1 ETH and the same value in USDC</span></span>
@@ -489,7 +498,7 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>lp[<span class="st">"lp_with_fees"</span>] <span class="op">=</span> lp[<span class="st">"lp_no_fees"</span>] <span class="op">+</span> lp[<span class="st">"fees_cum"</span>]</span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"deposit </span><span class="sc">{</span>p0<span class="sc">:,.0f}</span><span class="ss"> USDC/ETH -&gt; today </span><span class="sc">{</span>eth<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> (r = </span><span class="sc">{</span>r_path<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.2f}</span><span class="ss">)"</span>)</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"hold </span><span class="sc">{</span>lp[<span class="st">'hold'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> | LP no fees </span><span class="sc">{</span>lp[<span class="st">'lp_no_fees'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss"> (IL </span><span class="sc">{</span>lp[<span class="st">'il'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:+.1%}</span><span class="ss">) | LP with fees </span><span class="sc">{</span>lp[<span class="st">'lp_with_fees'</span>]<span class="sc">.</span>iloc[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:,.0f}</span><span class="ss">"</span>)</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>lp[[<span class="st">"hold"</span>, <span class="st">"lp_no_fees"</span>, <span class="st">"lp_with_fees"</span>]].plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">"1 ETH + USDC: hold vs LP (constant product), fees at assumed 20%/day volume/TVL"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"USDC"</span>)<span class="op">;</span> plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>lp[[<span class="st">"hold"</span>, <span class="st">"lp_no_fees"</span>, <span class="st">"lp_with_fees"</span>]].plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), title<span class="op">=</span><span class="st">"1 ETH + USDC: hold vs LP (constant product), fees at assumed 20%/day volume/TVL"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"USDC"</span>)<span class="op">;</span> plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK.</strong> The fee line depends entirely on the <code>vol_over_tvl</code> assumption. Change it to 0.05 and to 0.50 and see when the LP crosses hold. The honest version of this chart needs the pool’s <em>actual</em> volume, which is what the DefiLlama block gives you next.</p>
 </section>
@@ -498,7 +507,7 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <h2 class="anchored" data-anchor-id="block-c-lab-2-protocol-data-through-public-apis">Block C — Lab 2: protocol data through public APIs</h2>
 <p>DefiLlama aggregates on-chain data per protocol: <strong>TVL</strong> (value locked), <strong>fees</strong> (what users pay) and <strong>revenue</strong> (the part the protocol or its token keeps; the rest goes to LPs, stakers or validators). CoinGecko gives token price and market cap. Both are free and need no key. Both go through the same three-tier loader: live → dated snapshot in <code>data/</code> → a small <strong>SYNTHETIC</strong> table labelled as such.</p>
 <div id="0313c327" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests, glob, datetime <span class="im">as</span> dt</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests, glob, datetime <span class="im">as</span> dt</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>SLUGS <span class="op">=</span> {<span class="st">"uniswap"</span>: <span class="st">"uniswap"</span>, <span class="st">"aave"</span>: <span class="st">"aave"</span>, <span class="st">"lido"</span>: <span class="st">"lido-dao"</span>}      <span class="co"># DefiLlama slug -&gt; CoinGecko id</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> _get(url, timeout<span class="op">=</span><span class="dv">15</span>):</span>
@@ -538,11 +547,11 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> m</span>
 <span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> load_protocol_metrics()</span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>metrics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK (bet 4).</strong> Three protocols, three business models: an exchange (Uniswap), a lender (Aave), a staking service (Lido). Before running: which has the highest <strong>annualised fees / TVL</strong>, and which the highest <strong>revenue / market cap</strong>? Write the two names.</p>
 <div id="91aea169" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> metrics.copy()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> metrics.copy()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"fees_annual"</span>] <span class="op">=</span> m[<span class="st">"fees_30d"</span>] <span class="op">*</span> <span class="dv">12</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"revenue_annual"</span>] <span class="op">=</span> m[<span class="st">"revenue_30d"</span>] <span class="op">*</span> <span class="dv">12</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>m[<span class="st">"fees / TVL"</span>] <span class="op">=</span> m[<span class="st">"fees_annual"</span>] <span class="op">/</span> m[<span class="st">"tvl"</span>]</span>
@@ -552,14 +561,14 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> m[[<span class="st">"tvl"</span>, <span class="st">"fees_annual"</span>, <span class="st">"revenue_annual"</span>, <span class="st">"market_cap"</span>, <span class="st">"fees / TVL"</span>, <span class="st">"revenue / TVL"</span>, <span class="st">"revenue / mcap"</span>, <span class="st">"take rate (rev/fees)"</span>]]</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>display(out.style.<span class="bu">format</span>({<span class="st">"tvl"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>, <span class="st">"fees_annual"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>, <span class="st">"revenue_annual"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>, <span class="st">"market_cap"</span>: <span class="st">"</span><span class="sc">{:,.0f}</span><span class="st">"</span>,</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"fees / TVL"</span>: <span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>, <span class="st">"revenue / TVL"</span>: <span class="st">"</span><span class="sc">{:.2%}</span><span class="st">"</span>, <span class="st">"revenue / mcap"</span>: <span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>, <span class="st">"take rate (rev/fees)"</span>: <span class="st">"</span><span class="sc">{:.0%}</span><span class="st">"</span>}))</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"source:"</span>, metrics[<span class="st">"source"</span>].iloc[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"source:"</span>, metrics[<span class="st">"source"</span>].iloc[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Read the ratios as a PM would read a SaaS dashboard: <strong>fees/TVL</strong> is asset turnover (how hard the capital works), <strong>take rate</strong> is what the protocol keeps of what users pay, <strong>revenue/mcap</strong> is the inverse of a price-to-sales multiple. An exchange turns its capital over daily; a lender or a staking service earns a spread on capital that sits. The ratios differ by an order of magnitude <em>because the businesses differ</em>, not because one is “better”.</p>
 <section id="tvl-concentration" class="level3">
 <h3 class="anchored" data-anchor-id="tvl-concentration">TVL concentration</h3>
 <p>How concentrated is DeFi? The whole protocol list from DefiLlama, or a labelled synthetic list.</p>
 <div id="68bacba0" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_tvl_table(cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_tvl_table(cache_dir<span class="op">=</span><span class="st">"data"</span>):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    os.makedirs(cache_dir, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    stamp <span class="op">=</span> dt.date.today().isoformat()<span class="op">;</span> snap <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cache_dir<span class="sc">}</span><span class="ss">/defillama_protocols_</span><span class="sc">{</span>stamp<span class="sc">}</span><span class="ss">.csv"</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
@@ -585,7 +594,7 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>share <span class="op">=</span> tvl_table[<span class="st">"tvl"</span>] <span class="op">/</span> total</span>
 <span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>hhi <span class="op">=</span> (share <span class="op">**</span> <span class="dv">2</span>).<span class="bu">sum</span>()</span>
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"[</span><span class="sc">{</span>tvl_source<span class="sc">}</span><span class="ss">] </span><span class="sc">{</span><span class="bu">len</span>(tvl_table)<span class="sc">}</span><span class="ss"> protocols | total TVL </span><span class="sc">{</span>total<span class="op">/</span><span class="fl">1e9</span><span class="sc">:,.1f}</span><span class="ss">B | top-5 share </span><span class="sc">{</span>share<span class="sc">.</span>head(<span class="dv">5</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.1%}</span><span class="ss"> | top-10 share </span><span class="sc">{</span>share<span class="sc">.</span>head(<span class="dv">10</span>)<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.1%}</span><span class="ss"> | HHI </span><span class="sc">{</span>hhi<span class="sc">:.3f}</span><span class="ss">"</span>)</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>tvl_table.head(<span class="dv">10</span>).assign(share<span class="op">=</span>share.head(<span class="dv">10</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>tvl_table.head(<span class="dv">10</span>).assign(share<span class="op">=</span>share.head(<span class="dv">10</span>).<span class="bu">map</span>(<span class="st">"</span><span class="sc">{:.1%}</span><span class="st">"</span>.<span class="bu">format</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK (bet 5).</strong> You wrote a top-10 share before running. Now the interpretive question: DefiLlama counts the same ETH once in Lido (staked) and again in Aave if the stETH is deposited as collateral. Is the concentration you see over- or under-stated by that double counting? (Look for a <code>category</code> column: liquid staking and restaking are the layers most exposed to it.)</p>
 </section>
@@ -593,7 +602,7 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <h3 class="anchored" data-anchor-id="reading-a-governance-proposal-with-the-llm-then-checking-it-against-the-source">Reading a governance proposal with the LLM, then checking it against the source</h3>
 <p>Protocol parameters (collateral ratios, caps, fees) are changed by governance votes. The texts are long and full of numbers. An LLM summary is useful <strong>only</strong> with a mechanical check that every number in the summary exists in the source. <code>llm()</code> is mocked if no key; the mock deliberately contains one wrong number so the check has something to catch.</p>
 <div id="6f5f5cb2" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>proposal <span class="op">=</span> <span class="st">"""</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>proposal <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">AIP-412 — Risk parameter update for wstETH on Aave v3 Ethereum (Chaos Labs)</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">Summary. We propose to increase the loan-to-value (LTV) of wstETH from 78.5% to 79.5% and the liquidation threshold</span></span>
@@ -608,19 +617,19 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> llm(<span class="st">"Summarise this governance proposal in three sentences, keeping every parameter change with its old and new value.</span><span class="ch">\n\n</span><span class="st">"</span> <span class="op">+</span> proposal,</span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>              system<span class="op">=</span><span class="st">"You are a DeFi risk analyst. Be precise; never invent numbers."</span>)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="3cfb10bb" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numbers_in(text):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numbers_in(text):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""All numeric tokens (with %, k, M) in a text, normalised as strings."""</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>(re.findall(<span class="vs">r"\d+(?:[.,]\d+)?"</span>, text))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">set</span>(re.findall(<span class="vs">r"</span><span class="dv">\d</span><span class="op">+</span>(?:<span class="pp">[.,]</span><span class="dv">\d</span><span class="op">+</span>)<span class="op">?</span><span class="vs">"</span>, text))</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>src, summ <span class="op">=</span> numbers_in(proposal), numbers_in(summary)</span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>unsupported <span class="op">=</span> <span class="bu">sorted</span>(summ <span class="op">-</span> src)</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"numbers in summary:"</span>, <span class="bu">sorted</span>(summ))</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"NOT in source (possible hallucination):"</span>, unsupported <span class="cf">if</span> unsupported <span class="cf">else</span> <span class="st">"none"</span>)</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> {<span class="st">"79.5"</span>, <span class="st">"82"</span>, <span class="st">"6"</span>, <span class="st">"1.2"</span>} <span class="op">-</span> summ</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"parameter values missing from the summary:"</span>, <span class="bu">sorted</span>(missing) <span class="cf">if</span> missing <span class="cf">else</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"parameter values missing from the summary:"</span>, <span class="bu">sorted</span>(missing) <span class="cf">if</span> missing <span class="cf">else</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK.</strong> The check catches a number that is in the summary but not in the source. What does it <em>not</em> catch? (Two kinds of error survive it: a source number attached to the wrong parameter, and a correct number with the wrong direction — “from 80% to 78.5%”.) A number check is necessary, not sufficient — the same lesson as the RAG evals in week 4.</p>
 </section>
@@ -629,7 +638,7 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <h2 class="anchored" data-anchor-id="block-d-protocol-risk-canvas">Block D — Protocol risk canvas</h2>
 <p>Five lenses, one protocol. The table below is a template: fill it for <strong>one</strong> protocol from the metrics table above (or your capstone protocol). Each cell must be a sentence with a fact you can point to (a contract audit date, an oracle name, a governance quorum, a peg history), not an adjective.</p>
 <div id="63e70c4b" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>canvas <span class="op">=</span> pd.DataFrame({</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>canvas <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"lens"</span>:      [<span class="st">"smart-contract"</span>, <span class="st">"oracle"</span>, <span class="st">"governance"</span>, <span class="st">"depeg / collateral"</span>, <span class="st">"liquidity"</span>],</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"question"</span>:  [<span class="st">"Can the code lose the money? (audits, upgradeability, admin keys, bug history)"</span>,</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"Where does the protocol get prices from, and what happens if that source is wrong for 10 minutes?"</span>,</span>
@@ -640,7 +649,7 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"severity 1-5"</span>: [<span class="va">None</span>] <span class="op">*</span> <span class="dv">5</span>,</span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"evidence (link / number)"</span>: [<span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>, <span class="st">""</span>],</span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>canvas.set_index(<span class="st">"lens"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>canvas.set_index(<span class="st">"lens"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Historical cases, one line each, are on the card; the exercise is to place each case in a row of this table. Every big DeFi loss fits one row — and most fit two, because an oracle failure is usually exploited through a lending contract, and a depeg becomes a liquidity crisis.</p>
 </section>
@@ -648,12 +657,12 @@ This is the general form of the bug: a return is always <em>relative to somethin
 <h2 class="anchored" data-anchor-id="block-e-mica-in-practice-regulation-slot">Block E — MiCA in practice (regulation slot)</h2>
 <p>Reading and prompts are in <code>notes.md</code>. Here, one structured LLM call classifies three assets under MiCA. The output is a <em>hypothesis</em>: check each line against the reading before accepting it. (Mocked without a key.)</p>
 <div id="93f53971" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>schema <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"object"</span>, <span class="st">"properties"</span>: {<span class="st">"classifications"</span>: {<span class="st">"type"</span>: <span class="st">"array"</span>, <span class="st">"items"</span>: {<span class="st">"type"</span>: <span class="st">"object"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>schema <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"object"</span>, <span class="st">"properties"</span>: {<span class="st">"classifications"</span>: {<span class="st">"type"</span>: <span class="st">"array"</span>, <span class="st">"items"</span>: {<span class="st">"type"</span>: <span class="st">"object"</span>,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"properties"</span>: {<span class="st">"asset"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}, <span class="st">"mica_category"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>, <span class="st">"enum"</span>: [<span class="st">"ART"</span>, <span class="st">"EMT"</span>, <span class="st">"other crypto-asset"</span>, <span class="st">"out of scope"</span>]},</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"reason"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>}}, <span class="st">"required"</span>: [<span class="st">"asset"</span>, <span class="st">"mica_category"</span>, <span class="st">"reason"</span>]}}}, <span class="st">"required"</span>: [<span class="st">"classifications"</span>]}</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> llm(<span class="st">"Classify USDC, stETH and UNI under MiCA (Regulation (EU) 2023/1114): ART, EMT, other crypto-asset, or out of scope. One-line reason each."</span>,</span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          system<span class="op">=</span><span class="st">"You are an EU financial-regulation analyst."</span>, json_schema<span class="op">=</span>schema)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(res[<span class="st">"classifications"</span>]).set_index(<span class="st">"asset"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(res[<span class="st">"classifications"</span>]).set_index(<span class="st">"asset"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK.</strong> For each line: which MiCA article or definition supports the category? If you cannot name one from the reading, the classification is not yet yours. Then the harder question for stETH: is the <em>token</em> the regulated object, or is it the <em>service</em> (staking on behalf of clients) that a CASP would need authorisation for?</p>
 </section>
@@ -673,244 +682,248 @@ This is the general form of the bug: a return is always <em>relative to somethin
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -918,185 +931,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

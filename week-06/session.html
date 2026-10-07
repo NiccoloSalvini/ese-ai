@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Week 6 — Where AI earns money in fintech; capstone scoping – AI for Business &amp; FinTech</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -21,8 +27,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +40,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,15 +72,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../images/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-39c5bf676fe5f74c3e2352cc4d0198db.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-32b6a1ef7e9ba52d09e917c9077d60f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -115,7 +123,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="https://www.ese.ac.uk/locations/ese-florence" class="navbar-brand navbar-brand-logo">
-    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo light-content">
+    <img src="../images/ese-logo.svg" alt="European School of Economics" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="https://www.ese.ac.uk/locations/ese-florence">
     <span class="navbar-title">AI for Business &amp; FinTech <span class="nav-year">26/27</span></span>
@@ -200,10 +209,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Three parts. First hour: your minor case presentation (nothing to run). Then a lab through three fintech decisions where models make or lose money — fraud, credit, build/buy/partner — each with a small dataset you generate here. Last part: scope your capstone and prove its data exists.</p>
 <p><strong>Why the datasets are synthetic today.</strong> There is no public, labelled fraud or loan dataset with realistic structure (0.5% fraud, real customer behaviour, demographic proxies) that fits in a session and that we could lawfully use. So we generate them with a fixed seed: the <em>structure</em> is realistic, the <em>numbers</em> are not evidence about any real bank. Every conclusion today is about the method, not the world. Your capstone must use real data — that is what the last block is for.</p>
 <div id="7d1a1e7e" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance google<span class="op">-</span>genai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install yfinance google<span class="op">-</span>genai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="199eb4dc" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: price loader with fallbacks (run this cell once per session) ---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings, numpy <span class="im">as</span> np, pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -235,10 +244,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> pd.bdate_range(start, end <span class="kw">or</span> pd.Timestamp.today().normalize())</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    px <span class="op">=</span> pd.DataFrame({t: <span class="dv">100</span> <span class="op">*</span> np.exp(np.cumsum(rng.normal(<span class="fl">0.0004</span>, <span class="fl">0.02</span> <span class="cf">if</span> <span class="st">"USD"</span> <span class="kw">in</span> t <span class="cf">else</span> <span class="fl">0.011</span>, <span class="bu">len</span>(idx))))</span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                       <span class="cf">for</span> t <span class="kw">in</span> tickers}, index<span class="op">=</span>idx)</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> px</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="41283cb0" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: one LLM wrapper, guarded. Works with Gemini if GEMINI_API_KEY is in Colab Secrets; otherwise a deterministic MOCK. ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- course helper: one LLM wrapper, guarded. Works with Gemini if GEMINI_API_KEY is in Colab Secrets; otherwise a deterministic MOCK. ---</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os, json</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>API_KEY <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
@@ -280,14 +289,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> client.models.generate_content(model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>, contents<span class="op">=</span>prompt, config<span class="op">=</span>types.GenerateContentConfig(<span class="op">**</span>cfg))</span>
 <span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> json.loads(r.text) <span class="cf">if</span> json_schema <span class="cf">else</span> r.text</span>
 <span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LLM mode:"</span>, <span class="st">"Gemini (live)"</span> <span class="cf">if</span> API_KEY <span class="cf">else</span> <span class="st">"MOCK (no key found — outputs are placeholders)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LLM mode:"</span>, <span class="st">"Gemini (live)"</span> <span class="cf">if</span> API_KEY <span class="cf">else</span> <span class="st">"MOCK (no key found — outputs are placeholders)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="block-b-fraud-detection-why-accuracy-is-useless-here" class="level2">
 <h2 class="anchored" data-anchor-id="block-b-fraud-detection-why-accuracy-is-useless-here">Block B — Fraud detection: why accuracy is useless here</h2>
 <p>A card issuer sees ~100,000 transactions a day. About 0.5% are fraudulent. A model scores each transaction; above a threshold, the transaction is blocked and the customer gets a text message. Two errors, two very different costs: a <strong>missed fraud</strong> costs the amount (the issuer refunds the customer); a <strong>blocked good customer</strong> costs a call-centre contact, a failed purchase, and some probability the customer moves their card to a competitor.</p>
 <p>We generate the transactions with a seed. Fraud looks different from normal traffic in ways that real fraud does: larger amounts, night hours, foreign merchants, new devices, bursts of activity.</p>
 <div id="2d144631" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">6</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">6</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>N, FRAUD_RATE <span class="op">=</span> <span class="dv">40_000</span>, <span class="fl">0.005</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>is_fraud <span class="op">=</span> rng.random(N) <span class="op">&lt;</span> FRAUD_RATE</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -301,20 +310,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"is_fraud"</span>:      is_fraud.astype(<span class="bu">int</span>),</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tx.shape, <span class="st">"| fraud rate: </span><span class="sc">%.4f</span><span class="st">  (</span><span class="sc">%d</span><span class="st"> fraud cases)"</span> <span class="op">%</span> (tx.is_fraud.mean(), tx.is_fraud.<span class="bu">sum</span>()))</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>tx.groupby(<span class="st">"is_fraud"</span>).mean().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>tx.groupby(<span class="st">"is_fraud"</span>).mean().<span class="bu">round</span>(<span class="dv">2</span>).T</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Bet 1 (write it down first):</strong> a rule that <em>never flags anything</em> — what accuracy does it score on this data? A number, before running.</p>
 <div id="03bf4676" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>never_flag <span class="op">=</span> np.zeros(<span class="bu">len</span>(tx), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>never_flag <span class="op">=</span> np.zeros(<span class="bu">len</span>(tx), dtype<span class="op">=</span><span class="bu">int</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"accuracy of 'never flag': </span><span class="sc">%.4f</span><span class="st">"</span> <span class="op">%</span> (never_flag <span class="op">==</span> tx.is_fraud).mean())</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"frauds caught by 'never flag':"</span>, ((never_flag <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (tx.is_fraud <span class="op">==</span> <span class="dv">1</span>)).<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"frauds caught by 'never flag':"</span>, ((never_flag <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (tx.is_fraud <span class="op">==</span> <span class="dv">1</span>)).<span class="bu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="check-the-assistants-fraud-model" class="level3">
 <h3 class="anchored" data-anchor-id="check-the-assistants-fraud-model">🔍 CHECK — the assistant’s fraud model</h3>
 <p>Asked to “train a fraud model and evaluate it”, the assistant produced the cell below. It runs. It reports an excellent number. <strong>There are two problems in it</strong> — find both before opening the solution. Ten minutes; the second hint comes only after you have found one.</p>
 <p><strong>Bet 2 (before running):</strong> the assistant holds out 400 random transactions for testing. How many fraud cases will be in that test set?</p>
 <div id="f28f46e2" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- as produced by the assistant (do not trust) ---</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
@@ -324,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="dv">400</span>, random_state<span class="op">=</span><span class="dv">7</span>)   <span class="co"># hold out a small test set for a quick check</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>).fit(X_train, y_train)</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> accuracy_score(y_test, clf.predict(X_test))</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test accuracy: </span><span class="sc">{</span>acc<span class="sc">:.3%}</span><span class="ss"> — excellent, the model is ready for production."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test accuracy: </span><span class="sc">{</span>acc<span class="sc">:.3%}</span><span class="ss"> — excellent, the model is ready for production."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <details>
 <summary>
@@ -337,11 +346,11 @@ Solution (open after you have tried)
 Both errors are silent: no warning, a green checkmark, a confident sentence. This is the most common shape of an assistant error in classification: the code is right, the <em>evaluation design</em> is wrong.
 </details>
 <div id="663f1df5" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"fraud cases in the assistant's test set:"</span>, <span class="bu">int</span>(y_test.<span class="bu">sum</span>()), <span class="st">"of"</span>, <span class="bu">len</span>(y_test))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"majority baseline on that test set: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> (<span class="dv">1</span> <span class="op">-</span> y_test.mean()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"fraud cases in the assistant's test set:"</span>, <span class="bu">int</span>(y_test.<span class="bu">sum</span>()), <span class="st">"of"</span>, <span class="bu">len</span>(y_test))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"majority baseline on that test set: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> (<span class="dv">1</span> <span class="op">-</span> y_test.mean()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="e92d013d" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: stratified split, enough positives, and the metrics that price the errors</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corrected: stratified split, enough positives, and the metrics that price the errors</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_score, recall_score, roc_auc_score, confusion_matrix</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.30</span>, random_state<span class="op">=</span><span class="dv">7</span>, stratify<span class="op">=</span>y)</span>
@@ -351,12 +360,12 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC: </span><span class="sc">%.3f</span><span class="st">  (ranking quality — the model does separate fraud from normal)"</span> <span class="op">%</span> roc_auc_score(y_test, p))</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, p <span class="op">&gt;</span> <span class="fl">0.5</span>)</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(cm, index<span class="op">=</span>[<span class="st">"actual normal"</span>, <span class="st">"actual fraud"</span>], columns<span class="op">=</span>[<span class="st">"predicted normal"</span>, <span class="st">"predicted fraud"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(cm, index<span class="op">=</span>[<span class="st">"actual normal"</span>, <span class="st">"actual fraud"</span>], columns<span class="op">=</span>[<span class="st">"predicted normal"</span>, <span class="st">"predicted fraud"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>At the default threshold of 0.5 the model flags almost nothing — with 0.5% positives, few transactions ever reach a 50% probability. The threshold must come from costs, not from 0.5. Below: the trade-off between fraud caught and good customers blocked, scaled to <strong>100,000 transactions per day</strong>.</p>
 <p><strong>Bet 3 (before running):</strong> if we accept a 1% false-positive rate, how many <em>good customers per day</em> get blocked at 100k transactions/day?</p>
 <div id="ab3e24de" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>DAILY_TX, COST_FP, COST_FN <span class="op">=</span> <span class="dv">100_000</span>, <span class="fl">15.0</span>, <span class="va">None</span>   <span class="co"># COST_FP: one blocked good customer (contact + churn risk, EUR). COST_FN: the fraud amount itself.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>DAILY_TX, COST_FP, COST_FN <span class="op">=</span> <span class="dv">100_000</span>, <span class="fl">15.0</span>, <span class="va">None</span>   <span class="co"># COST_FP: one blocked good customer (contact + churn risk, EUR). COST_FN: the fraud amount itself.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>amt_test <span class="op">=</span> tx.loc[X_test.index, <span class="st">"amount"</span>]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
@@ -373,13 +382,13 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>thr_tab <span class="op">=</span> pd.DataFrame(rows, columns<span class="op">=</span>[<span class="st">"threshold"</span>, <span class="st">"recall"</span>, <span class="st">"precision"</span>, <span class="st">"FPR"</span>, <span class="st">"good customers blocked/day"</span>, <span class="st">"fraud missed EUR/day"</span>, <span class="st">"total cost EUR/day"</span>]).<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"cost of 'never flag' per day: EUR %.0f"</span> <span class="op">%</span> (DAILY_TX <span class="op">*</span> FRAUD_RATE <span class="op">*</span> amt_test[y_test <span class="op">==</span> <span class="dv">1</span>].mean()))</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>thr_tab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>thr_tab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="11c574d7" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The row closest to FPR = 1%: this is the answer to Bet 3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The row closest to FPR = 1%: this is the answer to Bet 3</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> thr_tab.iloc[(thr_tab[<span class="st">"FPR"</span>] <span class="op">-</span> <span class="fl">0.01</span>).<span class="bu">abs</span>().argmin()]</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"at threshold </span><span class="sc">%.3f</span><span class="st">: FPR </span><span class="sc">%.3f</span><span class="st"> -&gt; %.0f good customers blocked per day, recall </span><span class="sc">%.2f</span><span class="st">"</span> <span class="op">%</span> (row.threshold, row.FPR, row[<span class="st">"good customers blocked/day"</span>], row.recall))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"arithmetic check: 100,000 × 0.995 × 0.01 ="</span>, <span class="dv">100_000</span> <span class="op">*</span> <span class="fl">0.995</span> <span class="op">*</span> <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"arithmetic check: 100,000 × 0.995 × 0.01 ="</span>, <span class="dv">100_000</span> <span class="op">*</span> <span class="fl">0.995</span> <span class="op">*</span> <span class="fl">0.01</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Read the table as a manager, not as a data scientist: the threshold that minimises cost per day depends on <code>COST_FP</code>. At €15 per blocked customer the optimum sits at a low threshold; if churn is expensive (a premium card) and <code>COST_FP</code> is €60, the optimum moves. <strong>Change <code>COST_FP</code> and re-run.</strong> The model did not change; the business decision did. This table — not accuracy, not even AUC — is what goes to the fraud committee.</p>
 </section>
@@ -389,7 +398,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <p>A lender scores applicants for a personal loan. Unlike fraud, here (a) the applicant has a <strong>right to know why</strong> they were rejected, and (b) a regulator will ask whether the model treats groups differently. We use logistic regression on purpose: its coefficients <em>are</em> the explanation. Gradient boosting will need SHAP for the same job — week 9.</p>
 <p>Synthetic again: two regions A and B. Region B applicants have on average lower income and shorter credit history. The <strong>region itself does not affect repayment</strong> in the generator — only the financial features do. Keep that in mind for Bet 5.</p>
 <div id="89df5fd6" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">66</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">66</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">6_000</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> rng.choice([<span class="st">"A"</span>, <span class="st">"B"</span>], n, p<span class="op">=</span>[<span class="fl">0.7</span>, <span class="fl">0.3</span>])<span class="op">;</span> B <span class="op">=</span> region <span class="op">==</span> <span class="st">"B"</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -405,10 +414,10 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>         <span class="op">-</span> <span class="fl">0.5</span> <span class="op">*</span> (np.log(loans.income) <span class="op">-</span> <span class="fl">10.5</span>) <span class="op">-</span> <span class="fl">0.04</span> <span class="op">*</span> loans.employment_yrs)          <span class="co"># region is NOT here</span></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>loans[<span class="st">"default"</span>] <span class="op">=</span> (rng.random(n) <span class="op">&lt;</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>logit))).astype(<span class="bu">int</span>)</span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loans.shape, <span class="st">"| default rate: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> loans.default.mean())</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>loans.groupby(<span class="st">"region"</span>)[[<span class="st">"income"</span>, <span class="st">"dti"</span>, <span class="st">"history_years"</span>, <span class="st">"late_payments"</span>, <span class="st">"employment_yrs"</span>, <span class="st">"default"</span>]].mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>loans.groupby(<span class="st">"region"</span>)[[<span class="st">"income"</span>, <span class="st">"dti"</span>, <span class="st">"history_years"</span>, <span class="st">"late_payments"</span>, <span class="st">"employment_yrs"</span>, <span class="st">"default"</span>]].mean().<span class="bu">round</span>(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="ae67a6e1" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> make_pipeline</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>credit_features <span class="op">=</span> [<span class="st">"income"</span>, <span class="st">"dti"</span>, <span class="st">"history_years"</span>, <span class="st">"late_payments"</span>, <span class="st">"employment_yrs"</span>]</span>
@@ -420,12 +429,12 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"AUC on test: </span><span class="sc">%.3f</span><span class="st"> | base default rate: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> (roc_auc_score(yc_te, p_default), yc_te.mean()))</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>coefs <span class="op">=</span> pd.Series(scorer[<span class="op">-</span><span class="dv">1</span>].coef_[<span class="dv">0</span>], index<span class="op">=</span>credit_features).<span class="bu">round</span>(<span class="dv">3</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">coefficients on standardised features (positive = raises probability of default):"</span>)<span class="op">;</span> <span class="bu">print</span>(coefs.sort_values())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">coefficients on standardised features (positive = raises probability of default):"</span>)<span class="op">;</span> <span class="bu">print</span>(coefs.sort_values())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Policy:</strong> approve if predicted default probability &lt; 20%. The threshold is a business choice (loss rate the lender tolerates given the interest margin) — same logic as the fraud table, and you can move it.</p>
 <p><strong>Explaining one rejection.</strong> For a logistic model, the log-odds of default is a <em>sum</em> of <code>coefficient × standardised feature</code>. The largest positive terms are the reasons. This is the “adverse action” reason list the applicant is entitled to.</p>
 <div id="ea41dca0" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>THR_APPROVE <span class="op">=</span> <span class="fl">0.20</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>THR_APPROVE <span class="op">=</span> <span class="fl">0.20</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>approved <span class="op">=</span> p_default <span class="op">&lt;</span> THR_APPROVE</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval rate on test set: </span><span class="sc">%.3f</span><span class="st">"</span> <span class="op">%</span> approved.mean())</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -435,22 +444,22 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>contrib <span class="op">=</span> (z <span class="op">*</span> coefs).<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>explain <span class="op">=</span> pd.DataFrame({<span class="st">"applicant value"</span>: Xc_te.loc[rejected_idx], <span class="st">"z-score"</span>: z.<span class="bu">round</span>(<span class="dv">2</span>), <span class="st">"coef"</span>: coefs, <span class="st">"contribution to log-odds"</span>: contrib}).sort_values(<span class="st">"contribution to log-odds"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"applicant"</span>, rejected_idx, <span class="st">"| region"</span>, loans.loc[rejected_idx, <span class="st">"region"</span>], <span class="st">"| p(default) = </span><span class="sc">%.3f</span><span class="st">  -&gt; REJECTED"</span> <span class="op">%</span> p_default[rejected_idx])</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>explain</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>explain</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="ae110dab" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From contributions to a sentence the applicant can act on. (Gemini if a key is set; MOCK otherwise.)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From contributions to a sentence the applicant can act on. (Gemini if a key is set; MOCK otherwise.)</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> explain[explain[<span class="st">"contribution to log-odds"</span>] <span class="op">&gt;</span> <span class="dv">0</span>].head(<span class="dv">2</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>reasons <span class="op">=</span> <span class="st">"; "</span>.join(<span class="ss">f"</span><span class="sc">{</span>f<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>explain<span class="sc">.</span>loc[f, <span class="st">'applicant value'</span>]<span class="sc">}</span><span class="ss"> (pushes toward rejection by </span><span class="sc">{</span>explain<span class="sc">.</span>loc[f, <span class="st">'contribution to log-odds'</span>]<span class="sc">:+.2f}</span><span class="ss"> log-odds)"</span> <span class="cf">for</span> f <span class="kw">in</span> top.index)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>notice <span class="op">=</span> llm(</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Write a 3-sentence adverse action notice for a declined personal loan. Plain English, no jargon, no apology, no legal threats. "</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Principal reasons, in order: </span><span class="sc">{</span>reasons<span class="sc">}</span><span class="ss">. End by stating the right to request a human review."</span>,</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    system<span class="op">=</span><span class="st">"You write customer communications for a regulated EU lender."</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(notice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(notice)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK.</strong> Is the sentence <em>true to the model</em>? Compare it with the contribution table: does it name the two largest positive contributions, and nothing the model did not use? An explanation that is more persuasive than the model is a compliance problem, not a feature.</p>
 <p><strong>Bet 4 (before running):</strong> the model does not see <code>region</code>. Will the approval rate differ between A and B? Same, or a gap — and if a gap, how many percentage points?</p>
 <div id="893f846c" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fair <span class="op">=</span> pd.DataFrame({</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fair <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"approval rate"</span>: approved.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).mean(),</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"actual default rate (all applicants)"</span>: yc_te.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).mean(),</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"default rate among approved"</span>: yc_te[approved].groupby(loans.loc[Xc_te.index[approved], <span class="st">"region"</span>]).mean(),</span>
@@ -458,11 +467,11 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}).<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>gap <span class="op">=</span> fair.loc[<span class="st">"A"</span>, <span class="st">"approval rate"</span>] <span class="op">-</span> fair.loc[<span class="st">"B"</span>, <span class="st">"approval rate"</span>]</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval-rate gap A − B: </span><span class="sc">%.1f</span><span class="st"> percentage points"</span> <span class="op">%</span> (<span class="dv">100</span> <span class="op">*</span> gap))</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>fair</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>fair</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Bet 5 (before running):</strong> an assistant suggests “remove any proxy for region from the features to make it fair”. Here region is <em>already absent</em>. Suppose instead we drop the two features most correlated with region (<code>income</code>, <code>history_years</code>). Does the gap close? Bigger, smaller, same?</p>
 <div id="9f0f0d59" class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>corr_with_B <span class="op">=</span> loans[credit_features].corrwith(pd.Series(B.astype(<span class="bu">int</span>), index<span class="op">=</span>loans.index)).<span class="bu">round</span>(<span class="dv">3</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>corr_with_B <span class="op">=</span> loans[credit_features].corrwith(pd.Series(B.astype(<span class="bu">int</span>), index<span class="op">=</span>loans.index)).<span class="bu">round</span>(<span class="dv">3</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"correlation of each feature with region B:"</span>)<span class="op">;</span> <span class="bu">print</span>(corr_with_B.sort_values())</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>reduced <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> credit_features <span class="cf">if</span> f <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"income"</span>, <span class="st">"history_years"</span>)]</span>
@@ -471,7 +480,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>appr2 <span class="op">=</span> p2 <span class="op">&lt;</span> THR_APPROVE</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>rate2 <span class="op">=</span> appr2.groupby(loans.loc[Xc_te.index, <span class="st">"region"</span>]).mean()</span>
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">reduced model — AUC </span><span class="sc">%.3f</span><span class="st"> (was </span><span class="sc">%.3f</span><span class="st">)"</span> <span class="op">%</span> (roc_auc_score(yc_te, p2), roc_auc_score(yc_te, p_default)))</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval rate A </span><span class="sc">%.3f</span><span class="st">, B </span><span class="sc">%.3f</span><span class="st"> -&gt; gap </span><span class="sc">%.1f</span><span class="st"> pp (was </span><span class="sc">%.1f</span><span class="st"> pp)"</span> <span class="op">%</span> (rate2[<span class="st">"A"</span>], rate2[<span class="st">"B"</span>], <span class="dv">100</span> <span class="op">*</span> (rate2[<span class="st">"A"</span>] <span class="op">-</span> rate2[<span class="st">"B"</span>]), <span class="dv">100</span> <span class="op">*</span> gap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"approval rate A </span><span class="sc">%.3f</span><span class="st">, B </span><span class="sc">%.3f</span><span class="st"> -&gt; gap </span><span class="sc">%.1f</span><span class="st"> pp (was </span><span class="sc">%.1f</span><span class="st"> pp)"</span> <span class="op">%</span> (rate2[<span class="st">"A"</span>], rate2[<span class="st">"B"</span>], <span class="dv">100</span> <span class="op">*</span> (rate2[<span class="st">"A"</span>] <span class="op">-</span> rate2[<span class="st">"B"</span>]), <span class="dv">100</span> <span class="op">*</span> gap))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Three things to read from the two tables: 1. <strong>A gap appears without the group variable.</strong> Features carry the group. Removing the variable is not a fairness control; it is cosmetics. 2. <strong>Dropping correlated features shrinks the gap and the AUC together.</strong> Fairness by feature removal is paid for in accuracy, and the remaining features (<code>late_payments</code>, <code>dti</code>) also correlate with the group. There is no feature set that makes the gap vanish here — because the <em>base default rates differ</em> (second column). 3. <strong>“Default rate among approved” is close across groups.</strong> The model is roughly <em>calibrated by group</em>: a B applicant approved at p&lt;20% defaults about as often as an A applicant. That is one legitimate definition of fairness. Equal approval rates is another. They contradict each other whenever base rates differ — this is a theorem, not an opinion. The lender has to choose, write the choice down, and be ready to defend it to a regulator. That written choice is what week 9’s risk and controls canvas asks for.</p>
 </section>
@@ -479,7 +488,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <h2 class="anchored" data-anchor-id="block-b-build-buy-or-partner-a-scoring-table-you-will-reuse-in-week-10">Block B — Build, buy, or partner: a scoring table you will reuse in week 10</h2>
 <p>The fraud model above would take a bank team six months to build well and would still lack the cross-bank signals a vendor sees (a device seen in fraud at another issuer). Credit scoring is closer to core: the bank owns the data, is accountable to the regulator for every rejection, and cannot outsource the explanation. The decision is not technical; it is a weighted table — and the weights are the argument. Edit them.</p>
 <div id="89c1a1d8" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>criteria <span class="op">=</span> {                     <span class="co"># weight 1–5: how much this matters for THIS decision</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>criteria <span class="op">=</span> {                     <span class="co"># weight 1–5: how much this matters for THIS decision</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"time to value (months, lower better)"</span>: <span class="dv">3</span>,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"control over model &amp; data"</span>:            <span class="dv">4</span>,</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"explainability to regulator"</span>:          <span class="dv">5</span>,</span>
@@ -500,7 +509,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"weighted score (out of 5):"</span>)<span class="op">;</span> <span class="bu">print</span>(scores.<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span>
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">sensitivity: if 'explainability to regulator' weight goes to 1 →"</span>)</span>
 <span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>w2 <span class="op">=</span> w.copy()<span class="op">;</span> w2[<span class="st">"explainability to regulator"</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((options.mul(w2, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> w2.<span class="bu">sum</span>()).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((options.mul(w2, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> w2.<span class="bu">sum</span>()).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK.</strong> Re-score the <em>fraud</em> decision instead of the credit one: which weights change, and does the winner flip? Write the one criterion that decided it. That sentence is the executive summary of a build/buy memo; everything else is appendix.</p>
 </section>
@@ -509,7 +518,7 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <p>Four weeks of building remain (7–10), one weekend each. The capstone is 60% of the mark and is assessed on: technical execution and reproducibility; validity of method (no leakage, honest backtest/eval); financial-domain reasoning; product framing and roadmap; communication.</p>
 <p>Every candidate topic is written in the same template so they can be compared. The LLM proposes three from your interests; you edit them until they are yours — a generated candidate is a starting point, never a proposal.</p>
 <div id="fafeb412" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>CANDIDATE_SCHEMA <span class="op">=</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>CANDIDATE_SCHEMA <span class="op">=</span> {</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"properties"</span>: {<span class="st">"candidates"</span>: {<span class="st">"type"</span>: <span class="st">"array"</span>, <span class="st">"minItems"</span>: <span class="dv">3</span>, <span class="st">"maxItems"</span>: <span class="dv">3</span>, <span class="st">"items"</span>: {</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: <span class="st">"object"</span>,</span>
@@ -526,21 +535,21 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    json_schema<span class="op">=</span>CANDIDATE_SCHEMA)</span>
 <span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>cands <span class="op">=</span> pd.DataFrame(out[<span class="st">"candidates"</span>])</span>
 <span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">"display.max_colwidth"</span>, <span class="dv">120</span>)</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>cands.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>cands.T</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Edit the three candidates in the cell below</strong> — replace anything you would not defend. Then fill the weekly plan: what exists at the end of each weekend. If a week says “explore”, the plan is not ready.</p>
 <div id="197dc986" class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your three candidates, in the template. Overwrite the generated text.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your three candidates, in the template. Overwrite the generated text.</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>template_keys <span class="op">=</span> [<span class="st">"question"</span>, <span class="st">"data"</span>, <span class="st">"method"</span>, <span class="st">"deliverable"</span>, <span class="st">"risk"</span>, <span class="st">"wk7"</span>, <span class="st">"wk8"</span>, <span class="st">"wk9"</span>, <span class="st">"wk10"</span>]</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>my_candidates <span class="op">=</span> {</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C1"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(template_keys, <span class="bu">list</span>(cands.iloc[<span class="dv">0</span>]) <span class="op">+</span> [<span class="st">"feature + backtest skeleton"</span>, <span class="st">"add second data source"</span>, <span class="st">"risk canvas + SHAP"</span>, <span class="st">"memo + rehearsal"</span>])),</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C2"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(template_keys, <span class="bu">list</span>(cands.iloc[<span class="dv">1</span>]) <span class="op">+</span> [<span class="st">"data pull works, snapshot saved"</span>, <span class="st">"quantitative element"</span>, <span class="st">"canvas + red-team"</span>, <span class="st">"memo + rehearsal"</span>])),</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"C3"</span>: <span class="bu">dict</span>(<span class="bu">zip</span>(template_keys, <span class="bu">list</span>(cands.iloc[<span class="dv">2</span>]) <span class="op">+</span> [<span class="st">"extraction pipeline on 3 filings"</span>, <span class="st">"scale to 10, evaluate"</span>, <span class="st">"canvas + SHAP"</span>, <span class="st">"memo + rehearsal"</span>])),</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(my_candidates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(my_candidates)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="e2dfaf79" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feasibility scoring — 1 (bad) to 5 (good). Be honest; the weights are the tutor's.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feasibility scoring — 1 (bad) to 5 (good). Be honest; the weights are the tutor's.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>feas_weights <span class="op">=</span> {</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data obtainable this week (proved by data_check)"</span>: <span class="dv">5</span>,</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"method covered by week 9"</span>:                         <span class="dv">4</span>,</span>
@@ -550,18 +559,18 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>feas <span class="op">=</span> pd.DataFrame({<span class="st">"C1"</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>], <span class="st">"C2"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>], <span class="st">"C3"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]}, index<span class="op">=</span><span class="bu">list</span>(feas_weights))</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>fw <span class="op">=</span> pd.Series(feas_weights)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"feasibility (out of 5):"</span>)<span class="op">;</span> <span class="bu">print</span>((feas.mul(fw, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> fw.<span class="bu">sum</span>()).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"feasibility (out of 5):"</span>)<span class="op">;</span> <span class="bu">print</span>((feas.mul(fw, axis<span class="op">=</span><span class="dv">0</span>).<span class="bu">sum</span>() <span class="op">/</span> fw.<span class="bu">sum</span>()).<span class="bu">round</span>(<span class="dv">2</span>).sort_values(ascending<span class="op">=</span><span class="va">False</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="the-data-check-the-only-part-of-the-proposal-that-can-fail-before-it-starts" class="level3">
 <h3 class="anchored" data-anchor-id="the-data-check-the-only-part-of-the-proposal-that-can-fail-before-it-starts">The data check — the only part of the proposal that can fail before it starts</h3>
 <p>A proposal whose data cannot be loaded by Tuesday is not a proposal. The homework asks for <code>data_check.ipynb</code>; this is the pattern. Loads the series, prints shape and date range, saves a dated snapshot. Adapt the loader to whichever source your candidate needs (FRED, DefiLlama, SEC EDGAR — same three tiers).</p>
 <div id="30d95dca" class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt, os</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime <span class="im">as</span> dt, os</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>px <span class="op">=</span> load_prices([<span class="st">"BTC-USD"</span>], start<span class="op">=</span><span class="st">"2020-01-01"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"shape:"</span>, px.shape, <span class="st">"| range:"</span>, px.index.<span class="bu">min</span>().date(), <span class="st">"→"</span>, px.index.<span class="bu">max</span>().date())</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"missing values:"</span>, <span class="bu">int</span>(px.isna().<span class="bu">sum</span>().<span class="bu">sum</span>()), <span class="st">"| last value:"</span>, <span class="bu">float</span>(px.iloc[<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>]))</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">"data"</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>snap <span class="op">=</span> <span class="ss">f"data/capstone_check_</span><span class="sc">{</span>dt<span class="sc">.</span>date<span class="sc">.</span>today()<span class="sc">.</span>isoformat()<span class="sc">}</span><span class="ss">.csv"</span><span class="op">;</span> px.to_csv(snap)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"snapshot saved:"</span>, snap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>snap <span class="op">=</span> <span class="ss">f"data/capstone_check_</span><span class="sc">{</span>dt<span class="sc">.</span>date<span class="sc">.</span>today()<span class="sc">.</span>isoformat()<span class="sc">}</span><span class="ss">.csv"</span><span class="op">;</span> px.to_csv(snap)<span class="op">;</span> <span class="bu">print</span>(<span class="st">"snapshot saved:"</span>, snap)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>🔍 CHECK.</strong> If the first line printed <code>[SYNTHETIC]</code>, the check has <em>failed</em>: a random walk proves nothing about your data. The homework check passes only with <code>[live]</code> or <code>[snapshot]</code> from a real download.</p>
 </section>
@@ -581,244 +590,248 @@ Both errors are silent: no warning, a green checkmark, a confident sentence. Thi
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/niccolosalvini\.github\.io\/ese-ai\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -826,185 +839,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

@@ -130,7 +130,7 @@
     "href": "lectures/10-to-production.html#what-i-can-do.-what-i-would-not-trust.-what-i-do-next.",
     "title": "From a prototype to something a firm would run",
     "section": "What I can do. What I would not trust. What I do next.",
-    "text": "What I can do. What I would not trust. What I do next.\nWrite them now, before you leave the room. In six months they will be the most useful page in the repository.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "What I can do. What I would not trust. What I do next.\nWrite them now, before you leave the room. In six months they will be the most useful page in the repository."
   },
   {
     "objectID": "lectures/08-defi.html#today-from-the-ledger-up",
@@ -249,7 +249,7 @@
     "href": "lectures/08-defi.html#close",
     "title": "One equation runs a market",
     "section": "Close",
-    "text": "Close\nHomework 8 — one protocol through three lenses: business model, data, risk. With at least one quantitative element: an LP simulation, a TVL and fee analysis, or a token-flow analysis.\nDue Tuesday 24 November, 23:59.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 8 — one protocol through three lenses: business model, data, risk. With at least one quantitative element: an LP simulation, a TVL and fee analysis, or a token-flow analysis.\nDue Tuesday 24 November, 23:59."
   },
   {
     "objectID": "lectures/06-fintech-landscape.html#today",
@@ -361,7 +361,7 @@
     "href": "lectures/06-fintech-landscape.html#close",
     "title": "Where AI actually earns money in finance",
     "section": "Close",
-    "text": "Close\nHomework 6 — a one-page capstone proposal: question, data sources, method, deliverable, risks, and a week-by-week plan to the portfolio.\nDue Tuesday 10 November, 23:59. Signed off at the start of next session — bring it ready to defend.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 6 — a one-page capstone proposal: question, data sources, method, deliverable, risks, and a week-by-week plan to the portfolio.\nDue Tuesday 10 November, 23:59. Signed off at the start of next session — bring it ready to defend."
   },
   {
     "objectID": "lectures/04-rag.html#where-we-are",
@@ -473,7 +473,7 @@
     "href": "lectures/04-rag.html#close",
     "title": "Making it answer from your documents",
     "section": "Close",
-    "text": "Close\nHomework 4 — extend the retrieval system with a corpus of your own, write ten test questions with expected answers, record hits and misses, and explain each miss as retrieval or generation.\nDue Tuesday 20 October, 23:59.\n\nNext week the model stops answering and starts acting — and everything that can go wrong, does.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 4 — extend the retrieval system with a corpus of your own, write ten test questions with expected answers, record hits and misses, and explain each miss as retrieval or generation.\nDue Tuesday 20 October, 23:59.\n\nNext week the model stops answering and starts acting — and everything that can go wrong, does."
   },
   {
     "objectID": "lectures/02-pair-programmer.html#today",
@@ -928,140 +928,7 @@
     "href": "lectures/02-pair-programmer.html#close",
     "title": "Inside an LLM",
     "section": "Close",
-    "text": "Close\nHomework 2, due Tue 6 Oct, in your Drive folder week-02/:\n\nGPT-2 on three prompts of yours: the knobs, and four generations\nyour tokenizer on English and Russian\nanother model release, decoded word by word\na first look at next week’s data: 284,807 real card payments\n\n\nBefore you leave: three lines at the bottom of the notebook, in your words.\nNext week: real fraud data, from the raw file to a model — and whether the model is any good.\n\n\n\nAI for Business & FinTech · ESE Florence"
-  },
-  {
-    "objectID": "glossary.html",
-    "href": "glossary.html",
-    "title": "Glossary",
-    "section": "",
-    "text": "You will not learn these from this page. You will learn each one the first time it costs you a wrong number. This page is for when you forget which week that was.\nThe Wk column says where the term is introduced properly."
-  },
-  {
-    "objectID": "glossary.html#language-models",
-    "href": "glossary.html#language-models",
-    "title": "Glossary",
-    "section": "Language models",
-    "text": "Language models\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nLLM (large language model)\nA model trained to predict the next piece of text, given all the text before it. Everything else it does is built on that one operation.\n1\n\n\nNeuron\nMultiply each input by a weight, add them up with a bias, squash the result. One neuron with a sigmoid squash is a logistic regression.\n1\n\n\nNeural network\nNeurons in layers, each layer feeding the next. The hidden layers invent their own features; nobody tells them which.\n1\n\n\nParameters\nAll the weights and biases of a model — the numbers it learns. “117B parameters” means 117 billion of them.\n1\n\n\nTraining (gradient descent)\nMeasure how wrong the model is (the loss), nudge every weight slightly in the direction that reduces it, repeat — millions of times.\n1, 3\n\n\nPre-training\nTraining a network to guess the next token on a huge amount of text. Produces a base model, which continues documents rather than answering questions.\n1\n\n\nPost-training\nTurning a base model into an assistant: supervised fine-tuning (SFT) on example conversations, then reinforcement learning (RL, RLHF) on what gets rated well.\n1\n\n\nTransformer\nThe architecture of every current LLM: a block of attention plus neurons, repeated dozens of times.\n1\n\n\nMixture-of-experts (MoE)\nA model split into many specialist sub-networks, of which only a few run for each token — the capacity of a big model at the running cost of a small one.\n1\n\n\nQuantization\nStoring each weight in fewer bits (e.g. 4 instead of 16). Smaller and cheaper to run, slightly less precise.\n1\n\n\nOpen-weight\nThe weights can be downloaded and run on your own machines. Not the same as open-source: the training data and code usually stay closed.\n1\n\n\nToken\nThe unit a model reads and writes: a chunk of characters, often part of a word. You are billed, limited and measured in tokens, not words.\n1\n\n\nTokenizer\nThe component that cuts text into tokens. It is trained on a corpus, so text unlike that corpus (other languages, numbers, new names) cuts into more pieces.\n1\n\n\nContext window\nEverything the model can see in one call: instructions, history, documents, and its own answer so far. Nothing outside it exists for the model.\n1\n\n\nAttention\nHow the model reads its context: to process each token it weighs every other token in the window, and decides how much each one matters. Every-token-with-every-token is why long contexts cost more than they look.\n1\n\n\nWeights\nThe numbers learned in training. They are frozen when you call the model; nothing you type changes them.\n1\n\n\nPrompt\nThe text you send. In production it is code: versioned, tested, and stored next to what it produced.\n1–4\n\n\nTemperature\nHow strictly the model follows its own probabilities when choosing the next token. T = 0 for extraction and anything auditable; higher for ideas.\n2\n\n\nHallucination\nA fluent output that is not supported by anything in the context — the model producing the shape of an answer where the facts are missing.\n2\n\n\nEmbedding\nA list of numbers representing a piece of text, arranged so that similar meanings are close together. Turns “similar” into a distance.\n4\n\n\nRAG (retrieval-augmented generation)\nFind the relevant passages in your documents first, put them in the context, then ask the model to answer from them — and cite them.\n4\n\n\nStructured output\nForcing the answer into a fixed shape (e.g. JSON with named fields). Guarantees the type, not the truth.\n4\n\n\nFine-tuning\nFurther training of a model on your examples. Changes style and format well; is a poor way to add facts you will need to update or cite.\n1, 4\n\n\nTool call\nThe model emits a structured request (“call get_price('BTC')”); your code runs it and returns the result into the context.\n5\n\n\nAgent\nA model calling tools in a loop until it decides it is done. Every agent failure is a failure of that loop.\n5\n\n\nPrompt injection\nInstructions hidden inside a document or web page that the model reads and then obeys.\n5, 9\n\n\nEval (evaluation)\nA fixed set of questions with known answers, run on every change, so “it seems better” becomes a number.\n5\n\n\nLLM-as-judge\nUsing one model to grade another’s answers. Useful and cheap; biased, so it is itself checked against human grades.\n5\n\n\nSoftware 1.0 / 2.0 / 3.0\nThe same decision written as a rule, as a model fitted to data, or as an instruction in plain language. Knowing which one a problem needs is most of the job.\n1, 3"
-  },
-  {
-    "objectID": "glossary.html#data-and-analysis",
-    "href": "glossary.html#data-and-analysis",
-    "title": "Glossary",
-    "section": "Data and analysis",
-    "text": "Data and analysis\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nNotebook\nA document mixing code, its output and prose, run cell by cell. Ours run in Google Colab.\n1\n\n\nDataFrame\nA table in Python (pandas), with named columns and an index — usually dates, for us.\n2\n\n\nReturn (simple)\nPercentage change from one price to the next: P_t / P_{t-1} − 1.\n2\n\n\nLog return\nln(P_t / P_{t-1}). Unlike simple returns, log returns add up over time.\n2\n\n\nCumulative return\nTotal growth over a period. With simple returns it is a product of (1 + r), not a sum.\n2\n\n\nVolatility (annualised)\nStandard deviation of daily returns, scaled to a year by √(trading days): 252 for stock markets, 365 for crypto.\n2\n\n\nDrawdown\nThe fall from the highest value reached so far. Maximum drawdown is the worst such fall in the period.\n2\n\n\nJoin\nPutting two tables side by side on a shared key (for us, the date). The choice of which rows survive is a modelling decision.\n2\n\n\nForward-fill (ffill)\nFilling a missing value with the last known one. It invents data — sometimes that is the right choice, always it must be said.\n2\n\n\nUnits\nWhat a number measures: percent or decimal, dollars or thousands. Not in the data; always your responsibility.\n2\n\n\nSnapshot\nA dated copy of the data behind a result, so the number can be reproduced when the source changes.\n2\n\n\nReproducibility\nSomeone else, on another machine, gets your number. If it needs you in the room, it is not a result yet.\n2"
-  },
-  {
-    "objectID": "glossary.html#machine-learning-and-evaluation",
-    "href": "glossary.html#machine-learning-and-evaluation",
-    "title": "Glossary",
-    "section": "Machine learning and evaluation",
-    "text": "Machine learning and evaluation\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nFeature\nWhat you know at time t, used as input.\n3\n\n\nTarget\nWhat happens after t — the thing you are trying to predict.\n3\n\n\nHorizon\nHow far after t the target is measured.\n3\n\n\nBase rate\nHow often the outcome happens anyway. Predicting “always the most common outcome” scores the base rate with no model at all.\n3\n\n\nBaseline\nThe simplest reasonable alternative your model must beat — the base rate, a rule, last week’s value.\n3\n\n\nTrain / test split\nFit on one part of the data, measure on another the model never saw.\n3\n\n\nLeakage\nInformation from the future (or from the test set) getting into what the model learns from. Produces results that look excellent and are worthless.\n3\n\n\nWalk-forward\nRepeatedly fit on the past and test on the next period, moving forward in time. The honest split for anything with a date on it.\n3, 7\n\n\nAccuracy\nShare of predictions that were right. Meaningless without the base rate.\n3\n\n\nPrecision / recall\nOf what you flagged, how much was right / of what was there, how much you flagged. You trade one for the other with the threshold.\n3\n\n\nAUC\nHow well a model ranks positives above negatives, across all thresholds. 0.5 is a coin.\n3\n\n\nThreshold\nThe probability above which you act. Set it from the costs of the two kinds of error, not at 0.5 by habit.\n3\n\n\nCalibration\nWhether “70% likely” happens about 70% of the time. A model can rank well and be badly calibrated.\n3\n\n\nSHAP\nA method that splits a single prediction into contributions from each feature. Explains the model, not the world.\n9"
-  },
-  {
-    "objectID": "glossary.html#markets-and-backtesting",
-    "href": "glossary.html#markets-and-backtesting",
-    "title": "Glossary",
-    "section": "Markets and backtesting",
-    "text": "Markets and backtesting\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nBacktest\nRunning a trading rule on historical data as if you had traded it. The easiest result in finance to fool yourself with.\n7\n\n\nTransaction costs\nFees, spread and price impact paid on every trade. Many strategies that work on paper do not survive them.\n7\n\n\nSurvivorship bias\nTesting only on assets that still exist today, which quietly removes the ones that failed.\n7\n\n\nMultiple testing\nTry enough strategies and one will look good by chance. The more you tried, the less the best one means.\n7\n\n\nRegime change\nThe market’s behaviour shifts (rates, volatility, regulation), and a pattern that held stops holding.\n7\n\n\nSharpe ratio\nAverage excess return divided by its volatility — return per unit of risk.\n7\n\n\nModel risk\nThe risk of loss from a model that is wrong, or used where it was not meant to be. Banks are required to manage it.\n7"
-  },
-  {
-    "objectID": "glossary.html#crypto-and-defi",
-    "href": "glossary.html#crypto-and-defi",
-    "title": "Glossary",
-    "section": "Crypto and DeFi",
-    "text": "Crypto and DeFi\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nBlockchain\nA shared ledger that many independent computers keep in agreement, where past entries are very hard to change.\n8\n\n\nOn-chain data\nEverything recorded on the ledger — transfers, balances, contract calls — public, and readable by anyone.\n2, 8\n\n\nWallet / address\nAn address holds assets; a wallet holds the private key that can move them. Whoever has the key has the assets.\n8\n\n\nSmart contract\nA program deployed on a blockchain that runs exactly as written when called. Including its bugs.\n8\n\n\nGas\nThe fee paid to the network to execute a transaction or a contract call.\n8\n\n\nStablecoin\nA token designed to hold a fixed value, usually one US dollar (USDC, USDT). Only as stable as what backs it.\n8\n\n\nDeFi (decentralised finance)\nFinancial services — trading, lending, borrowing — run by smart contracts instead of intermediaries.\n8\n\n\nDEX (decentralised exchange)\nAn exchange run by a smart contract. Most use a liquidity pool instead of an order book.\n8\n\n\nLiquidity pool\nTwo tokens deposited in a contract that anyone can trade against.\n8\n\n\nAMM (automated market maker)\nThe rule that prices a pool. The classic one: x · y = k — the product of the two balances stays constant, so every trade moves the price.\n1, 8\n\n\nSlippage / price impact\nThe difference between the quoted price and what you actually pay, because your own trade moves the price.\n1, 8\n\n\nLP (liquidity provider)\nSomeone who deposits tokens into a pool and earns a share of trading fees.\n8\n\n\nImpermanent loss\nWhat an LP gives up, compared with simply holding the two tokens, when their relative price moves. “Impermanent” only if the price comes back.\n8\n\n\nTVL (total value locked)\nThe value of assets deposited in a protocol. A size measure, not a profit measure — and easy to inflate.\n8\n\n\nLending protocol\nA contract that lends deposited assets to borrowers who post more collateral than they borrow.\n8\n\n\nCollateral ratio / liquidation\nHow much collateral backs a loan. Fall below the threshold and the protocol sells your collateral automatically.\n8\n\n\nStaking\nLocking tokens to help secure a network (or a protocol) in exchange for a yield.\n8\n\n\nOracle\nA service that brings off-chain data (e.g. a price) onto the chain. A wrong or manipulated oracle price is a classic DeFi failure.\n8"
-  },
-  {
-    "objectID": "glossary.html#regulation-and-responsible-use",
-    "href": "glossary.html#regulation-and-responsible-use",
-    "title": "Glossary",
-    "section": "Regulation and responsible use",
-    "text": "Regulation and responsible use\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nEU AI Act\nEU regulation that classifies AI uses by risk — prohibited, high-risk, limited, minimal — with obligations rising accordingly. Credit scoring is high-risk.\n4\n\n\nMiCA\nEU Markets in Crypto-Assets regulation: licensing and rules for crypto-asset service providers and stablecoin issuers.\n8\n\n\nESMA\nThe EU securities markets authority; issues guidance under MiCA and on AI in investment services.\n8\n\n\nGDPR\nEU data protection law. For us: personal data does not go into an AI tool without a legal basis — in this course, not at all.\n2, 9\n\n\nHuman oversight\nA named person who can understand, question and override the system’s output — and actually does.\n9\n\n\nRed-teaming\nAttacking your own system on purpose to find how it fails before someone else does.\n9"
-  },
-  {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "Syllabus",
-    "section": "",
-    "text": "This is the web version of the course design document. The original is available as Word document; it still shows the Monday slot proposed in September. The timetable agreed with ESE is Wednesdays 10:00–13:00 from 23 September, and the dates on this page and on the schedule are the agreed ones. Readings may be updated before and during the course; the student is informed in writing."
-  },
-  {
-    "objectID": "syllabus.html#course-description",
-    "href": "syllabus.html#course-description",
-    "title": "Syllabus",
-    "section": "Course description",
-    "text": "Course description\nThis applied short course teaches how artificial intelligence is actually built into business and fintech workflows in 2026: not by describing tools, but by using them. Working one-to-one with the tutor, the student writes Python in Google Colab with an AI coding assistant, learns to read and verify what the assistant produces, and progressively builds a portfolio of working artefacts: a reproducible data-analysis pipeline on market and on-chain data, a supervised model with an honest evaluation, an LLM application with retrieval and tool use, a backtest that avoids the classic mistakes, and a DeFi protocol analysis. The final capstone assembles these into an AI-enabled product prototype with an implementation roadmap.\nFinance and digital assets — equities, cryptocurrencies, DeFi — are the running thread from week 2, so that every technique is practised on data the student cares about. Product and project management, the student’s professional background, is used as the lens for framing, evaluating and presenting what has been built, rather than as a separate topic. Ethics, regulation (EU AI Act, MiCA), model risk and human oversight are taught in context, at the point in the course where each becomes concrete.\nThe course deliberately pushes beyond a “managerial overview”: the student leaves able to prototype, test and critically evaluate AI systems, and therefore to manage AI projects and products with technical credibility."
-  },
-  {
-    "objectID": "syllabus.html#prerequisites",
-    "href": "syllabus.html#prerequisites",
-    "title": "Syllabus",
-    "section": "Prerequisites",
-    "text": "Prerequisites\nNo prior programming experience is required, but the student must be willing to write and run code from the first session. A degree-level background in economics or business, familiarity with spreadsheets and KPIs, and English at C1 are assumed. The student needs a laptop, a Google account (for Colab) and a GitHub account. Nothing needs to be installed locally."
-  },
-  {
-    "objectID": "syllabus.html#aims",
-    "href": "syllabus.html#aims",
-    "title": "Syllabus",
-    "section": "Aims",
-    "text": "Aims\n\nGive a working (not mathematical) understanding of how modern AI systems — machine learning models and large language models — behave, fail and are evaluated.\nMake the student productive in Python with AI coding assistants, able to reproduce, verify and extend analyses rather than trust outputs blindly.\nTeach the full loop of a data-driven decision: question, data, model, honest evaluation, decision rule, KPI.\nBuild LLM applications end-to-end: API calls, structured output, retrieval-augmented generation, tool-using agents, and evaluation suites.\nApply these skills to financial markets, digital assets and DeFi with disciplined evaluation (leakage, overfitting, costs, regime change, protocol risk).\nEmbed responsible-AI practice — privacy, security, bias, explainability, EU AI Act and MiCA, model governance and human oversight — into every artefact.\nProduce and defend an AI-enabled product prototype with a credible implementation roadmap."
-  },
-  {
-    "objectID": "syllabus.html#learning-outcomes",
-    "href": "syllabus.html#learning-outcomes",
-    "title": "Syllabus",
-    "section": "Learning outcomes",
-    "text": "Learning outcomes\nOn successful completion the student will be able to:\n\nExplain how LLMs and supervised models work at an operational level and distinguish suitable from unsuitable business applications.\nUse Python in Colab with an AI assistant to acquire, clean, join and visualise business, market and on-chain data reproducibly.\nTrain and evaluate a supervised model against a baseline using appropriate (time-aware) validation and metrics, and translate predictions into decisions and KPIs.\nBuild an LLM application with structured output, retrieval over documents and tool use, and measure its quality with an evaluation set.\nDesign and run a backtest that explicitly controls for look-ahead bias, overfitting, transaction costs and regime change, and critique trading-model claims.\nAnalyse a digital-asset or DeFi use case through business-model, data and risk lenses using real protocol data.\nAssess ethical, privacy, security, regulatory and governance implications of an AI system and design proportionate controls and human oversight.\nFrame, build, test and present an AI-enabled product prototype and defend its implementation roadmap."
-  },
-  {
-    "objectID": "syllabus.html#teaching-method-and-weekly-rhythm",
-    "href": "syllabus.html#teaching-method-and-weekly-rhythm",
-    "title": "Syllabus",
-    "section": "Teaching method and weekly rhythm",
-    "text": "Teaching method and weekly rhythm\nEvery Wednesday session follows the same shape: 20 minutes reviewing the previous homework together (the student walks the tutor through the notebook), roughly 50 minutes of concepts, about 90 minutes of lab work in Colab with the tutor at the student’s side, and 20 minutes to brief the next homework. The tutor demonstrates, then the student does the same thing on different data. The AI assistant is used openly and constantly; the skill being taught is how to direct it, read its output and catch its errors.\nHomework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59 so it can open the following session. Each piece of homework is a folder in the student’s course repository; the artefacts accumulate into the capstone rather than being discarded. Homework is formative (reviewed and discussed, not marked) but completion of all weekly work is a condition for certification."
-  },
-  {
-    "objectID": "syllabus.html#session-plan",
-    "href": "syllabus.html#session-plan",
-    "title": "Syllabus",
-    "section": "Session plan",
-    "text": "Session plan\n\nSession 1 — Wed 23 Sep — How LLMs work, and how we will work\n\n\n\n\n\n\n\n0:00–0:20\nOrientation: course contract, tools, repository, weekly rhythm, assessment.\n\n\n\n\n0:20–1:10\nLLMs at a working level: tokens, context window, sampling, why models hallucinate, embeddings, tool use, agents. What changed between 2023 and 2026 and what it means for business use.\n\n\n1:10–2:40\nLab: Colab and GitHub set-up; first notebook — download daily prices for BTC, an equity and an index (yfinance/CoinGecko), compute returns, plot. The core loop: ask the assistant → run → read the error → ask again → verify against a known fact.\n\n\n2:40–3:00\nPrompting that matters at work: system vs user instructions, examples, asking for structure, forcing sources. Homework brief.\n\n\n\nHomework: HW1 — Notebook with three assets (one equity, one cryptocurrency, one index): daily returns, summary statistics, one chart that answers a question. Plus a 200-word note describing one thing the assistant got wrong and how you caught it.\n\n\nSession 2 — Wed 30 Sep — Data analysis with AI as pair programmer\n\n\n\n\n\n\n\n0:00–0:20\nHW1 review.\n\n\n\n\n0:20–1:10\npandas by doing: tidy data, joins, resampling, missing values, look-ups. Descriptive vs predictive questions. Charts that answer a question. Data provenance, seeds and pinned versions (reproducibility); what must never be pasted into an AI tool (privacy).\n\n\n1:10–2:40\nLab: join market data with an external series (FRED rates, Google Trends, on-chain active addresses). Sanity checks: units, date alignment, known events visible in the chart. Let the assistant write the code, then break it and fix it.\n\n\n2:40–3:00\nHomework brief.\n\n\n\nHomework: HW2 — Exploratory analysis memo: one question (“does X co-move with Y?”, “what happened to Z around event E?”), a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.\n\n\nSession 3 — Wed 7 Oct — Machine learning through one problem; from prediction to decision\n\n\n\n\n\n\n\n0:00–0:20\nHW2 review.\n\n\n\n\n0:20–1:10\nSupervised learning: features, target, train/test, why time series need time-aware splits, overfitting, baselines, metrics (accuracy vs precision/recall, MAE), base rates and calibration.\n\n\n1:10–2:40\nLab: predict next-week direction or volatility regime with logistic regression and gradient boosting; compare with a naive baseline; introduce leakage on purpose (random split, future features) and watch the score lie. Walk-forward validation.\n\n\n2:40–3:00\nFrom prediction to decision: expected value, thresholds, KPI design, when a human must decide. Homework brief.\n\n\n\nHomework: HW3 — Model vs baseline with honest, time-aware evaluation, and a section titled “What would have to be true for this to be useful” (decision rule, KPI, cost of errors).\n\n\nSession 4 — Wed 14 Oct — LLM applications I — API, structured output, retrieval (RAG)\n\n\n\n\n\n\n\n0:00–0:20\nHW3 review.\n\n\n\n\n0:20–1:00\nCalling an LLM from Python: messages, temperature, JSON/structured output, cost and latency. Embeddings and similarity. The RAG pipeline: chunk → embed → retrieve → generate with citations; where it fails.\n\n\n1:00–2:30\nLab: build a RAG system over a small finance corpus — risk sections of three 10-K filings, the Bitcoin and Uniswap whitepapers, a MiCA summary. Ask questions, inspect retrieved chunks, catch wrong answers.\n\n\n2:30–3:00\nEU AI Act in 30 minutes: risk tiers, general-purpose model obligations, transparency duties; what applies to a fintech assistant. Homework brief.\n\n\n\nHomework: HW4 — Extend the RAG system with a corpus of your choice; write 10 test questions with expected answers; record hits and misses and explain the misses.\n\n\nSession 5 — Wed 21 Oct — LLM applications II — agents, tool use, evaluation; the product lens\n\n\n\n\n\n\n\n0:00–0:20\nHW4 review.\n\n\n\n\n0:20–1:00\nAgents = LLM + tools + loop. Function calling. When an agent beats a fixed pipeline and when it does not. Failure modes, cost control, prompt injection. Evaluation: golden sets, LLM-as-judge, regression tests.\n\n\n1:00–2:20\nLab: give the model tools (get_price, get_news, run_analysis) and build a “research analyst” agent that answers “summarise the last 30 days of asset X with numbers”; write an evaluation set and score it.\n\n\n2:20–3:00\nThe product lens (the student’s expertise applied): AI product brief — users, value, data, guardrails, metrics, unit economics of inference. Minor Applied Case Brief specification.\n\n\n\nHomework: Reading Week assignment — Minor Applied Case Brief (40%): 1,500 words plus an 8-minute presentation treating the system built in weeks 4–5 as a product: problem, users, evidence from evaluations, risks, controls, success metrics. Due Sunday 1 November.\n\n\nReading Week — 26 Oct – 1 Nov — no class\n\n\n\n\n\n\n\n\nIndependent work on the Minor Applied Case Brief. One optional 45-minute online office hour.\n\n\n\n\n\n\n\nSession 6 — Wed 4 Nov — Minor presentation; fintech landscape; capstone scoping\n\n\n\n\n\n\n\n0:00–0:45\nMinor Applied Case presentation, questions, written feedback.\n\n\n\n\n0:45–2:00\nWhere AI actually earns money in fintech: payments, credit scoring, fraud and AML, KYC, robo-advice, customer operations. Build/buy/partner. What regulators expect: model risk management, explainability in credit decisions, financial inclusion.\n\n\n2:00–3:00\nCapstone scoping workshop: three candidate topics, pick one, define deliverables and a weekly plan.\n\n\n\nHomework: HW6 — Capstone proposal (one page): question, data sources, method, deliverable, risks, week-by-week plan.\n\n\nSession 7 — Wed 11 Nov — AI in markets and trading — backtesting done honestly\n\n\n\n\n\n\n\n0:00–0:20\nHW6 review and proposal sign-off.\n\n\n\n\n0:20–1:10\nMarket data and features; signals; backtesting logic. The pitfalls: look-ahead bias, survivorship, overfitting and multiple testing, transaction costs and slippage, regime change. Why most published crypto ML results are wrong. LLM-derived sentiment signals and how to test them.\n\n\n1:10–2:40\nLab: vectorised momentum backtest with costs; add leakage deliberately and watch the Sharpe ratio jump; walk-forward validation; add an LLM-derived news feature and test it honestly.\n\n\n2:40–3:00\nModel risk in 20 minutes: model inventory, validation, monitoring, kill-switches. Homework brief.\n\n\n\nHomework: HW7 — Backtest of one strategy with costs and walk-forward validation, a completed pitfall checklist, and one LLM-derived feature tested against the baseline. No live trading; educational simulation only.\n\n\nSession 8 — Wed 18 Nov — Digital assets, on-chain data and DeFi\n\n\n\n\n\n\n\n0:00–0:20\nHW7 review.\n\n\n\n\n0:20–1:10\nBlockchain fundamentals at business level; wallets, exchanges, stablecoins; smart contracts; automated market makers (x·y = k), impermanent loss, lending protocols, staking. Protocol risks: smart contract, oracle, governance, depeg, liquidity.\n\n\n1:10–2:30\nLab: pull protocol data (DefiLlama TVL and fees, CoinGecko, Etherscan/Dune); simulate an AMM pool and liquidity-provider returns; analyse one protocol’s token economics; use the LLM to summarise its governance forum and check the summary against the source.\n\n\n2:30–3:00\nMiCA and ESMA in 30 minutes: what is regulated, who needs a licence, what it means for a product. Homework brief.\n\n\n\nHomework: HW8 — Protocol analysis through business-model, data and risk lenses, with at least one quantitative element (LP simulation, TVL/fee analysis or token-flow analysis).\n\n\nSession 9 — Wed 25 Nov — Responsible AI applied to the capstone; red-team\n\n\n\n\n\n\n\n0:00–0:20\nHW8 review.\n\n\n\n\n0:20–1:10\nBias and fairness, explainability (SHAP on the week-3 model), privacy, security of LLM applications (prompt injection, data exfiltration), dependence on third-party models, designing human oversight. The AI risk and controls canvas.\n\n\n1:10–2:40\nLab: red-team the student’s capstone pipeline — adversarial inputs, corrupted data, leakage audit, prompt injection; fill the risk and controls canvas; formative feedback on the prototype.\n\n\n2:40–3:00\nHomework brief.\n\n\n\nHomework: HW9 — Near-final capstone prototype with a completed risk and controls canvas and a log of what the red-team found and how it was fixed.\n\n\nSession 10 — Wed 2 Dec — Implementation, operating model and capstone studio\n\n\n\n\n\n\n\n0:00–0:20\nHW9 review.\n\n\n\n\n0:20–1:10\nFrom prototype to production: build/buy/partner, data and technology readiness, roles and governance, cost of inference at scale, change adoption, measuring value, pilot-to-production roadmap.\n\n\n1:10–2:40\nStudio: finalise the prototype and roadmap; rehearse the final presentation.\n\n\n2:40–3:00\nCourse wrap-up and reflection.\n\n\n\nHomework: Final AI Strategy and Prototype Portfolio (60%) due Sunday 6 December. Final oral presentation in Revision Week (proposed Wednesday 9 December, 10:00; 8 December is a holiday)."
-  },
-  {
-    "objectID": "syllabus.html#assessment",
-    "href": "syllabus.html#assessment",
-    "title": "Syllabus",
-    "section": "Assessment",
-    "text": "Assessment\n\n\n\n\n\n\n\n\n\nAssessment\nWeight\nSpecification\nTiming\n\n\n\n\nMinor Applied Case Brief\n40%\nIndividual 1,500-word brief plus 8-minute presentation. The LLM application built in weeks 4–5 is treated as a product: problem, users, evidence from evaluation, risks, controls, success metrics. The working notebook is submitted with the brief.\nBrief due Sun 1 Nov (Reading Week). Presentation Wed 4 Nov.\n\n\nFinal AI Strategy and Prototype Portfolio\n60%\nIndividual capstone: decision memo (2,000 words), a working prototype or reproducible workflow in the course repository, evidence of testing and evaluation, risk and controls canvas, implementation roadmap. Topic in fintech, market analytics, digital assets/DeFi or another approved business context.\nPortfolio due Sun 6 Dec. Oral presentation in Revision Week (7–13 Dec).\n\n\n\n\nMarking criteria\n\n15% Problem framing and business relevance\n25% Quality and critical use of data, evidence and AI methods\n20% Technical artefact: does it work, is it reproducible, is it honestly evaluated\n20% Risk, ethics, governance and human oversight\n20% Clarity, professional communication and reflection\n\nWeekly homework is formative and reviewed at the start of each session; completing all weekly work is a condition for the ESE certificate. No written examination is proposed for the Final Exams period (14–18 December)."
-  },
-  {
-    "objectID": "syllabus.html#responsible-use-of-ai-and-financial-context",
-    "href": "syllabus.html#responsible-use-of-ai-and-financial-context",
-    "title": "Syllabus",
-    "section": "Responsible use of AI and financial context",
-    "text": "Responsible use of AI and financial context\nAI tools are not only permitted but expected. Every submission discloses which tools were used, for what, and how outputs were verified; the analysis and judgement must remain the student’s own. No confidential, personal or commercially sensitive data may be entered into AI services. All activities involving securities, cryptocurrencies or DeFi are educational simulations and analytical exercises; nothing in the course constitutes investment advice and the student is never required to trade or commit funds."
-  },
-  {
-    "objectID": "syllabus.html#materials-and-channels",
-    "href": "syllabus.html#materials-and-channels",
-    "title": "Syllabus",
-    "section": "Materials and channels",
-    "text": "Materials and channels\n\n\n\nChannel\nPurpose\n\n\n\n\nGitHub\nSingle source of truth. The course repository (NiccoloSalvini/ese-ai, mirrored on this site) holds one folder per week with the session notebook, the concept cards and the homework. The student’s private repository ese-ai-fintech holds week-NN/hw/ and capstone/. Homework is pushed by Tuesday 23:59.\n\n\nGoogle Colab\nRuntime for all code. API keys stored in Colab Secrets, never in notebooks. Free tier is sufficient for the whole course.\n\n\nMoodle\nOfficial mirror once available: syllabus, one section per week linking here, submission points and written feedback for the two formal assessments, grades.\n\n\nTelegram (or WhatsApp)\nQuick questions between sessions, office-hour scheduling, links. Not for deliverables.\n\n\nLLM access\nGoogle AI Studio API key (free tier) for all API work in Colab, with OpenAI-compatible code so it ports to other providers. The student’s own chat subscription (ChatGPT, Claude or Gemini) for day-to-day assistance. Optional: a small OpenAI/Anthropic API budget for comparison in weeks 4–5.\n\n\nData\nyfinance, CoinGecko, FRED, DefiLlama, Etherscan and Dune (free tiers); SEC EDGAR for filings; protocol whitepapers and governance forums.\n\n\n\nWeekly cycle: Wednesday lesson; notes and homework published on GitHub and Moodle by Thursday; homework due Tuesday 23:59; reviewed together at the start of the following Wednesday."
-  },
-  {
-    "objectID": "syllabus.html#core-and-recommended-resources",
-    "href": "syllabus.html#core-and-recommended-resources",
-    "title": "Syllabus",
-    "section": "Core and recommended resources",
-    "text": "Core and recommended resources\n\nMollick, E. (2024). Co-Intelligence: Living and Working with AI. Portfolio. (Weeks 1–2.)\nLopez de Prado, M. (2018). Advances in Financial Machine Learning. Wiley — chapters on labelling, cross-validation and backtesting. (Weeks 3 and 7.)\nHarvey, C. R., Liu, Y. and Zhu, H. (2016). “…and the Cross-Section of Expected Returns.” Review of Financial Studies. (Week 7.)\nNarayanan, A. and Clark, J. (2017). “Bitcoin’s Academic Pedigree.” Communications of the ACM. (Week 8.)\nAdams, H. et al. (2021). Uniswap v3 Core (whitepaper); Nakamoto, S. (2008). Bitcoin whitepaper. (Weeks 4 and 8.)\nEuropean Commission — EU AI Act resources; ESMA — MiCA and crypto-asset resources; NIST AI Risk Management Framework and Generative AI Profile. (Weeks 4, 8, 9.)\nBIS — publications on AI in finance and DeFi. (Weeks 6 and 8.)\nProvider documentation: Google AI Studio / Gemini API, OpenAI API, Anthropic API; scikit-learn and pandas user guides. (Throughout.)\n\nReadings may be updated before and during the course to reflect developments in tools and regulation; the student will be informed in writing."
-  },
-  {
-    "objectID": "syllabus.html#academic-policies",
-    "href": "syllabus.html#academic-policies",
-    "title": "Syllabus",
-    "section": "Academic policies",
-    "text": "Academic policies\nESE attendance, academic integrity, late-submission, mitigating-circumstances and other academic policies apply. Reasonable changes may be made to content, tools, readings or activities; the student will be informed of material changes in writing."
+    "text": "Close\nHomework 2, due Tue 6 Oct, in your Drive folder week-02/:\n\nGPT-2 on three prompts of yours: the knobs, and four generations\nyour tokenizer on English and Russian\nanother model release, decoded word by word\na first look at next week’s data: 284,807 real card payments\n\n\nBefore you leave: three lines at the bottom of the notebook, in your words.\nNext week: real fraud data, from the raw file to a model — and whether the model is any good."
   },
   {
     "objectID": "week-10/session.html",
@@ -1575,6 +1442,195 @@
     "text": "The knobs and temperature are what you will set on every API call from week 4. The release decoding is the skill of reading a vendor’s claims. The fraud share is the base rate — the number every model next week has to beat."
   },
   {
+    "objectID": "glossary.html",
+    "href": "glossary.html",
+    "title": "Glossary",
+    "section": "",
+    "text": "You will not learn these from this page. You will learn each one the first time it costs you a wrong number. This page is for when you forget which week that was.\nThe Wk column says where the term is introduced properly."
+  },
+  {
+    "objectID": "glossary.html#language-models",
+    "href": "glossary.html#language-models",
+    "title": "Glossary",
+    "section": "Language models",
+    "text": "Language models\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nLLM (large language model)\nA model trained to predict the next piece of text, given all the text before it. Everything else it does is built on that one operation.\n1\n\n\nNeuron\nMultiply each input by a weight, add them up with a bias, squash the result. One neuron with a sigmoid squash is a logistic regression.\n1\n\n\nNeural network\nNeurons in layers, each layer feeding the next. The hidden layers invent their own features; nobody tells them which.\n1\n\n\nParameters\nAll the weights and biases of a model — the numbers it learns. “117B parameters” means 117 billion of them.\n1\n\n\nTraining (gradient descent)\nMeasure how wrong the model is (the loss), nudge every weight slightly in the direction that reduces it, repeat — millions of times.\n1, 3\n\n\nPre-training\nTraining a network to guess the next token on a huge amount of text. Produces a base model, which continues documents rather than answering questions.\n1\n\n\nPost-training\nTurning a base model into an assistant: supervised fine-tuning (SFT) on example conversations, then reinforcement learning (RL, RLHF) on what gets rated well.\n1\n\n\nTransformer\nThe architecture of every current LLM: a block of attention plus neurons, repeated dozens of times.\n1\n\n\nMixture-of-experts (MoE)\nA model split into many specialist sub-networks, of which only a few run for each token — the capacity of a big model at the running cost of a small one.\n1\n\n\nQuantization\nStoring each weight in fewer bits (e.g. 4 instead of 16). Smaller and cheaper to run, slightly less precise.\n1\n\n\nOpen-weight\nThe weights can be downloaded and run on your own machines. Not the same as open-source: the training data and code usually stay closed.\n1\n\n\nToken\nThe unit a model reads and writes: a chunk of characters, often part of a word. You are billed, limited and measured in tokens, not words.\n1\n\n\nTokenizer\nThe component that cuts text into tokens. It is trained on a corpus, so text unlike that corpus (other languages, numbers, new names) cuts into more pieces.\n1\n\n\nContext window\nEverything the model can see in one call: instructions, history, documents, and its own answer so far. Nothing outside it exists for the model.\n1\n\n\nAttention\nHow the model reads its context: to process each token it weighs every other token in the window, and decides how much each one matters. Every-token-with-every-token is why long contexts cost more than they look.\n1\n\n\nWeights\nThe numbers learned in training. They are frozen when you call the model; nothing you type changes them.\n1\n\n\nPrompt\nThe text you send. In production it is code: versioned, tested, and stored next to what it produced.\n1–4\n\n\nTemperature\nHow strictly the model follows its own probabilities when choosing the next token. T = 0 for extraction and anything auditable; higher for ideas.\n2\n\n\nHallucination\nA fluent output that is not supported by anything in the context — the model producing the shape of an answer where the facts are missing.\n2\n\n\nEmbedding\nA list of numbers representing a piece of text, arranged so that similar meanings are close together. Turns “similar” into a distance.\n4\n\n\nRAG (retrieval-augmented generation)\nFind the relevant passages in your documents first, put them in the context, then ask the model to answer from them — and cite them.\n4\n\n\nStructured output\nForcing the answer into a fixed shape (e.g. JSON with named fields). Guarantees the type, not the truth.\n4\n\n\nFine-tuning\nFurther training of a model on your examples. Changes style and format well; is a poor way to add facts you will need to update or cite.\n1, 4\n\n\nTool call\nThe model emits a structured request (“call get_price('BTC')”); your code runs it and returns the result into the context.\n5\n\n\nAgent\nA model calling tools in a loop until it decides it is done. Every agent failure is a failure of that loop.\n5\n\n\nPrompt injection\nInstructions hidden inside a document or web page that the model reads and then obeys.\n5, 9\n\n\nEval (evaluation)\nA fixed set of questions with known answers, run on every change, so “it seems better” becomes a number.\n5\n\n\nLLM-as-judge\nUsing one model to grade another’s answers. Useful and cheap; biased, so it is itself checked against human grades.\n5\n\n\nSoftware 1.0 / 2.0 / 3.0\nThe same decision written as a rule, as a model fitted to data, or as an instruction in plain language. Knowing which one a problem needs is most of the job.\n1, 3"
+  },
+  {
+    "objectID": "glossary.html#data-and-analysis",
+    "href": "glossary.html#data-and-analysis",
+    "title": "Glossary",
+    "section": "Data and analysis",
+    "text": "Data and analysis\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nNotebook\nA document mixing code, its output and prose, run cell by cell. Ours run in Google Colab.\n1\n\n\nDataFrame\nA table in Python (pandas), with named columns and an index — usually dates, for us.\n2\n\n\nReturn (simple)\nPercentage change from one price to the next: P_t / P_{t-1} − 1.\n2\n\n\nLog return\nln(P_t / P_{t-1}). Unlike simple returns, log returns add up over time.\n2\n\n\nCumulative return\nTotal growth over a period. With simple returns it is a product of (1 + r), not a sum.\n2\n\n\nVolatility (annualised)\nStandard deviation of daily returns, scaled to a year by √(trading days): 252 for stock markets, 365 for crypto.\n2\n\n\nDrawdown\nThe fall from the highest value reached so far. Maximum drawdown is the worst such fall in the period.\n2\n\n\nJoin\nPutting two tables side by side on a shared key (for us, the date). The choice of which rows survive is a modelling decision.\n2\n\n\nForward-fill (ffill)\nFilling a missing value with the last known one. It invents data — sometimes that is the right choice, always it must be said.\n2\n\n\nUnits\nWhat a number measures: percent or decimal, dollars or thousands. Not in the data; always your responsibility.\n2\n\n\nSnapshot\nA dated copy of the data behind a result, so the number can be reproduced when the source changes.\n2\n\n\nReproducibility\nSomeone else, on another machine, gets your number. If it needs you in the room, it is not a result yet.\n2"
+  },
+  {
+    "objectID": "glossary.html#machine-learning-and-evaluation",
+    "href": "glossary.html#machine-learning-and-evaluation",
+    "title": "Glossary",
+    "section": "Machine learning and evaluation",
+    "text": "Machine learning and evaluation\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nFeature\nWhat you know at time t, used as input.\n3\n\n\nTarget\nWhat happens after t — the thing you are trying to predict.\n3\n\n\nHorizon\nHow far after t the target is measured.\n3\n\n\nBase rate\nHow often the outcome happens anyway. Predicting “always the most common outcome” scores the base rate with no model at all.\n3\n\n\nBaseline\nThe simplest reasonable alternative your model must beat — the base rate, a rule, last week’s value.\n3\n\n\nTrain / test split\nFit on one part of the data, measure on another the model never saw.\n3\n\n\nLeakage\nInformation from the future (or from the test set) getting into what the model learns from. Produces results that look excellent and are worthless.\n3\n\n\nWalk-forward\nRepeatedly fit on the past and test on the next period, moving forward in time. The honest split for anything with a date on it.\n3, 7\n\n\nAccuracy\nShare of predictions that were right. Meaningless without the base rate.\n3\n\n\nPrecision / recall\nOf what you flagged, how much was right / of what was there, how much you flagged. You trade one for the other with the threshold.\n3\n\n\nAUC\nHow well a model ranks positives above negatives, across all thresholds. 0.5 is a coin.\n3\n\n\nThreshold\nThe probability above which you act. Set it from the costs of the two kinds of error, not at 0.5 by habit.\n3\n\n\nCalibration\nWhether “70% likely” happens about 70% of the time. A model can rank well and be badly calibrated.\n3\n\n\nSHAP\nA method that splits a single prediction into contributions from each feature. Explains the model, not the world.\n9"
+  },
+  {
+    "objectID": "glossary.html#markets-and-backtesting",
+    "href": "glossary.html#markets-and-backtesting",
+    "title": "Glossary",
+    "section": "Markets and backtesting",
+    "text": "Markets and backtesting\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nBacktest\nRunning a trading rule on historical data as if you had traded it. The easiest result in finance to fool yourself with.\n7\n\n\nTransaction costs\nFees, spread and price impact paid on every trade. Many strategies that work on paper do not survive them.\n7\n\n\nSurvivorship bias\nTesting only on assets that still exist today, which quietly removes the ones that failed.\n7\n\n\nMultiple testing\nTry enough strategies and one will look good by chance. The more you tried, the less the best one means.\n7\n\n\nRegime change\nThe market’s behaviour shifts (rates, volatility, regulation), and a pattern that held stops holding.\n7\n\n\nSharpe ratio\nAverage excess return divided by its volatility — return per unit of risk.\n7\n\n\nModel risk\nThe risk of loss from a model that is wrong, or used where it was not meant to be. Banks are required to manage it.\n7"
+  },
+  {
+    "objectID": "glossary.html#crypto-and-defi",
+    "href": "glossary.html#crypto-and-defi",
+    "title": "Glossary",
+    "section": "Crypto and DeFi",
+    "text": "Crypto and DeFi\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nBlockchain\nA shared ledger that many independent computers keep in agreement, where past entries are very hard to change.\n8\n\n\nOn-chain data\nEverything recorded on the ledger — transfers, balances, contract calls — public, and readable by anyone.\n2, 8\n\n\nWallet / address\nAn address holds assets; a wallet holds the private key that can move them. Whoever has the key has the assets.\n8\n\n\nSmart contract\nA program deployed on a blockchain that runs exactly as written when called. Including its bugs.\n8\n\n\nGas\nThe fee paid to the network to execute a transaction or a contract call.\n8\n\n\nStablecoin\nA token designed to hold a fixed value, usually one US dollar (USDC, USDT). Only as stable as what backs it.\n8\n\n\nDeFi (decentralised finance)\nFinancial services — trading, lending, borrowing — run by smart contracts instead of intermediaries.\n8\n\n\nDEX (decentralised exchange)\nAn exchange run by a smart contract. Most use a liquidity pool instead of an order book.\n8\n\n\nLiquidity pool\nTwo tokens deposited in a contract that anyone can trade against.\n8\n\n\nAMM (automated market maker)\nThe rule that prices a pool. The classic one: x · y = k — the product of the two balances stays constant, so every trade moves the price.\n1, 8\n\n\nSlippage / price impact\nThe difference between the quoted price and what you actually pay, because your own trade moves the price.\n1, 8\n\n\nLP (liquidity provider)\nSomeone who deposits tokens into a pool and earns a share of trading fees.\n8\n\n\nImpermanent loss\nWhat an LP gives up, compared with simply holding the two tokens, when their relative price moves. “Impermanent” only if the price comes back.\n8\n\n\nTVL (total value locked)\nThe value of assets deposited in a protocol. A size measure, not a profit measure — and easy to inflate.\n8\n\n\nLending protocol\nA contract that lends deposited assets to borrowers who post more collateral than they borrow.\n8\n\n\nCollateral ratio / liquidation\nHow much collateral backs a loan. Fall below the threshold and the protocol sells your collateral automatically.\n8\n\n\nStaking\nLocking tokens to help secure a network (or a protocol) in exchange for a yield.\n8\n\n\nOracle\nA service that brings off-chain data (e.g. a price) onto the chain. A wrong or manipulated oracle price is a classic DeFi failure.\n8"
+  },
+  {
+    "objectID": "glossary.html#regulation-and-responsible-use",
+    "href": "glossary.html#regulation-and-responsible-use",
+    "title": "Glossary",
+    "section": "Regulation and responsible use",
+    "text": "Regulation and responsible use\n\n\n\n\n\n\n\n\nTerm\nIn one line\nWk\n\n\n\n\nEU AI Act\nEU regulation that classifies AI uses by risk — prohibited, high-risk, limited, minimal — with obligations rising accordingly. Credit scoring is high-risk.\n4\n\n\nMiCA\nEU Markets in Crypto-Assets regulation: licensing and rules for crypto-asset service providers and stablecoin issuers.\n8\n\n\nESMA\nThe EU securities markets authority; issues guidance under MiCA and on AI in investment services.\n8\n\n\nGDPR\nEU data protection law. For us: personal data does not go into an AI tool without a legal basis — in this course, not at all.\n2, 9\n\n\nHuman oversight\nA named person who can understand, question and override the system’s output — and actually does.\n9\n\n\nRed-teaming\nAttacking your own system on purpose to find how it fails before someone else does.\n9"
+  },
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "This is the web version of the course design document. The original is available as Word document; it still shows the Monday slot proposed in September. The timetable agreed with ESE is Wednesdays 10:00–13:00 from 23 September, and the dates on this page and on the schedule are the agreed ones. Readings may be updated before and during the course; the student is informed in writing."
+  },
+  {
+    "objectID": "syllabus.html#course-description",
+    "href": "syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "Course description",
+    "text": "Course description\nThis applied short course teaches how artificial intelligence is actually built into business and fintech workflows in 2026: not by describing tools, but by using them. Working one-to-one with the tutor, the student writes Python in Google Colab with an AI coding assistant, learns to read and verify what the assistant produces, and progressively builds a portfolio of working artefacts: a reproducible data-analysis pipeline on market and on-chain data, a supervised model with an honest evaluation, an LLM application with retrieval and tool use, a backtest that avoids the classic mistakes, and a DeFi protocol analysis. The final capstone assembles these into an AI-enabled product prototype with an implementation roadmap.\nFinance and digital assets — equities, cryptocurrencies, DeFi — are the running thread from week 2, so that every technique is practised on data the student cares about. Product and project management, the student’s professional background, is used as the lens for framing, evaluating and presenting what has been built, rather than as a separate topic. Ethics, regulation (EU AI Act, MiCA), model risk and human oversight are taught in context, at the point in the course where each becomes concrete.\nThe course deliberately pushes beyond a “managerial overview”: the student leaves able to prototype, test and critically evaluate AI systems, and therefore to manage AI projects and products with technical credibility."
+  },
+  {
+    "objectID": "syllabus.html#prerequisites",
+    "href": "syllabus.html#prerequisites",
+    "title": "Syllabus",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nNo prior programming experience is required, but the student must be willing to write and run code from the first session. A degree-level background in economics or business, familiarity with spreadsheets and KPIs, and English at C1 are assumed. The student needs a laptop, a Google account (for Colab) and a GitHub account. Nothing needs to be installed locally."
+  },
+  {
+    "objectID": "syllabus.html#aims",
+    "href": "syllabus.html#aims",
+    "title": "Syllabus",
+    "section": "Aims",
+    "text": "Aims\n\nGive a working (not mathematical) understanding of how modern AI systems — machine learning models and large language models — behave, fail and are evaluated.\nMake the student productive in Python with AI coding assistants, able to reproduce, verify and extend analyses rather than trust outputs blindly.\nTeach the full loop of a data-driven decision: question, data, model, honest evaluation, decision rule, KPI.\nBuild LLM applications end-to-end: API calls, structured output, retrieval-augmented generation, tool-using agents, and evaluation suites.\nApply these skills to financial markets, digital assets and DeFi with disciplined evaluation (leakage, overfitting, costs, regime change, protocol risk).\nEmbed responsible-AI practice — privacy, security, bias, explainability, EU AI Act and MiCA, model governance and human oversight — into every artefact.\nProduce and defend an AI-enabled product prototype with a credible implementation roadmap."
+  },
+  {
+    "objectID": "syllabus.html#learning-outcomes",
+    "href": "syllabus.html#learning-outcomes",
+    "title": "Syllabus",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\nOn successful completion the student will be able to:\n\nExplain how LLMs and supervised models work at an operational level and distinguish suitable from unsuitable business applications.\nUse Python in Colab with an AI assistant to acquire, clean, join and visualise business, market and on-chain data reproducibly.\nTrain and evaluate a supervised model against a baseline using appropriate (time-aware) validation and metrics, and translate predictions into decisions and KPIs.\nBuild an LLM application with structured output, retrieval over documents and tool use, and measure its quality with an evaluation set.\nDesign and run a backtest that explicitly controls for look-ahead bias, overfitting, transaction costs and regime change, and critique trading-model claims.\nAnalyse a digital-asset or DeFi use case through business-model, data and risk lenses using real protocol data.\nAssess ethical, privacy, security, regulatory and governance implications of an AI system and design proportionate controls and human oversight.\nFrame, build, test and present an AI-enabled product prototype and defend its implementation roadmap."
+  },
+  {
+    "objectID": "syllabus.html#teaching-method-and-weekly-rhythm",
+    "href": "syllabus.html#teaching-method-and-weekly-rhythm",
+    "title": "Syllabus",
+    "section": "Teaching method and weekly rhythm",
+    "text": "Teaching method and weekly rhythm\nEvery Wednesday session follows the same shape: 20 minutes reviewing the previous homework together (the student walks the tutor through the notebook), roughly 50 minutes of concepts, about 90 minutes of lab work in Colab with the tutor at the student’s side, and 20 minutes to brief the next homework. The tutor demonstrates, then the student does the same thing on different data. The AI assistant is used openly and constantly; the skill being taught is how to direct it, read its output and catch its errors.\nHomework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59 so it can open the following session. Each piece of homework is a folder in the student’s course repository; the artefacts accumulate into the capstone rather than being discarded. Homework is formative (reviewed and discussed, not marked) but completion of all weekly work is a condition for certification."
+  },
+  {
+    "objectID": "syllabus.html#session-plan",
+    "href": "syllabus.html#session-plan",
+    "title": "Syllabus",
+    "section": "Session plan",
+    "text": "Session plan\n\nSession 1 — Wed 23 Sep — How LLMs work, and how we will work\n\n\n\n\n\n\n\n0:00–0:20\nOrientation: course contract, tools, repository, weekly rhythm, assessment.\n\n\n\n\n0:20–1:10\nLLMs at a working level: tokens, context window, sampling, why models hallucinate, embeddings, tool use, agents. What changed between 2023 and 2026 and what it means for business use.\n\n\n1:10–2:40\nLab: Colab and GitHub set-up; first notebook — download daily prices for BTC, an equity and an index (yfinance/CoinGecko), compute returns, plot. The core loop: ask the assistant → run → read the error → ask again → verify against a known fact.\n\n\n2:40–3:00\nPrompting that matters at work: system vs user instructions, examples, asking for structure, forcing sources. Homework brief.\n\n\n\nHomework: HW1 — Notebook with three assets (one equity, one cryptocurrency, one index): daily returns, summary statistics, one chart that answers a question. Plus a 200-word note describing one thing the assistant got wrong and how you caught it.\n\n\nSession 2 — Wed 30 Sep — Data analysis with AI as pair programmer\n\n\n\n\n\n\n\n0:00–0:20\nHW1 review.\n\n\n\n\n0:20–1:10\npandas by doing: tidy data, joins, resampling, missing values, look-ups. Descriptive vs predictive questions. Charts that answer a question. Data provenance, seeds and pinned versions (reproducibility); what must never be pasted into an AI tool (privacy).\n\n\n1:10–2:40\nLab: join market data with an external series (FRED rates, Google Trends, on-chain active addresses). Sanity checks: units, date alignment, known events visible in the chart. Let the assistant write the code, then break it and fix it.\n\n\n2:40–3:00\nHomework brief.\n\n\n\nHomework: HW2 — Exploratory analysis memo: one question (“does X co-move with Y?”, “what happened to Z around event E?”), a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.\n\n\nSession 3 — Wed 7 Oct — Look first, then predict: exploration, a black-box model, a decision\n\n\n\n\n\n\n\n0:00–0:20\nHW2 review.\n\n\n\n\n0:20–1:20\nExploratory analysis of eight years of BTC, ETH and S&P 500 prices: coverage and calendars, returns, fat tails, autocorrelation of direction vs size (volatility clustering), correlation regimes; an assistant’s summary table checked for errors.\n\n\n1:30–2:30\nSupervised learning with a black box: features, target, base rate, a one-line rule; a random forest predicting next-week direction and volatility regime, judged with a time-ordered split against the assistant’s shuffled one; permutation importance; leakage through a feature, on purpose.\n\n\n2:30–3:00\nFrom prediction to decision: error costs, thresholds, beating “never act” and “always act”, KPI design. Homework brief.\n\n\n\nHomework: HW3 — The same morning on an asset of his choice: exploration first, then a random forest against a base rate and a one-line rule with honest, time-aware evaluation, and a section titled “What would have to be true for this to be useful” (decision rule, KPI, cost of errors).\n\n\nSession 4 — Wed 14 Oct — LLM applications I — API, structured output, retrieval (RAG)\n\n\n\n\n\n\n\n0:00–0:20\nHW3 review.\n\n\n\n\n0:20–1:00\nCalling an LLM from Python: messages, temperature, JSON/structured output, cost and latency. Embeddings and similarity. The RAG pipeline: chunk → embed → retrieve → generate with citations; where it fails.\n\n\n1:00–2:30\nLab: build a RAG system over a small finance corpus — risk sections of three 10-K filings, the Bitcoin and Uniswap whitepapers, a MiCA summary. Ask questions, inspect retrieved chunks, catch wrong answers.\n\n\n2:30–3:00\nEU AI Act in 30 minutes: risk tiers, general-purpose model obligations, transparency duties; what applies to a fintech assistant. Homework brief.\n\n\n\nHomework: HW4 — Extend the RAG system with a corpus of your choice; write 10 test questions with expected answers; record hits and misses and explain the misses.\n\n\nSession 5 — Wed 21 Oct — LLM applications II — agents, tool use, evaluation; the product lens\n\n\n\n\n\n\n\n0:00–0:20\nHW4 review.\n\n\n\n\n0:20–1:00\nAgents = LLM + tools + loop. Function calling. When an agent beats a fixed pipeline and when it does not. Failure modes, cost control, prompt injection. Evaluation: golden sets, LLM-as-judge, regression tests.\n\n\n1:00–2:20\nLab: give the model tools (get_price, get_news, run_analysis) and build a “research analyst” agent that answers “summarise the last 30 days of asset X with numbers”; write an evaluation set and score it.\n\n\n2:20–3:00\nThe product lens (the student’s expertise applied): AI product brief — users, value, data, guardrails, metrics, unit economics of inference. Minor Applied Case Brief specification.\n\n\n\nHomework: Reading Week assignment — Minor Applied Case Brief (40%): 1,500 words plus an 8-minute presentation treating the system built in weeks 4–5 as a product: problem, users, evidence from evaluations, risks, controls, success metrics. Due Sunday 1 November.\n\n\nReading Week — 26 Oct – 1 Nov — no class\n\n\n\n\n\n\n\n\nIndependent work on the Minor Applied Case Brief. One optional 45-minute online office hour.\n\n\n\n\n\n\n\nSession 6 — Wed 4 Nov — Minor presentation; fintech landscape; capstone scoping\n\n\n\n\n\n\n\n0:00–0:45\nMinor Applied Case presentation, questions, written feedback.\n\n\n\n\n0:45–2:00\nWhere AI actually earns money in fintech: payments, credit scoring, fraud and AML, KYC, robo-advice, customer operations. Build/buy/partner. What regulators expect: model risk management, explainability in credit decisions, financial inclusion.\n\n\n2:00–3:00\nCapstone scoping workshop: three candidate topics, pick one, define deliverables and a weekly plan.\n\n\n\nHomework: HW6 — Capstone proposal (one page): question, data sources, method, deliverable, risks, week-by-week plan.\n\n\nSession 7 — Wed 11 Nov — AI in markets and trading — backtesting done honestly\n\n\n\n\n\n\n\n0:00–0:20\nHW6 review and proposal sign-off.\n\n\n\n\n0:20–1:10\nMarket data and features; signals; backtesting logic. The pitfalls: look-ahead bias, survivorship, overfitting and multiple testing, transaction costs and slippage, regime change. Why most published crypto ML results are wrong. LLM-derived sentiment signals and how to test them.\n\n\n1:10–2:40\nLab: vectorised momentum backtest with costs; add leakage deliberately and watch the Sharpe ratio jump; walk-forward validation; add an LLM-derived news feature and test it honestly.\n\n\n2:40–3:00\nModel risk in 20 minutes: model inventory, validation, monitoring, kill-switches. Homework brief.\n\n\n\nHomework: HW7 — Backtest of one strategy with costs and walk-forward validation, a completed pitfall checklist, and one LLM-derived feature tested against the baseline. No live trading; educational simulation only.\n\n\nSession 8 — Wed 18 Nov — Digital assets, on-chain data and DeFi\n\n\n\n\n\n\n\n0:00–0:20\nHW7 review.\n\n\n\n\n0:20–1:10\nBlockchain fundamentals at business level; wallets, exchanges, stablecoins; smart contracts; automated market makers (x·y = k), impermanent loss, lending protocols, staking. Protocol risks: smart contract, oracle, governance, depeg, liquidity.\n\n\n1:10–2:30\nLab: pull protocol data (DefiLlama TVL and fees, CoinGecko, Etherscan/Dune); simulate an AMM pool and liquidity-provider returns; analyse one protocol’s token economics; use the LLM to summarise its governance forum and check the summary against the source.\n\n\n2:30–3:00\nMiCA and ESMA in 30 minutes: what is regulated, who needs a licence, what it means for a product. Homework brief.\n\n\n\nHomework: HW8 — Protocol analysis through business-model, data and risk lenses, with at least one quantitative element (LP simulation, TVL/fee analysis or token-flow analysis).\n\n\nSession 9 — Wed 25 Nov — Responsible AI applied to the capstone; red-team\n\n\n\n\n\n\n\n0:00–0:20\nHW8 review.\n\n\n\n\n0:20–1:10\nBias and fairness, explainability (SHAP on the week-3 model), privacy, security of LLM applications (prompt injection, data exfiltration), dependence on third-party models, designing human oversight. The AI risk and controls canvas.\n\n\n1:10–2:40\nLab: red-team the student’s capstone pipeline — adversarial inputs, corrupted data, leakage audit, prompt injection; fill the risk and controls canvas; formative feedback on the prototype.\n\n\n2:40–3:00\nHomework brief.\n\n\n\nHomework: HW9 — Near-final capstone prototype with a completed risk and controls canvas and a log of what the red-team found and how it was fixed.\n\n\nSession 10 — Wed 2 Dec — Implementation, operating model and capstone studio\n\n\n\n\n\n\n\n0:00–0:20\nHW9 review.\n\n\n\n\n0:20–1:10\nFrom prototype to production: build/buy/partner, data and technology readiness, roles and governance, cost of inference at scale, change adoption, measuring value, pilot-to-production roadmap.\n\n\n1:10–2:40\nStudio: finalise the prototype and roadmap; rehearse the final presentation.\n\n\n2:40–3:00\nCourse wrap-up and reflection.\n\n\n\nHomework: Final AI Strategy and Prototype Portfolio (60%) due Sunday 6 December. Final oral presentation in Revision Week (proposed Wednesday 9 December, 10:00; 8 December is a holiday)."
+  },
+  {
+    "objectID": "syllabus.html#assessment",
+    "href": "syllabus.html#assessment",
+    "title": "Syllabus",
+    "section": "Assessment",
+    "text": "Assessment\n\n\n\n\n\n\n\n\n\nAssessment\nWeight\nSpecification\nTiming\n\n\n\n\nMinor Applied Case Brief\n40%\nIndividual 1,500-word brief plus 8-minute presentation. The LLM application built in weeks 4–5 is treated as a product: problem, users, evidence from evaluation, risks, controls, success metrics. The working notebook is submitted with the brief.\nBrief due Sun 1 Nov (Reading Week). Presentation Wed 4 Nov.\n\n\nFinal AI Strategy and Prototype Portfolio\n60%\nIndividual capstone: decision memo (2,000 words), a working prototype or reproducible workflow in the course repository, evidence of testing and evaluation, risk and controls canvas, implementation roadmap. Topic in fintech, market analytics, digital assets/DeFi or another approved business context.\nPortfolio due Sun 6 Dec. Oral presentation in Revision Week (7–13 Dec).\n\n\n\n\nMarking criteria\n\n15% Problem framing and business relevance\n25% Quality and critical use of data, evidence and AI methods\n20% Technical artefact: does it work, is it reproducible, is it honestly evaluated\n20% Risk, ethics, governance and human oversight\n20% Clarity, professional communication and reflection\n\nWeekly homework is formative and reviewed at the start of each session; completing all weekly work is a condition for the ESE certificate. No written examination is proposed for the Final Exams period (14–18 December)."
+  },
+  {
+    "objectID": "syllabus.html#responsible-use-of-ai-and-financial-context",
+    "href": "syllabus.html#responsible-use-of-ai-and-financial-context",
+    "title": "Syllabus",
+    "section": "Responsible use of AI and financial context",
+    "text": "Responsible use of AI and financial context\nAI tools are not only permitted but expected. Every submission discloses which tools were used, for what, and how outputs were verified; the analysis and judgement must remain the student’s own. No confidential, personal or commercially sensitive data may be entered into AI services. All activities involving securities, cryptocurrencies or DeFi are educational simulations and analytical exercises; nothing in the course constitutes investment advice and the student is never required to trade or commit funds."
+  },
+  {
+    "objectID": "syllabus.html#materials-and-channels",
+    "href": "syllabus.html#materials-and-channels",
+    "title": "Syllabus",
+    "section": "Materials and channels",
+    "text": "Materials and channels\n\n\n\nChannel\nPurpose\n\n\n\n\nGitHub\nSingle source of truth. The course repository (NiccoloSalvini/ese-ai, mirrored on this site) holds one folder per week with the session notebook, the concept cards and the homework. The student’s private repository ese-ai-fintech holds week-NN/hw/ and capstone/. Homework is pushed by Tuesday 23:59.\n\n\nGoogle Colab\nRuntime for all code. API keys stored in Colab Secrets, never in notebooks. Free tier is sufficient for the whole course.\n\n\nMoodle\nOfficial mirror once available: syllabus, one section per week linking here, submission points and written feedback for the two formal assessments, grades.\n\n\nTelegram (or WhatsApp)\nQuick questions between sessions, office-hour scheduling, links. Not for deliverables.\n\n\nLLM access\nGoogle AI Studio API key (free tier) for all API work in Colab, with OpenAI-compatible code so it ports to other providers. The student’s own chat subscription (ChatGPT, Claude or Gemini) for day-to-day assistance. Optional: a small OpenAI/Anthropic API budget for comparison in weeks 4–5.\n\n\nData\nyfinance, CoinGecko, FRED, DefiLlama, Etherscan and Dune (free tiers); SEC EDGAR for filings; protocol whitepapers and governance forums.\n\n\n\nWeekly cycle: Wednesday lesson; notes and homework published on GitHub and Moodle by Thursday; homework due Tuesday 23:59; reviewed together at the start of the following Wednesday."
+  },
+  {
+    "objectID": "syllabus.html#core-and-recommended-resources",
+    "href": "syllabus.html#core-and-recommended-resources",
+    "title": "Syllabus",
+    "section": "Core and recommended resources",
+    "text": "Core and recommended resources\n\nMollick, E. (2024). Co-Intelligence: Living and Working with AI. Portfolio. (Weeks 1–2.)\nLopez de Prado, M. (2018). Advances in Financial Machine Learning. Wiley — chapters on labelling, cross-validation and backtesting. (Weeks 3 and 7.)\nHarvey, C. R., Liu, Y. and Zhu, H. (2016). “…and the Cross-Section of Expected Returns.” Review of Financial Studies. (Week 7.)\nNarayanan, A. and Clark, J. (2017). “Bitcoin’s Academic Pedigree.” Communications of the ACM. (Week 8.)\nAdams, H. et al. (2021). Uniswap v3 Core (whitepaper); Nakamoto, S. (2008). Bitcoin whitepaper. (Weeks 4 and 8.)\nEuropean Commission — EU AI Act resources; ESMA — MiCA and crypto-asset resources; NIST AI Risk Management Framework and Generative AI Profile. (Weeks 4, 8, 9.)\nBIS — publications on AI in finance and DeFi. (Weeks 6 and 8.)\nProvider documentation: Google AI Studio / Gemini API, OpenAI API, Anthropic API; scikit-learn and pandas user guides. (Throughout.)\n\nReadings may be updated before and during the course to reflect developments in tools and regulation; the student will be informed in writing."
+  },
+  {
+    "objectID": "syllabus.html#academic-policies",
+    "href": "syllabus.html#academic-policies",
+    "title": "Syllabus",
+    "section": "Academic policies",
+    "text": "Academic policies\nESE attendance, academic integrity, late-submission, mitigating-circumstances and other academic policies apply. Reasonable changes may be made to content, tools, readings or activities; the student will be informed of material changes in writing."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Artificial Intelligence for Business and FinTech",
+    "section": "",
+    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nInside an LLM — tokens, embeddings, attention, the transformer, temperature · a real model in Colab\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nLook first, then predict · exploration, a black box, a decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "Nothing is installed on your laptop. You need a Google account, a chat assistant, and — from week 4 — one key."
+  },
+  {
+    "objectID": "setup.html#google-account-and-colab",
+    "href": "setup.html#google-account-and-colab",
+    "title": "Setup",
+    "section": "1. Google account and Colab",
+    "text": "1. Google account and Colab\nGoogle Colab is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.\nEvery session notebook opens from the course site with the Colab ↗ link. Then File ▸ Save a copy in Drive: from that moment the copy is yours."
+  },
+  {
+    "objectID": "setup.html#your-course-folder",
+    "href": "setup.html#your-course-folder",
+    "title": "Setup",
+    "section": "2. Your course folder",
+    "text": "2. Your course folder\n\nIn Google Drive, create a folder named ese-ai-fintech and share it with the tutor.\nOne sub-folder per week: week-01/, week-02/, …, and later capstone/.\nYour session notebooks and your homework go there. That folder is what gets read and assessed.\n\nBefore handing anything in: Runtime ▸ Restart and run all. A notebook that runs top to bottom from a clean start, with no errors, is the minimum."
+  },
+  {
+    "objectID": "setup.html#an-llm-api-key-from-week-4",
+    "href": "setup.html#an-llm-api-key-from-week-4",
+    "title": "Setup",
+    "section": "3. An LLM API key — from week 4",
+    "text": "3. An LLM API key — from week 4\nFrom session 4 the notebooks call a language model from Python. The default is the Google AI Studio free tier, with OpenAI-compatible code so it ports to other providers.\n\nCreate a key at aistudio.google.com.\nIn Colab, open the key icon in the left sidebar (Secrets), add a secret named GEMINI_API_KEY, paste the key, and enable notebook access.\nNever paste a key into a notebook cell. Keys live in Colab Secrets only; the notebooks read them from there.\n\nAn OpenAI or Anthropic key is optional, for comparison in weeks 4–5."
+  },
+  {
+    "objectID": "setup.html#a-chat-assistant",
+    "href": "setup.html#a-chat-assistant",
+    "title": "Setup",
+    "section": "4. A chat assistant",
+    "text": "4. A chat assistant\nPick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.\nTwo rules apply from the first day:\n\nNo confidential, personal or commercially sensitive data goes into an AI service.\nEvery submission includes an AI-use disclosure: which tools, for what, and how the outputs were verified."
+  },
+  {
+    "objectID": "setup.html#data-sources-you-will-use",
+    "href": "setup.html#data-sources-you-will-use",
+    "title": "Setup",
+    "section": "Data sources you will use",
+    "text": "Data sources you will use\nAll free tiers, no sign-up unless stated: yfinance, CoinGecko, FRED, DefiLlama, Etherscan and Dune (account), SEC EDGAR for filings. Notebooks fall back to a saved snapshot when a live source is down."
+  },
+  {
+    "objectID": "setup.html#something-is-not-working",
+    "href": "setup.html#something-is-not-working",
+    "title": "Setup",
+    "section": "Something is not working?",
+    "text": "Something is not working?\nWrite on the course channel with a screenshot of the error and the cell that produced it. Reading the error message before asking is already half of the course."
+  },
+  {
     "objectID": "week-01/homework.html",
     "href": "week-01/homework.html",
     "title": "Homework 1 — Your starting point",
@@ -1626,58 +1682,58 @@
   {
     "objectID": "week-03/homework.html",
     "href": "week-03/homework.html",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "Due: Tuesday 13 October 2026, 23:59 · folder week-03/hw/ in your repo\n\n\nBuild one supervised model on a financial question of your choice, evaluate it honestly against a baseline, and — the real deliverable — write what would have to be true for it to be useful in a decision.\n\n\n\n\nDirection or volatility regime of an asset you did not use in class, at a horizon of your choice (state it).\nWhether an asset’s next-week absolute move exceeds a threshold (a “big move” classifier).\nA regression target if you prefer: next-week realised volatility as a number (use MAE and compare with “predict last week’s volatility”).\nYour own, if it is a prediction at time t of something that happens after t. Message me first.\n\n\n\n\n\nhw3.ipynb — runs from a clean runtime. Must contain, in this order:\n\ndata acquisition (reuse your week-1/week-2 code; add at least one external feature, e.g. a macro series or an on-chain series);\nfeatures with a markdown table: feature name → latest row of data it uses;\nthe target, and the hand check for one date (recompute from raw data, assert equality);\nthe base rate / trivial baseline, stated;\nat least two models evaluated with a time-ordered split (TimeSeriesSplit or a manual walk-forward), reporting accuracy and AUC (or MAE vs baseline for regression);\none deliberately leaky variant (a centred window, a shuffled split, or a feature using future data) with the score shown next to the honest one, labelled as the leak it is;\na threshold/decision table with explicit error costs of your choosing, and a calibration table.\n\nmemo.md (400–600 words) with these headings:\n\nQuestion and target\nHonest result vs baseline (one table, one sentence)\nWhat would have to be true for this to be useful — the decision it would inform, the cost of each error, the threshold you would choose, the KPI you would report in production, and the single strongest reason it might not work out of sample.\nAI-use disclosure\n\n\n\n\n\n\nNo shuffled split in the honest evaluation. If the assistant writes train_test_split or cross_val_score without a time-aware splitter, that is your “what the assistant got wrong” for this week — say so in the memo.\nEvery feature must be explainable as “computable at time t”. I will pick two and ask.\nNo hyperparameter tuning. Two sensible default models are enough.\n\n\n\n\n5–6 hours. If the model does not beat the baseline, that is a valid and common result — write it up as such. A memo that says “this is not predictable with these features, here is the evidence” is a good memo.\n\n\n\n\nRestart and run all: no errors.\nFeature table with latest-row-used is present.\nTarget hand-check asserts and passes.\nBase rate stated next to every accuracy figure.\nHonest split is time-ordered; leaky variant labelled.\nThreshold table uses stated costs; a KPI is chosen and defended.\nSnapshot saved; AI-use disclosure present.\n\n\n\n\nThis notebook is the evaluation layer of your pipeline: time-ordered validation, baseline comparison, cost-weighted decision, calibration. Week 7 reuses it for backtesting; week 9 reuses it for the risk and controls canvas. If you choose your capstone asset now, use it here."
+    "text": "Due: Tuesday 13 October 2026, 23:59 · folder week-03/ in your shared Drive folder ese-ai-fintech\n\n\nRepeat today’s morning on an asset you choose: explore it until you know which question is worth a model, then train one black box, judge it honestly against a base rate and a one-line rule, and — the real deliverable — write what would have to be true for it to be useful in a decision.\n\n\n\nAnything with a daily price on Yahoo Finance that we did not use in class: SOL-USD, an exchange or mining stock (COIN, MSTR, MARA), a stock you follow, gold (GLD), an index outside the US. If you already have a capstone idea, use its asset.\n\n\n\n\nhw3.ipynb — runs from a clean runtime (Runtime ▸ Restart and run all). Two parts, in this order.\nPart 1 — Explore (reuse today’s cells; change the data):\n\nwhat is in the table: rows, dates, missing days and why;\nthe five worst and five best days, with one line on what happened for two of them;\nfat tails: days beyond 4 standard deviations, against what a normal distribution gives;\ndirection vs size: the autocorrelation table, and one sentence on what it tells you;\none chart of your own whose title is the answer to a question (not “Rolling volatility” but “SOL’s calm months end abruptly”);\nthree lines: what you now expect a model can and cannot predict.\n\nPart 2 — Predict:\n\nfeatures with a markdown table: feature → latest day of data it uses; add at least one feature we did not use in class;\nthe target, and the hand check for one date (recompute from raw data, assert);\nthe base rate and a one-line rule, stated;\na random forest evaluated with a time-ordered split, AUC and accuracy next to the base rate and the rule;\nthe same forest with a shuffled split, labelled as the leak it is;\npermutation importance, and one sentence: does it agree with Part 1?\na threshold table with error costs of your choosing, checked against “never act” and “always act”.\n\nmemo.md (400–600 words), with these headings:\n\nQuestion and asset — and why the exploration pointed you to this target;\nHonest result — one table (base rate, rule, forest honest, forest shuffled), one sentence;\nWhat would have to be true for this to be useful — the decision it informs, what each error costs, the threshold you would choose, the KPI you would put on the dashboard, and the single strongest reason it might not work next year;\nAI-use disclosure — what the assistant wrote, and what it got wrong.\n\n\n\n\n\n\nNo shuffled split in the honest evaluation. If the assistant writes train_test_split without being told, that is your “what the assistant got wrong” for this week.\nEvery feature must be explainable as “computable at day t”. I will pick two and ask.\nNo tuning of the forest. Today’s settings are enough; the point is the judgement, not the score.\nStocks trade 5 days a week, crypto 7: state your calendar decision in Part 1.\n\n\n\n\n5–6 hours. If the forest does not beat the rule — or the base rate — that is a valid and common result. A memo that says “the rule is enough, here is the evidence” is a good memo.\n\n\n\n\nRestart and run all: no errors.\nPart 1 ends with three lines, and Part 2 refers back to them.\nFeature table with latest day used is present.\nTarget hand check asserts and passes.\nBase rate and rule next to every score.\nThe shuffled result is labelled as a leak.\nThreshold table beats (or honestly fails to beat) both trivial policies; a KPI is chosen and defended.\nAI-use disclosure present.\n\n\n\n\nPart 1 is how you will choose the capstone question; Part 2 is its evaluation layer — base rate, rule, honest split, cost-weighted decision. Week 7 reuses it for backtesting; week 9 opens the black box with SHAP and builds the risk and controls canvas on top."
   },
   {
     "objectID": "week-03/homework.html#goal",
     "href": "week-03/homework.html#goal",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "Build one supervised model on a financial question of your choice, evaluate it honestly against a baseline, and — the real deliverable — write what would have to be true for it to be useful in a decision."
+    "text": "Repeat today’s morning on an asset you choose: explore it until you know which question is worth a model, then train one black box, judge it honestly against a base rate and a one-line rule, and — the real deliverable — write what would have to be true for it to be useful in a decision."
   },
   {
-    "objectID": "week-03/homework.html#pick-a-target-one",
-    "href": "week-03/homework.html#pick-a-target-one",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "objectID": "week-03/homework.html#pick-an-asset-one",
+    "href": "week-03/homework.html#pick-an-asset-one",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "Direction or volatility regime of an asset you did not use in class, at a horizon of your choice (state it).\nWhether an asset’s next-week absolute move exceeds a threshold (a “big move” classifier).\nA regression target if you prefer: next-week realised volatility as a number (use MAE and compare with “predict last week’s volatility”).\nYour own, if it is a prediction at time t of something that happens after t. Message me first."
+    "text": "Anything with a daily price on Yahoo Finance that we did not use in class: SOL-USD, an exchange or mining stock (COIN, MSTR, MARA), a stock you follow, gold (GLD), an index outside the US. If you already have a capstone idea, use its asset."
   },
   {
-    "objectID": "week-03/homework.html#deliverables-in-week-03hw",
-    "href": "week-03/homework.html#deliverables-in-week-03hw",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "objectID": "week-03/homework.html#deliverables-in-week-03",
+    "href": "week-03/homework.html#deliverables-in-week-03",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "hw3.ipynb — runs from a clean runtime. Must contain, in this order:\n\ndata acquisition (reuse your week-1/week-2 code; add at least one external feature, e.g. a macro series or an on-chain series);\nfeatures with a markdown table: feature name → latest row of data it uses;\nthe target, and the hand check for one date (recompute from raw data, assert equality);\nthe base rate / trivial baseline, stated;\nat least two models evaluated with a time-ordered split (TimeSeriesSplit or a manual walk-forward), reporting accuracy and AUC (or MAE vs baseline for regression);\none deliberately leaky variant (a centred window, a shuffled split, or a feature using future data) with the score shown next to the honest one, labelled as the leak it is;\na threshold/decision table with explicit error costs of your choosing, and a calibration table.\n\nmemo.md (400–600 words) with these headings:\n\nQuestion and target\nHonest result vs baseline (one table, one sentence)\nWhat would have to be true for this to be useful — the decision it would inform, the cost of each error, the threshold you would choose, the KPI you would report in production, and the single strongest reason it might not work out of sample.\nAI-use disclosure"
+    "text": "hw3.ipynb — runs from a clean runtime (Runtime ▸ Restart and run all). Two parts, in this order.\nPart 1 — Explore (reuse today’s cells; change the data):\n\nwhat is in the table: rows, dates, missing days and why;\nthe five worst and five best days, with one line on what happened for two of them;\nfat tails: days beyond 4 standard deviations, against what a normal distribution gives;\ndirection vs size: the autocorrelation table, and one sentence on what it tells you;\none chart of your own whose title is the answer to a question (not “Rolling volatility” but “SOL’s calm months end abruptly”);\nthree lines: what you now expect a model can and cannot predict.\n\nPart 2 — Predict:\n\nfeatures with a markdown table: feature → latest day of data it uses; add at least one feature we did not use in class;\nthe target, and the hand check for one date (recompute from raw data, assert);\nthe base rate and a one-line rule, stated;\na random forest evaluated with a time-ordered split, AUC and accuracy next to the base rate and the rule;\nthe same forest with a shuffled split, labelled as the leak it is;\npermutation importance, and one sentence: does it agree with Part 1?\na threshold table with error costs of your choosing, checked against “never act” and “always act”.\n\nmemo.md (400–600 words), with these headings:\n\nQuestion and asset — and why the exploration pointed you to this target;\nHonest result — one table (base rate, rule, forest honest, forest shuffled), one sentence;\nWhat would have to be true for this to be useful — the decision it informs, what each error costs, the threshold you would choose, the KPI you would put on the dashboard, and the single strongest reason it might not work next year;\nAI-use disclosure — what the assistant wrote, and what it got wrong."
   },
   {
     "objectID": "week-03/homework.html#constraints",
     "href": "week-03/homework.html#constraints",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "No shuffled split in the honest evaluation. If the assistant writes train_test_split or cross_val_score without a time-aware splitter, that is your “what the assistant got wrong” for this week — say so in the memo.\nEvery feature must be explainable as “computable at time t”. I will pick two and ask.\nNo hyperparameter tuning. Two sensible default models are enough."
+    "text": "No shuffled split in the honest evaluation. If the assistant writes train_test_split without being told, that is your “what the assistant got wrong” for this week.\nEvery feature must be explainable as “computable at day t”. I will pick two and ask.\nNo tuning of the forest. Today’s settings are enough; the point is the judgement, not the score.\nStocks trade 5 days a week, crypto 7: state your calendar decision in Part 1."
   },
   {
     "objectID": "week-03/homework.html#scope",
     "href": "week-03/homework.html#scope",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "5–6 hours. If the model does not beat the baseline, that is a valid and common result — write it up as such. A memo that says “this is not predictable with these features, here is the evidence” is a good memo."
+    "text": "5–6 hours. If the forest does not beat the rule — or the base rate — that is a valid and common result. A memo that says “the rule is enough, here is the evidence” is a good memo."
   },
   {
     "objectID": "week-03/homework.html#self-check",
     "href": "week-03/homework.html#self-check",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "Restart and run all: no errors.\nFeature table with latest-row-used is present.\nTarget hand-check asserts and passes.\nBase rate stated next to every accuracy figure.\nHonest split is time-ordered; leaky variant labelled.\nThreshold table uses stated costs; a KPI is chosen and defended.\nSnapshot saved; AI-use disclosure present."
+    "text": "Restart and run all: no errors.\nPart 1 ends with three lines, and Part 2 refers back to them.\nFeature table with latest day used is present.\nTarget hand check asserts and passes.\nBase rate and rule next to every score.\nThe shuffled result is labelled as a leak.\nThreshold table beats (or honestly fails to beat) both trivial policies; a KPI is chosen and defended.\nAI-use disclosure present."
   },
   {
     "objectID": "week-03/homework.html#how-this-feeds-the-capstone",
     "href": "week-03/homework.html#how-this-feeds-the-capstone",
-    "title": "Homework 3 — A model, a baseline, and what would have to be true",
+    "title": "Homework 3 — Look first, then predict, on your own asset",
     "section": "",
-    "text": "This notebook is the evaluation layer of your pipeline: time-ordered validation, baseline comparison, cost-weighted decision, calibration. Week 7 reuses it for backtesting; week 9 reuses it for the risk and controls canvas. If you choose your capstone asset now, use it here."
+    "text": "Part 1 is how you will choose the capstone question; Part 2 is its evaluation layer — base rate, rule, honest split, cost-weighted decision. Week 7 reuses it for backtesting; week 9 opens the black box with SHAP and builds the risk and controls canvas on top."
   },
   {
     "objectID": "week-05/homework.html",
@@ -1906,37 +1962,100 @@
   {
     "objectID": "week-03/session.html",
     "href": "week-03/session.html",
-    "title": "Week 3 — Machine learning through one problem",
+    "title": "Week 3 — Look first, then predict",
     "section": "",
-    "text": "ESE · AI for Business and FinTech · 7 October 2026\nOne problem, done properly, teaches more than a tour of algorithms. Today: can we predict anything about next week’s BTC from what we know today? We build features, train two models against a trivial baseline, and — most importantly — evaluate them in the only way that means anything for time series. Then we turn a prediction into a decision.\n!pip -q install yfinance\n# --- course helper: price loader with fallbacks (run this cell once per session) ---\nimport warnings, numpy as np, pandas as pd\nwarnings.filterwarnings(\"ignore\")\n\ndef load_prices(tickers, start=\"2022-01-01\", end=None, cache_dir=\"data\"):\n    \"\"\"Daily close prices, one column per ticker.\n    1) try yfinance (live)  2) try a CSV snapshot in data/  3) synthetic random walk (pipeline test only).\"\"\"\n    import os\n    os.makedirs(cache_dir, exist_ok=True)\n    key = \"_\".join(t.replace(\"^\", \"\") for t in tickers)\n    snap = os.path.join(cache_dir, f\"prices_{key}.csv\")\n    try:\n        import yfinance as yf\n        raw = yf.download(tickers, start=start, end=end, auto_adjust=True, progress=False)\n        px = raw[\"Close\"] if isinstance(raw.columns, pd.MultiIndex) else raw[[\"Close\"]].rename(columns={\"Close\": tickers[0]})\n        px = px.dropna(how=\"all\")\n        if len(px) &lt; 50:\n            raise RuntimeError(\"empty download\")\n        px.to_csv(snap)\n        print(f\"[live] {px.shape[0]} rows from yfinance; snapshot saved to {snap}\")\n        return px\n    except Exception as e:\n        print(f\"[warn] yfinance failed ({type(e).__name__}); trying snapshot\")\n    if os.path.exists(snap):\n        px = pd.read_csv(snap, index_col=0, parse_dates=True)\n        print(f\"[snapshot] {px.shape[0]} rows from {snap}\")\n        return px\n    print(\"[SYNTHETIC] no network and no snapshot: generating a random walk. Numbers below are NOT real.\")\n    rng = np.random.default_rng(0)\n    idx = pd.bdate_range(start, end or pd.Timestamp.today().normalize())\n    px = pd.DataFrame({t: 100 * np.exp(np.cumsum(rng.normal(0.0004, 0.02 if \"USD\" in t else 0.011, len(idx))))\n                       for t in tickers}, index=idx)\n    return px\npx = load_prices([\"BTC-USD\", \"SPY\"], start=\"2018-01-01\").ffill().dropna()\nd = pd.DataFrame(index=px.index)\nd[\"ret\"] = px[\"BTC-USD\"].pct_change()\nd[\"spy_ret\"] = px[\"SPY\"].pct_change()\nd = d.dropna()\nprint(d.shape); d.tail(3)"
+    "text": "ESE · AI for Business and FinTech · Wednesday 7 October 2026\nOne dataset, one question, two halves.\nHow this notebook works: - grey cells are worked examples: run them, read them, ask; - ✍️ BET cells: write a number before you run the next cell; - ▶ YOUR TURN cells are pieces of the analysis you write — with your assistant if you like. The solution is folded underneath; open it only after trying.\n!pip -q install yfinance scikit-learn\nRun once. Live data from Yahoo Finance; if the network blocks it, a dated snapshot from the course repo (6 Oct 2026).\nimport warnings, numpy as np, pandas as pd, matplotlib.pyplot as plt\nwarnings.filterwarnings(\"ignore\")\npd.set_option(\"display.precision\", 4)\nplt.rcParams.update({\"axes.prop_cycle\": plt.cycler(color=[\"#2471a3\", \"#AF1F25\", \"#a8955a\", \"#1e8449\", \"#7a7f85\"]),\n                     \"axes.spines.top\": False, \"axes.spines.right\": False})\n\nSNAPSHOT = \"https://raw.githubusercontent.com/NiccoloSalvini/ese-ai/main/week-03/data/prices_BTC-USD_ETH-USD_SPY.csv\"\n\ndef load_prices(tickers=(\"BTC-USD\", \"ETH-USD\", \"SPY\"), start=\"2018-01-01\"):\n    \"\"\"Daily close prices. 1) yfinance live  2) course snapshot  3) synthetic (pipeline test only).\"\"\"\n    try:\n        import yfinance as yf\n        px = yf.download(list(tickers), start=start, auto_adjust=True, progress=False)[\"Close\"].dropna(how=\"all\")\n        if len(px) &lt; 1000: raise RuntimeError(\"short download\")\n        print(f\"[live] {len(px)} rows, {px.index[0].date()} → {px.index[-1].date()}\")\n        return px[list(tickers)]\n    except Exception as e:\n        print(f\"[warn] live download failed ({type(e).__name__}); using the snapshot\")\n    try:\n        px = pd.read_csv(SNAPSHOT, index_col=0, parse_dates=True)\n        print(f\"[snapshot] {len(px)} rows, {px.index[0].date()} → {px.index[-1].date()}\")\n        return px[list(tickers)]\n    except Exception:\n        print(\"[SYNTHETIC] no network: random walk. Numbers below are NOT real.\")\n        rng = np.random.default_rng(0); idx = pd.date_range(start, pd.Timestamp.today().normalize())\n        return pd.DataFrame({t: 100*np.exp(np.cumsum(rng.normal(0.0004, 0.035 if \"USD\" in t else 0.011, len(idx))))\n                             for t in tickers}, index=idx)\n\npx = load_prices()\npx.tail()"
   },
   {
-    "objectID": "week-03/session.html#block-a-features-targets-baselines",
-    "href": "week-03/session.html#block-a-features-targets-baselines",
-    "title": "Week 3 — Machine learning through one problem",
-    "section": "Block A — Features, targets, baselines",
-    "text": "Block A — Features, targets, baselines\nFeature = something known at the time of prediction. Target = the thing we want to know, which happens after. The entire discipline of ML on time series is keeping the wall between them intact.\nWe define two targets for the same features, because they behave very differently: - Direction: is the return over the next 5 trading days positive? - Volatility regime: will realised volatility over the next 5 days be above its trailing median?\n\nH = 5   # horizon in trading days\n\n# Features: everything uses only past information (note the .shift(1) is NOT needed because rolling windows end at t inclusive, and the target starts at t+1)\nf = pd.DataFrame(index=d.index)\nf[\"ret_1\"]   = d[\"ret\"]\nf[\"ret_5\"]   = d[\"ret\"].rolling(5).sum()\nf[\"ret_21\"]  = d[\"ret\"].rolling(21).sum()\nf[\"vol_5\"]   = d[\"ret\"].rolling(5).std()\nf[\"vol_21\"]  = d[\"ret\"].rolling(21).std()\nf[\"vol_ratio\"] = f[\"vol_5\"] / f[\"vol_21\"]\nf[\"spy_ret_5\"] = d[\"spy_ret\"].rolling(5).sum()\nf[\"dow\"]     = d.index.dayofweek\n\n# Targets: strictly in the future (t+1 … t+H)\nfwd_ret = d[\"ret\"][::-1].rolling(H).sum()[::-1].shift(-1)   # sum of returns t+1..t+H (reverse-rolling, then shift) — verified by hand below\nfwd_vol = d[\"ret\"][::-1].rolling(H).std()[::-1].shift(-1)\ny_dir = (fwd_ret &gt; 0).astype(int).rename(\"y_dir\")\ny_vol = (fwd_vol &gt; f[\"vol_21\"].expanding().median()).astype(int).rename(\"y_vol\")   # vs trailing (expanding) median: no future info\n\ndata = f.join([y_dir, y_vol, fwd_ret.rename(\"fwd_ret\")]).dropna()\nprint(data.shape)\ndata.tail(3)\n\n🔍 CHECK — verify the target by hand. Pick a date, and confirm that fwd_ret on that date equals the sum of ret over the following 5 rows. If it includes the current day, the target leaks. Do this every single time you build a forward-looking target; it takes one minute and it is the most common bug in trading ML.\n\ni = 1000\nt = data.index[i]\nmanual = d[\"ret\"].loc[t:].iloc[1:H+1].sum()\nprint(t.date(), \"| fwd_ret in table:\", round(data.loc[t, \"fwd_ret\"], 6), \"| recomputed by hand:\", round(manual, 6))\nassert abs(manual - data.loc[t, \"fwd_ret\"]) &lt; 1e-12, \"target leaks or is misaligned\"\nprint(\"OK — target uses only future rows\")\n\n\n# Base rates: what does 'doing nothing clever' score?\nfor col in [\"y_dir\", \"y_vol\"]:\n    print(f\"{col}: share of 1s = {data[col].mean():.3f}  -&gt; majority-class accuracy = {max(data[col].mean(), 1-data[col].mean()):.3f}\")\n\nThe baseline is the number a model must beat. For direction, “always predict up” already scores ~55% because BTC drifted up over the sample. A model with 56% accuracy has learned almost nothing. Any assistant that reports “our model achieves 58% accuracy” without the base rate next to it has reported nothing."
+    "objectID": "week-03/session.html#e1-what-is-in-the-table",
+    "href": "week-03/session.html#e1-what-is-in-the-table",
+    "title": "Week 3 — Look first, then predict",
+    "section": "E1 — What is in the table?",
+    "text": "E1 — What is in the table?\n\nprint(px.shape)\nprint(px.isna().sum())\npx.head(8)\n\n✍️ BET. SPY has missing values and BTC does not. Before running the next cell: out of every 7 days, how many is SPY missing? Write it: ____\n\nmissing = px[\"SPY\"].isna()\nprint(f\"SPY missing on {missing.mean():.1%} of days\")\npx.index[missing].day_name().value_counts()\n\nCrypto trades 7 days a week, the stock market 5 (minus holidays). Every join between the two is a decision: drop the weekends (lose 2/7 of crypto) or carry Friday’s SPY price forward (pretend nothing happened). Neither is wrong; not deciding is.\n\n▶ YOUR TURN\nWhich holidays is SPY closed on that are not weekends? List the weekday dates where SPY is missing, for 2025 only.\n\n\nsolution (open only after trying)\n\nm = px[\"SPY\"].isna() & (px.index.dayofweek &lt; 5)\npx.index[m & (px.index.year == 2025)]\n\n\n# your code here"
   },
   {
-    "objectID": "week-03/session.html#block-b-two-models-two-ways-of-splitting",
-    "href": "week-03/session.html#block-b-two-models-two-ways-of-splitting",
-    "title": "Week 3 — Machine learning through one problem",
-    "section": "Block B — Two models, two ways of splitting",
-    "text": "Block B — Two models, two ways of splitting\n\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.ensemble import HistGradientBoostingClassifier\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.model_selection import train_test_split, TimeSeriesSplit\nfrom sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score\n\nfeatures = [\"ret_1\", \"ret_5\", \"ret_21\", \"vol_5\", \"vol_21\", \"vol_ratio\", \"spy_ret_5\", \"dow\"]\nX = data[features]\n\nmodels = {\n    \"logistic\": make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000)),\n    \"gradient boosting\": HistGradientBoostingClassifier(max_depth=3, learning_rate=0.05, max_iter=200, random_state=0),\n}\n\ndef evaluate(model, X, y, splits):\n    accs, aucs = [], []\n    for tr, te in splits:\n        model.fit(X.iloc[tr], y.iloc[tr])\n        p = model.predict_proba(X.iloc[te])[:, 1]\n        accs.append(accuracy_score(y.iloc[te], p &gt; 0.5)); aucs.append(roc_auc_score(y.iloc[te], p))\n    return np.mean(accs), np.mean(aucs)\n\n\n🔍 CHECK — the assistant’s split\nAsked to “evaluate the model with cross-validation”, the assistant used the sklearn default: a random shuffle. For time series this is a leak: the model trains on Wednesday and Friday and is tested on Thursday, with overlapping 21-day windows on both sides. Compare with a time-ordered split where the test set is always in the future of the training set.\n\nrng = np.random.default_rng(0)\nn = len(X)\nshuffled = [(tr, te) for tr, te in [train_test_split(np.arange(n), test_size=0.2, random_state=s) for s in range(5)]]\nordered  = list(TimeSeriesSplit(n_splits=5, test_size=250).split(X))\n\nrows = []\nfor target in [\"y_dir\", \"y_vol\"]:\n    y = data[target]\n    for name, m in models.items():\n        a_s, u_s = evaluate(m, X, y, shuffled)\n        a_o, u_o = evaluate(m, X, y, ordered)\n        rows.append([target, name, a_s, u_s, a_o, u_o])\nres = pd.DataFrame(rows, columns=[\"target\", \"model\", \"acc (shuffled)\", \"auc (shuffled)\", \"acc (time-ordered)\", \"auc (time-ordered)\"]).round(3)\nres[\"base rate\"] = res[\"target\"].map(lambda c: round(max(data[c].mean(), 1 - data[c].mean()), 3))\nres\n\nRead the table slowly. Three things should be visible:\n\nShuffled scores are higher than time-ordered ones. The difference is leakage, not skill.\nDirection is close to the base rate under an honest split. With these features, 5-day direction of BTC is essentially unpredictable — which is what finance theory predicts and what an assistant will rarely tell you.\nVolatility regime is predictable (AUC well above 0.5): volatility clusters. Same data, same models — the question decides whether ML has anything to offer. Choosing the question is the manager’s job."
+    "objectID": "week-03/session.html#e2-from-prices-to-returns",
+    "href": "week-03/session.html#e2-from-prices-to-returns",
+    "title": "Week 3 — Look first, then predict",
+    "section": "E2 — From prices to returns",
+    "text": "E2 — From prices to returns\nPrices are not comparable across assets (BTC ≈ 85,000, ETH ≈ 2,700). Returns are. We use log returns: they add up over time, so a week is the sum of seven days.\n\nret = np.log(px / px.shift(1))          # daily log return, per asset\nbtc = ret[\"BTC-USD\"].dropna()\nbtc.describe()\n\n✍️ BET. BTC’s worst single day since 2018: how much did it lose? ____ % And on which date (roughly)? ____\n\nworst = btc.nsmallest(5)\n(np.exp(worst) - 1).map(\"{:.1%}\".format)       # back to simple % moves, which is what people quote\n\n\n▶ YOUR TURN\nSame question for ETH: the five worst and the five best days, as simple % moves. Are they on the same dates as BTC?\n\n\nsolution (open only after trying)\n\neth = ret[\"ETH-USD\"].dropna()\nprint((np.exp(eth.nsmallest(5)) - 1).map(\"{:.1%}\".format))\nprint((np.exp(eth.nlargest(5)) - 1).map(\"{:.1%}\".format))\n\n\n# your code here"
   },
   {
-    "objectID": "week-03/session.html#block-c-leakage-on-purpose",
-    "href": "week-03/session.html#block-c-leakage-on-purpose",
-    "title": "Week 3 — Machine learning through one problem",
-    "section": "Block C — Leakage on purpose",
-    "text": "Block C — Leakage on purpose\nTo recognise leakage you must see it once. We add a feature that is almost legitimate: a 5-day rolling volatility computed with a centred window (center=True), which is what an assistant may write when asked to “smooth” a series. Centred windows use future rows.\n\nX_leak = X.copy()\nX_leak[\"vol_5_centred\"] = d[\"ret\"].rolling(5, center=True).std().reindex(X.index)\nX_leak = X_leak.dropna(); y = data.loc[X_leak.index, \"y_vol\"]\nordered_l = list(TimeSeriesSplit(n_splits=5, test_size=250).split(X_leak))\na, u = evaluate(models[\"gradient boosting\"], X_leak, y, ordered_l)\nprint(f\"with the 'smoothed' feature — time-ordered acc {a:.3f}, auc {u:.3f}   (compare with the honest row above)\")\n\n🔍 CHECK. The score jumped with a time-ordered split — so the split did not protect you. Leakage through features is invisible to any validation scheme. The only defence is reading every feature and asking: at time t, could I have computed this? Write down, for each of the eight honest features, the latest row it uses."
+    "objectID": "week-03/session.html#e3-how-often-does-the-impossible-happen",
+    "href": "week-03/session.html#e3-how-often-does-the-impossible-happen",
+    "title": "Week 3 — Look first, then predict",
+    "section": "E3 — How often does the ‘impossible’ happen?",
+    "text": "E3 — How often does the ‘impossible’ happen?\nIf daily returns were normal (the bell curve of every textbook), a move beyond 4 standard deviations would happen about once every 43 years of daily data.\n✍️ BET. In ~8.5 years of BTC, how many days beyond 4 standard deviations? ____\n\nz = (btc - btc.mean()) / btc.std()\nfrom math import erf, sqrt\np_normal = 1 - erf(4 / sqrt(2))                  # two-sided probability beyond 4σ under a normal\nprint(f\"days beyond 4σ: {(z.abs() &gt; 4).sum()}   |  a normal distribution would give {p_normal * len(z):.2f}\")\n\nz.hist(bins=120, figsize=(8, 3)); plt.title(\"BTC daily returns, in standard deviations\"); plt.show()\n\nFat tails. Big days are rare, but far less rare than the bell curve says. Any risk model that assumes normality underestimates the days that matter. Remember this when someone shows you a “99% VaR”."
   },
   {
-    "objectID": "week-03/session.html#block-d-from-prediction-to-decision",
-    "href": "week-03/session.html#block-d-from-prediction-to-decision",
-    "title": "Week 3 — Machine learning through one problem",
-    "section": "Block D — From prediction to decision",
-    "text": "Block D — From prediction to decision\nA probability is not a decision. To act you need a decision rule (a threshold) and the cost of each error. Example: a treasury desk that wants to hedge BTC exposure when a high-volatility week is coming. Hedging costs money (c_hedge); an unhedged high-vol week costs more (c_miss). The best threshold depends on that ratio, not on accuracy.\n\n# Walk-forward probabilities for the volatility target (out-of-sample only)\ny = data[\"y_vol\"]; m = models[\"gradient boosting\"]\noos = pd.Series(index=X.index, dtype=float)\nfor tr, te in TimeSeriesSplit(n_splits=8, test_size=200).split(X):\n    m.fit(X.iloc[tr], y.iloc[tr]); oos.iloc[te] = m.predict_proba(X.iloc[te])[:, 1]\noos = oos.dropna(); y_oos = y.loc[oos.index]\n\nc_hedge, c_miss = 1.0, 4.0     # relative costs: hedge costs 1, missing a high-vol week costs 4\nrows = []\nfor thr in np.arange(0.2, 0.81, 0.05):\n    hedge = oos &gt; thr\n    cost = (hedge * c_hedge + (~hedge & (y_oos == 1)) * c_miss).sum()\n    rows.append([thr, hedge.mean(), recall_score(y_oos, hedge), precision_score(y_oos, hedge, zero_division=0), cost])\ndec = pd.DataFrame(rows, columns=[\"threshold\", \"share hedged\", \"recall (high-vol caught)\", \"precision\", \"total cost\"]).round(3)\nprint(\"cost of never hedging:\", (y_oos == 1).sum() * c_miss, \"| cost of always hedging:\", len(y_oos) * c_hedge)\ndec\n\n🔍 CHECK. Which threshold minimises cost? Does it change if c_miss is 2 instead of 4? Now the important question: what KPI would you report to management for this system in production? Accuracy is wrong (it does not price errors). Candidates: cost per week vs the always-hedge policy; recall at the chosen threshold; calibration (when the model says 70%, does it happen 70% of the time?). Pick one and defend it.\n\n# Calibration: does p=0.7 mean 70%?\nbins = pd.cut(oos, [0, .3, .4, .5, .6, .7, 1.0])\ncal = pd.DataFrame({\"predicted\": oos.groupby(bins).mean(), \"observed\": y_oos.groupby(bins).mean(), \"n\": oos.groupby(bins).size()}).round(3)\ncal\n\nHomework brief → see week-03/homework.md.\nVocabulary you now own: feature, target, horizon, base rate, baseline, train/test, time-ordered split, walk-forward, leakage (through split and through features), accuracy vs AUC vs precision/recall, threshold, calibration, cost-weighted decision."
+    "objectID": "week-03/session.html#e4-the-central-discovery-direction-vs-size",
+    "href": "week-03/session.html#e4-the-central-discovery-direction-vs-size",
+    "title": "Week 3 — Look first, then predict",
+    "section": "E4 — The central discovery: direction vs size",
+    "text": "E4 — The central discovery: direction vs size\nTwo questions that sound alike: - direction: if BTC went up today, is it more likely to go up tomorrow? - size: if BTC moved a lot today (either way), is it more likely to move a lot tomorrow?\nWe measure both with the autocorrelation: the correlation between a series and itself, k days earlier. 0 = no memory.\n✍️ BET. Which one has memory — direction, size, both, neither? ____\n\nlags = range(1, 31)\nac = pd.DataFrame({\n    \"direction  (return)\":          [btc.autocorr(k) for k in lags],\n    \"size  (absolute return)\":      [btc.abs().autocorr(k) for k in lags],\n}, index=lags)\nax = ac.plot(kind=\"bar\", figsize=(10, 3.5), width=0.8)\nax.axhline(0, color=\"k\", lw=0.8); ax.set_xlabel(\"lag (days)\"); ax.set_title(\"BTC: does yesterday tell you about today?\")\nplt.show()\nac.head(5)\n\nThis is the sentence of the morning. The direction of tomorrow has essentially no memory; the size of tomorrow does — for weeks. Calm follows calm, storms follow storms: volatility clustering.\nSo before training anything we already know which question a model can help with, and which one it cannot.\nSeen as a picture: 30-day rolling volatility, annualised. Crypto trades 365 days a year, so annualise with √365.\n\nvol30 = ret.rolling(30).std() * np.sqrt(365)\nvol30[[\"BTC-USD\", \"ETH-USD\"]].plot(figsize=(10, 3.5), title=\"30-day volatility, annualised\")\nplt.show()\n\n\n▶ YOUR TURN\nDoes the S&P 500 cluster too? Make the same autocorrelation table for SPY (drop its missing days first). Is the size-memory stronger or weaker than BTC’s?\n\n\nsolution (open only after trying)\n\nspy = ret[\"SPY\"].dropna()\npd.DataFrame({\"direction\": [spy.autocorr(k) for k in range(1, 11)],\n              \"size\": [spy.abs().autocorr(k) for k in range(1, 11)]}, index=range(1, 11))\n\n\n# your code here"
+  },
+  {
+    "objectID": "week-03/session.html#e5-does-crypto-move-with-the-stock-market",
+    "href": "week-03/session.html#e5-does-crypto-move-with-the-stock-market",
+    "title": "Week 3 — Look first, then predict",
+    "section": "E5 — Does crypto move with the stock market?",
+    "text": "E5 — Does crypto move with the stock market?\n\nboth = ret[[\"BTC-USD\", \"SPY\"]].dropna()            # stock-market days only: a decision, see E1\nrc = both[\"BTC-USD\"].rolling(90).corr(both[\"SPY\"])\nrc.plot(figsize=(10, 3), title=\"BTC vs S&P 500: 90-trading-day correlation\"); plt.axhline(0, color=\"k\", lw=0.8)\nplt.show()\nrc.resample(\"YE\").mean().round(2)\n\n“Digital gold, uncorrelated with stocks” was roughly true before 2020 and has not been true since. A correlation is not a constant: it is a series, and it has regimes too."
+  },
+  {
+    "objectID": "week-03/session.html#check-the-assistants-summary-table",
+    "href": "week-03/session.html#check-the-assistants-summary-table",
+    "title": "Week 3 — Look first, then predict",
+    "section": "🔍 CHECK — the assistant’s summary table",
+    "text": "🔍 CHECK — the assistant’s summary table\nAsked for “annualised volatility and total return of BTC and ETH since 2018”, an assistant wrote the cell below. It runs, and it looks professional. There are two errors. Ten minutes; a hint after five.\n\nsimple = px[[\"BTC-USD\", \"ETH-USD\"]].pct_change().dropna()\nsummary = pd.DataFrame({\n    \"annual vol\":   simple.std() * np.sqrt(252),\n    \"total return\": simple.sum(),\n})\nsummary.style.format(\"{:.1%}\")\n\n\n\nhint\n\nHow many days a year does crypto trade? And what happens if you add +50% and −50%?\n\n\n\nsolution\n\n\nnp.sqrt(252) is the stock-market convention. Crypto trades 365 days: vol is understated by √(365/252) ≈ 20%.\nSimple returns do not add up. +50% then −50% sums to 0, but you have lost 25%. Total return is the product of (1 + r), minus 1 — or the sum of log returns, exponentiated.\n\n\n\nsummary_ok = pd.DataFrame({\n    \"annual vol\":   simple.std() * np.sqrt(365),\n    \"total return\": (1 + simple).prod() - 1,\n})\nsummary_ok.style.format(\"{:.1%}\")\n\n\nWhat the exploration told us\nWrite three lines before we go on. Direction? Size? Correlation with stocks?"
+  },
+  {
+    "objectID": "week-03/session.html#m1-features-and-target-the-wall",
+    "href": "week-03/session.html#m1-features-and-target-the-wall",
+    "title": "Week 3 — Look first, then predict",
+    "section": "M1 — Features and target: the wall",
+    "text": "M1 — Features and target: the wall\nFeature = something known at day t. Target = something that happens after t. Nothing on the right of the wall may leak into the left.\n\nH = 7                                                   # horizon: 7 calendar days\nd = pd.DataFrame(index=btc.index)\nd[\"ret\"] = btc\n\n# features — every one uses rows up to and including t, never after\nX = pd.DataFrame(index=d.index)\nX[\"ret_1\"]     = d[\"ret\"]\nX[\"ret_7\"]     = d[\"ret\"].rolling(7).sum()\nX[\"ret_30\"]    = d[\"ret\"].rolling(30).sum()\nvol_7, vol_30 = d[\"ret\"].rolling(7).std(), d[\"ret\"].rolling(30).std()\nusual = vol_7.rolling(365).median()                      # 'usual' weekly vol = median of the past year, known at t\nX[\"vol_7\"]     = vol_7 / usual                           # this week's vol, relative to usual (1 = normal)\nX[\"vol_30\"]    = vol_30 / usual\nX[\"vol_ratio\"] = vol_7 / vol_30\nX[\"eth_ret_7\"] = ret[\"ETH-USD\"].rolling(7).sum().reindex(d.index)\nX[\"spy_ret_5\"] = ret[\"SPY\"].ffill().rolling(5).sum().reindex(d.index)   # weekends: Friday's value carried\nX[\"weekday\"]   = d.index.dayofweek\n\n# target — the next H days, t+1 … t+H\nfwd_ret = d[\"ret\"][::-1].rolling(H).sum()[::-1].shift(-1)\nfwd_vol = d[\"ret\"][::-1].rolling(H).std()[::-1].shift(-1)\ny = pd.DataFrame({\"y_dir\": (fwd_ret &gt; 0).astype(int),\n                  \"y_vol\": (fwd_vol &gt; usual).astype(int)}, index=d.index)\n\ndata = pd.concat([X, y, fwd_ret.rename(\"fwd_ret\")], axis=1).dropna()\nprint(data.shape); data.tail(3)\n\n🔍 CHECK — the target, by hand. Pick a date. fwd_ret must be the sum of the next 7 daily returns, not including today.\n\nt = data.index[1500]\nby_hand = d[\"ret\"].loc[t:].iloc[1:H + 1].sum()\nprint(t.date(), \"| in the table:\", round(data.loc[t, \"fwd_ret\"], 6), \"| by hand:\", round(by_hand, 6))\nassert abs(by_hand - data.loc[t, \"fwd_ret\"]) &lt; 1e-12, \"the target leaks or is misaligned\"\n\n\n▶ YOUR TURN\nFill this table in a markdown cell: for each of the 9 features, the latest day it uses (t, t−1, …). Then answer: is spy_ret_5 on a Sunday honest?\n\n\nsolution (open only after trying)\n\n# ret_1 … t | ret_7 … t | ret_30 … t | vol_7 … t | vol_30 … t | vol_ratio … t\n# eth_ret_7 … t | spy_ret_5 … last trading day ≤ t (Friday on a Sunday: honest, just stale) | weekday … t\n\n\n# your code here"
+  },
+  {
+    "objectID": "week-03/session.html#m2-before-any-model-what-does-doing-nothing-score",
+    "href": "week-03/session.html#m2-before-any-model-what-does-doing-nothing-score",
+    "title": "Week 3 — Look first, then predict",
+    "section": "M2 — Before any model: what does doing nothing score?",
+    "text": "M2 — Before any model: what does doing nothing score?\n✍️ BET. Share of 7-day windows in which BTC went up: ____ %\n\nfor col in [\"y_dir\", \"y_vol\"]:\n    p = data[col].mean()\n    print(f\"{col}: share of 1s = {p:.1%}  →  'always say the majority' scores {max(p, 1 - p):.1%}\")\n\nThat is the base rate. A model at 54% on direction has learned nothing if 54% of weeks are up weeks. An accuracy without its base rate next to it is not a number.\nAnd for volatility we have a smarter baseline, a rule anyone can write: “next week will be like this week” — predict high-vol if this week’s vol is above the usual."
+  },
+  {
+    "objectID": "week-03/session.html#m3-the-black-box-a-random-forest",
+    "href": "week-03/session.html#m3-the-black-box-a-random-forest",
+    "title": "Week 3 — Look first, then predict",
+    "section": "M3 — The black box: a random forest",
+    "text": "M3 — The black box: a random forest\nToday we do not open it. What you need to know: - it is hundreds of decision trees, each a flowchart of yes/no questions on the features (“is vol_7 above 0.03?”), each grown on a slightly different sample of the data; - they vote; the share of votes is the probability; - it finds interactions and non-linear effects by itself, which a regression does not.\nWhat it does not do is tell you whether it is right. That is our job: an honest split. Train on the past, test on the future.\n\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score, roc_auc_score\n\nfeatures = list(X.columns)\ntrain = data.loc[:\"2023-12-31\"]          # learn on 2019–2023\ntest  = data.loc[\"2024-01-01\":]           # judge on 2024 → today: data the model has never seen\nprint(f\"train {train.index[0].date()} → {train.index[-1].date()} ({len(train)})   test {test.index[0].date()} → {test.index[-1].date()} ({len(test)})\")\n\ndef forest():\n    return RandomForestClassifier(n_estimators=300, min_samples_leaf=20, random_state=0, n_jobs=-1)\n\nrf = forest().fit(train[features], train[\"y_vol\"])\np = rf.predict_proba(test[features])[:, 1]       # the forest's probability of a high-vol week\npd.Series(p, index=test.index).plot(figsize=(10, 3), title=\"P(high-vol week), out of sample\"); plt.show()\n\nTwo scores: - accuracy — share of weeks called right (at a 0.5 threshold); - AUC — does the model rank the high-vol weeks above the calm ones? 0.5 = coin, 1.0 = perfect. It does not depend on a threshold.\n✍️ BET. Fill the table before running: forest accuracy on direction ____, on volatility ____.\n\nrows = []\nfor target in [\"y_dir\", \"y_vol\"]:\n    m = forest().fit(train[features], train[target])\n    prob = m.predict_proba(test[features])[:, 1]\n    base = max(test[target].mean(), 1 - test[target].mean())\n    rows.append({\"target\": target, \"base rate\": base,\n                 \"forest accuracy\": accuracy_score(test[target], prob &gt; 0.5),\n                 \"forest AUC\": roc_auc_score(test[target], prob)})\n\nrows[1][\"rule accuracy\"] = accuracy_score(test[\"y_vol\"], test[\"vol_7\"] &gt; 1)     # 'next week like this week': no model\nrows[1][\"rule AUC\"]      = roc_auc_score(test[\"y_vol\"], test[\"vol_7\"])             # one feature, used as the score\npd.DataFrame(rows).set_index(\"target\").round(3)\n\nRead the table in this order: 1. direction ≈ base rate. The forest — hundreds of trees, nine features — has nothing to say about next week’s direction. Exactly what E4 told us for free. 2. volatility is somewhat predictable. AUC clearly above 0.5: clustering, again. 3. the rule beats the forest. “Next week like this week” is one line and one feature, and on 2024–2026 it does as well as hundreds of trees, or better. A rule you can write down beats a model that guesses it — and you only know that because you built the rule first.\n\nSame data, same model. The question decides whether ML has anything to offer — and choosing the question is the manager’s job."
+  },
+  {
+    "objectID": "week-03/session.html#check-the-assistants-validation",
+    "href": "week-03/session.html#check-the-assistants-validation",
+    "title": "Week 3 — Look first, then predict",
+    "section": "🔍 CHECK — the assistant’s validation",
+    "text": "🔍 CHECK — the assistant’s validation\nAsked to “evaluate the model with a train/test split”, every assistant writes train_test_split — which shuffles the days.\n✍️ BET. Volatility AUC with the shuffled split: higher, lower or the same as the honest one? ____\n\nfrom sklearn.model_selection import train_test_split\ntr, te = train_test_split(data, test_size=0.3, random_state=0)          # the assistant's default: shuffled\nfor target in [\"y_dir\", \"y_vol\"]:\n    m = forest().fit(tr[features], tr[target])\n    print(f\"{target}: shuffled AUC = {roc_auc_score(te[target], m.predict_proba(te[features])[:, 1]):.3f}\")\n\n\n\nwhy\n\nWith a shuffle, Thursday is in the test set while Wednesday and Friday are in the training set. Their 7-day and 30-day windows overlap almost entirely, and so do their targets. The model is not predicting Thursday: it is remembering its neighbours. The gap between the two scores is leakage, not skill — and on direction it can make a coin look like a signal."
+  },
+  {
+    "objectID": "week-03/session.html#m4-what-did-the-black-box-look-at",
+    "href": "week-03/session.html#m4-what-did-the-black-box-look-at",
+    "title": "Week 3 — Look first, then predict",
+    "section": "M4 — What did the black box look at?",
+    "text": "M4 — What did the black box look at?\nWe can’t read 300 trees, but we can ask a simpler question: if I scramble one feature, how much worse does the model get? That is permutation importance. Measured on the test period.\n\nfrom sklearn.inspection import permutation_importance\nrf_vol = forest().fit(train[features], train[\"y_vol\"])\nimp = permutation_importance(rf_vol, test[features], test[\"y_vol\"], scoring=\"roc_auc\", n_repeats=10, random_state=0)\npd.Series(imp.importances_mean, index=features).sort_values().plot.barh(figsize=(7, 3.5),\n    title=\"how much AUC drops when the feature is scrambled\"); plt.show()\n\nIf the exploration was right, the volatility features dominate. ret_7 helps too — a week with a big move is a volatile week, seen from another angle. Bars below zero mean the feature is noise the model would be better without.\nA black box that agrees with what you saw by eye is one you can start to trust; one that leans on weekday is one you should not.\n\n▶ YOUR TURN\nLeak it on purpose. An assistant asked to “smooth” the volatility adds d[\"ret\"].rolling(7, center=True).std() as a feature. Add it, retrain on the honest split, and compare the volatility AUC. Then write one sentence: why did the honest split not protect you?\n\n\nsolution (open only after trying)\n\nX_leak = data[features].copy()\nX_leak[\"vol_7_centred\"] = d[\"ret\"].rolling(7, center=True).std().reindex(data.index)\nX_leak = X_leak.dropna(); yl = data.loc[X_leak.index, \"y_vol\"]\nm = forest().fit(X_leak.loc[:\"2023-12-31\"], yl.loc[:\"2023-12-31\"])\nprint(\"AUC with the centred feature:\", round(roc_auc_score(yl.loc[\"2024\":], m.predict_proba(X_leak.loc[\"2024\":])[:, 1]), 3))\n# a centred window at t uses t+1 … t+3: the future is inside the feature, and no split can see that\n\n\n# your code here"
+  },
+  {
+    "objectID": "week-03/session.html#m5-from-probability-to-decision-if-time-otherwise-homework",
+    "href": "week-03/session.html#m5-from-probability-to-decision-if-time-otherwise-homework",
+    "title": "Week 3 — Look first, then predict",
+    "section": "M5 — From probability to decision (if time; otherwise homework)",
+    "text": "M5 — From probability to decision (if time; otherwise homework)\nA treasury desk holds BTC. Hedging next week costs 1; an unhedged high-vol week costs 2. Hedge when the forest’s probability is above a threshold. Which threshold?\n✍️ BET. Threshold: ____\n\nc_hedge, c_miss = 1, 2\nyv = test[\"y_vol\"].values\nrows = []\nfor th in [0.2, 0.3, 0.4, 0.5, 0.6, 0.7]:\n    hedge = p &gt; th\n    rows.append({\"threshold\": th, \"hedged weeks\": hedge.mean(),\n                 \"cost per week\": (c_hedge * hedge + c_miss * (~hedge & (yv == 1))).mean()})\nrows += [{\"threshold\": \"never hedge\",  \"hedged weeks\": 0, \"cost per week\": c_miss * yv.mean()},\n         {\"threshold\": \"always hedge\", \"hedged weeks\": 1, \"cost per week\": c_hedge}]\npd.DataFrame(rows).round(3)\n\nFind the cheapest row, and check it beats both trivial policies — a model has to beat “never” and “always”, not just look clever.\nNow set c_miss = 4 and run again. The best threshold drops, and “always hedge” may win outright: when misses are expensive enough, the model is not worth running. The model did not change — the business did."
+  },
+  {
+    "objectID": "week-03/session.html#three-lines-to-take-home",
+    "href": "week-03/session.html#three-lines-to-take-home",
+    "title": "Week 3 — Look first, then predict",
+    "section": "Three lines to take home",
+    "text": "Three lines to take home\nWrite them here, in your words, then File ▸ Save a copy in Drive into ese-ai-fintech/week-03/.\n\nOn exploration:\nOn the honest split:\nOn the black box:"
   },
   {
     "objectID": "week-05/session.html",
@@ -2065,62 +2184,6 @@
     "text": "Take-home (write three lines)\nThree lines, in your own words, at the bottom of this notebook, then commit. Suggested shape: one thing the SHAP or fairness table changed in how you read a model; one thing the red-team found that you would not have looked for; one control you will add to the capstone this week.\nHomework brief → see week-09/homework.md.\n1.\n2.\n3."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Artificial Intelligence for Business and FinTech",
-    "section": "",
-    "text": "ESE Short Course · Term 1, A.Y. 2026–2027 European School of Economics, Florence · one-to-one tutorial and lab · 30 contact hours Niccolò Salvini, PhD, Adjunct Professor\n\n\n\nWhenWednesdays 10:00–13:00 · 23 Sep – 2 Dec\n\n\nWhereESE Florence · Borgo Santi Apostoli 19\n\n\nAssessmentCase brief 40% · Portfolio 60%\n\n\nBefore session 1Setup checklist\n\n\nEverything for this course is on this page. One row per session: the Colab notebook we build in class, the concept cards shown on the projector, and the homework that opens the following Wednesday. Materials are published by Thursday; homework is due Tuesday 23:59 in your Drive folder.\n\nSessions Wednesdays 10:00–13:00 · ESE Florence · notebooks open in Google Colab\n\n\n\n\n\n\n\n\n\n\n\n\n#\nDate\nTheme\nMaterials\nHomework\n\n\n\n\n1\nWed 23 Sep\nHow we will work · from one neuron to an LLM · reading a model release\nslides · Colab ↗ · notebook\nHW1 · due Tue 29 Sep\n\n\n2\nWed 30 Sep\nInside an LLM — tokens, embeddings, attention, the transformer, temperature · a real model in Colab\nslides · Colab ↗ · notebook\nHW2 · due Tue 6 Oct\n\n\n3\nWed 7 Oct\nMachine learning through one problem · from prediction to decision\nslides · Colab ↗ · notebook\nHW3 · due Tue 13 Oct\n\n\n4\nWed 14 Oct\nLLM applications I — API, structured output, RAG · EU AI Act\nslides · Colab ↗ · notebook\nHW4 · due Tue 20 Oct\n\n\n5\nWed 21 Oct\nLLM applications II — agents, tool use, evals · the product lens\nslides · Colab ↗ · notebook\nCase brief (40%) · due Sun 1 Nov\n\n\n—\n26 Oct – 1 Nov\nReading week — no class · minor applied case brief\n—\nbrief\n\n\n6\nWed 4 Nov\nMinor presentation · fintech landscape · capstone scoping\nslides · Colab ↗ · notebook\nHW6 · due Tue 10 Nov\n\n\n7\nWed 11 Nov\nMarkets and backtesting done honestly · model risk · date may move\nslides · Colab ↗ · notebook\nHW7 · due Tue 17 Nov\n\n\n8\nWed 18 Nov\nDigital assets, on-chain data, DeFi · MiCA\nslides · Colab ↗ · notebook\nHW8 · due Tue 24 Nov\n\n\n9\nWed 25 Nov\nResponsible AI applied to the capstone · red-team\nslides · Colab ↗ · notebook\nHW9 · due Tue 1 Dec\n\n\n10\nWed 2 Dec\nImplementation and capstone studio\nslides · Colab ↗ · notebook\nPortfolio (60%) · due Sun 6 Dec\n\n\nRev.\n7–13 Dec\nFinal presentation — proposed Wed 9 Dec, 10:00\n—\nportfolio brief\n\n\n\n\n\n\n\n\n\n\nSession 7, Wednesday 11 November. The tutor may be away that day for a commitment in Milan. If so, a make-up date is agreed in class and announced here and on Moodle.\n\n\n\n\n\n\n\n\n\nOpening a notebook. Colab ↗ opens the session notebook in Google Colab. Then File ▸ Save a copy in Drive, into your ese-ai-fintech folder. The notebook link is a read-only preview of the same file.\n\n\n\n\nHow the course works the contract, stated once\n\n\nThis is a lab. You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.\nThe rule of the course: anything an AI produced and you submit, you must be able to explain line by line. I will ask.\nWeekly rhythm: Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week’s homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.\nAssessment: a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the syllabus.\nTools: Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See Setup.\nNothing confidential goes into an AI tool. All market, crypto and DeFi activities are educational simulations, not investment advice.\n\n\nTutor\n\n\n\n Niccolò Salvini, PhDAdjunct Professor"
-  },
-  {
-    "objectID": "setup.html",
-    "href": "setup.html",
-    "title": "Setup",
-    "section": "",
-    "text": "Nothing is installed on your laptop. You need a Google account, a chat assistant, and — from week 4 — one key."
-  },
-  {
-    "objectID": "setup.html#google-account-and-colab",
-    "href": "setup.html#google-account-and-colab",
-    "title": "Setup",
-    "section": "1. Google account and Colab",
-    "text": "1. Google account and Colab\nGoogle Colab is the runtime for all the code in this course. Any Google account works; the free tier is enough for the whole term.\nEvery session notebook opens from the course site with the Colab ↗ link. Then File ▸ Save a copy in Drive: from that moment the copy is yours."
-  },
-  {
-    "objectID": "setup.html#your-course-folder",
-    "href": "setup.html#your-course-folder",
-    "title": "Setup",
-    "section": "2. Your course folder",
-    "text": "2. Your course folder\n\nIn Google Drive, create a folder named ese-ai-fintech and share it with the tutor.\nOne sub-folder per week: week-01/, week-02/, …, and later capstone/.\nYour session notebooks and your homework go there. That folder is what gets read and assessed.\n\nBefore handing anything in: Runtime ▸ Restart and run all. A notebook that runs top to bottom from a clean start, with no errors, is the minimum."
-  },
-  {
-    "objectID": "setup.html#an-llm-api-key-from-week-4",
-    "href": "setup.html#an-llm-api-key-from-week-4",
-    "title": "Setup",
-    "section": "3. An LLM API key — from week 4",
-    "text": "3. An LLM API key — from week 4\nFrom session 4 the notebooks call a language model from Python. The default is the Google AI Studio free tier, with OpenAI-compatible code so it ports to other providers.\n\nCreate a key at aistudio.google.com.\nIn Colab, open the key icon in the left sidebar (Secrets), add a secret named GEMINI_API_KEY, paste the key, and enable notebook access.\nNever paste a key into a notebook cell. Keys live in Colab Secrets only; the notebooks read them from there.\n\nAn OpenAI or Anthropic key is optional, for comparison in weeks 4–5."
-  },
-  {
-    "objectID": "setup.html#a-chat-assistant",
-    "href": "setup.html#a-chat-assistant",
-    "title": "Setup",
-    "section": "4. A chat assistant",
-    "text": "4. A chat assistant\nPick one — ChatGPT, Claude or Gemini — and use it openly and constantly. The skill this course builds is directing it, reading its output and catching its errors.\nTwo rules apply from the first day:\n\nNo confidential, personal or commercially sensitive data goes into an AI service.\nEvery submission includes an AI-use disclosure: which tools, for what, and how the outputs were verified."
-  },
-  {
-    "objectID": "setup.html#data-sources-you-will-use",
-    "href": "setup.html#data-sources-you-will-use",
-    "title": "Setup",
-    "section": "Data sources you will use",
-    "text": "Data sources you will use\nAll free tiers, no sign-up unless stated: yfinance, CoinGecko, FRED, DefiLlama, Etherscan and Dune (account), SEC EDGAR for filings. Notebooks fall back to a saved snapshot when a live source is down."
-  },
-  {
-    "objectID": "setup.html#something-is-not-working",
-    "href": "setup.html#something-is-not-working",
-    "title": "Setup",
-    "section": "Something is not working?",
-    "text": "Something is not working?\nWrite on the course channel with a screenshot of the error and the cell that produced it. Reading the error message before asking is already half of the course."
-  },
-  {
     "objectID": "lectures/01-how-llms-work.html#today",
     "href": "lectures/01-how-llms-work.html#today",
     "title": "How we will work, and what is inside the machine",
@@ -2139,7 +2202,7 @@
     "href": "lectures/01-how-llms-work.html#who-i-am",
     "title": "How we will work, and what is inside the machine",
     "section": "Who I am",
-    "text": "Who I am\n\n\n\n\nNiccolò Salvini, PhD · Adjunct Professor\n\n\nEconomics, Florence\nMSc, Statistical and Actuarial Sciences, Milan\nPhD, Healthcare Data Science, Rome\nFounder, Intuo — data pipelines and AI for companies\nAdjunct Professor — Università Cattolica, and ESE"
+    "text": "Who I am\n\n\n\n\nNiccolò Salvini, PhD · Adjunct Professor\n\nEconomics, Florence\nMSc, Statistical and Actuarial Sciences, Milan\nPhD, Healthcare Data Science, Rome\nFounder, Intuo — data pipelines and AI for companies\nAdjunct Professor — Università Cattolica, and ESE"
   },
   {
     "objectID": "lectures/01-how-llms-work.html#part-2-what-this-course-is-for",
@@ -2454,133 +2517,224 @@
     "href": "lectures/01-how-llms-work.html#much-of-the-weirdness-is-tokenization",
     "title": "How we will work, and what is inside the machine",
     "section": "Much of the weirdness is tokenization",
-    "text": "Much of the weirdness is tokenization\n\n\n\nit struggles with\nbecause\n\n\n\n\nspelling a word backwards\nthe word is one token, not letters\n\n\nRussian, Italian\nmore, smaller pieces\n\n\narithmetic\n1,234,567.89 is 7 arbitrary pieces\n\n\negg · Egg · EGG\nthe same word, different pieces\n\n\n\nMany failures that look like stupidity come from the model seeing pieces, not letters or digits. When an answer involves spelling, counting characters or arithmetic, check it yourself.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Much of the weirdness is tokenization\n\n\n\nit struggles with\nbecause\n\n\n\n\nspelling a word backwards\nthe word is one token, not letters\n\n\nRussian, Italian\nmore, smaller pieces\n\n\narithmetic\n1,234,567.89 is 7 arbitrary pieces\n\n\negg · Egg · EGG\nthe same word, different pieces\n\n\n\nMany failures that look like stupidity come from the model seeing pieces, not letters or digits. When an answer involves spelling, counting characters or arithmetic, check it yourself."
   },
   {
     "objectID": "lectures/03-one-problem.html#where-we-are",
     "href": "lectures/03-one-problem.html#where-we-are",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "Where we are",
-    "text": "Where we are\n\n\n\n\n\n\n\n\n1–2\n23–30 Sep\nthe model, the checking habit, the data, the silent errors ✓\n\n\n3\n7 Oct\ntrain something, and find out if it is any good\n\n\n4–5\n14–21 Oct\nan LLM application, then agents and evals\n\n\n\nToday you will build a model that scores 0.71 and is worthless, and one that scores 0.53 and is worth money. Telling them apart is the entire skill."
+    "text": "Where we are\n\n\n\n\n\n\n\n\n1–2\n23–30 Sep\nthe network, the LLM, the checking habit ✓\n\n\n3\n7 Oct\nexplore a real dataset, then train a model and find out if it is any good\n\n\n4–5\n14–21 Oct\nan LLM application, then agents and evals\n\n\n\nToday a model will score 0.74 and be worthless, and a one-line rule will beat it. Telling the two apart is the entire skill."
   },
   {
     "objectID": "lectures/03-one-problem.html#last-week-in-one-slide",
     "href": "lectures/03-one-problem.html#last-week-in-one-slide",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "Last week, in one slide",
     "text": "Last week, in one slide\n\n\nAn LLM is our neuron’s training loop at scale: tokens become vectors; attention lets each token take what it needs from the others; the block is stacked dozens of times.\nAt the end, one knob per token — and temperature decides how boldly it picks.\n\nPre-training, fine-tuning and RL are the same loop with different right answers.\nIt invents by design: there is always a top knob, even when the fact was never in the data."
   },
   {
+    "objectID": "lectures/03-one-problem.html#today",
+    "href": "lectures/03-one-problem.html#today",
+    "title": "Look first, then predict",
+    "section": "Today",
+    "text": "Today\n\n\n\n\n\n\n\n10:00\nyour homework: the fraud share, and the release you decoded\n\n\n10:20\nPart 1 — explore: eight years of BTC, ETH and the S&P 500\n\n\n11:20\nbreak\n\n\n11:30\nPart 2 — predict: features, the wall, a random forest, two splits\n\n\n12:30\nfrom a probability to a decision\n\n\n12:50\nhomework · three lines\n\n\n\nOne notebook all morning: week-03/session.ipynb. You drive; I don’t touch the keyboard."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#how-the-notebook-works",
+    "href": "lectures/03-one-problem.html#how-the-notebook-works",
+    "title": "Look first, then predict",
+    "section": "How the notebook works",
+    "text": "How the notebook works\n\n\n\n\n\n\n\ngrey cell\na worked example — run it, read it, ask\n\n\n✍️ BET\nwrite a number before the next cell runs\n\n\n▶ YOUR TURN\nthe next piece of the analysis is yours, with the assistant if you like. Solution folded underneath\n\n\n🔍 CHECK\na cell an assistant really wrote. It runs. It is wrong"
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#of-card-payments-are-fraud.",
+    "href": "lectures/03-one-problem.html#of-card-payments-are-fraud.",
+    "title": "Look first, then predict",
+    "section": "0.17% of card payments are fraud.",
+    "text": "0.17% of card payments are fraud.\nYour number from homework 2. A model that says “never fraud” is 99.83% accurate and catches nothing. Keep that number in mind all morning: it is called the base rate, and every score today gets one next to it."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#part-1-explore",
+    "href": "lectures/03-one-problem.html#part-1-explore",
+    "title": "Look first, then predict",
+    "section": "Part 1 Explore",
+    "text": "Part 1 Explore"
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#the-question-for-the-morning",
+    "href": "lectures/03-one-problem.html#the-question-for-the-morning",
+    "title": "Look first, then predict",
+    "section": "The question for the morning",
+    "text": "The question for the morning\nIs crypto risk predictable — and which part of it?\nExploration is not “make charts”. It is asking the data small questions, in an order, until you know which question is worth a model.\n\n\n\n\n\n\n\n\norder\nsmall question\nwhat it decides\n\n\n\n\n1\nwhat is in the table?\nhow to join crypto and stocks\n\n\n2\nhow big are the moves?\nwhich scale, which units\n\n\n3\nhow often is “impossible”?\nwhether the bell curve is allowed\n\n\n4\ndoes yesterday tell us about today?\nwhat is worth predicting"
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#what-is-in-the-table",
+    "href": "lectures/03-one-problem.html#what-is-in-the-table",
+    "title": "Look first, then predict",
+    "section": "What is in the table",
+    "text": "What is in the table\nLAB · session.ipynb § E1\n3,200 days of BTC, ETH and SPY since January 2018.\n\n\n\n\n\n\n\nBet\n\n\nSPY has missing values, BTC has none. Out of every 7 days, how many is SPY missing?\n\n\n\n\nCrypto trades 7 days a week, stocks 5. Every join between the two is a decision — drop the weekends, or carry Friday forward. Neither is wrong; not deciding is."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#how-big-are-the-moves",
+    "href": "lectures/03-one-problem.html#how-big-are-the-moves",
+    "title": "Look first, then predict",
+    "section": "How big are the moves",
+    "text": "How big are the moves\nLAB · session.ipynb § E2–E3\n\n\n\n\n\n\n\nBet\n\n\nBTC’s worst single day since 2018: how much did it lose, and roughly when?\n\n\n\n\n\n\n\n\n\n\ndays beyond 4 standard deviations\n\n\n\n\nif returns were normal\n0.2\n\n\nBTC, 2018–2026\n17\n\n\n\n\nFat tails. Big days are rare, but eighty-five times less rare than the textbook bell curve says. A “99% VaR” built on that curve underestimates exactly the days that matter."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#two-questions-that-sound-alike",
+    "href": "lectures/03-one-problem.html#two-questions-that-sound-alike",
+    "title": "Look first, then predict",
+    "section": "Two questions that sound alike",
+    "text": "Two questions that sound alike\n\n\nDirection\nBTC went up today.\nIs it more likely to go up tomorrow?\n\nSize\nBTC moved a lot today, either way.\nIs it more likely to move a lot tomorrow?\n\n\n\n\n\n\n\n\nBet\n\n\nWhich one has memory — direction, size, both, neither?\n\n\n\n\nWe measure memory with the autocorrelation: the correlation of a series with itself, k days earlier. 0 means no memory."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#the-answer-on-eight-years-of-btc",
+    "href": "lectures/03-one-problem.html#the-answer-on-eight-years-of-btc",
+    "title": "Look first, then predict",
+    "section": "The answer, on eight years of BTC",
+    "text": "The answer, on eight years of BTC\n\n\n\n\nlag\ndirection (return)\nsize (absolute return)\n\n\n\n\n1 day\n−0.05\n0.17\n\n\n2 days\n0.04\n0.13\n\n\n3 days\n0.01\n0.11\n\n\n4 days\n0.03\n0.17\n\n\n5 days\n0.02\n0.14\n\n\n\n\nComputed in the notebook, 7 Oct 2026. The size column stays positive for weeks."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#calm-follows-calm.-storms-follow-storms.",
+    "href": "lectures/03-one-problem.html#calm-follows-calm.-storms-follow-storms.",
+    "title": "Look first, then predict",
+    "section": "Calm follows calm. Storms follow storms.",
+    "text": "Calm follows calm. Storms follow storms.\nThe direction of tomorrow has no memory. Its size does. This is called volatility clustering — and we found it before training anything."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#not-a-constant-btc-and-the-stock-market",
+    "href": "lectures/03-one-problem.html#not-a-constant-btc-and-the-stock-market",
+    "title": "Look first, then predict",
+    "section": "Not a constant: BTC and the stock market",
+    "text": "Not a constant: BTC and the stock market\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nyear\n2018\n2019\n2020\n2021\n2022\n2023\n2024\n2025\n2026\n\n\n\n\nBTC–SPY correlation\n0.05\n0.06\n0.36\n0.28\n0.57\n0.34\n0.28\n0.48\n0.47\n\n\n\n\n“Digital gold, uncorrelated with stocks” was roughly true before 2020 and has not been true since.\nA correlation is a series, not a number. It has regimes too — and a portfolio built on the 2019 number learned that in 2022."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#the-assistants-summary-table",
+    "href": "lectures/03-one-problem.html#the-assistants-summary-table",
+    "title": "Look first, then predict",
+    "section": "🔍 The assistant’s summary table",
+    "text": "🔍 The assistant’s summary table\nLAB · session.ipynb § CHECK\nAsked for “annualised volatility and total return of BTC and ETH since 2018”:\nsimple = px[[\"BTC-USD\", \"ETH-USD\"]].pct_change().dropna()\nsummary = pd.DataFrame({\n    \"annual vol\":   simple.std() * np.sqrt(252),\n    \"total return\": simple.sum(),\n})\nIt runs. It looks professional. Two errors. Ten minutes, one hint after five."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#part-2-predict",
+    "href": "lectures/03-one-problem.html#part-2-predict",
+    "title": "Look first, then predict",
+    "section": "Part 2 Predict",
+    "text": "Part 2 Predict"
+  },
+  {
     "objectID": "lectures/03-one-problem.html#three-ways-to-write-the-same-decision",
     "href": "lectures/03-one-problem.html#three-ways-to-write-the-same-decision",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "Three ways to write the same decision",
     "text": "Three ways to write the same decision"
   },
   {
-    "objectID": "lectures/03-one-problem.html#a-rule-you-can-write-down-beats-a-model-that-guesses-it.",
-    "href": "lectures/03-one-problem.html#a-rule-you-can-write-down-beats-a-model-that-guesses-it.",
-    "title": "A model, and whether to believe it",
-    "section": "A rule you can write down beats a model that guesses it.",
-    "text": "A rule you can write down beats a model that guesses it.\nMost of what gets pitched as AI is a 1.0 problem with a 3.0 budget. Today you find out which is which, in euros."
-  },
-  {
-    "objectID": "lectures/03-one-problem.html#run-all-three-on-the-same-transactions",
-    "href": "lectures/03-one-problem.html#run-all-three-on-the-same-transactions",
-    "title": "A model, and whether to believe it",
-    "section": "Run all three, on the same transactions",
-    "text": "Run all three, on the same transactions\nLAB · week-01/session.ipynb § A2 — one decision, three kinds of software\nTwenty thousand card payments, one cost table, the three columns of that figure:\n\nthe rule blocks 240 of them. Bet how much of the fraud it catches before you run it.\nthe model gets the same budget — 240 blocks, no more — and only chooses differently.\nthen the fraud that is in the words and in neither of the first two.\n\nThen the cell that decides the architecture: what 3.0 costs on every transaction, against 3.0 on only what 2.0 flagged."
-  },
-  {
     "objectID": "lectures/03-one-problem.html#three-words-and-the-whole-of-supervised-learning",
     "href": "lectures/03-one-problem.html#three-words-and-the-whole-of-supervised-learning",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "Three words, and the whole of supervised learning",
-    "text": "Three words, and the whole of supervised learning\n\n\n\nfeature\nwhat you know at time t\n\n\ntarget\nwhat happens after t\n\n\nhorizon\nhow long after\n\n\n\n\\text{features at } t \\;\\longrightarrow\\; \\text{model} \\;\\longrightarrow\\; \\text{target over } (t, t+h]\nIf a feature contains anything from after t, everything downstream is theatre. That is the failure this session is built around."
-  },
-  {
-    "objectID": "lectures/03-one-problem.html#before-the-model-what-does-nothing-score",
-    "href": "lectures/03-one-problem.html#before-the-model-what-does-nothing-score",
-    "title": "A model, and whether to believe it",
-    "section": "Before the model: what does nothing score?",
-    "text": "Before the model: what does nothing score?\n\n\n\n\n\n\n\nBet before we compute\n\n\nYou predict whether tomorrow is an up day. Your model gets 54%. Good, bad, or unknowable from that number alone?\n\n\n\n\n\nUnknowable. If 54% of days are up days, predicting “up” every time also scores 54%, and it took no data and no model.\nThe base rate is the number to beat. A model that does not beat it is a cost with a dashboard.\nWhich closes the third claim from week 1 — “99.2% accuracy”. On whose test set, of what size, against what base rate? Without those three, the number means nothing."
-  },
-  {
-    "objectID": "lectures/03-one-problem.html#two-models-two-splits",
-    "href": "lectures/03-one-problem.html#two-models-two-splits",
-    "title": "A model, and whether to believe it",
-    "section": "Two models, two splits",
-    "text": "Two models, two splits\nLAB · session.ipynb § B\nSame features, same target, same model. Only the split changes.\n\nFit with a random split. Write the score down.\nFit with a time-ordered split. Write that one down too.\nStare at the gap before I explain it."
-  },
-  {
-    "objectID": "lectures/03-one-problem.html#why-the-first-number-lied",
-    "href": "lectures/03-one-problem.html#why-the-first-number-lied",
-    "title": "A model, and whether to believe it",
-    "section": "Why the first number lied",
-    "text": "Why the first number lied\n\n\n\nShuffle a time series and the model trains on days that come after the day it is tested on."
+    "text": "Three words, and the whole of supervised learning\n\n\n\nfeature\nwhat you know at day t\n\n\ntarget\nwhat happens after t\n\n\nhorizon\nhow long after — today, 7 days\n\n\n\n\\text{features at } t \\;\\longrightarrow\\; \\text{model} \\;\\longrightarrow\\; \\text{target over } (t, t+7]\nTwo targets, the same nine features:\n\ny_dir — will BTC be up over the next 7 days?\ny_vol — will the next 7 days be more volatile than usual?\n\nAfter Part 1 you can already guess how this ends. Write your guess down."
   },
   {
     "objectID": "lectures/03-one-problem.html#the-wall",
     "href": "lectures/03-one-problem.html#the-wall",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "The wall",
-    "text": "The wall"
+    "text": "The wall\n\nFor every feature, write the latest day it uses. For the target, recompute one date by hand. One minute each, every time."
   },
   {
-    "objectID": "lectures/03-one-problem.html#nothing-to-the-right-of-the-wall-may-be-used-to-fit-what-is-on-the-left.",
-    "href": "lectures/03-one-problem.html#nothing-to-the-right-of-the-wall-may-be-used-to-fit-what-is-on-the-left.",
-    "title": "A model, and whether to believe it",
-    "section": "Nothing to the right of the wall may be used to fit what is on the left.",
-    "text": "Nothing to the right of the wall may be used to fit what is on the left.\nEverything else in evaluation is a detail. This is the rule."
+    "objectID": "lectures/03-one-problem.html#before-the-model-what-does-nothing-score",
+    "href": "lectures/03-one-problem.html#before-the-model-what-does-nothing-score",
+    "title": "Look first, then predict",
+    "section": "Before the model: what does nothing score?",
+    "text": "Before the model: what does nothing score?\n\n\n\n\n\n\n\nBet\n\n\nShare of 7-day windows in which BTC went up?\n\n\n\n\n\n\n\n\n\ntarget\nshare of 1s\n“always say the majority”\n\n\n\n\nup next week\n53%\n53%\n\n\nhigh-vol next week\n46%\n54%\n\n\n\n\nThat is the base rate — the number to beat. A model that does not beat it is a cost with a dashboard."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#the-black-box-a-random-forest",
+    "href": "lectures/03-one-problem.html#the-black-box-a-random-forest",
+    "title": "Look first, then predict",
+    "section": "The black box: a random forest",
+    "text": "The black box: a random forest\n\n\nHundreds of decision trees. Each is a flowchart of yes/no questions on the features — “is this week’s vol above 1.3× usual?” — grown on a slightly different sample of the past.\nThey vote. The share of votes is the probability.\n\nIt finds interactions and curves on its own, which a regression does not.\nWhat it cannot do is tell you whether it is right.\nThat is the split’s job — and ours.\n\nWe open it in week 9. Today we only judge it from the outside — which is exactly what you will do with every vendor model."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#two-models-two-splits",
+    "href": "lectures/03-one-problem.html#two-models-two-splits",
+    "title": "Look first, then predict",
+    "section": "Two models, two splits",
+    "text": "Two models, two splits\nLAB · session.ipynb § M3\nSame features, same target, same forest. Only the split changes.\n\nHonest: learn on 2019–2023, judge on 2024 → today.\nThe assistant’s default: train_test_split — shuffle the days, keep 30% for testing.\n\n\n\n\n\n\n\n\nBet\n\n\nWrite both AUCs for direction and for volatility before you run."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#why-the-shuffled-number-lies",
+    "href": "lectures/03-one-problem.html#why-the-shuffled-number-lies",
+    "title": "Look first, then predict",
+    "section": "Why the shuffled number lies",
+    "text": "Why the shuffled number lies\n\n\n\nShuffle a time series and the model trains on Wednesday and Friday, then is tested on Thursday. It is not predicting — it is remembering its neighbours."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#what-came-out",
+    "href": "lectures/03-one-problem.html#what-came-out",
+    "title": "Look first, then predict",
+    "section": "What came out",
+    "text": "What came out\n\n\n\n\n\n\n\n\n\n\n\n\nbase rate\nAUC, shuffled\nAUC, honest\nthe rule “next week like this week”\n\n\n\n\ndirection\n53%\n0.70\n0.55\n—\n\n\nvolatility\n54%\n0.74\n0.60\n0.64\n\n\n\n\nComputed in the notebook, 7 Oct 2026; your live run may differ in the second decimal. AUC: 0.5 is a coin, 1.0 is perfect."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#read-it-in-this-order",
+    "href": "lectures/03-one-problem.html#read-it-in-this-order",
+    "title": "Look first, then predict",
+    "section": "Read it in this order",
+    "text": "Read it in this order\n\nShuffled &gt; honest, on both. The gap is leakage, not skill. On direction it turns a coin into a “signal”.\nDirection ≈ a coin. Hundreds of trees, nine features, nothing to say about next week’s direction — what Part 1 told us for free.\nVolatility is predictable — and the one-line rule beats the forest.\n\nYou only know the rule wins because you built the rule first. Most AI pitches never do."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#same-data-same-model.-the-question-decides.",
+    "href": "lectures/03-one-problem.html#same-data-same-model.-the-question-decides.",
+    "title": "Look first, then predict",
+    "section": "Same data, same model. The question decides.",
+    "text": "Same data, same model. The question decides.\nWhether ML has anything to offer depends on the question you ask it. Choosing the question is the manager’s job — and the exploration is how you choose."
+  },
+  {
+    "objectID": "lectures/03-one-problem.html#what-did-the-black-box-look-at",
+    "href": "lectures/03-one-problem.html#what-did-the-black-box-look-at",
+    "title": "Look first, then predict",
+    "section": "What did the black box look at?",
+    "text": "What did the black box look at?\nWe cannot read 300 trees. We can ask: if I scramble one feature, how much worse does it get?\nThat is permutation importance, measured on the test years.\n\nthe volatility features dominate (vol_30, vol_7), with the size of last week’s move (ret_7) behind them — Part 1 again;\na black box that agrees with what you saw by eye is one you can start to trust;\none that leans on weekday is one you should not."
   },
   {
     "objectID": "lectures/03-one-problem.html#and-leakage-that-no-split-can-catch",
     "href": "lectures/03-one-problem.html#and-leakage-that-no-split-can-catch",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "And leakage that no split can catch",
-    "text": "And leakage that no split can catch"
-  },
-  {
-    "objectID": "lectures/03-one-problem.html#do-it-on-purpose",
-    "href": "lectures/03-one-problem.html#do-it-on-purpose",
-    "title": "A model, and whether to believe it",
-    "section": "Do it on purpose",
-    "text": "Do it on purpose\nLAB · session.ipynb § C\nAdd one leaked feature deliberately — a rolling statistic computed over everything.\n\nWatch the score jump.\nFix the feature so it uses only the past.\nWatch it fall back.\n\nThe point is the feeling. A leak looks exactly like success, and this is the only safe place to learn what that feels like."
+    "text": "And leakage that no split can catch\nLAB · session.ipynb § YOUR TURN after M4\nThe assistant offers to “smooth” the volatility feature: rolling(7, center=True).\n\nAdd it. Keep the honest split.\nWatch the score jump.\nOne sentence: why did the honest split not protect you?\n\nA leak looks exactly like success. This is the only safe place to learn what that feels like."
   },
   {
     "objectID": "lectures/03-one-problem.html#block-d-a-probability-is-not-a-decision",
     "href": "lectures/03-one-problem.html#block-d-a-probability-is-not-a-decision",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "Block D A probability is not a decision",
     "text": "Block D A probability is not a decision"
   },
   {
     "objectID": "lectures/03-one-problem.html#the-model-says-0.61.-now-what",
     "href": "lectures/03-one-problem.html#the-model-says-0.61.-now-what",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "The model says 0.61. Now what?",
     "text": "The model says 0.61. Now what?\nA prediction becomes a decision only when you add two things the model does not contain: what each mistake costs, and the probability above which you act."
   },
   {
-    "objectID": "lectures/03-one-problem.html#and-one-more-question-which-the-model-cannot-answer",
-    "href": "lectures/03-one-problem.html#and-one-more-question-which-the-model-cannot-answer",
-    "title": "A model, and whether to believe it",
-    "section": "And one more question, which the model cannot answer",
-    "text": "And one more question, which the model cannot answer\nIs 0.61 actually 61%?\nTake every day the model said “about 0.6”. Did roughly six in ten of them happen? If yes it is calibrated and you can do arithmetic with it. If not, the number is a ranking, not a probability, and the expected-value calculation above is meaningless.\n\n\n\n\n\n\n\nThe sentence to remember\n\n\nAccuracy tells you how often it is right. Calibration tells you whether its confidence means anything. You need both, and only one of them is on the dashboard by default."
-  },
-  {
-    "objectID": "lectures/03-one-problem.html#turn-it-into-a-decision",
-    "href": "lectures/03-one-problem.html#turn-it-into-a-decision",
-    "title": "A model, and whether to believe it",
-    "section": "Turn it into a decision",
-    "text": "Turn it into a decision\nLAB · session.ipynb § D\n\nPut costs on the two errors — your numbers, defended out loud.\nSweep the threshold and plot expected value against it.\nRead off the threshold that maximises it, and say how far you could be wrong about the costs before the answer changes."
+    "objectID": "lectures/03-one-problem.html#hedge-or-not",
+    "href": "lectures/03-one-problem.html#hedge-or-not",
+    "title": "Look first, then predict",
+    "section": "Hedge or not",
+    "text": "Hedge or not\nLAB · session.ipynb § M5\nA treasury desk holds BTC. Hedging next week costs 1; an unhedged high-vol week costs 2.\n\nBet the threshold, then sweep it.\nThe model must beat both “never hedge” and “always hedge” — not just look clever.\nNow make a miss cost 4. Run again.\n\nThe model did not change. The business did — and with it, whether the model is worth running at all."
   },
   {
     "objectID": "lectures/03-one-problem.html#close",
     "href": "lectures/03-one-problem.html#close",
-    "title": "A model, and whether to believe it",
+    "title": "Look first, then predict",
     "section": "Close",
-    "text": "Close\nHomework 3 — a model against a baseline, evaluated time-aware, plus a section titled “What would have to be true for this to be useful”: the decision rule, the KPI, and what each error costs.\nDue Tuesday 13 October, 23:59.\n\nThat section is worth more than the model. Anyone can fit a classifier; almost nobody writes down what would make it worth running.\nNext week: the same honesty, applied to language models.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 3 — your own asset, explored first, then a model against a baseline and a one-line rule, evaluated on the future, plus a section titled “What would have to be true for this to be useful”.\nDue Tuesday 13 October, 23:59.\n\nThree lines at the bottom of the notebook: one on exploration, one on the split, one on the black box.\nNext week: the same honesty, applied to language models."
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#where-we-are",
@@ -2727,7 +2881,7 @@
     "href": "lectures/05-agents-and-evals.html#the-case-brief-40",
     "title": "When it stops answering and starts acting",
     "section": "The case brief — 40%",
-    "text": "The case brief — 40%\n1,500 words plus an eight-minute presentation, due Sunday 1 November, presented 4 November.\nTreat the system you built in weeks 4 and 5 as a product:\n\nthe problem, and who has it\nwhat you built, in a paragraph a non-technical reader finishes\nevidence from your evaluations — the table, with the before and after\nrisks, and the controls you actually implemented\nsuccess metrics, and the unit economics\n\n\nThe evaluation table is what separates a brief from an essay. You already have it. Do not write the essay.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "The case brief — 40%\n1,500 words plus an eight-minute presentation, due Sunday 1 November, presented 4 November.\nTreat the system you built in weeks 4 and 5 as a product:\n\nthe problem, and who has it\nwhat you built, in a paragraph a non-technical reader finishes\nevidence from your evaluations — the table, with the before and after\nrisks, and the controls you actually implemented\nsuccess metrics, and the unit economics\n\n\nThe evaluation table is what separates a brief from an essay. You already have it. Do not write the essay."
   },
   {
     "objectID": "lectures/07-backtesting.html#today",
@@ -2839,7 +2993,7 @@
     "href": "lectures/07-backtesting.html#close",
     "title": "Backtesting, done honestly",
     "section": "Close",
-    "text": "Close\nHomework 7 — one strategy, backtested with costs and walk-forward validation, a completed pitfall checklist, and one LLM-derived feature tested against the baseline.\nDue Tuesday 17 November, 23:59. No live trading. Educational simulation only.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 7 — one strategy, backtested with costs and walk-forward validation, a completed pitfall checklist, and one LLM-derived feature tested against the baseline.\nDue Tuesday 17 November, 23:59. No live trading. Educational simulation only."
   },
   {
     "objectID": "lectures/09-responsible.html#today-is-about-your-capstone-not-about-ethics-in-general",
@@ -2958,6 +3112,6 @@
     "href": "lectures/09-responsible.html#close",
     "title": "Attacking your own system before somebody else does",
     "section": "Close",
-    "text": "Close\nHomework 9 — the near-final capstone prototype, a completed risk and controls canvas, and the red-team log: what you attacked, what happened, what you fixed.\nDue Tuesday 1 December, 23:59.\nNext week we turn the prototype into a decision with numbers, and you rehearse.\n\n\n\nAI for Business & FinTech · ESE Florence"
+    "text": "Close\nHomework 9 — the near-final capstone prototype, a completed risk and controls canvas, and the red-team log: what you attacked, what happened, what you fixed.\nDue Tuesday 1 December, 23:59.\nNext week we turn the prototype into a decision with numbers, and you rehearse."
   }
 ]
