@@ -32,6 +32,8 @@ Anything with a daily price on Yahoo Finance that we did **not** use in class: S
    - **What would have to be true for this to be useful** — the decision it informs, what each error costs, the threshold you would choose, the KPI you would put on the dashboard, and the single strongest reason it might not work next year;
    - **AI-use disclosure** — what the assistant wrote, and what it got wrong.
 
+3. **Optional, recommended:** run Part 3 · L3 on your asset with your own free key (Google AI Studio → *Get API key* → Colab 🔑 Secrets as `GEMINI_API_KEY`). Add the LLM's AUC to the memo's table, with the number of dates and the cost. Never paste the key into a cell.
+
 ## Constraints
 - No shuffled split in the honest evaluation. If the assistant writes `train_test_split` without being told, that is your "what the assistant got wrong" for this week.
 - Every feature must be explainable as "computable at day *t*". I will pick two and ask.

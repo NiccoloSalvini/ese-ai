@@ -5,16 +5,6 @@ author: "Niccolò Salvini, PhD"
 institute: "AI for Business and FinTech · European School of Economics, Florence"
 ---
 
-## Where we are
-
-| | | |
-|---|---|---|
-| 1–2 | 23–30 Sep | the network, the LLM, the checking habit ✓ |
-| **3** | **7 Oct** | **explore a real dataset, then train a model and find out if it is any good** |
-| 4–5 | 14–21 Oct | an LLM application, then agents and evals |
-
-[Today a model will score 0.74 and be worthless, and a one-line rule will beat it. Telling the two apart is the entire skill.]{.red}
-
 ## Last week, in one slide
 
 :::: {.columns}
@@ -34,86 +24,70 @@ It invents by design: there is always a top knob, even when the fact was never i
 
 | | |
 |---|---|
-| **10:00** | your homework: the fraud share, and the release you decoded |
-| **10:20** | **Part 1 — explore**: eight years of BTC, ETH and the S&P 500 |
-| **11:20** | break |
-| **11:30** | **Part 2 — predict**: features, the wall, a random forest, two splits |
-| **12:30** | from a probability to a decision |
-| **12:50** | homework · three lines |
+| **10:00** | your homework: the fraud share, the release you decoded |
+| **10:15** | **look** — eight years of Bitcoin, Ether and the S&P 500 |
+| **11:00** | break |
+| **11:10** | **predict** — a model we do not open, judged from the outside |
+| **12:00** | **an LLM, called from code** — the same question, the same test |
+| **12:40** | from a probability to a decision · homework · three lines |
 
 [One notebook all morning: **week-03/session.ipynb**. You drive; I don't touch the keyboard.]{.muted}
 
-## How the notebook works
-
-| | |
-|---|---|
-| **grey cell** | a worked example — run it, read it, ask |
-| **✍️ BET** | write a number *before* the next cell runs |
-| **▶ YOUR TURN** | the next piece of the analysis is yours, with the assistant if you like. Solution folded underneath |
-| **🔍 CHECK** | a cell an assistant really wrote. It runs. It is wrong |
-
 ## 0.17% of card payments are fraud. {.statement}
 
-[Your number from homework 2. A model that says "never fraud" is 99.83% accurate and catches nothing. Keep that number in mind all morning: it is called the **base rate**, and every score today gets one next to it.]{.muted}
+[Your number from homework 2. A model that says "never fraud" is 99.83% accurate and catches nothing. That number is the **base rate**, and today every score gets one next to it.]{.muted}
 
-## [Part 1]{.section-kicker} Explore {.section-slide background-color="#AF1F25"}
+## [Part 1]{.section-kicker} Look {.section-slide background-color="#AF1F25"}
 
 ## The question for the morning
 
 ### Is crypto risk predictable — and which part of it?
 
-Exploration is not "make charts". It is asking the data small questions, **in an order**, until you know which question is worth a model.
+We will not answer it with a model. We answer it with four small questions, asked in order:
 
-| order | small question | what it decides |
-|---|---|---|
-| 1 | what is in the table? | how to join crypto and stocks |
-| 2 | how big are the moves? | which scale, which units |
-| 3 | how often is "impossible"? | whether the bell curve is allowed |
-| 4 | does yesterday tell us about today? | **what is worth predicting** |
+1. what is in the table?
+2. how big are the moves?
+3. how often does the "impossible" happen?
+4. **does yesterday tell us anything about today?**
 
-## What is in the table {.lab background-color="#2471a3"}
+[Exploration is not "make charts". It is asking the data small questions until you know which question is worth a model.]{.explain}
 
-[LAB · session.ipynb § E1]{.kicker}
+## The table, and the worst day {.lab background-color="#2471a3"}
 
-3,200 days of BTC, ETH and SPY since January 2018.
+[LAB · session.ipynb § E1–E2]{.kicker}
 
 ::: {.callout-important title="Bet"}
-SPY has missing values, BTC has none. Out of every 7 days, how many is SPY missing?
+SPY has empty days, Bitcoin has none. Out of every seven days, how many is SPY missing?
 :::
 
-[Crypto trades 7 days a week, stocks 5. **Every join between the two is a decision** — drop the weekends, or carry Friday forward. Neither is wrong; not deciding is.]{.red}
+::: {.callout-important title="Bet"}
+Bitcoin's worst single day since 2018: how much did it lose, and when?
+:::
 
-## How big are the moves {.lab background-color="#2471a3"}
+[▶ **Your turn** — twice: the stock-market holidays of 2025, then Ether's worst and best days.]{.red}
 
-[LAB · session.ipynb § E2–E3]{.kicker}
+## How often is "impossible"?
 
 ::: {.callout-important title="Bet"}
-BTC's worst single day since 2018: how much did it lose, and roughly when?
+In eight and a half years, how many days did Bitcoin move more than 4 standard deviations? The bell curve says 0.2.
 :::
 
 . . .
 
-::: {.bigtable}
-| | days beyond 4 standard deviations |
-|---|---|
-| if returns were normal | **0.2** |
-| BTC, 2018–2026 | **17** |
-:::
-
-[**Fat tails.** Big days are rare, but eighty-five times less rare than the textbook bell curve says. A "99% VaR" built on that curve underestimates exactly the days that matter.]{.explain}
+![](img/w03-tails.svg){fig-align="center" width="88%"}
 
 ## Two questions that sound alike
 
 :::: {.columns}
 ::: {.column width="50%"}
 ### Direction
-BTC went **up** today.
+Bitcoin went **up** today.
 
 Is it more likely to go up tomorrow?
 :::
 ::: {.column width="50%"}
 ### Size
-BTC moved **a lot** today, either way.
+Bitcoin moved **a lot** today, either way.
 
 Is it more likely to move a lot tomorrow?
 :::
@@ -123,37 +97,25 @@ Is it more likely to move a lot tomorrow?
 Which one has memory — direction, size, both, neither?
 :::
 
-[We measure memory with the **autocorrelation**: the correlation of a series with itself, *k* days earlier. 0 means no memory.]{.muted}
+## The answer
 
-## The answer, on eight years of BTC
+![](img/w03-memory.svg){fig-align="center" width="86%"}
 
-::: {.bigtable}
-| lag | direction (return) | size (absolute return) |
-|---|---|---|
-| 1 day | −0.05 | **0.17** |
-| 2 days | 0.04 | **0.13** |
-| 3 days | 0.01 | **0.11** |
-| 4 days | 0.03 | **0.17** |
-| 5 days | 0.02 | **0.14** |
-:::
-
-[Computed in the notebook, 7 Oct 2026. The size column stays positive for weeks.]{.muted}
+[The **autocorrelation** compares a series with itself, *k* days earlier.]{.explain}
 
 ## Calm follows calm. Storms follow storms. {.statement}
 
-[The **direction** of tomorrow has no memory. Its **size** does. This is called *volatility clustering* — and we found it before training anything.]{.muted}
+[It is called **volatility clustering**, and we found it before training anything. It already tells us which question a model can help with — and which one it cannot.]{.muted}
 
-## Not a constant: BTC and the stock market
+## What clustering looks like
 
-::: {.bigtable}
-| year | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 |
-|---|---|---|---|---|---|---|---|---|---|
-| BTC–SPY correlation | 0.05 | 0.06 | 0.36 | 0.28 | **0.57** | 0.34 | 0.28 | 0.48 | 0.47 |
-:::
+![](img/w03-vol.svg){fig-align="center" width="86%"}
 
-"Digital gold, uncorrelated with stocks" was roughly true before 2020 and has not been true since.
+[▶ **Your turn** — does the S&P 500 cluster too? Same table, one line changed. Bet first: more or less than Bitcoin?]{.red}
 
-[A correlation is a series, not a number. It has regimes too — and a portfolio built on the 2019 number learned that in 2022.]{.explain}
+## Not a constant: Bitcoin and the stock market
+
+![](img/w03-corr.svg){fig-align="center" width="95%"}
 
 ## 🔍 The assistant's summary table {.lab background-color="#2471a3"}
 
@@ -169,7 +131,11 @@ summary = pd.DataFrame({
 })
 ```
 
-It runs. It looks professional. **Two errors.** Ten minutes, one hint after five.
+It runs. It looks professional. **Two errors.** Ten minutes; one hint after five.
+
+## What the two errors cost
+
+![](img/w03-check.svg){fig-align="center" width="92%"}
 
 ## [Part 2]{.section-kicker} Predict {.section-slide background-color="#AF1F25"}
 
@@ -187,22 +153,26 @@ It runs. It looks professional. **Two errors.** Ten minutes, one hint after five
 ![](img/software-123-l4.svg){.fragment width="100%"}
 :::
 
-## Three words, and the whole of supervised learning
+[Today all three on one question: a one-line **rule**, a **model** trained on data, and an **LLM**. Same test for all three.]{.explain}
 
-| | |
-|---|---|
-| **feature** | what you know **at** day `t` |
-| **target** | what happens **after** `t` |
-| **horizon** | how long after — today, **7 days** |
+## Two targets, nine features
 
-$$\text{features at } t \;\longrightarrow\; \text{model} \;\longrightarrow\; \text{target over } (t, t+7]$$
+$$\text{features at day } t \;\longrightarrow\; \text{model} \;\longrightarrow\; \text{what happens over } (t,\ t+7]$$
 
-Two targets, the same nine features:
+:::: {.columns}
+::: {.column width="50%"}
+**Will Bitcoin be up next week?**
 
-- `y_dir` — will BTC be **up** over the next 7 days?
-- `y_vol` — will the next 7 days be **more volatile than usual**?
+`y_dir`
+:::
+::: {.column width="50%"}
+**Will next week be more volatile than usual?**
 
-[After Part 1 you can already guess how this ends. Write your guess down.]{.red}
+`y_vol` — "usual" is the median of the past year
+:::
+::::
+
+[After Part 1 you can already guess how this ends. Write your guess down before the model runs.]{.red}
 
 ## The wall
 
@@ -213,30 +183,25 @@ Two targets, the same nine features:
 ## Before the model: what does nothing score?
 
 ::: {.callout-important title="Bet"}
-Share of 7-day windows in which BTC went up?
+In what share of weeks did Bitcoin go up?
 :::
 
 . . .
 
-::: {.bigtable}
-| target | share of 1s | "always say the majority" |
-|---|---|---|
-| up next week | 53% | **53%** |
-| high-vol next week | 46% | **54%** |
-:::
+**53%.** "Always say up" is right 53% of the time, with no data and no model.
 
-[That is the **base rate** — the number to beat. A model that does not beat it is a cost with a dashboard.]{.explain}
+[That is the **base rate**. And for volatility there is a smarter baseline anyone can write: **"next week will be like this week."** A model has to beat both.]{.explain}
 
 ## The black box: a random forest
 
 :::: {.columns}
 ::: {.column width="55%"}
-**Hundreds of decision trees.** Each is a flowchart of yes/no questions on the features — *"is this week's vol above 1.3× usual?"* — grown on a slightly different sample of the past.
+**Hundreds of decision trees.** Each is a flowchart of yes/no questions on the features — *"is this week's volatility above 1.3 × usual?"* — grown on a slightly different sample of the past.
 
 They **vote**. The share of votes is the probability.
 :::
 ::: {.column width="45%"}
-It finds interactions and curves on its own, which a regression does not.
+It finds curves and interactions on its own.
 
 **What it cannot do is tell you whether it is right.**
 
@@ -244,100 +209,151 @@ That is the split's job — and ours.
 :::
 ::::
 
-[We open it in week 9. Today we only judge it from the outside — which is exactly what you will do with every vendor model.]{.muted}
+[We open it in week 9. Today we judge it from the outside — which is what you will do with every vendor's model.]{.muted}
 
-## Two models, two splits {.lab background-color="#2471a3"}
+## Two splits {.lab background-color="#2471a3"}
 
 [LAB · session.ipynb § M3]{.kicker}
 
-Same features, same target, same forest. Only the split changes.
+Same features, same targets, same forest. Only the split changes.
 
-1. **Honest**: learn on 2019–2023, judge on 2024 → today.
-2. **The assistant's default**: `train_test_split` — shuffle the days, keep 30% for testing.
+1. **Honest:** learn on 2019–2023, judge on 2024 → today.
+2. **The assistant's default:** `train_test_split` — shuffle the days, keep 30% aside.
 
 ::: {.callout-important title="Bet"}
-Write both AUCs for direction and for volatility before you run.
+Four numbers: AUC for direction and for volatility, honest and shuffled.
 :::
+
+[AUC: does the model rank the 1s above the 0s? 0.5 is a coin, 1.0 is perfect.]{.muted}
 
 ## Why the shuffled number lies {.clip background-color="#000000"}
 
 <video class="clipvideo" width="1000" height="562" controls muted loop playsinline data-autoplay preload="auto" poster="media/w03_splits_poster.png"><source src="media/w03_splits.mp4" type="video/mp4"></video>
 
-Shuffle a time series and the model trains on Wednesday and Friday, then is tested on Thursday. It is not predicting — it is remembering its neighbours.
+Shuffled, the model trains on Wednesday and Friday and is tested on Thursday. It is not predicting — it is remembering its neighbours.
 
 ## What came out
 
-::: {.bigtable}
-| | base rate | AUC, shuffled | AUC, honest | the rule "next week like this week" |
-|---|---|---|---|---|
-| **direction** | 53% | 0.70 | **0.55** | — |
-| **volatility** | 54% | 0.74 | **0.60** | **0.64** |
-:::
+![](img/w03-results.svg){fig-align="center" width="88%"}
 
-[Computed in the notebook, 7 Oct 2026; your live run may differ in the second decimal. AUC: 0.5 is a coin, 1.0 is perfect.]{.muted}
-
-## Read it in this order
-
-1. **Shuffled > honest, on both.** The gap is leakage, not skill. On direction it turns a coin into a "signal".
-2. **Direction ≈ a coin.** Hundreds of trees, nine features, nothing to say about next week's direction — what Part 1 told us for free.
-3. **Volatility is predictable** — and **the one-line rule beats the forest.**
-
-[You only know the rule wins because you built the rule first. Most AI pitches never do.]{.red}
+[Shuffled beats honest on both: that gap is leakage, not skill. Direction is a coin, as Part 1 said. Volatility is predictable — and the one-line rule beats the forest.]{.explain}
 
 ## Same data, same model. The question decides. {.statement}
 
-[Whether ML has anything to offer depends on the question you ask it. Choosing the question is the manager's job — and the exploration is how you choose.]{.muted}
+[Whether ML has anything to offer depends on the question you ask it. Choosing the question is the manager's job — and looking first is how you choose.]{.muted}
 
 ## What did the black box look at?
 
-We cannot read 300 trees. We can ask: **if I scramble one feature, how much worse does it get?**
+![](img/w03-importance.svg){fig-align="center" width="88%"}
 
-That is *permutation importance*, measured on the test years.
+[A black box that agrees with what you saw by eye is one you can start to trust.]{.explain}
 
-- the volatility features dominate (`vol_30`, `vol_7`), with the size of last week's move (`ret_7`) behind them — Part 1 again;
-- a black box that agrees with what you saw by eye is one you can start to trust;
-- one that leans on `weekday` is one you should not.
+## Leak it on purpose {.lab background-color="#2471a3"}
 
-## And leakage that no split can catch {.lab background-color="#2471a3"}
+[LAB · session.ipynb § your turn after M4]{.kicker}
 
-[LAB · session.ipynb § YOUR TURN after M4]{.kicker}
+The assistant offers to *"smooth"* the volatility: `rolling(7, center=True)`.
 
-The assistant offers to *"smooth"* the volatility feature: `rolling(7, center=True)`.
-
-1. Add it. Keep the **honest** split.
-2. Watch the score jump.
+1. Add it as a feature. Keep the **honest** split.
+2. Watch the AUC go from 0.60 to 0.69.
 3. One sentence: why did the honest split not protect you?
 
 [A leak looks exactly like success. This is the only safe place to learn what that feels like.]{.red}
 
-## [Block D]{.section-kicker} A probability is not a decision {.section-slide background-color="#AF1F25"}
+## [Part 3]{.section-kicker} An LLM, called from code {.section-slide background-color="#AF1F25"}
 
-## The model says 0.61. Now what?
+## From tool to component
 
-A prediction becomes a decision only when you add two things the model does not contain: **what each mistake costs**, and **the probability above which you act**.
+:::: {.columns}
+::: {.column width="50%"}
+### Until now: a tool
+You type into a chat. It answers. You copy.
 
-![](img/threshold-ev.svg){fig-align="center" width="95%"}
+Nothing is measured; every answer is a one-off.
+:::
+::: {.column width="50%"}
+### From today: a component
+Your code calls it, with arguments **you** set:
 
-## Hedge or not {.lab background-color="#2471a3"}
+- the **prompt** — what you ask
+- the **system** message — who it is, what it may not do
+- the **temperature** — last week's knob
+- the **model**
+:::
+::::
 
-[LAB · session.ipynb § M5]{.kicker}
+[A component can be run 40 times, scored, compared with a rule — and priced. That is weeks 4 and 5, in miniature.]{.explain}
 
-A treasury desk holds BTC. Hedging next week costs **1**; an unhedged high-vol week costs **2**.
+## The key is a password to a bank account {.statement}
 
-1. **Bet** the threshold, then sweep it.
-2. The model must beat **both** "never hedge" and "always hedge" — not just look clever.
-3. Now make a miss cost **4**. Run again.
+[Never in a cell, a screenshot or a chat. In Colab it lives in 🔑 **Secrets**. Today I type mine into a hidden box: it stays in this runtime's memory and is gone when you close it.]{.muted}
 
-[The model did not change. The business did — and with it, whether the model is worth running at all.]{.red}
+## Same question, five answers {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § L0–L1]{.kicker}
+
+*"Will Bitcoin go up or down next week? Commit to a direction."* — once at temperature 0, four times at 1.
+
+::: {.callout-important title="Bet"}
+At temperature 1, will the five answers agree on the direction?
+:::
+
+[▶ **Your turn** — rewrite the **system** message until it behaves like the analyst you would hire: base rate first, no direction. Then try to make it break its own rule.]{.red}
+
+## The LLM writes the note to the CFO {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § L2]{.kicker}
+
+We hand it our results table and ask: *is this model worth deploying?*
+
+🔍 Read the note with the table next to it:
+
+- does it quote the **shuffled** numbers as performance?
+- does it call 0.55 on direction "predictive"?
+- does it notice the **rule beats the forest**?
+
+[Then change one number in the table and run again. A note that does not move when the numbers move was not written from the numbers.]{.red}
+
+## The LLM as a forecaster {.lab background-color="#2471a3"}
+
+[LAB · session.ipynb § L3]{.kicker}
+
+On **40 dates** of the test years: the last 30 daily returns, **no name, no dates** — *"probability that next week is more volatile than usual?"*
+
+Scored with the same AUC, on the same 40 dates, as the rule and the forest.
+
+::: {.callout-important title="Bet"}
+The LLM: below the forest, between the two, or above the rule?
+:::
+
+[Forty dates is a small test: ±0.1 of AUC can be luck. And the bill — calls, tokens, dollars — is printed under the score. The rule costs nothing.]{.muted}
+
+## The wall, seen from an LLM
+
+![](img/w03-llm-wall.svg){fig-align="center" width="88%"}
+
+[▶ **Your turn** — tell it "Bitcoin" and the date, and run the 40 forecasts again. If the score jumps, ask what it already knows about those weeks.]{.red}
+
+## Three black boxes, one discipline {.statement}
+
+[A rule, a forest, an LLM: base rate, honest test, same dates, same score, and the price of each answer. The discipline does not change with the model.]{.muted}
+
+## [If there is time]{.section-kicker} A probability is not a decision {.section-slide background-color="#AF1F25"}
+
+## Hedge or not
+
+A treasury desk holds Bitcoin. Hedging next week costs **1**. An unhedged high-volatility week costs **2** — or **4**.
+
+![](img/w03-hedge.svg){fig-align="center" width="88%"}
 
 ## Close
 
-**Homework 3** — your own asset, explored first, then a model against a baseline and a one-line rule, evaluated on the future, plus a section titled **"What would have to be true for this to be useful"**.
+**Homework 3** — your own asset: look first, then a random forest against the base rate and a one-line rule, on the future. Then a section titled **"What would have to be true for this to be useful"**.
 
-Due Tuesday 13 October, 23:59.
+Due Tuesday 13 October, 23:59 · Drive, `ese-ai-fintech/week-03/`.
 
 . . .
 
-**Three lines** at the bottom of the notebook: one on exploration, one on the split, one on the black box.
+**Three lines** at the bottom of the notebook: one on looking, one on the split, one on the black boxes.
 
-[Next week: the same honesty, applied to language models.]{.muted}
+[Next week: the LLM as a component, properly — structured answers, documents, retrieval.]{.muted}

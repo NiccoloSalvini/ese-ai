@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">Bitcoin vs S&amp;P 500 (SPY): 90-trading-day correlation of daily returns, yearly average</text>
+  <line x1="100.0" y1="330.0" x2="900.0" y2="330.0" stroke="#363636" stroke-width="1"/>
+  <rect x="122.0" y="312.9" width="62.7" height="17.1" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="153.3" y="304.9" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.05</text>
+  <text x="153.3" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2018</text>
+  <rect x="208.7" y="309.4" width="62.7" height="20.6" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="240.0" y="301.4" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.06</text>
+  <text x="240.0" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2019</text>
+  <rect x="295.3" y="206.6" width="62.7" height="123.4" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="326.7" y="198.6" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.36</text>
+  <text x="326.7" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2020</text>
+  <rect x="382.0" y="234.0" width="62.7" height="96.0" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="413.3" y="226.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.28</text>
+  <text x="413.3" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2021</text>
+  <rect x="468.7" y="134.6" width="62.7" height="195.4" fill="#AF1F25" fill-opacity="0.9"/>
+  <text x="500.0" y="126.6" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">0.57</text>
+  <text x="500.0" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2022</text>
+  <rect x="555.3" y="213.4" width="62.7" height="116.6" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="586.7" y="205.4" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.34</text>
+  <text x="586.7" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2023</text>
+  <rect x="642.0" y="234.0" width="62.7" height="96.0" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="673.3" y="226.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.28</text>
+  <text x="673.3" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2024</text>
+  <rect x="728.7" y="165.4" width="62.7" height="164.6" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="760.0" y="157.4" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.48</text>
+  <text x="760.0" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2025</text>
+  <rect x="815.3" y="168.9" width="62.7" height="161.1" fill="#2471a3" fill-opacity="0.9"/>
+  <text x="846.7" y="160.9" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">0.47</text>
+  <text x="846.7" y="352.0" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="middle">2026*</text>
+  <text x="30.0" y="400.0" font-size="14" font-weight="400" fill="#363636" text-anchor="start">“Digital gold, uncorrelated with stocks” was roughly true until 2019. A correlation is a series, not a constant — it has regimes too.</text>
+  <text x="30.0" y="422.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">* 2026 to date</text>
+</svg>

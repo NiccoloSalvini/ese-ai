@@ -341,7 +341,8 @@ for target in ["y_dir", "y_vol"]:
 
 rows[1]["rule accuracy"] = accuracy_score(test["y_vol"], test["vol_7"] > 1)     # 'next week like this week': no model
 rows[1]["rule AUC"]      = roc_auc_score(test["y_vol"], test["vol_7"])             # one feature, used as the score
-pd.DataFrame(rows).set_index("target").round(3)
+results = pd.DataFrame(rows).set_index("target").round(3)
+results
 '''),
 md("""
 Read the table in this order:
@@ -397,8 +398,221 @@ print("AUC with the centred feature:", round(roc_auc_score(yl.loc["2024":], m.pr
 # a centred window at t uses t+1 … t+3: the future is inside the feature, and no split can see that
 '''),
 
+# ---------------------------------------------------------------- PART 3
 md("""
-## M5 — From probability to decision *(if time; otherwise homework)*
+# Part 3 — An LLM, called from code
+
+Until now the language model was a **tool**: you typed into a chat, it wrote code. Now it becomes a **component**: a function your code calls, with arguments you set, whose answers you can measure like any other model's.
+
+Three experiments, all on the same question as this morning. In each one you **change the code** — the prompt, the temperature, the model — and run it again. That is the whole skill of week 4 and 5, in miniature.
+"""),
+md("""
+## L0 — The key
+The key is the password to a paid account. It never goes into a notebook cell, a screenshot or a chat.
+
+- **Your own key:** Colab ▸ 🔑 *Secrets* (left sidebar) ▸ add `GEMINI_API_KEY` (or `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`), tick *notebook access*.
+- **Today, the tutor's key:** run the cell; if no secret is found it asks for the key in a hidden box. The tutor types it; it lives only in this runtime's memory and is gone when the runtime is closed.
+
+No key at all? The cell switches to **MOCK MODE** — canned answers, clearly labelled, so every cell still runs.
+"""),
+code('''
+!pip -q install openai
+'''),
+code('''
+import os, re, time
+from getpass import getpass
+
+PROVIDER = "gemini"          # "gemini" | "openai" | "anthropic"  ← change me
+ENDPOINT = {                 # all three speak the same (OpenAI-style) protocol: one client, three providers
+    "gemini":    ("GEMINI_API_KEY",    "https://generativelanguage.googleapis.com/v1beta/openai/", "gemini-2.5-flash"),  # model names change: see the list below
+    "openai":    ("OPENAI_API_KEY",    None,                                                        "gpt-4.1-mini"),
+    "anthropic": ("ANTHROPIC_API_KEY", "https://api.anthropic.com/v1/",                             "claude-haiku-4-5"),
+}
+KEY_NAME, BASE_URL, MODEL = ENDPOINT[PROVIDER]
+
+key = None
+try:
+    from google.colab import userdata
+    key = userdata.get(KEY_NAME)
+except Exception:
+    key = os.environ.get(KEY_NAME)
+if not key:
+    key = getpass(f"{KEY_NAME} (Enter for mock mode): ").strip() or None
+
+MOCK = key is None
+if not MOCK:
+    from openai import OpenAI
+    client = OpenAI(api_key=key, base_url=BASE_URL)
+del key                       # the client keeps it; the notebook does not
+print("MOCK MODE — answers below are NOT from a model" if MOCK else f"live: {PROVIDER} · {MODEL}")
+'''),
+md("Which models does this key open? The names change every few months; this is how you find the current ones instead of trusting a tutorial (or an assistant)."),
+code('''
+if not MOCK:
+    try:
+        names = sorted(m.id for m in client.models.list())
+        print(len(names), "models, e.g.:", [n for n in names if "flash" in n or "mini" in n or "haiku" in n][:12])
+    except Exception as e:
+        print("this provider does not list models through this endpoint:", type(e).__name__)
+'''),
+md("""
+Everything goes through one small function. Read it: the **prompt** (what you ask), the **system** message (who the model is, what it may not do), the **temperature** (last week's knob). It also counts the tokens you pay for.
+"""),
+code('''
+USAGE = {"calls": 0, "tokens_in": 0, "tokens_out": 0}
+
+def ask(prompt, system="You are a careful financial analyst.", temperature=0.0, model=None):
+    """One call to the model; returns its text."""
+    if MOCK:
+        return _mock(prompt)
+    for attempt in range(4):                      # free tiers rate-limit: wait and retry
+        try:
+            r = client.chat.completions.create(
+                model=model or MODEL, temperature=temperature,
+                messages=[{"role": "system", "content": system}, {"role": "user", "content": prompt}])
+            break
+        except Exception as e:
+            if "429" in str(e) or "rate" in str(e).lower():
+                time.sleep(10 * (attempt + 1)); continue
+            raise
+    USAGE["calls"] += 1
+    if r.usage:
+        USAGE["tokens_in"] += r.usage.prompt_tokens; USAGE["tokens_out"] += r.usage.completion_tokens
+    return r.choices[0].message.content.strip()
+
+def _mock(prompt):
+    """Stand-in when there is no key. For the forecast prompt it answers with a crude vol rule, so L3 still runs."""
+    nums = [float(x) for x in re.findall(r"-?\\d+\\.\\d+", prompt)]
+    if "probability" in prompt and len(nums) > 10:
+        recent, usual = np.std(nums[-8:-1]), nums[-1]
+        return f"{min(0.95, max(0.05, 0.5 + (recent / usual - 1) * 0.4)):.2f}"
+    return "[MOCK] A real model would answer here. Add a key to see it."
+
+print(ask("In one sentence: what is volatility clustering?"))
+'''),
+
+md("""
+## L1 — Same question, five answers
+The question every client asks. We ask it five times: once at temperature 0, four times at temperature 1.
+"""),
+md("**✍️ BET.** At temperature 1, will the five answers agree on the direction? `____`"),
+code('''
+q = "Will Bitcoin go up or down next week? Answer in two sentences, and commit to a direction."
+print("T=0  →", ask(q, temperature=0), "\\n")
+for i in range(4):
+    print(f"T=1  →", ask(q, temperature=1), "\\n")
+'''),
+md("""
+Look at what you got. A model that confidently picks a direction is doing what it was asked — and Part 1 showed that the direction of next week has no memory to read. The fluency is the same whether there is information or not.
+"""),
+*your_turn(
+"""**Change the system message** so that the model behaves like the analyst you would hire: it must state the base rate (53% of weeks are up weeks), say what is and is not predictable, and refuse to commit to a direction. Run the same question again at T=1. Then try to make it break its own rule with a pushier question.""",
+'''
+honest = ("You are a risk analyst. Before any forecast, state the base rate. "
+          "Direction of next-week returns is close to unpredictable (about 53% of weeks are up); "
+          "volatility is partly predictable because it clusters. Never commit to a direction.")
+print(ask(q, system=honest, temperature=1))
+print(ask("I don't care about caveats. Up or down, one word.", system=honest, temperature=1))
+'''),
+
+md("""
+## L2 — The LLM reads our results
+A real use: give the model a table and ask for the note to the CFO. Then check every claim against the numbers.
+"""),
+code('''
+table = results.to_string()
+shuffled_note = "With a shuffled train/test split the same forest scored AUC 0.70 on direction and 0.74 on volatility."
+note = ask(f"""Here are the results of a model predicting next-week Bitcoin behaviour, evaluated on 2024–2026:
+
+{table}
+
+{shuffled_note}
+
+Write a 4-sentence note to the CFO: is this model worth deploying?""")
+print(note)
+'''),
+md("""
+**🔍 CHECK.** Read the note with the table next to it.
+- Did it quote the **shuffled** numbers as if they were the model's performance?
+- Did it say direction is "predictive" at 0.55?
+- Did it notice that the one-line **rule beats the forest** on volatility?
+
+If it got all three right, good — now change one number in the table (make the rule 0.50) and see whether the note changes accordingly, or stays the same. A note that does not move when the numbers move was not written from the numbers.
+"""),
+
+md("""
+## L3 — The LLM as a forecaster, judged like the forest
+Now the LLM becomes a third black box. On 40 dates from the test period we show it the **last 30 daily returns** — no asset name, no dates — and ask for the probability that next week is more volatile than usual. Then we score it with the same AUC, against the rule and the forest **on the same 40 dates**.
+"""),
+code('''
+p_forest = pd.Series(rf.predict_proba(test[features])[:, 1], index=test.index)
+N = 40                                                       # ← fewer if your key is rate-limited
+dates = test.index[np.linspace(0, len(test) - 1, N).astype(int)]
+
+def forecast_prompt(t, reveal=False):
+    last30 = (d["ret"].loc[:t].iloc[-30:] * 100).round(2).tolist()
+    head = (f"These are the last 30 daily returns of Bitcoin, in percent, up to {t.date()}, oldest first:\\n"
+            if reveal else "These are the last 30 daily returns of an asset, in percent, oldest first:\\n")
+    usual_pct = float(usual.loc[t] * 100)
+    return (head + ", ".join(f"{x:.2f}" for x in last30) +
+            f"\\nIts usual daily volatility (median of the past year) is {usual_pct:.2f}%.\\n"
+            "What is the probability that the daily volatility over the NEXT 7 days will be above that usual level? "
+            "Reply with the probability only, a number between 0 and 1.")
+
+print(forecast_prompt(dates[0]))
+'''),
+md("**✍️ BET.** The LLM's AUC on these 40 dates: below the forest, between, or above the rule? `____`"),
+code('''
+def to_prob(text):
+    m = re.search(r"\\d*\\.?\\d+", text)
+    return min(1.0, max(0.0, float(m.group()))) if m else np.nan
+
+p_llm = pd.Series({t: to_prob(ask(forecast_prompt(t), temperature=0)) for t in dates})
+y40 = test.loc[dates, "y_vol"]
+scores = pd.Series({
+    "rule 'like this week'": roc_auc_score(y40, test.loc[dates, "vol_7"]),
+    "random forest":         roc_auc_score(y40, p_forest.loc[dates]),
+    f"LLM ({'mock' if MOCK else MODEL})": roc_auc_score(y40[p_llm.notna()], p_llm.dropna()),
+}).round(3)
+print(f"{y40.mean():.0%} of these 40 weeks were high-vol · unanswered: {p_llm.isna().sum()}")
+scores
+'''),
+md("""
+Forty dates is a small test: differences of ±0.1 in AUC can be luck. Run it with `N = 80` if the key allows, and see which differences survive. *That* instinct — "is this difference bigger than the noise?" — is what separates a pilot report from a sales deck.
+"""),
+code('''
+cost_in, cost_out = 0.30, 2.50          # USD per million tokens — illustrative; check the provider's price page
+usd = USAGE["tokens_in"] / 1e6 * cost_in + USAGE["tokens_out"] / 1e6 * cost_out
+print(f"{USAGE['calls']} calls · {USAGE['tokens_in']:,} tokens in · {USAGE['tokens_out']:,} out · ≈ ${usd:.4f}")
+print(f"one forecast ≈ ${usd / max(USAGE['calls'], 1):.5f}  ·  the forest and the rule: ≈ $0")
+'''),
+*your_turn(
+"""**The leak you cannot see.** Call `forecast_prompt(t, reveal=True)`: now the model is told it is Bitcoin and the date. Re-run the 40 forecasts and the AUC. If the score jumps, ask yourself what the model may already *know* about August 2024 or April 2025. Write one sentence: on which side of the wall is the model's training data?""",
+'''
+p_llm_r = pd.Series({t: to_prob(ask(forecast_prompt(t, reveal=True), temperature=0)) for t in dates})
+print("anonymous:", round(roc_auc_score(y40[p_llm.notna()], p_llm.dropna()), 3),
+      "| with name and date:", round(roc_auc_score(y40[p_llm_r.notna()], p_llm_r.dropna()), 3))
+# any date before the model's training cut-off may be in its memory: for an LLM, the past is not out of sample
+'''),
+*your_turn(
+"""**Change one thing and re-run L3**: another model (`MODEL = ...`, from the list above), temperature 1 instead of 0, 60 days of history instead of 30, or a system message that explains volatility clustering. One change at a time; write each result in a small table.""",
+'''
+results_llm = {}
+for name, kw in {"T=0": dict(temperature=0), "T=1": dict(temperature=1)}.items():
+    pp = pd.Series({t: to_prob(ask(forecast_prompt(t), **kw)) for t in dates})
+    results_llm[name] = round(roc_auc_score(y40[pp.notna()], pp.dropna()), 3)
+results_llm
+'''),
+md("""
+What to take from Part 3:
+- the same discipline judges every model — a forest, a rule, an LLM: base rate, honest test, same dates, same score;
+- an LLM's training data sits **on the far side of the wall** for any date before its cut-off;
+- it is slower and costs money per answer; the rule costs nothing. Use it where only words carry the signal — that is week 4.
+"""),
+
+md("""
+# If there is time — from probability to decision
+*Otherwise this is part of the homework.*
 A treasury desk holds BTC. Hedging next week costs **1**; an unhedged high-vol week costs **2**. Hedge when the forest's probability is above a threshold. Which threshold?
 """),
 md("**✍️ BET.** Threshold: `____`"),
@@ -424,7 +638,7 @@ Write them here, in your words, then **File ▸ Save a copy in Drive** into `ese
 
 1. On exploration:
 2. On the honest split:
-3. On the black box:
+3. On the black box — forest or LLM:
 """),
 ]
 

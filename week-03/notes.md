@@ -8,7 +8,8 @@ By the end of the session the student can:
 1. Explore an unfamiliar financial dataset by asking small questions in an order — coverage, scale, tails, memory — and say which question is worth a model before fitting one.
 2. Build features and a forward target and verify by hand that the target holds nothing from day *t* or before.
 3. Judge a black-box model from the outside: base rate, a one-line rule, an honest time split versus the assistant's shuffled split, permutation importance.
-4. Turn a predicted probability into a decision with a threshold chosen on error costs, and check it beats both trivial policies.
+4. Call an LLM from code — prompt, system message, temperature, model — and evaluate it as a forecaster with the same discipline as the forest, including the leak hidden in its training data.
+5. *(if time)* Turn a predicted probability into a decision with a threshold chosen on error costs.
 
 ## Why this shape
 The previous version jumped straight into features and splits. This one spends the first hour **looking**, so that every ML result in the second hour is something he already predicted from a chart: direction has no memory, size does. The model then confirms (or fails to beat) what the exploration showed. The random forest is a **black box on purpose**: he has seen a neural network from the inside in weeks 1–2; today he learns to judge a model he cannot read, which is what he will do with every vendor.
@@ -19,13 +20,12 @@ Dataset: BTC, ETH and SPY daily since 2018 (yfinance; snapshot in `week-03/data/
 
 | Time | Block | Support |
 |---|---|---|
-| 10:00–10:20 | **HW2 walkthrough** — fraud share, the release decoded | he presents |
-| 10:20–10:30 | deck: where we are, how the notebook works, 0.17% | slides |
-| 10:30–11:20 | **Part 1 — Explore** (E1–E5 + 🔍 CHECK) | notebook, slides at E4 |
-| 11:20–11:30 | break, outside the room | |
-| 11:30–11:45 | features, the wall, base rate (M1–M2) | whiteboard + notebook |
-| 11:45–12:25 | **the black box** (M3, shuffled CHECK, M4, leak YOUR TURN) | slides → notebook |
-| 12:25–12:50 | **probability → decision** (M5) | notebook |
+| 10:00–10:15 | **HW2 walkthrough** — fraud share, the release decoded | he presents |
+| 10:15–11:00 | **Part 1 — Look** (E1–E5 + 🔍 CHECK) | slides ↔ notebook |
+| 11:00–11:10 | break, outside the room | |
+| 11:10–12:00 | **Part 2 — Predict**: the wall, base rate, the forest, two splits, importance, the leak | whiteboard + slides → notebook |
+| 12:00–12:40 | **Part 3 — An LLM, called from code** (L0–L3) | slides → notebook, your key |
+| 12:40–12:50 | *if time:* probability → decision; otherwise homework | notebook |
 | 12:50–13:00 | homework, three lines, save to Drive | |
 
 The notebook pattern: worked cell → **✍️ BET** → **▶ YOUR TURN** (a piece of the analysis he writes, mostly on ETH or SPY, solution folded). Instead of exercises he does the next piece of the same analysis. Four YOUR TURNs in Part 1 (holidays, ETH worst/best days, SPY clustering, feature table), one in Part 2 (the leak).
@@ -62,14 +62,24 @@ The notebook pattern: worked cell → **✍️ BET** → **▶ YOUR TURN** (a pi
 - **M4:** permutation importance: `vol_30`, `vol_7`, then `ret_7` (a big week *is* a volatile week); negative bars are noise. "A black box that agrees with what you saw by eye is one you can start to trust."
 - **YOUR TURN — the leak:** centred 7-day window. AUC 0.60 → **0.69** on the honest split. "Why didn't the split protect you?" [card 5]
 
-### Probability → decision (25')
+### Part 3 — An LLM, called from code (40')
+**Before the lesson:** run L0–L1 in Colab with your key and check `MODEL` still exists (the list cell prints the current names; Gemini, OpenAI and Anthropic all go through the same `openai` client with a different `base_url`). In his Colab, `getpass` asks for the key in a hidden box: **you** type it. It lives only in that runtime; tell him so. Use a key with a spending cap and rotate it after the lesson if you are not comfortable — he can always `print(client.api_key)`.
+**Opening (slide "From tool to component"):** "Until now you typed into a chat. Now your code calls the model with four arguments you control. Which one did we study last week?" (temperature.)
+- **L1 — Bet 6:** "At T=1, will the five answers agree on the direction?" Usually they don't, and each one is fluent and confident. **He should discover:** the fluency is the same with or without information — Part 1 said direction has no memory. YOUR TURN: he **edits the system message** until the model states the base rate and refuses a direction, then tries to break it with a pushy prompt. This is the moment to let him type and iterate; don't rush.
+- **L2 — 🔍 CHECK:** the CFO note. Three things to look for (shuffled numbers quoted as performance; 0.55 called predictive; rule vs forest missed). Then he changes one number in the table: does the note move?
+- **L3 — Bet 7:** the LLM as forecaster on 40 anonymised windows, scored against the rule and the forest on the same dates. Whatever it scores, the reading is the same: 40 dates is ±0.1 of AUC, so differences smaller than that are noise; the bill is printed under the score. **He should discover:** the same evaluation discipline applies to an LLM unchanged.
+- **The wall, from an LLM (slide):** YOUR TURN with `reveal=True` — name and date in the prompt. If the score rises, the model may be remembering 2024 rather than forecasting it: its training data sits on the far side of the wall for any date before its cut-off.
+**Hint (if he thinks the LLM "is smarter"):** "Which of the 40 weeks were in the news? What would a model trained on the news know about them?"
+**Closing:** slide "Three black boxes, one discipline."
+
+### Probability → decision (if time; 10')
 **Opening:** "The model says 0.61. Hedge costs 1, a miss costs 2. Which threshold?"
 **Bet 5 (a threshold).** Table: best at 0.5, cost 0.91/week vs never 0.97 and always 1.00 → the model earns its keep.
 **Then:** `c_miss = 4`. Now "always hedge" (1.00) beats every threshold (best 1.03). **He should discover:** the model did not change; the business did — and decided the model is not worth running.
 **Hint:** "What does 'always hedge' cost per week? Your model has to beat that number."
 **Closing:** "Pick the KPI for the dashboard — cost per week vs always-hedge, recall at threshold, or calibration — and defend it." [card 6]
 
-**Take-home:** three lines (exploration / split / black box) at the bottom of the notebook; File ▸ Save a copy in Drive → `ese-ai-fintech/week-03/`.
+**Take-home:** three lines (looking / split / black boxes) at the bottom of the notebook; File ▸ Save a copy in Drive → `ese-ai-fintech/week-03/`.
 
 ## Key concepts, in one line each
 - Exploration: small questions in an order — coverage, scale, tails, memory — before any model.
@@ -80,6 +90,8 @@ The notebook pattern: worked cell → **✍️ BET** → **▶ YOUR TURN** (a pi
 - Feature / target / horizon: what you know at *t*; what happens after *t*; how far after.
 - Base rate and rule baseline: what doing nothing scores; what a one-line rule scores. A model must beat both.
 - Random forest: hundreds of decision trees voting; judged from the outside today.
+- LLM as a component: a function called with prompt, system message, temperature and model; measured and priced like any other model.
+- Training-data leak: for an LLM, any date before its cut-off may already be in its memory.
 - AUC: does the model rank the 1s above the 0s — 0.5 a coin, 1.0 perfect.
 - Shuffled vs time-ordered split; leakage through the split vs through a feature.
 - Permutation importance: how much worse the model gets when one feature is scrambled.
@@ -88,8 +100,9 @@ The notebook pattern: worked cell → **✍️ BET** → **▶ YOUR TURN** (a pi
 ## Tutor's notes
 - Run the notebook once in Colab before 10:00: the live yfinance call should print `[live]`. If Yahoo is blocked it falls back to the repo snapshot (to 6 Oct 2026) — numbers identical to the slides. The synthetic fallback kills clustering and the whole point; if you see `[SYNTHETIC]`, stop and fix the network.
 - Live numbers can differ from the slides in the second decimal (a new day of data). Say so once; the order of the results does not change.
-- Eight BET cells in the notebook; only five are real bets (E3, E4, M2, M3 AUCs, M5). E1, E2 and the shuffled one are quick questions — don't make a production of them.
-- If behind: cut the E5 correlation (one slide is enough) and move M5 to homework (the notebook says so).
+- Many BET cells in the notebook; the real bets are E3, E4, M2, the M3 AUCs, L1 and L3. The others are quick questions — don't make a production of them.
+- If behind: cut E5 (the correlation slide is enough), skip L2, and move the decision block to homework (the notebook says so). Part 3 is the part he will remember: protect L1 and L3.
+- Without a key the notebook runs in MOCK MODE (labelled). L3 then shows a crude rule, not an LLM — don't present those numbers as a model's.
 - If ahead: in M3 swap `RandomForestClassifier` for `HistGradientBoostingClassifier` — a different black box, same verdict. Or remove the "÷ usual" from the features and watch the honest AUC fall to ~0.47: the black box learned 2018's thresholds.
 - Energy: Part 1 is mostly him typing small pieces — good for hour one. The black box is the conceptual peak; put it right after the break.
 - The fraud material (OpenML card fraud, 3-way software figure) is used only as the 0.17% opener and the "three ways" slide; the full fraud lab stays in the week-1 notebook § A2.

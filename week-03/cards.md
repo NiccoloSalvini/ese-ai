@@ -88,3 +88,16 @@ Threshold from costs, never from 0.5. Beat both "never hedge" and "always hedge"
 
 KPI candidates: cost per week vs always-hedge · recall at θ · calibration (when it says 70%, does it happen 70%?).
 Accuracy is not on the list: it does not price errors.
+
+---
+
+<!-- card 7 -->
+# Three black boxes, one discipline
+
+| | what it is | cost per answer |
+|---|---|---|
+| rule | "next week like this week" | 0 |
+| forest | 300 trees voting on 9 features | ≈ 0 |
+| LLM | a prompt, a system message, a temperature | tokens × price |
+
+Same base rate, same honest dates, same AUC. For an LLM, every date before its cut-off may already be in its memory: hide the name and the date.

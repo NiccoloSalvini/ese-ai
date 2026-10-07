@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Source Sans 3','Source Sans Pro',Helvetica,Arial,sans-serif">
+  <text x="30" y="34" font-size="13" fill="#7a7f85">random forest, nine features, trained on 2019–2023</text>
+  <line x1="260.0" y1="70.0" x2="260.0" y2="330.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="260.0" y="352.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">0.4</text>
+  <line x1="415.0" y1="70.0" x2="415.0" y2="330.0" stroke="#363636" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="415.0" y="352.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">0.5</text>
+  <line x1="570.0" y1="70.0" x2="570.0" y2="330.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="570.0" y="352.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">0.6</text>
+  <line x1="725.0" y1="70.0" x2="725.0" y2="330.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="725.0" y="352.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">0.7</text>
+  <line x1="880.0" y1="70.0" x2="880.0" y2="330.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="880.0" y="352.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">0.8</text>
+  <text x="415.0" y="372.0" font-size="13" font-weight="700" fill="#363636" text-anchor="middle">a coin</text>
+  <text x="30.0" y="135.0" font-size="17" font-weight="700" fill="#363636" text-anchor="start">up next week?</text>
+  <circle cx="743.7" cy="130.0" r="10" fill="white" stroke="#a8955a" stroke-width="3"/>
+  <text x="743.7" y="112.0" font-size="15" font-weight="700" fill="#a8955a" text-anchor="middle">0.71</text>
+  <text x="743.7" y="162.0" font-size="12" font-weight="400" fill="#a8955a" text-anchor="middle">shuffled split</text>
+  <circle cx="485.3" cy="130.0" r="10" fill="#AF1F25" stroke="#AF1F25" stroke-width="3"/>
+  <text x="485.3" y="112.0" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">0.55</text>
+  <text x="485.3" y="162.0" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="middle">forest, honest split</text>
+  <text x="30.0" y="275.0" font-size="17" font-weight="700" fill="#363636" text-anchor="start">more volatile than usual?</text>
+  <circle cx="797.7" cy="270.0" r="10" fill="white" stroke="#a8955a" stroke-width="3"/>
+  <text x="797.7" y="252.0" font-size="15" font-weight="700" fill="#a8955a" text-anchor="middle">0.75</text>
+  <text x="797.7" y="302.0" font-size="12" font-weight="400" fill="#a8955a" text-anchor="middle">shuffled split</text>
+  <circle cx="562.7" cy="270.0" r="10" fill="#AF1F25" stroke="#AF1F25" stroke-width="3"/>
+  <text x="562.7" y="252.0" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">0.60</text>
+  <text x="548.7" y="302.0" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="end">forest, honest split</text>
+  <circle cx="625.4" cy="270.0" r="10" fill="#2471a3" stroke="#2471a3" stroke-width="3"/>
+  <text x="625.4" y="252.0" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">0.64</text>
+  <text x="639.4" y="302.0" font-size="12" font-weight="400" fill="#2471a3" text-anchor="start">one-line rule</text>
+  <text x="30.0" y="410.0" font-size="14" font-weight="400" fill="#363636" text-anchor="start">AUC on 2024 → today: does the model rank the 1s above the 0s? Hollow = the assistant’s shuffled split, which is a leak.</text>
+</svg>

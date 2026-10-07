@@ -95,11 +95,12 @@ Homework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59
 
 ### Session 3 — Wed 7 Oct — Look first, then predict: exploration, a black-box model, a decision
 
-| **0:00–0:20** | HW2 review. |
+| **0:00–0:15** | HW2 review. |
 |----|----|
-| **0:20–1:20** | Exploratory analysis of eight years of BTC, ETH and S&P 500 prices: coverage and calendars, returns, fat tails, autocorrelation of direction vs size (volatility clustering), correlation regimes; an assistant's summary table checked for errors. |
-| **1:30–2:30** | Supervised learning with a black box: features, target, base rate, a one-line rule; a random forest predicting next-week direction and volatility regime, judged with a time-ordered split against the assistant's shuffled one; permutation importance; leakage through a feature, on purpose. |
-| **2:30–3:00** | From prediction to decision: error costs, thresholds, beating "never act" and "always act", KPI design. Homework brief. |
+| **0:15–1:00** | Exploratory analysis of eight years of BTC, ETH and S&P 500 prices: coverage and calendars, returns, fat tails, autocorrelation of direction vs size (volatility clustering), correlation regimes; an assistant's summary table checked for errors. |
+| **1:10–2:00** | Supervised learning with a black box: features, target, base rate, a one-line rule; a random forest predicting next-week direction and volatility regime, judged with a time-ordered split against the assistant's shuffled one; permutation importance; leakage through a feature, on purpose. |
+| **2:00–2:40** | An LLM called from code: prompt, system message, temperature and model set from Python with the tutor's API key; the LLM as a third forecaster, judged on the same dates and score as the rule and the forest; the training-data leak; cost per answer. |
+| **2:40–3:00** | From prediction to decision (if time): error costs and thresholds. Homework brief. |
 
 **Homework:** HW3 — The same morning on an asset of his choice: exploration first, then a random forest against a base rate and a one-line rule with honest, time-aware evaluation, and a section titled "What would have to be true for this to be useful" (decision rule, KPI, cost of errors).
 
