@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 445" width="960" height="445" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="445" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">three ways to rent somewhere for your code to run</text>
+  <rect x="40" y="210" width="280" height="150" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="180" y="238" font-size="17" font-weight="700" fill="#363636" text-anchor="middle">a virtual machine</text>
+  <text x="180" y="260" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">you rent a computer</text>
+  <text x="180" y="290" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">you manage: system, updates,</text>
+  <text x="180" y="307" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">security, scaling, backups</text>
+  <text x="180" y="338" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">AWS EC2 · Google Compute Engine</text>
+  <text x="180" y="354" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Azure VMs · Hetzner</text>
+  <rect x="340" y="150" width="280" height="210" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="480" y="178" font-size="17" font-weight="700" fill="#2471a3" text-anchor="middle">a container platform</text>
+  <text x="480" y="200" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">you hand over a Docker image</text>
+  <text x="480" y="230" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">it manages the machines;</text>
+  <text x="480" y="247" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">you manage the box</text>
+  <text x="480" y="278" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Google Cloud Run · Fly.io</text>
+  <text x="480" y="294" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Render · Railway · AWS ECS</text>
+  <rect x="640" y="90" width="280" height="270" rx="3" fill="#eef5ef" stroke="#1e8449" stroke-width="2"/>
+  <text x="780" y="118" font-size="17" font-weight="700" fill="#1e8449" text-anchor="middle">a serverless platform</text>
+  <text x="780" y="140" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">you hand over code</text>
+  <text x="780" y="170" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">it builds, runs, scales to zero;</text>
+  <text x="780" y="187" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">you manage only the code</text>
+  <text x="780" y="218" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Vercel · Netlify</text>
+  <text x="780" y="234" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">AWS Lambda · Supabase Edge Functions</text>
+  <path d="M40 382 L920 382" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <path d="M920 382 L40 382" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="40" y="404" font-size="13" font-weight="700" fill="#363636" text-anchor="start">more control, more work</text>
+  <text x="920" y="404" font-size="13" font-weight="700" fill="#363636" text-anchor="end">less work, less control</text>
+  <text x="480" y="432" font-size="14" font-weight="400" fill="#363636" text-anchor="middle">Underneath, almost all of them rent from the same three landlords: AWS, Google Cloud, Microsoft Azure.</text>
+</svg>

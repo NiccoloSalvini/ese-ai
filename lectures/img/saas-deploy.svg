@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 375" width="960" height="375" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="375" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">from a change on your laptop to the live site</text>
+  <rect x="30" y="80" width="166" height="80" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="113" y="108" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">commit</text>
+  <text x="113" y="128" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">you, or the agent, save a</text>
+  <text x="113" y="145" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">change</text>
+  <line x1="198" y1="120" x2="214" y2="120" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="216" y="80" width="166" height="80" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="299" y="116" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">git push</text>
+  <text x="299" y="136" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">to GitHub</text>
+  <line x1="384" y1="120" x2="400" y2="120" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="402" y="80" width="166" height="80" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="485" y="108" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">build</text>
+  <text x="485" y="128" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">the platform installs and</text>
+  <text x="485" y="145" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">compiles</text>
+  <line x1="570" y1="120" x2="586" y2="120" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="588" y="80" width="166" height="80" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="671" y="108" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">preview URL</text>
+  <text x="671" y="128" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">a live copy of this</text>
+  <text x="671" y="145" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">change only</text>
+  <line x1="756" y1="120" x2="772" y2="120" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="774" y="80" width="166" height="80" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="857" y="108" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">production</text>
+  <text x="857" y="128" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="middle">merge → the real site, in</text>
+  <text x="857" y="145" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="middle">seconds</text>
+  <rect x="30" y="200" width="900" height="96" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="50" y="226" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">ENVIRONMENT VARIABLES</text>
+  <text x="50" y="250" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">LLM_API_KEY · STRIPE_SECRET_KEY · DATABASE_URL</text>
+  <text x="50" y="276" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">typed once into the platform’s settings — never into the code, never into git. The code reads them by name.</text>
+  <text x="30" y="336" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Every change gets its own address before it reaches users. Vercel, Netlify, Render and Cloud Run all work this way;</text>
+  <text x="30" y="358" font-size="14" font-weight="400" fill="#363636" text-anchor="start">it is also how you review what a coding agent did: open the preview, click through, then merge.</text>
+</svg>

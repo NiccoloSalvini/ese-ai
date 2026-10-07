@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">from a sentence to a codebase — the tools sit on one line</text>
+  <rect x="30" y="60" width="212" height="130" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="136" y="104" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">DESCRIBE IT, GET AN APP</text>
+  <text x="136" y="124" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">v0 (Vercel) · Lovable</text>
+  <text x="136" y="142" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">Bolt.new · Replit Agent</text>
+  <text x="136" y="158" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">Firebase Studio</text>
+  <rect x="258" y="60" width="212" height="130" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="364" y="104" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">start from a template</text>
+  <text x="364" y="124" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">Supabase + Next.js starter</text>
+  <text x="364" y="142" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">Vercel templates</text>
+  <text x="364" y="158" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">a boilerplate on GitHub</text>
+  <rect x="486" y="60" width="212" height="130" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="592" y="104" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">an agent in your repo</text>
+  <text x="592" y="124" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">Claude Code · Codex</text>
+  <text x="592" y="142" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">Cursor · Copilot agent</text>
+  <text x="592" y="158" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">you review every diff</text>
+  <rect x="714" y="60" width="212" height="130" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="820" y="104" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">write it yourself</text>
+  <text x="820" y="124" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">with an assistant</text>
+  <text x="820" y="142" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">for the part that</text>
+  <text x="820" y="158" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">is your edge</text>
+  <defs><linearGradient id="g236" x1="0" x2="1"><stop offset="0" stop-color="#7a7f85" stop-opacity="0.08"/><stop offset="1" stop-color="#7a7f85" stop-opacity="0.85"/></linearGradient></defs>
+  <rect x="30" y="236" width="900" height="26" fill="url(#g236)"/>
+  <text x="30" y="228" font-size="13" font-weight="700" fill="#363636" text-anchor="start">time to the first demo</text>
+  <text x="40" y="254" font-size="12" font-weight="400" fill="#363636" text-anchor="start">minutes</text>
+  <text x="920" y="254" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">weeks</text>
+  <defs><linearGradient id="g296" x1="0" x2="1"><stop offset="0" stop-color="#2471a3" stop-opacity="0.08"/><stop offset="1" stop-color="#2471a3" stop-opacity="0.85"/></linearGradient></defs>
+  <rect x="30" y="296" width="900" height="26" fill="url(#g296)"/>
+  <text x="30" y="288" font-size="13" font-weight="700" fill="#363636" text-anchor="start">what you can still change, test and explain</text>
+  <text x="40" y="314" font-size="12" font-weight="400" fill="#363636" text-anchor="start">little</text>
+  <text x="920" y="314" font-size="12" font-weight="700" fill="#ffffff" text-anchor="end">everything</text>
+  <text x="30" y="360" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Start on the left to see the idea; move right as soon as real users, real money or real data arrive.</text>
+  <text x="30" y="382" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Most real products are mixed: a builder for the screens, an agent in the repo for the logic, a person for the decisions.</text>
+</svg>

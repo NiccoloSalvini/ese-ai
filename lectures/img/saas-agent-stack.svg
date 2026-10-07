@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 445" width="960" height="445" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="445" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">what Claude Code and Codex actually are</text>
+  <rect x="40" y="64" width="560" height="74" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="320" y="98" font-size="17" font-weight="700" fill="#2471a3" text-anchor="middle">the model</text>
+  <text x="320" y="118" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">Claude · GPT · Gemini — reads text, writes text, nothing else</text>
+  <rect x="40" y="160" width="560" height="140" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="320" y="186" font-size="17" font-weight="700" fill="#AF1F25" text-anchor="middle">the harness</text>
+  <text x="320" y="206" font-size="13" font-weight="400" fill="#AF1F25" text-anchor="middle">Claude Code · OpenAI Codex · Cursor · Gemini CLI · GitHub Copilot</text>
+  <rect x="54" y="222" width="126" height="62" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="117" y="250" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">tools</text>
+  <text x="117" y="270" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">read · edit · run</text>
+  <rect x="190" y="222" width="126" height="62" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="253" y="250" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">permissions</text>
+  <text x="253" y="270" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">what needs your yes</text>
+  <rect x="326" y="222" width="126" height="62" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="389" y="250" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">context</text>
+  <text x="389" y="270" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">the project’s rules</text>
+  <rect x="462" y="222" width="126" height="62" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="525" y="250" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">loop</text>
+  <text x="525" y="270" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">plan · act · check</text>
+  <rect x="40" y="322" width="560" height="60" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="320" y="348" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">YOUR WORLD</text>
+  <text x="320" y="368" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">the repo · the terminal · the tests · the cloud account</text>
+  <path d="M604 101 C 690 101, 690 230, 604 230" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <path d="M604 250 C 690 250, 690 352, 604 352" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <path d="M604 370 C 880 370, 880 80, 606 86" fill="none" stroke="#a8955a" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ag)"/>
+  <text x="676" y="170" font-size="13" font-weight="700" fill="#363636" text-anchor="start">it asks</text>
+  <text x="676" y="306" font-size="13" font-weight="700" fill="#363636" text-anchor="start">it runs</text>
+  <text x="830" y="220" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the result</text>
+  <text x="830" y="237" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">goes back in</text>
+  <text x="30" y="412" font-size="14" font-weight="400" fill="#363636" text-anchor="start">The model is the engine; the harness is the car. Same engine, different car, different trip — which is why the same</text>
+  <text x="30" y="434" font-size="14" font-weight="400" fill="#363636" text-anchor="start">model feels different in a chat, in Claude Code and in Codex. It is week 5’s agent loop, pointed at a codebase.</text>
+</svg>

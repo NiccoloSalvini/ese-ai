@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="400" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the same system, two moments</text>
+  <text x="30" y="66" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start">Daytime: Danila adds Solana to his watchlist</text>
+  <rect x="30" y="80" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="110" y="114" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">browser</text>
+  <text x="110" y="134" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">he clicks “add SOL”</text>
+  <line x1="191" y1="117" x2="213" y2="117" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="44" y="96" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">1</text>
+  <rect x="215" y="80" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="294" y="114" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">frontend</text>
+  <text x="294" y="134" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">sends the request</text>
+  <line x1="376" y1="117" x2="398" y2="117" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="229" y="96" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">2</text>
+  <rect x="400" y="80" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="480" y="114" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">backend</text>
+  <text x="480" y="134" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">is the login valid?</text>
+  <line x1="561" y1="117" x2="583" y2="117" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="414" y="96" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">3</text>
+  <rect x="585" y="80" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="664" y="114" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">database</text>
+  <text x="664" y="134" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">insert one row</text>
+  <line x1="746" y1="117" x2="768" y2="117" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="600" y="96" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">4</text>
+  <rect x="770" y="80" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="850" y="114" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">frontend</text>
+  <text x="850" y="134" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">“SOL added” ✓</text>
+  <text x="785" y="96" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">5</text>
+  <text x="30" y="236" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start">Monday 07:00: nobody clicks anything</text>
+  <rect x="30" y="250" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="110" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">scheduler</text>
+  <text x="110" y="304" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">wakes the job</text>
+  <line x1="191" y1="287" x2="213" y2="287" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="44" y="266" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">1</text>
+  <rect x="215" y="250" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="294" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">backend</text>
+  <text x="294" y="304" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">fetch prices</text>
+  <line x1="376" y1="287" x2="398" y2="287" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="229" y="266" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">2</text>
+  <rect x="400" y="250" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="480" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">your model</text>
+  <text x="480" y="304" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">rule or forest</text>
+  <line x1="561" y1="287" x2="583" y2="287" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="414" y="266" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">3</text>
+  <rect x="585" y="250" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="664" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">LLM provider</text>
+  <text x="664" y="304" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">write two lines</text>
+  <line x1="746" y1="287" x2="768" y2="287" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="600" y="266" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">4</text>
+  <rect x="770" y="250" width="159" height="74" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="850" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">email</text>
+  <text x="850" y="304" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">send to 1,200 users</text>
+  <text x="785" y="266" font-size="11" font-weight="700" fill="#a8955a" text-anchor="middle">5</text>
+  <text x="30" y="380" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Most of a SaaS’s work happens with no user on the page: jobs, schedules, webhooks. Week 5’s agents live here too.</text>
+</svg>

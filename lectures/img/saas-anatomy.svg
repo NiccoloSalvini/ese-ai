@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">every SaaS, from a to-do app to a bank, is these parts wired together</text>
+  <text x="150" y="72" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="middle" letter-spacing="1.1">THE USER’S BROWSER</text>
+  <text x="480" y="72" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="middle" letter-spacing="1.1">YOUR SERVER</text>
+  <text x="810" y="72" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="middle" letter-spacing="1.1">YOUR DATA</text>
+  <rect x="40" y="84" width="220" height="96" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="150" y="120" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">frontend</text>
+  <text x="150" y="140" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">what the user sees and clicks</text>
+  <text x="150" y="157" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">pages, forms, buttons</text>
+  <rect x="370" y="84" width="220" height="96" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="480" y="120" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">backend</text>
+  <text x="480" y="140" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">the logic and the secrets</text>
+  <text x="480" y="157" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">calls everything else</text>
+  <rect x="700" y="84" width="220" height="96" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="810" y="120" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">database</text>
+  <text x="810" y="140" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">the ledger: who, what, when</text>
+  <text x="810" y="157" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">tables of rows</text>
+  <line x1="262" y1="120" x2="366" y2="120" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <line x1="366" y1="146" x2="262" y2="146" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="314" y="110" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">requests</text>
+  <text x="314" y="166" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">answers</text>
+  <line x1="592" y1="120" x2="696" y2="120" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <line x1="696" y1="146" x2="592" y2="146" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="644" y="110" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">queries</text>
+  <text x="644" y="166" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">rows</text>
+  <rect x="40" y="280" width="160" height="70" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="120" y="312" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">AUTH</text>
+  <text x="120" y="332" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">who are you?</text>
+  <path d="M480 182 L480 225 L120 225 L120 274" fill="none" stroke="#a8955a" stroke-width="1.5" marker-end="url(#ag)"/>
+  <rect x="220" y="280" width="160" height="70" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="300" y="312" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">PAYMENTS</text>
+  <text x="300" y="332" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">who has paid?</text>
+  <path d="M480 182 L480 225 L300 225 L300 274" fill="none" stroke="#a8955a" stroke-width="1.5" marker-end="url(#ag)"/>
+  <rect x="400" y="280" width="160" height="70" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="480" y="312" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">EMAIL</text>
+  <text x="480" y="332" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">send the alert</text>
+  <path d="M480 182 L480 225 L480 225 L480 274" fill="none" stroke="#a8955a" stroke-width="1.5" marker-end="url(#ag)"/>
+  <rect x="580" y="280" width="160" height="70" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="660" y="312" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">LLM PROVIDER</text>
+  <text x="660" y="332" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">write the paragraph</text>
+  <path d="M480 182 L480 225 L660 225 L660 274" fill="none" stroke="#a8955a" stroke-width="1.5" marker-end="url(#ag)"/>
+  <rect x="760" y="280" width="160" height="70" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="840" y="312" font-size="12" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="1.1">SCHEDULER</text>
+  <text x="840" y="332" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">every Monday, 7:00</text>
+  <path d="M480 182 L480 225 L840 225 L840 274" fill="none" stroke="#a8955a" stroke-width="1.5" marker-end="url(#ag)"/>
+  <path d="M70 182 L70 274" fill="none" stroke="#a8955a" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ag)"/>
+  <text x="30" y="400" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Blue: you design it and it holds your logic. Grey: you rent it — someone else built it, runs it, and is better at it than you.</text>
+  <text x="30" y="422" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">The dashed line: signing in happens in the browser, against the auth service; the backend only checks the result.</text>
+</svg>

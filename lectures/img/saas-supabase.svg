@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">why so many AI-built apps start here</text>
+  <rect x="30" y="56" width="560" height="320" rx="3" fill="#ffffff" stroke="#1e8449" stroke-width="2"/>
+  <text x="310" y="80" font-size="12" font-weight="700" fill="#1e8449" text-anchor="middle" letter-spacing="1.1">ONE SUPABASE PROJECT</text>
+  <rect x="50" y="96" width="250" height="76" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="175" y="130" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">Postgres database</text>
+  <text x="175" y="150" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">your tables, plain SQL</text>
+  <rect x="320" y="96" width="250" height="76" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="445" y="130" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">Auth</text>
+  <text x="445" y="150" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">sign-up, login, Google, MFA</text>
+  <rect x="50" y="188" width="250" height="76" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="175" y="222" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">Row-level security</text>
+  <text x="175" y="242" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="middle">the database checks every row</text>
+  <rect x="320" y="188" width="250" height="76" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="445" y="222" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">Storage</text>
+  <text x="445" y="242" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">files: PDFs, images</text>
+  <rect x="50" y="280" width="250" height="76" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="175" y="314" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">Edge Functions</text>
+  <text x="175" y="334" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">small pieces of backend code</text>
+  <rect x="320" y="280" width="250" height="76" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="445" y="314" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">Cron + vectors</text>
+  <text x="445" y="334" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">schedules · embeddings for RAG</text>
+  <text x="780" y="80" font-size="12" font-weight="700" fill="#7a7f85" text-anchor="middle" letter-spacing="1.1">THE SAME, BOUGHT SEPARATELY</text>
+  <text x="630" y="114" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Postgres elsewhere</text>
+  <text x="630" y="132" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Neon · AWS RDS · Google Cloud SQL</text>
+  <text x="630" y="170" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Auth elsewhere</text>
+  <text x="630" y="188" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Clerk · Auth0 · Firebase Auth</text>
+  <text x="630" y="226" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Storage elsewhere</text>
+  <text x="630" y="244" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">AWS S3 · Cloudflare R2</text>
+  <text x="630" y="282" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Functions elsewhere</text>
+  <text x="630" y="300" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">AWS Lambda · Cloud Run · Vercel</text>
+  <text x="630" y="338" font-size="14" font-weight="700" fill="#363636" text-anchor="start">All of it, from Google</text>
+  <text x="630" y="356" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Firebase</text>
+  <text x="30" y="404" font-size="14" font-weight="400" fill="#363636" text-anchor="start">A backend in a box: one bill, one dashboard, sensible defaults. The price is that your data model is now tied to it —</text>
+  <text x="30" y="426" font-size="14" font-weight="400" fill="#363636" text-anchor="start">plain Postgres underneath, so leaving is possible; easy, it is not.</text>
+</svg>
