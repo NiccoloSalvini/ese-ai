@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="380" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">a shipping container for software</text>
+  <rect x="40" y="70" width="260" height="190" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="170" y="94" font-size="12" font-weight="700" fill="#2471a3" text-anchor="middle" letter-spacing="1.1">CONTAINER</text>
+  <rect x="54" y="110" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="130" font-size="13" font-weight="700" fill="#363636" text-anchor="start">your code</text>
+  <text x="276" y="130" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">volalert/job.py</text>
+  <rect x="54" y="146" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="166" font-size="13" font-weight="700" fill="#363636" text-anchor="start">the language</text>
+  <text x="276" y="166" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">Python 3.12</text>
+  <rect x="54" y="182" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="202" font-size="13" font-weight="700" fill="#363636" text-anchor="start">the libraries</text>
+  <text x="276" y="202" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">pandas · sklearn</text>
+  <rect x="54" y="218" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="64" y="238" font-size="13" font-weight="700" fill="#363636" text-anchor="start">the settings</text>
+  <text x="276" y="238" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">PRICES_URL</text>
+  <text x="170" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">your laptop</text>
+  <rect x="660" y="70" width="260" height="190" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="790" y="94" font-size="12" font-weight="700" fill="#2471a3" text-anchor="middle" letter-spacing="1.1">CONTAINER</text>
+  <rect x="674" y="110" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="684" y="130" font-size="13" font-weight="700" fill="#363636" text-anchor="start">your code</text>
+  <text x="896" y="130" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">volalert/job.py</text>
+  <rect x="674" y="146" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="684" y="166" font-size="13" font-weight="700" fill="#363636" text-anchor="start">the language</text>
+  <text x="896" y="166" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">Python 3.12</text>
+  <rect x="674" y="182" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="684" y="202" font-size="13" font-weight="700" fill="#363636" text-anchor="start">the libraries</text>
+  <text x="896" y="202" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">pandas · sklearn</text>
+  <rect x="674" y="218" width="232" height="30" fill="#ffffff" stroke="#c9c4b8"/>
+  <text x="684" y="238" font-size="13" font-weight="700" fill="#363636" text-anchor="start">the settings</text>
+  <text x="896" y="238" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-family="'JetBrains Mono',Menlo,monospace">PRICES_URL</text>
+  <text x="790" y="284" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">a server in Frankfurt</text>
+  <line x1="312" y1="140" x2="646" y2="140" stroke="#a8955a" stroke-width="2.5" marker-end="url(#ag)"/>
+  <text x="479" y="128" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">the same box, byte for byte</text>
+  <text x="479" y="162" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">docker build → push → run</text>
+  <rect x="360" y="200" width="240" height="66" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="480" y="221" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">image vs container</text>
+  <text x="480" y="241" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">image: the frozen box</text>
+  <text x="480" y="258" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">container: a running copy</text>
+  <text x="30" y="340" font-size="14" font-weight="400" fill="#363636" text-anchor="start">“It works on my machine” — so ship the machine. Docker packs your code with everything it needs to run,</text>
+  <text x="30" y="362" font-size="14" font-weight="400" fill="#363636" text-anchor="start">and any cloud can run the box without knowing what is inside. Most platforms on the next slide take one.</text>
+</svg>
