@@ -43,6 +43,8 @@ code(f'''
 import warnings, numpy as np, pandas as pd, matplotlib.pyplot as plt
 warnings.filterwarnings("ignore")
 pd.set_option("display.precision", 4)
+plt.rcParams.update({{"axes.prop_cycle": plt.cycler(color=["#2471a3", "#AF1F25", "#a8955a", "#1e8449", "#7a7f85"]),
+                     "axes.spines.top": False, "axes.spines.right": False}})
 
 SNAPSHOT = "{SNAP_URL}"
 
@@ -72,7 +74,6 @@ px.tail()
 
 # ---------------------------------------------------------------- PART 1
 md("""
----
 # Part 1 — Exploration
 The question for the whole morning: **is crypto risk predictable — and which part of it?**
 
@@ -230,7 +231,6 @@ Write three lines before we go on. Direction? Size? Correlation with stocks?
 
 # ---------------------------------------------------------------- PART 2
 md("""
----
 # Part 2 — Machine learning, with a black box
 
 We now ask a model to predict **next week**. Two targets, the same inputs:
@@ -382,7 +382,9 @@ imp = permutation_importance(rf_vol, test[features], test["y_vol"], scoring="roc
 pd.Series(imp.importances_mean, index=features).sort_values().plot.barh(figsize=(7, 3.5),
     title="how much AUC drops when the feature is scrambled"); plt.show()
 '''),
-md("If the exploration was right, the volatility features dominate and the return features are close to zero. A black box that agrees with what you saw by eye is one you can start to trust; one that leans on `weekday` is one you should not."),
+md("""If the exploration was right, the volatility features dominate. `ret_7` helps too — a week with a big move *is* a volatile week, seen from another angle. Bars below zero mean the feature is noise the model would be better without.
+
+A black box that agrees with what you saw by eye is one you can start to trust; one that leans on `weekday` is one you should not."""),
 
 *your_turn(
 """**Leak it on purpose.** An assistant asked to "smooth" the volatility adds `d["ret"].rolling(7, center=True).std()` as a feature. Add it, retrain on the *honest* split, and compare the volatility AUC. Then write one sentence: why did the honest split not protect you?""",
@@ -417,7 +419,6 @@ md("""Find the cheapest row, and check it beats **both** trivial policies — a 
 Now set `c_miss = 4` and run again. The best threshold drops, and "always hedge" may win outright: when misses are expensive enough, the model is not worth running. **The model did not change — the business did.**"""),
 
 md("""
----
 ## Three lines to take home
 Write them here, in your words, then **File ▸ Save a copy in Drive** into `ese-ai-fintech/week-03/`.
 

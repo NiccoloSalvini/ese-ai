@@ -93,15 +93,15 @@ Homework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59
 
 **Homework:** HW2 — Exploratory analysis memo: one question ("does X co-move with Y?", "what happened to Z around event E?"), a reproducible notebook, a one-page memo with the decisive chart, and an AI-use disclosure.
 
-### Session 3 — Wed 7 Oct — Machine learning through one problem; from prediction to decision
+### Session 3 — Wed 7 Oct — Look first, then predict: exploration, a black-box model, a decision
 
 | **0:00–0:20** | HW2 review. |
 |----|----|
-| **0:20–1:10** | Supervised learning: features, target, train/test, why time series need time-aware splits, overfitting, baselines, metrics (accuracy vs precision/recall, MAE), base rates and calibration. |
-| **1:10–2:40** | Lab: predict next-week direction or volatility regime with logistic regression and gradient boosting; compare with a naive baseline; introduce leakage on purpose (random split, future features) and watch the score lie. Walk-forward validation. |
-| **2:40–3:00** | From prediction to decision: expected value, thresholds, KPI design, when a human must decide. Homework brief. |
+| **0:20–1:20** | Exploratory analysis of eight years of BTC, ETH and S&P 500 prices: coverage and calendars, returns, fat tails, autocorrelation of direction vs size (volatility clustering), correlation regimes; an assistant's summary table checked for errors. |
+| **1:30–2:30** | Supervised learning with a black box: features, target, base rate, a one-line rule; a random forest predicting next-week direction and volatility regime, judged with a time-ordered split against the assistant's shuffled one; permutation importance; leakage through a feature, on purpose. |
+| **2:30–3:00** | From prediction to decision: error costs, thresholds, beating "never act" and "always act", KPI design. Homework brief. |
 
-**Homework:** HW3 — Model vs baseline with honest, time-aware evaluation, and a section titled "What would have to be true for this to be useful" (decision rule, KPI, cost of errors).
+**Homework:** HW3 — The same morning on an asset of his choice: exploration first, then a random forest against a base rate and a one-line rule with honest, time-aware evaluation, and a section titled "What would have to be true for this to be useful" (decision rule, KPI, cost of errors).
 
 ### Session 4 — Wed 14 Oct — LLM applications I — API, structured output, retrieval (RAG)
 

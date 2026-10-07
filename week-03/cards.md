@@ -16,65 +16,66 @@ format:
 ---
 
 <!-- card 1 -->
-# The wall
+# Explore in an order
 
-```
-   known at time t                  │   happens after t
-   ─────────────────────────────────┼─────────────────────────
-   ret_1, ret_5, ret_21             │   fwd_ret  (t+1 … t+5)
-   vol_5, vol_21, vol_ratio         │   y_dir    = fwd_ret > 0
-   spy_ret_5, day of week           │   y_vol    = fwd_vol > trailing median
-```
-
-Every feature: write the latest row it uses. Every target: recompute one date by hand.
+| small question | what it decides |
+|---|---|
+| what is in the table? | how to join crypto (7 days) and stocks (5) |
+| how big are the moves? | units, scale, which returns |
+| how often is "impossible"? | whether the bell curve is allowed |
+| does yesterday tell us about today? | **what is worth predicting** |
 
 ---
 
 <!-- card 2 -->
-# Base rate first
+# Direction has no memory. Size does.
 
-| Target | Share of 1s | "Do nothing clever" accuracy |
+| lag | BTC return | BTC absolute return |
 |---|---|---|
-| 5-day direction, BTC | ~0.55 | ~0.55 (always up) |
-| high-vol regime | ~0.50 | ~0.50 |
+| 1 day | −0.05 | **0.17** |
+| 2 days | 0.04 | **0.13** |
+| 5 days | 0.02 | **0.14** |
 
-A model at 0.56 accuracy has learned almost nothing. An accuracy without its base rate next to it is not a report.
+Calm follows calm, storms follow storms: volatility clustering.
+Found before training anything.
 
 ---
 
 <!-- card 3 -->
-# Two ways to split
+# The wall
 
 ```
-shuffled:      train  test  train  train  test  train  test  train …   ← Thursday tested, Wed & Fri trained
-time-ordered:  train train train train train │ test test test          ← test always in the future
-walk-forward:  [train ───][test] → [train ──────][test] → [train ─────────][test]
+   known at day t                    │   happens after t
+   ──────────────────────────────────┼──────────────────────────
+   ret_1, ret_7, ret_30              │   fwd_ret  (t+1 … t+7)
+   vol_7, vol_30  (÷ usual)          │   y_dir = fwd_ret > 0
+   eth_ret_7, spy_ret_5, weekday     │   y_vol = fwd_vol > usual
 ```
 
-The gap between the two scores is leakage, not skill.
+Every feature: write the latest day it uses. Every target: recompute one date by hand.
 
 ---
 
 <!-- card 4 -->
-# Same data, same models — different question
+# What came out (2024 → today)
 
-| | shuffled | time-ordered | base rate |
-|---|---|---|---|
-| direction | higher | ≈ base rate | 0.55 |
-| volatility regime | higher | **above 0.5 AUC** | 0.50 |
+| | base rate | AUC shuffled | AUC honest | rule "like this week" |
+|---|---|---|---|---|
+| direction | 53% | 0.70 | **0.55** | — |
+| volatility | 54% | 0.74 | **0.60** | **0.64** |
 
-Direction is a coin flip with these features. Volatility clusters.
-Choosing the question is the manager's job.
+The gap between shuffled and honest is leakage, not skill.
+The one-line rule beats the forest. Same data, same model: the question decides.
 
 ---
 
 <!-- card 5 -->
 # Leakage through a feature
 
-`rolling(5, center=True)` uses two future rows.
-The time-ordered split does not protect you. No validation scheme does.
+`rolling(7, center=True)` uses three future days.
+Honest split, AUC 0.60 → 0.69. No validation scheme catches it.
 
-The only defence: for each feature, the latest row it uses — on paper.
+The only defence: for each feature, the latest day it uses — on paper.
 
 ---
 

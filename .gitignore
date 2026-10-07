@@ -11,3 +11,5 @@ __pycache__/
 # tutor-only, never on GitHub (repo is public)
 week-*/speech.md
 week-*/intake-notes.md
+
+**/*.quarto_ipynb
