@@ -434,11 +434,18 @@
     "text": "Three documents you have never read\n\n\n\n\n\n\n\n\nCoinbase\nForm 10-K for 2025, filed 12 February 2026\n~98,000 words\n\n\nPayPal\nForm 10-K for 2025, filed 3 February 2026\n~71,000 words\n\n\nBitcoin\nthe whitepaper, Nakamoto 2008\n9 pages\n\n\n\nAll three are in week-04/data/ on the course site; the filings are also on SEC EDGAR.\nThe filings came out after the model’s training data ends. The model cannot know these numbers. Any figure it gives without the documents is invented — fluently."
   },
   {
+    "objectID": "lectures/04-rag.html#why-not-paste-everything",
+    "href": "lectures/04-rag.html#why-not-paste-everything",
+    "title": "Read first, then answer",
+    "section": "Why not paste everything?",
+    "text": "Why not paste everything?\nThe Coinbase filing is 140,000 tokens — AI Studio counts them when you attach it. The model’s window holds a million. All three documents fit, with room to spare — and when they fit, the model sees every line.\n\n\n\n\n\n\n\nBet\n\n\nSo when does “attach the whole thing” stop working? Three answers. Write them before the next slide.\n\n\n\n\n\nIt does not fit — Morgan Stanley’s library, a bank’s policies, all of EDGAR. It costs — every question re-reads every page; AI Studio’s token counter is the bill. You have no evidence — a passage you retrieved is a passage you can show; a window you filled is not.\nRetrieval is the answer to those three. For three documents, it is not needed. For the system in your brief, it usually is."
+  },
+  {
     "objectID": "lectures/04-rag.html#four-boxes-one-question",
     "href": "lectures/04-rag.html#four-boxes-one-question",
     "title": "Read first, then answer",
     "section": "Four boxes, one question",
-    "text": "Four boxes, one question\n\nGemini Notebook does all four for you. It does not tell you which one failed."
+    "text": "Four boxes, one question\n\nGemini Notebook does all four for you — its citations are the third box made visible. It does not tell you which one failed."
   },
   {
     "objectID": "lectures/04-rag.html#first-the-answers",
@@ -508,14 +515,14 @@
     "href": "lectures/04-rag.html#a-valid-json-object-can-be-entirely-wrong",
     "title": "Read first, then answer",
     "section": "A valid JSON object can be entirely wrong",
-    "text": "A valid JSON object can be entirely wrong\nLAB · AI Studio · structured output\nTurn on structured output. Schema: company · metric · value · unit · period · source_quote.\n\nAssets on Platform, 2025 → valid, and right.\nA metric that is not in the filing — monthly active users of the Base App, say.\n\n\n\n\n\n\n\n\nBet\n\n\nEmpty field · refusal · a plausible number. Which one comes back in a perfectly valid object?"
+    "text": "A valid JSON object can be entirely wrong\nLAB · AI Studio · structured output\nTurn on structured output. Schema: company · metric · value · unit · period · source_quote.\n\nAssets on Platform, 2025 → valid, and right.\nA metric that is not in the filing — monthly active users of the Base App, say.\n\n\n\n\n\n\n\n\nBet\n\n\nEmpty field · refusal · a plausible number · something stranger. What comes back when the schema demands a number and the instruction forbids one?\n\n\n\n\n\nFifty-four seconds of arguing with itself, then a perfectly valid object: \"value\": 0, \"source_quote\": \"\". Zero users. The empty quote is the only honest field."
   },
   {
     "objectID": "lectures/04-rag.html#get-code",
     "href": "lectures/04-rag.html#get-code",
     "title": "Read first, then answer",
     "section": "Get code",
-    "text": "Get code\nresponse = client.models.generate_content(\n    model=\"gemini-2.5-flash\",\n    config=types.GenerateContentConfig(\n        system_instruction=\"Answer only from the attached documents. ...\",\n        temperature=0,\n        response_mime_type=\"application/json\",\n    ),\n    contents=[document, \"What were Coinbase's Assets on Platform at the end of 2025?\"],\n)\nYou have seen this cell. Week 3, L1. The tool is the same call with a panel in front of it. Nothing under the hood you did not already meet."
+    "text": "Get code\nfrom google import genai\nclient = genai.Client(api_key=os.environ.get(\"GEMINI_API_KEY\"))\n\ninteraction = client.interactions.create(\n    model=\"models/gemini-3.8-flash\",\n    input=\"\"\"&lt;the document, then the question&gt;\"\"\",\n    system_instruction=\"Answer only from the attached documents. ...\",\n    generation_config={\"thinking_level\": \"medium\"},\n    response_mime_type=\"application/json\",\n)\nprint(interaction.output_text)\nYou have seen this cell. Week 3, L1: the model, the system message, the input, a setting, the shape of the answer. The tool is the same call with a panel in front of it. Nothing under the hood you did not already meet."
   },
   {
     "objectID": "lectures/04-rag.html#where-it-sits-in-the-map-you-drew",

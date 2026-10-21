@@ -368,10 +368,33 @@ Niccolò Salvini, PhD
 <p>All three are in <code>week-04/data/</code> on the course site; the filings are also on <a href="https://www.sec.gov/edgar">SEC EDGAR</a>.</p>
 <p><span class="explain">The filings came out after the model’s training data ends. <strong>The model cannot know these numbers.</strong> Any figure it gives without the documents is invented — fluently.</span></p>
 </section>
+<section id="why-not-paste-everything" class="slide level2">
+<h2>Why not paste everything?</h2>
+<p>The Coinbase filing is 140,000 tokens — AI Studio counts them when you attach it. The model’s window holds a million. All three documents fit, with room to spare — and when they fit, the model sees every line.</p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>So when does “attach the whole thing” stop working? Three answers. Write them before the next slide.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>It does not fit</strong> — Morgan Stanley’s library, a bank’s policies, all of EDGAR. <strong>It costs</strong> — every question re-reads every page; AI Studio’s token counter is the bill. <strong>You have no evidence</strong> — a passage you retrieved is a passage you can show; a window you filled is not.</p>
+<p><span class="explain">Retrieval is the answer to those three. For three documents, it is not needed. For the system in your brief, it usually is.</span></p>
+</div>
+</section>
 <section id="four-boxes-one-question" class="slide level2">
 <h2>Four boxes, one question</h2>
 
-<img data-src="img/rag-pipeline.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="muted">Gemini Notebook does all four for you. It does not tell you which one failed.</span></p>
+<img data-src="img/rag-pipeline.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="muted">Gemini Notebook does all four for you — its citations are the third box made visible. It does not tell you which one failed.</span></p>
 </section>
 <section id="first-the-answers" class="slide level2 lab" data-background-color="#2471a3">
 <h2>First, the answers</h2>
@@ -517,24 +540,29 @@ Quote the sentence you used, and name the document.</code></pre>
 <p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>Empty field · refusal · a plausible number. Which one comes back in a perfectly valid object?</p>
+<p>Empty field · refusal · a plausible number · something stranger. What comes back when the schema demands a number and the instruction forbids one?</p>
 </div>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p><span class="explain">Fifty-four seconds of arguing with itself, then a perfectly valid object: <code>"value": 0</code>, <code>"source_quote": ""</code>. Zero users. The empty quote is the only honest field.</span></p>
 </div>
 </section>
 <section id="get-code" class="slide level2">
 <h2>Get code</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>response <span class="op">=</span> client.models.generate_content(</span>
-<span id="cb2-2"><a aria-label="2"></a>    model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>,</span>
-<span id="cb2-3"><a aria-label="3"></a>    config<span class="op">=</span>types.GenerateContentConfig(</span>
-<span id="cb2-4"><a aria-label="4"></a>        system_instruction<span class="op">=</span><span class="st">"Answer only from the attached documents. ..."</span>,</span>
-<span id="cb2-5"><a aria-label="5"></a>        temperature<span class="op">=</span><span class="dv">0</span>,</span>
-<span id="cb2-6"><a aria-label="6"></a>        response_mime_type<span class="op">=</span><span class="st">"application/json"</span>,</span>
-<span id="cb2-7"><a aria-label="7"></a>    ),</span>
-<span id="cb2-8"><a aria-label="8"></a>    contents<span class="op">=</span>[document, <span class="st">"What were Coinbase's Assets on Platform at the end of 2025?"</span>],</span>
-<span id="cb2-9"><a aria-label="9"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><span class="explain">You have seen this cell. Week 3, L1. <strong>The tool is the same call with a panel in front of it.</strong> Nothing under the hood you did not already meet.</span></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a><span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb2-2"><a aria-label="2"></a>client <span class="op">=</span> genai.Client(api_key<span class="op">=</span>os.environ.get(<span class="st">"GEMINI_API_KEY"</span>))</span>
+<span id="cb2-3"><a aria-label="3"></a></span>
+<span id="cb2-4"><a aria-label="4"></a>interaction <span class="op">=</span> client.interactions.create(</span>
+<span id="cb2-5"><a aria-label="5"></a>    model<span class="op">=</span><span class="st">"models/gemini-3.8-flash"</span>,</span>
+<span id="cb2-6"><a aria-label="6"></a>    <span class="bu">input</span><span class="op">=</span><span class="st">"""&lt;the document, then the question&gt;"""</span>,</span>
+<span id="cb2-7"><a aria-label="7"></a>    system_instruction<span class="op">=</span><span class="st">"Answer only from the attached documents. ..."</span>,</span>
+<span id="cb2-8"><a aria-label="8"></a>    generation_config<span class="op">=</span>{<span class="st">"thinking_level"</span>: <span class="st">"medium"</span>},</span>
+<span id="cb2-9"><a aria-label="9"></a>    response_mime_type<span class="op">=</span><span class="st">"application/json"</span>,</span>
+<span id="cb2-10"><a aria-label="10"></a>)</span>
+<span id="cb2-11"><a aria-label="11"></a><span class="bu">print</span>(interaction.output_text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="explain">You have seen this cell. Week 3, L1: the model, the system message, the input, a setting, the shape of the answer. <strong>The tool is the same call with a panel in front of it.</strong> Nothing under the hood you did not already meet.</span></p>
 </section>
 <section id="where-it-sits-in-the-map-you-drew" class="slide level2">
 <h2>Where it sits in the map you drew</h2>
