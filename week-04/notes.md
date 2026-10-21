@@ -127,6 +127,40 @@ Reading (end of this file), five minutes silent. Then the three prompts on the w
 - EU AI Act tiers: by use, not technology; Article 50 transparency; Annex III creditworthiness.
 - Provider vs deployer: who puts it on the market under their name; who uses it under theirs.
 
+## What the tools actually did (tested 21 October 2026, 09:00, tutor's account)
+
+**Gemini Notebook**, three sources added as URLs from the course site (the two `.txt` filings and the PDF; indexing took about 20 seconds; the notebook is saved on the tutor's account as *ESE week 4 — Coinbase, PayPal, Bitcoin*):
+
+| id | result | what it said |
+|---|---|---|
+| G1–G10 | **10/10 hits**, every one with citations | the exact figures above; G3 gave $376.13B / $404.03B from the balance sheet, more precise than the metrics table; G10 parsed the whitepaper table and listed the whole column |
+| T1 | **refuses, and leaks** | "the provided source material does not explicitly state the specific numerical cap (such as 21 million)" — it says the number while saying it is not there, and offers to search the web |
+| T1, pushy follow-up | **holds** | "the specific number 21 million is actually never mentioned anywhere in Satoshi Nakamoto's whitepaper", then explains *without citations* that the cap comes from the 2009 C++ implementation, 50 BTC halving every 210,000 blocks — memory, unsourced, in the same breath as the sourced sentence. This is the slide "True, and still wrong", live |
+| T2 | hit | −$1.32B, −51%, with the drivers |
+| T3 | hit | $7.28B long-term debt principal, plus carrying value $7.21B and the note-by-note breakdown |
+| share price at 31 Dec 2025 | **honest miss** | says the filing does not give it, cites the December buy-back average price ($237.28) and the 2021 opening price instead |
+| G8 rephrased without "loss rate" | hit | 0.07%, "7 out of every $10,000 moved" |
+
+So the bet "how many of ten?" will come out **10**, and the morning's surprise is not a miss on the ten: it is T1 and its follow-up. Lead with that. The question for him after the ten: "What did the table buy you, if everything hit?" — the right to say so, with evidence; and the traps are where the tool shows its seams. His homework corpus will be messier than two clean filings; say that too.
+
+**Gemini app** (gemini.google.com, "Auto" model), `btc_2025.csv` uploaded, *"What was Bitcoin's annualised volatility in 2025? Show the formula you used."* → it chooses **√365** and explains why (24/7 markets, not the 252 of equities) — so the week-3 bug does not reappear — but the **same answer carries two numbers**: 41.95% at the top (from code it ran: correct, ours is 41.9%), then a hand-recomputed section with a daily σ of 1.85% instead of 2.19%, giving **35.34%** (and "29.37% with 252"). The bet was on the constant; the constant is right and the number is still wrong in the half of the answer that did not run code. Ask him which of the two is true and how he knows. Upload: the + button ▸ *Carica file*; a one-time "Attività" privacy notice, *Chiudi*.
+
+**Google AI Studio** (model shown: Gemini 3.8 Flash; panels: *System instructions* box, *Thinking level*, *Tools* with *Structured outputs* + Edit, *Grounding with Google Search*, *URL context*; *Get code* top right; files through the + button). Two things to do before the first question, both tested:
+- **Grounding with Google Search is ON by default.** Turn it off, or the "no documents" question is answered from the web and the whole point is lost.
+- The first upload asks to **acknowledge** a media-rights notice; the first run asks whether to save chats in Drive — *Cancel and use Temporary chat* is fine.
+- No documents, grounding off: *"What were Coinbase's Assets on Platform at the end of 2025?"* → **"Data for the end of 2025 is not available, as that period is in the future"**, then stale figures ($101B end-2023, ~$271B Q3 2024). The model's training cut-off, visible. Good bet: "a number, I don't know, or something stranger?"
+- Coinbase `.txt` attached: the counter shows **140,147 tokens** for the file. Same question plus "quote the line you used" → $376 billion, both table lines quoted, 8.8 s.
+- Whitepaper attached, no instruction, T1 → *"21 million (strictly speaking, 20,999,999.9769 BTC)… However, in the provided whitepaper the specific number '21 million' is not mentioned"*, with the §6 sentence quoted. Memory, declared.
+- Card 5 as system instruction → T1: **"Not in the documents."** Pushy follow-up: **"Not in the documents."** G3 with the same instruction: answered, sentence quoted ("The Company holds full keys… $376.1 billion and $404.0 billion…"), document named. The instruction holds and does not break real questions.
+- Structured outputs on, schema with six fields (`value` a number): G3 → valid JSON, right, the quote in `source_quote`. The missing metric (Base App MAU) → **54 seconds** of the model repeating `{"value": "Not in the documents."}` in its thoughts, then a **valid object with `"value": 0`, `"unit": ""`, `"source_quote": ""`**. Zero users, in a perfectly typed field; the empty quote is the only honest one. This is the slide, live. Fix to try if ahead: add `is_in_documents: boolean` to the schema.
+- *Get code* (Python) now uses `client.interactions.create(model='models/gemini-3.8-flash', input=…, system_instruction=…, generation_config={'thinking_level': 'medium'}, response_mime_type='application/json')` and `interaction.output_text`. The deck's snippet matches it; the appendix notebook still uses the OpenAI-compatible client of week 3, which is fine for the point being made.
+
+Schema used (paste into *Structured outputs ▸ Edit ▸ Code Editor*):
+
+```json
+{"type":"object","properties":{"company":{"type":"string"},"metric":{"type":"string"},"value":{"type":"number"},"unit":{"type":"string"},"period":{"type":"string"},"source_quote":{"type":"string"}},"required":["company","metric","value","unit","period","source_quote"]}
+```
+
 ## Tutor's notes
 - **Before Wednesday, in order:** (1) sign in to notebook.google.com, create the notebook with the three sources, ask the ten questions and the three traps yourself and write what came back next to the expected answers above — the tool's answers change between days and the Script must know what to expect; (2) open the Gemini app, upload `btc_2025.csv`, ask the volatility question, note the constant it used; (3) aistudio.google.com with your key: steps 1–7 of "Under the hood", in particular whether the default model refuses or invents on the no-documents question, and whether [card 5] holds against the pushy follow-up; (4) print `golden_set_template.csv` as a Sheet in the course folder so he imports it with one click.
 - **Panels move.** AI Studio renames and rearranges things every few months: *system instructions*, *structured output*, *Get code* were the names in October 2026. Check the evening before; if a panel is gone, the Get code snippet in the deck still shows what it did.

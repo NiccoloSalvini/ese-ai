@@ -92,11 +92,25 @@ All three are in `week-04/data/` on the course site; the filings are also on [SE
 
 [The filings came out after the model's training data ends. **The model cannot know these numbers.** Any figure it gives without the documents is invented — fluently.]{.explain}
 
+## Why not paste everything?
+
+The Coinbase filing is 140,000 tokens — AI Studio counts them when you attach it. The model's window holds a million. All three documents fit, with room to spare — and when they fit, the model sees every line.
+
+::: {.callout-important title="Bet"}
+So when does "attach the whole thing" stop working? Three answers. Write them before the next slide.
+:::
+
+. . .
+
+**It does not fit** — Morgan Stanley's library, a bank's policies, all of EDGAR. **It costs** — every question re-reads every page; AI Studio's token counter is the bill. **You have no evidence** — a passage you retrieved is a passage you can show; a window you filled is not.
+
+[Retrieval is the answer to those three. For three documents, it is not needed. For the system in your brief, it usually is.]{.explain}
+
 ## Four boxes, one question
 
 ![](img/rag-pipeline.svg){fig-align="center" width="95%"}
 
-[Gemini Notebook does all four for you. It does not tell you which one failed.]{.muted}
+[Gemini Notebook does all four for you — its citations are the third box made visible. It does not tell you which one failed.]{.muted}
 
 ## First, the answers {.lab background-color="#2471a3"}
 
@@ -183,24 +197,30 @@ Turn on structured output. Schema: `company · metric · value · unit · period
 2. A metric that is **not** in the filing — monthly active users of the Base App, say.
 
 ::: {.callout-important title="Bet"}
-Empty field · refusal · a plausible number. Which one comes back in a perfectly valid object?
+Empty field · refusal · a plausible number · something stranger. What comes back when the schema demands a number and the instruction forbids one?
 :::
+
+. . .
+
+[Fifty-four seconds of arguing with itself, then a perfectly valid object: `"value": 0`, `"source_quote": ""`. Zero users. The empty quote is the only honest field.]{.explain}
 
 ## Get code
 
 ```python
-response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    config=types.GenerateContentConfig(
-        system_instruction="Answer only from the attached documents. ...",
-        temperature=0,
-        response_mime_type="application/json",
-    ),
-    contents=[document, "What were Coinbase's Assets on Platform at the end of 2025?"],
+from google import genai
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+
+interaction = client.interactions.create(
+    model="models/gemini-3.8-flash",
+    input="""<the document, then the question>""",
+    system_instruction="Answer only from the attached documents. ...",
+    generation_config={"thinking_level": "medium"},
+    response_mime_type="application/json",
 )
+print(interaction.output_text)
 ```
 
-[You have seen this cell. Week 3, L1. **The tool is the same call with a panel in front of it.** Nothing under the hood you did not already meet.]{.explain}
+[You have seen this cell. Week 3, L1: the model, the system message, the input, a setting, the shape of the answer. **The tool is the same call with a panel in front of it.** Nothing under the hood you did not already meet.]{.explain}
 
 ## Where it sits in the map you drew
 
