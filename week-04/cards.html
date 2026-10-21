@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.19">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <title>AI for Business &amp; FinTech – Week 4 — cards</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +34,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1493ab350ad457cbd5df7bde3b997dd4.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -145,7 +211,7 @@
 <section class="slide level0">
 
 <!-- card 1 -->
-<h1>One call, four arguments</h1>
+<h1>The test comes first</h1>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -154,142 +220,202 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>In</th>
-<th>What it decides</th>
-<th>Today’s default</th>
+<th>line</th>
+<th>Morgan Stanley, 2023</th>
+<th>yours</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>prompt</code></td>
-<td>what you ask, with the context you supply</td>
-<td>question + retrieved passages</td>
+<td>who asks</td>
+<td>financial advisors</td>
+<td></td>
 </tr>
 <tr class="even">
-<td><code>system</code></td>
-<td>who the model is, what it may not do</td>
-<td>“answer ONLY from the context; cite; else say ‘Not in the provided context’”</td>
+<td>which questions</td>
+<td>the ones they ask every day</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td><code>temperature</code></td>
-<td>how much randomness in the choice of the next token</td>
-<td>0 for extraction</td>
+<td>who knows the right answer</td>
+<td>the advisors, from the research itself</td>
+<td></td>
 </tr>
 <tr class="even">
-<td><code>json_schema</code></td>
-<td>the shape the answer must have, validated in code</td>
-<td>a <code>pydantic</code> class</td>
+<td>which number comes out</td>
+<td>share of answers graded accurate</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>what ships it</td>
+<td>a threshold agreed before the build</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>Out: text or a dict — and one log row: tokens in, tokens out, latency, cost.</p>
+<p>The expected answer never comes from the system under test.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 2 -->
-<h1>RAG — four boxes, one question</h1>
+<h1>Four boxes, one question</h1>
 <pre><code> documents ──► CHUNK ──► EMBED ──► [vectors]
                                        │
- question ───────────► EMBED ──► RETRIEVE (cosine, top-k)
+ question ───────────► EMBED ──► RETRIEVE (the nearest few)
                                        │
                           ┌────────────┘
                           ▼
-   prompt = CONTEXT [1][2][3] + QUESTION ──► GENERATE ──► answer + citations</code></pre>
-<p>When the answer is wrong, which box is wrong?</p>
+   CONTEXT [1][2][3] + QUESTION ──► GENERATE ──► answer + citations</code></pre>
+<p>When the answer is wrong, which box is wrong? The tool will not tell you. The table will.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 3 -->
-<h1>Chunking</h1>
-<p><span class="math display">\[
-\text{chunks} \approx \frac{\text{pages} \times \text{chars per page}}{4 \text{ chars per token} \times \text{tokens per chunk}}
-\qquad
-60 \times 3{,}000 \;/\; (4 \times 500) \approx 90
-\]</span></p>
-<pre><code>fixed cut at 500 chars:   ...December 31, 2025, we had $1,2 | 50 million aggregate principal...
-sentence-aware + overlap: ...we had $1,250 million aggregate principal amount of convertible...</code></pre>
-<p>A fact cut in half exists in no chunk.</p>
-</section>
-<section class="slide level0">
-
-<!-- card 4 -->
-<h1>Cosine similarity</h1>
-<p><span class="math display">\[
-\cos(\mathbf{q}, \mathbf{c}) = \frac{\mathbf{q}\cdot\mathbf{c}}{\lVert\mathbf{q}\rVert\,\lVert\mathbf{c}\rVert}
-\quad\Longrightarrow\quad
-\text{after normalising, } \; \text{score} = \hat{\mathbf{q}}\cdot\hat{\mathbf{c}}
-\]</span></p>
-<p>TF-IDF (week 1) counts shared words: “convertible debt” ≠ “what we owe bondholders”. A neural embedding maps meaning: the two questions land close together.</p>
-<p>Your customers do not use your vocabulary.</p>
-</section>
-<section class="slide level0">
-
-<!-- card 5 -->
 <h1>Two kinds of miss</h1>
 <table class="caption-top">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Expected string is in…</th>
-<th>retrieved chunks</th>
-<th>the answer</th>
-<th>Name</th>
-<th>Fix</th>
+<th>the right passage…</th>
+<th>the answer…</th>
+<th>name</th>
+<th>what you change</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>both</td>
-<td>yes</td>
-<td>yes</td>
-<td>hit</td>
-<td>—</td>
+<td>came back</td>
+<td>is right</td>
+<td><strong>hit</strong></td>
+<td>nothing</td>
 </tr>
 <tr class="even">
-<td>chunks only</td>
-<td>yes</td>
-<td>no</td>
+<td>came back</td>
+<td>is wrong</td>
 <td><strong>generation</strong> miss</td>
-<td>prompt, schema, k, model</td>
+<td>instruction, question, model</td>
 </tr>
 <tr class="odd">
-<td>neither</td>
-<td>no</td>
-<td>no</td>
+<td>never came back</td>
+<td>is wrong</td>
 <td><strong>retrieval</strong> miss</td>
-<td>chunk size, overlap, embedder, k</td>
+<td>documents, how they are cut, the words</td>
 </tr>
 <tr class="even">
-<td>answer only</td>
-<td>no</td>
-<td>yes</td>
-<td><strong>memory</strong> — answered without evidence</td>
-<td>the log; a stricter system prompt</td>
+<td>never came back</td>
+<td>is right</td>
+<td><strong>memory</strong></td>
+<td>it answered without evidence</td>
 </tr>
 </tbody>
 </table>
-<p>Name the failure before you touch a knob.</p>
+<p>Name the failure before you touch anything.</p>
+</section>
+<section class="slide level0">
+
+<!-- card 4 -->
+<h1>Three traps</h1>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>the question</th>
+<th>what it tests</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>the maximum number of bitcoins</td>
+<td>an answer the model <em>knows</em> and the documents do not contain</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>Coinbase net income, 2024 → 2025</td>
+<td>a number that lives in a table</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>what Coinbase owes and must pay back</td>
+<td>a question in none of the document’s words</td>
+</tr>
+</tbody>
+</table>
+<p>True, and still wrong: 21 million is correct, and it is not in the whitepaper.</p>
+</section>
+<section class="slide level0">
+
+<!-- card 5 -->
+<h1>A system instruction that holds</h1>
+<pre><code>Answer only from the attached documents.
+If the answer is not in them, reply exactly: "Not in the documents."
+Quote the sentence you used, and name the document.</code></pre>
+<p>The third line makes the first two checkable. A quote you can Ctrl-F is evidence; a paragraph is not.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 6 -->
-<h1>What it costs</h1>
-<p><span class="math display">\[
-\text{cost per day} = N \times \frac{t_{in}\, p_{in} + t_{out}\, p_{out}}{10^{6}}
-\qquad
-1{,}000 \times \frac{500 \times 0.30 + 40 \times 2.50}{10^{6}} \approx \$0.25
-\]</span></p>
-<p>The model is cheap; latency and evaluation are the constraints.</p>
+<h1>The schema guarantees the type, not the truth</h1>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a aria-label="1"></a><span class="fu">{</span> <span class="dt">"company"</span><span class="fu">:</span> <span class="st">"Coinbase"</span><span class="fu">,</span> <span class="dt">"metric"</span><span class="fu">:</span> <span class="st">"Assets on Platform"</span><span class="fu">,</span></span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="dt">"value"</span><span class="fu">:</span> <span class="dv">376</span><span class="fu">,</span> <span class="dt">"unit"</span><span class="fu">:</span> <span class="st">"USD billion"</span><span class="fu">,</span> <span class="dt">"period"</span><span class="fu">:</span> <span class="st">"31 Dec 2025"</span><span class="fu">,</span></span>
+<span id="cb3-3"><a aria-label="3"></a>  <span class="dt">"source_quote"</span><span class="fu">:</span> <span class="st">"Assets on Platform (in billions) $ 376 $ 404"</span> <span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Valid. Right. Now ask for a metric the filing does not contain — and watch the same shape come back.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 7 -->
+<h1>Klarna, in two numbers</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>February 2024</th>
+<th>May 2025</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>conversations in a month</td>
+<td>2.3 million, two thirds of chats</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>“the work of”</td>
+<td>700 full-time agents</td>
+<td>853 (Q3 2025)</td>
+</tr>
+<tr class="odd">
+<td>resolution time</td>
+<td>11 min → under 2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>profit improvement, est.</td>
+<td>$40 million</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>quality</td>
+<td>“on par” — no number</td>
+<td>“lower quality” — the CEO</td>
+</tr>
+</tbody>
+</table>
+<p>Every number in the first column measures cost or speed. None measures whether the answers were right.</p>
+</section>
+<section class="slide level0">
+
+<!-- card 8 -->
 <h1>EU AI Act — the tier follows the use</h1>
 <table class="caption-top">
 <colgroup>
@@ -299,40 +425,40 @@ sentence-aware + overlap: ...we had $1,250 million aggregate principal amount of
 </colgroup>
 <thead>
 <tr class="header">
-<th>Tier</th>
-<th>Example in a fintech</th>
-<th>Duty</th>
+<th>tier</th>
+<th>in a fintech</th>
+<th>the duty</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Prohibited</td>
+<td>prohibited</td>
 <td>social scoring of customers</td>
 <td>do not build</td>
 </tr>
 <tr class="even">
-<td>High-risk (Annex III)</td>
+<td>high-risk (Annex III)</td>
 <td>creditworthiness of a person; insurance pricing</td>
 <td>risk management, documentation, logging, human oversight, conformity assessment</td>
 </tr>
 <tr class="odd">
-<td>Transparency (Art. 50)</td>
-<td>customer support chatbot</td>
-<td>tell the person it is a machine; label generated content</td>
+<td>transparency (Art. 50)</td>
+<td>the customer assistant</td>
+<td>say it is a machine; label what it generates</td>
 </tr>
 <tr class="even">
-<td>Minimal</td>
+<td>minimal</td>
 <td>internal search over filings</td>
 <td>voluntary codes</td>
 </tr>
 <tr class="odd">
 <td>GPAI model</td>
-<td>the model behind <code>llm()</code></td>
-<td>provider’s duties: documentation, copyright, training summary</td>
+<td>the model behind the panel</td>
+<td>the <strong>provider’s</strong> duties, not yours</td>
 </tr>
 </tbody>
 </table>
-<p>The day the chatbot answers “can I have a higher limit?”, it changes row.</p>
+<p>The day the assistant answers “can I have a higher limit?”, it changes row.</p>
 
 
 </section>

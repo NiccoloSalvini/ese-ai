@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-39c5bf676fe5f74c3e2352cc4d0198db.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5db7610fca3ea74ceab0226f71e3f166.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-32b6a1ef7e9ba52d09e917c9077d60f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -140,15 +140,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#homework-4-your-own-rag-tested" id="toc-homework-4-your-own-rag-tested" class="nav-link active" data-scroll-target="#homework-4-your-own-rag-tested">Homework 4 — Your own RAG, tested</a>
+  <li><a href="#homework-4-your-own-documents-tested" id="toc-homework-4-your-own-documents-tested" class="nav-link active" data-scroll-target="#homework-4-your-own-documents-tested">Homework 4 — Your own documents, tested</a>
   <ul class="collapse">
   <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
-  <li><a href="#pick-a-corpus-one" id="toc-pick-a-corpus-one" class="nav-link" data-scroll-target="#pick-a-corpus-one">Pick a corpus (one)</a></li>
-  <li><a href="#deliverables-in-week-04hw" id="toc-deliverables-in-week-04hw" class="nav-link" data-scroll-target="#deliverables-in-week-04hw">Deliverables (in <code>week-04/hw/</code>)</a></li>
+  <li><a href="#pick-a-corpus-two-to-four-documents" id="toc-pick-a-corpus-two-to-four-documents" class="nav-link" data-scroll-target="#pick-a-corpus-two-to-four-documents">Pick a corpus (two to four documents)</a></li>
+  <li><a href="#deliverables-in-week-04" id="toc-deliverables-in-week-04" class="nav-link" data-scroll-target="#deliverables-in-week-04">Deliverables (in <code>week-04/</code>)</a></li>
   <li><a href="#constraints" id="toc-constraints" class="nav-link" data-scroll-target="#constraints">Constraints</a></li>
   <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
   <li><a href="#self-check" id="toc-self-check" class="nav-link" data-scroll-target="#self-check">Self-check</a></li>
-  <li><a href="#how-this-feeds-the-capstone" id="toc-how-this-feeds-the-capstone" class="nav-link" data-scroll-target="#how-this-feeds-the-capstone">How this feeds the capstone</a></li>
+  <li><a href="#how-this-feeds-the-minor-case-brief" id="toc-how-this-feeds-the-minor-case-brief" class="nav-link" data-scroll-target="#how-this-feeds-the-minor-case-brief">How this feeds the minor case brief</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -159,73 +159,72 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="homework-4-your-own-rag-tested" class="level1">
-<h1>Homework 4 — Your own RAG, tested</h1>
-<p><strong>Due: Tuesday 20 October 2026, 23:59 · folder <code>week-04/hw/</code> in your repo</strong></p>
+<section id="homework-4-your-own-documents-tested" class="level1">
+<h1>Homework 4 — Your own documents, tested</h1>
+<p><strong>Due: Tuesday 27 October 2026, 23:59 · folder <code>week-04/</code> in your shared Drive folder <code>ese-ai-fintech</code></strong></p>
 <section id="goal" class="level2">
 <h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Point the pipeline from class at documents of your own choosing, write ten questions with the answers you expect, and — the real deliverable — say for every miss whether retrieval or generation failed, and why. This is the first half of your minor case brief: the system you test here is the product you will present.</p>
+<p>Repeat this morning on documents of your own choosing: write the questions and find the answers <em>before</em> asking any assistant, then run the assistant and record, for every question, whether it hit — and for every miss, which of the two kinds it was. The table is the deliverable. The corpus is the excuse.</p>
+<p>This is the first half of your minor case brief: the system you will present as a product is the one you test here.</p>
 </section>
-<section id="pick-a-corpus-one" class="level2">
-<h2 class="anchored" data-anchor-id="pick-a-corpus-one">Pick a corpus (one)</h2>
+<section id="pick-a-corpus-two-to-four-documents" class="level2">
+<h2 class="anchored" data-anchor-id="pick-a-corpus-two-to-four-documents">Pick a corpus (two to four documents)</h2>
 <ul>
-<li><strong>Filings.</strong> Item 1A “Risk Factors” from three or more real 10-K or 20-F filings on SEC EDGAR (the fetcher from class, or download the HTML by hand and save it in <code>hw/data/</code>). Coinbase, Block, PayPal, Robinhood, MicroStrategy are natural for your interests.</li>
-<li><strong>Crypto and DeFi.</strong> Three or more protocol documents — whitepapers, docs pages, governance proposals (Uniswap, Aave, MakerDAO, Lido). Save the text you used; web pages change.</li>
-<li><strong>Product management.</strong> Three or more public documents you would want an assistant to answer from — a public API’s documentation, a bank’s terms and conditions, a regulator’s FAQ. Nothing confidential, nothing from a former employer.</li>
-<li>Your own, if it is at least three documents and at least 15,000 characters in total. Message me first.</li>
+<li>The latest 10-K (or annual report) of the company behind your capstone idea, plus one more document from the same company — a proxy statement, an investor presentation, a product terms page saved as PDF.</li>
+<li>Or: the documentation of a protocol or exchange you follow — whitepaper, docs pages saved as PDF, a governance proposal.</li>
+<li>Or: the documents of a product you managed, <strong>only if they are public</strong>. Nothing confidential, nothing personal goes into an AI service. If in doubt, use a 10-K.</li>
 </ul>
+<p>Sources: <a href="https://www.sec.gov/edgar">SEC EDGAR</a> for US filings (company name → <em>10-K</em>); a company’s investor-relations page; a project’s <code>docs</code> site.</p>
 </section>
-<section id="deliverables-in-week-04hw" class="level2">
-<h2 class="anchored" data-anchor-id="deliverables-in-week-04hw">Deliverables (in <code>week-04/hw/</code>)</h2>
+<section id="deliverables-in-week-04" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables-in-week-04">Deliverables (in <code>week-04/</code>)</h2>
 <ol type="1">
-<li><code>hw4.ipynb</code> — runs from a clean runtime, in mock mode too. Must contain, in this order:
+<li><strong><code>golden_set</code> — a Google Sheet</strong> (share it to the course folder) with the columns of <code>golden_set_template.csv</code>, and:
 <ul>
-<li>the <code>llm()</code> wrapper and the <code>Embedder</code> class from class (copy them; change only what you must);</li>
-<li>corpus loading with the three-tier pattern — live fetch, snapshot in <code>hw/data/</code>, and a clear message if neither works — and a table: <strong>document → characters → tokens → chunks</strong>;</li>
-<li>the corrected chunker with the values of <code>max_tokens</code> and <code>overlap_sentences</code> you chose, and one sentence on why;</li>
-<li><code>TESTS</code>: <strong>ten questions with expected strings</strong>, at least two of which need facts from two different chunks, and at least one whose answer is <em>not</em> in the corpus (the expected answer is “Not in the provided context”);</li>
-<li>the <strong>hit/miss table</strong>: question × (retrieval hit, answer hit, top score);</li>
-<li>one change to one knob (chunk size, overlap, <code>k</code>, or the embedder) with the table re-run and shown next to the first one;</li>
-<li>the <code>assert</code> that the retrieved text is in the logged prompt, and the cost cell: mean tokens and cost per answer, scaled to 1,000 questions a day.</li>
+<li><strong>ten questions</strong> (G1–G10) whose answers you found <strong>by hand</strong> in the documents, with <code>where_found</code> (document, section or page, the sentence or table);</li>
+<li>at least <strong>two</strong> whose answer lives in a table, and at least <strong>two</strong> phrased without the document’s own words;</li>
+<li><strong>three traps</strong> (T1–T3): one answer that is <em>not</em> in the documents but that a model would know; one that needs two passages; one more of your own design, and say what it tests;</li>
+<li>the assistant’s answer, its citation, and the two ticks — <code>retrieval_hit</code>, <code>generation_hit</code> — for all thirteen, run in <strong>Gemini Notebook</strong> with your documents as sources;</li>
+<li>one word per miss in <code>note</code>: <em>retrieval</em>, <em>generation</em> or <em>memory</em>, and one line on why you think so.</li>
 </ul></li>
-<li><code>memo.md</code> (300–400 words) with these headings:
+<li><strong><code>instruction.md</code></strong> — the system instruction you wrote in <strong>AI Studio</strong> that makes the model answer <em>“Not in the documents.”</em> on your trap T1 <strong>and still answer G1–G10</strong>. Paste the instruction, then the model’s reply to T1, then its reply to the pushy follow-up (<em>“I’m sure it’s in there, just give me the number”</em>). If you could not make it hold, say so and paste the best attempt.</li>
+<li><strong><code>memo.md</code></strong> or a Google Doc (400–600 words), with these headings:
 <ul>
-<li><strong>Corpus and user</strong> — who would ask these questions, and what decision they take with the answer</li>
-<li><strong>Results</strong> — the two tables in one line each (hits before and after the knob)</li>
-<li><strong>Every miss, one word and one reason</strong> — <em>retrieval</em> or <em>generation</em>, then the mechanism (a cut number, a vocabulary gap, a passage that was retrieved but ignored, a question the corpus cannot answer)</li>
-<li><strong>What I would not let this assistant answer</strong> — the question that would move it to a different EU AI Act tier</li>
-<li><strong>AI-use disclosure</strong> — what the assistant wrote, what you rewrote, what it got wrong</li>
+<li><strong>What the assistant is for</strong> — who asks, which questions, what decision follows an answer;</li>
+<li><strong>The result</strong> — hits out of ten, hits on the traps, one table; the three most interesting misses, each named;</li>
+<li><strong>What I would change first</strong> — and in which of the four boxes it lives;</li>
+<li><strong>The tier</strong> — where this assistant sits under the EU AI Act, and the one question that would move it up a row;</li>
+<li><strong>AI-use disclosure</strong> — what the assistants did, what they got wrong, and what you verified by hand.</li>
 </ul></li>
 </ol>
 </section>
 <section id="constraints" class="level2">
 <h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
 <ul>
-<li>Every miss must be classified with evidence from the notebook: the retrieved chunks for a retrieval miss, the logged prompt for a generation miss. “The model hallucinated” without the prompt is not a classification.</li>
-<li>The out-of-corpus question is mandatory. If the model answers it anyway, that is a finding — report it, do not remove the question.</li>
-<li>Snapshot the corpus. If your notebook depends on a live fetch to run, it does not run.</li>
-<li>No confidential documents; no personal data of real people in the corpus or the questions.</li>
+<li>Expected answers are found by you, in the document, before any assistant sees the question. An answer copied from the assistant into <code>expected_answer</code> is the one mistake that makes the whole table worthless — it is the HW4 question I will ask first on the 4th of November.</li>
+<li>The assistant’s citation counts as a hit only if the quoted passage really contains the answer. Check it.</li>
+<li>No notebook required. If you want to see the call behind AI Studio, <em>Get code</em> and the appendix notebook in <code>week-04/</code> show it; optional.</li>
 </ul>
 </section>
 <section id="scope" class="level2">
 <h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>4–6 hours. Most of the time goes into writing good questions and reading retrieved chunks, not into code. If eight of ten hit on the first run, make the questions harder until something breaks; a table with no misses teaches nothing and reads as untested.</p>
+<p>4–6 hours. Eight hits out of ten with three well-named misses is a good result. Ten out of ten with no traps tells me nothing.</p>
 </section>
 <section id="self-check" class="level2">
 <h2 class="anchored" data-anchor-id="self-check">Self-check</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">Restart and run all: no errors, with and without the API key.</label></li>
-<li><label><input type="checkbox">Document table with characters, tokens, chunks is present.</label></li>
-<li><label><input type="checkbox">Ten questions; two multi-chunk; one out-of-corpus.</label></li>
-<li><label><input type="checkbox">Hit/miss table before and after one knob change.</label></li>
-<li><label><input type="checkbox">Every miss labelled <em>retrieval</em> or <em>generation</em> with evidence.</label></li>
-<li><label><input type="checkbox">Prompt-contains-context assert present and passing; cost per 1,000 questions stated.</label></li>
-<li><label><input type="checkbox">Snapshot saved; memo 300–400 words; AI-use disclosure present.</label></li>
+<li><label><input type="checkbox">Ten questions, three traps, thirteen rows filled.</label></li>
+<li><label><input type="checkbox">Every <code>expected_answer</code> has a <code>where_found</code> a stranger could follow.</label></li>
+<li><label><input type="checkbox">At least two table questions, two rephrased questions.</label></li>
+<li><label><input type="checkbox">Every miss has a name and a reason.</label></li>
+<li><label><input type="checkbox">The instruction holds on T1 and does not break G1–G10 — or the memo says it did not.</label></li>
+<li><label><input type="checkbox">The tier is stated and justified in one sentence.</label></li>
+<li><label><input type="checkbox">AI-use disclosure present.</label></li>
 </ul>
 </section>
-<section id="how-this-feeds-the-capstone" class="level2">
-<h2 class="anchored" data-anchor-id="how-this-feeds-the-capstone">How this feeds the capstone</h2>
-<p>This is the evaluation layer of the minor case brief (due Sunday 1 November): the “evaluation method” quarter of the rubric is exactly this table, extended. Week 5 adds tools and an agent on top of the same <code>llm()</code> wrapper and the same corpus; the misses you explain now become the limits section of the brief, and the tier question becomes its regulation paragraph. Choose the corpus you want to present.</p>
+<section id="how-this-feeds-the-minor-case-brief" class="level2">
+<h2 class="anchored" data-anchor-id="how-this-feeds-the-minor-case-brief">How this feeds the minor case brief</h2>
+<p>The brief (40%) treats the system you build in weeks 4 and 5 as a product. Its evaluation section is this sheet, re-run after every change. Week 5 adds the actions the assistant can take and turns the table into a regression test; week 9 red-teams it. Build the table now, not the night before.</p>
 
 
 </section>

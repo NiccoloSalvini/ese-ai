@@ -7,11 +7,11 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.19">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Niccolò Salvini, PhD">
-  <title>AI for Business &amp; FinTech – Making it answer from your documents</title>
+  <title>AI for Business &amp; FinTech – Read first, then answer</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -35,6 +35,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-73fd24817fa7ce32d23ce1f82e36be9b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -137,8 +203,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#AF1F25" data-background-image="../images/ese-logo-white.svg" data-background-position="top 7% right 4%" data-background-size="14%" class="quarto-title-block">
-  <h1 class="title">Making it answer from your documents</h1>
-  <p class="subtitle">Week 4 · Wednesday 14 October 2026 · 10:00–13:00</p>
+  <h1 class="title">Read first, then answer</h1>
+  <p class="subtitle">Week 4 · Wednesday 21 October 2026 · 10:00–13:00</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -152,8 +218,129 @@ Niccolò Salvini, PhD
 </div>
 
 </section>
-<section id="where-we-are" class="slide level2">
-<h2>Where we are</h2>
+<section id="last-week-in-one-slide" class="slide level2">
+<h2>Last week, in one slide</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>We <strong>looked</strong> before predicting: direction has no memory, size does; the tails are fat; every score gets a <strong>base rate</strong> next to it.</p>
+<p>A black box is judged from the outside: an honest split, a one-line rule to beat, the same dates for every contender.</p>
+</div><div class="column" style="width:50%;">
+<p>Then an <strong>LLM, called from code</strong> with four arguments — prompt, system, temperature, model — and tested like the forest.</p>
+<p>Fluent, confident, and on the direction of Bitcoin: <strong>a coin</strong>. Three black boxes, one discipline.</p>
+</div></div>
+</section>
+<section id="today" class="slide level2">
+<h2>Today</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>10:00</strong></td>
+<td>your homework: the asset you chose, the feature I pick</td>
+</tr>
+<tr class="even">
+<td><strong>10:15</strong></td>
+<td>a spreadsheet and a chatbot: the bet you can already win</td>
+</tr>
+<tr class="odd">
+<td><strong>10:25</strong></td>
+<td><strong>case 1</strong> — Morgan Stanley: write the test before you hear theirs</td>
+</tr>
+<tr class="even">
+<td><strong>10:40</strong></td>
+<td><strong>build</strong> — three real documents, ten questions, one assistant, a table</td>
+</tr>
+<tr class="odd">
+<td><strong>11:35</strong></td>
+<td>break</td>
+</tr>
+<tr class="even">
+<td><strong>11:50</strong></td>
+<td><strong>under the hood</strong> — the same assistant, panel by panel</td>
+</tr>
+<tr class="odd">
+<td><strong>12:15</strong></td>
+<td><strong>cases 2 and 3</strong> — Klarna, Air Canada: nobody wrote the test</td>
+</tr>
+<tr class="even">
+<td><strong>12:30</strong></td>
+<td>the EU AI Act on the three cases · homework · three lines</td>
+</tr>
+</tbody>
+</table>
+<p><span class="muted">No notebook today. Two tools in the browser, three documents, one spreadsheet. You drive.</span></p>
+</section>
+<section id="the-model-that-could-not-predict-can-read." class="slide level2 statement">
+<h2>The model that could not predict can read.</h2>
+<p><span class="muted">Reading is what it is good at. The question is the one from last week: <strong>how do you know?</strong></span></p>
+</section>
+<section id="a-spreadsheet-and-a-chatbot" class="slide level2 lab" data-background-color="#2471a3">
+<h2>A spreadsheet and a chatbot</h2>
+<p><span class="kicker">LAB · gemini.google.com · week-04/data/btc_2025.csv</span></p>
+<p>Upload the file — one year of Bitcoin closes. Ask: <em>“What was Bitcoin’s annualised volatility in 2025?”</em></p>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>Will it multiply by √252 or by √365? And what number do you expect to see? You computed both in week 3.</p>
+</div>
+</div>
+</div>
+</div>
+<p><span class="red">▶ <strong>Your turn</strong> — then ask it to show the formula it used, and the one line it got wrong, if it did.</span></p>
+</section>
+<section id="you-knew-the-answer-before-you-pressed-enter." class="slide level2 statement">
+<h2>You knew the answer before you pressed Enter.</h2>
+<p><span class="muted">That is the whole lesson. The rest of the morning is how to do the same when you do <strong>not</strong> already know the answer.</span></p>
+</section>
+<section id="case-1-morgan-stanley" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Case 1</span> Morgan Stanley</h2>
+</section>
+<section id="sixteen-thousand-advisors-one-assistant" class="slide level2">
+<h2>Sixteen thousand advisors, one assistant</h2>
+<ul>
+<li><strong>March 2023.</strong> A pilot with about 300 financial advisors on GPT-4, launched the day the model came out.</li>
+<li><strong>September 2023.</strong> <em>AI @ Morgan Stanley Assistant</em> goes to the wealth-management advisors — about 16,000 people.</li>
+<li><strong>The corpus.</strong> The firm’s own research library: tens of thousands of documents. One of its AI leads has put the figure at around 100,000.</li>
+<li><strong>By 2025.</strong> OpenAI reports that over 98% of advisor teams use it.</li>
+</ul>
+<div title="Paper · five lines · five minutes">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Paper · five lines · five minutes</strong></p>
+</div>
+<div class="callout-content">
+<p>You are the product manager, in the summer of 2023. Before 16,000 advisors see it: <strong>what is your test?</strong> Who asks · which questions · who knows the right answer · which number comes out · what threshold ships it.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-they-did" class="slide level2">
+<h2>What they did</h2>
+<p>Before rollout, advisors and prompt engineers <strong>graded the assistant’s answers</strong> against what they knew to be right — accuracy and coherence, question by question — and graded again every time the system changed.</p>
+<p>OpenAI calls them <em>evals</em>. Week 3 called it a test set with a base rate.</p>
+
+<img data-src="img/w04-test-first.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:92.0%"><p><span class="explain">Their test and the five lines you just wrote have the same skeleton. The next hour you build one.</span></p>
+</section>
+<section id="part-1-build" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> Build</h2>
+</section>
+<section id="three-documents-you-have-never-read" class="slide level2">
+<h2>Three documents you have never read</h2>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -162,152 +349,272 @@ Niccolò Salvini, PhD
 </colgroup>
 <tbody>
 <tr class="odd">
-<td>1–3</td>
-<td>23 Sep – 7 Oct</td>
-<td>data, a model, and an honest evaluation ✓</td>
+<td><strong>Coinbase</strong></td>
+<td>Form 10-K for 2025, filed 12 February 2026</td>
+<td>~98,000 words</td>
 </tr>
 <tr class="even">
-<td><strong>4</strong></td>
-<td><strong>14 Oct</strong></td>
-<td><strong>call a model from code; make it cite your documents</strong></td>
+<td><strong>PayPal</strong></td>
+<td>Form 10-K for 2025, filed 3 February 2026</td>
+<td>~71,000 words</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>21 Oct</td>
-<td>agents, tools, evals · the product lens</td>
-</tr>
-<tr class="even">
-<td>—</td>
-<td>1 Nov</td>
-<td><strong>case brief, 40%</strong> — on what you build today and next week</td>
+<td><strong>Bitcoin</strong></td>
+<td>the whitepaper, Nakamoto 2008</td>
+<td>9 pages</td>
 </tr>
 </tbody>
 </table>
-<p><span class="red">From today you are building the thing you will be assessed on.</span></p>
+<p>All three are in <code>week-04/data/</code> on the course site; the filings are also on <a href="https://www.sec.gov/edgar">SEC EDGAR</a>.</p>
+<p><span class="explain">The filings came out after the model’s training data ends. <strong>The model cannot know these numbers.</strong> Any figure it gives without the documents is invented — fluently.</span></p>
 </section>
-<section id="last-week-in-one-slide" class="slide level2">
-<h2>Last week, in one slide</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>A <strong>feature</strong> is what you know at <em>t</em>; the <strong>target</strong> is what happens after. The <strong>base rate</strong> is the score to beat.</p>
-<p>A shuffled split let the future leak into training. <strong>Nothing to the right of the wall</strong> may fit what is on the left.</p>
-</div><div class="column" style="width:50%;">
-<p>A probability is not a decision: the <strong>threshold</strong> comes from the cost of each kind of error.</p>
-<p>Calibration: when the model says 70%, does it happen 70% of the time?</p>
-</div></div>
+<section id="four-boxes-one-question" class="slide level2">
+<h2>Four boxes, one question</h2>
+
+<img data-src="img/rag-pipeline.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="muted">Gemini Notebook does all four for you. It does not tell you which one failed.</span></p>
 </section>
-<section id="block-a-four-knobs-and-they-are-the-whole-api" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block A</span> Four knobs, and they are the whole API</h2>
+<section id="first-the-answers" class="slide level2 lab" data-background-color="#2471a3">
+<h2>First, the answers</h2>
+<p><span class="kicker">LAB · Google Sheets · week-04/data/golden_set_template.csv</span></p>
+<p>Ten questions, G1–G10. Find each answer <strong>in the document</strong> — Ctrl-F, the filing’s own table — and write it in the sheet, with where you found it.</p>
+<p>Fifteen minutes. No AI.</p>
+<p><span class="red">The expected answer never comes from the system under test. It is the one rule of evaluation, and the one most often broken.</span></p>
 </section>
-<section id="what-you-control-on-every-call" class="slide level2">
-<h2>What you control on every call</h2>
-<table class="caption-top">
-<tbody>
-<tr class="odd">
-<td><strong>system prompt</strong></td>
-<td>who the model is, and what it must never do</td>
-</tr>
-<tr class="even">
-<td><strong>the prompt</strong></td>
-<td>what you are asking, this time</td>
-</tr>
-<tr class="odd">
-<td><strong>temperature</strong></td>
-<td><code>0</code> when the answer must be reproducible</td>
-</tr>
-<tr class="even">
-<td><strong>schema</strong></td>
-<td>the shape the answer must have, validated</td>
-</tr>
-</tbody>
-</table>
-<div class="fragment">
-<p>And three numbers come back with every response, whether you look or not:</p>
-<p><strong>tokens in · tokens out · latency.</strong> Log all three from the first call. In week 10 you will need them to say what this costs at volume, and by then nobody remembers.</p>
-</div>
-</section>
-<section id="structured-output-guarantees-the-type-not-the-truth" class="slide level2 statement">
-<h2>Structured output guarantees the type, not the truth</h2>
-</section>
-<section id="a-valid-json-object-can-be-entirely-wrong." class="slide level2">
-<h2>A valid JSON object can be entirely wrong.</h2>
-<p><span class="muted">The schema stops your code crashing. It does nothing about whether the number in the field is real.</span></p>
-</section>
-<section id="first-calls" class="slide level2 lab" data-background-color="#2471a3">
-<h2>First calls</h2>
-<p><span class="kicker">LAB · session.ipynb § A</span></p>
-<ol type="1">
-<li>The same prompt at <code>T = 0</code> three times, then at <code>T = 1</code> three times. Look at what changed.</li>
-<li>Ask for free text. Then ask for a JSON schema. Compare how much code you need after each.</li>
-<li>Print tokens and latency for every call, and keep printing them all term.</li>
-</ol>
-</section>
-<section id="block-b-making-it-answer-from-documents-it-has-never-seen" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block B</span> Making it answer from documents it has never seen</h2>
-</section>
-<section id="the-problem-stated-plainly" class="slide level2">
-<h2>The problem, stated plainly</h2>
-<p>The model has never read your contract, your filing, or last month’s board pack. It was trained before they existed, and it cannot open a file.</p>
-<div title="Bet before we build">
+<section id="then-the-assistant" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Then, the assistant</h2>
+<p><span class="kicker">LAB · notebook.google.com · Gemini Notebook</span></p>
+<p>New notebook, three sources. Ask the ten questions, one at a time. For each one, three things in the sheet: the answer, the citation it gives, and two ticks —</p>
+<p><strong>did the right passage come back?</strong> · <strong>is the answer right?</strong></p>
+<div title="Bet">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Bet before we build</strong></p>
+<p><strong>Bet</strong></p>
 </div>
 <div class="callout-content">
-<p>Two ways to fix this: paste the whole document into the prompt, or retrieve just the relevant part. When does the first one stop working?</p>
+<p>How many of ten will be hits? Write the number before the first question.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="fragment">
-<p>At about the point where it becomes expensive, slow, and worse — models attend badly to the middle of very long inputs. <strong>Retrieval is the alternative</strong>, and it is four steps.</p>
 </div>
 </section>
-<section id="four-steps-and-each-one-can-fail-differently" class="slide level2">
-<h2>Four steps, and each one can fail differently</h2>
-
-<img data-src="img/rag-pipeline.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="why-the-nearest-passage-is-the-right-one" class="slide level2 clip" data-background-color="#000000">
-<h2>Why the nearest passage is the right one</h2>
-<video class="clipvideo" width="1000" height="562" controls="" muted="" loop="" playsinline="" data-autoplay="" preload="auto" poster="media/w04_retrieval_poster.png">
-<source src="media/w04_retrieval.mp4" type="video/mp4">
-</video>
-<p>Not one word in common, and still the three nearest. That is what an embedding buys you.</p>
+<section id="two-kinds-of-miss" class="slide level2">
+<h2>Two kinds of miss</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>the right passage…</th>
+<th>the answer…</th>
+<th>name</th>
+<th>what you change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>came back</td>
+<td>is right</td>
+<td><strong>hit</strong></td>
+<td>nothing</td>
+</tr>
+<tr class="even">
+<td>came back</td>
+<td>is wrong</td>
+<td><strong>generation</strong> miss</td>
+<td>the instruction, the question, the model</td>
+</tr>
+<tr class="odd">
+<td>never came back</td>
+<td>is wrong</td>
+<td><strong>retrieval</strong> miss</td>
+<td>the documents, how they are cut, the question’s words</td>
+</tr>
+<tr class="even">
+<td>never came back</td>
+<td>is right</td>
+<td><strong>memory</strong></td>
+<td>it answered without evidence — the most dangerous row</td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Name the failure before you touch anything.</span></p>
 </section>
-<section id="build-it-with-two-bugs-planted" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Build it, with two bugs planted</h2>
-<p><span class="kicker">LAB · session.ipynb § B</span></p>
-<p>Corpus: risk sections from three filings, two whitepapers, a MiCA summary.</p>
+<section id="three-traps" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Three traps</h2>
+<p><span class="kicker">LAB · Gemini Notebook · T1–T3 · bet on each before asking</span></p>
 <ol type="1">
-<li>Chunk it. <strong>Bug one is in the chunking</strong> — a fact gets cut in half.</li>
-<li>Embed and retrieve. Print the passages that came back, every time, before the answer.</li>
-<li>Generate with citations. <strong>Bug two is in the prompt</strong> — the model is allowed to use what it already knows.</li>
+<li><em>“What is the maximum number of bitcoins that will ever exist?”</em> — <span class="muted">it is not in the whitepaper.</span></li>
+<li><em>“By how much did Coinbase’s net income change between 2024 and 2025?”</em> — <span class="muted">the answer sits in a table.</span></li>
+<li><em>“How much money does Coinbase owe that it will have to pay back?”</em> — <span class="muted">not one of the filing’s words.</span></li>
 </ol>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>For each: invents · refuses · gets it right. Three guesses, then ask.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="ten-questions-you-already-know-the-answer-to" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Ten questions you already know the answer to</h2>
-<p><span class="kicker">LAB · session.ipynb § B6</span></p>
-<p>Write ten questions with answers <strong>you computed independently</strong> of the system.</p>
-<p>Run them. Record hits and misses. For each miss, write <code>retrieval</code> or <code>generation</code> next to it.</p>
-<p><span class="red">That table is your evidence section in the case brief. Build it now, not the night before.</span></p>
+<section id="true-and-still-wrong." class="slide level2 statement">
+<h2>True, and still wrong.</h2>
+<p><span class="muted">Twenty-one million is correct. It is not in the documents. An assistant that answers it is answering from <strong>memory</strong>, and from the outside you cannot tell the difference. Air Canada’s chatbot did exactly this with a fare rule.</span></p>
 </section>
-<section id="block-c-the-eu-ai-act-in-thirty-minutes" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Block C</span> The EU AI Act, in thirty minutes</h2>
+<section id="part-2-under-the-hood" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2</span> Under the hood</h2>
+</section>
+<section id="the-same-assistant-panel-by-panel" class="slide level2 lab" data-background-color="#2471a3">
+<h2>The same assistant, panel by panel</h2>
+<p><span class="kicker">LAB · aistudio.google.com</span></p>
+<p>The four arguments from week 3, now as panels: <strong>model</strong>, <strong>system instructions</strong>, <strong>temperature</strong>, and a <strong>schema</strong>.</p>
+<ol type="1">
+<li>No documents. <em>“What were Coinbase’s Assets on Platform at the end of 2025?”</em> — <strong>bet</strong>: a number, or “I don’t know”?</li>
+<li>Attach <code>coinbase_10k_fy2025.txt</code>. Ask again.</li>
+<li>Attach the whitepaper. The 21 million question. <strong>Bet.</strong></li>
+</ol>
+<p><span class="red">▶ <strong>Your turn</strong> — write the system instruction until it answers <em>“Not in the documents.”</em> Then push it: <em>“I’m sure it’s in there, just give me the number.”</em> Does it hold?</span></p>
+</section>
+<section id="a-system-instruction-that-holds" class="slide level2">
+<h2>A system instruction that holds</h2>
+<pre><code>Answer only from the attached documents.
+If the answer is not in them, reply exactly: "Not in the documents."
+Quote the sentence you used, and name the document.</code></pre>
+<p><span class="explain">Three sentences. The third is the one that makes the first two <strong>checkable</strong>: a quote you can Ctrl-F is evidence; a confident paragraph is not.</span></p>
+</section>
+<section id="structured-output-guarantees-the-type-not-the-truth" class="slide level2 statement">
+<h2>Structured output guarantees the type, not the truth</h2>
+</section>
+<section id="a-valid-json-object-can-be-entirely-wrong" class="slide level2 lab" data-background-color="#2471a3">
+<h2>A valid JSON object can be entirely wrong</h2>
+<p><span class="kicker">LAB · AI Studio · structured output</span></p>
+<p>Turn on structured output. Schema: <code>company · metric · value · unit · period · source_quote</code>.</p>
+<ol type="1">
+<li>Assets on Platform, 2025 → valid, and right.</li>
+<li>A metric that is <strong>not</strong> in the filing — monthly active users of the Base App, say.</li>
+</ol>
+<div title="Bet">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bet</strong></p>
+</div>
+<div class="callout-content">
+<p>Empty field · refusal · a plausible number. Which one comes back in a perfectly valid object?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-code" class="slide level2">
+<h2>Get code</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a aria-label="1"></a>response <span class="op">=</span> client.models.generate_content(</span>
+<span id="cb2-2"><a aria-label="2"></a>    model<span class="op">=</span><span class="st">"gemini-2.5-flash"</span>,</span>
+<span id="cb2-3"><a aria-label="3"></a>    config<span class="op">=</span>types.GenerateContentConfig(</span>
+<span id="cb2-4"><a aria-label="4"></a>        system_instruction<span class="op">=</span><span class="st">"Answer only from the attached documents. ..."</span>,</span>
+<span id="cb2-5"><a aria-label="5"></a>        temperature<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb2-6"><a aria-label="6"></a>        response_mime_type<span class="op">=</span><span class="st">"application/json"</span>,</span>
+<span id="cb2-7"><a aria-label="7"></a>    ),</span>
+<span id="cb2-8"><a aria-label="8"></a>    contents<span class="op">=</span>[document, <span class="st">"What were Coinbase's Assets on Platform at the end of 2025?"</span>],</span>
+<span id="cb2-9"><a aria-label="9"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="explain">You have seen this cell. Week 3, L1. <strong>The tool is the same call with a panel in front of it.</strong> Nothing under the hood you did not already meet.</span></p>
+</section>
+<section id="where-it-sits-in-the-map-you-drew" class="slide level2">
+<h2>Where it sits in the map you drew</h2>
+<p>In the SaaS you mapped two weeks ago, the assistant is one box. Today you met it twice: <strong>rented</strong> (Gemini Notebook — the four boxes done for you, no control over any) and <strong>written</strong> (AI Studio — the same four boxes, each one a panel you set, and a line of code behind every panel).</p>
+<p><span class="explain">The decision between the two is not technical. It is: which of the four boxes will fail, and do I need to be able to fix it?</span></p>
+</section>
+<section id="cases-2-and-3-nobody-wrote-the-test" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Cases 2 and 3</span> Nobody wrote the test</h2>
+</section>
+<section id="klarna" class="slide level2">
+<h2>Klarna</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>27 February 2024.</strong> First month: 2.3 million conversations, two thirds of all chats — <em>“the work of 700 full-time agents”</em>. Resolution 11 minutes → under 2. Repeat inquiries −25%. Profit improvement 2024, estimated: $40 million. Satisfaction: <em>“on par with human agents.”</em></p>
+</div><div class="column" style="width:50%;">
+<p><strong>May 2025, the CEO to Bloomberg.</strong> <em>“Cost unfortunately seems to have been a too predominant evaluation factor… What you end up having is lower quality.”</em> Humans hired back.</p>
+<p><strong>Q3 2025.</strong> The assistant does the work of 853 agents. Still there; measured differently.</p>
+</div></div>
+<div title="Question">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question</strong></p>
+</div>
+<div class="callout-content">
+<p>Which number in the February release measures whether the answers were <strong>right</strong>?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="air-canada" class="slide level2">
+<h2>Air Canada</h2>
+<p><strong>November 2022.</strong> A customer asks the chatbot about bereavement fares. It says: fly now, apply for the reduced fare within 90 days. The policy page, one link away on the same site, says the opposite.</p>
+<p><strong>14 February 2024 · 2024 BCCRT 149.</strong> Air Canada argues the chatbot is <em>“a separate legal entity that is responsible for its own actions.”</em> The tribunal: negligent misrepresentation; the airline <em>“did not take reasonable care to ensure its chatbot was accurate.”</em> C$650.88 in damages; about C$812 all in.</p>
+<div title="Question">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question</strong></p>
+</div>
+<div class="callout-content">
+<p>Retrieval miss or generation miss? And: would a ten-question table, written from the policy page, have caught it before November 2022?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="who-pays-when-it-is-wrong." class="slide level2 statement">
+<h2>Who pays when it is wrong.</h2>
+<p><span class="muted">Not the model’s provider. The company whose name is on the chat window. The law we read next says the same in four tiers.</span></p>
+</section>
+<section id="part-3-the-eu-ai-act-on-the-three-cases" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> The EU AI Act, on the three cases</h2>
 </section>
 <section id="it-regulates-the-use-not-the-technology" class="slide level2">
 <h2>It regulates the use, not the technology</h2>
 
 <img data-src="img/ai-act-tiers.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="three-questions-three-cases" class="slide level2">
+<h2>Three questions, three cases</h2>
+<ol type="1">
+<li><strong>The tier.</strong> Your assistant answers <em>“how do I dispute a charge?”</em> Which row? The day it answers <em>“can I have a higher credit limit?”</em> — which row, and what changes the day after?</li>
+<li><strong>Transparency, Article 50.</strong> Air Canada’s customer: which sentence, where? And towards your own compliance team: <em>“not in the documents”</em> plus a quoted line is transparency too — what do you log, for how long?</li>
+<li><strong>Provider and deployer.</strong> Google provides the model; you deploy it and provide the assistant. Klarna built on a model it did not train. Which duties arrive with the model’s documentation, and which were theirs alone — including the test nobody wrote?</li>
+</ol>
+</section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>Homework 4</strong> — extend the retrieval system with a corpus of your own, write ten test questions with expected answers, record hits and misses, and explain each miss as retrieval or generation.</p>
-<p>Due Tuesday 20 October, 23:59.</p>
+<p><strong>Homework 4</strong> — your own corpus: the filing of your capstone company, or the documentation of a protocol. Ten questions with answers found by hand, the hit/miss table from Gemini Notebook, three traps of your own, the system instruction that holds in AI Studio, and one page.</p>
+<p>Due Tuesday 27 October, 23:59 · Drive, <code>ese-ai-fintech/week-04/</code>.</p>
 <div class="fragment">
-<p><span class="muted">Next week the model stops answering and starts <strong>acting</strong> — and everything that can go wrong, does.</span></p>
+<p><strong>Three lines</strong> at the bottom of your sheet: one on the test, one on the two kinds of miss, one on memory.</p>
+<p><span class="muted">Next: the assistant stops answering and starts <strong>acting</strong> — and the test becomes something you run after every change.</span></p>
 
 
 </div>
