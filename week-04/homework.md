@@ -1,48 +1,50 @@
-# Homework 4 — Your own RAG, tested
-**Due: Tuesday 20 October 2026, 23:59 · folder `week-04/hw/` in your repo**
+# Homework 4 — Your own documents, tested
+**Due: Tuesday 27 October 2026, 23:59 · folder `week-04/` in your shared Drive folder `ese-ai-fintech`**
 
 ## Goal
-Point the pipeline from class at documents of your own choosing, write ten questions with the answers you expect, and — the real deliverable — say for every miss whether retrieval or generation failed, and why. This is the first half of your minor case brief: the system you test here is the product you will present.
+Repeat this morning on documents of your own choosing: write the questions and find the answers *before* asking any assistant, then run the assistant and record, for every question, whether it hit — and for every miss, which of the two kinds it was. The table is the deliverable. The corpus is the excuse.
 
-## Pick a corpus (one)
-- **Filings.** Item 1A "Risk Factors" from three or more real 10-K or 20-F filings on SEC EDGAR (the fetcher from class, or download the HTML by hand and save it in `hw/data/`). Coinbase, Block, PayPal, Robinhood, MicroStrategy are natural for your interests.
-- **Crypto and DeFi.** Three or more protocol documents — whitepapers, docs pages, governance proposals (Uniswap, Aave, MakerDAO, Lido). Save the text you used; web pages change.
-- **Product management.** Three or more public documents you would want an assistant to answer from — a public API's documentation, a bank's terms and conditions, a regulator's FAQ. Nothing confidential, nothing from a former employer.
-- Your own, if it is at least three documents and at least 15,000 characters in total. Message me first.
+This is the first half of your minor case brief: the system you will present as a product is the one you test here.
 
-## Deliverables (in `week-04/hw/`)
-1. `hw4.ipynb` — runs from a clean runtime, in mock mode too. Must contain, in this order:
-   - the `llm()` wrapper and the `Embedder` class from class (copy them; change only what you must);
-   - corpus loading with the three-tier pattern — live fetch, snapshot in `hw/data/`, and a clear message if neither works — and a table: **document → characters → tokens → chunks**;
-   - the corrected chunker with the values of `max_tokens` and `overlap_sentences` you chose, and one sentence on why;
-   - `TESTS`: **ten questions with expected strings**, at least two of which need facts from two different chunks, and at least one whose answer is *not* in the corpus (the expected answer is "Not in the provided context");
-   - the **hit/miss table**: question × (retrieval hit, answer hit, top score);
-   - one change to one knob (chunk size, overlap, `k`, or the embedder) with the table re-run and shown next to the first one;
-   - the `assert` that the retrieved text is in the logged prompt, and the cost cell: mean tokens and cost per answer, scaled to 1,000 questions a day.
-2. `memo.md` (300–400 words) with these headings:
-   - **Corpus and user** — who would ask these questions, and what decision they take with the answer
-   - **Results** — the two tables in one line each (hits before and after the knob)
-   - **Every miss, one word and one reason** — *retrieval* or *generation*, then the mechanism (a cut number, a vocabulary gap, a passage that was retrieved but ignored, a question the corpus cannot answer)
-   - **What I would not let this assistant answer** — the question that would move it to a different EU AI Act tier
-   - **AI-use disclosure** — what the assistant wrote, what you rewrote, what it got wrong
+## Pick a corpus (two to four documents)
+- The latest 10-K (or annual report) of the company behind your capstone idea, plus one more document from the same company — a proxy statement, an investor presentation, a product terms page saved as PDF.
+- Or: the documentation of a protocol or exchange you follow — whitepaper, docs pages saved as PDF, a governance proposal.
+- Or: the documents of a product you managed, **only if they are public**. Nothing confidential, nothing personal goes into an AI service. If in doubt, use a 10-K.
+
+Sources: [SEC EDGAR](https://www.sec.gov/edgar) for US filings (company name → *10-K*); a company's investor-relations page; a project's `docs` site.
+
+## Deliverables (in `week-04/`)
+
+1. **`golden_set` — a Google Sheet** (share it to the course folder) with the columns of `golden_set_template.csv`, and:
+   - **ten questions** (G1–G10) whose answers you found **by hand** in the documents, with `where_found` (document, section or page, the sentence or table);
+   - at least **two** whose answer lives in a table, and at least **two** phrased without the document's own words;
+   - **three traps** (T1–T3): one answer that is *not* in the documents but that a model would know; one that needs two passages; one more of your own design, and say what it tests;
+   - the assistant's answer, its citation, and the two ticks — `retrieval_hit`, `generation_hit` — for all thirteen, run in **Gemini Notebook** with your documents as sources;
+   - one word per miss in `note`: *retrieval*, *generation* or *memory*, and one line on why you think so.
+2. **`instruction.md`** — the system instruction you wrote in **AI Studio** that makes the model answer *"Not in the documents."* on your trap T1 **and still answer G1–G10**. Paste the instruction, then the model's reply to T1, then its reply to the pushy follow-up (*"I'm sure it's in there, just give me the number"*). If you could not make it hold, say so and paste the best attempt.
+3. **`memo.md`** or a Google Doc (400–600 words), with these headings:
+   - **What the assistant is for** — who asks, which questions, what decision follows an answer;
+   - **The result** — hits out of ten, hits on the traps, one table; the three most interesting misses, each named;
+   - **What I would change first** — and in which of the four boxes it lives;
+   - **The tier** — where this assistant sits under the EU AI Act, and the one question that would move it up a row;
+   - **AI-use disclosure** — what the assistants did, what they got wrong, and what you verified by hand.
 
 ## Constraints
-- Every miss must be classified with evidence from the notebook: the retrieved chunks for a retrieval miss, the logged prompt for a generation miss. "The model hallucinated" without the prompt is not a classification.
-- The out-of-corpus question is mandatory. If the model answers it anyway, that is a finding — report it, do not remove the question.
-- Snapshot the corpus. If your notebook depends on a live fetch to run, it does not run.
-- No confidential documents; no personal data of real people in the corpus or the questions.
+- Expected answers are found by you, in the document, before any assistant sees the question. An answer copied from the assistant into `expected_answer` is the one mistake that makes the whole table worthless — it is the HW4 question I will ask first on the 4th of November.
+- The assistant's citation counts as a hit only if the quoted passage really contains the answer. Check it.
+- No notebook required. If you want to see the call behind AI Studio, *Get code* and the appendix notebook in `week-04/` show it; optional.
 
 ## Scope
-4–6 hours. Most of the time goes into writing good questions and reading retrieved chunks, not into code. If eight of ten hit on the first run, make the questions harder until something breaks; a table with no misses teaches nothing and reads as untested.
+4–6 hours. Eight hits out of ten with three well-named misses is a good result. Ten out of ten with no traps tells me nothing.
 
 ## Self-check
-- [ ] Restart and run all: no errors, with and without the API key.
-- [ ] Document table with characters, tokens, chunks is present.
-- [ ] Ten questions; two multi-chunk; one out-of-corpus.
-- [ ] Hit/miss table before and after one knob change.
-- [ ] Every miss labelled *retrieval* or *generation* with evidence.
-- [ ] Prompt-contains-context assert present and passing; cost per 1,000 questions stated.
-- [ ] Snapshot saved; memo 300–400 words; AI-use disclosure present.
+- [ ] Ten questions, three traps, thirteen rows filled.
+- [ ] Every `expected_answer` has a `where_found` a stranger could follow.
+- [ ] At least two table questions, two rephrased questions.
+- [ ] Every miss has a name and a reason.
+- [ ] The instruction holds on T1 and does not break G1–G10 — or the memo says it did not.
+- [ ] The tier is stated and justified in one sentence.
+- [ ] AI-use disclosure present.
 
-## How this feeds the capstone
-This is the evaluation layer of the minor case brief (due Sunday 1 November): the "evaluation method" quarter of the rubric is exactly this table, extended. Week 5 adds tools and an agent on top of the same `llm()` wrapper and the same corpus; the misses you explain now become the limits section of the brief, and the tier question becomes its regulation paragraph. Choose the corpus you want to present.
+## How this feeds the minor case brief
+The brief (40%) treats the system you build in weeks 4 and 5 as a product. Its evaluation section is this sheet, re-run after every change. Week 5 adds the actions the assistant can take and turns the table into a regression test; week 9 red-teams it. Build the table now, not the night before.

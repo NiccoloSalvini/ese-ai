@@ -19,9 +19,9 @@ Every session notebook opens from the course site with the *Colab ↗* link. The
 
 Before handing anything in: `Runtime ▸ Restart and run all`. A notebook that runs top to bottom from a clean start, with no errors, is the minimum.
 
-## 3. An LLM API key — from week 4
+## 3. Gemini Notebook, AI Studio, and one key — from week 4
 
-From session 4 the notebooks call a language model from Python. The default is the **Google AI Studio** free tier, with OpenAI-compatible code so it ports to other providers.
+From session 4 you build and test AI assistants in the browser, with the same Google account: [Gemini Notebook](https://notebook.google.com/) (formerly NotebookLM) for an assistant over your own documents, and [Google AI Studio](https://aistudio.google.com/) to see and set what is under it. No installation. The key below is needed only for the *Get code* step and the appendix notebooks. The default is the **Google AI Studio** free tier, with OpenAI-compatible code so it ports to other providers.
 
 1. Create a key at [aistudio.google.com](https://aistudio.google.com/apikey).
 2. In Colab, open the key icon in the left sidebar (*Secrets*), add a secret named `GEMINI_API_KEY`, paste the key, and enable notebook access.

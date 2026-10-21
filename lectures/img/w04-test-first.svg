@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the same boxes in a different order</text>
+  <text x="30" y="66" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="start">SHIP, THEN FIND OUT</text>
+  <rect x="30" y="80" width="170" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="115.0" y="109.0" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">build</text>
+  <text x="115.0" y="129.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a model, a corpus</text>
+  <line x1="206" y1="112" x2="236" y2="112" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="244" y="80" width="170" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="329.0" y="109.0" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">ship</text>
+  <text x="329.0" y="129.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">to every customer</text>
+  <line x1="420" y1="112" x2="450" y2="112" stroke="#AF1F25" stroke-width="2" marker-end="url(#ar)"/>
+  <rect x="458" y="80" width="300" height="64" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="608.0" y="109.0" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">the test, written by others</text>
+  <text x="608.0" y="129.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a tribunal, a CEO interview, a refund</text>
+  <text x="930" y="106" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end">Air Canada, 2024</text>
+  <text x="930" y="124" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end">Klarna, 2025</text>
+  <line x1="30" y1="196" x2="930" y2="196" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30" y="218" font-size="12" font-weight="700" fill="#2471a3" text-anchor="start">TEST, THEN SHIP</text>
+  <rect x="30" y="232" width="200" height="64" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="130.0" y="261.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">write the test</text>
+  <text x="130.0" y="281.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">questions with known answers</text>
+  <line x1="236" y1="264" x2="266" y2="264" stroke="#2471a3" stroke-width="2" marker-end="url(#an)"/>
+  <rect x="274" y="232" width="170" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="359.0" y="261.0" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">build</text>
+  <text x="359.0" y="281.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a model, a corpus</text>
+  <line x1="450" y1="264" x2="480" y2="264" stroke="#2471a3" stroke-width="2" marker-end="url(#an)"/>
+  <rect x="488" y="232" width="170" height="64" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="573.0" y="261.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">run the test</text>
+  <text x="573.0" y="281.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">hits, misses, which kind</text>
+  <line x1="664" y1="264" x2="694" y2="264" stroke="#2471a3" stroke-width="2" marker-end="url(#an)"/>
+  <rect x="702" y="232" width="150" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="777.0" y="261.0" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">ship</text>
+  <text x="777.0" y="281.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">and keep running it</text>
+  <path d="M 573 302 L 573 332 L 359 332 L 359 308" fill="none" stroke="#2471a3" stroke-width="2" marker-end="url(#an)"/>
+  <text x="466" y="348" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">a miss → change one thing → run it again</text>
+  <text x="930" y="268" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end">Morgan Stanley, 2023</text>
+  <text x="30" y="396" font-size="15" font-weight="700" fill="#363636" text-anchor="start">Same four boxes. The only difference is where the test sits — and who wrote it.</text>
+</svg>
