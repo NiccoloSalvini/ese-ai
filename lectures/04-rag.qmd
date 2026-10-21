@@ -88,7 +88,7 @@ OpenAI calls them *evals*. Week 3 called it a test set with a base rate.
 | **PayPal** | Form 10-K for 2025, filed 3 February 2026 | ~71,000 words |
 | **Bitcoin** | the whitepaper, Nakamoto 2008 | 9 pages |
 
-All three are in `week-04/data/` on the course site; the filings are also on [SEC EDGAR](https://www.sec.gov/edgar).
+Download: [Coinbase](https://niccolosalvini.github.io/ese-ai/week-04/data/coinbase_10k_fy2025.txt) · [PayPal](https://niccolosalvini.github.io/ese-ai/week-04/data/paypal_10k_fy2025.txt) · [whitepaper](https://niccolosalvini.github.io/ese-ai/week-04/data/bitcoin_whitepaper.pdf) · [the sheet](https://niccolosalvini.github.io/ese-ai/week-04/data/golden_set_template.csv) — all under *HW4 ▸ Files for session 4* on the course site; the filings are also on [SEC EDGAR](https://www.sec.gov/edgar).
 
 [The filings came out after the model's training data ends. **The model cannot know these numbers.** Any figure it gives without the documents is invented — fluently.]{.explain}
 

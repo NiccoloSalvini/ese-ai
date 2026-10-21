@@ -48,3 +48,14 @@ Sources: [SEC EDGAR](https://www.sec.gov/edgar) for US filings (company name →
 
 ## How this feeds the minor case brief
 The brief (40%) treats the system you build in weeks 4 and 5 as a product. Its evaluation section is this sheet, re-run after every change. Week 5 adds the actions the assistant can take and turns the table into a regression test; week 9 red-teams it. Build the table now, not the night before.
+
+## Files for session 4 {#files}
+Download from the course site (right-click ▸ *Save link as…*), then open the `.txt` files in your browser or a text editor and the PDF in any viewer:
+
+- [coinbase_10k_fy2025.txt](https://niccolosalvini.github.io/ese-ai/week-04/data/coinbase_10k_fy2025.txt) — Coinbase Global, Form 10-K for 2025, filed 12 February 2026, plain text (0.7 MB)
+- [paypal_10k_fy2025.txt](https://niccolosalvini.github.io/ese-ai/week-04/data/paypal_10k_fy2025.txt) — PayPal Holdings, Form 10-K for 2025, filed 3 February 2026, plain text (0.5 MB)
+- [bitcoin_whitepaper.pdf](https://niccolosalvini.github.io/ese-ai/week-04/data/bitcoin_whitepaper.pdf) — Nakamoto, *Bitcoin: A Peer-to-Peer Electronic Cash System*, 2008 (also as [text](https://niccolosalvini.github.io/ese-ai/week-04/data/bitcoin_whitepaper_text.txt))
+- [golden_set_template.csv](https://niccolosalvini.github.io/ese-ai/week-04/data/golden_set_template.csv) — the sheet with the ten questions and three traps: Google Sheets ▸ File ▸ Import
+- [btc_2025.csv](https://niccolosalvini.github.io/ese-ai/week-04/data/btc_2025.csv) — daily Bitcoin closes, 1 January to 31 December 2025, for the opening exercise
+
+Originals: [SEC EDGAR](https://www.sec.gov/edgar) (Coinbase CIK 1679788, PayPal CIK 1633917) and [bitcoin.org/bitcoin.pdf](https://bitcoin.org/bitcoin.pdf).
