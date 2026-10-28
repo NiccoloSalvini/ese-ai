@@ -13,7 +13,7 @@ European School of Economics, Florence · one-to-one tutorial and lab · 30 cont
 ::: {.facts}
 <div><span class="k">When</span><span class="v">Wednesdays 10:00–13:00 · 23 Sep – 2 Dec</span></div>
 <div><span class="k">Where</span><span class="v">ESE Florence · Borgo Santi Apostoli 19</span></div>
-<div><span class="k">Assessment</span><span class="v">[Case brief 40% · Portfolio 60%](syllabus.qmd#assessment)</span></div>
+<div><span class="k">Assessment</span><span class="v">[Midterm 40% · Portfolio 60%](syllabus.qmd#assessment)</span></div>
 <div><span class="k">Before session 1</span><span class="v">[Setup checklist](setup.qmd)</span></div>
 :::
 
@@ -28,9 +28,10 @@ Everything for this course is on this page. One row per session: the Colab noteb
 | 2 | Wed 30 Sep| Inside an LLM — tokens, embeddings, attention, the transformer, temperature · a real model in Colab| [slides](lectures/02-pair-programmer.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-02/session.ipynb) · [notebook](week-02/session.ipynb) | [HW2](week-02/homework.md) · due Tue 6 Oct|
 | 3 | Wed 7 Oct| Look first, then predict · exploration, a black box, a decision| [slides](lectures/03-one-problem.qmd) · [anatomy of a SaaS](lectures/03b-anatomy-of-a-saas.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-03/session.ipynb) · [notebook](week-03/session.ipynb) | [HW3](week-03/homework.md) · due Tue 13 Oct|
 | 4 | Wed 21 Oct| Read first, then answer · a document assistant built, broken and measured · three cases · EU AI Act| [slides](lectures/04-rag.qmd) · [files](week-04/homework.md#files) · [appendix notebook](week-04/session.ipynb) | [HW4](week-04/homework.md) · due Tue 27 Oct|
-| 5 | Wed 4 Nov| LLM applications II — agents, tool use, evals · the product lens| [slides](lectures/05-agents-and-evals.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-05/session.ipynb) · [notebook](week-05/session.ipynb) | [Case brief (40%)](week-05/homework.md) · due date to be confirmed|
-| — | 26 Oct – 1 Nov | Reading week — no class · minor applied case brief | — | [brief](week-05/homework.md) |
-| 6 | Wed 4 Nov| Minor presentation · fintech landscape · capstone scoping| [slides](lectures/06-fintech-landscape.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-06/session.ipynb) · [notebook](week-06/session.ipynb) | [HW6](week-06/homework.md) · due Tue 10 Nov|
+| 5 | Wed 4 Nov| LLM applications II — agents, tool use, evals · the product lens| [slides](lectures/05-agents-and-evals.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-05/session.ipynb) · [notebook](week-05/session.ipynb) | —|
+| — | 26 Oct – 1 Nov | Reading week — no class · midterm: Coinbase's third quarter, results Thu 29 Oct | — | [midterm](week-05/homework.md) |
+| 6 | Wed 4 Nov| Fintech landscape · capstone scoping| [slides](lectures/06-fintech-landscape.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-06/session.ipynb) · [notebook](week-06/session.ipynb) | [HW6](week-06/homework.md) · due Tue 10 Nov|
+| Mid | Thu 5 Nov| **Midterm** — presentation, live check, oral on sessions 1–4 | — | [Midterm (40%)](week-05/homework.md) · due Tue 3 Nov|
 | 7 | Wed 11 Nov| Markets and backtesting done honestly · model risk · [date may move](#nov-11)| [slides](lectures/07-backtesting.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-07/session.ipynb) · [notebook](week-07/session.ipynb) | [HW7](week-07/homework.md) · due Tue 17 Nov|
 | 8 | Wed 18 Nov| Digital assets, on-chain data, DeFi · MiCA| [slides](lectures/08-defi.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-08/session.ipynb) · [notebook](week-08/session.ipynb) | [HW8](week-08/homework.md) · due Tue 24 Nov|
 | 9 | Wed 25 Nov| Responsible AI applied to the capstone · red-team| [slides](lectures/09-responsible.qmd) · [Colab ↗](https://colab.research.google.com/github/NiccoloSalvini/ese-ai/blob/main/week-09/session.ipynb) · [notebook](week-09/session.ipynb) | [HW9](week-09/homework.md) · due Tue 1 Dec|
@@ -53,7 +54,7 @@ Everything for this course is on this page. One row per session: the Colab noteb
 - **This is a lab.** You write code from session 1, with an AI assistant at your side. You do not need to know Python; you need to be able to judge what the assistant produces.
 - **The rule of the course:** anything an AI produced and you submit, you must be able to explain line by line. I will ask.
 - **Weekly rhythm:** Wednesday 10:00–13:00 in Florence. The first 20 minutes are your walkthrough of last week's homework. Notes and homework are published by Thursday; homework is due Tuesday 23:59.
-- **Assessment:** a minor applied case brief (40%, after session 5, presented in session 6) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the [syllabus](syllabus.qmd#assessment).
+- **Assessment:** a midterm applied case (40%: an analyst note due Tuesday 3 November, presentation and oral on Thursday 5 November) and a final AI strategy and prototype portfolio (60%, revision week). Both are assessed on your notebooks and memos in your course folder. Details in the [syllabus](syllabus.qmd#assessment).
 - **Tools:** Google Colab and Google Drive, one chat assistant of your choice, a Google AI Studio key from week 4. Nothing is installed locally. See [Setup](setup.qmd).
 - **Nothing confidential goes into an AI tool.** All market, crypto and DeFi activities are educational simulations, not investment advice.
 

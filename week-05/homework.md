@@ -1,55 +1,86 @@
-# Homework 5 — Minor case brief (40% of the final mark)
-**Due: Sunday 1 November 2026, 23:59 · folder `week-05/hw/` in your repo · Moodle submission of the same files · 8-minute presentation in session 6 (Wednesday 4 November)**
+# Midterm — Coinbase's third quarter, read by you and an AI (40%)
+**Due: Tuesday 3 November 2026, 23:59 · Moodle ▸ *Turnitin Midterm Submission* · presentation and oral on Thursday 5 November**
 
-## Goal
-Treat the LLM system you built in weeks 4 and 5 — retrieval over financial documents, an agent with tools, and its evaluation — as a product, and write the brief that would let a team decide whether to build it. The system is the evidence; the brief is the deliverable. It is assessed on the repo and the presentation, not on a PDF.
+## The idea
+Coinbase publishes its results for the third quarter of 2026 on **Thursday 29 October**, after Wall Street closes — about 21:00 in Florence. You are the analyst. Before the numbers come out, you build a notebook on Coinbase's documents and use it to predict the quarter. After they come out, you test the notebook on the new document and score both of you against a rival that does no work at all: *"Q3 will be like Q2"*.
 
-## Pick a framing (one)
-- **Internal tool**: the research-analyst agent for a desk or a team you know (a BI team, a startup-scouting team, a product team following a market). Users are colleagues; value is time and error avoided.
-- **Customer-facing feature**: the same system inside a product for retail investors or a crypto wallet. Users are the public; the guardrails and regulation rows carry more weight.
-- **Your own**, if it is *this* system (or a clear extension of it) and the users are real. Message me first.
+Six steps, one sheet, one note. Each step uses one session of the course. No code.
 
-## Deliverables (in `week-05/hw/`)
-1. `brief.md` — 1,500–2,000 words, these sections in this order:
-   - **Problem and user** — who asks, how often, in what context; what they do today without the system; what "done" looks like for one concrete question.
-   - **The system** — what it does, in one diagram (ASCII or mermaid) and one paragraph; which tools, which corpus, which model; what it explicitly does not do (no advice, no assets outside the universe, no live news).
-   - **Evaluation** — the golden set (how many questions, how the expected answers were computed and why *independently* of the system), the checkers, the judge and how you spot-checked it, and the regression table for at least two versions of the system, per question, with the failures explained.
-   - **Guardrails and failure modes** — tool-error contract, step/cost budgets, injection surfaces you identified and what you did about each, what happens when the data loader falls back to a snapshot.
-   - **Unit economics** — measured tokens per query, cost per query, cost per day at your assumed volume, and your value-per-query assumption with where it comes from and how you would test it.
-   - **Limits, risks, regulation** — what the eval does not cover; the worst silent wrong answer you found; the EU AI Act classification of your framing (week 4 reading) and the one obligation that binds you; MiCA if the users are retail crypto investors; what a human must still do.
-   - **AI-use disclosure** — what the assistant wrote, what you rewrote, what it got wrong.
-2. `system.ipynb` — runs from a clean runtime. Contains the loader, the RAG from week 4, the agent loop with `safe_call`, guards and cost counter, the golden set, the checkers with their own tests, the judge, and the regression run. Every LLM cell guarded by the key check with the `[MOCK]` fallback.
-3. `eval/golden.json` — the golden set (at least 12 questions: at least 8 numeric, at least 2 textual, at least 2 that the current system *cannot* answer correctly, labelled as such).
-4. `eval/results.csv` — the regression table exported from the notebook: one row per question per version, columns `id, version, pass, judge, tool_calls, stop, usd`.
-5. `slides.md` (Marp, at most 8 pages) or the brief itself — whatever you present from. Eight minutes, then ten of questions.
+## Files {#files}
+Download from the course site (right-click ▸ *Save link as…*):
 
-## Constraints
-- The expected answers in the golden set must be computed with pandas from the price table or read from the document by you — never taken from the agent's own output. I will pick one and ask how you got it.
-- At least one planted failure must be preserved and reported honestly: a question that fails, why, and what a real fix would be (tool, prompt, or golden set — say which and why).
-- Numbers in the brief must trace to a cell in `system.ipynb`. A number with no cell is an opinion; label it as one.
-- Word count is for the brief body, excluding the diagram, tables and the disclosure.
+- [SHC015_MIDTERM_GUIDELINES.pdf](https://niccolosalvini.github.io/ese-ai/week-05/data/SHC015_MIDTERM_GUIDELINES.pdf) — this page as a PDF, the same file linked in Moodle.
+- [midterm_sheet.xlsx](https://niccolosalvini.github.io/ese-ai/week-05/data/midterm_sheet.xlsx) — the sheet, one tab per step. Upload it to your Drive and open it with Google Sheets; the grey cells are formulas and fill themselves.
+- [coinbase_10k_fy2025.txt](https://niccolosalvini.github.io/ese-ai/week-04/data/coinbase_10k_fy2025.txt) — Coinbase's 10-K for 2025, the one from session 4.
+- [coinbase_q2_2026_deck.txt](https://niccolosalvini.github.io/ese-ai/week-05/data/coinbase_q2_2026_deck.txt) — Coinbase's Q2 2026 earnings presentation, 30 July 2026, as plain text. The charts were images: their numbers survive without labels, so check any chart number against the [original on EDGAR](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000087/q226earningsdeck_sec.htm).
+- [btc_2025_2026.csv](https://niccolosalvini.github.io/ese-ai/week-05/data/btc_2025_2026.csv) — Bitcoin daily closes, 1 January 2025 – 25 October 2026 (already inside the sheet).
+- **On Thursday evening:** the Q3 2026 earnings presentation, from [investor.coinbase.com](https://investor.coinbase.com) ▸ *Financials* ▸ *Quarterly results* (or on EDGAR as an 8-K, the same evening or the next morning).
+- Optional: the [Q1 2026 presentation](https://www.sec.gov/Archives/edgar/data/1679788/000167978826000053/q126earningsdeck-finalse.htm), 7 May 2026.
+
+## The six steps
+
+| Step | By | What you do | Session |
+|---|---|---|---|
+| **1. The model** | Wed 28 Oct | Open the model card and the pricing page of the model you use in AI Studio — for the default one, the [Gemini 3.8 Flash model card](https://deepmind.google/models/model-cards/gemini-3-8-flash/) and [Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing). Write down the context window, the price of an input and of an output token, and the knowledge cutoff. Then one line: which of your documents can the model have seen in training? | 1 — reading a model release |
+| **2. Look first** | Wed 28 Oct | In Gemini Notebook, with the 10-K and the Q2 presentation as sources, fill Coinbase's revenue for the last five quarters. Check every number by hand on the slide or page. Chart it against the BTC price (already in the sheet) and write two lines: what moves with what? | 3 — explore before you predict |
+| **3. Preview** | **Thu 29 Oct, 21:00** | Five predictions for Q3, each with the document and slide your number comes from, and a confidence from 0 to 100. The rival's numbers fill themselves. Write this tab before the results: the sheet's version history shows when. | 3 and 4 |
+| **4. Test** | Mon 2 Nov | Add the Q3 presentation to the notebook. Ten questions on it with the answers found by hand first, as in Homework 4, and three traps — T1, the memory trap, is already written. Then the temperature test in AI Studio. Name every miss: *retrieval*, *generation* or *memory*. | 4 — RAG · 2 — temperature |
+| **5. Cost** | Tue 3 Nov | From AI Studio's token counter: what one question costs, what one analyst note costs, what it is worth to a desk, and what you would charge a desk per month. Label every estimate. | 2 — tokens · 3b — SaaS |
+| **6. Rules** | Tue 3 Nov | Morgan Stanley gave its advisors an assistant like yours in 2023: what did they test before launch, and what would you test before giving yours to a desk? Is your note investment advice? Which EU AI Act tier, and the one obligation that follows? | 4 — the cases, the AI Act |
+
+## What to upload
+To *Turnitin Midterm Submission* on the course's Moodle page, by **Tuesday 3 November, 23:59** — one file in each of its three parts. Put your matriculation number, not your name, on the note and in every file name.
+
+1. **Analyst note** — PDF, about 1,500 words, under these headings:
+   - **Recommendation** — five lines, first: would you give this notebook to a desk, for what, and on which conditions?
+   - **The model** · **What the numbers showed before the results** · **Preview against actual** · **How the notebook did** · **Cost and value** · **Rules and risks**
+   - **AI-use disclosure** — what the assistants did, what they got wrong, what you checked by hand.
+2. **Sheet** — File ▸ Download ▸ Microsoft Excel (.xlsx).
+3. **Slides** — at most six, PDF.
+
+## Thursday 5 November
+Time and room on Moodle. Bring your laptop with Gemini Notebook and AI Studio signed in.
+
+- **Presentation, 8 minutes** — your note, as at a morning meeting.
+- **Live check, 5 minutes** — I add to your notebook a document you have not seen and ask one question; you check the citation in front of me.
+- **Oral, 15 minutes** — one question for each of sessions 1–4, from this list:
+  1. *Session 1.* An LLM writes one token at a time, choosing a likely next one. Why does that explain an invented number?
+  2. *Session 1.* You open a model release. Which three lines do you read first, and why?
+  3. *Session 2.* What does temperature change? What happened in your temperature test, and why?
+  4. *Session 2.* An output token costs five times an input token. In your cost tab, which part of the bill is bigger, and why?
+  5. *Session 3.* Why does a shuffled split lie on price data, and what does an honest split look like?
+  6. *Session 3.* Your preview beat — or lost to — *"Q3 = Q2"*. Why does one quarter prove nothing, and what would?
+  7. *Session 4.* Retrieval, generation, memory: one miss of each kind, from your sheet or from class.
+  8. *Session 4.* Air Canada's chatbot: who paid, why, and what does it mean for your notebook on a desk?
+
+To revise: the slides of [session 1](../lectures/01-how-llms-work.qmd), [session 2](../lectures/02-pair-programmer.qmd), [session 3](../lectures/03-one-problem.qmd) with [the anatomy of a SaaS](../lectures/03b-anatomy-of-a-saas.qmd), and [session 4](../lectures/04-rag.qmd).
+
+## How it is marked
+The five criteria of the [syllabus](../syllabus.qmd#assessment), 100 points. The oral counts: each answer is evidence for the row its topic belongs to.
+
+| Criterion | Points | In this midterm |
+|---|---|---|
+| Problem framing and business relevance | 15 | The recommendation: who on a desk uses the notebook, for what, on which conditions |
+| Quality and critical use of data, evidence and AI methods | 25 | Look first; the preview with its sources; the test with answers found by hand; every miss named |
+| Technical artefact: does it work, is it reproducible, is it honestly evaluated | 20 | The notebook and the sheet; the live check; the temperature test |
+| Risk, ethics, governance and human oversight | 20 | The memory trap, Morgan Stanley, advice or not, the AI Act tier and its obligation, what stays human |
+| Clarity, professional communication and reflection | 20 | The note, the slides, the eight minutes, the oral |
+
+Honest beats lucky: losing to *"Q3 = Q2"* with sources and a clear explanation scores higher than winning without them.
+
+## Rules
+- Every expected answer in the Test tab is found by you, in the document, before the notebook sees the question.
+- Every number in the note is in the sheet, with where you found it. A number without a source is an opinion: label it.
+- This is an educational simulation. No trades, and nothing here is investment advice.
 
 ## Scope
-This is the reading-week assignment: budget 10–12 hours over two weeks, not 4–6. Roughly: 3 h making `system.ipynb` clean and re-runnable, 3 h extending the golden set and running the regression twice, 4 h writing, 1–2 h on the presentation. If the system is honestly weak on a rubric row, write that; a brief reporting 7/12 with a clear analysis scores higher than one claiming 12/12 with no evidence.
-
-## Rubric (each row 0–25; 100 total; 40% of the final mark)
-| Row | What is assessed |
-|---|---|
-| Problem framing and user | A real user and a real question; the job to be done before and after; what "done" means |
-| Technical build and correctness | The notebook runs; the loop, tools, guards and loaders work; the numbers are right |
-| Evaluation method (evals, baseline, metrics) | Independent golden set; verified checkers; judge used as a second signal; per-question regression, not aggregates |
-| Reflection on limits, risk, regulation | Silent failures named; injection surfaces; what the eval does not cover; AI Act / MiCA position; what stays human |
+About ten hours: steps 1–3 three hours before Thursday, step 4 two hours, steps 5–6 one and a half, the note three, the slides one.
 
 ## Self-check
-- [ ] `system.ipynb`: restart and run all, with and without the API key — no errors.
-- [ ] Golden expected values computed independently; the cell that computes them is visible.
-- [ ] Checker has its own asserts on hand-written right and wrong answers.
-- [ ] Regression table has at least two versions, per question, and at least one failure explained.
-- [ ] Cost per query is measured, not assumed; the value-per-query assumption is labelled as an assumption.
-- [ ] Two injection surfaces named, one guardrail each.
-- [ ] AI Act classification stated with one obligation; MiCA mentioned if retail crypto.
-- [ ] Brief is 1,500–2,000 words; every number has a cell.
-- [ ] Files in `week-05/hw/`, committed; the same files uploaded to Moodle.
-
-## How this feeds the capstone
-The brief is the first draft of the capstone's decision memo, and `system.ipynb` with `eval/` is the LLM half of the capstone pipeline. Week 6 uses your presentation to scope the capstone; week 9 applies the risk and controls canvas to exactly this system and red-teams the injection surfaces you list here; week 10's build/buy/partner and cost-at-scale discussion starts from your unit-economics section. Write the brief so that its "Limits" section becomes the capstone roadmap.
+- [ ] Tab 1: context window, two prices, cutoff, each with where you read it.
+- [ ] Tab 2: five quarters, every number checked by hand, a chart, two lines.
+- [ ] Tab 3 written before Thursday 29 October, 21:00.
+- [ ] Tab 4: ten questions, three traps, the temperature test, every miss named.
+- [ ] Tab 5: every estimate labelled.
+- [ ] Note: recommendation first, about 1,500 words, AI-use disclosure.
+- [ ] Note, sheet and slides uploaded to the three parts of *Turnitin Midterm Submission* by Tuesday 3 November, 23:59, with your matriculation number in each file name.

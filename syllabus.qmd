@@ -124,16 +124,16 @@ Homework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59
 | **1:00–2:20** | Lab: give the model tools (get_price, get_news, run_analysis) and build a "research analyst" agent that answers "summarise the last 30 days of asset X with numbers"; write an evaluation set and score it. |
 | **2:20–3:00** | The product lens (the student's expertise applied): AI product brief — users, value, data, guardrails, metrics, unit economics of inference. Minor Applied Case Brief specification. |
 
-**Homework:** Reading Week assignment — Minor Applied Case Brief (40%): 1,500 words plus an 8-minute presentation treating the system built in weeks 4–5 as a product: problem, users, evidence from evaluations, risks, controls, success metrics. Due Sunday 1 November.
+**Homework:** Reading Week assignment — the midterm, Minor Applied Case (40%): Coinbase's third-quarter results (Thursday 29 October), predicted and then checked with a Gemini Notebook built on the company's filings — the model card, exploration, a preview written before the results, a test with traps, cost, regulation. Analyst note of about 1,500 words, the sheet and six slides due Tuesday 3 November; presentation and oral Thursday 5 November.
 
 ### Reading Week — 26 Oct – 1 Nov — no class
 
-|  | Independent work on the Minor Applied Case Brief. One optional 45-minute online office hour. |
+|  | Independent work on the midterm (Coinbase's third quarter). One optional 45-minute online office hour. |
 |----|----|
 
-### Session 6 — Wed 4 Nov — Minor presentation; fintech landscape; capstone scoping
+### Session 6 — Wed 4 Nov — Fintech landscape; capstone scoping
 
-| **0:00–0:45** | Minor Applied Case presentation, questions, written feedback. |
+| **0:00–0:45** | The midterm presentation and oral move to Thursday 5 November (see Assessment). |
 |----|----|
 | **0:45–2:00** | Where AI actually earns money in fintech: payments, credit scoring, fraud and AML, KYC, robo-advice, customer operations. Build/buy/partner. What regulators expect: model risk management, explainability in credit decisions, financial inclusion. |
 | **2:00–3:00** | Capstone scoping workshop: three candidate topics, pick one, define deliverables and a weekly plan. |
@@ -184,7 +184,7 @@ Homework is set every week, requires 4–6 hours, and is due on Tuesday at 23:59
 
 | **Assessment** | **Weight** | **Specification** | **Timing** |
 |----|----|----|----|
-| **Minor Applied Case Brief** | 40% | Individual 1,500-word brief plus 8-minute presentation. The LLM application built in weeks 4–5 is treated as a product: problem, users, evidence from evaluation, risks, controls, success metrics. The working notebook is submitted with the brief. | Brief due Sun 1 Nov (Reading Week). Presentation Wed 4 Nov. |
+| **Minor Applied Case (midterm)** | 40% | Individual analyst note of about 1,500 words, a working sheet and an 8-minute presentation, followed by a live check and a 15-minute oral on sessions 1–4. The case: Coinbase's third-quarter 2026 results, predicted and then checked with a Gemini Notebook built on the company's filings. Submitted on Moodle. | Due Tue 3 Nov. Presentation and oral Thu 5 Nov. |
 | **Final AI Strategy and Prototype Portfolio** | 60% | Individual capstone: decision memo (2,000 words), a working prototype or reproducible workflow in the course repository, evidence of testing and evaluation, risk and controls canvas, implementation roadmap. Topic in fintech, market analytics, digital assets/DeFi or another approved business context. | Portfolio due Sun 6 Dec. Oral presentation in Revision Week (7–13 Dec). |
 
 ### Marking criteria
