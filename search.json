@@ -3224,7 +3224,7 @@
     "href": "lectures/05-agents-and-evals.html#the-model-asks.-your-code-decides.",
     "title": "The model never touches anything. The harness does.",
     "section": "The model asks. Your code decides.",
-    "text": "The model asks. Your code decides."
+    "text": "The model asks. Your code decides.\n\n  \n  the model asks, your code decides, the result goes back in — and that is the whole of it\n  \n    \n      \n    \n  \n\n  \n  \n  the context window\n  everything so far, re-sent in full, every single turn\n\n  \n  \n    \n    the model\n    reads text, writes text\n  \n\n  \n  \n    \n    it asks\n    get_price(\"BTC-USD\")\n  \n\n  \n  \n    \n    your code\n    decides whether to honour it\n  \n\n  \n  \n    \n    your code runs it\n    \n    THE TOOLS\n    get_price · search_docs · send_email\n  \n\n  \n  \n    \n    the result goes back in\n  \n\n  \n  \n    \n    and round again\n  \n\n  \n  \n    \n    the model never touches anything itself\n    this gap is the only control point you have — everything called “AI safety” lives here"
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#what-asking-looks-like",
@@ -3252,21 +3252,21 @@
     "href": "lectures/05-agents-and-evals.html#one-turn-with-the-chassis-on",
     "title": "The model never touches anything. The harness does.",
     "section": "One turn, with the chassis on",
-    "text": "One turn, with the chassis on"
+    "text": "One turn, with the chassis on\n\n  \n  what the harness does between your message and the model's next call — the loop from week 1, with a chassis around it\n  \n    \n  \n\n  \n  \n  your message\n\n  \n  \n    \n    \n    assemble the context\n    system prompt\n    project rules\n    CLAUDE.md · AGENTS.md\n    the tool list\n    memory + conversation\n  \n\n  \n  \n    \n    \n    the model\n    reads text, writes text\n    — asks for a tool\n  \n\n  \n  \n    \n    \n    permission check\n    read: yes\n    edit: ask\n    run: ask\n  \n\n  \n  \n    \n    \n    run the tool\n    read file · edit\n    shell · search\n    MCP\n  \n\n  \n  \n    \n    \n    trim the result\n    cut to size,\n    back into the context\n  \n\n  \n  \n    \n    and round again — until the model answers with no tool call\n  \n\n  \n  \n    \n    when the window fills: compact — summarise the old turns, keep the rules\n    every turn re-sends everything; the harness is what keeps that affordable"
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#what-the-harness-adds-and-whose-decision-each-one-is",
     "href": "lectures/05-agents-and-evals.html#what-the-harness-adds-and-whose-decision-each-one-is",
     "title": "The model never touches anything. The harness does.",
     "section": "What the harness adds, and whose decision each one is",
-    "text": "What the harness adds, and whose decision each one is\n\n\n\n\n\n\n\n\nthe harness adds\nwhat it is\nthe question for the product manager\n\n\n\n\ntools\nread, edit, run a command, search, a browser\nwhich ones does your agent get?\n\n\npermissions\nread freely; edit and run only with a yes\nwhat must always ask — and what may never run?\n\n\nproject rules\na file the harness reads first: CLAUDE.md, AGENTS.md\nwho writes it, who reviews it?\n\n\nmemory\nnotes it keeps between sessions\nwhat must it never remember?\n\n\ncontext management\ncompact when the window fills; trim long results\nwhat gets lost in the summary?\n\n\nsubagents\nseparate conversations it opens and reads back\nwhat does the parent never see?\n\n\nMCP\nthe standard plug for outside tools\nwhich servers, and who audits them?\n\n\n\nNot one of these is a model feature. The same model in a chat window has none of them. The product is the chassis."
+    "text": "What the harness adds, and whose decision each one is\n\n\n\n\n\n\n\n\nthe harness adds\nwhat it is\nthe question for the product manager\n\n\n\n\ntools\nread, edit, run a command, search, a browser\nwhich ones does your agent get?\n\n\npermissions\nread freely; edit and run only with a yes\nwhat must always ask — and what may never run?\n\n\nproject rules\na file the harness reads first: CLAUDE.md, AGENTS.md\nwho writes it, who reviews it?\n\n\nmemory\nnotes it keeps between sessions\nwhat must it never remember?\n\n\ncontext management\ncompact when the window fills; trim long results\nwhat gets lost in the summary?\n\n\nsubagents\nseparate conversations it opens and reads back\nwhat does the parent never see?\n\n\nMCP\nthe standard plug for outside tools\nwhich servers, and who audits them?\n\n\nhooks\ncode that runs before or after every tool, no model involved\nwhich rules must be laws, not requests?\n\n\nthe transcript\nevery call, every result, every yes, logged\nwho reads it, and how long is it kept?\n\n\n\nNot one of these is a model feature. The same model in a chat window has none of them. The product is the chassis."
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#subagents-one-conversation-becomes-several",
     "href": "lectures/05-agents-and-evals.html#subagents-one-conversation-becomes-several",
     "title": "The model never touches anything. The harness does.",
     "section": "Subagents: one conversation becomes several",
-    "text": "Subagents: one conversation becomes several"
+    "text": "Subagents: one conversation becomes several\n\n  \n  one conversation becomes several — each with its own window, and only a summary comes back\n  \n    \n  \n\n  \n  \n  the orchestrator\n  the agent you are talking to\n  \n  its context window\n  your request\n  the plan\n  small, and it stays small\n  it reads only what comes back\n\n  \n  \n    \n    \n    a brief →\n    \n    subagent 1 — read the codebase\n    \n    own context window\n    brief · 40 files read · 2,000 lines out\n  \n\n  \n  \n    \n    \n    ← a summary (200 words)\n  \n\n  \n  \n    \n    \n    a brief →\n    \n    subagent 2 — write the tests\n    \n    own context window\n    brief · 12 files written · 30 test runs\n  \n\n  \n  \n    \n    \n    ← a summary (200 words)\n  \n\n  \n  \n    \n    \n    a brief →\n    \n    subagent 3 — check the deploy\n    \n    own context window\n    brief · 300 log lines · 1 failure found\n  \n\n  \n  \n    \n    \n    ← a summary (200 words)\n    3 summaries\n  \n\n  \n  \n    \n    the parent never sees the 40 files — that is the point, and the risk\n    cheaper and cleaner context for the parent; whatever the subagent missed, nobody saw"
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#why-open-a-subagent-at-all",
@@ -3280,7 +3280,7 @@
     "href": "lectures/05-agents-and-evals.html#mcp-one-plug-every-tool",
     "title": "The model never touches anything. The harness does.",
     "section": "MCP: one plug, every tool",
-    "text": "MCP: one plug, every tool"
+    "text": "MCP: one plug, every tool\n\n  \n  Model Context Protocol — one plug, so every tool fits every harness\n  \n    \n    \n  \n\n  \n  \n  the harness\n  (MCP client)\n  Claude Code · Codex\n  OpenCode · Gemini CLI\n  the model inside sees one list of tools\n\n  \n  \n    \n    MCP\n    a standard:\n    list the tools,\n    call a tool,\n    return text\n    JSON, both ways\n  \n\n  \n  \n    \n    tools/list\n    tools/call\n  \n\n  \n  \n    MCP SERVERS\n    \n    Moodle\n    students, grades\n    \n  \n\n  \n  \n    \n    GitHub\n    issues, pull requests\n    \n  \n\n  \n  \n    \n    Postgres\n    the ledger\n    \n  \n\n  \n  \n    \n    Browser\n    read a page, click\n    \n  \n\n  \n  \n    \n    before MCP: one integration per tool per harness (n × m). after: n + m.\n  \n\n  \n  \n    every server is text entering the context — every server is also an injection surface"
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#mcp-live",
@@ -3295,6 +3295,13 @@
     "title": "The model never touches anything. The harness does.",
     "section": "Every tool is a door. Every door opens both ways.",
     "text": "Every tool is a door. Every door opens both ways.\nA tool result is text in the context, next to your instructions — the model cannot tell them apart structurally. Week 4’s Air Canada fare rule was one door. An MCP server is a hundred."
+  },
+  {
+    "objectID": "lectures/05-agents-and-evals.html#a-coding-agent-is-a-general-agent-that-happens-to-type.",
+    "href": "lectures/05-agents-and-evals.html#a-coding-agent-is-a-general-agent-that-happens-to-type.",
+    "title": "The model never touches anything. The harness does.",
+    "section": "A coding agent is a general agent that happens to type.",
+    "text": "A coding agent is a general agent that happens to type.\nYou just watched one answer a question about Moodle. Files, a shell, a browser, a plug for anything else: the code is incidental. The same chassis runs a research desk, a back office, a compliance check — and the same questions apply."
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#part-3-the-landscape",
@@ -3351,6 +3358,13 @@
     "title": "The model never touches anything. The harness does.",
     "section": "Then, the brief",
     "text": "Then, the brief\nLIVE · the tutor types, you dictate · the project’s rules file\nFive lines, in your words, into the file the harness reads before anything else:\nwho uses it · what comes in · what comes out · the test, by name · what it may never do\n\n\n\n\n\n\n\nBet\n\n\nBefore I press Enter on “plan it”: how many files will the plan propose, and how many approvals will it ask for before the first run? Two numbers."
+  },
+  {
+    "objectID": "lectures/05-agents-and-evals.html#the-undo-button",
+    "href": "lectures/05-agents-and-evals.html#the-undo-button",
+    "title": "The model never touches anything. The harness does.",
+    "section": "The undo button",
+    "text": "The undo button\nEvery change the agent makes to a file is a diff in version control: you can read it, and you can take it back. That is why a coding agent is safe to let run — the floor is a git revert.\nSome actions have no undo: a message sent, a payment made, a deploy to real users, a row deleted in the real database.\n\n\n\n\n\n\n\nQuestion\n\n\nOf the permissions you will see in the next forty minutes, which ones guard an action with an undo, and which ones guard one without? Where would you put the yes that cannot be given unattended?\n\n\n\n\nA rule in the prompt is a request. A permission or a hook is a law. The irreversible actions get laws."
   },
   {
     "objectID": "lectures/05-agents-and-evals.html#watch-for-four-things",
