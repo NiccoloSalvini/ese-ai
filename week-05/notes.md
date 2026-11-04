@@ -100,6 +100,9 @@ The table: spec, test, permissions, engine, doors — this morning versus in a c
 - **MCP**: Model Context Protocol — one standard for listing and calling outside tools, so n harnesses × m tools becomes n + m. Every server is text entering the context.
 - **Permission**: the harness's question before an edit or a command. The one control that is yours by construction.
 - **Open engine / open car**: open-weight models (DeepSeek, Qwen, Kimi, GLM) and open-source harnesses (OpenCode, Aider, Cline, Goose); the only combination where nothing leaves the building.
+- **Hook**: code the harness runs before or after a tool, with no model involved — a law, where a line in the prompt is a request.
+- **Transcript**: the harness logs every call, result and approval; the audit trail a tribunal or a compliance team reads.
+- **The undo button**: file changes are diffs under version control and can be reverted; messages, payments, deploys and deletions cannot — those get the permissions that are never given unattended.
 - **Acceptance test**: the ten questions with answers found by hand, written before the build, with the number that ships it agreed in advance.
 
 ## Tutor's notes

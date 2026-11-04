@@ -1,0 +1,76 @@
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="95%" style="max-height:520px;display:block;margin:0 auto" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">what the harness does between your message and the model's next call &#8212; the loop from week 1, with a chassis around it</text>
+  <defs>
+    <marker id="ot-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+  </defs>
+
+  <!-- always visible: your message -->
+  <rect x="20" y="90" width="120" height="130" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="80" y="160" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">your message</text>
+
+  <!-- 1 assemble the context -->
+  <g class="fragment" data-fragment-index="1">
+    <line x1="144" y1="155" x2="162" y2="155" stroke="#a8955a" stroke-width="2" marker-end="url(#ot-ag)"/>
+    <rect x="166" y="90" width="150" height="130" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+    <text x="241" y="116" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="middle">assemble the context</text>
+    <text x="241" y="142" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">system prompt</text>
+    <text x="241" y="160" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">project rules</text>
+    <text x="241" y="175" font-size="10" fill="#7a7f85" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">CLAUDE.md &#183; AGENTS.md</text>
+    <text x="241" y="193" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">the tool list</text>
+    <text x="241" y="211" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">memory + conversation</text>
+  </g>
+
+  <!-- 2 the model -->
+  <g class="fragment" data-fragment-index="2">
+    <line x1="320" y1="155" x2="338" y2="155" stroke="#a8955a" stroke-width="2" marker-end="url(#ot-ag)"/>
+    <rect x="342" y="90" width="140" height="130" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+    <text x="412" y="142" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">the model</text>
+    <text x="412" y="166" font-size="12" fill="#2471a3" text-anchor="middle">reads text, writes text</text>
+    <text x="412" y="184" font-size="12" fill="#2471a3" text-anchor="middle">&#8212; asks for a tool</text>
+  </g>
+
+  <!-- 3 permission check -->
+  <g class="fragment" data-fragment-index="3">
+    <line x1="486" y1="155" x2="504" y2="155" stroke="#a8955a" stroke-width="2" marker-end="url(#ot-ag)"/>
+    <rect x="508" y="90" width="140" height="130" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+    <text x="578" y="130" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">permission check</text>
+    <text x="578" y="160" font-size="12" fill="#363636" text-anchor="middle">read: yes</text>
+    <text x="578" y="178" font-size="12" fill="#363636" text-anchor="middle">edit: ask</text>
+    <text x="578" y="196" font-size="12" fill="#363636" text-anchor="middle">run: ask</text>
+  </g>
+
+  <!-- 4 run the tool -->
+  <g class="fragment" data-fragment-index="4">
+    <line x1="652" y1="155" x2="670" y2="155" stroke="#a8955a" stroke-width="2" marker-end="url(#ot-ag)"/>
+    <rect x="674" y="90" width="120" height="130" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+    <text x="734" y="130" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">run the tool</text>
+    <text x="734" y="156" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">read file &#183; edit</text>
+    <text x="734" y="174" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">shell &#183; search</text>
+    <text x="734" y="192" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">MCP</text>
+  </g>
+
+  <!-- 5 trim the result -->
+  <g class="fragment" data-fragment-index="5">
+    <line x1="798" y1="155" x2="816" y2="155" stroke="#a8955a" stroke-width="2" marker-end="url(#ot-ag)"/>
+    <rect x="820" y="90" width="120" height="130" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+    <text x="880" y="136" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">trim the result</text>
+    <text x="880" y="162" font-size="12" fill="#363636" text-anchor="middle">cut to size,</text>
+    <text x="880" y="180" font-size="12" fill="#363636" text-anchor="middle">back into the context</text>
+  </g>
+
+  <!-- 6 loop back -->
+  <g class="fragment" data-fragment-index="6">
+    <path d="M880 224 L880 270 L241 270 L241 228" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ot-ag)"/>
+    <text x="560" y="290" font-size="12" fill="#363636" text-anchor="middle">and round again &#8212; until the model answers with no tool call</text>
+  </g>
+
+  <!-- 7 compaction -->
+  <g class="fragment" data-fragment-index="7">
+    <line x1="166" y1="322" x2="316" y2="322" stroke="#AF1F25" stroke-width="2" stroke-dasharray="4 3"/>
+    <text x="166" y="348" font-size="14" font-weight="700" fill="#AF1F25">when the window fills: compact &#8212; summarise the old turns, keep the rules</text>
+    <text x="166" y="370" font-size="13" fill="#7a7f85">every turn re-sends everything; the harness is what keeps that affordable</text>
+  </g>
+</svg>
+```
