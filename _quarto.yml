@@ -7,6 +7,7 @@ project:
     - setup.qmd
     - glossary.qmd
     - "week-*/homework.md"
+    - "week-*/hw5.md"
     - "week-*/session.ipynb"
     - "week-*/cards.md"
     - "lectures/*.qmd"
