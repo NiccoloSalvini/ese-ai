@@ -34,72 +34,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-1493ab350ad457cbd5df7bde3b997dd4.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -212,20 +146,10 @@
 
 <!-- card 1 -->
 <h1>The loop</h1>
-<pre><code>              ┌──────────────────────────────────────┐
-              │  CONTEXT  (system + question + …)     │
-              │                                       │
-   ┌──────────┤  model reads, then emits ONE of:      │
-   │          │   • final text        → stop          │
-   │          │   • tool request      {name, args}    │
-   │          └──────────────────┬────────────────────┘
-   │                             │
-   │   result as text            ▼
-   │   (appended to context)   YOUR CODE runs the function
-   │                             │
-   └─────────────────────────────┘
-        counted every turn: steps · calls · dollars</code></pre>
-<p>The model never runs anything. You are the runtime.</p>
+<pre><code> the model ──► asks, in an agreed shape ──► your code decides ──► runs the tool
+     ▲                                                                 │
+     └──────────── the result goes back in, as text ◄──────────────────┘</code></pre>
+<p>The model never touches anything. The gap in the middle is the only control point you have.</p>
 </section>
 <section class="slide level0">
 
@@ -239,118 +163,92 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>Failure</th>
-<th>What the model saw</th>
-<th>Fix</th>
+<th>what happens</th>
+<th>why</th>
+<th>the fix</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Error loop</td>
-<td><code>KeyError: 'BTCUSD'</code></td>
-<td>structured error with the way out: <code>{"error": …, "valid tickers": [...]}</code></td>
+<td>it tries the same call forever</td>
+<td>the result said <em>Error</em> and nothing else</td>
+<td>a <strong>contract</strong>: what went wrong, what is valid</td>
 </tr>
 <tr class="even">
-<td>Injection</td>
-<td>a document saying “ignore previous instructions”</td>
-<td>name the boundary in the system prompt; treat results as data (necessary, not sufficient)</td>
+<td>it does what a document told it</td>
+<td>text from a tool looks like text from you</td>
+<td>a <strong>boundary</strong>: tool text is never an instruction</td>
 </tr>
 <tr class="odd">
-<td>Cost explosion</td>
-<td>the same growing context, re-sent every step</td>
-<td>budget on every resource: <code>max_steps</code>, <code>max_usd</code>, repeat-call guard</td>
+<td>the bill is 55× one question</td>
+<td>every turn re-sends everything</td>
+<td>a <strong>ceiling</strong>: steps, calls, money</td>
 </tr>
 </tbody>
 </table>
-<p>A better prompt fixes none of these.</p>
+<p>Never a better prompt.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 3 -->
-<h1>Where untrusted text enters the context</h1>
-<pre><code>   system prompt  ── you wrote it
-   user question  ── the user wrote it
-   tool result    ── a document, a web page, a CRM field,
-                     a PDF a client uploaded, an e-mail …
-                     ── SOMEONE ELSE wrote it</code></pre>
-<p>The model sees one sequence of tokens. Every arrow from “someone else” is an attack surface.</p>
+<h1>What the harness adds — and whose decision it is</h1>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>it adds</th>
+<th>the question for the PM</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tools</td>
+<td>which ones does <em>your</em> agent get?</td>
+</tr>
+<tr class="even">
+<td>permissions</td>
+<td>what must always ask, what may never run?</td>
+</tr>
+<tr class="odd">
+<td>project rules</td>
+<td>who writes the file, who reviews it?</td>
+</tr>
+<tr class="even">
+<td>memory</td>
+<td>what must it never remember?</td>
+</tr>
+<tr class="odd">
+<td>context management</td>
+<td>what is lost in the summary?</td>
+</tr>
+<tr class="even">
+<td>subagents</td>
+<td>what does the parent never see?</td>
+</tr>
+<tr class="odd">
+<td>MCP</td>
+<td>which servers, and who audits them?</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section class="slide level0">
 
 <!-- card 4 -->
-<h1>A checker is a model too</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a aria-label="1"></a><span class="co">"4.20"</span> <span class="kw">in</span> <span class="st">"returned 4.2%"</span>          →  <span class="va">False</span>   (correct answer, failed)</span>
-<span id="cb3-2"><a aria-label="2"></a><span class="co">"4.20"</span> <span class="kw">in</span> <span class="st">"volatility 14.20%"</span>      →  <span class="va">True</span>    (wrong answer, passed)</span>
-<span id="cb3-3"><a aria-label="3"></a></span>
-<span id="cb3-4"><a aria-label="4"></a><span class="bu">abs</span>(<span class="fl">4.2</span>  <span class="op">-</span> <span class="fl">4.20</span>) <span class="op">&lt;=</span> <span class="fl">0.011</span>          →  <span class="va">True</span></span>
-<span id="cb3-5"><a aria-label="5"></a><span class="bu">any</span>(<span class="bu">abs</span>(x <span class="op">-</span> <span class="fl">4.2</span>) <span class="op">&lt;=</span> <span class="fl">0.011</span> <span class="cf">for</span> x <span class="kw">in</span> [<span class="fl">14.20</span>])   →  <span class="va">False</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Extract the number, compare numerically with the tolerance you asked for — and test the checker on hand-written right and wrong answers before it ever sees the agent.</p>
+<h1>Cheaper, cleaner, blind</h1>
+<p>A subagent reads forty files and returns two hundred words. The parent pays for two hundred words, forever. The parent cannot answer <em>“are you sure?”</em> about any of the forty.</p>
+<p>The brief you give it is the only control you have.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 5 -->
-<h1>The regression table</h1>
-<table class="caption-top">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>id</th>
-<th>asks for</th>
-<th>v1</th>
-<th>v2 “always run_analysis first”</th>
-<th>Δ</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>q01–q03</td>
-<td>return / vol, 30 d</td>
-<td>pass</td>
-<td>pass</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>q04–q06</td>
-<td>drawdown, 30 d</td>
-<td><strong>fail</strong></td>
-<td>pass</td>
-<td><strong>+3</strong></td>
-</tr>
-<tr class="odd">
-<td>q07–q08</td>
-<td>return / vol, <strong>90 d</strong></td>
-<td>pass</td>
-<td><strong>fail</strong> — 30-day figure, presented as 90</td>
-<td><strong>−2</strong></td>
-</tr>
-<tr class="even">
-<td>q09–q10</td>
-<td>text</td>
-<td>pass</td>
-<td>pass</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>total</td>
-<td></td>
-<td>7/10</td>
-<td>8/10</td>
-<td>+1</td>
-</tr>
-</tbody>
-</table>
-<p>The aggregate went up. Two users now get a silent wrong answer. No prompt change without this table.</p>
+<h1>Every tool is a door. Every door opens both ways.</h1>
+<p>A tool result is text in the context, next to your instructions. The model cannot tell them apart structurally.</p>
+<p>Air Canada’s fare rule was one door. An MCP server is a hundred.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 6 -->
-<h1>The AI product brief, one row per question</h1>
+<h1>Engine and car</h1>
 <table class="caption-top">
 <colgroup>
 <col style="width: 33%">
@@ -359,59 +257,74 @@
 </colgroup>
 <thead>
 <tr class="header">
-<th>Section</th>
-<th>The question it answers</th>
-<th>Evidence from weeks 4–5</th>
+<th></th>
+<th>closed</th>
+<th>open</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Users</td>
-<td>who asks, how often, in what context</td>
-<td>the ten golden questions as a proxy for demand</td>
+<td><strong>engine</strong></td>
+<td>Claude · GPT · Gemini — rented by the token</td>
+<td>DeepSeek · Qwen · Kimi · GLM — run anywhere</td>
 </tr>
 <tr class="even">
-<td>Job to be done</td>
-<td>what they did before; what “done” looks like</td>
-<td>the manual pandas answer to q01</td>
-</tr>
-<tr class="odd">
-<td>Value</td>
-<td>worth of a right answer; cost of a wrong one</td>
-<td>the silent 30/90-day error</td>
-</tr>
-<tr class="even">
-<td>Data</td>
-<td>sources, refresh, calendar, what is not covered</td>
-<td><code>PX</code>, <code>DOCS</code>, three-tier loader</td>
-</tr>
-<tr class="odd">
-<td>Guardrails</td>
-<td>injection, no advice, error contract, budgets</td>
-<td><code>SYSTEM_GUARDED</code>, <code>safe_call</code>, <code>max_usd</code></td>
-</tr>
-<tr class="even">
-<td>Metrics</td>
-<td>pass rate, judge score, stop reason, cost per query</td>
-<td>the regression table</td>
-</tr>
-<tr class="odd">
-<td>Unit economics</td>
-<td>cost per query × volume vs value per query</td>
-<td>the calculator</td>
+<td><strong>car</strong></td>
+<td>Claude Code · Cursor — a warranty, not a bonnet</td>
+<td>OpenCode · Aider · Cline — a bonnet you can open; Codex CLI and Gemini CLI are open too, built for one engine</td>
 </tr>
 </tbody>
 </table>
+<p>Three questions: where does the context go · what does a turn cost · can you read the car.</p>
 </section>
 <section class="slide level0">
 
 <!-- card 7 -->
-<h1>Cost per query, at volume</h1>
-<p><span class="math display">\[
-\text{cost/day} \;=\; \Big(\tfrac{T_{in}}{10^6}\,p_{in} + \tfrac{T_{out}}{10^6}\,p_{out}\Big)\times(1 + s_{loop}(m-1))\times(1 + s_{judge})\times Q
-\]</span></p>
-<p><span class="math inline">\(T\)</span> tokens per query · <span class="math inline">\(p\)</span> price per million · <span class="math inline">\(s_{loop}\)</span> share of queries hitting the step budget, each costing <span class="math inline">\(m\times\)</span> · <span class="math inline">\(s_{judge}\)</span> share graded by a judge · <span class="math inline">\(Q\)</span> queries per day.</p>
-<p>Everything on the right is measured in the notebook. The number it is compared against — value per query — is not.</p>
+<h1>Watch for four things</h1>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>you see</th>
+<th>it is</th>
+<th>you ask</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>steps before any code</td>
+<td>the plan</td>
+<td>is the test in it?</td>
+</tr>
+<tr class="even">
+<td>a prompt waiting for <em>y</em></td>
+<td>a permission</td>
+<td>would you say yes unattended?</td>
+</tr>
+<tr class="odd">
+<td><em>“spawning an agent to…”</em></td>
+<td>a subagent</td>
+<td>what will the parent not see?</td>
+</tr>
+<tr class="even">
+<td>a tool you did not hand it</td>
+<td>an MCP server</td>
+<td>who wrote it, what can it read?</td>
+</tr>
+</tbody>
+</table>
+<p>You cannot read the code. You can read all four.</p>
+</section>
+<section class="slide level0">
+
+<!-- card 8 -->
+<h1>What stays yours</h1>
+<p>The spec. The test. The permissions. The engine. The doors.</p>
+<p><em>“The agent did it”</em> will not work in a tribunal. <em>“The chatbot is a separate legal entity”</em> already did not.</p>
 
 
 </section>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="420" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">Model Context Protocol &#8212; one plug, so every tool fits every harness</text>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ags" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="#a8955a"/></marker>
+  </defs>
+
+  <!-- harness -->
+  <rect x="40" y="110" width="260" height="170" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="170" y="150" font-size="17" font-weight="700" fill="#AF1F25" text-anchor="middle">the harness</text>
+  <text x="170" y="170" font-size="13" fill="#AF1F25" text-anchor="middle">(MCP client)</text>
+  <text x="170" y="214" font-size="12" fill="#7a7f85" text-anchor="middle">Claude Code &#183; Codex</text>
+  <text x="170" y="232" font-size="12" fill="#7a7f85" text-anchor="middle">OpenCode &#183; Gemini CLI</text>
+  <text x="170" y="260" font-size="12" fill="#363636" text-anchor="middle">the model inside sees one list of tools</text>
+
+  <!-- MCP band -->
+  <rect x="400" y="64" width="110" height="262" rx="3" fill="#CDBA80" fill-opacity="0.35" stroke="#a8955a" stroke-width="2"/>
+  <text x="455" y="94" font-size="18" font-weight="700" fill="#a8955a" text-anchor="middle" letter-spacing="2">MCP</text>
+  <text x="455" y="116" font-size="11" fill="#363636" text-anchor="middle">a standard:</text>
+  <text x="455" y="132" font-size="11" fill="#363636" text-anchor="middle">list the tools,</text>
+  <text x="455" y="148" font-size="11" fill="#363636" text-anchor="middle">call a tool,</text>
+  <text x="455" y="164" font-size="11" fill="#363636" text-anchor="middle">return text</text>
+  <text x="455" y="300" font-size="11" fill="#7a7f85" text-anchor="middle">JSON, both ways</text>
+
+  <!-- servers -->
+  <text x="610" y="58" font-size="13" font-weight="700" letter-spacing="1.1" fill="#a8955a">MCP SERVERS</text>
+  <rect x="610" y="70" width="300" height="50" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="624" y="92" font-size="14" font-weight="700" fill="#2471a3">Moodle</text>
+  <text x="624" y="110" font-size="12" fill="#2471a3">students, grades</text>
+  <rect x="610" y="134" width="300" height="50" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="624" y="156" font-size="14" font-weight="700" fill="#2471a3">GitHub</text>
+  <text x="624" y="174" font-size="12" fill="#2471a3">issues, pull requests</text>
+  <rect x="610" y="198" width="300" height="50" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="624" y="220" font-size="14" font-weight="700" fill="#2471a3">Postgres</text>
+  <text x="624" y="238" font-size="12" fill="#2471a3">the ledger</text>
+  <rect x="610" y="262" width="300" height="50" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="624" y="284" font-size="14" font-weight="700" fill="#2471a3">Browser</text>
+  <text x="624" y="302" font-size="12" fill="#2471a3">read a page, click</text>
+
+  <!-- arrows harness -> band (bidirectional) -->
+  <line x1="306" y1="195" x2="394" y2="195" stroke="#a8955a" stroke-width="2" marker-start="url(#ags)" marker-end="url(#ag)"/>
+  <text x="350" y="184" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">tools/list</text>
+  <text x="350" y="214" font-size="11" fill="#363636" text-anchor="middle" font-family="'JetBrains Mono',Menlo,monospace">tools/call</text>
+
+  <!-- arrows band -> servers (bidirectional) -->
+  <line x1="516" y1="95" x2="604" y2="95" stroke="#a8955a" stroke-width="2" marker-start="url(#ags)" marker-end="url(#ag)"/>
+  <line x1="516" y1="159" x2="604" y2="159" stroke="#a8955a" stroke-width="2" marker-start="url(#ags)" marker-end="url(#ag)"/>
+  <line x1="516" y1="223" x2="604" y2="223" stroke="#a8955a" stroke-width="2" marker-start="url(#ags)" marker-end="url(#ag)"/>
+  <line x1="516" y1="287" x2="604" y2="287" stroke="#a8955a" stroke-width="2" marker-start="url(#ags)" marker-end="url(#ag)"/>
+
+  <!-- bottom -->
+  <line x1="40" y1="348" x2="910" y2="348" stroke="#e6e2d8"/>
+  <text x="40" y="374" font-size="14" fill="#1e8449">before MCP: one integration per tool per harness (n &#215; m). after: n + m.</text>
+  <text x="40" y="400" font-size="14" font-weight="700" fill="#AF1F25">every server is text entering the context &#8212; every server is also an injection surface</text>
+</svg>

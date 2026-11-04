@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="440" fill="#ffffff"/>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">engine and car, each either closed or open &#8212; four combinations, all on the market in November 2026</text>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+
+  <!-- row headers -->
+  <text x="40" y="66" font-size="12" font-weight="700" letter-spacing="1.1" fill="#a8955a">THE ENGINE &#8212; THE MODEL</text>
+  <text x="40" y="256" font-size="12" font-weight="700" letter-spacing="1.1" fill="#a8955a">THE CAR &#8212; THE HARNESS</text>
+
+  <!-- engine: closed -->
+  <rect x="40" y="78" width="400" height="78" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="240" y="108" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">closed weights, rented by the token</text>
+  <text x="240" y="134" font-size="13" fill="#2471a3" text-anchor="middle">Claude (Anthropic) &#183; GPT (OpenAI) &#183; Gemini (Google)</text>
+
+  <!-- engine: open -->
+  <rect x="520" y="78" width="400" height="78" rx="3" fill="#e9f5ee" stroke="#1e8449" stroke-width="2"/>
+  <text x="720" y="108" font-size="16" font-weight="700" fill="#1e8449" text-anchor="middle">open weights, run anywhere</text>
+  <text x="720" y="134" font-size="13" fill="#1e8449" text-anchor="middle">DeepSeek V3 / R1 &#183; Qwen3-Coder &#183; Kimi K2 &#183; GLM</text>
+
+  <!-- arrows down -->
+  <line x1="370" y1="160" x2="370" y2="264" stroke="#2471a3" stroke-width="2" marker-end="url(#an)"/>
+  <text x="360" y="216" font-size="12" fill="#2471a3" text-anchor="end">mostly its own model</text>
+
+  <path d="M430 160 L430 200 L820 200 L820 264" fill="none" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <line x1="720" y1="160" x2="720" y2="264" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <text x="710" y="238" font-size="12" fill="#363636" text-anchor="end">plug in either &#8212; a key or a local model</text>
+
+  <!-- harness: closed -->
+  <rect x="40" y="268" width="400" height="92" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="240" y="298" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">built around one engine, by its maker</text>
+  <text x="240" y="322" font-size="13" fill="#AF1F25" text-anchor="middle">Claude Code &#8594; Claude &#183; Codex &#8594; GPT</text>
+  <text x="240" y="342" font-size="13" fill="#AF1F25" text-anchor="middle">Gemini CLI &#8594; Gemini &#183; GitHub Copilot</text>
+
+  <!-- harness: open -->
+  <rect x="520" y="268" width="400" height="92" rx="3" fill="#e9f5ee" stroke="#1e8449" stroke-width="2"/>
+  <text x="720" y="298" font-size="16" font-weight="700" fill="#1e8449" text-anchor="middle">open source, any engine you plug in</text>
+  <text x="720" y="322" font-size="13" fill="#1e8449" text-anchor="middle">OpenCode &#183; Aider &#183; Cline</text>
+  <text x="720" y="342" font-size="13" fill="#1e8449" text-anchor="middle">Goose &#183; Kilo Code</text>
+
+  <!-- middle ground -->
+  <rect x="320" y="372" width="320" height="40" rx="3" fill="#fcfbf8" stroke="#c9c4b8"/>
+  <text x="480" y="388" font-size="11" font-weight="700" fill="#363636" text-anchor="middle">IDE wrappers &#8212; Cursor &#183; Windsurf &#183; Copilot</text>
+  <text x="480" y="403" font-size="11" fill="#7a7f85" text-anchor="middle">closed harness, several engines</text>
+
+  <!-- the point -->
+  <text x="40" y="430" font-size="14" fill="#363636">Same loop in all four. What changes: who sees your code, what it costs per turn, and whether you can read the harness.</text>
+</svg>
