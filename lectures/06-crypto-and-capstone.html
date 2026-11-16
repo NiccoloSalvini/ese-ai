@@ -483,6 +483,42 @@ Niccolò Salvini, PhD
 <p><a href="https://www.youtube.com/watch?v=vt-zXEsJ61U" class="muted">▶ Andreas Antonopoulos, <em>How do I secure my bitcoin?</em></a></p>
 </div>
 </section>
+<section id="the-14-billion-key" class="slide level2">
+<h2>The $14 billion key</h2>
+<p><strong>28 December 2020.</strong> In about two hours, some <strong>127,000 bitcoin</strong>, worth $3.5bn at the time, leave the wallets of LuBian, a Chinese mining pool. Nobody reports a theft. The coins sit there, in public, for years.</p>
+<p><strong>August 2025.</strong> Arkham, a blockchain analytics firm, points the world at them.</p>
+<p><strong>October 2025.</strong> The US Department of Justice files to seize <strong>127,271 BTC</strong>, about $14bn, from Chen Zhi, head of Cambodia’s Prince Group, accused of running scam compounds. Beijing says Washington hacked the wallets.</p>
+<p><span class="explain">Who owns a bitcoin? Whoever holds the key. Today that is the US government. How it got the key has not been made public.</span></p>
+</section>
+<section id="same-length-a-different-key" class="slide level2">
+<h2>Same length, a different key</h2>
+<p>The flaw, found by researchers who study broken wallets: LuBian’s keys were 256 bits long, but <strong>built from a 32-bit seed</strong>. A short random number, stretched into a long key.</p>
+
+<img data-src="img/w06-keyspace.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"></section>
+<section id="ask-a-model-for-a-random-number" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Ask a model for a random number</h2>
+<p><span class="kicker">LAB · ChatGPT and Claude · 5 minutes</span></p>
+<p>Five <strong>temporary</strong> chats in ChatGPT and five in Claude, so neither remembers its last answer. The same prompt each time:</p>
+<blockquote>
+<p>Give me a random number between 1 and 10. Please only return the number with no additional text.</p>
+</blockquote>
+<p>Write the ten answers on the board. A fair ten-sided die says 7 one time in ten.</p>
+</section>
+<section id="what-the-model-wrote" class="slide level2">
+<h2>What the model wrote</h2>
+<p>A study sent exactly this prompt <strong>75,600 times</strong>: six models, among them GPT-4o-mini (a ChatGPT model) and Gemini 2.0, in seven languages, at six temperatures. Claude was not one of them: your Claude column is new data.</p>
+<p>Between 1 and 10, <strong>7</strong> was every model’s favourite. GPT-4o-mini, Gemini 2.0 and Phi-4 answered 7 about <strong>80%</strong> of the time. No model, at any temperature, came close to a fair die.</p>
+<div class="fragment">
+<p><span class="explain">A model writes the <strong>likely</strong> answer: the one it read most often after that question (session 2). A key is a random number. <strong>A key a model wrote is a key someone can guess</strong>, the LuBian flaw in a new form.</span></p>
+<p><a href="https://arxiv.org/abs/2502.19965" class="muted">▶ J. Coronado-Blázquez, <em>The psychology of LLMs as random number generators</em>, arXiv 2502.19965 (2025)</a></p>
+</div>
+</section>
+<section id="where-could-ai-come-in-3" class="slide level2">
+<h2>Where could AI come in?</h2>
+<p><strong>To look.</strong> Arkham, the firm that flagged the LuBian coins in 2025, describes its engine as AI that ties addresses to owners from transaction patterns, timing and where the money came from; a human team checks what it finds. Session 8.</p>
+<p><strong>Not to choose the key.</strong> An agent can ask a wallet to sign (session 9). The key comes from the wallet’s own random generator, never from a model.</p>
+<p><span class="explain">The coins sat on the public page for four years. A machine that <strong>looks</strong> at every wallet for one pattern, <em>emptied in two hours, never reported</em>, would not have needed four.</span></p>
+</section>
 <section id="a-stablecoin-is-a-promise-with-a-reserve-behind-it" class="slide level2">
 <h2>A stablecoin is a promise with a reserve behind it</h2>
 <p>One USDC is worth one dollar because Circle says it holds <strong>one dollar for every coin</strong>, in bank deposits and short Treasury bills, and publishes the reserve every month.</p>
@@ -507,7 +543,7 @@ Niccolò Salvini, PhD
 <h2>What the arithmetic said, and what the market did</h2>
 
 <img data-src="img/w06-peg.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="where-could-ai-come-in-3" class="slide level2">
+<section id="where-could-ai-come-in-4" class="slide level2">
 <h2>Where could AI come in?</h2>
 <p><strong>Read</strong> the reserve report every month: which banks, which bills, what changed since last month (session 7).</p>
 <p><strong>Look</strong> at the peg and at the redemptions, every minute, for the first sign that people are heading for the door (session 8).</p>
@@ -676,7 +712,7 @@ Niccolò Salvini, PhD
 <h2>It is the midterm again, but you choose the question</h2>
 <p>Pick <strong>one real decision</strong> in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it.</p>
 <p>Write the <strong>test</strong> before you build. Run it, put it next to a <strong>rival</strong> that does no work, <strong>price</strong> it, and say what you would <strong>not</strong> let it do. Then defend it for fifteen minutes.</p>
-<p>No code: a notebook, AI Studio, a sheet, a chat assistant, an agent you configure.</p>
+<p>No code: a notebook, ChatGPT or Claude, a sheet, an agent you configure.</p>
 <p><span class="explain">The midterm was Coinbase’s question and Coinbase’s documents. This time the question is yours, and so is the tool. <a href="../week-10/homework.html">The full brief.</a></span></p>
 </section>
 <section id="one-capstone-one-verb" class="slide level2">

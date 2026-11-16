@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 404" width="960" height="404" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="404" fill="#ffffff"/>
+  <defs><marker id="ksg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="ksr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="ksn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="kse" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="ksm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">one laptop that tries a billion keys a second (illustrative) &#183; how long to try every possible key?</text>
+  <rect x="30" y="76" width="900" height="124" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="52" y="106" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start">LUBIAN'S KEYS, 2020</text>
+  <text x="52" y="128" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">a 256-bit key built from a 32-bit seed</text>
+  <text x="52" y="174" font-size="24" font-weight="700" fill="#363636" text-anchor="start">4,294,967,296 possible keys</text>
+  <line x1="590" y1="94" x2="590" y2="182" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="910" y="146" font-size="30" font-weight="700" fill="#AF1F25" text-anchor="end">4.3 seconds</text>
+  <text x="910" y="174" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="end">to try them all</text>
+  <rect x="30" y="226" width="900" height="124" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.5"/>
+  <text x="52" y="256" font-size="13" font-weight="700" fill="#2471a3" text-anchor="start">A PROPERLY RANDOM KEY</text>
+  <text x="52" y="278" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">256 bits, every one of them random</text>
+  <text x="52" y="324" font-size="24" font-weight="700" fill="#363636" text-anchor="start">1.16 &#215; 10<tspan baseline-shift="super" font-size="70%">77</tspan> possible keys</text>
+  <line x1="590" y1="244" x2="590" y2="332" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="910" y="296" font-size="30" font-weight="700" fill="#2471a3" text-anchor="end">3.7 &#215; 10<tspan baseline-shift="super" font-size="70%">60</tspan> years</text>
+  <text x="910" y="324" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="end">the universe is 1.4 &#215; 10<tspan baseline-shift="super" font-size="70%">10</tspan> years old</text>
+  <text x="30" y="388" font-size="16" font-weight="700" fill="#363636" text-anchor="start">Both keys are 256 bits long. What protects the money is how the key was chosen.</text>
+</svg>

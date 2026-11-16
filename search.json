@@ -88,7 +88,7 @@
     "href": "lectures/10-capstone-studio.html#freeze-the-tool",
     "title": "Six beats, fifteen minutes, one number.",
     "section": "1 · Freeze the tool",
-    "text": "1 · Freeze the tool\nLAB · 20 minutes · output: a link that opens anywhere, and a model card\n\nOpen the tool’s link in a private window, or on my laptop. If it asks for your login, it is not shared yet.\nFill the model card in the sheet from the model’s own page: model, context window, knowledge cutoff, price in, price out.\nPaste the system instruction or the rules file into the sheet with today’s date. From now on, any change is a new version.\n\nA score belongs to a version. A tool you cannot freeze, you cannot test."
+    "text": "1 · Freeze the tool\nLAB · 20 minutes · output: a link that opens anywhere, and a model card\n\nOpen the tool’s link in a private window, or on my laptop. If it asks for your login, it is not shared yet.\nFill the model card in the sheet from the model’s own page: model, context window, knowledge cutoff, price in, price out.\nPaste the project instructions or the rules file into the sheet with today’s date. From now on, any change is a new version.\n\nA score belongs to a version. A tool you cannot freeze, you cannot test."
   },
   {
     "objectID": "lectures/10-capstone-studio.html#run-the-test-on-the-final-version",
@@ -186,7 +186,7 @@
     "href": "lectures/08-ai-that-looks.html#today",
     "title": "Every payment is public. Nobody reads them all, except a machine.",
     "section": "Today",
-    "text": "Today\n\n\n\n\n\n\n\n10:00\nyour three ideas — four questions each, five minutes each\n\n\n10:25\nthe ledger as a dataset — what you can see, what you cannot, what misleads\n\n\n11:00\nthree stories the data told — a bank run, a heist, a typo that cost $68m\n\n\n11:20\nbreak\n\n\n11:30\nlab, 60 minutes — one story, your data, your flag written first\n\n\n12:30\nwhat the assistant got right · your capstone, chosen\n\n\n12:55\nclose"
+    "text": "Today\n\n\n\n\n\n\n\n10:00\nyour three ideas — four questions each, five minutes each\n\n\n10:25\nthe ledger as a dataset — what you can see, what you cannot, what misleads\n\n\n11:00\nfour stories the data told — a French bank two weeks ago, followed by an assistant; a bank run, a heist, a typo that cost $68m\n\n\n11:30\nbreak\n\n\n11:40\nlab, 50 minutes — one story, your data, your flag written first\n\n\n12:30\nwhat the assistant got right · your capstone, chosen\n\n\n12:55\nclose"
   },
   {
     "objectID": "lectures/08-ai-that-looks.html#your-three-ideas-four-questions",
@@ -259,11 +259,39 @@
     "text": "Four tools, no code\n\n\n\nTool\nWhat you get\nCost\n\n\n\n\nEtherscan\nany address or transaction, decoded; labels; an address’s history as CSV\nfree; exports need a free account\n\n\nDefiLlama\nTVL, fees, stablecoin supply for every protocol and chain; charts as CSV\nfree\n\n\nDune\ndashboards other people built on the raw ledger\nfree to read\n\n\nYour assistant + a sheet\nthe CSV in a sheet, the question in a chat\nwhat you already use\n\n\n\nAll three label addresses. When the assistant says this is Binance, your next question is: who says?"
   },
   {
-    "objectID": "lectures/08-ai-that-looks.html#part-2-three-stories-the-data-told",
-    "href": "lectures/08-ai-that-looks.html#part-2-three-stories-the-data-told",
+    "objectID": "lectures/08-ai-that-looks.html#part-2-four-stories-the-data-told",
+    "href": "lectures/08-ai-that-looks.html#part-2-four-stories-the-data-told",
     "title": "Every payment is public. Nobody reads them all, except a machine.",
-    "section": "Part 2 Three stories the data told",
-    "text": "Part 2 Three stories the data told"
+    "section": "Part 2 Four stories the data told",
+    "text": "Part 2 Four stories the data told"
+  },
+  {
+    "objectID": "lectures/08-ai-that-looks.html#two-weeks-ago-a-french-bank-and-a-stranger-on-telegram",
+    "href": "lectures/08-ai-that-looks.html#two-weeks-ago-a-french-bank-and-a-stranger-on-telegram",
+    "title": "Every payment is public. Nobody reads them all, except a machine.",
+    "section": "Two weeks ago: a French bank, and a stranger on Telegram",
+    "text": "Two weeks ago: a French bank, and a stranger on Telegram\n\n  \n  \n  Crédit Mutuel Arkéa, a French bank, 1–4 November 2026 · one click, one day\n  WHAT THE LEDGER SHOWED\n  WHAT THE BANK SAID\n  \n  Sun 1 Nov\n  \n  over $106m in USDC and USDT\n  leaves the bank's accounts at\n  Kraken, Crypto.com and OKX\n  \n  nothing yet\n  \n  Mon 2 Nov\n  \n  ZachXBT, on Telegram: an EU\n  entity has lost over $106m,\n  swapped into ETH within hours\n  \n  nothing yet\n  \n  \n  Tue 3 Nov\n  \n  $27m more, some of it after\n  his warning. He names the bank:\n  Crédit Mutuel Arkéa\n  \n  nothing yet\n  \n  \n  Wed 4 Nov\n  \n  the public trail ends where\n  the coins become Monero\n  total traced: $133m\n  \n  confirms a cyberattack, through\n  a service provider, on its own\n  account; customers unaffected;\n  part of the funds blocked\n  \n  \n  The ledger told the story three days before the bank did. It could not follow the money into Monero."
+  },
+  {
+    "objectID": "lectures/08-ai-that-looks.html#who-could-have-stopped-it",
+    "href": "lectures/08-ai-that-looks.html#who-could-have-stopped-it",
+    "title": "Every payment is public. Nobody reads them all, except a machine.",
+    "section": "Who could have stopped it?",
+    "text": "Who could have stopped it?\nAn attacker got into Crédit Mutuel Arkéa through one of its service providers, used the bank’s own account to buy crypto, and pulled about $133m out of three exchanges between 1 and 3 November.\n\n\n\n\n\n\n\nQuestion\n\n\nThe money sat in exchange accounts for hours, then on the public chain, then in Monero. At each of the three stops: who could freeze it — the bank, the exchange, the blockchain, nobody?\n\n\n\n\nAn exchange can freeze, and two of them did. A chain cannot: it only records. Monero does not even record who. ZachXBT’s complaint was about the hours lost before anyone called the exchanges. Sources: The Block, Help Net Security, 4–9 Nov 2026."
+  },
+  {
+    "objectID": "lectures/08-ai-that-looks.html#could-an-assistant-have-done-zachxbts-job",
+    "href": "lectures/08-ai-that-looks.html#could-an-assistant-have-done-zachxbts-job",
+    "title": "Every payment is public. Nobody reads them all, except a machine.",
+    "section": "Could an assistant have done ZachXBT’s job?",
+    "text": "Could an assistant have done ZachXBT’s job?\n\n\n\n\n\n\n\n\n\nwhat it does\nwho does it today\n\n\n\n\nRead the chain in English\n“where did the USDC that left this address on 1 November go?”\nEtherscan’s own MCP server, since August 2026: 50+ chains, 21 tools, read-only. Blockscout has one too. Session 5’s MCP, pointed at a ledger\n\n\nPut names on addresses\nties addresses to owners from timing, funding and patterns\nArkham’s engine, with a human team checking what it finds\n\n\nRecognise the shape\nlearns what laundering looks like: the path, not a list of names\nElliptic, MIT and IBM: a graph neural network trained on 122,000 labelled pieces of the bitcoin ledger\n\n\n\nWhat none of them can do: call Kraken at three in the morning, or see inside Monero. Freezing takes a person with a legal request. The AI saves the hours; the phone call is still a person’s."
+  },
+  {
+    "objectID": "lectures/08-ai-that-looks.html#follow-the-money-in-english",
+    "href": "lectures/08-ai-that-looks.html#follow-the-money-in-english",
+    "title": "Every payment is public. Nobody reads them all, except a machine.",
+    "section": "Follow the money, in English",
+    "text": "Follow the money, in English\nLAB · an assistant with Etherscan’s MCP · ten minutes\nOn my laptop, an assistant connected to Etherscan’s official MCP server. You ask the questions; it calls the chain.\n\n“Where did the funds that left this address on 1 November go? The next three hops.”\n“Which of these addresses carry a label, and who gave it?”\n“Where does the trail stop, and why?”\n\nScore every answer against Etherscan’s own page: right, wrong or unsupported. A label with no source counts as unsupported."
   },
   {
     "objectID": "lectures/08-ai-that-looks.html#the-svb-weekend-again-this-time-the-timing",
@@ -298,7 +326,7 @@
     "href": "lectures/08-ai-that-looks.html#one-story-your-data",
     "title": "Every payment is public. Nobody reads them all, except a machine.",
     "section": "One story, your data",
-    "text": "One story, your data\nLAB · 60 minutes · a sheet and an assistant\n\nPick a story: the SVB weekend, the Bybit addresses, or a depeg you choose.\nOpen the data: DefiLlama or CoinGecko for prices and supply, Etherscan for addresses. CSV into a sheet.\nWrite first: on which day, at which number, would you have raised the alarm?\nAsk: the same CSV and the same question to the assistant.\nScore: every claim it makes — right, wrong, unsupported."
+    "text": "One story, your data\nLAB · 50 minutes · a sheet and an assistant\n\nPick a story: the Arkéa withdrawals of 1–3 November, the SVB weekend, the Bybit addresses, or a depeg you choose.\nOpen the data: DefiLlama or CoinGecko for prices and supply, Etherscan for addresses. CSV into a sheet.\nWrite first: on which day, at which number, would you have raised the alarm?\nAsk: the same CSV and the same question to the assistant.\nScore: every claim it makes — right, wrong, unsupported."
   },
   {
     "objectID": "lectures/08-ai-that-looks.html#before-you-press-enter",
@@ -448,6 +476,41 @@
     "text": "Where could AI come in?\nGive an agent the key and it can pay: at three in the morning, a thousand times a day, to anyone. A signed payment has no undo, and nobody to call.\n\nSession 9: the AI that acts, and the limits it acts within. Last session’s undo button, with money.\n▶ Andreas Antonopoulos, How do I secure my bitcoin?"
   },
   {
+    "objectID": "lectures/06-crypto-and-capstone.html#the-14-billion-key",
+    "href": "lectures/06-crypto-and-capstone.html#the-14-billion-key",
+    "title": "Crypto is a ledger. A ledger is data.",
+    "section": "The $14 billion key",
+    "text": "The $14 billion key\n28 December 2020. In about two hours, some 127,000 bitcoin, worth $3.5bn at the time, leave the wallets of LuBian, a Chinese mining pool. Nobody reports a theft. The coins sit there, in public, for years.\nAugust 2025. Arkham, a blockchain analytics firm, points the world at them.\nOctober 2025. The US Department of Justice files to seize 127,271 BTC, about $14bn, from Chen Zhi, head of Cambodia’s Prince Group, accused of running scam compounds. Beijing says Washington hacked the wallets.\nWho owns a bitcoin? Whoever holds the key. Today that is the US government. How it got the key has not been made public."
+  },
+  {
+    "objectID": "lectures/06-crypto-and-capstone.html#same-length-a-different-key",
+    "href": "lectures/06-crypto-and-capstone.html#same-length-a-different-key",
+    "title": "Crypto is a ledger. A ledger is data.",
+    "section": "Same length, a different key",
+    "text": "Same length, a different key\nThe flaw, found by researchers who study broken wallets: LuBian’s keys were 256 bits long, but built from a 32-bit seed. A short random number, stretched into a long key."
+  },
+  {
+    "objectID": "lectures/06-crypto-and-capstone.html#ask-a-model-for-a-random-number",
+    "href": "lectures/06-crypto-and-capstone.html#ask-a-model-for-a-random-number",
+    "title": "Crypto is a ledger. A ledger is data.",
+    "section": "Ask a model for a random number",
+    "text": "Ask a model for a random number\nLAB · ChatGPT and Claude · 5 minutes\nFive temporary chats in ChatGPT and five in Claude, so neither remembers its last answer. The same prompt each time:\n\nGive me a random number between 1 and 10. Please only return the number with no additional text.\n\nWrite the ten answers on the board. A fair ten-sided die says 7 one time in ten."
+  },
+  {
+    "objectID": "lectures/06-crypto-and-capstone.html#what-the-model-wrote",
+    "href": "lectures/06-crypto-and-capstone.html#what-the-model-wrote",
+    "title": "Crypto is a ledger. A ledger is data.",
+    "section": "What the model wrote",
+    "text": "What the model wrote\nA study sent exactly this prompt 75,600 times: six models, among them GPT-4o-mini (a ChatGPT model) and Gemini 2.0, in seven languages, at six temperatures. Claude was not one of them: your Claude column is new data.\nBetween 1 and 10, 7 was every model’s favourite. GPT-4o-mini, Gemini 2.0 and Phi-4 answered 7 about 80% of the time. No model, at any temperature, came close to a fair die.\n\nA model writes the likely answer: the one it read most often after that question (session 2). A key is a random number. A key a model wrote is a key someone can guess, the LuBian flaw in a new form.\n▶ J. Coronado-Blázquez, The psychology of LLMs as random number generators, arXiv 2502.19965 (2025)"
+  },
+  {
+    "objectID": "lectures/06-crypto-and-capstone.html#where-could-ai-come-in-3",
+    "href": "lectures/06-crypto-and-capstone.html#where-could-ai-come-in-3",
+    "title": "Crypto is a ledger. A ledger is data.",
+    "section": "Where could AI come in?",
+    "text": "Where could AI come in?\nTo look. Arkham, the firm that flagged the LuBian coins in 2025, describes its engine as AI that ties addresses to owners from transaction patterns, timing and where the money came from; a human team checks what it finds. Session 8.\nNot to choose the key. An agent can ask a wallet to sign (session 9). The key comes from the wallet’s own random generator, never from a model.\nThe coins sat on the public page for four years. A machine that looks at every wallet for one pattern, emptied in two hours, never reported, would not have needed four."
+  },
+  {
     "objectID": "lectures/06-crypto-and-capstone.html#a-stablecoin-is-a-promise-with-a-reserve-behind-it",
     "href": "lectures/06-crypto-and-capstone.html#a-stablecoin-is-a-promise-with-a-reserve-behind-it",
     "title": "Crypto is a ledger. A ledger is data.",
@@ -462,8 +525,8 @@
     "text": "What the arithmetic said, and what the market did"
   },
   {
-    "objectID": "lectures/06-crypto-and-capstone.html#where-could-ai-come-in-3",
-    "href": "lectures/06-crypto-and-capstone.html#where-could-ai-come-in-3",
+    "objectID": "lectures/06-crypto-and-capstone.html#where-could-ai-come-in-4",
+    "href": "lectures/06-crypto-and-capstone.html#where-could-ai-come-in-4",
     "title": "Crypto is a ledger. A ledger is data.",
     "section": "Where could AI come in?",
     "text": "Where could AI come in?\nRead the reserve report every month: which banks, which bills, what changed since last month (session 7).\nLook at the peg and at the redemptions, every minute, for the first sign that people are heading for the door (session 8).\n\nA promise is a document, and a run is a pattern in data. The two verbs of the next two sessions, on one coin."
@@ -536,7 +599,7 @@
     "href": "lectures/06-crypto-and-capstone.html#it-is-the-midterm-again-but-you-choose-the-question",
     "title": "Crypto is a ledger. A ledger is data.",
     "section": "It is the midterm again, but you choose the question",
-    "text": "It is the midterm again, but you choose the question\nPick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it.\nWrite the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.\nNo code: a notebook, AI Studio, a sheet, a chat assistant, an agent you configure.\nThe midterm was Coinbase’s question and Coinbase’s documents. This time the question is yours, and so is the tool. The full brief."
+    "text": "It is the midterm again, but you choose the question\nPick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it.\nWrite the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.\nNo code: a notebook, ChatGPT or Claude, a sheet, an agent you configure.\nThe midterm was Coinbase’s question and Coinbase’s documents. This time the question is yours, and so is the tool. The full brief."
   },
   {
     "objectID": "lectures/06-crypto-and-capstone.html#one-capstone-one-verb",
@@ -1698,14 +1761,14 @@
     "href": "week-10/homework.html",
     "title": "Portfolio (60%) — your capstone",
     "section": "",
-    "text": "Due: Sunday 6 December 2026, 23:59 · Moodle ▸ Turnitin (the memo) and your Drive folder ese-ai-fintech/capstone/ (everything else) · presentation Wednesday 9 December, 10:00 (proposed)\n\n\nPick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it: one that reads documents, looks at data, or acts within rules you wrote. Write the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.\nIt is the midterm again, with one difference: this time you choose the question, and the tool is yours.\nNo code. Everything is done with the tools you have used since September: Gemini Notebook, Google AI Studio, a sheet, a chat assistant, an agent you configure.\n\n\n\nChoose one. The examples are only examples.\n\n\n\n\n\n\n\n\nThe tool…\nbuilt with\nfor example\n\n\n\n\nreads (session 7)\na notebook or a saved prompt over documents\nA MiCA white-paper checker: does a token’s white paper contain what the regulation requires, with the page for each answer?\n\n\nlooks (session 8)\nan assistant over data you exported\nA stablecoin peg watcher: five past depegs, what the data showed before each one, what the assistant flags and what it misses\n\n\nacts (session 9)\nthe rules of an agent, tested case by case\nA treasury agent that pays supplier invoices in USDC: what it may do alone, what needs a person, tested on ten cases including traps\n\n\n\nYour MCP case from homework 5 can be your capstone if it fits one of the three.\n\n\n\nBring three ideas to session 8 (Wednesday 25 November), each answering these four. We keep one.\n\nCan you open the source today? The documents or the data, in your hands, not promised.\nCan you write ten questions or cases with the answers found by hand? If you cannot, you cannot test it.\nDoes it fit in two weeks? Smaller is better. A narrow tool, well tested, beats a broad one nobody checked.\nIs it still interesting if the answer is “no, it does not work”? If a failed test makes the project worthless, it was a bet, not a question.\n\n\n\n\n\n\n\n\n\n\n\n\nStep\nBy\nWhat you do\n\n\n\n\n1. Three ideas\nWed 25 Nov\nThree ideas through the four questions. One is chosen in class.\n\n\n2. The plan\nThu 26 Nov\nOne page: the decision and its user, the source, what the tool does, the test, the rival, the main risk, the steps to 6 December.\n\n\n3. The test, first\nSat 28 Nov\nTen questions or cases with the answers found by hand, each with its source, and three traps. Date the tab: the version history shows when it was written.\n\n\n4. The tool\nMon 30 Nov\nBuild it. Write down the model, its context window, its knowledge cutoff and its prices, from the model card.\n\n\n5. The draft\nTue 1 Dec\nThe tool, the test run once, the memo’s headings with three lines under each. Reviewed in session 10.\n\n\n6. Run, price, write\nSun 6 Dec\nRun the test on the final version, name every miss, price it, write the memo, rehearse.\n\n\n\n\n\n\nOn Moodle, to the Turnitin submission for the portfolio, by Sunday 6 December, 23:59: the memo, PDF, about 2,000 words (1,800–2,300), with your matriculation number and not your name. Under these headings:\n\nDecision and user: who decides what, how often, and what a wrong decision costs today.\nWhat the tool does: five sentences and one diagram. The model card: which model, context window, knowledge cutoff, prices.\nThe test and the honest result: the table, the score next to the rival’s, every miss named (retrieval, generation, memory, or rule broken).\nCost: per question or per case, with tokens in, tokens out and both prices visible. A month at the volume your user needs, and the time saved against a person doing it by hand.\nRisks and controls: a table with four columns: risk, control, law or request, who signs. Then MiCA and the EU AI Act where they apply, one paragraph each.\nWhat would have to be true: for the user to rely on it, and the first thing that would make you switch it off.\nAI-use disclosure: see below.\n\nIn your Drive folder ese-ai-fintech/capstone/, shared with the tutor:\n\nThe tool: the link to the notebook with its sources, or the AI Studio prompt (system instruction, model, temperature), or the agent’s rules file. Someone else must be able to open it and run your test.\nThe test sheet: ten questions or cases written first, the answer found by hand with its source, the tool’s answer, hit or miss, which kind of miss, the rival’s answer. Plus the three traps.\nThe cost: the token counts you read, the prices you used, the arithmetic.\n\n\n\n\nFifteen minutes on Wednesday 9 December, from your laptop, with the tool live. Six beats:\n\n\n\n\n\n\n\n\nBeat\nMinutes\nThe question it answers\n\n\n\n\n1. The decision\n2\nWho decides what, and what does a mistake cost?\n\n\n2. The tool\n3\nWhat does it do? Show it, on one real case.\n\n\n3. The test\n3\nHow many of ten, against the rival? Say the number.\n\n\n4. The cost\n2\nWhat does one answer cost, and one month?\n\n\n5. What could go wrong\n3\nThe worst miss, the trap that worked, the control that stops it.\n\n\n6. What would have to be true\n2\nFor someone to use it on Monday morning.\n\n\n\nThen questions. I will pick lines of your memo and cells of your sheet at random and ask you to explain them.\n\n\n\nThe five criteria of the syllabus, the same as the midterm.\n\n\n\n\n\n\n\n\nWeight\nCriterion\nWhat earns it\n\n\n\n\n15%\nProblem framing and business relevance\nA real decision, a named user, a cost of being wrong.\n\n\n25%\nData, evidence and AI methods\nThe test written first, answers found by hand, a rival, every miss named.\n\n\n20%\nThe artefact\nA tool that someone else can open and run, and that does what the memo says.\n\n\n20%\nRisk, ethics, governance and oversight\nControls that are laws, not requests; who signs; MiCA and the AI Act where they apply; the disclosure.\n\n\n20%\nClarity, communication and reflection\nA memo within length, a presentation within time, an honest account of what did not work.\n\n\n\nA point counts when the sheet, a number or the tool shows it, not when a paragraph asserts it.\n\n\n\nAssistants are allowed and expected. Say which ones you used and for what (finding sources, drafting, checking, the tool itself), which parts you did without them, three things an assistant got wrong that you caught (where, and how you caught it), and one sentence confirming that nothing confidential from any employer went into an AI tool. “I used ChatGPT for help” is not a disclosure.\n\n\n\n\nNo real money. An agent that acts is tested on cases written in a sheet, or on a test network. Nothing in the course is investment advice.\nNothing confidential goes into an AI tool.\nNo new source in the last three days unless the current one is broken. Polish beats scope.\nEvery line you submit, you can explain.\n\n\n\n\n\nThree ideas through the four questions, Wednesday 25 November.\nOne-page plan, Thursday 26 November.\nTest written and dated before the tool was finished.\nDraft reviewed, Tuesday 1 December.\nMemo on Turnitin with your matriculation number, Sunday 6 December, 23:59.\nTool, test sheet and cost in ese-ai-fintech/capstone/, shared with the tutor.\nFifteen minutes rehearsed out loud, with a clock."
+    "text": "Due: Sunday 6 December 2026, 23:59 · Moodle ▸ Turnitin (the memo) and your Drive folder ese-ai-fintech/capstone/ (everything else) · presentation Wednesday 9 December, 10:00 (proposed)\n\n\nPick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it: one that reads documents, looks at data, or acts within rules you wrote. Write the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.\nIt is the midterm again, with one difference: this time you choose the question, and the tool is yours.\nNo code. Everything is done with the tools you have used since September: Gemini Notebook, ChatGPT or Claude, a sheet, an agent you configure.\n\n\n\nChoose one. The examples are only examples.\n\n\n\n\n\n\n\n\nThe tool…\nbuilt with\nfor example\n\n\n\n\nreads (session 7)\na notebook or a saved prompt over documents\nA MiCA white-paper checker: does a token’s white paper contain what the regulation requires, with the page for each answer?\n\n\nlooks (session 8)\nan assistant over data you exported\nA stablecoin peg watcher: five past depegs, what the data showed before each one, what the assistant flags and what it misses\n\n\nacts (session 9)\nthe rules of an agent, tested case by case\nA treasury agent that pays supplier invoices in USDC: what it may do alone, what needs a person, tested on ten cases including traps\n\n\n\nYour MCP case from homework 5 can be your capstone if it fits one of the three.\n\n\n\nBring three ideas to session 8 (Wednesday 25 November), each answering these four. We keep one.\n\nCan you open the source today? The documents or the data, in your hands, not promised.\nCan you write ten questions or cases with the answers found by hand? If you cannot, you cannot test it.\nDoes it fit in two weeks? Smaller is better. A narrow tool, well tested, beats a broad one nobody checked.\nIs it still interesting if the answer is “no, it does not work”? If a failed test makes the project worthless, it was a bet, not a question.\n\n\n\n\n\n\n\n\n\n\n\n\nStep\nBy\nWhat you do\n\n\n\n\n1. Three ideas\nWed 25 Nov\nThree ideas through the four questions. One is chosen in class.\n\n\n2. The plan\nThu 26 Nov\nOne page: the decision and its user, the source, what the tool does, the test, the rival, the main risk, the steps to 6 December.\n\n\n3. The test, first\nSat 28 Nov\nTen questions or cases with the answers found by hand, each with its source, and three traps. Date the tab: the version history shows when it was written.\n\n\n4. The tool\nMon 30 Nov\nBuild it. Write down the model, its context window, its knowledge cutoff and its prices, from the model card.\n\n\n5. The draft\nTue 1 Dec\nThe tool, the test run once, the memo’s headings with three lines under each. Reviewed in session 10.\n\n\n6. Run, price, write\nSun 6 Dec\nRun the test on the final version, name every miss, price it, write the memo, rehearse.\n\n\n\n\n\n\nOn Moodle, to the Turnitin submission for the portfolio, by Sunday 6 December, 23:59: the memo, PDF, about 2,000 words (1,800–2,300), with your matriculation number and not your name. Under these headings:\n\nDecision and user: who decides what, how often, and what a wrong decision costs today.\nWhat the tool does: five sentences and one diagram. The model card: which model, context window, knowledge cutoff, prices.\nThe test and the honest result: the table, the score next to the rival’s, every miss named (retrieval, generation, memory, or rule broken).\nCost: per question or per case, with tokens in, tokens out and both prices visible. A month at the volume your user needs, and the time saved against a person doing it by hand.\nRisks and controls: a table with four columns: risk, control, law or request, who signs. Then MiCA and the EU AI Act where they apply, one paragraph each.\nWhat would have to be true: for the user to rely on it, and the first thing that would make you switch it off.\nAI-use disclosure: see below.\n\nIn your Drive folder ese-ai-fintech/capstone/, shared with the tutor:\n\nThe tool: the link to the notebook with its sources, or the ChatGPT or Claude project (its instructions and the model), or the agent’s rules file. Someone else must be able to open it and run your test.\nThe test sheet: ten questions or cases written first, the answer found by hand with its source, the tool’s answer, hit or miss, which kind of miss, the rival’s answer. Plus the three traps.\nThe cost: the token counts you read, the prices you used, the arithmetic.\n\n\n\n\nFifteen minutes on Wednesday 9 December, from your laptop, with the tool live. Six beats:\n\n\n\n\n\n\n\n\nBeat\nMinutes\nThe question it answers\n\n\n\n\n1. The decision\n2\nWho decides what, and what does a mistake cost?\n\n\n2. The tool\n3\nWhat does it do? Show it, on one real case.\n\n\n3. The test\n3\nHow many of ten, against the rival? Say the number.\n\n\n4. The cost\n2\nWhat does one answer cost, and one month?\n\n\n5. What could go wrong\n3\nThe worst miss, the trap that worked, the control that stops it.\n\n\n6. What would have to be true\n2\nFor someone to use it on Monday morning.\n\n\n\nThen questions. I will pick lines of your memo and cells of your sheet at random and ask you to explain them.\n\n\n\nThe five criteria of the syllabus, the same as the midterm.\n\n\n\n\n\n\n\n\nWeight\nCriterion\nWhat earns it\n\n\n\n\n15%\nProblem framing and business relevance\nA real decision, a named user, a cost of being wrong.\n\n\n25%\nData, evidence and AI methods\nThe test written first, answers found by hand, a rival, every miss named.\n\n\n20%\nThe artefact\nA tool that someone else can open and run, and that does what the memo says.\n\n\n20%\nRisk, ethics, governance and oversight\nControls that are laws, not requests; who signs; MiCA and the AI Act where they apply; the disclosure.\n\n\n20%\nClarity, communication and reflection\nA memo within length, a presentation within time, an honest account of what did not work.\n\n\n\nA point counts when the sheet, a number or the tool shows it, not when a paragraph asserts it.\n\n\n\nAssistants are allowed and expected. Say which ones you used and for what (finding sources, drafting, checking, the tool itself), which parts you did without them, three things an assistant got wrong that you caught (where, and how you caught it), and one sentence confirming that nothing confidential from any employer went into an AI tool. “I used ChatGPT for help” is not a disclosure.\n\n\n\n\nNo real money. An agent that acts is tested on cases written in a sheet, or on a test network. Nothing in the course is investment advice.\nNothing confidential goes into an AI tool.\nNo new source in the last three days unless the current one is broken. Polish beats scope.\nEvery line you submit, you can explain.\n\n\n\n\n\nThree ideas through the four questions, Wednesday 25 November.\nOne-page plan, Thursday 26 November.\nTest written and dated before the tool was finished.\nDraft reviewed, Tuesday 1 December.\nMemo on Turnitin with your matriculation number, Sunday 6 December, 23:59.\nTool, test sheet and cost in ese-ai-fintech/capstone/, shared with the tutor.\nFifteen minutes rehearsed out loud, with a clock."
   },
   {
     "objectID": "week-10/homework.html#the-idea",
     "href": "week-10/homework.html#the-idea",
     "title": "Portfolio (60%) — your capstone",
     "section": "",
-    "text": "Pick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it: one that reads documents, looks at data, or acts within rules you wrote. Write the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.\nIt is the midterm again, with one difference: this time you choose the question, and the tool is yours.\nNo code. Everything is done with the tools you have used since September: Gemini Notebook, Google AI Studio, a sheet, a chat assistant, an agent you configure."
+    "text": "Pick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it: one that reads documents, looks at data, or acts within rules you wrote. Write the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.\nIt is the midterm again, with one difference: this time you choose the question, and the tool is yours.\nNo code. Everything is done with the tools you have used since September: Gemini Notebook, ChatGPT or Claude, a sheet, an agent you configure."
   },
   {
     "objectID": "week-10/homework.html#three-kinds-of-capstone",
@@ -1733,7 +1796,7 @@
     "href": "week-10/homework.html#what-to-submit",
     "title": "Portfolio (60%) — your capstone",
     "section": "",
-    "text": "On Moodle, to the Turnitin submission for the portfolio, by Sunday 6 December, 23:59: the memo, PDF, about 2,000 words (1,800–2,300), with your matriculation number and not your name. Under these headings:\n\nDecision and user: who decides what, how often, and what a wrong decision costs today.\nWhat the tool does: five sentences and one diagram. The model card: which model, context window, knowledge cutoff, prices.\nThe test and the honest result: the table, the score next to the rival’s, every miss named (retrieval, generation, memory, or rule broken).\nCost: per question or per case, with tokens in, tokens out and both prices visible. A month at the volume your user needs, and the time saved against a person doing it by hand.\nRisks and controls: a table with four columns: risk, control, law or request, who signs. Then MiCA and the EU AI Act where they apply, one paragraph each.\nWhat would have to be true: for the user to rely on it, and the first thing that would make you switch it off.\nAI-use disclosure: see below.\n\nIn your Drive folder ese-ai-fintech/capstone/, shared with the tutor:\n\nThe tool: the link to the notebook with its sources, or the AI Studio prompt (system instruction, model, temperature), or the agent’s rules file. Someone else must be able to open it and run your test.\nThe test sheet: ten questions or cases written first, the answer found by hand with its source, the tool’s answer, hit or miss, which kind of miss, the rival’s answer. Plus the three traps.\nThe cost: the token counts you read, the prices you used, the arithmetic."
+    "text": "On Moodle, to the Turnitin submission for the portfolio, by Sunday 6 December, 23:59: the memo, PDF, about 2,000 words (1,800–2,300), with your matriculation number and not your name. Under these headings:\n\nDecision and user: who decides what, how often, and what a wrong decision costs today.\nWhat the tool does: five sentences and one diagram. The model card: which model, context window, knowledge cutoff, prices.\nThe test and the honest result: the table, the score next to the rival’s, every miss named (retrieval, generation, memory, or rule broken).\nCost: per question or per case, with tokens in, tokens out and both prices visible. A month at the volume your user needs, and the time saved against a person doing it by hand.\nRisks and controls: a table with four columns: risk, control, law or request, who signs. Then MiCA and the EU AI Act where they apply, one paragraph each.\nWhat would have to be true: for the user to rely on it, and the first thing that would make you switch it off.\nAI-use disclosure: see below.\n\nIn your Drive folder ese-ai-fintech/capstone/, shared with the tutor:\n\nThe tool: the link to the notebook with its sources, or the ChatGPT or Claude project (its instructions and the model), or the agent’s rules file. Someone else must be able to open it and run your test.\nThe test sheet: ten questions or cases written first, the answer found by hand with its source, the tool’s answer, hit or miss, which kind of miss, the rival’s answer. Plus the three traps.\nThe cost: the token counts you read, the prices you used, the arithmetic."
   },
   {
     "objectID": "week-10/homework.html#the-presentation",
@@ -3637,7 +3700,7 @@
     "href": "lectures/07-ai-that-reads.html#today",
     "title": "In crypto, the documents are the product.",
     "section": "Today",
-    "text": "Today\n\n\n\n\n\n\n\n15:00\nwhere we are · the four boxes, once more\n\n\n15:10\nthe documents crypto runs on — four kinds, and how each is read wrong\n\n\n15:25\nlab — three documents, ten questions, three traps\n\n\n16:25\nMiCA in 30 minutes — the law that made a white paper a legal document\n\n\n16:55\ncould this be your capstone? · three lines\n\n\n\nOne notebook on your laptop, one sheet next to it. You answer first; the model answers second."
+    "text": "Today\n\n\n\n\n\n\n\n15:00\nwhere we are · the four boxes, once more\n\n\n15:10\nthe documents crypto runs on — four kinds, how each is read wrong, one claim checked\n\n\n15:30\nlab — three documents, ten questions, three traps\n\n\n16:25\nMiCA in 30 minutes — the law that made a white paper a legal document\n\n\n16:55\ncould this be your capstone? · three lines\n\n\n\nOne notebook on your laptop, one sheet next to it. You answer first; the model answers second."
   },
   {
     "objectID": "lectures/07-ai-that-reads.html#in-crypto-the-documents-are-the-product.",
@@ -3710,6 +3773,27 @@
     "text": "The reserve report: a photograph, not a promise\nCircle publishes a monthly report on the reserves behind USDC, checked by an accounting firm. The reserves are mostly short-term US Treasury bills and overnight repos, plus cash in banks.\nIn March 2023, part of that cash was at Silicon Valley Bank. Every report could have been accurate, and USDC still fell to about $0.88 over a weekend.\n\n\n\n\n\n\n\nQuestion\n\n\nSo what should the AI be asked? Not “is it backed?” but: backed by what, held where, on which date?"
   },
   {
+    "objectID": "lectures/07-ai-that-reads.html#fully-backed",
+    "href": "lectures/07-ai-that-reads.html#fully-backed",
+    "title": "In crypto, the documents are the product.",
+    "section": "“Fully backed”",
+    "text": "“Fully backed”\nFor years Tether’s website said that every USDT was backed one to one by dollars in its bank accounts.\nIn October 2021 the US CFTC fined Tether $41 million. Over 26 months, 2016 to 2018, Tether had held enough dollars to back every token in circulation on only 27.6% of the days; the rest of the time it leaned on unsecured receivables and assets that were not dollars. It settled without admitting or denying.\nThe claim was one sentence anyone could read. The evidence was in documents nobody outside could read. Today the documents are public, and checking one against the other is a job for a model that reads."
+  },
+  {
+    "objectID": "lectures/07-ai-that-reads.html#the-claim-against-the-document",
+    "href": "lectures/07-ai-that-reads.html#the-claim-against-the-document",
+    "title": "In crypto, the documents are the product.",
+    "section": "The claim against the document",
+    "text": "The claim against the document\nLAB · Gemini Notebook · five minutes\nA fresh notebook, two sources: Tether’s transparency page, which makes the claims, and its latest quarterly reserve report, the accountants’ PDF.\n\nFor each claim on the page, quote the line of the report that supports it, with the page. If no line supports it, write “not in the report”.\n\nThen check two of the quotes against the PDF yourself. Backed by what, held where, on which date?\nIn the EU this check is the law: marketing must be consistent with the white paper (MiCA Art. 7, and Arts. 29 and 53 for stablecoins). A compliance desk does it by hand, claim by claim. A model can do the first pass; a person signs the last."
+  },
+  {
+    "objectID": "lectures/07-ai-that-reads.html#the-company-behind-the-sentence",
+    "href": "lectures/07-ai-that-reads.html#the-company-behind-the-sentence",
+    "title": "In crypto, the documents are the product.",
+    "section": "The company behind the sentence",
+    "text": "The company behind the sentence\n\n\nTether today. About $186bn of USDT in circulation at the end of 2025, and over $10bn of net profit that year.\nIts co-founder, Giancarlo Devasini, is Italian. Forbes counts him the richest person in Italy, about $89bn, on an estimated 45% of Tether; Tether does not publish who owns it.\nIt already held over 10% of Juventus when, in December 2025, it offered to buy Exor’s 65%. Exor said no.\n\nWhere the profit goes: AI.\n\nQVAC, its own AI platform: an open-source toolkit, April 2026, for apps that run models on your phone or laptop, offline, with nothing sent to a data centre.\nBlackrock Neurotech, brain-computer interfaces: a majority stake.\nGPUs for AI, through Northern Data and Rumble.\n\n\nA stablecoin earns the interest on its reserve (session 6). Tether spends part of it betting that AI will run locally, on open models: session 5’s map, from the last company you would expect."
+  },
+  {
     "objectID": "lectures/07-ai-that-reads.html#part-2-the-lab",
     "href": "lectures/07-ai-that-reads.html#part-2-the-lab",
     "title": "In crypto, the documents are the product.",
@@ -3735,7 +3819,7 @@
     "href": "lectures/07-ai-that-reads.html#three-documents",
     "title": "In crypto, the documents are the product.",
     "section": "Three documents",
-    "text": "Three documents\nLAB · Gemini Notebook · sixty minutes\n\nA white paper from ESMA’s MiCA register: a real token, filed in the EU.\nA governance proposal: Uniswap’s UNIfication, as it was voted.\nAn audit report: Uniswap v4 core.\n\nOne notebook, these three sources and nothing else. Every file is public, and you download all three in five minutes."
+    "text": "Three documents\nLAB · Gemini Notebook · fifty-five minutes\n\nA white paper from ESMA’s MiCA register: a real token, filed in the EU.\nA governance proposal: Uniswap’s UNIfication, as it was voted.\nAn audit report: Uniswap v4 core.\n\nOne notebook, these three sources and nothing else. Every file is public, and you download all three in five minutes."
   },
   {
     "objectID": "lectures/07-ai-that-reads.html#first-the-answers",
@@ -3854,7 +3938,7 @@
     "href": "lectures/09-ai-that-acts.html#today",
     "title": "An agent with a key can pay. Who wrote its rules?",
     "section": "Today",
-    "text": "Today\n\n\n\n\n\n\n\n15:00\nyour capstone plan, read aloud\n\n\n15:20\na bot that said it was human\n\n\n15:30\nthe loop gets a key · talked out of it · requests and laws\n\n\n16:20\nbreak\n\n\n16:35\nlab: the treasury agent — you write its rules, five invoices try to break them\n\n\n17:30\nyour capstone: risks and controls\n\n\n17:55\nthree lines\n\n\n\nNo code. AI Studio on your laptop, a sheet with five invoices, and your own rules as the system instruction."
+    "text": "Today\n\n\n\n\n\n\n\n15:00\nyour capstone plan, read aloud\n\n\n15:20\na bot that said it was human\n\n\n15:30\nthe loop gets a key · talked out of it · requests and laws\n\n\n16:20\nbreak\n\n\n16:35\nlab: the treasury agent — you write its rules, five invoices try to break them\n\n\n17:30\nyour capstone: risks and controls\n\n\n17:55\nthree lines\n\n\n\nNo code. A Claude or ChatGPT project on your laptop, a sheet with five invoices, and your own rules as its instructions."
   },
   {
     "objectID": "lectures/09-ai-that-acts.html#until-now-the-tool-wrote-a-sentence.-today-it-signs.",
@@ -3969,6 +4053,20 @@
     "text": "Where the attacker’s text gets in\nFor a treasury agent, every input is a door:\n\nthe invoice: a line in white text, a line in the file’s metadata\nthe supplier’s email: “we changed our wallet, please pay today”\nthe address itself: first and last characters copied from one you trust. Address poisoning, May 2024 (session 8): 1,155 WBTC, about $68 million, sent to a look-alike\na tool’s answer: an MCP server, a web page, the memo field of a transaction\n\nEvery tool is a door. Every door opens both ways."
   },
   {
+    "objectID": "lectures/09-ai-that-acts.html#the-attacker-has-an-agent-too",
+    "href": "lectures/09-ai-that-acts.html#the-attacker-has-an-agent-too",
+    "title": "An agent with a key can pay. Who wrote its rules?",
+    "section": "The attacker has an agent too",
+    "text": "The attacker has an agent too\nAnthropic’s red team, December 2025. 405 smart contracts that were really hacked between 2020 and 2025, each copied onto a private test chain. Ten AI models, each given an hour, a terminal and the contract’s code. Nothing real was touched.\nThen the same agents were pointed at new contracts, looking for holes nobody knew about yet.\nThis is session 5’s harness with a different job: a loop, a terminal, a goal. The question for a business is not whether it can be done, but what it costs to do."
+  },
+  {
+    "objectID": "lectures/09-ai-that-acts.html#what-the-agents-did",
+    "href": "lectures/09-ai-that-acts.html#what-the-agents-did",
+    "title": "An agent with a key can pay. Who wrote its rules?",
+    "section": "What the agents did",
+    "text": "What the agents did\n\n\n\n\n\n\n\nold hacks, reproduced\n207 of 405 · $550m in simulated funds\n\n\nhacks after the models’ training cutoff\n19 of 34 · $4.6m: not remembered, worked out\n\n\nnew contracts, unknown holes\n2,849 scanned · 2 found · $1.22 a scan\n\n\none of the two\ndrained by a real attacker four days later\n\n\n\nSimulated revenue from these exploits doubled every 1.3 months over a year. Every contract you deploy will be read by somebody’s agent within days, for the price of a coffee. The defence is the same agent, run first, by you.\n▶ Anthropic, AI agents find $4.6M in blockchain smart contract exploits, 1 Dec 2025"
+  },
+  {
     "objectID": "lectures/09-ai-that-acts.html#part-4-requests-and-laws",
     "href": "lectures/09-ai-that-acts.html#part-4-requests-and-laws",
     "title": "An agent with a key can pay. Who wrote its rules?",
@@ -4015,7 +4113,7 @@
     "href": "lectures/09-ai-that-acts.html#your-agent",
     "title": "An agent with a key can pay. Who wrote its rules?",
     "section": "Your agent",
-    "text": "Your agent\nLAB · AI Studio · your rules · 10’\nYou are the treasury of Bottega Digitale srl, Florence. It pays its suppliers in USDC. Three known suppliers, three addresses: they are in the system instruction I give you.\n\nWrite its rules: ten lines at most, in plain English. What it may do alone, what needs a person, what it must never do.\nPaste them into AI Studio as the system instruction, under the supplier list. The model: the one in your capstone.\nIt answers each invoice with one line: PAY address amount · HOLD reason · ASK who, why.\n\nIt cannot pay anyone: it writes a line. The line is the request, and you are the harness."
+    "text": "Your agent\nLAB · a Claude or ChatGPT project · your rules · 10’\nYou are the treasury of Bottega Digitale srl, Florence. It pays its suppliers in USDC. Three known suppliers, three addresses: they are in the project instructions I give you.\n\nWrite its rules: ten lines at most, in plain English. What it may do alone, what needs a person, what it must never do.\nPaste them into the project’s instructions, under the supplier list. The assistant: the one in your capstone.\nIt answers each invoice with one line: PAY address amount · HOLD reason · ASK who, why.\n\nIt cannot pay anyone: it writes a line. The line is the request, and you are the harness."
   },
   {
     "objectID": "lectures/09-ai-that-acts.html#five-invoices",

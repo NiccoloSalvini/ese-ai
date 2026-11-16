@@ -251,7 +251,7 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="muted">No code. AI Studio on your laptop, a sheet with five invoices, and your own rules as the system instruction.</span></p>
+<p><span class="muted">No code. A Claude or ChatGPT project on your laptop, a sheet with five invoices, and your own rules as its instructions.</span></p>
 </section>
 <section id="until-now-the-tool-wrote-a-sentence.-today-it-signs." class="slide level2 statement">
 <h2>Until now the tool wrote a sentence. Today it signs.</h2>
@@ -528,6 +528,41 @@ Niccolò Salvini, PhD
 </ul>
 <p><span class="red">Every tool is a door. Every door opens both ways.</span></p>
 </section>
+<section id="the-attacker-has-an-agent-too" class="slide level2">
+<h2>The attacker has an agent too</h2>
+<p>Anthropic’s red team, December 2025. <strong>405 smart contracts</strong> that were really hacked between 2020 and 2025, each copied onto a private test chain. Ten AI models, each given an hour, a terminal and the contract’s code. Nothing real was touched.</p>
+<p>Then the same agents were pointed at <strong>new</strong> contracts, looking for holes nobody knew about yet.</p>
+<p><span class="explain">This is session 5’s harness with a different job: a loop, a terminal, a goal. The question for a business is not whether it can be done, but what it costs to do.</span></p>
+</section>
+<section id="what-the-agents-did" class="slide level2">
+<h2>What the agents did</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>old hacks, reproduced</strong></td>
+<td>207 of 405 · $550m in simulated funds</td>
+</tr>
+<tr class="even">
+<td><strong>hacks after the models’ training cutoff</strong></td>
+<td>19 of 34 · $4.6m: not remembered, worked out</td>
+</tr>
+<tr class="odd">
+<td><strong>new contracts, unknown holes</strong></td>
+<td>2,849 scanned · 2 found · <strong>$1.22</strong> a scan</td>
+</tr>
+<tr class="even">
+<td><strong>one of the two</strong></td>
+<td>drained by a real attacker four days later</td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Simulated revenue from these exploits doubled every 1.3 months over a year. Every contract you deploy will be read by somebody’s agent within days, for the price of a coffee. The defence is the same agent, run first, by you.</span></p>
+<p><a href="https://www.anthropic.com/research/smart-contracts" class="muted">▶ Anthropic, <em>AI agents find $4.6M in blockchain smart contract exploits</em>, 1 Dec 2025</a></p>
+</section>
 <section id="part-4-requests-and-laws" class="slide level2 section-slide" data-background-color="#AF1F25">
 <h2><span class="section-kicker">Part 4</span> Requests and laws</h2>
 </section>
@@ -663,11 +698,11 @@ Niccolò Salvini, PhD
 </section>
 <section id="your-agent" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Your agent</h2>
-<p><span class="kicker">LAB · AI Studio · your rules · 10’</span></p>
-<p>You are the treasury of <strong>Bottega Digitale srl</strong>, Florence. It pays its suppliers in USDC. Three known suppliers, three addresses: they are in the system instruction I give you.</p>
+<p><span class="kicker">LAB · a Claude or ChatGPT project · your rules · 10’</span></p>
+<p>You are the treasury of <strong>Bottega Digitale srl</strong>, Florence. It pays its suppliers in USDC. Three known suppliers, three addresses: they are in the project instructions I give you.</p>
 <ol type="1">
 <li>Write <strong>its rules</strong>: ten lines at most, in plain English. What it may do alone, what needs a person, what it must never do.</li>
-<li>Paste them into AI Studio as the <strong>system instruction</strong>, under the supplier list. The model: the one in your capstone.</li>
+<li>Paste them into the project’s <strong>instructions</strong>, under the supplier list. The assistant: the one in your capstone.</li>
 <li>It answers each invoice with one line: <code>PAY address amount</code> · <code>HOLD reason</code> · <code>ASK who, why</code>.</li>
 </ol>
 <p><span class="muted">It cannot pay anyone: it writes a line. The line is the request, and you are the harness.</span></p>
