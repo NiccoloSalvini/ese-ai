@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">two illustrative protocols</text>
+  <text x="230" y="70" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">deposited (TVL)</text>
+  <rect x="110" y="100.0" width="100" height="200.0" fill="#a8955a"/>
+  <text x="160" y="90.0" font-size="16" font-weight="700" fill="#a8955a" text-anchor="middle">$5bn</text>
+  <text x="160" y="324" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">protocol A</text>
+  <rect x="280" y="280.0" width="100" height="20.0" fill="#2471a3"/>
+  <text x="330" y="270.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">$500m</text>
+  <text x="330" y="324" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">protocol B</text>
+  <line x1="80" y1="300" x2="420" y2="300" stroke="#7a7f85" stroke-width="1"/>
+  <text x="710" y="70" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">fees paid by users, in a year</text>
+  <rect x="590" y="280.0" width="100" height="20.0" fill="#a8955a"/>
+  <text x="640" y="270.0" font-size="16" font-weight="700" fill="#a8955a" text-anchor="middle">$12m</text>
+  <text x="640" y="324" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">protocol A</text>
+  <rect x="760" y="100.0" width="100" height="200.0" fill="#2471a3"/>
+  <text x="810" y="90.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">$120m</text>
+  <text x="810" y="324" font-size="13" font-weight="400" fill="#363636" text-anchor="middle">protocol B</text>
+  <line x1="560" y1="300" x2="900" y2="300" stroke="#7a7f85" stroke-width="1"/>
+  <line x1="30" y1="350" x2="930" y2="350" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30" y="380" font-size="16" font-weight="700" fill="#363636" text-anchor="start">Fees per $100 deposited, per year:  A $0.24  ·  B $24  —  B earns 100× more on every dollar it holds.</text>
+  <text x="30" y="406" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start">TVL is the size of the vault. Fees are what people pay to use it. Only one of them is a business.</text>
+</svg>

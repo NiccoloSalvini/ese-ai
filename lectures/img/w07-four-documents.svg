@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="30.0" y="34.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">four documents, four authors, four ways to be read wrong</text>
+  <defs>
+    <marker id="w7-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="w7-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="w7-an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <line x1="30.0" y1="108.0" x2="930.0" y2="108.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="134.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHO WRITES IT</text>
+  <line x1="30.0" y1="184.0" x2="930.0" y2="184.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="210.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHAT IT PROMISES</text>
+  <line x1="30.0" y1="260.0" x2="930.0" y2="260.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="286.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHAT GOES WRONG</text>
+  <line x1="30.0" y1="336.0" x2="930.0" y2="336.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="362.0" font-size="11" font-weight="700" fill="#363636" text-anchor="start" letter-spacing="1.1">THE QUESTION</text>
+  <text x="30.0" y="377.0" font-size="11" font-weight="700" fill="#363636" text-anchor="start" letter-spacing="1.1">FOR THE AI</text>
+  <rect x="170.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="260.5" y="73.0" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">white paper</text>
+  <text x="260.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">what the token is</text>
+  <text x="178.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the issuer, or a platform</text>
+  <text x="178.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">that lists the token</text>
+  <text x="178.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">what the token is and does</text>
+  <text x="178.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">under MiCA, with liability</text>
+  <text x="178.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a promise it never makes,</text>
+  <text x="178.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">read into it by the reader</text>
+  <text x="178.0" y="362.0" font-size="12.5" font-weight="700" fill="#AF1F25" text-anchor="start">Where does it say that?</text>
+  <text x="178.0" y="380.0" font-size="12.5" font-weight="700" fill="#AF1F25" text-anchor="start">On which page?</text>
+  <rect x="363.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#f7f2e4" stroke="#a8955a" stroke-width="2"/>
+  <text x="453.5" y="73.0" font-size="16" font-weight="700" fill="#a8955a" text-anchor="middle">governance proposal</text>
+  <text x="453.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a vote that changes rules</text>
+  <text x="371.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">any holder with enough</text>
+  <text x="371.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">tokens to propose</text>
+  <text x="371.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">new rules if YES wins:</text>
+  <text x="371.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a number in the code moves</text>
+  <text x="371.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the summary and the code</text>
+  <text x="371.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">do not say the same thing</text>
+  <text x="371.0" y="362.0" font-size="12.5" font-weight="700" fill="#a8955a" text-anchor="start">What does YES change,</text>
+  <text x="371.0" y="380.0" font-size="12.5" font-weight="700" fill="#a8955a" text-anchor="start">and who pays for it?</text>
+  <rect x="556.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="646.5" y="73.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">audit report</text>
+  <text x="646.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a check of the code</text>
+  <text x="564.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a security firm,</text>
+  <text x="564.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">paid by the project</text>
+  <text x="564.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the issues found in one</text>
+  <text x="564.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">version of the code</text>
+  <text x="564.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">read as ‘safe’ — but the</text>
+  <text x="564.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">deployed code is another</text>
+  <text x="564.0" y="362.0" font-size="12.5" font-weight="700" fill="#2471a3" text-anchor="start">What was out of scope?</text>
+  <text x="564.0" y="380.0" font-size="12.5" font-weight="700" fill="#2471a3" text-anchor="start">What is still unresolved?</text>
+  <rect x="749.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#e9f3ec" stroke="#1e8449" stroke-width="2"/>
+  <text x="839.5" y="73.0" font-size="16" font-weight="700" fill="#1e8449" text-anchor="middle">reserve report</text>
+  <text x="839.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">what backs a stablecoin</text>
+  <text x="757.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the issuer, checked by</text>
+  <text x="757.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">an accounting firm</text>
+  <text x="757.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">assets at least equal to</text>
+  <text x="757.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">tokens, on one date</text>
+  <text x="757.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a snapshot, not a promise:</text>
+  <text x="757.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">$3.3bn sat at SVB in 2023</text>
+  <text x="757.0" y="362.0" font-size="12.5" font-weight="700" fill="#1e8449" text-anchor="start">Assets against tokens:</text>
+  <text x="757.0" y="380.0" font-size="12.5" font-weight="700" fill="#1e8449" text-anchor="start">on what date, held where?</text>
+  <text x="30.0" y="438.0" font-size="15" font-weight="700" fill="#363636" text-anchor="start">The model can answer the last row. Only you can know the answer before it does.</text>
+</svg>

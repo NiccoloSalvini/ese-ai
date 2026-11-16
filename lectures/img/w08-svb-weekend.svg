@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">USDC, the weekend Silicon Valley Bank failed · March 2023</text>
+  <text x="30" y="64" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="start">OFF THE CHAIN · what the bank and the regulators did</text>
+  <text x="30" y="262" font-size="12" font-weight="700" fill="#2471a3" text-anchor="start">ON THE CHAIN · what anyone could see, live</text>
+  <text x="138.0" y="232" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">Fri 10 March</text>
+  <rect x="30" y="76" width="216" height="128" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1"/>
+  <text x="44" y="104" font-size="14" font-weight="400" fill="#363636" text-anchor="start">SVB is closed.</text>
+  <text x="44" y="126" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Late that night, Circle:</text>
+  <text x="44" y="148" font-size="14" font-weight="400" fill="#363636" text-anchor="start">$3.3bn of USDC's</text>
+  <text x="44" y="170" font-size="14" font-weight="400" fill="#363636" text-anchor="start">reserve is at SVB.</text>
+  <text x="366.0" y="232" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">Sat 11 March</text>
+  <rect x="258" y="76" width="216" height="128" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1"/>
+  <text x="272" y="104" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Weekend: banks are shut.</text>
+  <text x="272" y="126" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Nobody can turn USDC</text>
+  <text x="272" y="148" font-size="14" font-weight="400" fill="#363636" text-anchor="start">into dollars at Circle.</text>
+  <text x="594.0" y="232" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">Sun 12 March</text>
+  <rect x="486" y="76" width="216" height="128" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1"/>
+  <text x="500" y="104" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Regulators: every SVB</text>
+  <text x="500" y="126" font-size="14" font-weight="400" fill="#363636" text-anchor="start">depositor will be</text>
+  <text x="500" y="148" font-size="14" font-weight="400" fill="#363636" text-anchor="start">made whole.</text>
+  <text x="822.0" y="232" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">Mon 13 March</text>
+  <rect x="714" y="76" width="216" height="128" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1"/>
+  <text x="728" y="104" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Banks open.</text>
+  <text x="728" y="126" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Redemptions resume.</text>
+  <line x1="30" y1="244" x2="924" y2="244" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="30" y="274" width="216" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1"/>
+  <text x="44" y="302" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Holders start swapping</text>
+  <text x="44" y="324" font-size="14" font-weight="400" fill="#363636" text-anchor="start">USDC for other coins on</text>
+  <text x="44" y="346" font-size="14" font-weight="400" fill="#363636" text-anchor="start">exchanges and in pools.</text>
+  <rect x="258" y="274" width="216" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="272" y="302" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start">USDC ≈ $0.88 at the low.</text>
+  <text x="272" y="324" font-size="14" font-weight="400" fill="#363636" text-anchor="start">DAI, backed largely by</text>
+  <text x="272" y="346" font-size="14" font-weight="400" fill="#363636" text-anchor="start">USDC, ≈ $0.89.</text>
+  <rect x="486" y="274" width="216" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1"/>
+  <text x="500" y="302" font-size="14" font-weight="400" fill="#363636" text-anchor="start">The price climbs back</text>
+  <text x="500" y="324" font-size="14" font-weight="400" fill="#363636" text-anchor="start">before a single dollar</text>
+  <text x="500" y="346" font-size="14" font-weight="400" fill="#363636" text-anchor="start">has moved.</text>
+  <rect x="714" y="274" width="216" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1"/>
+  <text x="728" y="302" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Redeemed USDC is burned:</text>
+  <text x="728" y="324" font-size="14" font-weight="400" fill="#363636" text-anchor="start">supply falls.</text>
+  <text x="728" y="346" font-size="14" font-weight="400" fill="#363636" text-anchor="start">Back at $1.</text>
+  <text x="30" y="426" font-size="16" font-weight="700" fill="#363636" text-anchor="start">The ledger showed the panic within minutes. It could not show the bank.</text>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="420" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">one transaction, as a block explorer shows it · illustrative values</text>
+  <rect x="30" y="56" width="560" height="318" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="48" y="86" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Transaction hash</text>
+  <text x="212" y="86" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x9f3c41d2…e07a1e</text>
+  <line x1="44" y1="96" x2="576" y2="96" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="116" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Status</text>
+  <text x="212" y="116" font-size="14" font-weight="600" fill="#1e8449" text-anchor="start">Success</text>
+  <line x1="44" y1="126" x2="576" y2="126" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="146" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Block</text>
+  <text x="212" y="146" font-size="14" font-weight="400" fill="#363636" text-anchor="start">21,894,312</text>
+  <line x1="44" y1="156" x2="576" y2="156" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="176" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Time</text>
+  <text x="212" y="176" font-size="14" font-weight="400" fill="#363636" text-anchor="start">25 Nov 2026 · 10:41:07 UTC</text>
+  <line x1="44" y1="186" x2="576" y2="186" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="206" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Fee</text>
+  <text x="212" y="206" font-size="14" font-weight="400" fill="#363636" text-anchor="start">0.00041 ETH  (≈ $1.20)</text>
+  <line x1="44" y1="216" x2="576" y2="216" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="236" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">From</text>
+  <text x="212" y="236" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x7a25…c3D1</text>
+  <line x1="44" y1="246" x2="576" y2="246" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="266" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Tokens sent to</text>
+  <text x="212" y="266" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x3f5C…E2a1</text>
+  <line x1="44" y1="276" x2="576" y2="276" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="296" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Amount</text>
+  <text x="212" y="296" font-size="14" font-weight="400" fill="#363636" text-anchor="start">25,000 USDC</text>
+  <line x1="44" y1="306" x2="576" y2="306" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="326" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Contract called</text>
+  <text x="212" y="326" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0xA0b8…eB48  (USD Coin)</text>
+  <line x1="44" y1="336" x2="576" y2="336" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="48" y="356" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Method</text>
+  <text x="212" y="356" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">transfer(to, amount)</text>
+  <path d="M 604 68 L 614 68 L 614 214 L 604 214" fill="none" stroke="#2471a3" stroke-width="2"/>
+  <line x1="614" y1="141.0" x2="634" y2="141.0" stroke="#2471a3" stroke-width="2"/>
+  <text x="644" y="137.0" font-size="14" font-weight="700" fill="#2471a3" text-anchor="start">THE RECEIPT</text>
+  <text x="644" y="156.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">when, in which block, at what cost</text>
+  <path d="M 604 218 L 614 218 L 614 274 L 604 274" fill="none" stroke="#AF1F25" stroke-width="2"/>
+  <line x1="614" y1="246.0" x2="634" y2="246.0" stroke="#AF1F25" stroke-width="2"/>
+  <text x="644" y="242.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start">WHO</text>
+  <text x="644" y="261.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a number, never a name</text>
+  <path d="M 604 278 L 614 278 L 614 364 L 604 364" fill="none" stroke="#a8955a" stroke-width="2"/>
+  <line x1="614" y1="321.0" x2="634" y2="321.0" stroke="#a8955a" stroke-width="2"/>
+  <text x="644" y="317.0" font-size="14" font-weight="700" fill="#a8955a" text-anchor="start">WHAT, AND WHICH PROGRAM</text>
+  <text x="644" y="336.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the amount, the contract, the function</text>
+  <text x="30" y="404" font-size="16" font-weight="700" fill="#363636" text-anchor="start">Everything here is public and permanent. The only thing missing is who.</text>
+</svg>

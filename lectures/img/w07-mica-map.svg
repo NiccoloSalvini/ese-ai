@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="30.0" y="34.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">three families: the family decides who may issue, and whether anyone reads the white paper first</text>
+  <defs>
+    <marker id="w7-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="w7-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="w7-an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <rect x="30.0" y="50.0" width="900.0" height="38.0" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="480.0" y="74.0" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">a crypto-asset offered to the public, or admitted to trading, in the EU</text>
+  <line x1="433.5" y1="88.0" x2="170.0" y2="114.0" stroke="#a8955a" stroke-width="2" marker-end="url(#w7-ag)"/>
+  <rect x="30.0" y="118.0" width="280.0" height="54.0" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="170.0" y="142.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">e-money token · EMT</text>
+  <text x="170.0" y="160.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">stable against one official currency</text>
+  <rect x="30.0" y="172.0" width="280.0" height="200.0" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="42.0" y="194.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHO MAY ISSUE IT</text>
+  <text x="42.0" y="214.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">only a bank or an e-money institution</text>
+  <text x="42.0" y="258.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">ITS WHITE PAPER</text>
+  <text x="42.0" y="278.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">notified, not approved (Art. 51)</text>
+  <text x="42.0" y="322.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">FOR EXAMPLE</text>
+  <text x="42.0" y="342.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">USDC and EURC: Circle, an e-money</text>
+  <text x="42.0" y="359.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">institution licensed in France, 2024</text>
+  <line x1="480.0" y1="88.0" x2="480.0" y2="114.0" stroke="#a8955a" stroke-width="2" marker-end="url(#w7-ag)"/>
+  <rect x="340.0" y="118.0" width="280.0" height="54.0" rx="3" fill="#f7f2e4" stroke="#a8955a" stroke-width="2"/>
+  <text x="480.0" y="142.0" font-size="16" font-weight="700" fill="#a8955a" text-anchor="middle">asset-referenced · ART</text>
+  <text x="480.0" y="160.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">stable against anything else</text>
+  <rect x="340.0" y="172.0" width="280.0" height="200.0" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="352.0" y="194.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHO MAY ISSUE IT</text>
+  <text x="352.0" y="214.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">an issuer authorised by its national</text>
+  <text x="352.0" y="231.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">authority, or a bank</text>
+  <text x="352.0" y="258.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">ITS WHITE PAPER</text>
+  <text x="352.0" y="278.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">approved with the issuer's licence</text>
+  <text x="352.0" y="295.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">(Arts. 17 and 21)</text>
+  <text x="352.0" y="322.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">FOR EXAMPLE</text>
+  <text x="352.0" y="342.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a token backed by gold, or by a</text>
+  <text x="352.0" y="359.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">basket of currencies</text>
+  <line x1="526.5" y1="88.0" x2="790.0" y2="114.0" stroke="#a8955a" stroke-width="2" marker-end="url(#w7-ag)"/>
+  <rect x="650.0" y="118.0" width="280.0" height="54.0" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="790.0" y="142.0" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">other crypto-assets</text>
+  <text x="790.0" y="160.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">no stable value claimed</text>
+  <rect x="650.0" y="172.0" width="280.0" height="200.0" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="662.0" y="194.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHO MAY ISSUE IT</text>
+  <text x="662.0" y="214.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">anyone: the issuer needs no licence</text>
+  <text x="662.0" y="258.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">ITS WHITE PAPER</text>
+  <text x="662.0" y="278.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">notified, not approved (Arts. 6 and 8)</text>
+  <text x="662.0" y="322.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">FOR EXAMPLE</text>
+  <text x="662.0" y="342.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">SOL, XRP: white papers filed by a</text>
+  <text x="662.0" y="359.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">trading platform (LCX), 2025</text>
+  <text x="30.0" y="404.0" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Whoever trades, holds or swaps them for clients is a CASP and needs a licence — the transition ended 1 July 2026 at the latest.</text>
+  <text x="30.0" y="428.0" font-size="12.5" font-weight="400" fill="#7a7f85" text-anchor="start">Outside MiCA: securities (MiFID), unique NFTs, central-bank money.</text>
+</svg>

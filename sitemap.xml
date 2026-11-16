@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://niccolosalvini.github.io/ese-ai/lectures/10-to-production.html</loc>
-    <lastmod>2026-10-05T23:52:52.808Z</lastmod>
+    <loc>https://niccolosalvini.github.io/ese-ai/lectures/10-capstone-studio.html</loc>
+    <lastmod>2026-11-16T21:15:34.018Z</lastmod>
   </url>
   <url>
-    <loc>https://niccolosalvini.github.io/ese-ai/lectures/08-defi.html</loc>
-    <lastmod>2026-10-05T23:52:52.808Z</lastmod>
+    <loc>https://niccolosalvini.github.io/ese-ai/lectures/08-ai-that-looks.html</loc>
+    <lastmod>2026-11-16T21:24:12.496Z</lastmod>
   </url>
   <url>
-    <loc>https://niccolosalvini.github.io/ese-ai/lectures/06-fintech-landscape.html</loc>
-    <lastmod>2026-10-05T23:52:52.808Z</lastmod>
+    <loc>https://niccolosalvini.github.io/ese-ai/lectures/06-crypto-and-capstone.html</loc>
+    <lastmod>2026-11-16T21:21:30.285Z</lastmod>
   </url>
   <url>
     <loc>https://niccolosalvini.github.io/ese-ai/lectures/04-rag.html</loc>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://niccolosalvini.github.io/ese-ai/week-10/homework.html</loc>
-    <lastmod>2026-10-05T23:52:52.865Z</lastmod>
+    <lastmod>2026-11-16T21:08:23.510Z</lastmod>
   </url>
   <url>
     <loc>https://niccolosalvini.github.io/ese-ai/week-08/homework.html</loc>
@@ -94,7 +94,7 @@
   </url>
   <url>
     <loc>https://niccolosalvini.github.io/ese-ai/index.html</loc>
-    <lastmod>2026-11-16T13:09:59.365Z</lastmod>
+    <lastmod>2026-11-16T21:22:16.937Z</lastmod>
   </url>
   <url>
     <loc>https://niccolosalvini.github.io/ese-ai/setup.html</loc>
@@ -177,11 +177,11 @@
     <lastmod>2026-11-16T09:37:01.166Z</lastmod>
   </url>
   <url>
-    <loc>https://niccolosalvini.github.io/ese-ai/lectures/07-backtesting.html</loc>
-    <lastmod>2026-10-05T23:52:52.808Z</lastmod>
+    <loc>https://niccolosalvini.github.io/ese-ai/lectures/07-ai-that-reads.html</loc>
+    <lastmod>2026-11-16T21:23:52.872Z</lastmod>
   </url>
   <url>
-    <loc>https://niccolosalvini.github.io/ese-ai/lectures/09-responsible.html</loc>
-    <lastmod>2026-10-05T23:52:52.808Z</lastmod>
+    <loc>https://niccolosalvini.github.io/ese-ai/lectures/09-ai-that-acts.html</loc>
+    <lastmod>2026-11-16T21:25:50.654Z</lastmod>
   </url>
 </urlset>

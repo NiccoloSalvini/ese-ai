@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">address poisoning · illustrative addresses</text>
+  <text x="30" y="66" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the supplier you paid last month</text>
+  <text x="30" y="88" font-size="22" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x</text>
+  <text x="64" y="88" font-size="22" font-weight="700" fill="#a8955a" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">3f5c</text>
+  <text x="138" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">7bc4</text>
+  <text x="204" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">6124</text>
+  <text x="270" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">76c0</text>
+  <text x="336" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">efec</text>
+  <text x="402" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">f6c2</text>
+  <text x="468" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">f708</text>
+  <text x="534" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">dfc3</text>
+  <text x="600" y="88" font-size="22" font-weight="400" fill="#7a7f85" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">832c</text>
+  <text x="674" y="88" font-size="22" font-weight="700" fill="#a8955a" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">e2a1</text>
+  <text x="30" y="130" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the look-alike that sent you a tiny transfer, minutes later</text>
+  <text x="30" y="152" font-size="22" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x</text>
+  <text x="64" y="152" font-size="22" font-weight="700" fill="#a8955a" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">3f5c</text>
+  <text x="138" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">c31a</text>
+  <text x="204" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">72f6</text>
+  <text x="270" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">421f</text>
+  <text x="336" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">64ee</text>
+  <text x="402" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">9bd4</text>
+  <text x="468" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">53ab</text>
+  <text x="534" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">f694</text>
+  <text x="600" y="152" font-size="22" font-weight="400" fill="#AF1F25" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">b927</text>
+  <text x="674" y="152" font-size="22" font-weight="700" fill="#a8955a" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">e2a1</text>
+  <text x="30" y="206" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">what your wallet shows for both:</text>
+  <text x="290" y="207" font-size="22" font-weight="700" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x3f5c…e2a1</text>
+  <text x="500" y="207" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="start">identical</text>
+  <rect x="30" y="252" width="206" height="86" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1"/>
+  <text x="52" y="286" font-size="22" font-weight="700" fill="#2471a3" text-anchor="middle">1</text>
+  <text x="74" y="286" font-size="14" font-weight="400" fill="#363636" text-anchor="start">you pay</text>
+  <text x="74" y="306" font-size="14" font-weight="400" fill="#363636" text-anchor="start">the real supplier</text>
+  <line x1="238" y1="295" x2="256" y2="295" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="258" y="252" width="206" height="86" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1"/>
+  <text x="280" y="286" font-size="22" font-weight="700" fill="#2471a3" text-anchor="middle">2</text>
+  <text x="302" y="286" font-size="14" font-weight="400" fill="#363636" text-anchor="start">a look-alike sends you</text>
+  <text x="302" y="306" font-size="14" font-weight="400" fill="#363636" text-anchor="start">a tiny or zero transfer</text>
+  <line x1="466" y1="295" x2="484" y2="295" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="486" y="252" width="206" height="86" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1"/>
+  <text x="508" y="286" font-size="22" font-weight="700" fill="#2471a3" text-anchor="middle">3</text>
+  <text x="530" y="286" font-size="14" font-weight="400" fill="#363636" text-anchor="start">your history now</text>
+  <text x="530" y="306" font-size="14" font-weight="400" fill="#363636" text-anchor="start">shows both</text>
+  <line x1="694" y1="295" x2="712" y2="295" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="714" y="252" width="206" height="86" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1"/>
+  <text x="736" y="286" font-size="22" font-weight="700" fill="#AF1F25" text-anchor="middle">4</text>
+  <text x="758" y="286" font-size="14" font-weight="400" fill="#363636" text-anchor="start">next month you copy</text>
+  <text x="758" y="306" font-size="14" font-weight="400" fill="#363636" text-anchor="start">the wrong one</text>
+  <text x="30" y="380" font-size="16" font-weight="700" fill="#363636" text-anchor="start">Nothing was hacked. The ledger did exactly what it was told.</text>
+  <text x="30" y="404" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start">A machine can check every tiny transfer against your real counterparties. A person glances at eight characters.</text>
+</svg>

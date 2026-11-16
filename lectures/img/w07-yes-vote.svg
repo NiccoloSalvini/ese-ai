@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <text x="30.0" y="34.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Uniswap’s UNIfication proposal, read as parameters</text>
+  <defs>
+    <marker id="w7-ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="w7-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker>
+    <marker id="w7-an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker>
+  </defs>
+  <text x="30.0" y="66.0" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">PARAMETER</text>
+  <text x="215.0" y="66.0" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">BEFORE</text>
+  <text x="425.0" y="66.0" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">AFTER THE YES</text>
+  <text x="625.0" y="66.0" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">WHO GAINS</text>
+  <text x="790.0" y="66.0" font-size="11" font-weight="700" fill="#7a7f85" text-anchor="start" letter-spacing="1.1">WHO LOSES</text>
+  <line x1="30.0" y1="76.0" x2="930.0" y2="76.0" stroke="#AF1F25" stroke-width="2"/>
+  <text x="30.0" y="120.0" font-size="15" font-weight="700" fill="#363636" text-anchor="start">fee on a v2 trade</text>
+  <text x="30.0" y="138.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">every swap in a v2 pool</text>
+  <rect x="215.0" y="104.0" width="160.0" height="28.0" rx="0" fill="#CDBA80" stroke="#a8955a" stroke-width="1"/>
+  <text x="295.0" y="123.0" font-size="13" font-weight="700" fill="#363636" text-anchor="middle">LPs 0.30%</text>
+  <text x="215.0" y="154.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">all of it to the liquidity</text>
+  <text x="215.0" y="170.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">providers (LPs)</text>
+  <rect x="425.0" y="104.0" width="133.3" height="28.0" rx="0" fill="#CDBA80" stroke="#a8955a" stroke-width="1"/>
+  <rect x="558.3" y="104.0" width="26.7" height="28.0" rx="0" fill="#AF1F25" stroke="#AF1F25" stroke-width="1"/>
+  <text x="491.7" y="123.0" font-size="13" font-weight="700" fill="#363636" text-anchor="middle">LPs 0.25%</text>
+  <text x="425.0" y="154.0" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="start">0.05% to the protocol,</text>
+  <text x="425.0" y="170.0" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="start">used to buy UNI and burn it</text>
+  <line x1="387.0" y1="118.0" x2="413.0" y2="118.0" stroke="#a8955a" stroke-width="2" marker-end="url(#w7-ag)"/>
+  <text x="625.0" y="120.0" font-size="13" font-weight="700" fill="#1e8449" text-anchor="start">UNI holders:</text>
+  <text x="625.0" y="138.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">fees now burn UNI</text>
+  <text x="790.0" y="120.0" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start">LPs:</text>
+  <text x="790.0" y="138.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">1/6 of the fee on</text>
+  <text x="790.0" y="154.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">every trade</text>
+  <line x1="30.0" y1="196.0" x2="930.0" y2="196.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="228.0" font-size="15" font-weight="700" fill="#363636" text-anchor="start">UNI in the treasury</text>
+  <text x="30.0" y="246.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">the DAO's own tokens</text>
+  <text x="215.0" y="228.0" font-size="14" font-weight="700" fill="#363636" text-anchor="start">100M UNI held</text>
+  <text x="215.0" y="246.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">by the DAO</text>
+  <text x="425.0" y="228.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start">100M UNI burned</text>
+  <text x="425.0" y="246.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">gone for good, after a timelock</text>
+  <text x="625.0" y="228.0" font-size="13" font-weight="700" fill="#1e8449" text-anchor="start">every UNI left:</text>
+  <text x="625.0" y="246.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a larger share of supply</text>
+  <text x="790.0" y="228.0" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start">the treasury:</text>
+  <text x="790.0" y="246.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">100M fewer to spend</text>
+  <line x1="387.0" y1="224.0" x2="413.0" y2="224.0" stroke="#a8955a" stroke-width="2" marker-end="url(#w7-ag)"/>
+  <line x1="30.0" y1="282.0" x2="930.0" y2="282.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="314.0" font-size="15" font-weight="700" fill="#363636" text-anchor="start">Labs' interface fee</text>
+  <text x="30.0" y="332.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">on its app, wallet and API</text>
+  <text x="215.0" y="314.0" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Uniswap Labs charges</text>
+  <text x="215.0" y="332.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">a fee on its front end</text>
+  <text x="425.0" y="314.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="start">set to zero</text>
+  <text x="425.0" y="332.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start">Labs funded another way</text>
+  <text x="625.0" y="314.0" font-size="13" font-weight="700" fill="#1e8449" text-anchor="start">traders:</text>
+  <text x="625.0" y="332.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">who use Labs' app</text>
+  <text x="790.0" y="314.0" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start">Labs' fee revenue:</text>
+  <text x="790.0" y="332.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">now 20M UNI a year</text>
+  <line x1="387.0" y1="310.0" x2="413.0" y2="310.0" stroke="#a8955a" stroke-width="2" marker-end="url(#w7-ag)"/>
+  <line x1="30.0" y1="368.0" x2="930.0" y2="368.0" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30.0" y="400.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">The vote, 25 December 2025: about 125M UNI for, 742 against; quorum 40M.</text>
+  <text x="30.0" y="432.0" font-size="15" font-weight="700" fill="#363636" text-anchor="start">The title said UNIfication. The diff said a fee, a burn and a zero.</text>
+</svg>

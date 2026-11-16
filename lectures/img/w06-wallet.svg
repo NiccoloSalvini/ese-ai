@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="410" fill="#ffffff"/>
+  <defs><marker id="wg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="wr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="wn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="we" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="wm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">a wallet holds no coins: the coins are lines on the ledger, the wallet holds the key that signs them</text>
+  <rect x="30" y="64" width="180" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1.5"/>
+  <text x="120.0" y="92.0" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">12 words</text>
+  <text x="120.0" y="111.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">the seed phrase</text>
+  <rect x="270" y="64" width="180" height="64" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="360.0" y="92.0" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">private key</text>
+  <text x="360.0" y="111.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">signs: only you</text>
+  <rect x="510" y="64" width="180" height="64" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.5"/>
+  <text x="600.0" y="92.0" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">address</text>
+  <text x="600.0" y="111.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">receives: anyone</text>
+  <rect x="750" y="64" width="180" height="64" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1.5"/>
+  <text x="840.0" y="92.0" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">the ledger</text>
+  <text x="840.0" y="111.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">where the coins are</text>
+  <line x1="216" y1="96" x2="264" y2="96" stroke="#a8955a" stroke-width="2" marker-end="url(#wg)"/>
+  <line x1="456" y1="96" x2="504" y2="96" stroke="#a8955a" stroke-width="2" marker-end="url(#wg)"/>
+  <line x1="696" y1="96" x2="744" y2="96" stroke="#a8955a" stroke-width="2" marker-end="url(#wg)"/>
+  <text x="480" y="156" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">the wallet is the first three boxes; the coins never leave the fourth</text>
+  <line x1="30" y1="186" x2="930" y2="186" stroke="#e6e2d8" stroke-width="1"/>
+  <rect x="30" y="204" width="435" height="150" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.5"/>
+  <text x="48" y="232" font-size="12" font-weight="700" fill="#2471a3" text-anchor="start">YOU KEEP THE 12 WORDS</text>
+  <text x="48" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start">nobody can freeze it, nobody can lend it out</text>
+  <text x="48" y="290" font-size="15" font-weight="400" fill="#363636" text-anchor="start">lose the words, and the money is gone</text>
+  <text x="48" y="318" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start">there is no help desk</text>
+  <rect x="495" y="204" width="435" height="150" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="513" y="232" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="start">AN EXCHANGE KEEPS THE KEY FOR YOU</text>
+  <text x="513" y="262" font-size="15" font-weight="400" fill="#363636" text-anchor="start">you hold a password and a promise: a bank, uninsured</text>
+  <text x="513" y="290" font-size="15" font-weight="400" fill="#363636" text-anchor="start">Mt. Gox, Feb 2014: about 850,000 BTC missing</text>
+  <text x="513" y="318" font-size="15" font-weight="400" fill="#363636" text-anchor="start">FTX, Nov 2022: deposits used by its own trading firm</text>
+  <text x="30" y="392" font-size="16" font-weight="700" fill="#363636" text-anchor="start">“Not your keys, not your coins.”</text>
+  <text x="296" y="392" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start">&#8212; Andreas Antonopoulos</text>
+</svg>

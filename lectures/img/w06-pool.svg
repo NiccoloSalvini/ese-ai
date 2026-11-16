@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="380" fill="#ffffff"/>
+  <defs><marker id="plg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="plr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="pln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="ple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="plm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">a pool of 100 ETH and 300,000 USDC &#183; you buy 25 ETH &#183; x &#183; y = k, and nothing else</text>
+  <line x1="140" y1="90" x2="140" y2="320" stroke="#c9c4b8" stroke-width="1"/>
+  <line x1="140" y1="320" x2="600" y2="320" stroke="#c9c4b8" stroke-width="1"/>
+  <line x1="140" y1="258.7" x2="600" y2="258.7" stroke="#2471a3" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+  <text x="130" y="263.6666666666667" font-size="12" font-weight="400" fill="#2471a3" text-anchor="end">300,000</text>
+  <line x1="140" y1="182.0" x2="600" y2="182.0" stroke="#AF1F25" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+  <text x="130" y="187.0" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="end">400,000</text>
+  <line x1="446.7" y1="90" x2="446.7" y2="320" stroke="#2471a3" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+  <text x="446.66666666666663" y="340" font-size="12" font-weight="400" fill="#2471a3" text-anchor="middle">100</text>
+  <line x1="255.0" y1="90" x2="255.0" y2="320" stroke="#AF1F25" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+  <text x="255.0" y="340" font-size="12" font-weight="400" fill="#AF1F25" text-anchor="middle">75</text>
+  <line x1="324.0" y1="221.9" x2="569.3" y2="295.5" stroke="#2471a3" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <line x1="186.0" y1="145.2" x2="324.0" y2="218.8" stroke="#AF1F25" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <path d="M155.3 117.7 L159.2 120.7 L163.0 123.6 L166.8 126.5 L170.7 129.3 L174.5 132.1 L178.3 134.8 L182.2 137.5 L186.0 140.2 L189.8 142.8 L193.7 145.4 L197.5 147.9 L201.3 150.4 L205.2 152.9 L209.0 155.3 L212.8 157.7 L216.7 160.1 L220.5 162.4 L224.3 164.7 L228.2 167.0 L232.0 169.2 L235.8 171.4 L239.7 173.6 L243.5 175.7 L247.3 177.9 L251.2 179.9 L255.0 182.0 L258.8 184.0 L262.7 186.0 L266.5 188.0 L270.3 190.0 L274.2 191.9 L278.0 193.8 L281.8 195.7 L285.7 197.5 L289.5 199.4 L293.3 201.2 L297.2 203.0 L301.0 204.7 L304.8 206.5 L308.7 208.2 L312.5 209.9 L316.3 211.6 L320.2 213.2 L324.0 214.9 L327.8 216.5 L331.7 218.1 L335.5 219.7 L339.3 221.2 L343.2 222.8 L347.0 224.3 L350.8 225.8 L354.7 227.3 L358.5 228.8 L362.3 230.2 L366.2 231.7 L370.0 233.1 L373.8 234.5 L377.7 235.9 L381.5 237.3 L385.3 238.7 L389.2 240.0 L393.0 241.4 L396.8 242.7 L400.7 244.0 L404.5 245.3 L408.3 246.6 L412.2 247.8 L416.0 249.1 L419.8 250.3 L423.7 251.6 L427.5 252.8 L431.3 254.0 L435.2 255.2 L439.0 256.3 L442.8 257.5 L446.7 258.7 L450.5 259.8 L454.3 260.9 L458.2 262.1 L462.0 263.2 L465.8 264.3 L469.7 265.4 L473.5 266.4 L477.3 267.5 L481.2 268.6 L485.0 269.6 L488.8 270.7 L492.7 271.7 L496.5 272.7 L500.3 273.7 L504.2 274.7 L508.0 275.7 L511.8 276.7 L515.7 277.7 L519.5 278.6 L523.3 279.6 L527.2 280.5 L531.0 281.5 L534.8 282.4 L538.7 283.3 L542.5 284.2 L546.3 285.1 L550.2 286.0 L554.0 286.9 L557.8 287.8 L561.7 288.7 L565.5 289.5 L569.3 290.4 L573.2 291.2 L577.0 292.1 L580.8 292.9 L584.7 293.8 L588.5 294.6 L592.3 295.4 L596.2 296.2 L600.0 297.0" fill="none" stroke="#363636" stroke-width="2.5"/>
+  <line x1="446.7" y1="258.7" x2="255.0" y2="182.0" stroke="#a8955a" stroke-width="3.5"/>
+  <circle cx="446.7" cy="258.7" r="6" fill="#2471a3"/>
+  <circle cx="255.0" cy="182.0" r="6" fill="#AF1F25"/>
+  <text x="458.66666666666663" y="248.66666666666669" font-size="13" font-weight="700" fill="#2471a3" text-anchor="start">before</text>
+  <text x="267.0" y="172.0" font-size="13" font-weight="700" fill="#AF1F25" text-anchor="start">after</text>
+  <text x="370.0" y="364" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">ETH in the pool</text>
+  <text x="80" y="74" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start">USDC IN THE POOL</text>
+  <line x1="640" y1="76" x2="640" y2="356" stroke="#e6e2d8" stroke-width="1"/>
+  <rect x="666" y="100" width="22" height="4" fill="#2471a3"/>
+  <text x="700" y="108" font-size="17" font-weight="700" fill="#2471a3" text-anchor="start">3,000</text>
+  <text x="700" y="128" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the price on screen &#8212; the slope before</text>
+  <rect x="666" y="166" width="22" height="4" fill="#a8955a"/>
+  <text x="700" y="174" font-size="17" font-weight="700" fill="#a8955a" text-anchor="start">4,000</text>
+  <text x="700" y="194" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">what you paid per ETH: 100,000 for 25</text>
+  <rect x="666" y="232" width="22" height="4" fill="#AF1F25"/>
+  <text x="700" y="240" font-size="17" font-weight="700" fill="#AF1F25" text-anchor="start">5,333</text>
+  <text x="700" y="260" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the price you leave behind &#8212; the slope after</text>
+  <text x="666" y="316" font-size="14" font-weight="700" fill="#363636" text-anchor="start">You paid 33% over the price you saw.</text>
+  <text x="666" y="336" font-size="14" font-weight="700" fill="#363636" text-anchor="start">Nobody sold to you: the rule did.</text>
+</svg>

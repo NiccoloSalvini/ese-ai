@@ -140,19 +140,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#portfolio-60-capstone-brief" id="toc-portfolio-60-capstone-brief" class="nav-link active" data-scroll-target="#portfolio-60-capstone-brief">Portfolio (60%) — Capstone brief</a>
+  <li><a href="#portfolio-60-your-capstone" id="toc-portfolio-60-your-capstone" class="nav-link active" data-scroll-target="#portfolio-60-your-capstone">Portfolio (60%) — your capstone</a>
   <ul class="collapse">
-  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
-  <li><a href="#what-the-portfolio-is" id="toc-what-the-portfolio-is" class="nav-link" data-scroll-target="#what-the-portfolio-is">What the portfolio is</a></li>
-  <li><a href="#deliverables-in-capstone" id="toc-deliverables-in-capstone" class="nav-link" data-scroll-target="#deliverables-in-capstone">Deliverables (in <code>capstone/</code>)</a></li>
-  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#rubric-five-criteria-020-each-100-total" id="toc-rubric-five-criteria-020-each-100-total" class="nav-link" data-scroll-target="#rubric-five-criteria-020-each-100-total">Rubric — five criteria, 0–20 each, 100 total</a></li>
-  <li><a href="#what-reproducible-means-here-operational-definition" id="toc-what-reproducible-means-here-operational-definition" class="nav-link" data-scroll-target="#what-reproducible-means-here-operational-definition">What “reproducible” means here (operational definition)</a></li>
+  <li><a href="#the-idea" id="toc-the-idea" class="nav-link" data-scroll-target="#the-idea">The idea</a></li>
+  <li><a href="#three-kinds-of-capstone" id="toc-three-kinds-of-capstone" class="nav-link" data-scroll-target="#three-kinds-of-capstone">Three kinds of capstone</a></li>
+  <li><a href="#four-questions-every-idea-must-pass" id="toc-four-questions-every-idea-must-pass" class="nav-link" data-scroll-target="#four-questions-every-idea-must-pass">Four questions every idea must pass</a></li>
+  <li><a href="#the-steps" id="toc-the-steps" class="nav-link" data-scroll-target="#the-steps">The steps</a></li>
+  <li><a href="#what-to-submit" id="toc-what-to-submit" class="nav-link" data-scroll-target="#what-to-submit">What to submit</a></li>
+  <li><a href="#the-presentation" id="toc-the-presentation" class="nav-link" data-scroll-target="#the-presentation">The presentation</a></li>
+  <li><a href="#how-it-is-marked" id="toc-how-it-is-marked" class="nav-link" data-scroll-target="#how-it-is-marked">How it is marked</a></li>
   <li><a href="#ai-use-disclosure" id="toc-ai-use-disclosure" class="nav-link" data-scroll-target="#ai-use-disclosure">AI-use disclosure</a></li>
-  <li><a href="#constraints" id="toc-constraints" class="nav-link" data-scroll-target="#constraints">Constraints</a></li>
-  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
-  <li><a href="#self-check-do-all-before-the-last-commit" id="toc-self-check-do-all-before-the-last-commit" class="nav-link" data-scroll-target="#self-check-do-all-before-the-last-commit">Self-check (do all before the last commit)</a></li>
-  <li><a href="#how-this-feeds-the-capstone" id="toc-how-this-feeds-the-capstone" class="nav-link" data-scroll-target="#how-this-feeds-the-capstone">How this feeds the capstone</a></li>
+  <li><a href="#rules" id="toc-rules" class="nav-link" data-scroll-target="#rules">Rules</a></li>
+  <li><a href="#checklist" id="toc-checklist" class="nav-link" data-scroll-target="#checklist">Checklist</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -163,137 +162,250 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="portfolio-60-capstone-brief" class="level1">
-<h1>Portfolio (60%) — Capstone brief</h1>
-<p><strong>Due: Sunday 6 December 2026, 23:59 · folder <code>capstone/</code> in your repo, link posted on Moodle</strong> <strong>Final presentation: Wednesday 9 December 2026, 10:00 (proposed), ESE Florence, 15 minutes + questions</strong></p>
-<section id="goal" class="level2">
-<h2 class="anchored" data-anchor-id="goal">Goal</h2>
-<p>Deliver the AI pipeline you have been building since week 6 as one reproducible repository, and make the case — with numbers — for whether, how and at what cost it should be run for a real decision in finance. The portfolio is assessed on the content of the repo (notebooks, commits, markdown), not on PDFs or slides.</p>
+<section id="portfolio-60-your-capstone" class="level1">
+<h1>Portfolio (60%) — your capstone</h1>
+<p><strong>Due: Sunday 6 December 2026, 23:59 · Moodle ▸ <em>Turnitin</em> (the memo) and your Drive folder <code>ese-ai-fintech/capstone/</code> (everything else) · presentation Wednesday 9 December, 10:00 (proposed)</strong></p>
+<section id="the-idea" class="level2">
+<h2 class="anchored" data-anchor-id="the-idea">The idea</h2>
+<p>Pick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it: one that <strong>reads</strong> documents, <strong>looks</strong> at data, or <strong>acts</strong> within rules you wrote. Write the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.</p>
+<p>It is the midterm again, with one difference: this time you choose the question, and the tool is yours.</p>
+<p>No code. Everything is done with the tools you have used since September: Gemini Notebook, Google AI Studio, a sheet, a chat assistant, an agent you configure.</p>
 </section>
-<section id="what-the-portfolio-is" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-portfolio-is">What the portfolio is</h2>
-<p>Your capstone as proposed in week 6 and prototyped in week 9: a pipeline that takes market, on-chain or document data, produces a prediction, a retrieval-grounded answer, or a signal, and turns it into a decision with a stated cost of error. The weekly homework since week 3 is the raw material; the portfolio is the assembled, cleaned and defended version. Nothing new is required beyond what the course covered; what is required is that it all holds together.</p>
-</section>
-<section id="deliverables-in-capstone" class="level2">
-<h2 class="anchored" data-anchor-id="deliverables-in-capstone">Deliverables (in <code>capstone/</code>)</h2>
-<ol type="1">
-<li><strong>Working notebook pipeline</strong> — <code>capstone/pipeline.ipynb</code> (split into two or three notebooks only if one becomes unreadable; then <code>01_data.ipynb</code>, <code>02_model.ipynb</code>, <code>03_decision.ipynb</code>, and a <code>README.md</code> says the order). Must contain, in this order:
-<ul>
-<li>data acquisition with the three-tier loaders (live → dated snapshot in <code>capstone/data/</code> → labelled synthetic), each printing which tier it used;</li>
-<li>features and/or corpus, with the table <strong>feature → latest row of data it uses</strong> (or, for a RAG system, chunking parameters and the corpus manifest);</li>
-<li>the target with its hand check, or the golden set with its provenance;</li>
-<li>the model or LLM component, every call through the <code>llm()</code> wrapper, guarded so the notebook runs end-to-end without a key;</li>
-<li>the honest evaluation: time-ordered split or held-out golden set, <strong>baseline stated next to every score</strong>, one labelled leaky or naive variant for contrast;</li>
-<li>the decision layer: threshold on error costs, or backtest with costs and walk-forward, or eval-gated output — whichever fits your question;</li>
-<li>the cost and latency cells from week 10, with <em>your</em> token counts, volume and target;</li>
-<li>a final “Take-home” cell.</li>
-</ul></li>
-<li><strong>Decision memo</strong> — <code>capstone/memo.md</code>, ~2,000 words (1,800–2,300), with exactly these sections:
-<ul>
-<li><strong>Decision and user</strong> — who decides what, how often, what it costs to get it wrong today.</li>
-<li><strong>Data and pipeline</strong> — sources, tiers, snapshot dates, what the pipeline does in five sentences and one diagram.</li>
-<li><strong>Method and honest result</strong> — the baseline, the split or eval, the number, one table; the leaky or naive variant next to it and what the gap means.</li>
-<li><strong>Financial reasoning</strong> — why the question is worth asking in this market or protocol; what theory or evidence says about whether it should be predictable, retrievable or automatable at all; what the result costs or earns in the decision’s own units.</li>
-<li><strong>Cost of running it</strong> — cost per query with tokens in, tokens out and both prices visible; monthly figure at target volume; sensitivity to volume and tier; latency vs target; build/buy/partner in one paragraph.</li>
-<li><strong>Risks and controls</strong> — the top rows of the canvas, the red-team findings and their status, model-risk / AI Act / MiCA classification as applicable (one paragraph each, not more).</li>
-<li><strong>What would have to be true</strong> — the decision it would inform, the single strongest reason it might not work out of sample, the first gate.</li>
-<li><strong>AI-use disclosure</strong> (see below).</li>
-</ul></li>
-<li><strong>Risk &amp; controls canvas</strong> — <code>capstone/canvas.md</code>: the week-9 canvas, current. Every red-team finding from HW9 appears with a status (open / mitigated / accepted) and, if mitigated, the cell or control that does it.</li>
-<li><strong>Roadmap</strong> — <code>capstone/roadmap.md</code>: 30/60/90 days, one table with scope, gate criteria that can fail, KPI, rollback, owner. Each gate criterion names the notebook cell that produces its number. Add the readiness table from week 10 with your scores and the gates it generated.</li>
-<li><strong>Presentation</strong> — 15 minutes on Wednesday 9 December, from your laptop, following the six-beat storyline in <code>week-10/notes.md</code> (decision → pipeline → honest result → cost → what could go wrong → what would have to be true). No slide deck is required; a notebook, the memo and <code>cards.md</code>-style pages are all acceptable. Whatever you show must be in the repo by the deadline.</li>
-</ol>
-<p>Also in <code>capstone/</code>: <code>README.md</code> (what it is, how to run it in Colab in five lines, which cells need the key, snapshot dates) and <code>data/</code> with dated snapshots small enough to commit.</p>
-</section>
-<section id="submission" class="level2">
-<h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<ul>
-<li>Everything in <code>capstone/</code> on the <code>main</code> branch of your course repo by <strong>Sunday 6 December, 23:59</strong>. The last commit before the deadline is what is assessed; commits after it are ignored.</li>
-<li>On Moodle, under <em>Portfolio</em>, post the repo URL and the commit hash. Nothing else needs to be uploaded; if Moodle requires a file, upload <code>memo.md</code> as it is.</li>
-<li>Before submitting, run the <em>final checks</em> cell from <code>week-10/session.ipynb</code> against <code>capstone/</code> and fix every FAIL.</li>
-</ul>
-</section>
-<section id="rubric-five-criteria-020-each-100-total" class="level2">
-<h2 class="anchored" data-anchor-id="rubric-five-criteria-020-each-100-total">Rubric — five criteria, 0–20 each, 100 total</h2>
+<section id="three-kinds-of-capstone" class="level2">
+<h2 class="anchored" data-anchor-id="three-kinds-of-capstone">Three kinds of capstone</h2>
+<p>Choose one. The examples are only examples.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Criterion</th>
-<th>0–20</th>
+<th>The tool…</th>
+<th>built with</th>
+<th>for example</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Technical execution and reproducibility</strong></td>
-<td>The pipeline runs from a clean runtime, with and without the key; loaders have three tiers; snapshots are dated; code is readable and every line can be explained by you.</td>
+<td><strong>reads</strong> (session 7)</td>
+<td>a notebook or a saved prompt over documents</td>
+<td><em>A MiCA white-paper checker:</em> does a token’s white paper contain what the regulation requires, with the page for each answer?</td>
 </tr>
 <tr class="even">
-<td><strong>Validity of method</strong></td>
-<td>No leakage; time-ordered evaluation or properly held-out golden set; baseline stated; honest backtest or eval; the leaky variant is labelled and understood; costs and thresholds are explicit.</td>
+<td><strong>looks</strong> (session 8)</td>
+<td>an assistant over data you exported</td>
+<td><em>A stablecoin peg watcher:</em> five past depegs, what the data showed before each one, what the assistant flags and what it misses</td>
 </tr>
 <tr class="odd">
-<td><strong>Financial-domain reasoning</strong></td>
-<td>The question makes sense in its market or protocol; the result is read in the decision’s own units; the limits of predictability, retrieval or automation are argued from evidence, not asserted.</td>
-</tr>
-<tr class="even">
-<td><strong>Product framing and roadmap</strong></td>
-<td>User and decision are specific; cost, latency and build/buy/partner are quantified; readiness, gates, KPIs, rollback and owners are concrete; the canvas is current.</td>
-</tr>
-<tr class="odd">
-<td><strong>Communication</strong></td>
-<td>The memo is precise and within length; the presentation follows the storyline, lands the number at beat 3, finishes in time, and answers the questions.</td>
+<td><strong>acts</strong> (session 9)</td>
+<td>the rules of an agent, tested case by case</td>
+<td><em>A treasury agent that pays supplier invoices in USDC:</em> what it may do alone, what needs a person, tested on ten cases including traps</td>
 </tr>
 </tbody>
 </table>
-<p>A criterion scores above 15 only if the point is demonstrated by a cell, a table or a number, not by a paragraph.</p>
+<p>Your MCP case from homework 5 can be your capstone if it fits one of the three.</p>
 </section>
-<section id="what-reproducible-means-here-operational-definition" class="level2">
-<h2 class="anchored" data-anchor-id="what-reproducible-means-here-operational-definition">What “reproducible” means here (operational definition)</h2>
-<p>Your notebook is reproducible if a person who has never seen it, given only the repo: 1. opens <code>pipeline.ipynb</code> in Colab, runs <em>Runtime ▸ Restart and run all</em> <strong>without any API key</strong>, and reaches the last cell with zero errors, with every LLM-dependent cell printing that it used the mock or cached path; 2. repeats with <code>GEMINI_API_KEY</code> set and reaches the last cell with zero errors; 3. obtains the same numbers as in your memo for every non-LLM figure (returns, scores, costs, thresholds), and the same numbers up to the provider’s stated nondeterminism for LLM figures — with the snapshot tier, not the live one; 4. can find, from the file names alone, the date of every snapshot and the version of every prompt.</p>
-<p>The tutor will do exactly this on 9 December before the presentation.</p>
+<section id="four-questions-every-idea-must-pass" class="level2">
+<h2 class="anchored" data-anchor-id="four-questions-every-idea-must-pass">Four questions every idea must pass</h2>
+<p>Bring <strong>three ideas</strong> to session 8 (Wednesday 25 November), each answering these four. We keep one.</p>
+<ol type="1">
+<li><strong>Can you open the source today?</strong> The documents or the data, in your hands, not promised.</li>
+<li><strong>Can you write ten questions or cases with the answers found by hand?</strong> If you cannot, you cannot test it.</li>
+<li><strong>Does it fit in two weeks?</strong> Smaller is better. A narrow tool, well tested, beats a broad one nobody checked.</li>
+<li><strong>Is it still interesting if the answer is “no, it does not work”?</strong> If a failed test makes the project worthless, it was a bet, not a question.</li>
+</ol>
+</section>
+<section id="the-steps" class="level2">
+<h2 class="anchored" data-anchor-id="the-steps">The steps</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>By</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Three ideas</strong></td>
+<td>Wed 25 Nov</td>
+<td>Three ideas through the four questions. One is chosen in class.</td>
+</tr>
+<tr class="even">
+<td><strong>2. The plan</strong></td>
+<td>Thu 26 Nov</td>
+<td>One page: the decision and its user, the source, what the tool does, the test, the rival, the main risk, the steps to 6 December.</td>
+</tr>
+<tr class="odd">
+<td><strong>3. The test, first</strong></td>
+<td>Sat 28 Nov</td>
+<td>Ten questions or cases with the answers found by hand, each with its source, and three traps. Date the tab: the version history shows when it was written.</td>
+</tr>
+<tr class="even">
+<td><strong>4. The tool</strong></td>
+<td>Mon 30 Nov</td>
+<td>Build it. Write down the model, its context window, its knowledge cutoff and its prices, from the model card.</td>
+</tr>
+<tr class="odd">
+<td><strong>5. The draft</strong></td>
+<td>Tue 1 Dec</td>
+<td>The tool, the test run once, the memo’s headings with three lines under each. Reviewed in session 10.</td>
+</tr>
+<tr class="even">
+<td><strong>6. Run, price, write</strong></td>
+<td>Sun 6 Dec</td>
+<td>Run the test on the final version, name every miss, price it, write the memo, rehearse.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="what-to-submit" class="level2">
+<h2 class="anchored" data-anchor-id="what-to-submit">What to submit</h2>
+<p><strong>On Moodle</strong>, to the <em>Turnitin</em> submission for the portfolio, by <strong>Sunday 6 December, 23:59</strong>: the <strong>memo</strong>, PDF, about 2,000 words (1,800–2,300), with your matriculation number and not your name. Under these headings:</p>
+<ul>
+<li><strong>Decision and user:</strong> who decides what, how often, and what a wrong decision costs today.</li>
+<li><strong>What the tool does:</strong> five sentences and one diagram. The model card: which model, context window, knowledge cutoff, prices.</li>
+<li><strong>The test and the honest result:</strong> the table, the score next to the rival’s, every miss named (<em>retrieval</em>, <em>generation</em>, <em>memory</em>, or <em>rule broken</em>).</li>
+<li><strong>Cost:</strong> per question or per case, with tokens in, tokens out and both prices visible. A month at the volume your user needs, and the time saved against a person doing it by hand.</li>
+<li><strong>Risks and controls:</strong> a table with four columns: risk, control, <em>law or request</em>, who signs. Then MiCA and the EU AI Act where they apply, one paragraph each.</li>
+<li><strong>What would have to be true:</strong> for the user to rely on it, and the first thing that would make you switch it off.</li>
+<li><strong>AI-use disclosure:</strong> see below.</li>
+</ul>
+<p><strong>In your Drive folder</strong> <code>ese-ai-fintech/capstone/</code>, shared with the tutor:</p>
+<ol type="1">
+<li><strong>The tool:</strong> the link to the notebook with its sources, or the AI Studio prompt (system instruction, model, temperature), or the agent’s rules file. Someone else must be able to open it and run your test.</li>
+<li><strong>The test sheet:</strong> ten questions or cases written first, the answer found by hand with its source, the tool’s answer, hit or miss, which kind of miss, the rival’s answer. Plus the three traps.</li>
+<li><strong>The cost:</strong> the token counts you read, the prices you used, the arithmetic.</li>
+</ol>
+</section>
+<section id="the-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="the-presentation">The presentation</h2>
+<p>Fifteen minutes on Wednesday 9 December, from your laptop, with the tool live. Six beats:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Beat</th>
+<th>Minutes</th>
+<th>The question it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. The decision</td>
+<td>2</td>
+<td>Who decides what, and what does a mistake cost?</td>
+</tr>
+<tr class="even">
+<td>2. The tool</td>
+<td>3</td>
+<td>What does it do? Show it, on one real case.</td>
+</tr>
+<tr class="odd">
+<td>3. The test</td>
+<td>3</td>
+<td>How many of ten, against the rival? Say the number.</td>
+</tr>
+<tr class="even">
+<td>4. The cost</td>
+<td>2</td>
+<td>What does one answer cost, and one month?</td>
+</tr>
+<tr class="odd">
+<td>5. What could go wrong</td>
+<td>3</td>
+<td>The worst miss, the trap that worked, the control that stops it.</td>
+</tr>
+<tr class="even">
+<td>6. What would have to be true</td>
+<td>2</td>
+<td>For someone to use it on Monday morning.</td>
+</tr>
+</tbody>
+</table>
+<p>Then questions. I will pick lines of your memo and cells of your sheet at random and ask you to explain them.</p>
+</section>
+<section id="how-it-is-marked" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-is-marked">How it is marked</h2>
+<p>The five criteria of the syllabus, the same as the midterm.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Weight</th>
+<th>Criterion</th>
+<th>What earns it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>15%</td>
+<td>Problem framing and business relevance</td>
+<td>A real decision, a named user, a cost of being wrong.</td>
+</tr>
+<tr class="even">
+<td>25%</td>
+<td>Data, evidence and AI methods</td>
+<td>The test written first, answers found by hand, a rival, every miss named.</td>
+</tr>
+<tr class="odd">
+<td>20%</td>
+<td>The artefact</td>
+<td>A tool that someone else can open and run, and that does what the memo says.</td>
+</tr>
+<tr class="even">
+<td>20%</td>
+<td>Risk, ethics, governance and oversight</td>
+<td>Controls that are laws, not requests; who signs; MiCA and the AI Act where they apply; the disclosure.</td>
+</tr>
+<tr class="odd">
+<td>20%</td>
+<td>Clarity, communication and reflection</td>
+<td>A memo within length, a presentation within time, an honest account of what did not work.</td>
+</tr>
+</tbody>
+</table>
+<p>A point counts when the sheet, a number or the tool shows it, not when a paragraph asserts it.</p>
 </section>
 <section id="ai-use-disclosure" class="level2">
 <h2 class="anchored" data-anchor-id="ai-use-disclosure">AI-use disclosure</h2>
-<p>Assistants are allowed and expected. The disclosure in <code>memo.md</code> states, specifically: which assistants you used and for which parts (code, text, debugging, ideas); which parts you wrote without assistance; at least three things the assistant got wrong that you caught, with the cell or paragraph where it happened; and a sentence confirming that no confidential data from any employer was given to an AI tool. A disclosure that says “I used ChatGPT for help” is incomplete. Every line in the repo must be one you can explain; the tutor will pick lines at random on 9 December.</p>
+<p>Assistants are allowed and expected. Say which ones you used and for what (finding sources, drafting, checking, the tool itself), which parts you did without them, <strong>three things an assistant got wrong</strong> that you caught (where, and how you caught it), and one sentence confirming that nothing confidential from any employer went into an AI tool. <em>“I used ChatGPT for help”</em> is not a disclosure.</p>
 </section>
-<section id="constraints" class="level2">
-<h2 class="anchored" data-anchor-id="constraints">Constraints</h2>
+<section id="rules" class="level2">
+<h2 class="anchored" data-anchor-id="rules">Rules</h2>
 <ul>
-<li>No shuffled split, no evaluation without a baseline, no cost figure without tokens in and out shown separately.</li>
-<li>No new data source or model in the last week unless the current one is broken; polish beats scope.</li>
-<li>Snapshots must be small (&lt; 5 MB each); anything larger is fetched by code with a dated file name.</li>
-<li>Word limit for the memo is a limit: 2,300 words including tables’ captions, excluding the disclosure.</li>
+<li><strong>No real money.</strong> An agent that acts is tested on cases written in a sheet, or on a test network. Nothing in the course is investment advice.</li>
+<li><strong>Nothing confidential</strong> goes into an AI tool.</li>
+<li><strong>No new source in the last three days</strong> unless the current one is broken. Polish beats scope.</li>
+<li>Every line you submit, you can explain.</li>
 </ul>
 </section>
-<section id="scope" class="level2">
-<h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>The week-10 to week-13 hours of the course budget: 12–15 hours, most of it cleaning and defending what exists. Priority order if short of time: (1) reproducibility, (2) the honest result with its baseline, (3) the memo’s cost and “what would have to be true” sections, (4) the roadmap, (5) everything else.</p>
-</section>
-<section id="self-check-do-all-before-the-last-commit" class="level2">
-<h2 class="anchored" data-anchor-id="self-check-do-all-before-the-last-commit">Self-check (do all before the last commit)</h2>
+<section id="checklist" class="level2">
+<h2 class="anchored" data-anchor-id="checklist">Checklist</h2>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>final checks</code> cell: 9/9 mechanical checks pass on <code>capstone/</code>.</label></li>
-<li><label><input type="checkbox">Restart and run all, no key: zero errors, mock path announced.</label></li>
-<li><label><input type="checkbox">Restart and run all, with key: zero errors.</label></li>
-<li><label><input type="checkbox">Every score has a baseline next to it; the leaky/naive variant is labelled.</label></li>
-<li><label><input type="checkbox">Feature table with latest-row-used (or corpus manifest) present; hand check asserts and passes.</label></li>
-<li><label><input type="checkbox">Cost cell shows tokens_in, tokens_out, both prices, monthly figure at your volume, sensitivity table.</label></li>
-<li><label><input type="checkbox">Latency table vs a stated target.</label></li>
-<li><label><input type="checkbox"><code>canvas.md</code> has a status for every red-team finding.</label></li>
-<li><label><input type="checkbox"><code>roadmap.md</code>: each gate criterion names a cell; readiness table included.</label></li>
-<li><label><input type="checkbox">Memo has all eight sections and is within length; AI-use disclosure is specific.</label></li>
-<li><label><input type="checkbox">README explains how to run it in five lines; snapshot dates visible in file names.</label></li>
-<li><label><input type="checkbox">Rehearsed once against the clock; beat 3 fits in three minutes.</label></li>
-<li><label><input type="checkbox">Repo URL and commit hash posted on Moodle.</label></li>
+<li><label><input type="checkbox">Three ideas through the four questions, Wednesday 25 November.</label></li>
+<li><label><input type="checkbox">One-page plan, Thursday 26 November.</label></li>
+<li><label><input type="checkbox">Test written and dated before the tool was finished.</label></li>
+<li><label><input type="checkbox">Draft reviewed, Tuesday 1 December.</label></li>
+<li><label><input type="checkbox">Memo on Turnitin with your matriculation number, Sunday 6 December, 23:59.</label></li>
+<li><label><input type="checkbox">Tool, test sheet and cost in <code>ese-ai-fintech/capstone/</code>, shared with the tutor.</label></li>
+<li><label><input type="checkbox">Fifteen minutes rehearsed out loud, with a clock.</label></li>
 </ul>
-</section>
-<section id="how-this-feeds-the-capstone" class="level2">
-<h2 class="anchored" data-anchor-id="how-this-feeds-the-capstone">How this feeds the capstone</h2>
-<p>This is the capstone. Every homework since week 3 was a part of it: the evaluation layer (week 3), the RAG or agent component and its evals (weeks 4–5), the product brief (minor case), the backtest (week 7), the protocol analysis (week 8), the canvas and red-team log (week 9), the cost and roadmap cells (week 10). The portfolio is the proof that they were one project all along.</p>
 
 
 </section>
