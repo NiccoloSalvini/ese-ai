@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 408" width="960" height="408" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="408" fill="#ffffff"/>
+  <defs><marker id="ucg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="ucr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="ucn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="uce" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="ucm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">where the $175bn of USDT sits, by blockchain &#183; 16 November 2026 &#183; source: DefiLlama</text>
+  <text x="186" y="96" font-size="16" font-weight="700" fill="#363636" text-anchor="end">Tron</text>
+  <rect x="200" y="76" width="400.0" height="30" rx="3" fill="#AF1F25" stroke="#AF1F25" stroke-width="1"/>
+  <text x="610.0" y="97" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="start">$91.8bn &#183; 52%</text>
+  <text x="930" y="97" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">follow it on Tronscan</text>
+  <text x="186" y="158" font-size="16" font-weight="700" fill="#363636" text-anchor="end">Ethereum</text>
+  <rect x="200" y="138" width="290.7" height="30" rx="3" fill="#2471a3" stroke="#2471a3" stroke-width="1"/>
+  <text x="500.7" y="159" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start">$66.7bn &#183; 38%</text>
+  <text x="930" y="159" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">Etherscan, and its MCP</text>
+  <text x="186" y="220" font-size="16" font-weight="700" fill="#363636" text-anchor="end">BSC</text>
+  <rect x="200" y="200" width="40.0" height="30" rx="3" fill="#7a7f85" stroke="#7a7f85" stroke-width="1"/>
+  <text x="250.0" y="221" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="start">$9.2bn &#183; 5%</text>
+  <text x="186" y="282" font-size="16" font-weight="700" fill="#363636" text-anchor="end">Solana</text>
+  <rect x="200" y="262" width="8.7" height="30" rx="3" fill="#7a7f85" stroke="#7a7f85" stroke-width="1"/>
+  <text x="218.7" y="283" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="start">$2.0bn &#183; 1%</text>
+  <text x="186" y="344" font-size="16" font-weight="700" fill="#363636" text-anchor="end">127 other chains</text>
+  <rect x="200" y="324" width="24.4" height="30" rx="3" fill="#7a7f85" stroke="#7a7f85" stroke-width="1"/>
+  <text x="234.4" y="345" font-size="15" font-weight="700" fill="#7a7f85" text-anchor="start">$5.6bn &#183; 3%</text>
+  <text x="30" y="392" font-size="15" font-weight="700" fill="#363636" text-anchor="start">To follow USDT you need two explorers: Tronscan for half of it, Etherscan for most of the rest.</text>
+</svg>

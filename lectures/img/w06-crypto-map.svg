@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="960" height="430" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="430" fill="#ffffff"/>
+  <defs><marker id="cmg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="cmr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="cmn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="cme" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="cmm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">four layers, from the ledger to the people who use it &#183; in red, the thread of the next four sessions</text>
+  <text x="30" y="82" font-size="12" font-weight="700" fill="#2471a3" text-anchor="start">THE LEDGERS</text>
+  <text x="30" y="100" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">public, shared,</text>
+  <text x="30" y="115" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">nobody can rewrite a line</text>
+  <rect x="214.0" y="58" width="135.2" height="70" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="281.6" y="99" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">Bitcoin</text>
+  <rect x="359.2" y="58" width="135.2" height="70" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="426.8" y="99" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">Ethereum</text>
+  <rect x="504.4" y="58" width="135.2" height="70" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="572.0" y="99" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">Tron</text>
+  <rect x="649.6" y="58" width="135.2" height="70" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="717.2" y="99" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">Solana</text>
+  <rect x="794.8" y="58" width="135.2" height="70" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="862.4" y="99" font-size="16" font-weight="400" fill="#7a7f85" text-anchor="middle" font-style="italic">and others</text>
+  <line x1="30" y1="140" x2="930" y2="140" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30" y="176" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start">WHAT LIVES ON THEM</text>
+  <text x="30" y="194" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">tokens: entries</text>
+  <text x="30" y="209" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">on the ledger</text>
+  <rect x="214.0" y="152" width="232.0" height="70" rx="3" fill="#fcfbf8" stroke="#a8955a" stroke-width="1.2"/>
+  <text x="330.0" y="182" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">bitcoin, ether</text>
+  <text x="330.0" y="203" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">each chain's own coin</text>
+  <rect x="456.0" y="152" width="232.0" height="70" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2.2"/>
+  <text x="572.0" y="182" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">stablecoins</text>
+  <text x="572.0" y="203" font-size="12" font-weight="400" fill="#363636" text-anchor="middle">USDT, USDC: a dollar on the chain</text>
+  <rect x="698.0" y="152" width="232.0" height="70" rx="3" fill="#fcfbf8" stroke="#a8955a" stroke-width="1.2"/>
+  <text x="814.0" y="182" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">other tokens</text>
+  <text x="814.0" y="203" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">votes, apps, games, memes</text>
+  <line x1="30" y1="234" x2="930" y2="234" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30" y="270" font-size="12" font-weight="700" fill="#1e8449" text-anchor="start">WHERE PEOPLE USE THEM</text>
+  <text x="30" y="288" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">with an account,</text>
+  <text x="30" y="303" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">or with your own key</text>
+  <rect x="214.0" y="246" width="232.0" height="70" rx="3" fill="#eaf4ee" stroke="#1e8449" stroke-width="1.2"/>
+  <text x="330.0" y="276" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">exchanges</text>
+  <text x="330.0" y="297" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Coinbase, Binance: like a broker</text>
+  <rect x="456.0" y="246" width="232.0" height="70" rx="3" fill="#eaf4ee" stroke="#1e8449" stroke-width="1.2"/>
+  <text x="572.0" y="276" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">wallets</text>
+  <text x="572.0" y="297" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">your own key, no account</text>
+  <rect x="698.0" y="246" width="232.0" height="70" rx="3" fill="#eaf4ee" stroke="#1e8449" stroke-width="1.2"/>
+  <text x="814.0" y="276" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">DeFi apps</text>
+  <text x="814.0" y="297" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Uniswap to trade, Aave to borrow</text>
+  <line x1="30" y1="328" x2="930" y2="328" stroke="#e6e2d8" stroke-width="1"/>
+  <text x="30" y="364" font-size="12" font-weight="700" fill="#7a7f85" text-anchor="start">AROUND IT</text>
+  <text x="30" y="382" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">companies, laws,</text>
+  <text x="30" y="397" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="start" font-style="italic">and those who watch</text>
+  <rect x="214.0" y="340" width="232.0" height="70" rx="3" fill="#fcfbf8" stroke="#7a7f85" stroke-width="1.2"/>
+  <text x="330.0" y="370" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">issuers</text>
+  <text x="330.0" y="391" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Tether, Circle</text>
+  <rect x="456.0" y="340" width="232.0" height="70" rx="3" fill="#fcfbf8" stroke="#7a7f85" stroke-width="1.2"/>
+  <text x="572.0" y="370" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">regulators</text>
+  <text x="572.0" y="391" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">MiCA in the EU, the GENIUS Act in the US</text>
+  <rect x="698.0" y="340" width="232.0" height="70" rx="3" fill="#fcfbf8" stroke="#7a7f85" stroke-width="1.2"/>
+  <text x="814.0" y="370" font-size="16" font-weight="700" fill="#363636" text-anchor="middle">analytics</text>
+  <text x="814.0" y="391" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Etherscan, Arkham, Chainalysis</text>
+</svg>

@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 412" width="960" height="412" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
   <rect width="960" height="412" fill="#ffffff"/>
   <defs><marker id="vg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="vr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="vn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="vm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
-  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">one capstone, one verb &#8212; and the next three sessions, one verb each</text>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">three things AI does with a stablecoin &#183; one session each, and your capstone picks one</text>
   <rect x="30" y="56" width="280" height="288" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.5"/>
   <rect x="30" y="56" width="280" height="44" fill="#2471a3"/>
   <text x="170" y="85" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">THE TOOL READS</text>
   <text x="170" y="122" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">session 7 &#183; Thu 19 Nov</text>
   <text x="50" y="156" font-size="11" font-weight="700" fill="#2471a3" text-anchor="start">WHAT GOES IN</text>
   <text x="50" y="178" font-size="16" font-weight="700" fill="#363636" text-anchor="start">documents</text>
-  <text x="50" y="198" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">white papers, votes, audits</text>
+  <text x="50" y="198" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Tether's reports, terms, white papers</text>
   <text x="50" y="232" font-size="11" font-weight="700" fill="#2471a3" text-anchor="start">BUILT WITH</text>
-  <text x="50" y="254" font-size="15" font-weight="400" fill="#363636" text-anchor="start">a notebook or a saved prompt</text>
-  <text x="50" y="296" font-size="14" font-weight="400" fill="#2471a3" text-anchor="start" font-style="italic">does this white paper contain</text>
-  <text x="50" y="316" font-size="14" font-weight="400" fill="#2471a3" text-anchor="start" font-style="italic">what MiCA requires, page by page?</text>
+  <text x="50" y="254" font-size="15" font-weight="400" fill="#363636" text-anchor="start">a notebook or a chat project</text>
+  <text x="50" y="296" font-size="14" font-weight="400" fill="#2471a3" text-anchor="start" font-style="italic">Tether's claims against its own</text>
+  <text x="50" y="316" font-size="14" font-weight="400" fill="#2471a3" text-anchor="start" font-style="italic">reserve report, line by line</text>
   <rect x="340" y="56" width="280" height="288" rx="3" fill="#f6f1e3" stroke="#a8955a" stroke-width="1.5"/>
   <rect x="340" y="56" width="280" height="44" fill="#a8955a"/>
   <text x="480" y="85" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">THE TOOL LOOKS</text>
   <text x="480" y="122" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">session 8 &#183; Wed 25 Nov</text>
   <text x="360" y="156" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start">WHAT GOES IN</text>
   <text x="360" y="178" font-size="16" font-weight="700" fill="#363636" text-anchor="start">data</text>
-  <text x="360" y="198" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the public ledger, DefiLlama, Dune</text>
+  <text x="360" y="198" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">the public ledger, DefiLlama, Etherscan</text>
   <text x="360" y="232" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start">BUILT WITH</text>
-  <text x="360" y="254" font-size="15" font-weight="400" fill="#363636" text-anchor="start">an assistant over an export</text>
-  <text x="360" y="296" font-size="14" font-weight="400" fill="#a8955a" text-anchor="start" font-style="italic">what did the data show</text>
-  <text x="360" y="316" font-size="14" font-weight="400" fill="#a8955a" text-anchor="start" font-style="italic">before five past depegs?</text>
+  <text x="360" y="254" font-size="15" font-weight="400" fill="#363636" text-anchor="start">an assistant with Etherscan's MCP</text>
+  <text x="360" y="296" font-size="14" font-weight="400" fill="#a8955a" text-anchor="start" font-style="italic">where USDT moved, and</text>
+  <text x="360" y="316" font-size="14" font-weight="400" fill="#a8955a" text-anchor="start" font-style="italic">when Tether froze it</text>
   <rect x="650" y="56" width="280" height="288" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"/>
   <rect x="650" y="56" width="280" height="44" fill="#AF1F25"/>
   <text x="790" y="85" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">THE TOOL ACTS</text>
@@ -33,8 +33,8 @@
   <text x="670" y="198" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">limits, approvals, never-dos</text>
   <text x="670" y="232" font-size="11" font-weight="700" fill="#AF1F25" text-anchor="start">BUILT WITH</text>
   <text x="670" y="254" font-size="15" font-weight="400" fill="#363636" text-anchor="start">an agent, tested case by case</text>
-  <text x="670" y="296" font-size="14" font-weight="400" fill="#AF1F25" text-anchor="start" font-style="italic">a treasury agent paying invoices</text>
-  <text x="670" y="316" font-size="14" font-weight="400" fill="#AF1F25" text-anchor="start" font-style="italic">in USDC: what may it do alone?</text>
+  <text x="670" y="296" font-size="14" font-weight="400" fill="#AF1F25" text-anchor="start" font-style="italic">a treasury agent that pays</text>
+  <text x="670" y="316" font-size="14" font-weight="400" fill="#AF1F25" text-anchor="start" font-style="italic">suppliers in USDT, within limits</text>
   <rect x="30" y="360" width="900" height="40" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1"/>
   <text x="480" y="386" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">in every one: the test written first &#183; a rival that does no work &#183; the cost &#183; the controls</text>
 </svg>

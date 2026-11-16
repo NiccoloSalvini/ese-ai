@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 410" width="960" height="410" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="410" fill="#ffffff"/>
+  <defs><marker id="ing" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="inr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="inn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="ine" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="inm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">who earns on a dollar token &#183; interest a year, at three illustrative rates &#183; reserve: BDO, 30 Sep 2026</text>
+  <rect x="30" y="60" width="400" height="250" rx="3" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1.5"/>
+  <text x="230" y="92" font-size="14" font-weight="700" fill="#363636" text-anchor="middle">THE HOLDER</text>
+  <text x="230" y="116" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">1,000,000 USDT in a wallet, for a year</text>
+  <text x="230" y="200" font-size="64" font-weight="700" fill="#363636" text-anchor="middle">$0</text>
+  <text x="230" y="244" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">no interest: Tether pays none,</text>
+  <text x="230" y="262" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">and in the EU the law forbids it</text>
+  <rect x="470" y="60" width="460" height="250" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="700" y="92" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">TETHER</text>
+  <text x="700" y="116" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="middle">$140bn of the reserve in Treasury bills and repo</text>
+  <rect x="560" y="208.0" width="80" height="78.0" rx="3" fill="#AF1F25" stroke="#AF1F25" stroke-width="1"/>
+  <text x="600.0" y="200.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">$4.2bn</text>
+  <text x="600.0" y="302" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">at 3%</text>
+  <rect x="670" y="182.0" width="80" height="104.0" rx="3" fill="#AF1F25" stroke="#AF1F25" stroke-width="1"/>
+  <text x="710.0" y="174.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">$5.6bn</text>
+  <text x="710.0" y="302" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">at 4%</text>
+  <rect x="780" y="156.0" width="80" height="130.0" rx="3" fill="#AF1F25" stroke="#AF1F25" stroke-width="1"/>
+  <text x="820.0" y="148.0" font-size="14" font-weight="700" fill="#AF1F25" text-anchor="middle">$7.0bn</text>
+  <text x="820.0" y="302" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">at 5%</text>
+  <text x="30" y="344" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start">Every 1% of interest rate is worth $1.4bn a year to Tether. Tether reports $4.5bn of net operating profit</text>
+  <text x="30" y="362" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start">for January to September 2026: its own figure, not checked by the accountant.</text>
+  <text x="30" y="394" font-size="15" font-weight="700" fill="#363636" text-anchor="start">The holder carries the risk. The issuer keeps the interest.</text>
+</svg>

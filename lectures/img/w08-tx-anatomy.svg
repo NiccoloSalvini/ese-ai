@@ -28,10 +28,10 @@
   <text x="212" y="266" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0x3f5C…E2a1</text>
   <line x1="44" y1="276" x2="576" y2="276" stroke="#e6e2d8" stroke-width="1"/>
   <text x="48" y="296" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Amount</text>
-  <text x="212" y="296" font-size="14" font-weight="400" fill="#363636" text-anchor="start">25,000 USDC</text>
+  <text x="212" y="296" font-size="14" font-weight="400" fill="#363636" text-anchor="start">25,000 USDT</text>
   <line x1="44" y1="306" x2="576" y2="306" stroke="#e6e2d8" stroke-width="1"/>
   <text x="48" y="326" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Contract called</text>
-  <text x="212" y="326" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0xA0b8…eB48  (USD Coin)</text>
+  <text x="212" y="326" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">0xdAC1…1ec7  (Tether USD)</text>
   <line x1="44" y1="336" x2="576" y2="336" stroke="#e6e2d8" stroke-width="1"/>
   <text x="48" y="356" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Method</text>
   <text x="212" y="356" font-size="13" font-weight="400" fill="#363636" text-anchor="start" font-family="'JetBrains Mono',Menlo,monospace">transfer(to, amount)</text>

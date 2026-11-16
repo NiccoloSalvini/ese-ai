@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Niccolò Salvini, PhD">
-  <title>AI for Business &amp; FinTech – In crypto, the documents are the product.</title>
+  <title>AI for Business &amp; FinTech – How a stablecoin works, and an AI that reads it</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -37,6 +37,22 @@
     }
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-73fd24817fa7ce32d23ce1f82e36be9b.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -137,7 +153,7 @@
     <div class="slides">
 
 <section id="title-slide" data-background-color="#AF1F25" data-background-image="../images/ese-logo-white.svg" data-background-position="top 7% right 4%" data-background-size="14%" class="quarto-title-block">
-  <h1 class="title">In crypto, the documents are the product.</h1>
+  <h1 class="title">How a stablecoin works, and an AI that reads it</h1>
   <p class="subtitle">Week 7 · Thursday 19 November 2026 · 15:00–17:00 · make-up</p>
 
 <div class="quarto-title-authors">
@@ -169,22 +185,22 @@ Niccolò Salvini, PhD
 <tr class="even">
 <td>Mid + 6</td>
 <td>Wed 18 Nov</td>
-<td>the oral · crypto from the ledger up · the capstone ✓</td>
+<td>the oral · the crypto world, simply · stablecoins · the capstone ✓</td>
 </tr>
 <tr class="odd">
 <td><strong>7</strong></td>
 <td><strong>Thu 19 Nov · 15:00</strong></td>
-<td><strong>AI that reads</strong></td>
+<td><strong>how a stablecoin works · the AI that reads</strong></td>
 </tr>
 <tr class="even">
 <td>8</td>
 <td>Wed 25 Nov</td>
-<td>AI that looks at the data</td>
+<td>USDT on the chain · the AI that looks</td>
 </tr>
 <tr class="odd">
 <td>9</td>
 <td>Thu 26 Nov · 15:00</td>
-<td>AI that acts</td>
+<td>an agent that pays in USDT · the AI that acts</td>
 </tr>
 <tr class="even">
 <td>10</td>
@@ -198,19 +214,19 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p><span class="red">Today: three real documents, ten questions, and you answer every one before the model does.</span></p>
+<p><span class="red">Today: how one USDT is born and dies, what Tether says about its reserve, and an AI that reads the report for you.</span></p>
 </section>
 <section id="last-session-in-one-slide" class="slide level2">
 <h2>Last session, in one slide</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>The ledger is the currency.</strong> Each block carries the fingerprint of the one before: change the past and every later block breaks. A wallet holds a <strong>key</strong>, not money, and there is no help desk.</p>
-<p><a href="https://www.youtube.com/watch?v=bBC-nXj3Ng4">▶ 3Blue1Brown</a> · <a href="https://www.youtube.com/watch?v=_160oMzblY8">▶ Brownworth</a> · <a href="https://www.youtube.com/watch?v=vt-zXEsJ61U" class="muted">▶ Antonopoulos</a></p>
+<p><strong>The ledger</strong> is a page everyone keeps a copy of; each block carries the fingerprint of the one before. <strong>A wallet</strong> holds a key, not coins.</p>
+<p><strong>A pool</strong> sets prices by a rule, <span class="math inline">x \cdot y = k</span>. <strong>A loan</strong> with no banker: the collateral is the credit check.</p>
 </div><div class="column" style="width:50%;">
-<p>A stablecoin is <strong>a promise with a reserve behind it</strong>. A DEX is a pool and x·y = k. A loan with no banker: the collateral is the credit check.</p>
-<p><strong>Where does the yield come from?</strong> A borrower, a trader’s fee, or a token printed by the box.</p>
+<p><strong>A stablecoin:</strong> a company takes your dollar, keeps it in a reserve, and writes a token on the ledger.</p>
+<p><strong>Tether’s USDT</strong> is six of every ten dollar tokens: <strong>$175bn</strong>. It is our case until the end of the course.</p>
 </div></div>
-<p><span class="explain">At every step, three verbs for AI: it <strong>reads</strong>, it <strong>looks</strong>, it <strong>acts</strong>. Today it reads.</span></p>
+<p><span class="explain">Three verbs for AI on one coin: it <strong>reads</strong>, it <strong>looks</strong>, it <strong>acts</strong>. Today it reads.</span></p>
 </section>
 <section id="today" class="slide level2">
 <h2>Today</h2>
@@ -222,198 +238,149 @@ Niccolò Salvini, PhD
 <tbody>
 <tr class="odd">
 <td><strong>15:00</strong></td>
-<td>where we are · the four boxes, once more</td>
+<td>where we are</td>
 </tr>
 <tr class="even">
-<td><strong>15:10</strong></td>
-<td><strong>the documents crypto runs on</strong> — four kinds, how each is read wrong, one claim checked</td>
+<td><strong>15:05</strong></td>
+<td><strong>how a stablecoin works</strong>: mint, reserve, redeem, the interest, the price</td>
 </tr>
 <tr class="odd">
-<td><strong>15:30</strong></td>
-<td><strong>lab</strong> — three documents, ten questions, three traps</td>
+<td><strong>15:35</strong></td>
+<td><strong>Tether</strong>: the sentence, the fine, the company today</td>
 </tr>
 <tr class="even">
-<td><strong>16:25</strong></td>
-<td><strong>MiCA in 30 minutes</strong> — the law that made a white paper a legal document</td>
+<td><strong>15:50</strong></td>
+<td><strong>lab</strong>: an AI reads Tether’s reserve report, after you have</td>
 </tr>
 <tr class="odd">
+<td><strong>16:40</strong></td>
+<td><strong>MiCA in one picture</strong>: why USDT is not on European exchanges</td>
+</tr>
+<tr class="even">
 <td><strong>16:55</strong></td>
-<td>could this be your capstone? · three lines</td>
+<td>three lines</td>
 </tr>
 </tbody>
 </table>
-<p><span class="muted">One notebook on your laptop, one sheet next to it. You answer first; the model answers second.</span></p>
 </section>
-<section id="in-crypto-the-documents-are-the-product." class="slide level2 statement">
-<h2>In crypto, the documents are the product.</h2>
-<p><span class="muted">No factory, no branch, no shop. A token is a white paper, some code and a vote. Read those and you have read the business, and a model can almost do it for you.</span></p>
+<section id="part-1-how-a-stablecoin-works" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 1</span> How a stablecoin works</h2>
 </section>
-<section id="week-4-in-one-picture" class="slide level2">
-<h2>Week 4 in one picture</h2>
-
-<img data-src="img/rag-pipeline.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"><p><span class="explain">And the third row, worse than both: a right answer with no passage behind it, which is <strong>memory</strong>. On a token launched last month, memory is not just unverified. It is empty, and the model fills it anyway.</span></p>
-</section>
-<section id="part-1-the-documents-crypto-runs-on" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 1</span> The documents crypto runs on</h2>
-</section>
-<section id="four-documents-four-authors" class="slide level2">
-<h2>Four documents, four authors</h2>
-<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 960 450" width="95%" style="max-height:520px;display:block;margin:0 auto" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
-  <rect width="960" height="450" fill="#ffffff"></rect>
-  <text x="30.0" y="34.0" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">four documents, four authors, four ways to be read wrong</text>
-  <defs>
-    <marker id="four-ag" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"></path></marker>
-    <marker id="four-ar" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"></path></marker>
-    <marker id="four-an" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"></path></marker>
-  </defs>
-  <line x1="30.0" y1="108.0" x2="930.0" y2="108.0" stroke="#e6e2d8" stroke-width="1"></line>
-  <text x="30.0" y="134.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHO WRITES IT</text>
-  <line x1="30.0" y1="184.0" x2="930.0" y2="184.0" stroke="#e6e2d8" stroke-width="1"></line>
-  <text x="30.0" y="210.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHAT IT PROMISES</text>
-  <line x1="30.0" y1="260.0" x2="930.0" y2="260.0" stroke="#e6e2d8" stroke-width="1"></line>
-  <text x="30.0" y="286.0" font-size="11" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">WHAT GOES WRONG</text>
-  <line x1="30.0" y1="336.0" x2="930.0" y2="336.0" stroke="#e6e2d8" stroke-width="1"></line>
-  <text x="30.0" y="362.0" font-size="11" font-weight="700" fill="#363636" text-anchor="start" letter-spacing="1.1">THE QUESTION</text>
-  <text x="30.0" y="377.0" font-size="11" font-weight="700" fill="#363636" text-anchor="start" letter-spacing="1.1">FOR THE AI</text>
+<section id="from-a-dollar-to-a-token-and-back" class="slide level2">
+<h2>From a dollar to a token, and back</h2>
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 960 428" width="95%" style="max-height:520px;display:block;margin:0 auto" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="428" fill="#ffffff"></rect>
+  <defs><marker id="mrg" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"></path></marker><marker id="mrr" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"></path></marker><marker id="mrn" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"></path></marker><marker id="mre" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"></path></marker><marker id="mrm" viewbox="0 0 10 10" refx="9" refy="5" markerwidth="7" markerheight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"></path></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">how a USDT is born, travels and dies · the example: a trading firm with $1m · fees: tether.to, November 2026</text>
+  <rect x="30" y="80" width="220" height="90" rx="3" fill="#fcfbf8" stroke="#363636" stroke-width="1.5"></rect>
+  <text x="140.0" y="110" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">A VERIFIED CUSTOMER</text>
+  <text x="140.0" y="132" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">an exchange, a trading firm</text>
+  <rect x="370" y="80" width="220" height="90" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"></rect>
+  <text x="480.0" y="110" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">TETHER</text>
+  <text x="480.0" y="132" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">the issuer</text>
+  <rect x="710" y="80" width="220" height="90" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.5"></rect>
+  <text x="820.0" y="110" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">THE LEDGER</text>
+  <text x="820.0" y="132" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">USDT on Tron, Ethereum and others</text>
+  <rect x="370" y="262" width="220" height="90" rx="3" fill="#fcfbf8" stroke="#a8955a" stroke-width="1.5"></rect>
+  <text x="480.0" y="292" font-size="15" font-weight="700" fill="#a8955a" text-anchor="middle">THE RESERVE</text>
+  <text x="480.0" y="314" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">Treasury bills, repo, gold, bitcoin</text>
+  <rect x="710" y="262" width="220" height="90" rx="3" fill="#eaf4ee" stroke="#1e8449" stroke-width="1.5"></rect>
+  <text x="820.0" y="292" font-size="15" font-weight="700" fill="#1e8449" text-anchor="middle">EVERYONE ELSE</text>
+  <text x="820.0" y="314" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">exchanges, traders, wallets</text>
   <g class="fragment" data-fragment-index="1">
-    <rect x="170.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"></rect>
-    <text x="260.5" y="73.0" font-size="16" font-weight="700" fill="#AF1F25" text-anchor="middle">white paper</text>
-    <text x="260.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">what the token is</text>
-    <text x="178.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the issuer, or a platform</text>
-    <text x="178.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">that lists the token</text>
-    <text x="178.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">what the token is and does</text>
-    <text x="178.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">under MiCA, with liability</text>
-    <text x="178.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a promise it never makes,</text>
-    <text x="178.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">read into it by the reader</text>
-    <text x="178.0" y="362.0" font-size="12.5" font-weight="700" fill="#AF1F25" text-anchor="start">Where does it say that?</text>
-    <text x="178.0" y="380.0" font-size="12.5" font-weight="700" fill="#AF1F25" text-anchor="start">On which page?</text>
+  <line x1="252" y1="108" x2="366" y2="108" stroke="#2471a3" stroke-width="2" marker-end="url(#mrn)"></line>
+  <text x="309" y="100" font-size="12" font-weight="700" fill="#2471a3" text-anchor="middle">$1,000,000</text>
+  <text x="309" y="124" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle">by bank wire</text>
+  <line x1="592" y1="108" x2="706" y2="108" stroke="#2471a3" stroke-width="2" marker-end="url(#mrn)"></line>
+  <text x="649" y="100" font-size="12" font-weight="700" fill="#2471a3" text-anchor="middle">999,000 USDT</text>
+  <text x="649" y="124" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle">fee 0.1%</text>
   </g>
   <g class="fragment" data-fragment-index="2">
-    <rect x="363.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#f7f2e4" stroke="#a8955a" stroke-width="2"></rect>
-    <text x="453.5" y="73.0" font-size="16" font-weight="700" fill="#a8955a" text-anchor="middle">governance proposal</text>
-    <text x="453.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a vote that changes rules</text>
-    <text x="371.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">any holder with enough</text>
-    <text x="371.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">tokens to propose</text>
-    <text x="371.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">new rules if YES wins:</text>
-    <text x="371.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a number in the code moves</text>
-    <text x="371.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the summary and the code</text>
-    <text x="371.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">do not say the same thing</text>
-    <text x="371.0" y="362.0" font-size="12.5" font-weight="700" fill="#a8955a" text-anchor="start">What does YES change,</text>
-    <text x="371.0" y="380.0" font-size="12.5" font-weight="700" fill="#a8955a" text-anchor="start">and who pays for it?</text>
+  <line x1="480" y1="172" x2="480" y2="258" stroke="#a8955a" stroke-width="2" marker-end="url(#mrg)"></line>
+  <text x="492" y="210" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start">the dollars buy</text>
+  <text x="492" y="226" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start">Treasury bills</text>
+  <text x="480" y="372" font-size="12" font-weight="400" fill="#a8955a" text-anchor="middle" font-style="italic">the interest is Tether's, not the holder's</text>
   </g>
   <g class="fragment" data-fragment-index="3">
-    <rect x="556.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"></rect>
-    <text x="646.5" y="73.0" font-size="16" font-weight="700" fill="#2471a3" text-anchor="middle">audit report</text>
-    <text x="646.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a check of the code</text>
-    <text x="564.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a security firm,</text>
-    <text x="564.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">paid by the project</text>
-    <text x="564.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the issues found in one</text>
-    <text x="564.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">version of the code</text>
-    <text x="564.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">read as ‘safe’ — but the</text>
-    <text x="564.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">deployed code is another</text>
-    <text x="564.0" y="362.0" font-size="12.5" font-weight="700" fill="#2471a3" text-anchor="start">What was out of scope?</text>
-    <text x="564.0" y="380.0" font-size="12.5" font-weight="700" fill="#2471a3" text-anchor="start">What is still unresolved?</text>
+  <line x1="820" y1="172" x2="820" y2="258" stroke="#1e8449" stroke-width="2" marker-end="url(#mre)"></line>
+  <text x="832" y="210" font-size="12" font-weight="700" fill="#1e8449" text-anchor="start">it moves on:</text>
+  <text x="832" y="226" font-size="12" font-weight="700" fill="#1e8449" text-anchor="start">seconds, any hour</text>
   </g>
   <g class="fragment" data-fragment-index="4">
-    <rect x="749.0" y="52.0" width="181.0" height="48.0" rx="3" fill="#e9f3ec" stroke="#1e8449" stroke-width="2"></rect>
-    <text x="839.5" y="73.0" font-size="16" font-weight="700" fill="#1e8449" text-anchor="middle">reserve report</text>
-    <text x="839.5" y="90.0" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">what backs a stablecoin</text>
-    <text x="757.0" y="134.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">the issuer, checked by</text>
-    <text x="757.0" y="152.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">an accounting firm</text>
-    <text x="757.0" y="210.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">assets at least equal to</text>
-    <text x="757.0" y="228.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">tokens, on one date</text>
-    <text x="757.0" y="286.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">a snapshot, not a promise:</text>
-    <text x="757.0" y="304.0" font-size="12.5" font-weight="400" fill="#363636" text-anchor="start">$3.3bn sat at SVB in 2023</text>
-    <text x="757.0" y="362.0" font-size="12.5" font-weight="700" fill="#1e8449" text-anchor="start">Assets against tokens:</text>
-    <text x="757.0" y="380.0" font-size="12.5" font-weight="700" fill="#1e8449" text-anchor="start">on what date, held where?</text>
+  <line x1="706" y1="150" x2="592" y2="150" stroke="#AF1F25" stroke-width="2" marker-end="url(#mrr)"></line>
+  <text x="649" y="166" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="middle">handed back</text>
+  <text x="649" y="182" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle">out of circulation</text>
+  <line x1="366" y1="150" x2="252" y2="150" stroke="#AF1F25" stroke-width="2" marker-end="url(#mrr)"></line>
+  <text x="309" y="166" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="middle">$998,000 back</text>
+  <text x="309" y="182" font-size="11" font-weight="400" fill="#7a7f85" text-anchor="middle">fee 0.1%, at least $1,000</text>
   </g>
   <g class="fragment" data-fragment-index="5">
-    <text x="30.0" y="438.0" font-size="15" font-weight="700" fill="#363636" text-anchor="start">The model can answer the last row. Only you can know the answer before it does.</text>
+  <text x="30" y="412" font-size="15" font-weight="700" fill="#363636" text-anchor="start">Only verified customers mint and redeem, from $100,000. Everyone else buys and sells USDT on an exchange.</text>
   </g>
 </svg>
 </section>
-<section id="the-white-paper-from-a-pitch-to-evidence" class="slide level2">
-<h2>The white paper: from a pitch to evidence</h2>
-<p>Bitcoin’s white paper was nine pages addressed to nobody in particular. By 2017, a white paper was how you raised money: a PDF, a website, a token sale.</p>
-<p>Under <strong>MiCA</strong> the same PDF is a <strong>legal document</strong>. It has a fixed structure, it is sent to a regulator, the management signs it, and holders can sue if it misleads them.</p>
-<p><span class="explain">The question for the AI changes with it: no longer <em>“summarise this”</em>, but <em>“where does it say that, and is it allowed to say it?”</em></span></p>
-</section>
-<section id="the-governance-proposal-a-vote-that-rewrites-the-rules" class="slide level2">
-<h2>The governance proposal: a vote that rewrites the rules</h2>
-<p>Remember the box: it issues an <strong>X token</strong>, and X holders vote on what the box does. <a href="https://www.youtube.com/watch?v=C6nAxiym9oc" class="muted">▶ Coffeezilla</a></p>
-<p>That vote is a <strong>governance proposal</strong>. First a forum post, then a temperature check, then a vote on-chain. If YES wins, code changes a number.</p>
-<p>The question is never <em>“is this a good proposal?”</em> It is four lines:</p>
-<p><strong>the parameter · before → after · who gains · who loses</strong></p>
-</section>
-<section id="what-does-a-yes-vote-change" class="slide level2">
-<h2>What does a YES vote change?</h2>
-<p>Uniswap, December 2025. A v2 pool charges <strong>0.30%</strong> on every trade, and all of it goes to the liquidity providers. The proposal switches on a <strong>protocol fee of 0.05%</strong>, taken out of that 0.30%.</p>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>A <strong>$1 million</strong> trade in that pool. How much do the LPs get before the vote, and how much after? Where does the rest go?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><strong>$3,000</strong> before. <strong>$2,500</strong> after, and <strong>$500</strong> buys UNI and burns it. One vote moved a sixth of every LP’s fee to the token holders.</p>
-</div>
-</section>
-<section id="unification-read-as-parameters" class="slide level2">
-<h2>UNIfication, read as parameters</h2>
+<section id="what-is-in-the-reserve" class="slide level2">
+<h2>What is in the reserve</h2>
 
-<img data-src="img/w07-yes-vote.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="the-audit-report-what-was-checked-and-what-was-not" class="slide level2">
-<h2>The audit report: what was checked, and what was not</h2>
-<p>A security firm reads <strong>one version</strong> of the code and lists what it found. Each finding gets a severity and a status: fixed, partly fixed, or acknowledged and left as it is.</p>
-<p>Uniswap v4 core, July 2024, by OpenZeppelin: <strong>16 issues · 12 resolved · 2 partially resolved</strong>.</p>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>How many of the 16 are <strong>not fully fixed</strong>?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>Four: the 2 partially resolved and the 2 left open. The quick answer is two.</p>
-<p><span class="explain">An audit is not a certificate. It is a dated list, for one commit, written by a firm the project paid. Ask which commit, what was out of scope, and what is still open.</span></p>
-</div>
+<img data-src="img/w07-reserve.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
+<section id="how-the-issuer-makes-money" class="slide level2">
+<h2>How the issuer makes money</h2>
+<p>The holder of a USDT earns <strong>nothing</strong>. The reserve behind it earns interest, and the interest is Tether’s.</p>
+
+<img data-src="img/w07-interest.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:88.0%"></section>
+<section id="why-the-price-can-slip" class="slide level2">
+<h2>Why the price can slip</h2>
+<p>Only verified customers can hand USDT back to Tether. Everyone else sells it <strong>on an exchange</strong>, to whoever is buying.</p>
+<p>On a normal day the gap is a fraction of a cent: if USDT trades below a dollar, a customer buys it cheap and redeems it at par, and the price comes back. On a bad day, more people want out than the customers can absorb.</p>
+
+<img data-src="img/w06-peg.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="two-stablecoins-two-ways-of-doing-it" class="slide level2">
+<h2>Two stablecoins, two ways of doing it</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 39%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>USDT</strong> · Tether</th>
+<th><strong>USDC</strong> · Circle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>in circulation</strong></td>
+<td>$175bn</td>
+<td>$69bn</td>
+</tr>
+<tr class="even">
+<td><strong>the reserve</strong></td>
+<td>Treasury bills and repo, plus gold, bitcoin and secured loans</td>
+<td>cash in banks and a Treasury fund run by BlackRock</td>
+</tr>
+<tr class="odd">
+<td><strong>the report</strong></td>
+<td>quarterly, checked by BDO</td>
+<td>monthly, checked by Deloitte</td>
+</tr>
+<tr class="even">
+<td><strong>in the EU</strong></td>
+<td>not authorised under MiCA</td>
+<td>authorised: an e-money licence in France</td>
+</tr>
+<tr class="odd">
+<td><strong>can it freeze a wallet?</strong></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p><span class="explain">Same promise, one dollar for one token. Different reserve, different paperwork, different regulator. Sources: DefiLlama, 16 Nov 2026; the issuers’ reports.</span></p>
 </section>
-<section id="the-reserve-report-a-photograph-not-a-promise" class="slide level2">
-<h2>The reserve report: a photograph, not a promise</h2>
-<p>Circle publishes a <strong>monthly report</strong> on the reserves behind USDC, checked by an accounting firm. The reserves are mostly short-term US Treasury bills and overnight repos, plus cash in banks.</p>
-<p>In March 2023, part of that cash was at <strong>Silicon Valley Bank</strong>. Every report could have been accurate, and USDC still fell to about <strong>$0.88</strong> over a weekend.</p>
-<div title="Question">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Question</strong></p>
-</div>
-<div class="callout-content">
-<p>So what should the AI be asked? Not <em>“is it backed?”</em> but: <strong>backed by what, held where, on which date?</strong></p>
-</div>
-</div>
-</div>
-</div>
+<section id="part-2-tether-the-sentence-and-the-documents" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 2</span> Tether: the sentence and the documents</h2>
 </section>
 <section id="fully-backed" class="slide level2">
 <h2>“Fully backed”</h2>
@@ -421,22 +388,12 @@ Niccolò Salvini, PhD
 <p>In October 2021 the US CFTC fined Tether <strong>$41 million</strong>. Over 26 months, 2016 to 2018, Tether had held enough dollars to back every token in circulation on only <strong>27.6%</strong> of the days; the rest of the time it leaned on unsecured receivables and assets that were not dollars. It settled without admitting or denying.</p>
 <p><span class="explain">The claim was one sentence anyone could read. The evidence was in documents nobody outside could read. Today the documents are public, and checking one against the other is a job for a model that reads.</span></p>
 </section>
-<section id="the-claim-against-the-document" class="slide level2 lab" data-background-color="#2471a3">
-<h2>The claim against the document</h2>
-<p><span class="kicker">LAB · Gemini Notebook · five minutes</span></p>
-<p>A fresh notebook, two sources: <strong>Tether’s transparency page</strong>, which makes the claims, and its <strong>latest quarterly reserve report</strong>, the accountants’ PDF.</p>
-<blockquote>
-<p>For each claim on the page, quote the line of the report that supports it, with the page. If no line supports it, write “not in the report”.</p>
-</blockquote>
-<p>Then check two of the quotes against the PDF yourself. <em>Backed</em> by what, held where, on which date?</p>
-<p><span class="explain">In the EU this check is the law: marketing must be <strong>consistent with the white paper</strong> (MiCA Art. 7, and Arts. 29 and 53 for stablecoins). A compliance desk does it by hand, claim by claim. A model can do the first pass; a person signs the last.</span></p>
-</section>
 <section id="the-company-behind-the-sentence" class="slide level2">
 <h2>The company behind the sentence</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Tether today.</strong> About <strong>$186bn</strong> of USDT in circulation at the end of 2025, and over <strong>$10bn</strong> of net profit that year.</p>
-<p>Its co-founder, <strong>Giancarlo Devasini</strong>, is Italian. Forbes counts him the richest person in Italy, about $89bn, on an estimated 45% of Tether; Tether does not publish who owns it.</p>
+<p>The man behind it, <strong>Giancarlo Devasini</strong>, is Italian. Forbes estimates he owns about 45% of Tether and counts him the richest person in Italy; Tether does not publish who owns it.</p>
 <p>It already held over 10% of <strong>Juventus</strong> when, in December 2025, it offered to buy Exor’s 65%. Exor said no.</p>
 </div><div class="column" style="width:50%;">
 <p><strong>Where the profit goes: AI.</strong></p>
@@ -446,10 +403,89 @@ Niccolò Salvini, PhD
 <li><strong>GPUs</strong> for AI, through Northern Data and Rumble.</li>
 </ul>
 </div></div>
-<p><span class="explain">A stablecoin earns the interest on its reserve (session 6). Tether spends part of it betting that AI will run locally, on open models: session 5’s map, from the last company you would expect.</span></p>
+<p><span class="explain">A stablecoin earns the interest on its reserve. Tether spends part of it betting that AI will run locally, on open models: session 5’s map, from the last company you would expect.</span></p>
 </section>
-<section id="part-2-the-lab" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 2</span> The lab</h2>
+<section id="what-tether-publishes-and-what-it-does-not" class="slide level2">
+<h2>What Tether publishes, and what it does not</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>it publishes</th>
+<th>what it is</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>a reserve report, every quarter</strong></td>
+<td>an accountant (BDO) checks the reserve <strong>on one day</strong> and signs: a photograph, not a film</td>
+</tr>
+<tr class="even">
+<td><strong>the transparency page</strong></td>
+<td>the total issued and the total held, updated often, checked by nobody</td>
+</tr>
+<tr class="odd">
+<td><strong>its terms and fees</strong></td>
+<td>who may mint and redeem, at what fee, and when Tether may refuse or freeze</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>it does not publish</th>
+<th>why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>who owns it</strong></td>
+<td>the estimates come from Forbes, not from Tether</td>
+</tr>
+<tr class="even">
+<td><strong>a checked profit</strong></td>
+<td>the profit in its press releases is its own figure: the accountant checks the reserve, not the profit</td>
+</tr>
+</tbody>
+</table>
+<p><span class="muted">BDO’s report adds one line: Tether’s 2025 accounts were audited, and approved on 13 August 2026.</span></p>
+</section>
+<section id="part-3-lab-an-ai-reads-tether" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 3</span> Lab: an AI reads Tether</h2>
+</section>
+<section id="two-documents-one-notebook" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Two documents, one notebook</h2>
+<p><span class="kicker">LAB · Gemini Notebook · fifty minutes</span></p>
+<ol type="1">
+<li><strong>Tether’s latest reserve report</strong>: BDO’s PDF on 30 September 2026, eleven pages.</li>
+<li><strong>Tether’s fees page</strong>: who may mint and redeem, from how much, at what fee.</li>
+</ol>
+<p>One notebook, these two sources and nothing else. Both are public and free.</p>
+<p><span class="muted">The same work a compliance analyst does on a stablecoin every quarter. Week 4’s method: you answer first, the model second.</span></p>
+</section>
+<section id="first-your-answers" class="slide level2 lab" data-background-color="#2471a3">
+<h2>First, your answers</h2>
+<p><span class="kicker">LAB · your sheet · fifteen minutes · no AI</span></p>
+<p>Eight facts, found by hand, each with its <strong>page</strong>:</p>
+<p>the date of the report · who signed it · total assets · USDT issued · the excess reserve · the share in Treasury bills · what is not cash or bills · the minimum you can redeem</p>
+<p>Columns: fact · your answer · page · the notebook’s answer · its page · hit or miss · which kind.</p>
+</section>
+<section id="then-the-notebook-and-three-traps" class="slide level2 lab" data-background-color="#2471a3">
+<h2>Then the notebook, and three traps</h2>
+<p><span class="kicker">LAB · twenty-five minutes</span></p>
+<p>Ask the notebook the same eight, one at a time, and fill the sheet. Then three questions written to trip it:</p>
+<ol type="1">
+<li><strong>A promise the documents do not make.</strong> Ask whether USDT is backed only by dollars.</li>
+<li><strong>A number inside a table.</strong> A figure that appears only in one cell of the report.</li>
+<li><strong>A claim from the website.</strong> Paste one sentence from Tether’s home page and ask which line of the report supports it.</li>
+</ol>
 </section>
 <section id="what-you-see-is-not-what-the-model-reads" class="slide level2">
 <h2>What you see is not what the model reads</h2>
@@ -517,72 +553,6 @@ Niccolò Salvini, PhD
   </g>
 </svg>
 </section>
-<section id="it-has-already-happened" class="slide level2">
-<h2>It has already happened</h2>
-<ul>
-<li>An image with <strong>faint text</strong>: the model follows it instead of describing the picture.</li>
-<li>A web page with <strong>white text</strong>: asked for a summary, the assistant passes on a link the page planted.</li>
-<li>A <strong>shared document</strong> whose hidden instructions try to send your data out.</li>
-</ul>
-<p><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g" class="muted">▶ Karpathy, <em>Intro to Large Language Models</em>, the security chapter</a></p>
-<p><span class="explain">Karpathy calls it cat and mouse. In a white paper, the line the model obeys sits inside a legal document, and you cannot see it.</span></p>
-</section>
-<section id="three-documents" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Three documents</h2>
-<p><span class="kicker">LAB · Gemini Notebook · fifty-five minutes</span></p>
-<ol type="1">
-<li><strong>A white paper</strong> from ESMA’s MiCA register: a real token, filed in the EU.</li>
-<li><strong>A governance proposal</strong>: Uniswap’s UNIfication, as it was voted.</li>
-<li><strong>An audit report</strong>: Uniswap v4 core.</li>
-</ol>
-<p>One notebook, these three sources and nothing else. Every file is public, and you download all three in five minutes.</p>
-</section>
-<section id="first-the-answers" class="slide level2 lab" data-background-color="#2471a3">
-<h2>First, the answers</h2>
-<p><span class="kicker">LAB · your sheet · fifteen minutes · no AI</span></p>
-<p>Write ten questions across the three documents, each with the answer you found by hand and its <strong>page</strong>.</p>
-<p>Columns: question · your answer · page · the notebook’s answer · its page · hit or miss · which kind.</p>
-<p>The rival: <strong>you with Ctrl+F</strong>, timed.</p>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>How many of ten will the notebook get right, <strong>with the right page</strong>? Write the number before the first question.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="three-traps" class="slide level2 lab" data-background-color="#2471a3">
-<h2>Three traps</h2>
-<p><span class="kicker">LAB · three questions written to fail</span></p>
-<ol type="1">
-<li><strong>A promise the document does not make.</strong> Ask for a return, a buyback or a listing the white paper never mentions. Does the notebook say <em>“it does not say”</em>?</li>
-<li><strong>A number inside a table.</strong> A figure that appears only in a table cell. Right number, right row?</li>
-<li><strong>The hidden line.</strong> A copy of the white paper with one white line addressed to the assistant. It contradicts the statement MiCA requires on page one.</li>
-</ol>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>Trap 3: the notebook <strong>repeats</strong> the line · <strong>ignores</strong> it · <strong>flags</strong> it. One guess, one reason.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="name-every-miss" class="slide level2 lab" data-background-color="#2471a3">
 <h2>Name every miss</h2>
 <p><span class="kicker">LAB · the sheet · one word per miss</span></p>
@@ -612,169 +582,35 @@ Niccolò Salvini, PhD
 </tr>
 </tbody>
 </table>
-<p>Then the score: hits out of ten, the notebook against Ctrl+F, and the minutes each one took.</p>
+<p>Then the score: hits out of eight, and the minutes it took you against the minutes it took the notebook.</p>
 </section>
 <section id="the-model-reads-every-line-with-the-same-trust.-you-must-not." class="slide level2 statement">
 <h2>The model reads every line with the same trust. You must not.</h2>
-<p><span class="muted">A person skims, doubts and notices that a page looks odd. A model reads a white line and a signed paragraph with the same weight. The test you wrote first is the only thing that can tell them apart.</span></p>
+<p><span class="muted">A person skims, doubts and notices that a page looks odd. A model reads a footnote and a signature with the same weight. The answers you wrote first are the only thing that can tell them apart.</span></p>
 </section>
-<section id="part-3-mica-in-30-minutes" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 3</span> MiCA in 30 minutes</h2>
+<section id="part-4-mica-in-one-picture" class="slide level2 section-slide" data-background-color="#AF1F25">
+<h2><span class="section-kicker">Part 4</span> MiCA in one picture</h2>
 </section>
-<section id="one-regulation-three-dates" class="slide level2">
-<h2>One regulation, three dates</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>30 June 2024</strong></td>
-<td>the stablecoin rules apply: ARTs and EMTs</td>
-</tr>
-<tr class="even">
-<td><strong>30 December 2024</strong></td>
-<td>the rest of MiCA applies: white papers, trading platforms, every crypto firm</td>
-</tr>
-<tr class="odd">
-<td><strong>1 July 2026</strong></td>
-<td>the last transition ends: a crypto firm without a MiCA licence must stop</td>
-</tr>
-</tbody>
-</table>
-<p>Before MiCA, each country had its own rules, or none. Now <strong>one licence counts in all 27</strong>: the passport.</p>
-<p><span class="explain">MiCA does not decide whether crypto is a good idea. It decides who must say what, to whom, in writing. A model that reads can check exactly that.</span></p>
-</section>
-<section id="three-families" class="slide level2">
-<h2>Three families</h2>
+<section id="three-families-of-crypto-asset" class="slide level2">
+<h2>Three families of crypto-asset</h2>
 
 <img data-src="img/w07-mica-map.svg" class="quarto-figure quarto-figure-center r-stretch" style="width:95.0%"></section>
-<section id="what-a-mica-white-paper-must-say" class="slide level2">
-<h2>What a MiCA white paper must say</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>on page one</strong></td>
-<td>no authority in the EU has approved it, and the offeror alone is responsible</td>
-</tr>
-<tr class="even">
-<td><strong>about value</strong></td>
-<td>no claims about future value, only the warning that you may lose it all</td>
-</tr>
-<tr class="odd">
-<td><strong>who signs</strong></td>
-<td>the management body: fair, clear, not misleading</td>
-</tr>
-<tr class="even">
-<td><strong>the regulator</strong></td>
-<td>notified, not approved: nobody checks it before you read it</td>
-</tr>
-<tr class="odd">
-<td><strong>if it is wrong</strong></td>
-<td>the issuer is liable to holders, the managers can be too, and a clause excluding liability is void (Art. 15)</td>
-</tr>
-</tbody>
-</table>
-<p><span class="explain">Five lines a notebook can check on any white paper, with the page for each. Since 23 December 2025 the file must also be machine-readable: XHTML with tagged fields.</span></p>
-</section>
-<section id="allowed" class="slide level2">
-<h2>Allowed?</h2>
-<div title="Bet">
-<div class="callout callout-important callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Bet</strong></p>
-</div>
-<div class="callout-content">
-<p>A white paper in ESMA’s register says: <em>“We expect the token to double in value by 2027.”</em> ESMA’s register carries it. Is the sentence <strong>allowed</strong> under MiCA? Yes or no, and which line on the last slide decides it.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><strong>No.</strong> A white paper may make no claim about future value except the warning that the value can be lost. Being in the register means it was <strong>notified</strong>, not that anyone read it. The register says so itself: <em>not reviewed or approved</em>.</p>
-</div>
-</section>
 <section id="stablecoins-in-the-eu-one-licence-one-delisting" class="slide level2">
 <h2>Stablecoins in the EU: one licence, one delisting</h2>
 <ul>
-<li><strong>An EMT can come only from a bank or an e-money institution.</strong> Circle got an e-money licence in France, announced 1 July 2024, and issues USDC and EURC under MiCA.</li>
-<li><strong>USDT is not authorised under MiCA.</strong> Coinbase restricted non-compliant stablecoins for EEA users by 30 December 2024. Kraken, Binance and Crypto.com removed USDT for EEA users in February and March 2025.</li>
-<li>Holding USDT is not banned. <strong>Offering it</strong> on an EU platform is where the line falls.</li>
+<li><strong>A euro or dollar token (an EMT) can come only from a bank or an e-money institution.</strong> Holders can redeem it at par, at any time, without a fee, and the issuer may pay them no interest.</li>
+<li><strong>Circle</strong> got an e-money licence in France, announced 1 July 2024, and issues USDC and EURC under MiCA.</li>
+<li><strong>USDT is not authorised.</strong> Coinbase restricted it for EEA users by 30 December 2024; Kraken, Binance and Crypto.com removed it in February and March 2025. Holding USDT is not banned: <strong>offering it</strong> on an EU platform is.</li>
 </ul>
-<p><span class="explain">The largest stablecoin in the world, delisted across Europe for want of a licence. In this market the documents are the product, and the missing one is the product too.</span></p>
-</section>
-<section id="esmas-register-a-real-dataset" class="slide level2">
-<h2>ESMA’s register: a real dataset</h2>
-<p>ESMA publishes an <strong>interim MiCA register</strong>: five CSV files. One of them lists the <strong>white papers of other crypto-assets</strong>, with a link to each document.</p>
-<p>Every row is a legal document with a fixed checklist, filed by a named company, free to download. Every row also carries ESMA’s own warning that it was not reviewed or approved.</p>
-<p><span class="red">For an AI that reads, that is a test set waiting for a question. The question is your capstone.</span></p>
-</section>
-<section id="part-4-could-this-be-your-capstone" class="slide level2 section-slide" data-background-color="#AF1F25">
-<h2><span class="section-kicker">Part 4</span> Could this be your capstone?</h2>
-</section>
-<section id="three-ideas-that-read" class="slide level2">
-<h2>Three ideas that read</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>the idea</th>
-<th>open it today?</th>
-<th>ten answers by hand?</th>
-<th>two weeks?</th>
-<th>still interesting if “no”?</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>White-paper checker</strong> — the five MiCA lines, with the page</td>
-<td>ESMA’s CSV</td>
-<td>five lines × two papers</td>
-<td>five papers</td>
-<td>a missing liability line is news to a compliance desk</td>
-</tr>
-<tr class="even">
-<td><strong>Governance diff reader</strong> — parameter, before → after, who gains, who loses</td>
-<td>Uniswap, Aave forums</td>
-<td>ten past votes, outcome known</td>
-<td>one DAO</td>
-<td>a model that reads the title, not the diff, is the finding</td>
-</tr>
-<tr class="odd">
-<td><strong>Audit triage</strong> — what is still open, and in which commit</td>
-<td>audit PDFs on GitHub</td>
-<td>counts and statuses</td>
-<td>one protocol</td>
-<td><em>“it cannot tell resolved from acknowledged”</em></td>
-</tr>
-</tbody>
-</table>
-<p><span class="explain">The four questions from the capstone brief, applied to three ideas. One of your three on Wednesday may be one of these. At least one must be yours.</span></p>
+<p><span class="explain">The largest stablecoin in the world, off European exchanges for want of a licence. In this market the documents are the product, and the missing one is the product too.</span></p>
 </section>
 <section id="close" class="slide level2">
 <h2>Close</h2>
-<p><strong>No new homework.</strong> Bring <strong>three capstone ideas</strong> to Wednesday 25 November, each through the four questions.</p>
-<div class="fragment">
-<p><strong>Three lines</strong> at the bottom of your sheet: the document the notebook read best, the trap that worked, and one thing MiCA makes a model able to check.</p>
-<p><span class="muted">Next: Wednesday 25 November — AI that looks at the data.</span></p>
+<p><strong>The claim checker</strong> from today is a capstone shape: a stablecoin’s claims against its own report, every quarter, with the test written first.</p>
+<p><strong>Three lines</strong> at the bottom of your sheet: how a USDT is born and dies, where Tether’s profit comes from, and the miss that surprised you.</p>
+<p><span class="muted">Next: Wednesday 25 November. Where USDT goes on the chain, and an AI that follows it. Bring your three capstone ideas.</span></p>
 
 
-</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

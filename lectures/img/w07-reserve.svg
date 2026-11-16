@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 414" width="960" height="414" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="414" fill="#ffffff"/>
+  <defs><marker id="rsg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="rsr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="rsn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="rse" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="rsm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">what Tether held on 30 September 2026 &#183; blue: cash or close to it &#183; gold: prices that move &#183; source: BDO's report, signed 30 Oct 2026</text>
+  <text x="218" y="74" font-size="14" font-weight="700" fill="#363636" text-anchor="end">US Treasury bills</text>
+  <rect x="230" y="58" width="330.0" height="24" rx="3" fill="#2471a3" stroke="#2471a3" stroke-width="1"/>
+  <text x="570.0" y="75" font-size="13" font-weight="700" fill="#2471a3" text-anchor="start">$122.9bn &#183; 64%</text>
+  <text x="930" y="75" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">short loans to the US government</text>
+  <text x="218" y="112" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Repo</text>
+  <rect x="230" y="96" width="44.8" height="24" rx="3" fill="#2471a3" stroke="#2471a3" stroke-width="1"/>
+  <text x="284.8" y="113" font-size="13" font-weight="700" fill="#2471a3" text-anchor="start">$16.7bn &#183; 9%</text>
+  <text x="930" y="113" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">overnight loans, backed by Treasuries</text>
+  <text x="218" y="150" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Gold</text>
+  <rect x="230" y="134" width="51.3" height="24" rx="3" fill="#a8955a" stroke="#a8955a" stroke-width="1"/>
+  <text x="291.3" y="151" font-size="13" font-weight="700" fill="#a8955a" text-anchor="start">$19.1bn &#183; 10%</text>
+  <text x="930" y="151" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">bars in a vault</text>
+  <text x="218" y="188" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Secured loans</text>
+  <rect x="230" y="172" width="38.1" height="24" rx="3" fill="#a8955a" stroke="#a8955a" stroke-width="1"/>
+  <text x="278.1" y="189" font-size="13" font-weight="700" fill="#a8955a" text-anchor="start">$14.2bn &#183; 7%</text>
+  <text x="930" y="189" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">money lent to others, against collateral</text>
+  <text x="218" y="226" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Bitcoin</text>
+  <rect x="230" y="210" width="22.5" height="24" rx="3" fill="#a8955a" stroke="#a8955a" stroke-width="1"/>
+  <text x="262.5" y="227" font-size="13" font-weight="700" fill="#a8955a" text-anchor="start">$8.4bn &#183; 4%</text>
+  <text x="930" y="227" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="end" font-style="italic">its price moves every minute</text>
+  <text x="218" y="264" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Other investments</text>
+  <rect x="230" y="248" width="16.1" height="24" rx="3" fill="#a8955a" stroke="#a8955a" stroke-width="1"/>
+  <text x="256.1" y="265" font-size="13" font-weight="700" fill="#a8955a" text-anchor="start">$6.0bn &#183; 3%</text>
+  <text x="218" y="302" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Shares</text>
+  <rect x="230" y="286" width="11.2" height="24" rx="3" fill="#a8955a" stroke="#a8955a" stroke-width="1"/>
+  <text x="251.2" y="303" font-size="13" font-weight="700" fill="#a8955a" text-anchor="start">$4.2bn &#183; 2%</text>
+  <text x="218" y="340" font-size="14" font-weight="700" fill="#363636" text-anchor="end">Cash, deposits, bonds</text>
+  <rect x="230" y="324" width="1.5" height="24" rx="3" fill="#2471a3" stroke="#2471a3" stroke-width="1"/>
+  <text x="241.5" y="341" font-size="13" font-weight="700" fill="#2471a3" text-anchor="start">$0.08bn</text>
+  <text x="30" y="370" font-size="14" font-weight="400" fill="#7a7f85" text-anchor="start">Total $191.5bn against $183.5bn of tokens issued: $8.0bn to spare.</text>
+  <text x="30" y="398" font-size="15" font-weight="700" fill="#363636" text-anchor="start">For every $100 of USDT: $76 in Treasury bills and repo, $28 in gold, loans, bitcoin and shares.</text>
+</svg>
