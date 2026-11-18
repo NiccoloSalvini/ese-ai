@@ -146,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#files" id="toc-files" class="nav-link" data-scroll-target="#files">Files</a></li>
   <li><a href="#the-six-steps" id="toc-the-six-steps" class="nav-link" data-scroll-target="#the-six-steps">The six steps</a></li>
   <li><a href="#what-to-upload" id="toc-what-to-upload" class="nav-link" data-scroll-target="#what-to-upload">What to upload</a></li>
-  <li><a href="#thursday-5-november" id="toc-thursday-5-november" class="nav-link" data-scroll-target="#thursday-5-november">Thursday 5 November</a></li>
+  <li><a href="#the-oral" id="toc-the-oral" class="nav-link" data-scroll-target="#the-oral">The oral</a></li>
   <li><a href="#how-it-is-marked" id="toc-how-it-is-marked" class="nav-link" data-scroll-target="#how-it-is-marked">How it is marked</a></li>
   <li><a href="#rules" id="toc-rules" class="nav-link" data-scroll-target="#rules">Rules</a></li>
   <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope">Scope</a></li>
@@ -163,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="midterm-coinbases-third-quarter-read-by-you-and-an-ai-40" class="level1">
 <h1>Midterm — Coinbase’s third quarter, read by you and an AI (40%)</h1>
-<p><strong>Due: Tuesday 3 November 2026, 23:59 · Moodle ▸ <em>Turnitin Midterm Submission</em> · presentation and oral on Thursday 5 November</strong></p>
+<p><strong>Due: Tuesday 3 November 2026, 23:59 · Moodle ▸ <em>Turnitin Midterm Submission</em> · oral on Thursday 19 November, 15:00</strong></p>
 <section id="the-idea" class="level2">
 <h2 class="anchored" data-anchor-id="the-idea">The idea</h2>
 <p>Coinbase publishes its results for the third quarter of 2026 on <strong>Thursday 29 October</strong>, after Wall Street closes — about 21:00 in Florence. You are the analyst. Before the numbers come out, you build a notebook on Coinbase’s documents and use it to predict the quarter. After they come out, you test the notebook on the new document and score both of you against a rival that does no work at all: <em>“Q3 will be like Q2”</em>.</p>
@@ -247,24 +247,26 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Slides</strong> — at most six, PDF.</li>
 </ol>
 </section>
-<section id="thursday-5-november" class="level2">
-<h2 class="anchored" data-anchor-id="thursday-5-november">Thursday 5 November</h2>
-<p>Time and room on Moodle. Bring your laptop with Gemini Notebook and AI Studio signed in.</p>
-<ul>
-<li><strong>Presentation, 8 minutes</strong> — your note, as at a morning meeting.</li>
-<li><strong>Live check, 5 minutes</strong> — I add to your notebook a document you have not seen and ask one question; you check the citation in front of me.</li>
-<li><strong>Oral, 15 minutes</strong> — one question for each of sessions 1–4, from this list:
+<section id="the-oral" class="level2">
+<h2 class="anchored" data-anchor-id="the-oral">The oral</h2>
+<p><strong>Thursday 19 November 2026, 15:00</strong>, before the lesson. Moved from 5 November, and changed on 18 November: no list of questions. You design an MCP server, without writing it, and defend the design. It weighs what the oral always weighed.</p>
+<p><strong>The night before, one page</strong> (or three slides): an MCP server for a real job, either your case from homework 5 or one that would have fed this midterm (Coinbase’s filings on SEC EDGAR).</p>
 <ol type="1">
-<li><em>Session 1.</em> An LLM writes one token at a time, choosing a likely next one. Why does that explain an invented number?</li>
-<li><em>Session 1.</em> You open a model release. Which three lines do you read first, and why?</li>
-<li><em>Session 2.</em> What does temperature change? What happened in your temperature test, and why?</li>
-<li><em>Session 2.</em> An output token costs five times an input token. In your cost tab, which part of the bill is bigger, and why?</li>
-<li><em>Session 3.</em> Why does a shuffled split lie on price data, and what does an honest split look like?</li>
-<li><em>Session 3.</em> Your preview beat — or lost to — <em>“Q3 = Q2”</em>. Why does one quarter prove nothing, and what would?</li>
-<li><em>Session 4.</em> Retrieval, generation, memory: one miss of each kind, from your sheet or from class.</li>
-<li><em>Session 4.</em> Air Canada’s chatbot: who paid, why, and what does it mean for your notebook on a desk?</li>
-</ol></li>
+<li><strong>The job:</strong> who asks what, how often, and what a wrong answer costs.</li>
+<li><strong>The tools:</strong> three at most. For each, what goes in and what comes out; does it only read, or can it write?</li>
+<li><strong>The source:</strong> open today, and who owns it.</li>
+<li><strong>Where it runs:</strong> on your laptop or on a server; who can reach it, and what it costs a month.</li>
+<li><strong>The bill:</strong> tokens in and tokens out for one question, the two prices from the model’s page, one month at your volume. Remember that whatever a tool returns goes into the context.</li>
+<li><strong>The doors:</strong> what a tool’s answer could smuggle into the context, and what the server must never do.</li>
+<li><strong>The test:</strong> five questions with the answers found by hand, and the rival: the same assistant without your server.</li>
+</ol>
+<p><strong>On the day, about thirty minutes:</strong></p>
+<ul>
+<li><strong>Presentation, 8 minutes</strong> — your page, as at a morning meeting.</li>
+<li><strong>Questions, 15 minutes</strong> — one for each of sessions 1–5, all about your design: the model you would put behind it, the bill, the test and its rival, the misses, the doors.</li>
+<li><strong>Live, 5 minutes</strong> — I change one number (the volume, the model, what a tool returns) and you re-price the bill in front of me.</li>
 </ul>
+<p>No code. Bring the sheet with the bill and the model’s page open.</p>
 <p>To revise: the slides of <a href="../lectures/01-how-llms-work.html">session 1</a>, <a href="../lectures/02-pair-programmer.html">session 2</a>, <a href="../lectures/03-one-problem.html">session 3</a> with <a href="../lectures/03b-anatomy-of-a-saas.html">the anatomy of a SaaS</a>, and <a href="../lectures/04-rag.html">session 4</a>.</p>
 </section>
 <section id="how-it-is-marked" class="level2">
@@ -307,7 +309,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>Clarity, professional communication and reflection</td>
 <td>20</td>
-<td>The note, the slides, the eight minutes, the oral</td>
+<td>The note, the slides, the oral</td>
 </tr>
 </tbody>
 </table>

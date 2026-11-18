@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 450" width="960" height="450" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="450" fill="#ffffff"/>
+  <defs><marker id="sgg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker><marker id="sgr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#AF1F25"/></marker><marker id="sgn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2471a3"/></marker><marker id="sge" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker><marker id="sgm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#7a7f85"/></marker></defs>
+  <text x="30" y="34" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">a signature, without the maths &#183; one key to sign, one key to check</text>
+  <text x="30" y="66" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="start">TO SIGN</text>
+  <text x="30" y="262" font-size="12" font-weight="700" fill="#2471a3" text-anchor="start">TO CHECK</text>
+  <rect x="30" y="78" width="260" height="62" rx="3" fill="#fcfbf8" stroke="#363636" stroke-width="1.5"/>
+  <text x="160.0" y="104" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">THE LINE</text>
+  <text x="160.0" y="125" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">#4 &#183; Alice pays Bob &#8364;20</text>
+  <rect x="30" y="152" width="260" height="62" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="1.5"/>
+  <text x="160.0" y="178" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">ALICE'S PRIVATE KEY</text>
+  <text x="160.0" y="199" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">secret: only Alice has it</text>
+  <rect x="360" y="115" width="140" height="62" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2"/>
+  <text x="430.0" y="152" font-size="15" font-weight="700" fill="#AF1F25" text-anchor="middle">SIGN</text>
+  <rect x="570" y="115" width="360" height="62" rx="3" fill="#fcfbf8" stroke="#363636" stroke-width="1.5"/>
+  <text x="750.0" y="141" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">THE SIGNATURE</text>
+  <text x="750.0" y="162" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">a string only this key can make, for this line only</text>
+  <line x1="292" y1="109" x2="356" y2="140" stroke="#AF1F25" stroke-width="2" marker-end="url(#sgr)"/>
+  <line x1="292" y1="183" x2="356" y2="152" stroke="#AF1F25" stroke-width="2" marker-end="url(#sgr)"/>
+  <line x1="502" y1="146" x2="566" y2="146" stroke="#AF1F25" stroke-width="2" marker-end="url(#sgr)"/>
+  <rect x="30" y="274" width="260" height="62" rx="3" fill="#fcfbf8" stroke="#363636" stroke-width="1.5"/>
+  <text x="160.0" y="300" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">THE LINE + THE SIGNATURE</text>
+  <text x="160.0" y="321" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">as written on the page</text>
+  <rect x="30" y="348" width="260" height="62" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="1.5"/>
+  <text x="160.0" y="374" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">ALICE'S PUBLIC KEY</text>
+  <text x="160.0" y="395" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">everyone has it, like an address</text>
+  <rect x="360" y="311" width="140" height="62" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <text x="430.0" y="348" font-size="15" font-weight="700" fill="#2471a3" text-anchor="middle">CHECK</text>
+  <rect x="570" y="311" width="360" height="62" rx="3" fill="#fcfbf8" stroke="#363636" stroke-width="1.5"/>
+  <text x="750.0" y="337" font-size="15" font-weight="700" fill="#363636" text-anchor="middle">TRUE OR FALSE</text>
+  <text x="750.0" y="358" font-size="12" font-weight="400" fill="#7a7f85" text-anchor="middle">anyone can check it; nobody can forge it</text>
+  <line x1="292" y1="305" x2="356" y2="336" stroke="#2471a3" stroke-width="2" marker-end="url(#sgn)"/>
+  <line x1="292" y1="379" x2="356" y2="348" stroke="#2471a3" stroke-width="2" marker-end="url(#sgn)"/>
+  <line x1="502" y1="342" x2="566" y2="342" stroke="#2471a3" stroke-width="2" marker-end="url(#sgn)"/>
+  <text x="30" y="438" font-size="15" font-weight="700" fill="#363636" text-anchor="start">Change &#8364;20 into &#8364;200 and the check says false. The number #4 stops anyone copying the line twice.</text>
+</svg>
