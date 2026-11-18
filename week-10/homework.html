@@ -169,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-idea">The idea</h2>
 <p>Pick one real decision in finance or crypto that somebody takes every week. Build, with the tools of this course, an AI tool that helps take it: one that <strong>reads</strong> documents, <strong>looks</strong> at data, or <strong>acts</strong> within rules you wrote. Write the test before you build. Run it, put it next to a rival that does no work, price it, and say what you would not let it do. Then defend it for fifteen minutes.</p>
 <p>It is the midterm again, with one difference: this time you choose the question, and the tool is yours.</p>
-<p>No code. Everything is done with the tools you have used since September: Gemini Notebook, ChatGPT or Claude, a sheet, an agent you configure.</p>
+<p><strong>Code, written by you:</strong> Python, in a notebook or a small repository. A coding assistant may help, as you saw in session 6; you run it, you fix it, and you defend every line in the presentation.</p>
 </section>
 <section id="three-kinds-of-capstone" class="level2">
 <h2 class="anchored" data-anchor-id="three-kinds-of-capstone">Three kinds of capstone</h2>
@@ -190,17 +190,17 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><strong>reads</strong> (session 7)</td>
-<td>a notebook or a saved prompt over documents</td>
+<td>Python that sends the documents to a model’s API and keeps the page of each answer</td>
 <td><em>A stablecoin claim checker:</em> does what an issuer says match its own reserve report, with the page for each answer?</td>
 </tr>
 <tr class="even">
 <td><strong>looks</strong> (session 8)</td>
-<td>an assistant over data you exported</td>
+<td>Python that fetches the data from an API (DefiLlama, Etherscan) and asks a model about it</td>
 <td><em>A stablecoin peg watcher:</em> five past depegs, what the data showed before each one, what the assistant flags and what it misses</td>
 </tr>
 <tr class="odd">
 <td><strong>acts</strong> (session 9)</td>
-<td>the rules of an agent, tested case by case</td>
+<td>Python: an agent loop with tools and rules in code, tested case by case, on a testnet</td>
 <td><em>A treasury agent that pays supplier invoices in USDT:</em> what it may do alone, what needs a person, tested on ten cases including traps</td>
 </tr>
 </tbody>
@@ -366,7 +366,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>20%</td>
 <td>The artefact</td>
-<td>A tool that someone else can open and run, and that does what the memo says.</td>
+<td>Code that someone else can open and run, and that does what the memo says.</td>
 </tr>
 <tr class="even">
 <td>20%</td>
