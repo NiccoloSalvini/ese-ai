@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 436" width="960" height="436" font-family="'Source Sans 3','Source Sans Pro',-apple-system,Helvetica,Arial,sans-serif">
+  <rect width="960" height="436" fill="#ffffff"/>
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#a8955a"/></marker>
+    <marker id="ae" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1e8449"/></marker>
+  </defs>
+  <text x="30" y="34" font-size="13" fill="#7a7f85">the road to real money, and where the three features that would sell it fit</text>
+  <rect x="30" y="56" width="270" height="176" rx="3" fill="#faeeee" stroke="#AF1F25" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="46" y="82" font-size="12" font-weight="700" fill="#AF1F25" text-anchor="start" letter-spacing="1.1">THIS WEEK</text>
+  <text x="46" y="106" font-size="12" font-weight="400" fill="#363636" text-anchor="start">the front door and the panel</text>
+  <text x="46" y="123" font-size="12" font-weight="400" fill="#363636" text-anchor="start">a real WordPress site</text>
+  <text x="46" y="140" font-size="12" font-weight="400" fill="#363636" text-anchor="start">a real Cloudflare domain</text>
+  <text x="46" y="157" font-size="12" font-weight="400" fill="#363636" text-anchor="start">listed on Bazaar</text>
+  <text x="46" y="174" font-size="12" font-weight="400" fill="#363636" text-anchor="start">our fee, decided</text>
+  <line x1="302" y1="144" x2="343" y2="144" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="345" y="56" width="270" height="176" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="361" y="82" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">BEFORE REAL MONEY</text>
+  <text x="361" y="106" font-size="12" font-weight="400" fill="#363636" text-anchor="start">the fee in the code: each payment</text>
+  <text x="361" y="123" font-size="12" font-weight="400" fill="#363636" text-anchor="start">split between owner and us</text>
+  <text x="361" y="157" font-size="12" font-weight="400" fill="#363636" text-anchor="start">mainnet: real addresses, a real</text>
+  <text x="361" y="174" font-size="12" font-weight="400" fill="#363636" text-anchor="start">facilitator, a security review</text>
+  <text x="361" y="208" font-size="12" font-weight="400" fill="#363636" text-anchor="start">npm packages: middleware, wallet</text>
+  <line x1="617" y1="144" x2="658" y2="144" stroke="#a8955a" stroke-width="2" marker-end="url(#ag)"/>
+  <rect x="660" y="56" width="270" height="176" rx="3" fill="#ffffff" stroke="#c9c4b8" stroke-width="1"/>
+  <text x="676" y="82" font-size="12" font-weight="700" fill="#a8955a" text-anchor="start" letter-spacing="1.1">AFTER MAINNET</text>
+  <text x="676" y="106" font-size="12" font-weight="400" fill="#363636" text-anchor="start">top up the agent’s wallet by card</text>
+  <text x="676" y="123" font-size="12" font-weight="400" fill="#363636" text-anchor="start">withdraw to a bank account</text>
+  <text x="676" y="140" font-size="12" font-weight="400" fill="#363636" text-anchor="start">prices that set themselves</text>
+  <rect x="30" y="278" width="270" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <rect x="44" y="291" width="20" height="20" fill="#AF1F25"/>
+  <text x="54" y="306" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="74" y="306" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start">How much AI owes you</text>
+  <text x="46" y="330" font-size="12" font-weight="400" fill="#363636" text-anchor="start">paste a domain: the bots that read</text>
+  <text x="46" y="347" font-size="12" font-weight="400" fill="#363636" text-anchor="start">it and the euros they would pay;</text>
+  <text x="46" y="364" font-size="12" font-weight="400" fill="#363636" text-anchor="start">free, the hook that signs owners up</text>
+  <path d="M165 234 L165 276" fill="none" stroke="#a8955a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="345" y="278" width="270" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <rect x="359" y="291" width="20" height="20" fill="#AF1F25"/>
+  <text x="369" y="306" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="389" y="306" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start">Pay or nothing</text>
+  <text x="361" y="330" font-size="12" font-weight="400" fill="#363636" text-anchor="start">a switch that really blocks the</text>
+  <text x="361" y="347" font-size="12" font-weight="400" fill="#363636" text-anchor="start">training bots that do not pay;</text>
+  <text x="361" y="364" font-size="12" font-weight="400" fill="#363636" text-anchor="start">many owners want only this</text>
+  <path d="M480 234 L480 276" fill="none" stroke="#a8955a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="660" y="278" width="270" height="112" rx="3" fill="#eaf1f7" stroke="#2471a3" stroke-width="2"/>
+  <rect x="674" y="291" width="20" height="20" fill="#AF1F25"/>
+  <text x="684" y="306" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="704" y="306" font-size="15" font-weight="700" fill="#2471a3" text-anchor="start">One licence for AI companies</text>
+  <text x="676" y="330" font-size="12" font-weight="400" fill="#363636" text-anchor="start">every site in the network, one</text>
+  <text x="676" y="347" font-size="12" font-weight="400" fill="#363636" text-anchor="start">signature: the big money, once</text>
+  <text x="676" y="364" font-size="12" font-weight="400" fill="#363636" text-anchor="start">there is a network to sell</text>
+  <path d="M795 234 L795 276" fill="none" stroke="#a8955a" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="30" y="420" font-size="13" font-weight="400" fill="#7a7f85" text-anchor="start">Left out on purpose: elaborate dashboards, a mobile app, more coins. Today they bring neither customers nor money.</text>
+</svg>
